@@ -19,10 +19,10 @@ export const Route = createFileRoute("/about")({
 });
 
 const team = [
-  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop" },
-  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop" },
-  { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop" },
-  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop" },
+  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 const values = [
@@ -43,7 +43,7 @@ function AboutPage() {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-200 sm:rounded-3xl">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
         </div>
         <div>
           <h2 className="text-2xl font-bold leading-tight tracking-tight text-black sm:text-3xl lg:text-[36px]">Our story</h2>

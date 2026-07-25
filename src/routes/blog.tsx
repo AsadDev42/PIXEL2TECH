@@ -18,12 +18,12 @@ export const Route = createFileRoute("/blog")({
 });
 
 const posts = [
-  { tag: "AI", date: "June 22, 2026", title: "How AI is Changing Modern Branding", excerpt: "The tools have changed. The principles haven't. Here's how we blend both.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop" },
-  { tag: "Web", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", excerpt: "A 10-point audit to figure out if your website is helping or hurting.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop" },
-  { tag: "Brand", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", excerpt: "Why a strong brand system compounds every marketing dollar you spend.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop" },
-  { tag: "Growth", date: "March 12, 2026", title: "Rebrand vs. Refresh: A Founder's Decision Framework", excerpt: "Not sure whether to rebrand? Answer these five questions first.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop" },
-  { tag: "AI", date: "February 24, 2026", title: "Why Modern Brands Need an AI Ops Layer", excerpt: "The teams that win in the next 5 years will run on AI-native workflows.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop" },
-  { tag: "Design", date: "January 30, 2026", title: "Design Systems for Small Teams", excerpt: "You don't need Google's budget to have Google's consistency.", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&auto=format&fit=crop" },
+  { tag: "AI", date: "June 22, 2026", title: "How AI is Changing Modern Branding", excerpt: "The tools have changed. The principles haven't. Here's how we blend both.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Web", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", excerpt: "A 10-point audit to figure out if your website is helping or hurting.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Brand", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", excerpt: "Why a strong brand system compounds every marketing dollar you spend.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Growth", date: "March 12, 2026", title: "Rebrand vs. Refresh: A Founder's Decision Framework", excerpt: "Not sure whether to rebrand? Answer these five questions first.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "AI", date: "February 24, 2026", title: "Why Modern Brands Need an AI Ops Layer", excerpt: "The teams that win in the next 5 years will run on AI-native workflows.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Design", date: "January 30, 2026", title: "Design Systems for Small Teams", excerpt: "You don't need Google's budget to have Google's consistency.", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function BlogPage() {

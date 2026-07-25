@@ -17,7 +17,7 @@ const items: Item[] = [
       "The UI UX work was clean, modern, and focused on conversions. Our product now looks premium and investor ready.",
     video: "https://cdn.coverr.co/videos/coverr-a-man-in-a-suit-in-the-office-2760/1080p.mp4",
     poster:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
   {
     name: "Dora Pelosi",
@@ -26,7 +26,7 @@ const items: Item[] = [
       "We hired Pixel2Tech for white label work. Their quality and communication are excellent. It feels like having an in house creative team.",
     video: "https://cdn.coverr.co/videos/coverr-a-woman-working-on-a-laptop-2633/1080p.mp4",
     poster:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
   {
     name: "Choisy Catherine",
@@ -35,7 +35,7 @@ const items: Item[] = [
       "Our social media engagement improved within weeks. Their strategy is smart and practical, not just random posting.",
     video: "https://cdn.coverr.co/videos/coverr-a-young-woman-typing-on-a-laptop-9269/1080p.mp4",
     poster:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
   {
     name: "Marco Bianchi",
@@ -44,7 +44,7 @@ const items: Item[] = [
       "From branding to launch, Pixel2Tech delivered on every promise. They feel like a true growth partner, not just a vendor.",
     video: "https://cdn.coverr.co/videos/coverr-a-man-working-on-a-laptop-2634/1080p.mp4",
     poster:
-      "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
   {
     name: "Aisha Rahman",
@@ -53,7 +53,7 @@ const items: Item[] = [
       "Their AI workflow automations saved our team days every week. Real, measurable impact from day one.",
     video: "https://cdn.coverr.co/videos/coverr-a-woman-typing-on-a-laptop-9270/1080p.mp4",
     poster:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
 ];
 

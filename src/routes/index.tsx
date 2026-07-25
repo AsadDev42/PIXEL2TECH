@@ -31,25 +31,25 @@ export const Route = createFileRoute("/")({
 
 const heroCols: string[][] = [
   [
-    "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
@@ -220,7 +220,7 @@ function PartnerBand() {
           </div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full bg-[#1E90FF]">
             <img
-              src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop&fm=webp&q=70"
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-cover mix-blend-luminosity"
             />
@@ -278,17 +278,17 @@ function Services() {
 
 
 const work = [
-  { title: "Web design and development", img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=900&auto=format&fit=crop" },
-  { title: "UI UX designing", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop" },
-  { title: "Logo and branding", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop" },
-  { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop" },
-  { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop" },
-  { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop" },
-  { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop" },
-  { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop" },
-  { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1571677419770-cd8c0f0c50c8?w=900&auto=format&fit=crop" },
-  { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop" },
-  { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop" },
+  { title: "Web design and development", img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "UI UX designing", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Logo and branding", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1571677419770-cd8c0f0c50c8?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function Work() {
@@ -337,10 +337,10 @@ function Work() {
 
 
 const team = [
-  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop" },
-  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop" },
-  { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop" },
-  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop" },
+  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function Team() {
@@ -375,7 +375,7 @@ function Team() {
             </Link>
           </div>
           <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 sm:mt-10">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop" alt="Office space" className="h-full w-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
@@ -396,9 +396,9 @@ function Team() {
 
 
 const posts = [
-  { tag: "Creative", date: "June 22, 2026", title: "How AI is Changing Modern Branding", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop" },
-  { tag: "Creative", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop" },
-  { tag: "Creative", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop" },
+  { tag: "Creative", date: "June 22, 2026", title: "How AI is Changing Modern Branding", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Creative", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Creative", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function Insights() {
