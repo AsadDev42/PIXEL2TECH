@@ -539,19 +539,17 @@ function Team() {
                 <div className="p-5 sm:p-6">
                   <div className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</div>
                   <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</div>
-                  <div className="mt-4 flex items-center gap-3">
-                    {[
-                      { Icon: Facebook, label: "Facebook", href: "#" },
-                      { Icon: Twitter, label: "Twitter", href: "#" },
-                      { Icon: Linkedin, label: "LinkedIn", href: "#" },
-                    ].map(({ Icon, label, href }) => (
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    {SOCIAL_LINKS.map(({ name, href, Icon }) => (
                       <a
-                        key={label}
+                        key={name}
                         href={href}
-                        aria-label={`${m.name} on ${label}`}
-                        className="text-foreground/70 transition hover:text-foreground"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} on ${name}`}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 transition hover:text-foreground"
                       >
-                        <Icon className="h-4 w-4" aria-hidden="true" />
+                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     ))}
                   </div>
