@@ -52,10 +52,10 @@ function PortfolioPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl bg-neutral-100 p-6 text-center sm:mt-16 sm:rounded-3xl sm:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[32px]">Want your project featured next?</h2>
-          <p className="mt-2 text-sm text-neutral-600">Let's build something worth sharing.</p>
-          <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
+        <div className="mt-12 rounded-2xl bg-muted p-6 text-center sm:mt-16 sm:rounded-3xl sm:p-10">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[32px]">Want your project featured next?</h2>
+          <p className="mt-2 text-sm text-muted-foreground">Let's build something worth sharing.</p>
+          <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
             Start a Project
           </Link>
         </div>

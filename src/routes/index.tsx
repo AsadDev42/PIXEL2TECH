@@ -68,13 +68,13 @@ function HomeContact() {
   }
 
   const inputCls =
-    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-neutral-500 outline-none transition-colors focus:border-foreground";
+    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground";
 
   return (
     <>
       <section aria-labelledby="home-contact-title" className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
         <FadeIn>
-          <div className="rounded-2xl bg-neutral-100 p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
+          <div className="rounded-2xl bg-muted p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
@@ -196,14 +196,14 @@ const heroCols: string[][] = [
 
 function Hero() {
   return (
-    <section className="bg-white">
+    <section className="bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center md:gap-12">
         <div>
-          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[56px]">
+          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             Growing Businesses Don't Need More Tools. They Need{" "}
             <span className="text-[#1E90FF]">AI-Powered Systems</span>
           </h1>
-          <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-neutral-600 sm:mt-6">
+          <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground sm:mt-6">
             We help businesses automate workflows, build scalable software, and
             create seamless digital experiences that improve efficiency,
             customer experience, and growth.
@@ -211,13 +211,13 @@ function Hero() {
           <div className="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <Link
               to="/contact"
-              className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+              className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
             >
               Book a Free Strategy Call
             </Link>
             <Link
               to="/portfolio"
-              className="inline-flex min-h-11 items-center rounded-full border border-black bg-white px-6 py-3.5 text-sm font-semibold text-black hover:bg-neutral-50"
+              className="inline-flex min-h-11 items-center rounded-full border border-foreground bg-background px-6 py-3.5 text-sm font-semibold text-foreground hover:bg-muted"
             >
               View Our Work
             </Link>
@@ -236,7 +236,7 @@ function Hero() {
                   {loop.map((src, i) => (
                     <div
                       key={i}
-                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-neutral-100 sm:rounded-2xl"
+                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
                     >
                       <img decoding="async"
                         src={src}
@@ -276,12 +276,12 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-white py-12 sm:py-16">
+    <section className="bg-background py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Brands That Trust Pixel2Tech
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-[14px] text-neutral-600 sm:text-[15px]">
+        <p className="mx-auto mt-3 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px]">
           We work with startups, businesses, and founders who want to grow
           faster. From Pakistan to the world.
         </p>
@@ -342,25 +342,25 @@ function PartnerBand() {
             to turn ideas into impactful brands and technology that drive real
             results.
           </p>
-          <div className="mt-6 text-sm text-neutral-500 sm:mt-8">— Pixel2Tech Team</div>
+          <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
         </div>
         <div className="relative mx-auto w-full max-w-[360px]">
           <motion.div
             initial={{ y: 0, rotate: -2 }}
             animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-2 left-0 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+            className="absolute -top-2 left-0 z-10 flex items-center gap-3 rounded-2xl bg-background px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-black">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foreground">
               <TrendingUp className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" />
             </div>
             <div className="min-w-0 text-left">
-              <div className="truncate text-xs font-bold text-black sm:text-sm">
+              <div className="truncate text-xs font-bold text-foreground sm:text-sm">
                 Trusted Technology Partner
               </div>
-              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-neutral-500 sm:text-xs">
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-black">4.9</span> (1520 Reviews)
+                <span className="font-semibold text-foreground">4.9</span> (1520 Reviews)
               </div>
             </div>
           </motion.div>
@@ -375,15 +375,15 @@ function PartnerBand() {
             initial={{ y: 0, rotate: 2 }}
             animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute -bottom-4 right-0 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+            className="absolute -bottom-4 right-0 z-10 flex items-center gap-3 rounded-2xl bg-background px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
           >
             <div className="min-w-0 text-left">
-              <div className="truncate text-xs font-bold text-black sm:text-sm">
+              <div className="truncate text-xs font-bold text-foreground sm:text-sm">
                 100% Business Growth
               </div>
-              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-neutral-500 sm:text-xs">
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-black">4.9</span> (1520 Reviews)
+                <span className="font-semibold text-foreground">4.9</span> (1520 Reviews)
               </div>
             </div>
           </motion.div>
@@ -406,18 +406,18 @@ const services = [
 
 function Services() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Everything You Need to{" "}
               <span className="relative text-[#1E90FF]">
                 Build &amp; Grow
                 <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
               </span>
             </h2>
-            <p className="mt-3 text-[14px] text-neutral-600 sm:text-[15px]">
+            <p className="mt-3 text-[14px] text-muted-foreground sm:text-[15px]">
               One team. All your creative and digital needs.
             </p>
           </div>
@@ -425,10 +425,10 @@ function Services() {
         <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
-              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+              <div className="h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
                 <div className="text-4xl sm:text-5xl">{s.emoji}</div>
-                <h3 className="mt-5 text-lg font-bold text-black sm:mt-6">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+                <h3 className="mt-5 text-lg font-bold text-foreground sm:mt-6">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
             </StaggerItem>
           ))}
@@ -456,14 +456,14 @@ const work = [
 
 function Work() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
-          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
             <span className="text-[#1E90FF]">Brands Grow</span>
           </h2>
-          <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">
+          <p className="mt-2 text-[14px] text-muted-foreground sm:text-[15px]">
             One team. All your creative and digital needs. Drag to explore.
           </p>
         </FadeIn>
@@ -507,30 +507,30 @@ const team = [
 
 function Team() {
   return (
-    <section className="bg-neutral-100 py-16 sm:py-24">
+    <section className="bg-muted py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 md:grid-cols-2">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             OUR CREATIVE TEAM
           </div>
-          <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-black sm:text-4xl lg:text-[44px]">
+          <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Experts in Technology, AI &amp; Digital Innovation
           </h2>
-          <p className="mt-5 text-[14px] leading-relaxed text-neutral-600 sm:mt-6 sm:text-[15px]">
+          <p className="mt-5 text-[14px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[15px]">
             Our team combines expertise in software development, AI, automation, digital products, and customer experience.
           </p>
-          <p className="mt-4 text-[14px] leading-relaxed text-neutral-600 sm:text-[15px]">
+          <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
             We work together to solve complex business challenges and build technology solutions that create measurable impact.
           </p>
           <div className="mt-7 flex flex-wrap gap-6 sm:mt-8 sm:gap-8">
-            <Link to="/contact" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-black">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
+            <Link to="/contact" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
                 <Plus className="h-4 w-4" />
               </span>
               Contact Us
             </Link>
-            <Link to="/about" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-black">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
+            <Link to="/about" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
                 <Plus className="h-4 w-4" />
               </span>
               All Teams
@@ -542,12 +542,12 @@ function Team() {
         </div>
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
           {team.map((m) => (
-            <div key={m.name} className="rounded-2xl bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
+            <div key={m.name} className="rounded-2xl bg-background p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
               <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
                 <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
-              <div className="mt-3 text-base font-bold text-black sm:mt-4 sm:text-lg">{m.name}</div>
-              <div className="text-xs text-neutral-500 sm:text-sm">{m.role}</div>
+              <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
+              <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
             </div>
           ))}
         </div>
@@ -565,27 +565,27 @@ const posts = [
 
 function Insights() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:flex-wrap sm:justify-between sm:gap-6">
           <div className="min-w-0">
-            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">Latest Insights</h2>
-            <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">Tips, trends, and thought leadership from the Pixel2Tech team.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">Latest Insights</h2>
+            <p className="mt-2 text-[14px] text-muted-foreground sm:text-[15px]">Tips, trends, and thought leadership from the Pixel2Tech team.</p>
           </div>
-          <Link to="/blog" className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-black px-4 py-3 text-xs font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3.5 sm:text-sm">
+          <Link to="/blog" className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-4 py-3 text-xs font-semibold text-background hover:opacity-90 sm:px-6 sm:py-3.5 sm:text-sm">
             Read Articles
           </Link>
         </div>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
           {posts.map((p) => (
-            <Link key={p.title} to="/blog" className="block rounded-3xl bg-neutral-100 p-3 transition hover:bg-neutral-200/60 sm:p-4">
+            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
-              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:mt-5 sm:gap-4">
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
               </div>
-              <div className="mt-3 pb-3 text-base font-semibold leading-snug text-black sm:pb-4 sm:text-lg">{p.title}</div>
+              <div className="mt-3 pb-3 text-base font-semibold leading-snug text-foreground sm:pb-4 sm:text-lg">{p.title}</div>
             </Link>
           ))}
         </div>

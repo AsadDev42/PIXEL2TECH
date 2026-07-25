@@ -96,23 +96,23 @@ function ServicesPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-8 text-center sm:mb-12">
-          <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[40px]">Our Services</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-600">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">Our Services</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
             Everything your business needs to grow online — design, development, marketing, automation, and SEO under one roof.
           </p>
         </div>
-        <div className="rounded-2xl bg-neutral-50 p-3 sm:rounded-3xl sm:p-4 md:p-6">
+        <div className="rounded-2xl bg-muted p-3 sm:rounded-3xl sm:p-4 md:p-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <div key={s.title} className="rounded-2xl bg-white p-5 border border-neutral-200/70 sm:p-6">
+              <div key={s.title} className="rounded-2xl bg-background p-5 border border-border/70 sm:p-6">
                 <div className="flex items-center gap-3">
                   <div aria-hidden="true" className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg text-lg ${s.accent}`}>{s.emoji}</div>
-                  <h3 className="text-base font-bold text-black sm:text-lg">{s.title}</h3>
+                  <h3 className="text-base font-bold text-foreground sm:text-lg">{s.title}</h3>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {s.tags.map((t) => (
-                    <span key={t} className="rounded-md border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-xs text-neutral-700">
+                    <span key={t} className="rounded-md border border-border bg-muted px-2.5 py-1 text-xs text-foreground/80">
                       {t}
                     </span>
                   ))}
@@ -127,9 +127,9 @@ function ServicesPage() {
       <VideoTestimonials />
 
       <section className="mx-auto max-w-4xl px-5 pb-16 text-center sm:px-8 sm:pb-24">
-        <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[36px]">Have a project in mind?</h2>
-        <p className="mt-3 text-sm text-neutral-600">Tell us what you're working on. We'll get back within one business day.</p>
-        <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[36px]">Have a project in mind?</h2>
+        <p className="mt-3 text-sm text-muted-foreground">Tell us what you're working on. We'll get back within one business day.</p>
+        <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
           Start a Project
         </Link>
       </section>

@@ -46,28 +46,28 @@ function AboutPage() {
           <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold leading-tight tracking-tight text-black sm:text-3xl lg:text-[36px]">Our story</h2>
-          <p className="mt-4 text-[14px] leading-relaxed text-neutral-600 sm:text-[15px]">
+          <h2 className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[36px]">Our story</h2>
+          <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
             We started Pixel2Tech with a simple belief: growing businesses don't
             need more tools, they need better systems. Since then we've partnered
             with dozens of teams to design brand identities, ship production
             websites, and integrate AI workflows.
           </p>
-          <p className="mt-4 text-[14px] leading-relaxed text-neutral-600 sm:text-[15px]">
+          <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
             Today we're a small, senior team of designers, engineers and
             strategists — with clients across four continents.
           </p>
         </div>
       </section>
 
-      <section className="bg-neutral-100 py-14 sm:py-20">
+      <section className="bg-muted py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[36px]">What we stand for</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[36px]">What we stand for</h2>
           <div className="mt-6 grid gap-5 sm:mt-8 sm:gap-6 md:grid-cols-3">
             {values.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-white p-6 sm:p-8">
-                <div className="text-lg font-bold text-black">{v.title}</div>
-                <p className="mt-2 text-sm text-neutral-600">{v.desc}</p>
+              <div key={v.title} className="rounded-2xl bg-background p-6 sm:p-8">
+                <div className="text-lg font-bold text-foreground">{v.title}</div>
+                <p className="mt-2 text-sm text-muted-foreground">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -75,20 +75,20 @@ function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500 sm:text-xs">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
           OUR CREATIVE TEAM
         </div>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
           Meet the people behind the work
         </h2>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {team.map((m) => (
-            <div key={m.name} className="rounded-2xl bg-neutral-100 p-3 sm:p-4">
+            <div key={m.name} className="rounded-2xl bg-muted p-3 sm:p-4">
               <div className="aspect-[4/5] overflow-hidden rounded-xl">
                 <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
-              <div className="mt-3 text-base font-bold text-black sm:mt-4 sm:text-lg">{m.name}</div>
-              <div className="text-xs text-neutral-500 sm:text-sm">{m.role}</div>
+              <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
+              <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
               <div className="mt-3 flex gap-2">
                 {[
                   { Icon: Facebook, label: "Facebook" },
@@ -99,9 +99,9 @@ function AboutPage() {
                     key={label}
                     aria-label={`${m.name} on ${label}`}
                     role="img"
-                    className="flex h-8 w-8 items-center justify-center rounded-md bg-white shadow ring-1 ring-neutral-200"
+                    className="flex h-8 w-8 items-center justify-center rounded-md bg-background shadow ring-1 ring-neutral-200"
                   >
-                    <Icon className="h-3.5 w-3.5 text-black" aria-hidden="true" />
+                    <Icon className="h-3.5 w-3.5 text-foreground" aria-hidden="true" />
                   </span>
                 ))}
               </div>
@@ -109,7 +109,7 @@ function AboutPage() {
           ))}
         </div>
         <div className="mt-10 text-center sm:mt-12">
-          <Link to="/contact" className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90">
+          <Link to="/contact" className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90">
             Work with us
           </Link>
         </div>
