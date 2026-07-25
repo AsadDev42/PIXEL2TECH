@@ -248,14 +248,17 @@ function Services() {
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:shadow-md">
-              <div className="text-5xl">{s.emoji}</div>
-              <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
-            </div>
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 80}>
+              <div className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-md">
+                <div className="text-5xl">{s.emoji}</div>
+                <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
