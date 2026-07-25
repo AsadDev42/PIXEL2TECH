@@ -150,7 +150,7 @@ function ContactPage() {
           <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-2xl bg-foreground p-6 text-background sm:rounded-3xl sm:p-10 md:p-12">
             <div>
               <h2 id="direct-contact-title" className="text-xl font-bold sm:text-2xl">Talk to us directly</h2>
-              <p className="mt-3 text-sm text-white/80">
+              <p className="mt-3 text-sm text-background/80">
                 Prefer to skip the form? Reach out on the channels below and a
                 team member will get back within one business day.
               </p>
@@ -175,7 +175,7 @@ function ContactPage() {
                 </li>
               </ul>
             </div>
-            <p className="mt-8 rounded-2xl bg-background/10 p-4 text-sm text-white sm:mt-10 sm:p-5">
+            <p className="mt-8 rounded-2xl bg-background/10 p-4 text-sm text-background sm:mt-10 sm:p-5">
               Response time <span className="font-bold">under 24h</span> · Mon – Sat
             </p>
           </aside>
