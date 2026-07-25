@@ -327,7 +327,7 @@ function Work() {
         </FadeIn>
       </div>
       <div className="edge-fade-x mt-8 overflow-hidden sm:mt-10" aria-label="Our services">
-        <div className="marquee-rtl flex w-max gap-4 sm:gap-5" style={{ animationDuration: "60s" }}>
+        <div className="marquee-ltr flex w-max gap-4 sm:gap-5" style={{ animationDuration: "60s" }}>
           {loop.map((w, i) => (
             <div
               key={`${w.title}-${i}`}
