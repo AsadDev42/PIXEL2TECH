@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Facebook, Twitter, Linkedin, Play, ChevronDown, Mail, Phone } from "lucide-react";
+import { SOCIAL_LINKS } from "@/components/social-links";
+import { Play, ChevronDown, Mail, Phone } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { useState } from "react";
 
