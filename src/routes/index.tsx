@@ -615,7 +615,7 @@ function Studio() {
               </div>
               <div className="pointer-events-none absolute -bottom-4 -right-4 hidden rounded-2xl border border-border/60 bg-background px-5 py-4 shadow-md dark:border-white/10 sm:block">
                 <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Studio</div>
-                <div className="mt-1 text-sm font-semibold text-foreground">Islamabad, Pakistan</div>
+                <div className="mt-1 text-sm font-semibold text-foreground">Lahore, Pakistan</div>
               </div>
             </div>
           </FadeIn>
