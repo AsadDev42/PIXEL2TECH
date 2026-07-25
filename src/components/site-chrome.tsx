@@ -23,17 +23,22 @@ export function SiteNav() {
   return (
     <header className="w-full bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-6 py-5 sm:px-8">
-        <Link to="/" className="flex items-center">
+        <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
           <img src={logoAsset.url} alt="Pixel2Tech" className="h-10 w-auto sm:h-11" />
         </Link>
-        <nav className="hidden items-center justify-center gap-8 text-[15px] font-medium text-black lg:flex">
+        <nav aria-label="Primary" className="hidden items-center justify-center gap-8 text-[15px] font-medium text-black lg:flex">
           {NAV.map((n) => {
             const active = pathname === n.to;
             return (
-              <Link key={n.to} to={n.to} className="relative">
+              <Link
+                key={n.to}
+                to={n.to}
+                aria-current={active ? "page" : undefined}
+                className="relative"
+              >
                 <span className={active ? "font-semibold" : ""}>{n.label}</span>
                 {active && (
-                  <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-black" />
+                  <span aria-hidden="true" className="absolute -bottom-2 left-0 h-[2px] w-full bg-black" />
                 )}
               </Link>
             );
@@ -52,6 +57,7 @@ export function SiteNav() {
     </header>
   );
 }
+
 
 const MARQUEE_WORDS = [
   "Brand Identity",
@@ -100,16 +106,25 @@ export function SiteFooter() {
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
             <div className="mt-6 flex gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((I, i) => (
+              {[
+                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/pixel2tech" },
+                { Icon: Twitter, label: "Twitter / X", href: "https://twitter.com/pixel2tech" },
+                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/pixel2tech" },
+                { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/pixel2tech" },
+              ].map(({ Icon, label, href }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Pixel2Tech on ${label}`}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 text-black hover:bg-white"
                 >
-                  <I className="h-4 w-4" />
+                  <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
               ))}
             </div>
+
           </div>
           <div>
             <div className="text-lg font-bold text-black">Quick Links</div>
