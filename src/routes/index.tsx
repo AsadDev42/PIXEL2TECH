@@ -508,49 +508,52 @@ const team = [
 function Team() {
   return (
     <section className="bg-muted py-16 sm:py-24">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 md:grid-cols-2">
-        <div>
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            OUR CREATIVE TEAM
-          </div>
-          <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-            Experts in Technology, AI &amp; Digital Innovation
-          </h2>
-          <p className="mt-5 text-[14px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-[15px]">
-            Our team combines expertise in software development, AI, automation, digital products, and customer experience.
-          </p>
-          <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-            We work together to solve complex business challenges and build technology solutions that create measurable impact.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-6 sm:mt-8 sm:gap-8">
-            <Link to="/contact" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
-                <Plus className="h-4 w-4" />
-              </span>
-              Contact Us
-            </Link>
-            <Link to="/about" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
-                <Plus className="h-4 w-4" />
-              </span>
-              All Teams
-            </Link>
-          </div>
-          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-muted sm:mt-10">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4 sm:gap-5">
-          {team.map((m) => (
-            <div key={m.name} className="rounded-2xl bg-background p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
-              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200 dark:bg-muted">
-                <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <FadeIn>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                OUR CREATIVE TEAM
               </div>
-              <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
-              <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
+              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+                Meet the people behind the work
+              </h2>
+              <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                A small, senior team of designers, engineers, and strategists building technology that creates measurable impact.
+              </p>
             </div>
+            <Link
+              to="/about"
+              className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
+            >
+              About the team
+              <Plus className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </FadeIn>
+
+        <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          {team.map((m) => (
+            <StaggerItem key={m.name}>
+              <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]">
+                <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={m.img}
+                    alt={`${m.name} — ${m.role}`}
+                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+                  />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                </div>
+                <div className="p-5 sm:p-6">
+                  <div className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</div>
+                  <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</div>
+                </div>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
