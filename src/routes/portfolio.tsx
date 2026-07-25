@@ -113,7 +113,7 @@ const WORK: Record<Category, Record<string, Item[]>> = {
 
 const STATS = [
   { value: "95%+", label: "Client Satisfaction", body: "We focus on quality work and strong client relationships." },
-  { value: "3+", label: "Years of Experience", body: "Building brands and digital experiences with passion." },
+  { value: "3", label: "Years growing", body: "Building brands and digital experiences with passion." },
   { value: "50+", label: "Projects Completed", body: "Branding, websites, and marketing projects delivered." },
   { value: "15+", label: "Happy Clients", body: "Startups and growing businesses we've partnered with." },
 ];
