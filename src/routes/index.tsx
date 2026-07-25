@@ -198,7 +198,7 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             Growing Businesses Don't Need More Tools. They Need{" "}
