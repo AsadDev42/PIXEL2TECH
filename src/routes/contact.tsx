@@ -147,35 +147,35 @@ function ContactPage() {
             </form>
           </div>
 
-          <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-2xl bg-foreground p-6 text-background sm:rounded-3xl sm:p-10 md:p-12">
+          <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-2xl bg-foreground p-6 text-background dark:border dark:border-white/10 dark:bg-white/[0.04] dark:text-foreground sm:rounded-3xl sm:p-10 md:p-12">
             <div>
               <h2 id="direct-contact-title" className="text-xl font-bold sm:text-2xl">Talk to us directly</h2>
-              <p className="mt-3 text-sm text-background/80">
+              <p className="mt-3 text-sm text-background/80 dark:text-muted-foreground">
                 Prefer to skip the form? Reach out on the channels below and a
                 team member will get back within one business day.
               </p>
               <ul className="mt-6 space-y-4 text-sm sm:mt-8">
                 <li className="flex items-center gap-3">
-                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10">
+                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10 dark:bg-white/[0.08]">
                     <Mail className="h-4 w-4" />
                   </span>
                   <a href="mailto:sales@pixel2tech.com" className="min-w-0 break-all hover:underline">sales@pixel2tech.com</a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10">
+                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10 dark:bg-white/[0.08]">
                     <Phone className="h-4 w-4" />
                   </span>
                   <a href="tel:+923177475233" className="hover:underline">+92 317 7475233</a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10">
+                  <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-background/10 dark:bg-white/[0.08]">
                     <MapPin className="h-4 w-4" />
                   </span>
                   Pakistan Based, Serving Worldwide
                 </li>
               </ul>
             </div>
-            <p className="mt-8 rounded-2xl bg-background/10 p-4 text-sm text-background sm:mt-10 sm:p-5">
+            <p className="mt-8 rounded-2xl bg-background/10 p-4 text-sm text-background dark:bg-white/[0.06] dark:text-foreground sm:mt-10 sm:p-5">
               Response time <span className="font-bold">under 24h</span> · Mon – Sat
             </p>
           </aside>
