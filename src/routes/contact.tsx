@@ -89,13 +89,6 @@ function ContactPage() {
     { id: "subject", label: "SUBJECT", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
   ] as const;
 
-  const socials = [
-    { Icon: Facebook, label: "Facebook", href: "https://facebook.com/pixel2tech" },
-    { Icon: Twitter, label: "Twitter / X", href: "https://twitter.com/pixel2tech" },
-    { Icon: Instagram, label: "Instagram", href: "https://instagram.com/pixel2tech" },
-    { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/pixel2tech" },
-  ] as const;
-
   return (
     <PageShell>
       <section className="bg-background pb-16 pt-10 sm:pb-24 sm:pt-16">
