@@ -129,7 +129,7 @@ function ServicesPage() {
       <section className="mx-auto max-w-4xl px-5 pb-16 text-center sm:px-8 sm:pb-24">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[36px]">Have a project in mind?</h2>
         <p className="mt-3 text-sm text-muted-foreground">Tell us what you're working on. We'll get back within one business day.</p>
-        <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
+        <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
           Start a Project
         </Link>
       </section>

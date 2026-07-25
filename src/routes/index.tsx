@@ -211,7 +211,7 @@ function Hero() {
           <div className="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <Link
               to="/contact"
-              className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+              className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
             >
               Book a Free Strategy Call
             </Link>
@@ -524,13 +524,13 @@ function Team() {
           </p>
           <div className="mt-7 flex flex-wrap gap-6 sm:mt-8 sm:gap-8">
             <Link to="/contact" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
                 <Plus className="h-4 w-4" />
               </span>
               Contact Us
             </Link>
             <Link to="/about" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-foreground">
-              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background">
                 <Plus className="h-4 w-4" />
               </span>
               All Teams
@@ -572,7 +572,7 @@ function Insights() {
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">Latest Insights</h2>
             <p className="mt-2 text-[14px] text-muted-foreground sm:text-[15px]">Tips, trends, and thought leadership from the Pixel2Tech team.</p>
           </div>
-          <Link to="/blog" className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-black px-4 py-3 text-xs font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3.5 sm:text-sm">
+          <Link to="/blog" className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-4 py-3 text-xs font-semibold text-background hover:opacity-90 sm:px-6 sm:py-3.5 sm:text-sm">
             Read Articles
           </Link>
         </div>

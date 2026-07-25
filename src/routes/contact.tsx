@@ -139,7 +139,7 @@ function ContactPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:mt-4"
+                className="mt-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:mt-4"
               >
                 {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                 {loading ? "Sending…" : "Get in Touch"}
@@ -147,7 +147,7 @@ function ContactPage() {
             </form>
           </div>
 
-          <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-2xl bg-black p-6 text-white sm:rounded-3xl sm:p-10 md:p-12">
+          <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-2xl bg-foreground p-6 text-background sm:rounded-3xl sm:p-10 md:p-12">
             <div>
               <h2 id="direct-contact-title" className="text-xl font-bold sm:text-2xl">Talk to us directly</h2>
               <p className="mt-3 text-sm text-white/80">

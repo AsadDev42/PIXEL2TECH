@@ -109,7 +109,7 @@ function AboutPage() {
           ))}
         </div>
         <div className="mt-10 text-center sm:mt-12">
-          <Link to="/contact" className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90">
+          <Link to="/contact" className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90">
             Work with us
           </Link>
         </div>
