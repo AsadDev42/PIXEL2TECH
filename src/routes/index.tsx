@@ -218,33 +218,30 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 sm:gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
-          {heroCols.map((col, ci) => {
-            const loop = [...col, ...col];
-            const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
-            return (
-              <div
-                key={ci}
-                className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]"
-              >
-                <div className={`flex flex-col gap-2 sm:gap-3 ${dir}`}>
-                  {loop.map((src, i) => (
-                    <div
-                      key={i}
-                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
-                    >
-                      <img decoding="async"
-                        src={src}
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          {heroCols.map((col, ci) => (
+            <div key={ci} className="h-[340px] sm:h-[420px]">
+              <LoopSlider
+                axis="y"
+                direction={ci % 2 === 0 ? "up" : "down"}
+                speed={30}
+                gapClassName="gap-2 sm:gap-3"
+                items={col}
+                keyFor={(_src, i) => `${ci}-${i}`}
+                renderItem={(src) => (
+                  <div className="h-[160px] w-full overflow-hidden rounded-xl bg-muted sm:h-[200px] sm:rounded-2xl">
+                    <img
+                      decoding="async"
+                      src={src}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
