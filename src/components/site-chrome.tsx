@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
+import { ThemeToggle } from "@/components/theme-provider";
 import {
   Facebook,
   Twitter,
@@ -38,12 +39,15 @@ export function SiteNav() {
             );
           })}
         </nav>
-        <Link
-          to="/contact"
-          className="shrink-0 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3"
-        >
-          Book a Call
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link
+            to="/contact"
+            className="shrink-0 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3"
+          >
+            Book a Call
+          </Link>
+        </div>
       </div>
     </header>
   );
