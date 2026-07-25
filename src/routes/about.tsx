@@ -175,53 +175,57 @@ function AboutPage() {
       </section>
 
       {/* Team */}
-      <section aria-labelledby="about-team-title" className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
-        <FadeIn>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-            Our Creative Team
-          </div>
-          <h2 id="about-team-title" className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-            Creative Thinking. Technical Excellence.
-          </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Our team combines creativity, technology, and AI to build innovative solutions that help businesses improve customer experiences, streamline operations, overcome complex challenges, and achieve sustainable growth with confidence.
-          </p>
-        </FadeIn>
-        <Stagger className="mt-8 grid gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-          {team.map((m) => (
-            <StaggerItem key={m.name}>
-              <HoverLift className="h-full">
+      <section aria-labelledby="about-team-title" className="bg-muted py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="max-w-2xl">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                Our Creative Team
+              </div>
+              <h2 id="about-team-title" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+                Creative Thinking. Technical Excellence.
+              </h2>
+              <p className="mt-4 max-w-3xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                Our team combines creativity, technology, and AI to build innovative solutions that help businesses improve customer experiences, streamline operations, overcome complex challenges, and achieve sustainable growth with confidence.
+              </p>
+            </div>
+          </FadeIn>
+          <Stagger className="mt-10 grid gap-6 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+            {team.map((m) => (
+              <StaggerItem key={m.name}>
                 <article
                   aria-labelledby={`about-team-${m.name.replace(/\s+/g, "-")}-name`}
                   aria-describedby={`about-team-${m.name.replace(/\s+/g, "-")}-role`}
-                  className="h-full rounded-2xl border border-border bg-background p-3 transition-colors dark:border-white/10 dark:bg-white/[0.03] sm:p-4"
+                  className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
                 >
-                  <div className="aspect-[4/5] overflow-hidden rounded-xl">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
                       loading="lazy"
                       decoding="async"
                       src={m.img}
                       alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
-                      className="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+                      className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                     />
                   </div>
-                  <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</h3>
-                  <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="text-xs text-muted-foreground sm:text-sm">{m.role}</p>
+                  <div className="p-5 sm:p-6">
+                    <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</h3>
+                    <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</p>
+                  </div>
                 </article>
-              </HoverLift>
-            </StaggerItem>
-          ))}
-        </Stagger>
-        <FadeIn delay={0.2}>
-          <div className="mt-10 text-center sm:mt-12">
-            <Link
-              to="/contact"
-              className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </FadeIn>
+              </StaggerItem>
+            ))}
+          </Stagger>
+          <FadeIn delay={0.2}>
+            <div className="mt-10 text-center sm:mt-14">
+              <Link
+                to="/contact"
+                className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
       </section>
 
       {/* Why Choose */}
