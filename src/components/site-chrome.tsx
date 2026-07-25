@@ -223,7 +223,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12">
-          © {new Date().getFullYear()} Pixel2Tech. All rights reserved.
+          © 2024 Pixel2Tech. All rights reserved.
         </div>
       </div>
       <FooterMarquee />
