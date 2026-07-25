@@ -309,7 +309,6 @@ const work = [
 ];
 
 function Work() {
-  const loop = [...work, ...work];
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -322,30 +321,34 @@ function Work() {
             </span>
           </h2>
           <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">
-            One team. All your creative and digital needs.
+            One team. All your creative and digital needs. Drag to explore.
           </p>
         </FadeIn>
       </div>
-      <div className="edge-fade-x mt-8 overflow-hidden sm:mt-10" aria-label="Our services">
-        <div className="marquee-ltr flex w-max gap-4 sm:gap-5" style={{ animationDuration: "60s" }}>
-          {loop.map((w, i) => (
-            <div
-              key={`${w.title}-${i}`}
-              className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
-            >
-              <img loading="lazy" decoding="async"
-                src={w.img}
-                alt={i < work.length ? w.title : ""}
-                aria-hidden={i >= work.length ? "true" : undefined}
-                className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
-                {w.title}
-              </div>
+      <LoopSlider
+        items={work}
+        keyFor={(w, i) => `${w.title}-${i}`}
+        direction="ltr"
+        speed={40}
+        gapClassName="gap-4 sm:gap-5"
+        className="mt-8 sm:mt-10"
+        ariaLabel="Our services"
+        renderItem={(w, i) => (
+          <div className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={w.img}
+              alt={i < work.length ? w.title : ""}
+              draggable={false}
+              className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+            />
+            <div className="pointer-events-none absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
+              {w.title}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        )}
+      />
     </section>
   );
 }
