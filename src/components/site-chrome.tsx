@@ -166,12 +166,24 @@ function WhatsAppButton() {
 
 
 import { CursorFollower } from "./cursor-follower";
+import { PageTransition, PageLoader, FadeIn } from "./motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 600);
+    return () => clearTimeout(t);
+  }, []);
   return (
     <div className="min-h-screen bg-white text-black">
+      <AnimatePresence>{loading && <PageLoader key="loader" />}</AnimatePresence>
       <SiteNav />
-      {children}
+      <AnimatePresence mode="wait">
+        <PageTransition key={pathname}>{children}</PageTransition>
+      </AnimatePresence>
       <SiteFooter />
       <WhatsAppButton />
       <CursorFollower />
@@ -193,25 +205,27 @@ export function PageHeader({
   return (
     <section className="bg-white pt-16 pb-10">
       <div className="mx-auto max-w-7xl px-6 text-center sm:px-8">
-        {eyebrow && (
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            {eyebrow}
-          </div>
-        )}
-        <h1 className="mt-3 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-[52px]">
-          {title}{" "}
-          {highlight && (
-            <span className="relative text-[#1E90FF]">
-              {highlight}
-              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-            </span>
+        <FadeIn>
+          {eyebrow && (
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+              {eyebrow}
+            </div>
           )}
-        </h1>
-        {subtitle && (
-          <p className="mx-auto mt-4 max-w-2xl text-[15px] text-neutral-600">
-            {subtitle}
-          </p>
-        )}
+          <h1 className="mt-3 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-[52px]">
+            {title}{" "}
+            {highlight && (
+              <span className="relative text-[#1E90FF]">
+                {highlight}
+                <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+              </span>
+            )}
+          </h1>
+          {subtitle && (
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] text-neutral-600">
+              {subtitle}
+            </p>
+          )}
+        </FadeIn>
       </div>
     </section>
   );
