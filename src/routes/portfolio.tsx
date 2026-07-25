@@ -41,7 +41,7 @@ function PortfolioPage() {
           {work.map((w) => (
             <div key={w.title} className="group cursor-pointer overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-3xl">
               <div className="relative aspect-[4/5]">
-                <img src={w.img} alt={w.title} className="h-full w-full object-cover transition group-hover:scale-105" />
+                <img loading="lazy" decoding="async" src={w.img} alt={w.title} className="h-full w-full object-cover transition group-hover:scale-105" />
                 <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-6">
                   <div className="text-[11px] uppercase tracking-widest opacity-70 sm:text-xs">{w.tag}</div>

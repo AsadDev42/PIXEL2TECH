@@ -97,7 +97,7 @@ function Hero() {
                       key={i}
                       className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-neutral-100 sm:rounded-2xl"
                     >
-                      <img
+                      <img decoding="async"
                         src={src}
                         alt=""
                         loading="lazy"
@@ -160,7 +160,7 @@ function Brands() {
           {loop.map((b, i) => {
             const isDup = i >= brands.length;
             return (
-              <img
+              <img decoding="async"
                 key={`${b.slug}-${i}`}
                 src={`https://cdn.simpleicons.org/${b.slug}/000000`}
                 alt={isDup ? "" : `${b.name} logo`}
@@ -219,7 +219,7 @@ function PartnerBand() {
             </div>
           </div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full bg-[#1E90FF]">
-            <img
+            <img loading="lazy" decoding="async"
               src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop&fm=webp&q=70"
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-cover mix-blend-luminosity"
@@ -316,7 +316,7 @@ function Work() {
               key={`${w.title}-${i}`}
               className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={w.img}
                 alt={i < work.length ? w.title : ""}
                 aria-hidden={i >= work.length ? "true" : undefined}
@@ -375,14 +375,14 @@ function Team() {
             </Link>
           </div>
           <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 sm:mt-10">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
           {team.map((m) => (
             <div key={m.name} className="rounded-2xl bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
               <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
-                <img src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
+                <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
               <div className="mt-3 text-base font-bold text-black sm:mt-4 sm:text-lg">{m.name}</div>
               <div className="text-xs text-neutral-500 sm:text-sm">{m.role}</div>
@@ -418,7 +418,7 @@ function Insights() {
           {posts.map((p) => (
             <Link key={p.title} to="/blog" className="block rounded-3xl bg-neutral-100 p-3 transition hover:bg-neutral-200/60 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
-                <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+                <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>

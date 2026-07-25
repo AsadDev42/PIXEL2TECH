@@ -102,7 +102,7 @@ function VideoCard({ item }: { item: Item }) {
         <Quote className="h-5 w-5 text-neutral-300 sm:h-6 sm:w-6" aria-hidden="true" />
         <p className="mt-2 text-sm leading-relaxed text-neutral-700">{item.quote}</p>
         <div className="mt-5 flex items-center gap-3 sm:mt-6">
-          <img
+          <img decoding="async"
             src={item.poster}
             alt=""
             loading="lazy"

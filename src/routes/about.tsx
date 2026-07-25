@@ -43,7 +43,7 @@ function AboutPage() {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center">
         <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-200 sm:rounded-3xl">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
         </div>
         <div>
           <h2 className="text-2xl font-bold leading-tight tracking-tight text-black sm:text-3xl lg:text-[36px]">Our story</h2>
@@ -85,7 +85,7 @@ function AboutPage() {
           {team.map((m) => (
             <div key={m.name} className="rounded-2xl bg-neutral-100 p-3 sm:p-4">
               <div className="aspect-[4/5] overflow-hidden rounded-xl">
-                <img src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
+                <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
               <div className="mt-3 text-base font-bold text-black sm:mt-4 sm:text-lg">{m.name}</div>
               <div className="text-xs text-neutral-500 sm:text-sm">{m.role}</div>
