@@ -39,6 +39,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
@@ -117,6 +118,8 @@ export function SiteNav() {
         </div>
       )}
     </header>
+    <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+    </>
   );
 }
 
