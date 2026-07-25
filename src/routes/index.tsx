@@ -76,7 +76,7 @@ function HomeContact() {
         <FadeIn>
           <div className="rounded-2xl bg-neutral-100 p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-              Ready to <span className="text-[#2b7fff] underline decoration-wavy decoration-2 underline-offset-8">Grow Your Brand?</span>
+              Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
               Tell us about your project and goals. Let's build something great together.
