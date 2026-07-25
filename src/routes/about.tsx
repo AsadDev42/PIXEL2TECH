@@ -187,7 +187,7 @@ function AboutPage() {
             Our team combines creativity, technology, and AI to build innovative solutions that help businesses improve customer experiences, streamline operations, overcome complex challenges, and achieve sustainable growth with confidence.
           </p>
         </FadeIn>
-        <Stagger className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <Stagger className="mt-8 grid gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {team.map((m) => (
             <StaggerItem key={m.name}>
               <HoverLift className="h-full">
