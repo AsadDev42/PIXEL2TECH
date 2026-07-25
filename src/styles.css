@@ -147,7 +147,71 @@
     font-family: "Syne", ui-sans-serif, system-ui, sans-serif;
     letter-spacing: -0.02em;
   }
+
+  /* Smooth theme transition */
+  body, header, footer, section, article, aside, main, nav, div, a, button, input, textarea, select {
+    transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease;
+  }
 }
+
+/* ============================================================
+   Dark mode — semantic overrides for the existing utilities used
+   across the site. Colors invert; brand blue #1E90FF stays.
+   ============================================================ */
+.dark {
+  color-scheme: dark;
+  --p2t-bg:      #0a0a0a;
+  --p2t-surface: #111111;
+  --p2t-raised:  #17181a;
+  --p2t-elev:    #1e1f22;
+  --p2t-fg:      #f5f5f5;
+  --p2t-muted:   #a3a3a3;
+  --p2t-border:  #262626;
+  --p2t-border-strong: #303030;
+}
+
+.dark body { background-color: var(--p2t-bg); color: var(--p2t-fg); }
+
+/* Backgrounds */
+.dark .bg-white         { background-color: var(--p2t-bg) !important; }
+.dark .bg-neutral-50    { background-color: var(--p2t-surface) !important; }
+.dark .bg-neutral-100   { background-color: var(--p2t-surface) !important; }
+.dark .bg-neutral-200   { background-color: var(--p2t-raised) !important; }
+.dark .bg-neutral-200\/60 { background-color: color-mix(in oklab, var(--p2t-raised) 60%, transparent) !important; }
+.dark .bg-neutral-300   { background-color: var(--p2t-elev) !important; }
+.dark .bg-neutral-900   { background-color: #050505 !important; }
+.dark .bg-black         { background-color: #050505 !important; }
+
+/* Text */
+.dark .text-black       { color: var(--p2t-fg) !important; }
+.dark .text-white       { color: var(--p2t-fg) !important; }
+.dark .text-neutral-400 { color: #8a8a8a !important; }
+.dark .text-neutral-500 { color: var(--p2t-muted) !important; }
+.dark .text-neutral-600 { color: #b8b8b8 !important; }
+.dark .text-neutral-700 { color: #c8c8c8 !important; }
+
+/* Borders */
+.dark .border-neutral-200 { border-color: var(--p2t-border) !important; }
+.dark .border-neutral-300 { border-color: var(--p2t-border-strong) !important; }
+.dark .border-black       { border-color: var(--p2t-fg) !important; }
+
+/* Hover states */
+.dark .hover\:bg-white:hover      { background-color: var(--p2t-raised) !important; }
+.dark .hover\:bg-neutral-50:hover { background-color: var(--p2t-raised) !important; }
+.dark .hover\:bg-neutral-100:hover{ background-color: var(--p2t-raised) !important; }
+.dark .hover\:bg-neutral-200\/60:hover { background-color: var(--p2t-raised) !important; }
+.dark .hover\:text-black:hover    { color: var(--p2t-fg) !important; }
+
+/* Buttons: primary black-on-white → keep contrast inverted */
+.dark .bg-black.text-white        { background-color: var(--p2t-fg) !important; color: #0a0a0a !important; }
+.dark .bg-white.text-black        { background-color: var(--p2t-fg) !important; color: #0a0a0a !important; }
+
+/* Shadows are too soft on dark bg — deepen */
+.dark .shadow-\[0_1px_2px_rgba\(0\,0\,0\,0\.04\)\] { box-shadow: 0 1px 2px rgba(0,0,0,0.6) !important; }
+.dark .shadow-md { box-shadow: 0 6px 20px rgba(0,0,0,0.45) !important; }
+.dark .shadow-lg { box-shadow: 0 10px 30px rgba(0,0,0,0.55) !important; }
+.dark .shadow-xl { box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important; }
+
 
 @keyframes marquee-rtl {
   0%   { transform: translateX(0); }
