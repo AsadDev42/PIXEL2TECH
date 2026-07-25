@@ -62,16 +62,17 @@ export function CursorFollower() {
   if (!enabled) return null;
   return (
     <>
+      <style>{`@media (pointer: fine){*{cursor:none !important}}`}</style>
       <div
         ref={ringRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-9 w-9 rounded-full border border-black/70 mix-blend-difference transition-[width,height,background-color,border-color] duration-200 ease-out data-[hover=1]:h-12 data-[hover=1]:w-12 data-[hover=1]:bg-white/10"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-9 w-9 rounded-full border-2 border-foreground/80 transition-[width,height,background-color,border-color] duration-200 ease-out data-[hover=1]:h-14 data-[hover=1]:w-14 data-[hover=1]:bg-foreground/10"
         style={{ willChange: "transform" }}
       />
       <div
         ref={dotRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2 w-2 rounded-full bg-black mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2 w-2 rounded-full bg-foreground"
         style={{ willChange: "transform" }}
       />
     </>
