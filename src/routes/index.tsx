@@ -83,7 +83,25 @@ function Hero() {
 }
 
 function Brands() {
-  const brands = ["PUBLISH AND PROSPER", "AchhSoft", "LOCKS & CO", "CA"];
+  const brands = [
+    { slug: "google", name: "Google" },
+    { slug: "microsoft", name: "Microsoft" },
+    { slug: "shopify", name: "Shopify" },
+    { slug: "stripe", name: "Stripe" },
+    { slug: "airbnb", name: "Airbnb" },
+    { slug: "spotify", name: "Spotify" },
+    { slug: "slack", name: "Slack" },
+    { slug: "notion", name: "Notion" },
+    { slug: "figma", name: "Figma" },
+    { slug: "netflix", name: "Netflix" },
+    { slug: "adobe", name: "Adobe" },
+    { slug: "amazon", name: "Amazon" },
+    { slug: "uber", name: "Uber" },
+    { slug: "linkedin", name: "LinkedIn" },
+    { slug: "meta", name: "Meta" },
+    { slug: "tesla", name: "Tesla" },
+  ];
+  const loop = [...brands, ...brands];
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-6xl px-8 text-center">
@@ -94,9 +112,21 @@ function Brands() {
           We work with startups, businesses, and founders who want to grow
           faster. From Pakistan to the world.
         </p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-16 gap-y-6 text-xl font-bold tracking-tight text-neutral-400">
-          {brands.map((b) => (
-            <span key={b}>{b}</span>
+      </div>
+      <div
+        className="marquee-viewport edge-fade-x mt-10 overflow-hidden"
+        style={{ direction: "rtl" }}
+      >
+        <div className="marquee-track slow items-center gap-16 pr-16" style={{ direction: "ltr" }}>
+          {loop.map((b, i) => (
+            <img
+              key={`${b.slug}-${i}`}
+              src={`https://cdn.simpleicons.org/${b.slug}/9ca3af`}
+              alt={b.name}
+              title={b.name}
+              loading="lazy"
+              className="h-10 w-auto shrink-0 opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-12"
+            />
           ))}
         </div>
       </div>
