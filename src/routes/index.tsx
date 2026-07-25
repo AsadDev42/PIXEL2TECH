@@ -84,23 +84,28 @@ function Hero() {
 
 function Brands() {
   const brands = [
-    { domain: "google.com", name: "Google" },
-    { domain: "microsoft.com", name: "Microsoft" },
-    { domain: "shopify.com", name: "Shopify" },
-    { domain: "stripe.com", name: "Stripe" },
-    { domain: "airbnb.com", name: "Airbnb" },
-    { domain: "spotify.com", name: "Spotify" },
-    { domain: "slack.com", name: "Slack" },
-    { domain: "notion.so", name: "Notion" },
-    { domain: "figma.com", name: "Figma" },
-    { domain: "netflix.com", name: "Netflix" },
-    { domain: "adobe.com", name: "Adobe" },
-    { domain: "amazon.com", name: "Amazon" },
-    { domain: "uber.com", name: "Uber" },
-    { domain: "linkedin.com", name: "LinkedIn" },
-    { domain: "meta.com", name: "Meta" },
-    { domain: "tesla.com", name: "Tesla" },
+    { slug: "google", name: "Google" },
+    { slug: "microsoft", name: "Microsoft" },
+    { slug: "shopify", name: "Shopify" },
+    { slug: "stripe", name: "Stripe" },
+    { slug: "airbnb", name: "Airbnb" },
+    { slug: "spotify", name: "Spotify" },
+    { slug: "slack", name: "Slack" },
+    { slug: "notion", name: "Notion" },
+    { slug: "figma", name: "Figma" },
+    { slug: "netflix", name: "Netflix" },
+    { slug: "adobe", name: "Adobe" },
+    { slug: "amazon", name: "Amazon" },
+    { slug: "uber", name: "Uber" },
+    { slug: "linkedin", name: "LinkedIn" },
+    { slug: "meta", name: "Meta" },
+    { slug: "tesla", name: "Tesla" },
+    { slug: "apple", name: "Apple" },
+    { slug: "github", name: "GitHub" },
+    { slug: "openai", name: "OpenAI" },
+    { slug: "x", name: "X" },
   ];
+  // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
     <section className="bg-white py-16">
@@ -113,25 +118,25 @@ function Brands() {
           faster. From Pakistan to the world.
         </p>
       </div>
-      <div
-        className="marquee-viewport edge-fade-x mt-10 overflow-hidden"
-        style={{ direction: "rtl" }}
-      >
-        <div
-          className="marquee-track slow items-center gap-16 pr-16"
-          style={{ direction: "ltr" }}
-        >
+      <div className="marquee-viewport edge-fade-x mt-10 overflow-hidden">
+        <div className="marquee-track slow items-center gap-16 pr-16">
           {loop.map((b, i) => (
             <img
-              key={`${b.domain}-${i}`}
-              src={`https://logo.clearbit.com/${b.domain}`}
+              key={`${b.slug}-${i}`}
+              src={`https://cdn.simpleicons.org/${b.slug}/000000`}
               alt={b.name}
               title={b.name}
               loading="lazy"
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
+                const el = e.currentTarget as HTMLImageElement;
+                if (!el.dataset.fallback) {
+                  el.dataset.fallback = "1";
+                  el.src = `https://logo.clearbit.com/${b.slug}.com`;
+                } else {
+                  el.style.display = "none";
+                }
               }}
-              className="h-10 w-auto shrink-0 object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-12"
+              className="h-9 w-auto shrink-0 object-contain opacity-60 transition hover:opacity-100 sm:h-10"
             />
           ))}
         </div>
