@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { SOCIAL_LINKS } from "@/components/social-links";
+
 import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { useState } from "react";
@@ -203,20 +203,6 @@ function AboutPage() {
                   </div>
                   <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
                   <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    {SOCIAL_LINKS.map(({ name, href, Icon }) => (
-                      <a
-                        key={name}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${m.name} on ${name}`}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 transition hover:text-foreground"
-                      >
-                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </HoverLift>
             </StaggerItem>
