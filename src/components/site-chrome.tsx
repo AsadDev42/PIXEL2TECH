@@ -198,16 +198,20 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   }, []);
   return (
     <div className="min-h-screen bg-white text-black">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <AnimatePresence>{loading && <PageLoader key="loader" />}</AnimatePresence>
       <SiteNav />
       <AnimatePresence mode="wait">
-        <PageTransition key={pathname}>{children}</PageTransition>
+        <PageTransition key={pathname}>
+          <main id="main-content" tabIndex={-1}>{children}</main>
+        </PageTransition>
       </AnimatePresence>
       <SiteFooter />
       <WhatsAppButton />
       <CursorFollower />
     </div>
   );
+
 }
 
 export function PageHeader({
