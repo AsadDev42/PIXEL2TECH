@@ -604,6 +604,8 @@ function HomePage() {
       <VideoTestimonials />
       <Team />
       <Insights />
+      <HomeContact />
     </PageShell>
+
   );
 }
