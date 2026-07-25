@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { Plus, TrendingUp, Star } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 
 export const Route = createFileRoute("/")({
