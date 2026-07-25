@@ -37,7 +37,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
-    <header className="w-full bg-background">
+    <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
           <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
