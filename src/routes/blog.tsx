@@ -18,12 +18,12 @@ export const Route = createFileRoute("/blog")({
 });
 
 const posts = [
-  { tag: "AI", date: "June 22, 2026", title: "How AI is Changing Modern Branding", excerpt: "The tools have changed. The principles haven't. Here's how we blend both.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop" },
-  { tag: "Web", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", excerpt: "A 10-point audit to figure out if your website is helping or hurting.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop" },
-  { tag: "Brand", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", excerpt: "Why a strong brand system compounds every marketing dollar you spend.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop" },
-  { tag: "Growth", date: "March 12, 2026", title: "Rebrand vs. Refresh: A Founder's Decision Framework", excerpt: "Not sure whether to rebrand? Answer these five questions first.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop" },
-  { tag: "AI", date: "February 24, 2026", title: "Why Modern Brands Need an AI Ops Layer", excerpt: "The teams that win in the next 5 years will run on AI-native workflows.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop" },
-  { tag: "Design", date: "January 30, 2026", title: "Design Systems for Small Teams", excerpt: "You don't need Google's budget to have Google's consistency.", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&auto=format&fit=crop" },
+  { tag: "AI", date: "June 22, 2026", title: "How AI is Changing Modern Branding", excerpt: "The tools have changed. The principles haven't. Here's how we blend both.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Web", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", excerpt: "A 10-point audit to figure out if your website is helping or hurting.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Brand", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", excerpt: "Why a strong brand system compounds every marketing dollar you spend.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Growth", date: "March 12, 2026", title: "Rebrand vs. Refresh: A Founder's Decision Framework", excerpt: "Not sure whether to rebrand? Answer these five questions first.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "AI", date: "February 24, 2026", title: "Why Modern Brands Need an AI Ops Layer", excerpt: "The teams that win in the next 5 years will run on AI-native workflows.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop&fm=webp&q=70" },
+  { tag: "Design", date: "January 30, 2026", title: "Design Systems for Small Teams", excerpt: "You don't need Google's budget to have Google's consistency.", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function BlogPage() {
@@ -40,7 +40,7 @@ function BlogPage() {
       <section className="mx-auto max-w-7xl px-5 pb-10 sm:px-8 sm:pb-12">
         <div className="grid gap-6 rounded-2xl bg-neutral-100 p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
           <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
-            <img src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
+            <img loading="lazy" decoding="async" src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
           </div>
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:gap-4">
@@ -65,7 +65,7 @@ function BlogPage() {
           {rest.map((p) => (
             <a key={p.title} href="#" className="block rounded-3xl bg-neutral-100 p-3 transition hover:bg-neutral-200/60 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
-                <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+                <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
