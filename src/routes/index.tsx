@@ -123,22 +123,14 @@ function Brands() {
     { slug: "microsoft", name: "Microsoft" },
     { slug: "shopify", name: "Shopify" },
     { slug: "stripe", name: "Stripe" },
-    { slug: "airbnb", name: "Airbnb" },
     { slug: "spotify", name: "Spotify" },
-    { slug: "slack", name: "Slack" },
     { slug: "notion", name: "Notion" },
     { slug: "figma", name: "Figma" },
     { slug: "netflix", name: "Netflix" },
-    { slug: "adobe", name: "Adobe" },
-    { slug: "amazon", name: "Amazon" },
-    { slug: "uber", name: "Uber" },
-    { slug: "linkedin", name: "LinkedIn" },
     { slug: "meta", name: "Meta" },
     { slug: "tesla", name: "Tesla" },
     { slug: "apple", name: "Apple" },
     { slug: "github", name: "GitHub" },
-    { slug: "openai", name: "OpenAI" },
-    { slug: "x", name: "X" },
   ];
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
@@ -155,7 +147,8 @@ function Brands() {
       </div>
 
       <div className="marquee-viewport edge-fade-x mt-8 overflow-hidden sm:mt-10">
-        <div className="marquee-track slow items-center gap-10 pr-10 sm:gap-16 sm:pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
+        <div className="marquee-track slow items-center gap-20 pr-20 sm:gap-28 sm:pr-28" role="list" aria-label="Brands that trust Pixel2Tech">
+
 
           {loop.map((b, i) => {
             const isDup = i >= brands.length;
