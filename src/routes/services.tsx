@@ -94,20 +94,20 @@ function ServicesPage() {
         subtitle="One team. All your creative and digital needs."
       />
 
-      <section className="mx-auto max-w-7xl px-8 py-16">
-        <div className="mb-12 text-center">
-          <h2 className="text-[40px] font-bold tracking-tight text-black">Our Services</h2>
+      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[40px]">Our Services</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-600">
             Everything your business needs to grow online — design, development, marketing, automation, and SEO under one roof.
           </p>
         </div>
-        <div className="rounded-3xl bg-neutral-50 p-4 md:p-6">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-2xl bg-neutral-50 p-3 sm:rounded-3xl sm:p-4 md:p-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <div key={s.title} className="rounded-2xl bg-white p-6 border border-neutral-200/70">
+              <div key={s.title} className="rounded-2xl bg-white p-5 border border-neutral-200/70 sm:p-6">
                 <div className="flex items-center gap-3">
-                  <div className={`grid h-10 w-10 place-items-center rounded-lg text-lg ${s.accent}`}>{s.emoji}</div>
-                  <h3 className="text-lg font-bold text-black">{s.title}</h3>
+                  <div aria-hidden="true" className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg text-lg ${s.accent}`}>{s.emoji}</div>
+                  <h3 className="text-base font-bold text-black sm:text-lg">{s.title}</h3>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -126,13 +126,14 @@ function ServicesPage() {
 
       <VideoTestimonials />
 
-      <section className="mx-auto max-w-4xl px-8 pb-24 text-center">
-        <h2 className="text-[36px] font-bold tracking-tight text-black">Have a project in mind?</h2>
+      <section className="mx-auto max-w-4xl px-5 pb-16 text-center sm:px-8 sm:pb-24">
+        <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[36px]">Have a project in mind?</h2>
         <p className="mt-3 text-sm text-neutral-600">Tell us what you're working on. We'll get back within one business day.</p>
-        <Link to="/contact" className="mt-6 inline-block rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90">
+        <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
           Start a Project
         </Link>
       </section>
     </PageShell>
   );
 }
+

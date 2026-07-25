@@ -37,40 +37,40 @@ function BlogPage() {
         subtitle="Tips, trends, and thought leadership from the Pixel2Tech team."
       />
 
-      <section className="mx-auto max-w-7xl px-8 pb-12">
-        <div className="grid gap-8 rounded-3xl bg-neutral-100 p-6 md:grid-cols-2 md:p-8">
+      <section className="mx-auto max-w-7xl px-5 pb-10 sm:px-8 sm:pb-12">
+        <div className="grid gap-6 rounded-2xl bg-neutral-100 p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
           <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
             <img src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
           </div>
           <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-4 text-xs text-neutral-500">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:gap-4">
               <span className="rounded-full bg-[#1E90FF]/10 px-2.5 py-1 font-semibold text-[#1E90FF]">
                 {featured.tag}
               </span>
               <span>{featured.date}</span>
             </div>
-            <h2 className="mt-4 text-[36px] font-bold leading-tight tracking-tight text-black">
+            <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-black sm:mt-4 sm:text-3xl lg:text-[36px]">
               {featured.title}
             </h2>
             <p className="mt-3 text-sm text-neutral-600">{featured.excerpt}</p>
-            <a href="#" className="mt-6 inline-flex w-fit rounded-full bg-black px-5 py-3 text-sm font-semibold text-white hover:opacity-90">
+            <a href="#" className="mt-5 inline-flex min-h-11 w-fit items-center rounded-full bg-black px-5 py-3 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
               Read Article
             </a>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-8 pb-24">
-        <div className="grid gap-6 md:grid-cols-3">
+      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
-            <a key={p.title} href="#" className="rounded-3xl bg-neutral-100 p-4 transition hover:bg-neutral-200/60">
+            <a key={p.title} href="#" className="block rounded-3xl bg-neutral-100 p-3 transition hover:bg-neutral-200/60 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
                 <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
-              <div className="mt-5 flex items-center gap-4 text-xs text-neutral-500">
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
               </div>
-              <div className="mt-3 text-lg font-semibold leading-snug text-black">{p.title}</div>
+              <div className="mt-3 text-base font-semibold leading-snug text-black sm:text-lg">{p.title}</div>
               <div className="mt-2 pb-3 text-sm text-neutral-600">{p.excerpt}</div>
             </a>
           ))}
@@ -79,3 +79,4 @@ function BlogPage() {
     </PageShell>
   );
 }
+
