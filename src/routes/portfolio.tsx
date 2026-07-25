@@ -21,13 +21,14 @@ export const Route = createFileRoute("/portfolio")({
 
 type Item = { title: string; img: string };
 
-const CATEGORIES = ["Creative", "Design", "Video Editing"] as const;
+const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
 type Category = typeof CATEGORIES[number];
 
 const SUBS: Record<Category, string[]> = {
   Creative: ["Social Media", "Branding", "Print & Merchandise"],
-  Design: ["Web Design", "UI / UX", "Mobile Apps"],
-  "Video Editing": ["Reels & Shorts", "Ads", "YouTube"],
+  Design: ["Websites", "E-Commerce", "Mobile Apps"],
+  "Video Editing": ["Short Form", "Long Form", "Commercial"],
+  "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
 const WORK: Record<Category, Record<string, Item[]>> = {
@@ -58,21 +59,21 @@ const WORK: Record<Category, Record<string, Item[]>> = {
     ],
   },
   Design: {
-    "Web Design": [
+    Websites: [
       { title: "SaaS marketing site", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Agency portfolio", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "E-commerce redesign", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Landing page series", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Coaching brand site", img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Studio one-pager", img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Real estate listings", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
-    "UI / UX": [
-      { title: "Fintech dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Booking flow redesign", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Analytics product", img: "https://images.unsplash.com/photo-1551288049-4b39c6b5d9f6?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Onboarding wizard", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "CRM workspace", img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Design system", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&auto=format&fit=crop&fm=webp&q=70" },
+    "E-Commerce": [
+      { title: "Fashion storefront", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Skincare shop", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Electronics marketplace", img: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Food delivery store", img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Furniture catalog", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Jewelry boutique", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
     "Mobile Apps": [
       { title: "Fitness tracker app", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&fit=crop&fm=webp&q=70" },
@@ -84,7 +85,7 @@ const WORK: Record<Category, Record<string, Item[]>> = {
     ],
   },
   "Video Editing": {
-    "Reels & Shorts": [
+    "Short Form": [
       { title: "Brand reel series", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Product teaser shorts", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Behind the scenes cuts", img: "https://images.unsplash.com/photo-1493804714600-6edb1cd93080?w=900&auto=format&fit=crop&fm=webp&q=70" },
@@ -92,7 +93,15 @@ const WORK: Record<Category, Record<string, Item[]>> = {
       { title: "Event highlights", img: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Recipe shorts", img: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
-    Ads: [
+    "Long Form": [
+      { title: "Documentary edit", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Podcast video edit", img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Tutorial series", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Vlog cuts", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Interview episodes", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Webinar recordings", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=900&auto=format&fit=crop&fm=webp&q=70" },
+    ],
+    Commercial: [
       { title: "Facebook video ads", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "TikTok ad series", img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "YouTube pre-roll", img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=900&auto=format&fit=crop&fm=webp&q=70" },
@@ -100,13 +109,31 @@ const WORK: Record<Category, Record<string, Item[]>> = {
       { title: "App promo videos", img: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=900&auto=format&fit=crop&fm=webp&q=70" },
       { title: "Explainer animations", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
-    YouTube: [
-      { title: "Long-form edit", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Podcast video edit", img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Tutorial series", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Vlog cuts", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Interview episodes", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Documentary snippets", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  },
+  "Custom Platforms": {
+    "Web Apps": [
+      { title: "Client dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Booking platform", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Analytics portal", img: "https://images.unsplash.com/photo-1551288049-4b39c6b5d9f6?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Membership portal", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "CRM workspace", img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Design system", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&auto=format&fit=crop&fm=webp&q=70" },
+    ],
+    Tools: [
+      { title: "Internal workflow tool", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Invoice generator", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Content calendar", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Lead tracker", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Report builder", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Review collector", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
+    ],
+    Automation: [
+      { title: "Email automation", img: "https://images.unsplash.com/photo-1563986768609-322da13575bb?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "CRM automation", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Zapier integrations", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "AI chatbot setup", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Webhook pipelines", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Data sync engine", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
   },
 };
