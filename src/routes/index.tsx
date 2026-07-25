@@ -333,7 +333,7 @@ function Brands() {
 function PartnerBand() {
   return (
     <section className="bg-black dark:bg-background">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             Technology Partners Focused on Business Growth
