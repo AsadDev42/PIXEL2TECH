@@ -127,9 +127,6 @@ export function VideoTestimonials() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:gap-6">
           <div className="min-w-0">
-            <div aria-hidden="true" className="mb-3 inline-flex h-5 w-5 items-center justify-center rounded-full border border-foreground">
-              <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
-            </div>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[44px]">
               What Our Clients Say
             </h2>
