@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Mail, Loader2, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, ArrowRight, Clock } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -84,9 +84,9 @@ function ContactPage() {
   }
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "YOUR NAME", type: "text", autoComplete: "name", placeholder: "John Doe" },
+    { id: "email", label: "YOUR EMAIL", type: "email", autoComplete: "email", placeholder: "john@example.com" },
+    { id: "subject", label: "SUBJECT", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
   ] as const;
 
   const socials = [
@@ -100,31 +100,80 @@ function ContactPage() {
     <PageShell>
       <section className="bg-background pb-16 pt-10 sm:pb-24 sm:pt-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <FadeIn>
-            <div className="text-center">
-              <h1 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
-                Let&apos;s <span className="text-[#1E90FF]">work together</span>
-              </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px]">
-                Ready to transform your brand? Get in touch with us today and let&apos;s create something amazing.
-              </p>
-            </div>
-          </FadeIn>
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Left: heading + contact info */}
+            <FadeIn>
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  Let&apos;s work together
+                </span>
+                <h1 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
+                  Ready to transform your brand?
+                </h1>
+                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted-foreground">
+                  Get in touch with us today, and let&apos;s create something amazing.
+                </p>
 
-          <div className="mt-10 grid gap-8 sm:mt-14 md:grid-cols-2 lg:gap-12">
-            {/* Form */}
+                <div className="mt-10 space-y-4 sm:mt-12">
+                  <a
+                    href="mailto:sales@pixel2tech.com"
+                    className="group flex items-center gap-4 rounded-3xl border border-border bg-background p-4 transition hover:bg-muted/40 sm:p-5"
+                  >
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
+                      <Mail className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</div>
+                      <div className="mt-0.5 text-sm font-medium text-foreground group-hover:text-primary">sales@pixel2tech.com</div>
+                    </div>
+                  </a>
+
+                  <a
+                    href="https://wa.me/923177475233?text=Hi%20Pixel2Tech%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 rounded-3xl border border-border bg-background p-4 transition hover:bg-muted/40 sm:p-5"
+                  >
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
+                      <WhatsAppIcon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">WhatsApp</div>
+                      <div className="mt-0.5 text-sm font-medium text-foreground group-hover:text-primary">+92 317 7475212</div>
+                    </div>
+                  </a>
+
+                  <div className="flex items-center gap-4 rounded-3xl border border-border bg-background p-4 sm:p-5">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
+                      <Clock className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Working Hours</div>
+                      <div className="mt-0.5 text-sm font-medium text-foreground">
+                        Mon - Fri: 9:00 AM - 6:00 PM
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Sat: 10:00 AM - 4:00 PM · Sun: Closed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right: form card */}
             <FadeIn delay={0.1}>
-              <div>
-                <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-3xl">
+              <div className="rounded-[2rem] bg-muted/60 p-6 dark:bg-muted/40 sm:p-8 lg:p-10">
+                <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                   Send us a message
                 </h2>
-                <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="space-y-4 sm:space-y-5">
+                <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="space-y-6">
                   <h2 id="contact-form-title" className="sr-only">Contact form</h2>
 
                   {fields.map((f) => (
                     <div key={f.id} className="flex flex-col">
-                      <label htmlFor={f.id} className="mb-2 text-sm font-medium text-foreground">
-                        {f.label}
+                      <label htmlFor={f.id} className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground">
+                        {f.label} <span className="text-destructive" aria-hidden="true">*</span>
                       </label>
                       <input
                         id={f.id}
@@ -136,7 +185,7 @@ function ContactPage() {
                         onChange={set(f.id)}
                         aria-invalid={!!errors[f.id]}
                         aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                        className="min-h-12 w-full rounded-xl bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:bg-muted/80 focus:ring-2 focus:ring-ring"
+                        className="min-h-11 w-full border-0 border-b border-border bg-transparent px-0 py-2.5 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:border-primary focus:bg-transparent"
                       />
                       {errors[f.id] && (
                         <p id={`${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
@@ -145,19 +194,19 @@ function ContactPage() {
                   ))}
 
                   <div className="flex flex-col">
-                    <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
-                      Message
+                    <label htmlFor="message" className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground">
+                      MESSAGE <span className="text-destructive" aria-hidden="true">*</span>
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
+                      rows={4}
                       value={form.message}
                       onChange={set("message")}
                       placeholder="Tell us about your project"
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? "message-error" : undefined}
-                      className="w-full resize-none rounded-xl bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:bg-muted/80 focus:ring-2 focus:ring-ring"
+                      className="w-full resize-none border-0 border-b border-border bg-transparent px-0 py-2.5 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:border-primary focus:bg-transparent"
                     />
                     {errors.message && (
                       <p id="message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
@@ -167,87 +216,12 @@ function ContactPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:mt-3"
+                    className="mt-2 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-foreground px-8 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                    {loading ? "Sending…" : "Send Message"}
+                    {loading ? "Sending…" : "Get in Touch"}
                   </button>
                 </form>
-              </div>
-            </FadeIn>
-
-            {/* Contact info */}
-            <FadeIn delay={0.2}>
-              <div>
-                <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-3xl">
-                  Get in touch
-                </h2>
-
-                <div className="space-y-4">
-                  <a
-                    href="mailto:sales@pixel2tech.com"
-                    className="group flex items-center gap-4 rounded-2xl bg-muted p-4 transition hover:bg-muted/80 sm:p-5"
-                  >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-background text-foreground shadow-sm ring-1 ring-border">
-                      <Mail className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">Email</div>
-                      <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://wa.me/923177475233?text=Hi%20Pixel2Tech%2C%20I%27d%20like%20to%20discuss%20a%20project."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-4 rounded-2xl bg-muted p-4 transition hover:bg-muted/80 sm:p-5"
-                  >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-background text-foreground shadow-sm ring-1 ring-border">
-                      <WhatsAppIcon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">WhatsApp</div>
-                      <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475233</div>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="mt-8">
-                  <h3 className="mb-4 text-lg font-semibold text-foreground">Follow us</h3>
-                  <div className="flex flex-wrap gap-3">
-                    {socials.map(({ Icon, label, href }) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Pixel2Tech on ${label}`}
-                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-foreground transition hover:bg-muted"
-                      >
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-8 rounded-2xl bg-muted p-5 sm:p-6">
-                  <h3 className="mb-4 text-lg font-semibold text-foreground">Follow us</h3>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex justify-between text-foreground">
-                      <span>Monday - Friday</span>
-                      <span className="text-muted-foreground">9:00 AM - 6:00 PM</span>
-                    </li>
-                    <li className="flex justify-between text-foreground">
-                      <span>Saturday</span>
-                      <span className="text-muted-foreground">10:00 AM - 4:00 PM</span>
-                    </li>
-                    <li className="flex justify-between text-foreground">
-                      <span>Sunday</span>
-                      <span className="text-muted-foreground">Closed</span>
-                    </li>
-                  </ul>
-                </div>
               </div>
             </FadeIn>
           </div>
@@ -263,7 +237,7 @@ function ContactPage() {
                 <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   Get in Touch
                   <br />
-                  <span className="text-[#1E90FF]">with Us</span>
+                  <span className="text-primary">with Us</span>
                 </h2>
               </div>
               <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -299,7 +273,7 @@ function ContactPage() {
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                Our <span className="text-[#1E90FF]">Location</span>
+                Our <span className="text-primary">Location</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-[15px] text-muted-foreground sm:text-base">
                 Find us at our headquarters, where creativity meets innovation. Our office is designed to inspire collaboration and ideas, making it a perfect hub for client interactions and team efforts.
@@ -315,7 +289,7 @@ function ContactPage() {
             ].map(({ Icon, title, body }, i) => (
               <FadeIn key={title} delay={0.1 * (i + 1)}>
                 <div className="h-full rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:shadow-lg sm:p-8">
-                  <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#1E90FF]/10 text-[#1E90FF]">
+                  <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <h3 className="mb-2 text-xl font-semibold text-foreground">{title}</h3>
@@ -333,7 +307,7 @@ function ContactPage() {
           <FadeIn>
             <div className="mx-auto rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
               <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
-                Ready to elevate your <span className="text-[#1E90FF]">brand</span> today?
+                Ready to elevate your <span className="text-primary">brand</span> today?
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-background/70 sm:text-base">
                 Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
@@ -341,7 +315,7 @@ function ContactPage() {
               <div className="mt-9 flex justify-center">
                 <Link
                   to="/services"
-                  className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1E90FF] px-7 text-sm font-semibold text-white transition hover:opacity-90"
+                  className="inline-flex h-12 items-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
