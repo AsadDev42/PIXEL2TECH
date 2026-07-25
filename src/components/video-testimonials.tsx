@@ -99,16 +99,20 @@ function VideoCard({ item }: { item: Item }) {
       <div className="p-6">
         <Quote className="h-6 w-6 text-neutral-300" />
         <p className="mt-2 text-sm leading-relaxed text-neutral-700">{item.quote}</p>
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-6 flex items-center gap-3">
+          <img
+            src={item.poster}
+            alt={item.name}
+            loading="lazy"
+            className="h-10 w-10 shrink-0 rounded-full object-cover"
+          />
           <div className="min-w-0">
             <div className="truncate text-sm font-bold text-black">{item.name}</div>
             <div className="truncate text-xs text-neutral-500">{item.role}</div>
           </div>
-          <span className="shrink-0 rounded-full bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
-            Video
-          </span>
         </div>
       </div>
+
     </div>
   );
 }

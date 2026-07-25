@@ -73,7 +73,7 @@ const services = [
     emoji: "📣",
     accent: "bg-pink-500/15 text-pink-600",
     desc: "Content creation, ad campaigns, email sequences, and newsletter management across all major platforms — handled end to end.",
-    tags: ["Instagram", "Facebook Ads", "Klaviyo", "Mailchimp"],
+    tags: ["Instagram", "Facebook Ads", "Mailchimp"],
   },
   {
     title: "Video Editing & Ads",
