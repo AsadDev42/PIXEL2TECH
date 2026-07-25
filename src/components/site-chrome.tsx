@@ -161,14 +161,22 @@ export function SiteFooter() {
     { label: "Blog", to: "/blog" as const },
     { label: "Contact", to: "/contact" as const },
   ];
-  const svc = ["Branding", "Web Design", "UI UX", "Social Media", "AI Solutions"];
+  const svc = [
+    { label: "Branding", to: "/services" as const },
+    { label: "Web Design", to: "/services" as const },
+    { label: "UI UX", to: "/services" as const },
+    { label: "Social Media", to: "/services" as const },
+    { label: "AI Solutions", to: "/services" as const },
+  ];
   return (
     <footer className="bg-muted">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
-            <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
+            <Link to="/" aria-label="Pixel2Tech — Home">
+              <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
+              <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
+            </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
@@ -209,15 +217,27 @@ export function SiteFooter() {
             <div className="text-lg font-bold text-foreground">Services</div>
             <ul className="mt-5 space-y-3 text-sm text-foreground/80">
               {svc.map((q) => (
-                <li key={q}>{q}</li>
+                <li key={q.label}>
+                  <Link to={q.to} className="hover:text-foreground">
+                    {q.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Contact</div>
             <ul className="mt-5 space-y-3 text-sm text-foreground/80">
-              <li>sales@pixel2tech.com</li>
-              <li>+92 317 7475233</li>
+              <li>
+                <a href="mailto:sales@pixel2tech.com" className="hover:text-foreground">
+                  sales@pixel2tech.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+923177475233" className="hover:text-foreground">
+                  +92 317 7475233
+                </a>
+              </li>
               <li>Pakistan Based, Serving Worldwide</li>
             </ul>
           </div>
