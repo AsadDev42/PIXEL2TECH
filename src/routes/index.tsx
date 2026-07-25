@@ -331,13 +331,13 @@ function Brands() {
 
 function PartnerBand() {
   return (
-    <section className="bg-black">
+    <section className="bg-black dark:bg-background">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-2">
         <div>
-          <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[54px]">
+          <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             Technology Partners Focused on Business Growth
           </h2>
-          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 sm:mt-6 sm:text-[15px]">
+          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
             We help businesses grow with smart digital solutions. Our mission is
             to turn ideas into impactful brands and technology that drive real
             results.
@@ -536,14 +536,14 @@ function Team() {
               All Teams
             </Link>
           </div>
-          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 sm:mt-10">
+          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-muted sm:mt-10">
             <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
           {team.map((m) => (
             <div key={m.name} className="rounded-2xl bg-background p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
-              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200 dark:bg-muted">
                 <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
               <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
@@ -578,8 +578,8 @@ function Insights() {
         </div>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
           {posts.map((p) => (
-            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 sm:p-4">
-              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
+            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
+              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
