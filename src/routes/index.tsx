@@ -449,7 +449,7 @@ const work = [
   { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1571677419770-cd8c0f0c50c8?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
 ];
