@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
-
+import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { Plus, TrendingUp, Star } from "lucide-react";
 
 
@@ -235,27 +235,31 @@ function Services() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-8">
-        <div className="text-center">
-          <h2 className="text-[44px] font-bold tracking-tight text-black">
-            Everything You Need to{" "}
-            <span className="relative text-[#1E90FF]">
-              Build &amp; Grow
-              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-            </span>
-          </h2>
-          <p className="mt-3 text-[15px] text-neutral-600">
-            One team. All your creative and digital needs.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <FadeIn>
+          <div className="text-center">
+            <h2 className="text-[44px] font-bold tracking-tight text-black">
+              Everything You Need to{" "}
+              <span className="relative text-[#1E90FF]">
+                Build &amp; Grow
+                <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+              </span>
+            </h2>
+            <p className="mt-3 text-[15px] text-neutral-600">
+              One team. All your creative and digital needs.
+            </p>
+          </div>
+        </FadeIn>
+        <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-md">
-              <div className="text-5xl">{s.emoji}</div>
-              <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
-            </div>
+            <StaggerItem key={s.title}>
+              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="text-5xl">{s.emoji}</div>
+                <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
       </div>
     </section>
@@ -273,26 +277,30 @@ function Work() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-8">
-        <h2 className="text-[44px] font-bold tracking-tight text-black">
-          Work That Helps{" "}
-          <span className="relative text-[#1E90FF]">
-            Brands Grow
-            <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-          </span>
-        </h2>
-        <p className="mt-2 text-[15px] text-neutral-600">
-          One team. All your creative and digital needs.
-        </p>
-        <div className="mt-10 grid gap-5 md:grid-cols-4">
+        <FadeIn>
+          <h2 className="text-[44px] font-bold tracking-tight text-black">
+            Work That Helps{" "}
+            <span className="relative text-[#1E90FF]">
+              Brands Grow
+              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+            </span>
+          </h2>
+          <p className="mt-2 text-[15px] text-neutral-600">
+            One team. All your creative and digital needs.
+          </p>
+        </FadeIn>
+        <Stagger className="mt-10 grid gap-5 md:grid-cols-4">
           {work.map((w) => (
-            <div key={w.title} className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900">
-              <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
-              <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
-                {w.title}
+            <StaggerItem key={w.title}>
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
+                <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
+                  {w.title}
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
       </div>
     </section>
