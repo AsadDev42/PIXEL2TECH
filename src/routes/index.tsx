@@ -543,7 +543,7 @@ function Team() {
         <div className="grid grid-cols-2 gap-4 sm:gap-5">
           {team.map((m) => (
             <div key={m.name} className="rounded-2xl bg-background p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
-              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200 dark:bg-muted">
                 <img loading="lazy" decoding="async" src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
               <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
