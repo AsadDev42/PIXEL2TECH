@@ -396,44 +396,42 @@ function PartnerBand() {
 
 
 const services = [
-  { title: "Branding & Design", desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.", emoji: "🏆" },
-  { title: "Website Development", desc: "Modern, fast, and mobile-friendly websites that convert visitors into customers.", emoji: "🌐" },
-  { title: "Digital Marketing", desc: "Clean and simple designs that improve user experience and increase sales.", emoji: "📈" },
-  { title: "Social Media & Content", desc: "Creative posts, content ideas, and strategies that build authority and attract leads.", emoji: "📣" },
-  { title: "Motion & Video", desc: "Reels, ads, and brand videos that grab attention.", emoji: "🎬" },
-  { title: "AI Solutions", desc: "Smart tools and automation to save time and improve business performance.", emoji: "🤖" },
+  { title: "Branding & Design", desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.", Icon: Palette },
+  { title: "Website Development", desc: "Modern, fast, and mobile-friendly websites that convert visitors into customers.", Icon: Globe },
+  { title: "Digital Marketing", desc: "Clean and simple designs that improve user experience and increase sales.", Icon: LineChart },
+  { title: "Social Media & Content", desc: "Creative posts, content ideas, and strategies that build authority and attract leads.", Icon: Megaphone },
+  { title: "Motion & Video", desc: "Reels, ads, and brand videos that grab attention.", Icon: Clapperboard },
+  { title: "AI Solutions", desc: "Smart tools and automation to save time and improve business performance.", Icon: Bot },
 ];
 
 function Services() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="bg-background py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Everything You Need to{" "}
-              <span className="relative text-[#1E90FF]">
-                Build &amp; Grow
-                <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-              </span>
+              <span className="text-[#1E90FF]">Build &amp; Grow</span>
             </h2>
-            <p className="mt-3 text-[14px] text-muted-foreground sm:text-[15px]">
+            <p className="mt-4 text-[14px] text-muted-foreground sm:text-[15px]">
               One team. All your creative and digital needs.
             </p>
           </div>
         </FadeIn>
-        <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <Stagger className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
-              <div className="h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] sm:p-8">
-                <div className="text-4xl sm:text-5xl">{s.emoji}</div>
-                <h3 className="mt-5 text-lg font-bold text-foreground sm:mt-6">{s.title}</h3>
+              <div className="group h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] sm:p-8">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1E90FF]/10 text-[#1E90FF] transition group-hover:scale-110 sm:h-16 sm:w-16">
+                  <s.Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.75} aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold text-foreground">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
             </StaggerItem>
           ))}
         </Stagger>
-
       </div>
     </section>
   );
