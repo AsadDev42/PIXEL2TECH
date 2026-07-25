@@ -160,7 +160,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto" />
+            <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
+            <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-neutral-600">
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
