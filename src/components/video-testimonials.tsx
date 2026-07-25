@@ -73,7 +73,7 @@ function VideoCard({ item }: { item: Item }) {
     }
   };
   return (
-    <div className="w-[280px] shrink-0 overflow-hidden rounded-2xl bg-neutral-100 shadow-sm sm:w-[340px] sm:rounded-3xl lg:w-[380px]">
+    <article className="w-[280px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:w-[340px] sm:rounded-3xl lg:w-[380px]">
       <div className="relative aspect-[4/5] bg-black">
         <video
           ref={ref}
@@ -92,16 +92,16 @@ function VideoCard({ item }: { item: Item }) {
           onClick={toggle}
           type="button"
           aria-label={playing ? `Pause ${item.name}'s testimonial` : `Play ${item.name}'s testimonial`}
-          className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/50 via-transparent to-transparent transition hover:bg-black/20"
+          className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/45 via-transparent to-transparent transition hover:bg-black/10"
         >
-          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-xl backdrop-blur sm:h-16 sm:w-16" style={{ color: "#000" }}>
+          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-foreground text-primary shadow-xl ring-1 ring-border/40 backdrop-blur-md transition-transform duration-300 hover:scale-105 dark:bg-black dark:text-white dark:ring-white/10 sm:h-16 sm:w-16">
             {playing ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="ml-1 h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" />}
           </span>
         </button>
       </div>
       <div className="p-5 sm:p-6">
-        <Quote className="h-5 w-5 text-neutral-300 sm:h-6 sm:w-6" aria-hidden="true" />
-        <p className="mt-2 text-sm leading-relaxed text-neutral-700">{item.quote}</p>
+        <Quote className="h-5 w-5 text-muted-foreground/45 sm:h-6 sm:w-6" aria-hidden="true" />
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.quote}</p>
         <div className="mt-5 flex items-center gap-3 sm:mt-6">
           <img
             decoding="async"
@@ -112,35 +112,35 @@ function VideoCard({ item }: { item: Item }) {
             className="h-10 w-10 shrink-0 rounded-full object-cover"
           />
           <div className="min-w-0">
-            <div className="truncate text-sm font-bold text-black">{item.name}</div>
-            <div className="truncate text-xs text-neutral-500">{item.role}</div>
+            <div className="truncate text-sm font-bold text-card-foreground">{item.name}</div>
+            <div className="truncate text-xs text-muted-foreground">{item.role}</div>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 
 export function VideoTestimonials() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:gap-6">
           <div className="min-w-0">
-            <div aria-hidden="true" className="mb-3 inline-flex h-5 w-5 items-center justify-center rounded-full border border-black">
-              <div className="h-1.5 w-1.5 rounded-full bg-black" />
+            <div aria-hidden="true" className="mb-3 inline-flex h-5 w-5 items-center justify-center rounded-full border border-foreground">
+              <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
             </div>
-            <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[44px]">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[44px]">
               What Our Clients Say
             </h2>
-            <p className="mt-2 max-w-xl text-[14px] text-neutral-600 sm:text-[15px]">
+            <p className="mt-2 max-w-xl text-[14px] text-muted-foreground sm:text-[15px]">
               Real founders, real results. Hear it directly from the teams
               we've helped grow. Drag to explore.
             </p>
           </div>
           <a
             href="/contact"
-            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:inline-flex"
+            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
           >
             Let's Build Your Success Story
           </a>
