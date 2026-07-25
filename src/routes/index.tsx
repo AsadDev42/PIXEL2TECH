@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
+import { Parallax, Reveal } from "@/components/parallax";
 import { Plus, TrendingUp, Star } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   component: HomePage,
