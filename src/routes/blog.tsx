@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHeader } from "@/components/site-chrome";
+import { posts } from "@/lib/blog-posts";
 
 export const Route = createFileRoute("/blog")({
   component: BlogPage,
@@ -17,14 +18,6 @@ export const Route = createFileRoute("/blog")({
   }),
 });
 
-const posts = [
-  { tag: "AI", date: "June 22, 2026", title: "How AI is Changing Modern Branding", excerpt: "The tools have changed. The principles haven't. Here's how we blend both.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Web", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", excerpt: "A 10-point audit to figure out if your website is helping or hurting.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Brand", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", excerpt: "Why a strong brand system compounds every marketing dollar you spend.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Growth", date: "March 12, 2026", title: "Rebrand vs. Refresh: A Founder's Decision Framework", excerpt: "Not sure whether to rebrand? Answer these five questions first.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "AI", date: "February 24, 2026", title: "Why Modern Brands Need an AI Ops Layer", excerpt: "The teams that win in the next 5 years will run on AI-native workflows.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Design", date: "January 30, 2026", title: "Design Systems for Small Teams", excerpt: "You don't need Google's budget to have Google's consistency.", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&auto=format&fit=crop&fm=webp&q=70" },
-];
 
 function BlogPage() {
   const [featured, ...rest] = posts;
@@ -53,9 +46,10 @@ function BlogPage() {
               {featured.title}
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">{featured.excerpt}</p>
-            <a href="#" className="mt-5 inline-flex min-h-11 w-fit items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
+            <a href="#" className="sr-only">read</a>
+            <Link to="/blog/$slug" params={{ slug: featured.slug }} className="mt-5 inline-flex min-h-11 w-fit items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
               Read Article
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -63,7 +57,7 @@ function BlogPage() {
       <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
-            <a key={p.title} href="#" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
+            <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
@@ -72,7 +66,7 @@ function BlogPage() {
               </div>
               <div className="mt-3 text-base font-semibold leading-snug text-foreground sm:text-lg">{p.title}</div>
               <div className="mt-2 pb-3 text-sm text-muted-foreground">{p.excerpt}</div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

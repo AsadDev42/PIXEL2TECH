@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
-import { getPost, posts } from "@/lib/blog-posts";
+import { getPost, posts, type BlogPost } from "@/lib/blog-posts";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -96,12 +96,12 @@ function BlogPostPage() {
               </FadeIn>
 
               <div className="mt-10 space-y-10">
-                {post.content.map((section, i) => (
+                {post.content.map((section: BlogPost["content"][number], i: number) => (
                   <FadeIn key={section.heading} delay={0.05 * (i + 1)}>
                     <section>
                       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{section.heading}</h2>
                       <div className="mt-4 space-y-4">
-                        {section.body.map((p, idx) => (
+                        {section.body.map((p: string, idx: number) => (
                           <p key={idx} className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">{p}</p>
                         ))}
                       </div>
