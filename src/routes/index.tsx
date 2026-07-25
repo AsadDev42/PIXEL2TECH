@@ -536,7 +536,7 @@ function Team() {
               All Teams
             </Link>
           </div>
-          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 sm:mt-10">
+          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-muted sm:mt-10">
             <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&fm=webp&q=70" alt="Office space" className="h-full w-full object-cover" />
           </div>
         </div>
