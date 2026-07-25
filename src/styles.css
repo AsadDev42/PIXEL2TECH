@@ -164,3 +164,14 @@
           mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
+@keyframes hero-col-up {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes hero-col-down {
+  0%   { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+.hero-col-up   { animation: hero-col-up 30s linear infinite; will-change: transform; }
+.hero-col-down { animation: hero-col-down 30s linear infinite; will-change: transform; }
+

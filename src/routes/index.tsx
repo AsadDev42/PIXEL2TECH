@@ -27,13 +27,28 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const heroImgs = [
-  "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop",
+const heroCols: string[][] = [
+  [
+    "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop",
+  ],
+  [
+    "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop",
+  ],
+  [
+    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop",
+  ],
 ];
 
 function Hero() {
@@ -65,17 +80,33 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {heroImgs.map((src, i) => (
-            <div
-              key={i}
-              className={`overflow-hidden rounded-2xl bg-neutral-100 aspect-[3/4] ${
-                i % 2 === 1 ? "mt-8" : ""
-              }`}
-            >
-              <img src={src} alt="" className="h-full w-full object-cover" />
-            </div>
-          ))}
+        <div className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+          {heroCols.map((col, ci) => {
+            const loop = [...col, ...col];
+            const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
+            return (
+              <div
+                key={ci}
+                className="relative h-[520px] overflow-hidden"
+              >
+                <div className={`flex flex-col gap-3 ${dir}`}>
+                  {loop.map((src, i) => (
+                    <div
+                      key={i}
+                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-2xl bg-neutral-100"
+                    >
+                      <img
+                        src={src}
+                        alt=""
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
