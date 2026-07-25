@@ -578,8 +578,8 @@ function Insights() {
         </div>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
           {posts.map((p) => (
-            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 sm:p-4">
-              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
+            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
+              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
