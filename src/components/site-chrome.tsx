@@ -64,7 +64,7 @@ export function SiteNav() {
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <Link
-            to="/contact"
+            to="/book"
             className="hidden shrink-0 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex sm:px-6"
           >
             Book a Call
@@ -104,7 +104,7 @@ export function SiteNav() {
               );
             })}
             <Link
-              to="/contact"
+              to="/book"
               className="mt-4 inline-flex items-center justify-center rounded-full bg-foreground px-6 py-4 text-base font-semibold text-background"
             >
               Book a Call
