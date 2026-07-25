@@ -143,3 +143,24 @@
     color: var(--color-foreground);
   }
 }
+
+@keyframes marquee-rtl {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-rtl 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track.slow { animation-duration: 60s; }
+.marquee-track.fast { animation-duration: 25s; }
+.marquee-viewport:hover .marquee-track { animation-play-state: paused; }
+
+.edge-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
