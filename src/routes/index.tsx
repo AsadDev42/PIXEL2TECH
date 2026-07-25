@@ -56,46 +56,46 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-8 py-16 md:grid-cols-2 md:items-center">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center md:gap-12">
         <div>
-          <h1 className="text-[56px] font-bold leading-[1.05] tracking-tight text-black">
+          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-[56px]">
             Growing Businesses Don't Need More Tools. They Need{" "}
             <span className="text-[#1E90FF]">AI-Powered Systems</span>
           </h1>
-          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-neutral-600">
+          <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-neutral-600 sm:mt-6">
             We help businesses automate workflows, build scalable software, and
             create seamless digital experiences that improve efficiency,
             customer experience, and growth.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <Link
               to="/contact"
-              className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+              className="inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
             >
               Book a Free Strategy Call
             </Link>
             <Link
               to="/portfolio"
-              className="rounded-full border border-black bg-white px-6 py-3.5 text-sm font-semibold text-black hover:bg-neutral-50"
+              className="inline-flex min-h-11 items-center rounded-full border border-black bg-white px-6 py-3.5 text-sm font-semibold text-black hover:bg-neutral-50"
             >
               View Our Work
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
           {heroCols.map((col, ci) => {
             const loop = [...col, ...col];
             const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
             return (
               <div
                 key={ci}
-                className="relative h-[520px] overflow-hidden"
+                className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]"
               >
-                <div className={`flex flex-col gap-3 ${dir}`}>
+                <div className={`flex flex-col gap-2 sm:gap-3 ${dir}`}>
                   {loop.map((src, i) => (
                     <div
                       key={i}
-                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-2xl bg-neutral-100"
+                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-neutral-100 sm:rounded-2xl"
                     >
                       <img
                         src={src}
@@ -114,6 +114,7 @@ function Hero() {
     </section>
   );
 }
+
 
 
 function Brands() {
@@ -142,18 +143,20 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-white py-16">
-      <div className="mx-auto max-w-6xl px-8 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-black">
+    <section className="bg-white py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
           Brands That Trust Pixel2Tech
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-[15px] text-neutral-600">
+        <p className="mx-auto mt-3 max-w-2xl text-[14px] text-neutral-600 sm:text-[15px]">
           We work with startups, businesses, and founders who want to grow
           faster. From Pakistan to the world.
         </p>
       </div>
-      <div className="marquee-viewport edge-fade-x mt-10 overflow-hidden">
-        <div className="marquee-track slow items-center gap-16 pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
+
+      <div className="marquee-viewport edge-fade-x mt-8 overflow-hidden sm:mt-10">
+        <div className="marquee-track slow items-center gap-10 pr-10 sm:gap-16 sm:pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
+
           {loop.map((b, i) => {
             const isDup = i >= brands.length;
             return (
@@ -174,7 +177,7 @@ function Brands() {
                     el.style.display = "none";
                   }
                 }}
-                className="h-9 w-auto shrink-0 object-contain opacity-70 transition hover:opacity-100 sm:h-10"
+                className="h-7 w-auto shrink-0 object-contain opacity-70 transition hover:opacity-100 sm:h-9 lg:h-10"
               />
             );
           })}
@@ -188,37 +191,37 @@ function Brands() {
 function PartnerBand() {
   return (
     <section className="bg-black">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-8 py-20 md:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-2">
         <div>
-          <h2 className="text-[54px] font-bold leading-[1.05] tracking-tight text-white">
+          <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[54px]">
             Technology Partners Focused on Business Growth
           </h2>
-          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-neutral-400">
+          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 sm:mt-6 sm:text-[15px]">
             We help businesses grow with smart digital solutions. Our mission is
             to turn ideas into impactful brands and technology that drive real
             results.
           </p>
-          <div className="mt-8 text-sm text-neutral-500">— Pixel2Tech Team</div>
+          <div className="mt-6 text-sm text-neutral-500 sm:mt-8">— Pixel2Tech Team</div>
         </div>
-        <div className="relative mx-auto">
-          <div className="absolute -top-2 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-lg">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-black">
-              <TrendingUp className="h-4 w-4 text-[#1E90FF]" />
+        <div className="relative mx-auto w-full max-w-[360px]">
+          <div className="absolute -top-2 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-black">
+              <TrendingUp className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" />
             </div>
-            <div className="text-left">
-              <div className="text-sm font-bold text-black">
+            <div className="min-w-0 text-left">
+              <div className="truncate text-xs font-bold text-black sm:text-sm">
                 Trusted Technology Partner
               </div>
-              <div className="mt-0.5 flex items-center gap-1 text-xs text-neutral-500">
-                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-neutral-500 sm:text-xs">
+                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                 <span className="font-semibold text-black">4.9</span> (1520 Reviews)
               </div>
             </div>
           </div>
-          <div className="mt-10 h-[360px] w-[360px] overflow-hidden rounded-full bg-[#1E90FF]">
+          <div className="mt-10 aspect-square w-full overflow-hidden rounded-full bg-[#1E90FF]">
             <img
               src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop"
-              alt="Founder"
+              alt="Pixel2Tech founder portrait"
               className="h-full w-full object-cover mix-blend-luminosity"
             />
           </div>
@@ -227,6 +230,7 @@ function PartnerBand() {
     </section>
   );
 }
+
 
 const services = [
   { title: "Branding & Design", desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.", emoji: "🏆" },
@@ -239,28 +243,28 @@ const services = [
 
 function Services() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-8">
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-[44px] font-bold tracking-tight text-black">
+            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
               Everything You Need to{" "}
               <span className="relative text-[#1E90FF]">
                 Build &amp; Grow
-                <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+                <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
               </span>
             </h2>
-            <p className="mt-3 text-[15px] text-neutral-600">
+            <p className="mt-3 text-[14px] text-neutral-600 sm:text-[15px]">
               One team. All your creative and digital needs.
             </p>
           </div>
         </FadeIn>
-        <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
+        <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
-              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                <div className="text-5xl">{s.emoji}</div>
-                <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+                <div className="text-4xl sm:text-5xl">{s.emoji}</div>
+                <h3 className="mt-5 text-lg font-bold text-black sm:mt-6">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
               </div>
             </StaggerItem>
@@ -272,6 +276,7 @@ function Services() {
   );
 }
 
+
 const work = [
   { title: "Web design and development", img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=900&auto=format&fit=crop" },
   { title: "UI UX designing", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop" },
@@ -281,26 +286,26 @@ const work = [
 
 function Work() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-8">
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
-          <h2 className="text-[44px] font-bold tracking-tight text-black">
+          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
             <span className="relative text-[#1E90FF]">
               Brands Grow
-              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+              <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
             </span>
           </h2>
-          <p className="mt-2 text-[15px] text-neutral-600">
+          <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">
             One team. All your creative and digital needs.
           </p>
         </FadeIn>
-        <Stagger className="mt-10 grid gap-5 md:grid-cols-4">
+        <Stagger className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {work.map((w) => (
             <StaggerItem key={w.title}>
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-3xl">
                 <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
-                <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
+                <div className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
                   {w.title}
                 </div>
               </div>
@@ -313,6 +318,7 @@ function Work() {
   );
 }
 
+
 const team = [
   { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop" },
   { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop" },
@@ -322,47 +328,47 @@ const team = [
 
 function Team() {
   return (
-    <section className="bg-neutral-100 py-24">
-      <div className="mx-auto grid max-w-7xl gap-10 px-8 md:grid-cols-2">
+    <section className="bg-neutral-100 py-16 sm:py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 md:grid-cols-2">
         <div>
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
             OUR CREATIVE TEAM
           </div>
-          <h2 className="mt-4 text-[44px] font-bold leading-tight tracking-tight text-black">
+          <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-black sm:text-4xl lg:text-[44px]">
             Experts in Technology, AI &amp; Digital Innovation
           </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-neutral-600">
+          <p className="mt-5 text-[14px] leading-relaxed text-neutral-600 sm:mt-6 sm:text-[15px]">
             Our team combines expertise in software development, AI, automation, digital products, and customer experience.
           </p>
-          <p className="mt-4 text-[15px] leading-relaxed text-neutral-600">
+          <p className="mt-4 text-[14px] leading-relaxed text-neutral-600 sm:text-[15px]">
             We work together to solve complex business challenges and build technology solutions that create measurable impact.
           </p>
-          <div className="mt-8 flex gap-8">
-            <Link to="/contact" className="flex items-center gap-3 text-sm font-semibold text-black">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+          <div className="mt-7 flex flex-wrap gap-6 sm:mt-8 sm:gap-8">
+            <Link to="/contact" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-black">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
                 <Plus className="h-4 w-4" />
               </span>
               Contact Us
             </Link>
-            <Link to="/about" className="flex items-center gap-3 text-sm font-semibold text-black">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+            <Link to="/about" className="flex min-h-11 items-center gap-3 text-sm font-semibold text-black">
+              <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white">
                 <Plus className="h-4 w-4" />
               </span>
               All Teams
             </Link>
           </div>
-          <div className="mt-10 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop" alt="Office" className="h-full w-full object-cover" />
+          <div className="mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300 sm:mt-10">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop" alt="Office space" className="h-full w-full object-cover" />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5">
           {team.map((m) => (
-            <div key={m.name} className="rounded-2xl bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <div key={m.name} className="rounded-2xl bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:p-4">
               <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
-                <img src={m.img} alt={m.name} className="h-full w-full object-cover grayscale" />
+                <img src={m.img} alt={`${m.name} — ${m.role}`} className="h-full w-full object-cover grayscale" />
               </div>
-              <div className="mt-4 text-lg font-bold text-black">{m.name}</div>
-              <div className="text-sm text-neutral-500">{m.role}</div>
+              <div className="mt-3 text-base font-bold text-black sm:mt-4 sm:text-lg">{m.name}</div>
+              <div className="text-xs text-neutral-500 sm:text-sm">{m.role}</div>
             </div>
           ))}
         </div>
@@ -370,6 +376,7 @@ function Team() {
     </section>
   );
 }
+
 
 const posts = [
   { tag: "Creative", date: "June 22, 2026", title: "How AI is Changing Modern Branding", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop" },
@@ -379,27 +386,27 @@ const posts = [
 
 function Insights() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <h2 className="text-[44px] font-bold tracking-tight text-black">Latest Insights</h2>
-            <p className="mt-2 text-[15px] text-neutral-600">Tips, trends, and thought leadership from the Pixel2Tech team.</p>
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:flex-wrap sm:justify-between sm:gap-6">
+          <div className="min-w-0">
+            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">Latest Insights</h2>
+            <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">Tips, trends, and thought leadership from the Pixel2Tech team.</p>
           </div>
-          <Link to="/blog" className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90">
-            Read Our Articles
+          <Link to="/blog" className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-black px-4 py-3 text-xs font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3.5 sm:text-sm">
+            Read Articles
           </Link>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
           {posts.map((p) => (
-            <Link key={p.title} to="/blog" className="rounded-3xl bg-neutral-100 p-4 transition hover:bg-neutral-200/60">
+            <Link key={p.title} to="/blog" className="block rounded-3xl bg-neutral-100 p-3 transition hover:bg-neutral-200/60 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
                 <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
-              <div className="mt-5 flex items-center gap-4 text-xs text-neutral-500">
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-500 sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
               </div>
-              <div className="mt-3 pb-4 text-lg font-semibold leading-snug text-black">{p.title}</div>
+              <div className="mt-3 pb-3 text-base font-semibold leading-snug text-black sm:pb-4 sm:text-lg">{p.title}</div>
             </Link>
           ))}
         </div>
@@ -407,6 +414,7 @@ function Insights() {
     </section>
   );
 }
+
 
 function HomePage() {
   return (

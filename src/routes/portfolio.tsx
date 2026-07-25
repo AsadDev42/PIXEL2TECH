@@ -36,26 +36,26 @@ function PortfolioPage() {
         highlight="Brands Grow"
         subtitle="A selection of recent projects across branding, web, product and AI."
       />
-      <section className="mx-auto max-w-7xl px-8 pb-24">
-        <div className="grid gap-5 md:grid-cols-3">
+      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+        <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {work.map((w) => (
-            <div key={w.title} className="group cursor-pointer overflow-hidden rounded-3xl bg-neutral-900">
+            <div key={w.title} className="group cursor-pointer overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-3xl">
               <div className="relative aspect-[4/5]">
                 <img src={w.img} alt={w.title} className="h-full w-full object-cover transition group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <div className="text-xs uppercase tracking-widest opacity-70">{w.tag}</div>
-                  <div className="mt-1 text-lg font-semibold">{w.title}</div>
+                <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-6">
+                  <div className="text-[11px] uppercase tracking-widest opacity-70 sm:text-xs">{w.tag}</div>
+                  <div className="mt-1 text-base font-semibold sm:text-lg">{w.title}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 rounded-3xl bg-neutral-100 p-10 text-center">
-          <h3 className="text-[32px] font-bold tracking-tight text-black">Want your project featured next?</h3>
+        <div className="mt-12 rounded-2xl bg-neutral-100 p-6 text-center sm:mt-16 sm:rounded-3xl sm:p-10">
+          <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[32px]">Want your project featured next?</h2>
           <p className="mt-2 text-sm text-neutral-600">Let's build something worth sharing.</p>
-          <Link to="/contact" className="mt-6 inline-block rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90">
+          <Link to="/contact" className="mt-5 inline-flex min-h-11 items-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:mt-6">
             Start a Project
           </Link>
         </div>
@@ -63,3 +63,4 @@ function PortfolioPage() {
     </PageShell>
   );
 }
+
