@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
-import { Parallax, Reveal } from "@/components/parallax";
+
 import { Plus, TrendingUp, Star } from "lucide-react";
 
 
@@ -57,7 +57,7 @@ function Hero() {
   return (
     <section className="bg-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-8 py-16 md:grid-cols-2 md:items-center">
-        <Parallax speed={0.15}>
+        <div>
           <h1 className="text-[56px] font-bold leading-[1.05] tracking-tight text-black">
             Growing Businesses Don't Need More Tools. They Need{" "}
             <span className="text-[#1E90FF]">AI-Powered Systems</span>
@@ -81,8 +81,8 @@ function Hero() {
               View Our Work
             </Link>
           </div>
-        </Parallax>
-        <Parallax speed={-0.15} className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+        </div>
+        <div className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
           {heroCols.map((col, ci) => {
             const loop = [...col, ...col];
             const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
@@ -109,7 +109,7 @@ function Hero() {
               </div>
             );
           })}
-        </Parallax>
+        </div>
       </div>
     </section>
   );
@@ -248,14 +248,12 @@ function Services() {
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 80}>
-              <div className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-md">
-                <div className="text-5xl">{s.emoji}</div>
-                <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
-              </div>
-            </Reveal>
+          {services.map((s) => (
+            <div key={s.title} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-md">
+              <div className="text-5xl">{s.emoji}</div>
+              <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+            </div>
           ))}
         </div>
 
@@ -286,15 +284,13 @@ function Work() {
           One team. All your creative and digital needs.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-4">
-          {work.map((w, i) => (
-            <Reveal key={w.title} delay={i * 100} y={40}>
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900">
-                <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
-                <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
-                  {w.title}
-                </div>
+          {work.map((w) => (
+            <div key={w.title} className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900">
+              <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
+              <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
+                {w.title}
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
 
