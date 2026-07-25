@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Mail, Loader2, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
@@ -250,6 +251,104 @@ function ContactPage() {
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Get in Touch intro */}
+      <section className="bg-muted/40 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="grid gap-10 md:grid-cols-2 md:items-center lg:gap-16">
+              <div>
+                <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+                  Get in Touch
+                  <br />
+                  <span className="text-[#1E90FF]">with Us</span>
+                </h2>
+              </div>
+              <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                If you have any questions or need assistance, don&apos;t hesitate to reach out to us. We are here to help you with your marketing and design needs. You can also visit our office in Lahore, or contact us directly via phone or email for prompt support.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="bg-background pb-16 sm:pb-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="overflow-hidden rounded-3xl border border-border shadow-sm">
+              <iframe
+                title="Pixel2Tech office location — Lahore, Pakistan"
+                src="https://www.google.com/maps?q=Lahore,Pakistan&output=embed"
+                width="100%"
+                height="450"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block h-[360px] w-full border-0 sm:h-[450px]"
+              />
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Our Location */}
+      <section className="bg-muted/40 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+                Our <span className="text-[#1E90FF]">Location</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-muted-foreground sm:text-base">
+                Find us at our headquarters, where creativity meets innovation. Our office is designed to inspire collaboration and ideas, making it a perfect hub for client interactions and team efforts.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              { Icon: MapPin, title: "Visit Us", body: "Our office is conveniently located at the heart of Lahore, easily accessible for clients and partners. Come by to discuss your next project or just to say hello!" },
+              { Icon: Phone, title: "Reach Out", body: "Whether you have questions or need assistance, our team is ready to help. Don't hesitate to stop by or contact us through our website." },
+              { Icon: Mail, title: "Write to Us", body: "Drop us an email anytime at sales@pixel2tech.com — we reply within one business day with next steps tailored to your project." },
+            ].map(({ Icon, title, body }, i) => (
+              <FadeIn key={title} delay={0.1 * (i + 1)}>
+                <div className="h-full rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:shadow-lg sm:p-8">
+                  <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#1E90FF]/10 text-[#1E90FF]">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="mb-2 text-xl font-semibold text-foreground">{title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Elevate CTA */}
+      <section className="bg-background pb-24 pt-8 sm:pb-32">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
+              <h2 className="text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+                Ready to elevate your <span className="text-[#1E90FF]">brand</span> today?
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-background/70 sm:text-base">
+                Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <Link
+                  to="/services"
+                  className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  Get Started
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </PageShell>
