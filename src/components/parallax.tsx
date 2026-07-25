@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type ReactNode, type CSSProperties, type ElementType } from "react";
 
 /** Wrap children to translate on scroll — creates a parallax effect. */
 export function Parallax({
@@ -10,8 +10,9 @@ export function Parallax({
   speed?: number;
   className?: string;
   children: ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }) {
+
   const ref = useRef<HTMLDivElement | null>(null);
   const [y, setY] = useState(0);
 
