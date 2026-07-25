@@ -4,14 +4,8 @@ import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
 import { BookingModal } from "@/components/booking-modal";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Menu,
-  X,
-} from "lucide-react";
+import { SOCIAL_LINKS } from "@/components/social-links";
+import { Menu, X } from "lucide-react";
 
 
 const NAV = [
@@ -180,20 +174,15 @@ export function SiteFooter() {
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
-            <div className="mt-6 flex gap-3">
-              {[
-                { Icon: Facebook, label: "Facebook", href: "https://facebook.com/pixel2tech" },
-                { Icon: Twitter, label: "Twitter / X", href: "https://twitter.com/pixel2tech" },
-                { Icon: Instagram, label: "Instagram", href: "https://instagram.com/pixel2tech" },
-                { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/pixel2tech" },
-              ].map(({ Icon, label, href }) => (
+            <div className="mt-6 flex flex-wrap gap-3">
+              {SOCIAL_LINKS.map(({ name, href, Icon }) => (
                 <a
-                  key={label}
+                  key={name}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Pixel2Tech on ${label}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground hover:bg-background"
+                  aria-label={`Pixel2Tech on ${name}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-background"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>

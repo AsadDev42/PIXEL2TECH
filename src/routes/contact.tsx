@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, ArrowRight, Clock } from "lucide-react";
+import { Mail, Loader2, MapPin, Phone, ArrowRight, Clock } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -87,13 +87,6 @@ function ContactPage() {
     { id: "name", label: "YOUR NAME", type: "text", autoComplete: "name", placeholder: "John Doe" },
     { id: "email", label: "YOUR EMAIL", type: "email", autoComplete: "email", placeholder: "john@example.com" },
     { id: "subject", label: "SUBJECT", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
-  ] as const;
-
-  const socials = [
-    { Icon: Facebook, label: "Facebook", href: "https://facebook.com/pixel2tech" },
-    { Icon: Twitter, label: "Twitter / X", href: "https://twitter.com/pixel2tech" },
-    { Icon: Instagram, label: "Instagram", href: "https://instagram.com/pixel2tech" },
-    { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/pixel2tech" },
   ] as const;
 
   return (
