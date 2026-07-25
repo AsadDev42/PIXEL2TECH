@@ -5,8 +5,8 @@ import {
   Twitter,
   Instagram,
   Linkedin,
-  MessageCircle,
 } from "lucide-react";
+
 
 const NAV = [
   { label: "Home", to: "/" },
