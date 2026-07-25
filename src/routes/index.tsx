@@ -320,7 +320,6 @@ function Work() {
                 src={w.img}
                 alt={i < work.length ? w.title : ""}
                 aria-hidden={i >= work.length ? "true" : undefined}
-                loading="lazy"
                 className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
