@@ -198,7 +198,7 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             Growing Businesses Don't Need More Tools. They Need{" "}
@@ -277,7 +277,7 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-background py-12 sm:py-16">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Brands That Trust Pixel2Tech
@@ -333,7 +333,7 @@ function Brands() {
 function PartnerBand() {
   return (
     <section className="bg-black dark:bg-background">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             Technology Partners Focused on Business Growth
