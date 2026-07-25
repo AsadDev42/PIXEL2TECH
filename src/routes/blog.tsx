@@ -39,7 +39,7 @@ function BlogPage() {
 
       <section className="mx-auto max-w-7xl px-5 pb-10 sm:px-8 sm:pb-12">
         <div className="grid gap-6 rounded-2xl bg-muted p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
-          <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
+          <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
             <img loading="lazy" decoding="async" src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
           </div>
           <div className="flex flex-col justify-center">
