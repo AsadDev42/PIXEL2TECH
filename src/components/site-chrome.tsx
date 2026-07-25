@@ -175,7 +175,9 @@ export function SiteFooter() {
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map(({ name, href, Icon }) => (
+              {SOCIAL_LINKS.filter((s) =>
+                ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest"].includes(s.name)
+              ).map(({ name, href, Icon }) => (
                 <a
                   key={name}
                   href={href}
