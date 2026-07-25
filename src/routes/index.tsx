@@ -57,7 +57,7 @@ function Hero() {
   return (
     <section className="bg-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-8 py-16 md:grid-cols-2 md:items-center">
-        <div>
+        <Parallax speed={0.15}>
           <h1 className="text-[56px] font-bold leading-[1.05] tracking-tight text-black">
             Growing Businesses Don't Need More Tools. They Need{" "}
             <span className="text-[#1E90FF]">AI-Powered Systems</span>
@@ -81,8 +81,8 @@ function Hero() {
               View Our Work
             </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+        </Parallax>
+        <Parallax speed={-0.15} className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
           {heroCols.map((col, ci) => {
             const loop = [...col, ...col];
             const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
@@ -109,11 +109,12 @@ function Hero() {
               </div>
             );
           })}
-        </div>
+        </Parallax>
       </div>
     </section>
   );
 }
+
 
 function Brands() {
   const brands = [
