@@ -597,6 +597,69 @@ function Insights() {
 }
 
 
+function Studio() {
+  return (
+    <section className="bg-muted/60 py-16 dark:bg-white/[0.02] sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
+          <FadeIn>
+            <div className="relative">
+              <div className="overflow-hidden rounded-3xl border border-border/60 bg-background shadow-sm dark:border-white/10">
+                <img
+                  src={officeStudio}
+                  alt="Inside the Pixel2Tech studio — team working at their desks"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="pointer-events-none absolute -bottom-4 -right-4 hidden rounded-2xl border border-border/60 bg-background px-5 py-4 shadow-md dark:border-white/10 sm:block">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Studio</div>
+                <div className="mt-1 text-sm font-semibold text-foreground">Islamabad, Pakistan</div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn>
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Inside the Studio</div>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+                Where the work <span className="text-[hsl(206_100%_50%)]">actually happens</span>
+              </h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+                Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just a team building for clients around the world.
+              </p>
+
+              <dl className="mt-8 grid grid-cols-3 gap-4 sm:gap-6">
+                {[
+                  { k: "15+", v: "In-house experts" },
+                  { k: "120+", v: "Projects shipped" },
+                  { k: "6", v: "Years growing" },
+                ].map((s) => (
+                  <div key={s.v} className="rounded-2xl border border-border/60 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
+                    <dt className="text-2xl font-bold text-foreground sm:text-3xl">{s.k}</dt>
+                    <dd className="mt-1 text-xs text-muted-foreground sm:text-[13px]">{s.v}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/about" className="inline-flex min-h-11 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90">
+                  About the studio
+                </Link>
+                <Link to="/contact" className="inline-flex min-h-11 items-center rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted dark:border-white/15 dark:hover:bg-white/[0.05]">
+                  Visit us
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function HomePage() {
   return (
     <PageShell>
@@ -607,6 +670,7 @@ function HomePage() {
       <Work />
       <VideoTestimonials />
       <Team />
+      <Studio />
       <Insights />
       <HomeContact />
     </PageShell>
