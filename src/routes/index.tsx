@@ -150,15 +150,14 @@ function Brands() {
       </div>
 
       <div className="marquee-viewport edge-fade-x mt-8 overflow-hidden sm:mt-10">
-        <div className="marquee-track slow items-center gap-20 pr-20 sm:gap-28 sm:pr-28" role="list" aria-label="Brands that trust Pixel2Tech">
-
-
+        <div className="marquee-track slow items-center gap-16 pr-16 sm:gap-24 sm:pr-24" role="list" aria-label="Brands that trust Pixel2Tech">
           {loop.map((b, i) => {
             const isDup = i >= brands.length;
             return (
-              <img decoding="async"
+              <img
+                decoding="async"
                 key={`${b.slug}-${i}`}
-                src={`https://cdn.simpleicons.org/${b.slug}/000000`}
+                src={`https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
                 alt={isDup ? "" : `${b.name} logo`}
                 aria-hidden={isDup || undefined}
                 role={isDup ? "presentation" : "listitem"}
@@ -168,12 +167,15 @@ function Brands() {
                   const el = e.currentTarget as HTMLImageElement;
                   if (!el.dataset.fallback) {
                     el.dataset.fallback = "1";
+                    el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
+                  } else if (el.dataset.fallback === "1") {
+                    el.dataset.fallback = "2";
                     el.src = `https://logo.clearbit.com/${b.slug}.com`;
                   } else {
                     el.style.display = "none";
                   }
                 }}
-                className="h-7 w-auto shrink-0 object-contain opacity-70 transition hover:opacity-100 sm:h-9 lg:h-10"
+                className="h-8 w-auto shrink-0 object-contain opacity-80 transition hover:opacity-100 sm:h-10 lg:h-12"
               />
             );
           })}
