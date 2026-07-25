@@ -40,7 +40,8 @@ export function SiteNav() {
     <header className="w-full bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
-          <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11" />
+          <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
+          <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
         <nav aria-label="Primary" className="hidden items-center justify-center gap-6 text-[15px] font-medium text-black lg:flex xl:gap-8">
           {NAV.map((n) => {
