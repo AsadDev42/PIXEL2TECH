@@ -288,36 +288,41 @@ function Brands() {
       </div>
 
       <div className="marquee-viewport edge-fade-x mt-8 overflow-hidden sm:mt-10">
-        <div className="marquee-track slow items-center gap-16 pr-16 sm:gap-24 sm:pr-24" role="list" aria-label="Brands that trust Pixel2Tech">
+        <div className="marquee-track slow items-center gap-12 pr-12 sm:gap-16 sm:pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
           {loop.map((b, i) => {
             const isDup = i >= brands.length;
             return (
-              <img
-                decoding="async"
+              <div
                 key={`${b.slug}-${i}`}
-                src={`https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
-                alt={isDup ? "" : `${b.name} logo`}
-                aria-hidden={isDup || undefined}
+                className="flex h-10 w-28 shrink-0 items-center justify-center sm:h-12 sm:w-32"
                 role={isDup ? "presentation" : "listitem"}
-                title={b.name}
-                loading="lazy"
-                onError={(e) => {
-                  const el = e.currentTarget as HTMLImageElement;
-                  if (!el.dataset.fallback) {
-                    el.dataset.fallback = "1";
-                    el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
-                  } else if (el.dataset.fallback === "1") {
-                    el.dataset.fallback = "2";
-                    el.src = `https://logo.clearbit.com/${b.slug}.com`;
-                  } else {
-                    el.style.display = "none";
-                  }
-                }}
-                className="h-8 w-auto shrink-0 object-contain opacity-80 transition hover:opacity-100 sm:h-10 lg:h-12"
-              />
+                aria-hidden={isDup || undefined}
+              >
+                <img
+                  decoding="async"
+                  src={`https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
+                  alt={isDup ? "" : `${b.name} logo`}
+                  title={b.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    const el = e.currentTarget as HTMLImageElement;
+                    if (!el.dataset.fallback) {
+                      el.dataset.fallback = "1";
+                      el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
+                    } else if (el.dataset.fallback === "1") {
+                      el.dataset.fallback = "2";
+                      el.src = `https://logo.clearbit.com/${b.slug}.com`;
+                    } else {
+                      el.style.display = "none";
+                    }
+                  }}
+                  className="max-h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:max-h-7"
+                />
+              </div>
             );
           })}
         </div>
+
 
       </div>
     </section>
