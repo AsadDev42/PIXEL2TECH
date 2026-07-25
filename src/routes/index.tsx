@@ -456,10 +456,7 @@ function Work() {
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
-            <span className="relative text-[#1E90FF]">
-              Brands Grow
-              <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-            </span>
+            <span className="text-[#1E90FF]">Brands Grow</span>
           </h2>
           <p className="mt-2 text-[14px] text-neutral-600 sm:text-[15px]">
             One team. All your creative and digital needs. Drag to explore.
