@@ -31,10 +31,10 @@ const team = [
 ];
 
 const reasons = [
-  { title: "AI-Powered Execution", desc: "We use AI and automation to reduce manual work, improve efficiency, and accelerate results." },
-  { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions." },
-  { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables." },
-  { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability." },
+  { title: "AI-Powered Execution", desc: "We use AI and automation to reduce manual work, improve efficiency, and accelerate results.", icon: "Sparkles" },
+  { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions.", icon: "Layers" },
+  { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables.", icon: "Target" },
+  { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
 ];
 
 const faqs = [
