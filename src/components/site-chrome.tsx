@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
+import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
 import {
   Facebook,
@@ -39,7 +40,8 @@ export function SiteNav() {
     <header className="w-full bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
-          <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11" />
+          <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
+          <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
         <nav aria-label="Primary" className="hidden items-center justify-center gap-6 text-[15px] font-medium text-black lg:flex xl:gap-8">
           {NAV.map((n) => {
@@ -158,7 +160,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto" />
+            <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
+            <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-neutral-600">
               Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
             </p>
