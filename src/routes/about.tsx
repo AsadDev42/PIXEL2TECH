@@ -191,19 +191,23 @@ function AboutPage() {
           {team.map((m) => (
             <StaggerItem key={m.name}>
               <HoverLift className="h-full">
-                <div className="h-full rounded-2xl border border-border bg-background p-3 transition-colors dark:border-white/10 dark:bg-white/[0.03] sm:p-4">
+                <article
+                  aria-labelledby={`about-team-${m.name.replace(/\s+/g, "-")}-name`}
+                  aria-describedby={`about-team-${m.name.replace(/\s+/g, "-")}-role`}
+                  className="h-full rounded-2xl border border-border bg-background p-3 transition-colors dark:border-white/10 dark:bg-white/[0.03] sm:p-4"
+                >
                   <div className="aspect-[4/5] overflow-hidden rounded-xl">
                     <img
                       loading="lazy"
                       decoding="async"
                       src={m.img}
-                      alt={`${m.name} — ${m.role}`}
+                      alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
                       className="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0"
                     />
                   </div>
-                  <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
-                  <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
-                </div>
+                  <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</h3>
+                  <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="text-xs text-muted-foreground sm:text-sm">{m.role}</p>
+                </article>
               </HoverLift>
             </StaggerItem>
           ))}
