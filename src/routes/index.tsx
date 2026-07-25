@@ -174,18 +174,18 @@ export const Route = createFileRoute("/")({
 const heroCols: string[][] = [
   [
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    "https://images.unsplash.com/photo-1552664730-d088224ddc74?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
