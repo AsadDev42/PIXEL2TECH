@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
+import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { Plus, TrendingUp, Star } from "lucide-react";
 import { motion } from "framer-motion";
