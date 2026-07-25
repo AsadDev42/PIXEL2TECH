@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
-import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot } from "lucide-react";
+import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, Facebook, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -489,10 +489,10 @@ function Work() {
 
 
 const team = [
-  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Ahsan Mushtaq", role: "Website Developer", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Noman Ahmed", role: "Video Editor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 function Team() {
@@ -525,7 +525,7 @@ function Team() {
         <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {team.map((m) => (
             <StaggerItem key={m.name}>
-              <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]">
+              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]">
                 <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                   <img
                     loading="lazy"
@@ -534,11 +534,26 @@ function Team() {
                     alt={`${m.name} — ${m.role}`}
                     className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="p-5 sm:p-6">
                   <div className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</div>
                   <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</div>
+                  <div className="mt-4 flex items-center gap-3">
+                    {[
+                      { Icon: Facebook, label: "Facebook", href: "#" },
+                      { Icon: Twitter, label: "Twitter", href: "#" },
+                      { Icon: Linkedin, label: "LinkedIn", href: "#" },
+                    ].map(({ Icon, label, href }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        aria-label={`${m.name} on ${label}`}
+                        className="text-foreground/70 transition hover:text-foreground"
+                      >
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </article>
             </StaggerItem>

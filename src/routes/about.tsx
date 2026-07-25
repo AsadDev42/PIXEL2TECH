@@ -22,9 +22,9 @@ export const Route = createFileRoute("/about")({
 
 const team = [
   { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Noman Ahmed", role: "Video Editor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
 const reasons = [
@@ -188,7 +188,7 @@ function AboutPage() {
           {team.map((m) => (
             <StaggerItem key={m.name}>
               <HoverLift className="h-full">
-                <div className="h-full rounded-2xl bg-muted p-3 transition-colors dark:border dark:border-white/10 dark:bg-white/[0.03] sm:p-4">
+                <div className="h-full rounded-2xl border border-border bg-background p-3 transition-colors dark:border-white/10 dark:bg-white/[0.03] sm:p-4">
                   <div className="aspect-[4/5] overflow-hidden rounded-xl">
                     <img
                       loading="lazy"
@@ -200,7 +200,7 @@ function AboutPage() {
                   </div>
                   <div className="mt-3 text-base font-bold text-foreground sm:mt-4 sm:text-lg">{m.name}</div>
                   <div className="text-xs text-muted-foreground sm:text-sm">{m.role}</div>
-                  <div className="mt-3 flex gap-2">
+                  <div className="mt-4 flex items-center gap-3">
                     {[
                       { Icon: Facebook, label: "Facebook", href: "#" },
                       { Icon: Twitter, label: "Twitter", href: "#" },
@@ -210,9 +210,9 @@ function AboutPage() {
                         key={label}
                         href={href}
                         aria-label={`${m.name} on ${label}`}
-                        className="flex h-8 w-8 items-center justify-center rounded-md bg-background text-foreground shadow ring-1 ring-border transition hover:bg-muted"
+                        className="text-foreground/70 transition hover:text-foreground"
                       >
-                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                        <Icon className="h-4 w-4" aria-hidden="true" />
                       </a>
                     ))}
                   </div>
