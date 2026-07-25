@@ -5,6 +5,7 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  MessageCircle,
 } from "lucide-react";
 
 const NAV = [
@@ -20,19 +21,15 @@ export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <header className="w-full bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-6 py-5 sm:px-8">
         <Link to="/" className="flex items-center">
-          <img src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto" />
+          <img src={logoAsset.url} alt="Pixel2Tech" className="h-10 w-auto sm:h-11" />
         </Link>
-        <nav className="hidden items-center gap-10 text-[15px] font-medium text-black md:flex">
+        <nav className="hidden items-center justify-center gap-8 text-[15px] font-medium text-black lg:flex">
           {NAV.map((n) => {
             const active = pathname === n.to;
             return (
-              <Link
-                key={n.to}
-                to={n.to}
-                className="relative"
-              >
+              <Link key={n.to} to={n.to} className="relative">
                 <span className={active ? "font-semibold" : ""}>{n.label}</span>
                 {active && (
                   <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-black" />
@@ -43,12 +40,40 @@ export function SiteNav() {
         </nav>
         <Link
           to="/contact"
-          className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:opacity-90"
+          className="shrink-0 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 sm:px-6 sm:py-3"
         >
           Book a Call
         </Link>
       </div>
     </header>
+  );
+}
+
+const MARQUEE_WORDS = [
+  "Brand Identity",
+  "Website Design & Development",
+  "UI UX",
+  "Social Media",
+  "AI Solutions",
+  "Motion Design",
+];
+
+function FooterMarquee() {
+  const loop = [...MARQUEE_WORDS, ...MARQUEE_WORDS];
+  return (
+    <div className="marquee-viewport edge-fade-x overflow-hidden bg-neutral-100 py-8">
+      <div className="marquee-track slow items-center gap-14 pr-14">
+        {loop.map((w, i) => (
+          <div
+            key={`${w}-${i}`}
+            className="flex shrink-0 items-center gap-14 text-[64px] font-black leading-none tracking-tight text-black sm:text-[96px]"
+          >
+            <span className="text-[#1E90FF]">✳</span>
+            <span>{w}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -63,8 +88,8 @@ export function SiteFooter() {
   const svc = ["Branding", "Web Design", "UI UX", "Social Media", "AI Solutions"];
   return (
     <footer className="bg-neutral-100">
-      <div className="mx-auto max-w-7xl px-8 pt-16 pb-10">
-        <div className="grid gap-10 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <img src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-neutral-600">
@@ -115,7 +140,25 @@ export function SiteFooter() {
           © {new Date().getFullYear()} Pixel2Tech. All rights reserved.
         </div>
       </div>
+      <FooterMarquee />
     </footer>
+  );
+}
+
+function WhatsAppButton() {
+  const number = "923177475233";
+  const msg = encodeURIComponent("Hi Pixel2Tech, I'd like to discuss a project.");
+  return (
+    <a
+      href={`https://wa.me/${number}?text=${msg}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:scale-105"
+    >
+      <MessageCircle className="h-7 w-7" strokeWidth={2.2} />
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-30" />
+    </a>
   );
 }
 
@@ -125,6 +168,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <SiteNav />
       {children}
       <SiteFooter />
+      <WhatsAppButton />
     </div>
   );
 }
@@ -142,13 +186,13 @@ export function PageHeader({
 }) {
   return (
     <section className="bg-white pt-16 pb-10">
-      <div className="mx-auto max-w-7xl px-8 text-center">
+      <div className="mx-auto max-w-7xl px-6 text-center sm:px-8">
         {eyebrow && (
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
             {eyebrow}
           </div>
         )}
-        <h1 className="mt-3 text-[52px] font-bold leading-[1.05] tracking-tight text-black">
+        <h1 className="mt-3 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-[52px]">
           {title}{" "}
           {highlight && (
             <span className="relative text-[#1E90FF]">

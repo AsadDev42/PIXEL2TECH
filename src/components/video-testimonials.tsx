@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, Quote } from "lucide-react";
 
 type Item = {
   name: string;
@@ -37,6 +37,24 @@ const items: Item[] = [
     poster:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop",
   },
+  {
+    name: "Marco Bianchi",
+    role: "CEO, Northline Studio",
+    quote:
+      "From branding to launch, Pixel2Tech delivered on every promise. They feel like a true growth partner, not just a vendor.",
+    video: "https://cdn.coverr.co/videos/coverr-a-man-working-on-a-laptop-2634/1080p.mp4",
+    poster:
+      "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&auto=format&fit=crop",
+  },
+  {
+    name: "Aisha Rahman",
+    role: "Product Lead, Kite",
+    quote:
+      "Their AI workflow automations saved our team days every week. Real, measurable impact from day one.",
+    video: "https://cdn.coverr.co/videos/coverr-a-woman-typing-on-a-laptop-9270/1080p.mp4",
+    poster:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&auto=format&fit=crop",
+  },
 ];
 
 function VideoCard({ item }: { item: Item }) {
@@ -54,7 +72,7 @@ function VideoCard({ item }: { item: Item }) {
     }
   };
   return (
-    <div className="overflow-hidden rounded-3xl bg-neutral-100">
+    <div className="w-[340px] shrink-0 overflow-hidden rounded-3xl bg-neutral-100 shadow-sm sm:w-[380px]">
       <div className="relative aspect-[4/5] bg-black">
         <video
           ref={ref}
@@ -63,6 +81,7 @@ function VideoCard({ item }: { item: Item }) {
           playsInline
           loop
           muted
+          preload="metadata"
           onPause={() => setPlaying(false)}
           onPlay={() => setPlaying(true)}
           className="h-full w-full object-cover"
@@ -78,14 +97,14 @@ function VideoCard({ item }: { item: Item }) {
         </button>
       </div>
       <div className="p-6">
-        <div className="text-3xl font-black text-black">"</div>
+        <Quote className="h-6 w-6 text-neutral-300" />
         <p className="mt-2 text-sm leading-relaxed text-neutral-700">{item.quote}</p>
         <div className="mt-6 flex items-center justify-between">
-          <div>
-            <div className="text-sm font-bold text-black">{item.name}</div>
-            <div className="text-xs text-neutral-500">{item.role}</div>
+          <div className="min-w-0">
+            <div className="truncate text-sm font-bold text-black">{item.name}</div>
+            <div className="truncate text-xs text-neutral-500">{item.role}</div>
           </div>
-          <span className="rounded-full bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+          <span className="shrink-0 rounded-full bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
             Video
           </span>
         </div>
@@ -95,33 +114,36 @@ function VideoCard({ item }: { item: Item }) {
 }
 
 export function VideoTestimonials() {
+  const loop = [...items, ...items];
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-6">
+          <div className="min-w-0">
             <div className="mb-3 inline-flex h-5 w-5 items-center justify-center rounded-full border border-black">
               <div className="h-1.5 w-1.5 rounded-full bg-black" />
             </div>
-            <h2 className="text-[44px] font-bold tracking-tight text-black">
+            <h2 className="text-3xl font-bold tracking-tight text-black sm:text-[44px]">
               What Our Clients Say
             </h2>
             <p className="mt-2 max-w-xl text-[15px] text-neutral-600">
-              Real founders, real results. Hear it directly from the teams we've
-              helped grow.
+              Real founders, real results. Hear it directly from the teams
+              we've helped grow.
             </p>
           </div>
           <a
             href="/contact"
-            className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+            className="hidden shrink-0 rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90 sm:inline-flex"
           >
             Let's Build Your Success Story
           </a>
         </div>
+      </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {items.map((t) => (
-            <VideoCard key={t.name} item={t} />
+      <div className="marquee-viewport edge-fade-x mt-12 overflow-hidden">
+        <div className="marquee-track gap-6 pr-6">
+          {loop.map((t, i) => (
+            <VideoCard key={`${t.name}-${i}`} item={t} />
           ))}
         </div>
       </div>
