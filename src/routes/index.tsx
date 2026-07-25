@@ -1,38 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowRight,
-  Sparkles,
-  Cpu,
-  LineChart,
-  Rocket,
-  Search,
-  PenTool,
-  Code2,
-  Send,
-  Star,
+  Facebook,
   Twitter,
-  Linkedin,
   Instagram,
+  Linkedin,
   Mail,
   Phone,
-  MapPin,
+  Plus,
+  TrendingUp,
+  Star,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "Pixel2Tech — AI-Powered Systems for Growing Businesses" },
+      { title: "Pixel2Tech — Design. Develop. Grow." },
       {
         name: "description",
         content:
-          "Pixel2Tech builds AI-forward technology, branding, and websites that help modern businesses design, develop and grow.",
+          "Pixel2Tech is an AI-powered creative agency. Branding, web, marketing, motion and AI solutions.",
       },
       { property: "og:title", content: "Pixel2Tech — Design. Develop. Grow." },
       {
         property: "og:description",
         content:
-          "Technology partners focused on business growth. AI systems, branding, and web that scale.",
+          "AI-powered creative agency for branding, web design, marketing and automation.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -40,21 +33,23 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const ACCENT = "text-[#1E90FF]";
+const BLUE = "#1E90FF";
 
+// ---------- shared ----------
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="relative h-8 w-8 rotate-45 bg-[#1E90FF]">
-        <div className="absolute inset-1 bg-background" />
-        <div className="absolute inset-2 bg-[#1E90FF]" />
+      <div className="relative flex h-9 w-9 items-center justify-center">
+        <div className="absolute inset-0 rotate-45 bg-black" />
+        <div className="absolute inset-[6px] rotate-45 bg-white" />
+        <div className="absolute inset-[10px] rotate-45 bg-[color:var(--p2t-blue)]" />
       </div>
       <div className="leading-none">
-        <div className="text-lg font-extrabold tracking-tight text-foreground">
-          PIXEL<span className={ACCENT}>2</span>TECH
+        <div className="text-[22px] font-extrabold tracking-tight text-black">
+          PIXEL<span className="text-[color:var(--p2t-blue)]">2</span>TECH
         </div>
-        <div className="text-[9px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Design · Develop · Grow
+        <div className="mt-1 text-[9px] font-medium tracking-[0.15em] text-neutral-500">
+          Design. Develop. Grow.
         </div>
       </div>
     </div>
@@ -62,227 +57,277 @@ function Logo() {
 }
 
 function Nav() {
+  const items = ["Home", "About Us", "Services", "Portfolio", "Blog", "Contact"];
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <header className="w-full bg-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
         <Logo />
-        <nav className="hidden gap-8 text-sm font-medium text-muted-foreground md:flex">
-          <a href="#services" className="hover:text-foreground">Services</a>
-          <a href="#work" className="hover:text-foreground">Work</a>
-          <a href="#process" className="hover:text-foreground">Process</a>
-          <a href="#insights" className="hover:text-foreground">Insights</a>
-          <a href="#contact" className="hover:text-foreground">Contact</a>
+        <nav className="hidden items-center gap-10 text-[15px] font-medium text-black md:flex">
+          {items.map((n, i) => (
+            <a
+              key={n}
+              href="#"
+              className={`relative ${i === 0 ? "font-semibold" : ""}`}
+            >
+              {n}
+              {i === 0 && (
+                <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-black" />
+              )}
+            </a>
+          ))}
         </nav>
         <a
           href="#contact"
-          className="hidden rounded-md bg-foreground px-4 py-2 text-sm font-semibold text-background hover:opacity-90 md:inline-block"
+          className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:opacity-90"
         >
-          Get Started
+          Book a Call
         </a>
       </div>
     </header>
   );
 }
 
-function Hero() {
-  return (
-    <section className="mx-auto max-w-6xl px-6 pt-20 pb-24">
-      <div className="max-w-3xl">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground">
-          <Sparkles className="h-3 w-3 text-[#1E90FF]" /> AI-Forward Studio · Est. 2024
-        </div>
-        <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-6xl">
-          Growing Businesses Don't Need More Tools. They Need{" "}
-          <span className={ACCENT}>AI-Powered Systems</span>.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          We partner with ambitious teams to design brand identities, ship
-          production websites, and integrate intelligent systems that compound
-          growth — not complexity.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90"
-          >
-            Start a Project <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted"
-          >
-            See Our Work
-          </a>
-        </div>
-      </div>
-
-      <div className="mt-20 text-center">
-        <p className="text-sm font-semibold text-foreground">
-          Brands That Trust Pixel2Tech
-        </p>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Startups, agencies, and product teams building the next generation.
-        </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 text-xl font-bold tracking-tight text-muted-foreground/70">
-          <span>OVAL</span>
-          <span className="italic">Nimbus</span>
-          <span>◆ Kite</span>
-          <span>NORTH/</span>
-          <span>lumen.</span>
-          <span>QUARK</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PartnerBand() {
-  return (
-    <section className="mx-auto max-w-6xl px-6">
-      <div className="relative overflow-hidden rounded-2xl bg-[#0B0B0B] px-8 py-14 text-white md:px-14">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-              Technology
-              <br />
-              Partners
-              <br />
-              Focused on
-              <br />
-              <span className={ACCENT}>Business Growth</span>
-            </h2>
-            <p className="mt-6 max-w-md text-sm text-white/70">
-              We work as an embedded partner — not a vendor. From strategy to
-              launch, our team ships measurable outcomes for founders and
-              marketing leaders.
-            </p>
-            <div className="mt-6 text-xs uppercase tracking-widest text-white/50">
-              — Arjun Mehta, Founder
-            </div>
-          </div>
-          <div className="relative flex justify-center">
-            <div className="absolute -top-4 right-4 rounded-lg bg-white px-3 py-2 text-xs font-semibold text-black shadow-lg">
-              <div className="text-[10px] font-medium text-muted-foreground">
-                AVAILABLE FOR
-              </div>
-              Q1 Projects
-            </div>
-            <div className="flex h-64 w-64 items-center justify-center rounded-full bg-[#1E90FF] text-6xl font-black text-white">
-              AM
-            </div>
-            <div className="absolute bottom-2 right-8 rounded-md bg-white px-3 py-2 text-xs font-semibold text-black shadow-lg">
-              Book a Call →
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const services = [
-  {
-    icon: PenTool,
-    title: "Brand & Identity",
-    desc: "Distinctive visual systems, logotypes, and guidelines that scale from pitch deck to product.",
-  },
-  {
-    icon: Code2,
-    title: "Website & Product",
-    desc: "Production-grade websites and web apps built with modern stacks and conversion in mind.",
-  },
-  {
-    icon: Cpu,
-    title: "AI Systems",
-    desc: "Custom automations, agents, and integrations that eliminate busywork across your stack.",
-  },
+// ---------- hero ----------
+const heroImgs = [
+  "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop",
 ];
 
-const outcomes = [
+function Hero() {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto grid max-w-7xl gap-12 px-8 py-16 md:grid-cols-2 md:items-center">
+        <div>
+          <h1 className="text-[56px] font-bold leading-[1.05] tracking-tight text-black">
+            Growing Businesses Don't Need More Tools. They Need{" "}
+            <span className="text-[color:var(--p2t-blue)]">AI-Powered Systems</span>
+          </h1>
+          <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-neutral-600">
+            We help businesses automate workflows, build scalable software, and
+            create seamless digital experiences that improve efficiency, customer
+            experience, and growth.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#contact"
+              className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Book a Free Strategy Call
+            </a>
+            <a
+              href="#work"
+              className="rounded-full border border-black bg-white px-6 py-3.5 text-sm font-semibold text-black hover:bg-neutral-50"
+            >
+              View Our Work
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3">
+          {heroImgs.map((src, i) => (
+            <div
+              key={i}
+              className={`overflow-hidden rounded-2xl bg-neutral-100 ${
+                i % 2 === 0 ? "aspect-[3/4]" : "aspect-[3/4] mt-8"
+              }`}
+            >
+              <img src={src} alt="" className="h-full w-full object-cover" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- brands ----------
+function Brands() {
+  const brands = ["PUBLISH AND PROSPER", "AchhSoft", "LOCKS & CO", "CA"];
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-6xl px-8 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-black">
+          Brands That Trust Pixel2Tech
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-[15px] text-neutral-600">
+          We work with startups, businesses, and founders who want to grow
+          faster. From Pakistan to the world.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-16 gap-y-6 text-xl font-bold tracking-tight text-neutral-400">
+          {brands.map((b) => (
+            <span key={b}>{b}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- partner band ----------
+function PartnerBand() {
+  return (
+    <section className="bg-black">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-8 py-20 md:grid-cols-2">
+        <div>
+          <h2 className="text-[54px] font-bold leading-[1.05] tracking-tight text-white">
+            Technology Partners Focused on Business Growth
+          </h2>
+          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-neutral-400">
+            We help businesses grow with smart digital solutions. Our mission is
+            to turn ideas into impactful brands and technology that drive real
+            results.
+          </p>
+          <div className="mt-8 text-sm text-neutral-500">— Pixel2Tech Team</div>
+        </div>
+        <div className="relative mx-auto">
+          <div className="absolute -top-2 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-lg">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-black">
+              <TrendingUp className="h-4 w-4 text-[color:var(--p2t-blue)]" />
+            </div>
+            <div className="text-left">
+              <div className="text-sm font-bold text-black">
+                Trusted Technology Partner
+              </div>
+              <div className="mt-0.5 flex items-center gap-1 text-xs text-neutral-500">
+                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                <span className="font-semibold text-black">4.9</span> (1520
+                Reviews)
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 h-[360px] w-[360px] overflow-hidden rounded-full bg-[color:var(--p2t-blue)]">
+            <img
+              src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop"
+              alt="Founder"
+              className="h-full w-full object-cover mix-blend-luminosity"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- services ----------
+const services = [
   {
-    stat: "Higher Conversions",
-    desc: "Landing systems engineered around one goal: qualified pipeline.",
+    title: "Branding & Design",
+    desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.",
+    emoji: "🏆",
   },
   {
-    stat: "Faster Ship Cycles",
-    desc: "Design and engineering under one roof — no handoff tax.",
+    title: "Website Development",
+    desc: "Modern, fast, and mobile-friendly websites that convert visitors into customers.",
+    emoji: "🌐",
   },
   {
-    stat: "Owned IP",
-    desc: "You own every asset, every repo, every model prompt we deliver.",
+    title: "Digital Marketing",
+    desc: "Clean and simple designs that improve user experience and increase sales.",
+    emoji: "📈",
+  },
+  {
+    title: "Social Media & Content",
+    desc: "Creative posts, content ideas, and strategies that build authority and attract leads.",
+    emoji: "📣",
+  },
+  {
+    title: "Motion & Video",
+    desc: "Reels, ads, and brand videos that grab attention.",
+    emoji: "🎬",
+  },
+  {
+    title: "AI Solutions",
+    desc: "Smart tools and automation to save time and improve business performance.",
+    emoji: "🤖",
   },
 ];
 
 function Services() {
   return (
-    <section id="services" className="mx-auto max-w-6xl px-6 py-28">
-      <div className="text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-          Everything You Need to <span className={ACCENT}>Build & Grow</span>
-        </h2>
-        <p className="mt-3 text-muted-foreground">
-          One team. Three disciplines. Zero silos.
-        </p>
-      </div>
-
-      <div className="mt-16 grid gap-8 md:grid-cols-3">
-        {services.map((s) => (
-          <div
-            key={s.title}
-            className="rounded-2xl border border-border p-8 transition hover:border-foreground/30 hover:shadow-lg"
-          >
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#1E90FF]/10">
-              <s.icon className="h-6 w-6 text-[#1E90FF]" />
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="text-center">
+          <h2 className="text-[44px] font-bold tracking-tight text-black">
+            Everything You Need to{" "}
+            <span className="relative text-[color:var(--p2t-blue)]">
+              Build &amp; Grow
+              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[color:var(--p2t-blue)]/30" />
+            </span>
+          </h2>
+          <p className="mt-3 text-[15px] text-neutral-600">
+            One team. All your creative and digital needs.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:shadow-md"
+            >
+              <div className="text-5xl">{s.emoji}</div>
+              <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+                {s.desc}
+              </p>
             </div>
-            <h3 className="text-lg font-bold">{s.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-24 grid gap-8 border-t border-border pt-16 md:grid-cols-3">
-        {outcomes.map((o) => (
-          <div key={o.stat} className="text-center">
-            <div className="text-sm font-bold uppercase tracking-widest text-foreground">
-              {o.stat}
-            </div>
-            <p className="mt-2 text-sm text-muted-foreground">{o.desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-const works = [
-  { name: "Nimbus Cloud", tag: "SaaS · Rebrand", color: "bg-gradient-to-br from-blue-500 to-indigo-700" },
-  { name: "Oval Wellness", tag: "DTC · Website", color: "bg-gradient-to-br from-emerald-400 to-teal-700" },
-  { name: "Kite Finance", tag: "Fintech · Product", color: "bg-gradient-to-br from-orange-400 to-rose-600" },
-  { name: "North Labs", tag: "AI · System", color: "bg-gradient-to-br from-slate-700 to-slate-900" },
+// ---------- work ----------
+const work = [
+  {
+    title: "Web design and development",
+    img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=900&auto=format&fit=crop",
+  },
+  {
+    title: "UI UX designing",
+    img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop",
+  },
+  {
+    title: "Logo and branding",
+    img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop",
+  },
+  {
+    title: "Concept creation",
+    img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop",
+  },
 ];
 
 function Work() {
   return (
-    <section id="work" className="bg-muted/40 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12">
-          <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-            Work That Helps <span className={ACCENT}>Brands Grow</span>
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            A selection of recent partnerships and product launches.
-          </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          {works.map((w) => (
-            <div key={w.name} className="group cursor-pointer overflow-hidden rounded-2xl bg-background shadow-sm">
-              <div className={`h-64 ${w.color} transition group-hover:scale-[1.02]`} />
-              <div className="flex items-center justify-between p-5">
-                <div>
-                  <div className="font-bold">{w.name}</div>
-                  <div className="text-xs text-muted-foreground">{w.tag}</div>
-                </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-foreground" />
+    <section id="work" className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-8">
+        <h2 className="text-[44px] font-bold tracking-tight text-black">
+          Work That Helps{" "}
+          <span className="relative text-[color:var(--p2t-blue)]">
+            Brands Grow
+            <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[color:var(--p2t-blue)]/30" />
+          </span>
+        </h2>
+        <p className="mt-2 text-[15px] text-neutral-600">
+          One team. All your creative and digital needs.
+        </p>
+        <div className="mt-10 grid gap-5 md:grid-cols-4">
+          {work.map((w) => (
+            <div
+              key={w.title}
+              className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900"
+            >
+              <img
+                src={w.img}
+                alt={w.title}
+                className="h-full w-full object-cover opacity-90"
+              />
+              <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
+                {w.title}
               </div>
             </div>
           ))}
@@ -292,279 +337,383 @@ function Work() {
   );
 }
 
-const steps = [
-  { icon: Search, title: "Discover", desc: "Deep-dive audit into your brand, tech and audience." },
-  { icon: PenTool, title: "Design", desc: "Systems and prototypes that solve real problems." },
-  { icon: Code2, title: "Build", desc: "Ship fast, ship polished — with weekly demos." },
-  { icon: Rocket, title: "Launch & Grow", desc: "Iterate with analytics, AI, and honest data." },
-];
-
-function Process() {
-  return (
-    <section id="process" className="mx-auto max-w-6xl px-6 py-24">
-      <div className="text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">How We Work</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          A tight four-step process. No mystery, no scope creep.
-        </p>
-      </div>
-      <div className="mt-12 grid gap-4 md:grid-cols-4">
-        {steps.map((s, i) => (
-          <div key={s.title} className="rounded-xl border border-border p-6 text-center">
-            <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background">
-              <s.icon className="h-4 w-4" />
-            </div>
-            <div className="text-xs font-semibold text-muted-foreground">STEP {i + 1}</div>
-            <div className="mt-1 font-bold">{s.title}</div>
-            <p className="mt-2 text-xs text-muted-foreground">{s.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
+// ---------- testimonials ----------
 const testimonials = [
   {
     quote:
-      "Pixel2Tech shipped our rebrand and new site in six weeks. Pipeline doubled the following quarter.",
-    name: "Priya Shah",
-    role: "CMO, Nimbus",
+      "The UI UX work was clean, modern, and focused on conversions. Our product now looks premium and investor ready.",
+    name: "Daniel Brooks",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop",
   },
   {
     quote:
-      "The AI workflows they built save my ops team roughly 20 hours a week. It paid for itself in month one.",
-    name: "Daniel Cho",
-    role: "COO, Kite Finance",
+      "We hired Pixel2Tech for white label work. Their quality and communication are excellent. It feels like having an in house creative team.",
+    name: "Dora Pelosi",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop",
   },
   {
     quote:
-      "A true partner. Sharp taste, sharper engineering. Feels like an in-house team without the overhead.",
-    name: "Maya Fernandes",
-    role: "Founder, Oval",
+      "Our social media engagement improved within weeks. Their strategy is smart and practical, not just random posting.",
+    name: "Choisy Catherine",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop",
   },
 ];
 
 function Testimonials() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="mb-10 flex items-end justify-between">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-          What Our Clients Say
-        </h2>
-        <a
-          href="#contact"
-          className="hidden rounded-md bg-foreground px-4 py-2 text-xs font-semibold text-background md:inline-block"
-        >
-          Become a Client
-        </a>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <div key={t.name} className="rounded-2xl border border-border bg-muted/30 p-6">
-            <div className="flex gap-1 text-[#1E90FF]">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-current" />
-              ))}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
-            <div className="mt-6 text-sm font-semibold">{t.name}</div>
-            <div className="text-xs text-muted-foreground">{t.role}</div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ExpertsBand() {
-  return (
-    <section className="bg-muted/40 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-10 rounded-2xl bg-background p-10 shadow-sm md:grid-cols-2 md:p-14">
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-              Experts in Technology, AI & Digital Innovation
-            </h2>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Follow along for essays, teardowns and case studies from the
-              Pixel2Tech team.
-            </p>
-            <div className="mt-6 flex gap-3">
-              {[Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border hover:bg-muted"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+            <div className="mb-3 inline-flex h-5 w-5 items-center justify-center rounded-full border border-black">
+              <div className="h-1.5 w-1.5 rounded-full bg-black" />
             </div>
+            <h2 className="text-[44px] font-bold tracking-tight text-black">
+              What Our Clients Say
+            </h2>
+            <p className="mt-2 text-[15px] text-neutral-600">
+              Pixel2Tech helped us completely improve our brand. We started
+              getting better clients
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {["AI Trends", "Web Craft", "Brand Studio", "Case Study"].map((t) => (
-              <div key={t} className="rounded-xl bg-[#0B0B0B] p-5 text-white">
-                <div className="text-xs uppercase tracking-widest text-white/60">Series</div>
-                <div className="mt-2 font-bold">{t}</div>
+          <a
+            href="#contact"
+            className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+          >
+            Let's Build Your Success Story
+          </a>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="overflow-hidden rounded-3xl bg-neutral-100"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
-            ))}
-          </div>
+              <div className="p-6">
+                <div className="text-3xl font-black text-black">"</div>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                  {t.quote}
+                </p>
+                <div className="mt-6 text-right text-sm font-bold text-black">
+                  {t.name}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-const insights = [
+// ---------- team ----------
+const team = [
   {
-    date: "Mar 12, 2025",
-    title: "Why Modern Brands Need an AI Ops Layer",
+    name: "Usama Farooq",
+    role: "CEO & Founder",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop",
   },
   {
-    date: "Feb 24, 2025",
-    title: "Rebrand vs. Refresh: A Founder's Decision Framework",
+    name: "Asad Farooq",
+    role: "Co Founder & Creative Director",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop",
   },
   {
-    date: "Feb 03, 2025",
-    title: "Shipping Websites That Convert — A 10-Point Audit",
+    name: "Gul E Zahra",
+    role: "Creative Brand Designer",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop",
+  },
+  {
+    name: "Saad",
+    role: "Creative Video Editor",
+    img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop",
+  },
+];
+
+function Team() {
+  return (
+    <section className="bg-neutral-100 py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-8 md:grid-cols-2">
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+            OUR CREATIVE TEAM
+          </div>
+          <h2 className="mt-4 text-[44px] font-bold leading-tight tracking-tight text-black">
+            Experts in Technology, AI &amp; Digital Innovation
+          </h2>
+          <p className="mt-6 text-[15px] leading-relaxed text-neutral-600">
+            Our team combines expertise in software development, AI, automation,
+            digital products, and customer experience.
+          </p>
+          <p className="mt-4 text-[15px] leading-relaxed text-neutral-600">
+            We work together to solve complex business challenges and build
+            technology solutions that create measurable impact.
+          </p>
+          <div className="mt-8 flex gap-8">
+            <button className="flex items-center gap-3 text-sm font-semibold text-black">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+                <Plus className="h-4 w-4" />
+              </span>
+              Contact Us
+            </button>
+            <button className="flex items-center gap-3 text-sm font-semibold text-black">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
+                <Plus className="h-4 w-4" />
+              </span>
+              All Teams
+            </button>
+          </div>
+          <div className="mt-10 aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-300">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop"
+              alt="Pixel2Tech office"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-5">
+          {team.map((m) => (
+            <div
+              key={m.name}
+              className="rounded-2xl bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+            >
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-neutral-200">
+                <img
+                  src={m.img}
+                  alt={m.name}
+                  className="h-full w-full object-cover grayscale"
+                />
+              </div>
+              <div className="mt-4 text-lg font-bold text-black">{m.name}</div>
+              <div className="text-sm text-neutral-500">{m.role}</div>
+              <div className="mt-3 flex gap-2">
+                {[Facebook, Twitter, Linkedin].map((I, i) => (
+                  <span
+                    key={i}
+                    className="flex h-8 w-8 items-center justify-center rounded-md bg-white shadow ring-1 ring-neutral-200"
+                  >
+                    <I className="h-3.5 w-3.5 text-black" />
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- insights ----------
+const posts = [
+  {
+    tag: "Creative",
+    date: "June 22, 2026",
+    title: "How AI is Changing Modern Branding",
+    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop",
+  },
+  {
+    tag: "Creative",
+    date: "April 5, 2026",
+    title: "Why Every Business Needs a Modern Website in 2026",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop",
+  },
+  {
+    tag: "Creative",
+    date: "April 5, 2026",
+    title: "The Power of Good Branding for Business Growth",
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop",
   },
 ];
 
 function Insights() {
   return (
-    <section id="insights" className="mx-auto max-w-6xl px-6 py-24">
-      <div className="mb-8 flex items-end justify-between">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Latest Insights</h2>
-        <a
-          href="#"
-          className="rounded-md border border-border px-4 py-2 text-xs font-semibold hover:bg-muted"
-        >
-          View All
-        </a>
-      </div>
-      <div className="grid gap-5 md:grid-cols-3">
-        {insights.map((p) => (
-          <a
-            key={p.title}
-            href="#"
-            className="group rounded-xl border border-border bg-muted/30 p-6 transition hover:border-foreground/30"
-          >
-            <div className="text-xs uppercase tracking-widest text-muted-foreground">
-              {p.date}
-            </div>
-            <div className="mt-3 text-base font-semibold group-hover:text-[#1E90FF]">
-              {p.title}
-            </div>
-            <div className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-foreground">
-              Read <ArrowRight className="h-3 w-3" />
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ContactForm() {
-  return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 pb-24">
-      <div className="rounded-2xl border border-border bg-muted/30 p-8 md:p-12">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-          Ready to <span className={ACCENT}>Grow Your Brand?</span>
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Tell us about your project. We'll get back within one business day.
-        </p>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="mt-8 grid gap-4 md:grid-cols-2"
-        >
-          <input
-            placeholder="Your name"
-            className="rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-foreground"
-          />
-          <input
-            placeholder="Email address"
-            className="rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-foreground"
-          />
-          <textarea
-            rows={4}
-            placeholder="What are you building?"
-            className="md:col-span-2 rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-foreground"
-          />
-          <button
-            type="submit"
-            className="inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90"
-          >
-            Send Message <Send className="h-4 w-4" />
-          </button>
-        </form>
-      </div>
-
-      <div className="mt-16 text-center">
-        <h3 className="text-2xl font-extrabold tracking-tight md:text-3xl">
-          Ready to Get Started?
-        </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Book a free 30-minute strategy call with our founder.
-        </p>
-        <a
-          href="#"
-          className="mt-5 inline-flex items-center gap-2 rounded-md bg-[#1E90FF] px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
-        >
-          Schedule Call <ArrowRight className="h-4 w-4" />
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border bg-muted/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-5">
-        <div className="md:col-span-2">
-          <Logo />
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            An independent studio building brands, websites and AI systems for
-            modern businesses.
-          </p>
-        </div>
-        <div>
-          <div className="mb-3 text-xs font-bold uppercase tracking-widest">Services</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>Brand Identity</li>
-            <li>Websites</li>
-            <li>AI Systems</li>
-            <li>Consulting</li>
-          </ul>
-        </div>
-        <div>
-          <div className="mb-3 text-xs font-bold uppercase tracking-widest">Company</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>About</li>
-            <li>Work</li>
-            <li>Insights</li>
-            <li>Careers</li>
-          </ul>
-        </div>
-        <div>
-          <div className="mb-3 text-xs font-bold uppercase tracking-widest">Contact</div>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2"><Mail className="h-3 w-3" /> hello@pixel2tech.com</li>
-            <li className="flex items-center gap-2"><Phone className="h-3 w-3" /> +1 (415) 555-0142</li>
-            <li className="flex items-center gap-2"><MapPin className="h-3 w-3" /> Remote · Worldwide</li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-muted-foreground md:flex-row">
-          <div>© {new Date().getFullYear()} Pixel2Tech. All rights reserved.</div>
-          <div className="flex items-center gap-2">
-            <LineChart className="h-3 w-3 text-[#1E90FF]" />
-            Branding & Identity · Website
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <h2 className="text-[44px] font-bold tracking-tight text-black">
+              Latest Insights
+            </h2>
+            <p className="mt-2 text-[15px] text-neutral-600">
+              Tips, trends, and thought leadership from the Pixel2Tech team.
+            </p>
           </div>
+          <a
+            href="#"
+            className="rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+          >
+            Read Our Articles
+          </a>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {posts.map((p) => (
+            <a
+              key={p.title}
+              href="#"
+              className="rounded-3xl bg-neutral-100 p-4 transition hover:bg-neutral-200/60"
+            >
+              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
+                <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+              </div>
+              <div className="mt-5 flex items-center gap-4 text-xs text-neutral-500">
+                <span>{p.tag}</span>
+                <span>{p.date}</span>
+              </div>
+              <div className="mt-3 pb-4 text-lg font-semibold leading-snug text-black">
+                {p.title}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- contact ----------
+function Contact() {
+  return (
+    <section id="contact" className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-8">
+        <div className="rounded-3xl bg-neutral-100 p-10 md:p-16">
+          <h2 className="text-[44px] font-bold tracking-tight text-black">
+            Ready to{" "}
+            <span className="relative text-[color:var(--p2t-blue)]">
+              Grow Your Brand?
+              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-black/10" />
+            </span>
+          </h2>
+          <p className="mt-2 text-[15px] text-neutral-600">
+            Tell us about your project and goals. Let's build something great
+            together.
+          </p>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="mt-10 grid gap-6 md:grid-cols-2"
+          >
+            {[
+              ["First Name", "text"],
+              ["Last Name", "text"],
+              ["Email", "email"],
+              ["Phone", "tel"],
+            ].map(([label, type]) => (
+              <input
+                key={label}
+                type={type}
+                placeholder={label}
+                className="border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-500 outline-none focus:border-black"
+              />
+            ))}
+            <textarea
+              rows={3}
+              placeholder="Message"
+              className="md:col-span-2 border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-500 outline-none focus:border-black"
+            />
+            <button
+              type="submit"
+              className="mt-4 w-fit rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Get in Touch
+            </button>
+          </form>
+        </div>
+
+        <div className="mt-20 text-center">
+          <h3 className="text-[44px] font-bold tracking-tight text-black">
+            Ready to Get Started?
+          </h3>
+          <p className="mt-2 text-[15px] text-neutral-600">
+            Contact us today and let's discuss how we can help grow your brand.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-8 text-sm text-black">
+            <span className="flex items-center gap-2">
+              <Mail className="h-4 w-4" /> sales@pixel2tech.com
+            </span>
+            <span className="flex items-center gap-2">
+              <Phone className="h-4 w-4" /> +92 317 7475233
+            </span>
+          </div>
+          <a
+            href="#"
+            className="mt-8 inline-block rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white hover:opacity-90"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- footer ----------
+function Footer() {
+  const quick = ["About", "Services", "Portfolios", "Blog", "Contact"];
+  const svc = ["Branding", "Web Design", "UI UX", "Social Media", "AI Solutions"];
+  return (
+    <footer className="bg-neutral-100">
+      <div className="mx-auto max-w-7xl px-8 pt-16 pb-10">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div>
+            <Logo />
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-neutral-600">
+              Leading AI-Powered Creative Agency from Pakistan serving clients
+              worldwide.
+            </p>
+            <div className="mt-6 flex gap-3">
+              {[Facebook, Twitter, Instagram, Linkedin].map((I, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 text-black hover:bg-white"
+                >
+                  <I className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="text-lg font-bold text-black">Quick Links</div>
+            <ul className="mt-5 space-y-3 text-sm text-neutral-700">
+              {quick.map((q) => (
+                <li key={q}>{q}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-lg font-bold text-black">Services</div>
+            <ul className="mt-5 space-y-3 text-sm text-neutral-700">
+              {svc.map((q) => (
+                <li key={q}>{q}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-lg font-bold text-black">Contact</div>
+            <ul className="mt-5 space-y-3 text-sm text-neutral-700">
+              <li>sales@pixel2tech.com</li>
+              <li>Pakistan Based, Serving Worldwide</li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-12 border-t border-neutral-300 pt-6 text-center text-xs text-neutral-600">
+          © {new Date().getFullYear()} Pixel2Tech. All rights reserved.
+        </div>
+      </div>
+      <div className="overflow-hidden whitespace-nowrap bg-neutral-100 pb-6">
+        <div className="text-[92px] font-black leading-none tracking-tighter text-neutral-200">
+          <span className="text-[color:var(--p2t-blue)]">✳</span> Website Design
+          &amp; Development <span className="text-[color:var(--p2t-blue)]">✳</span>{" "}
+          Branding &amp; Identity
         </div>
       </div>
     </footer>
@@ -573,17 +722,20 @@ function Footer() {
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div
+      className="min-h-screen bg-white text-black"
+      style={{ ["--p2t-blue" as string]: BLUE }}
+    >
       <Nav />
       <Hero />
+      <Brands />
       <PartnerBand />
       <Services />
       <Work />
-      <Process />
       <Testimonials />
-      <ExpertsBand />
+      <Team />
       <Insights />
-      <ContactForm />
+      <Contact />
       <Footer />
     </div>
   );
