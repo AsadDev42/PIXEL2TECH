@@ -63,8 +63,8 @@ function BlogPage() {
       <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
-            <a key={p.title} href="#" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 sm:p-4">
-              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300">
+            <a key={p.title} href="#" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
+              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
