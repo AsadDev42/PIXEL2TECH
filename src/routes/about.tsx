@@ -175,12 +175,12 @@ function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <section aria-labelledby="about-team-title" className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
         <FadeIn>
           <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
             Our Creative Team
           </div>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+          <h2 id="about-team-title" className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Creative Thinking. Technical Excellence.
           </h2>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">

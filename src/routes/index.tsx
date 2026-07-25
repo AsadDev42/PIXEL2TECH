@@ -534,7 +534,7 @@ const team = [
 
 function Team() {
   return (
-    <section className="bg-muted py-16 sm:py-24">
+    <section aria-labelledby="team-section-title" className="bg-muted py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -542,7 +542,7 @@ function Team() {
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 OUR CREATIVE TEAM
               </div>
-              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+              <h2 id="team-section-title" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
                 Meet the people behind the work
               </h2>
               <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
