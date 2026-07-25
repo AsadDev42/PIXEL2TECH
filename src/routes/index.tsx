@@ -10,6 +10,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
+import officeStudio from "@/assets/office-studio.jpg";
 
 const homeContactSchema = z.object({
   firstName: z.string().trim().min(1, "Required").max(80),
