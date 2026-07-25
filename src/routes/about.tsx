@@ -22,7 +22,9 @@ export const Route = createFileRoute("/about")({
 });
 
 const team = [
+  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
   { name: "Noman Ahmed", role: "Video Editor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&fm=webp&q=70" },
