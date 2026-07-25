@@ -81,7 +81,7 @@ function VideoCard({ item }: { item: Item }) {
           playsInline
           loop
           muted
-          preload="metadata"
+          preload="none"
           aria-label={`Testimonial from ${item.name}`}
           onPause={() => setPlaying(false)}
           onPlay={() => setPlaying(true)}
