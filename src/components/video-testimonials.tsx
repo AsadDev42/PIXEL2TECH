@@ -94,8 +94,8 @@ function VideoCard({ item }: { item: Item }) {
           aria-label={playing ? `Pause ${item.name}'s testimonial` : `Play ${item.name}'s testimonial`}
           className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/50 via-transparent to-transparent transition hover:bg-black/20"
         >
-          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-black shadow-xl backdrop-blur sm:h-16 sm:w-16">
-            {playing ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="ml-1 h-5 w-5 sm:h-6 sm:w-6" />}
+          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-xl backdrop-blur sm:h-16 sm:w-16" style={{ color: "#000" }}>
+            {playing ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="ml-1 h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" />}
           </span>
         </button>
       </div>
