@@ -303,10 +303,7 @@ export function PageHeader({
           <h1 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl lg:text-[52px]">
             {title}{" "}
             {highlight && (
-              <span className="relative text-[#1E90FF]">
-                {highlight}
-                <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-              </span>
+              <span className="text-[#1E90FF]">{highlight}</span>
             )}
           </h1>
           {subtitle && (
