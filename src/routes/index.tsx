@@ -3,8 +3,146 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
-import { Plus, TrendingUp, Star } from "lucide-react";
+import { Plus, TrendingUp, Star, Mail, Phone, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
+import { z } from "zod";
+import { submitContactForm } from "@/lib/contact.functions";
+
+const homeContactSchema = z.object({
+  firstName: z.string().trim().min(1, "Required").max(80),
+  lastName: z.string().trim().min(1, "Required").max(80),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  phone: z.string().trim().regex(/^[0-9+\-\s().#*]{6,25}$/, "Only numbers and phone characters (#, -, *, etc) are accepted."),
+  message: z.string().trim().min(1, "Required").max(5000),
+});
+type HomeFormState = z.infer<typeof homeContactSchema>;
+const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
+
+function HomeContact() {
+  const submit = useServerFn(submitContactForm);
+  const [form, setForm] = useState<HomeFormState>(homeInitial);
+  const [errors, setErrors] = useState<Partial<Record<keyof HomeFormState, string>>>({});
+  const [loading, setLoading] = useState(false);
+
+  const set = (k: keyof HomeFormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+    if (errors[k]) setErrors((p) => ({ ...p, [k]: undefined }));
+  };
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const parsed = homeContactSchema.safeParse(form);
+    if (!parsed.success) {
+      const next: Partial<Record<keyof HomeFormState, string>> = {};
+      for (const issue of parsed.error.issues) {
+        const k = issue.path[0] as keyof HomeFormState;
+        if (!next[k]) next[k] = issue.message;
+      }
+      setErrors(next);
+      return;
+    }
+    setLoading(true);
+    try {
+      const d = parsed.data;
+      await submit({
+        data: {
+          name: `${d.firstName} ${d.lastName}`.trim(),
+          email: d.email,
+          subject: `New inquiry from ${d.firstName} ${d.lastName} (${d.phone})`,
+          message: d.message,
+        },
+      });
+      toast.success("Message sent!", { description: "Thanks — we'll get back to you within one business day." });
+      setForm(homeInitial);
+      setErrors({});
+    } catch (err) {
+      toast.error("Couldn't send message", {
+        description: err instanceof Error ? err.message : "Please try again in a moment.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const inputCls =
+    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-neutral-500 outline-none transition-colors focus:border-foreground";
+
+  return (
+    <>
+      <section aria-labelledby="home-contact-title" className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+        <FadeIn>
+          <div className="rounded-2xl bg-neutral-100 p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
+            <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+              Ready to <span className="text-[#2b7fff] underline decoration-wavy decoration-2 underline-offset-8">Grow Your Brand?</span>
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+              Tell us about your project and goals. Let's build something great together.
+            </p>
+
+            <form onSubmit={onSubmit} noValidate className="mt-8 grid gap-x-8 gap-y-5 sm:mt-10 sm:grid-cols-2">
+              <div>
+                <label htmlFor="firstName" className="sr-only">First Name</label>
+                <input id="firstName" name="firstName" autoComplete="given-name" placeholder="First Name" value={form.firstName} onChange={set("firstName")} aria-invalid={!!errors.firstName} className={inputCls} />
+                {errors.firstName && <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>}
+              </div>
+              <div>
+                <label htmlFor="lastName" className="sr-only">Last Name</label>
+                <input id="lastName" name="lastName" autoComplete="family-name" placeholder="Last Name" value={form.lastName} onChange={set("lastName")} aria-invalid={!!errors.lastName} className={inputCls} />
+                {errors.lastName && <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>}
+              </div>
+              <div>
+                <label htmlFor="email" className="sr-only">Email</label>
+                <input id="email" name="email" type="email" autoComplete="email" placeholder="Email" value={form.email} onChange={set("email")} aria-invalid={!!errors.email} className={inputCls} />
+                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+              </div>
+              <div>
+                <label htmlFor="phone" className="sr-only">Phone</label>
+                <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="Phone" value={form.phone} onChange={set("phone")} aria-invalid={!!errors.phone} className={inputCls} />
+                {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="message" className="sr-only">Message</label>
+                <textarea id="message" name="message" rows={3} placeholder="Message" value={form.message} onChange={set("message")} aria-invalid={!!errors.message} className={inputCls} />
+                {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
+              </div>
+              <div className="sm:col-span-2">
+                <button type="submit" disabled={loading} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
+                  {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  {loading ? "Sending…" : "Get in Touch"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </FadeIn>
+      </section>
+
+      <section aria-labelledby="home-cta-title" className="mx-auto max-w-7xl px-5 pb-20 text-center sm:px-8 sm:pb-28">
+        <FadeIn>
+          <h2 id="home-cta-title" className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            Ready to Get Started?
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            Contact us today and let's discuss how we can help grow your brand.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-foreground sm:text-base">
+            <a href="mailto:sales@pixel2tech.com" className="inline-flex items-center gap-2 hover:underline">
+              <Mail className="h-4 w-4" aria-hidden="true" /> sales@pixel2tech.com
+            </a>
+            <a href="tel:+923177475233" className="inline-flex items-center gap-2 hover:underline">
+              <Phone className="h-4 w-4" aria-hidden="true" /> +92 317 7475233
+            </a>
+          </div>
+          <Link to="/contact" className="mt-8 inline-flex min-h-11 items-center rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90">
+            Contact Us
+          </Link>
+        </FadeIn>
+      </section>
+    </>
+  );
+}
 
 
 
@@ -466,6 +604,8 @@ function HomePage() {
       <VideoTestimonials />
       <Team />
       <Insights />
+      <HomeContact />
     </PageShell>
+
   );
 }
