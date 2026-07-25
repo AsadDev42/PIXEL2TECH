@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
+import { BookingModal } from "@/components/booking-modal";
 import {
   Facebook,
   Twitter,
@@ -25,6 +26,7 @@ const NAV = [
 export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   // Close menu on route change
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -37,6 +39,7 @@ export function SiteNav() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
@@ -63,12 +66,13 @@ export function SiteNav() {
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
-          <Link
-            to="/book"
+          <button
+            type="button"
+            onClick={() => setBookingOpen(true)}
             className="hidden shrink-0 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex sm:px-6"
           >
-            Book a Call
-          </Link>
+            Schedule a Strategy Session
+          </button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -103,16 +107,19 @@ export function SiteNav() {
                 </Link>
               );
             })}
-            <Link
-              to="/book"
+            <button
+              type="button"
+              onClick={() => { setOpen(false); setBookingOpen(true); }}
               className="mt-4 inline-flex items-center justify-center rounded-full bg-foreground px-6 py-4 text-base font-semibold text-background"
             >
-              Book a Call
-            </Link>
+              Schedule a Strategy Session
+            </button>
           </nav>
         </div>
       )}
     </header>
+    <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+    </>
   );
 }
 
