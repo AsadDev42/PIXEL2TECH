@@ -277,7 +277,7 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-background py-12 sm:py-16">
+    <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Brands That Trust Pixel2Tech
