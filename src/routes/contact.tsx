@@ -331,17 +331,17 @@ function ContactPage() {
       <section className="bg-background pb-24 pt-8 sm:pb-32">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <FadeIn>
-            <div className="rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
-              <h2 className="text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+            <div className="mx-auto rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
+              <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
                 Ready to elevate your <span className="text-[#1E90FF]">brand</span> today?
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-background/70 sm:text-base">
+              <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-background/70 sm:text-base">
                 Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
               </p>
-              <div className="mt-8 flex justify-center">
+              <div className="mt-9 flex justify-center">
                 <Link
                   to="/services"
-                  className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1E90FF] px-6 text-sm font-semibold text-white transition hover:opacity-90"
+                  className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1E90FF] px-7 text-sm font-semibold text-white transition hover:opacity-90"
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
