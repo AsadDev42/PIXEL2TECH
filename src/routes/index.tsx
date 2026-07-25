@@ -235,27 +235,31 @@ function Services() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-8">
-        <div className="text-center">
-          <h2 className="text-[44px] font-bold tracking-tight text-black">
-            Everything You Need to{" "}
-            <span className="relative text-[#1E90FF]">
-              Build &amp; Grow
-              <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
-            </span>
-          </h2>
-          <p className="mt-3 text-[15px] text-neutral-600">
-            One team. All your creative and digital needs.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <FadeIn>
+          <div className="text-center">
+            <h2 className="text-[44px] font-bold tracking-tight text-black">
+              Everything You Need to{" "}
+              <span className="relative text-[#1E90FF]">
+                Build &amp; Grow
+                <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-[#1E90FF]/30" />
+              </span>
+            </h2>
+            <p className="mt-3 text-[15px] text-neutral-600">
+              One team. All your creative and digital needs.
+            </p>
+          </div>
+        </FadeIn>
+        <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-md">
-              <div className="text-5xl">{s.emoji}</div>
-              <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
-            </div>
+            <StaggerItem key={s.title}>
+              <div className="h-full rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="text-5xl">{s.emoji}</div>
+                <h3 className="mt-6 text-lg font-bold text-black">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
       </div>
     </section>
