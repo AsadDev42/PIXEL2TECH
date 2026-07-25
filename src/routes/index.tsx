@@ -4,7 +4,7 @@ import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { SOCIAL_LINKS } from "@/components/social-links";
-import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot } from "lucide-react";
+import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
