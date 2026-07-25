@@ -121,27 +121,60 @@ function HomeContact() {
         </FadeIn>
       </section>
 
-      <section aria-labelledby="home-cta-title" className="mx-auto max-w-7xl px-5 pb-20 text-center sm:px-8 sm:pb-28">
+      <section aria-labelledby="home-cta-title" className="mx-auto max-w-7xl px-5 pb-20 sm:px-8 sm:pb-28">
         <FadeIn>
-          <h2 id="home-cta-title" className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Ready to Get Started?
-          </h2>
-          <p className="mt-4 text-base text-muted-foreground">
-            Contact us today and let's discuss how we can help grow your brand.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-foreground sm:text-base">
-            <a href="mailto:sales@pixel2tech.com" className="inline-flex items-center gap-2 hover:underline">
-              <Mail className="h-4 w-4" aria-hidden="true" /> sales@pixel2tech.com
-            </a>
-            <a href="tel:+923177475233" className="inline-flex items-center gap-2 hover:underline">
-              <Phone className="h-4 w-4" aria-hidden="true" /> +92 317 7475233
-            </a>
+          <div className="relative overflow-hidden rounded-3xl bg-[#0a0d1f] p-8 text-white shadow-[0_30px_80px_-30px_rgba(59,130,246,0.45)] sm:p-12 lg:p-14">
+            <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-20 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:44px_44px]" />
+
+            <div className="relative grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
+              <div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/80 backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Let's Talk
+                </span>
+                <h2 id="home-cta-title" className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+                  Ready to Get <span className="text-primary">Started?</span>
+                </h2>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
+                  Contact us today and let's discuss how we can help grow your brand.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 lg:items-end">
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
+                  <a
+                    href="mailto:sales@pixel2tech.com"
+                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                  >
+                    <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
+                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    sales@pixel2tech.com
+                  </a>
+                  <a
+                    href="tel:+923177475233"
+                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                  >
+                    <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
+                      <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    +92 317 7475233
+                  </a>
+                </div>
+                <Link
+                  to="/contact"
+                  className="group inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/20 transition hover:bg-primary hover:text-white sm:self-auto lg:self-end"
+                >
+                  Contact Us
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
           </div>
-          <Link to="/contact" className="mt-8 inline-flex min-h-11 items-center rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90">
-            Contact Us
-          </Link>
         </FadeIn>
       </section>
+
     </>
   );
 }
