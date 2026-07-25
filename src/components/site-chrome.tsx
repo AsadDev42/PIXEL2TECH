@@ -55,7 +55,7 @@ export function SiteNav() {
               >
                 <span className={active ? "font-semibold" : ""}>{n.label}</span>
                 {active && (
-                  <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[2px] w-full bg-black" />
+                  <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[2px] w-full bg-foreground" />
                 )}
               </Link>
             );

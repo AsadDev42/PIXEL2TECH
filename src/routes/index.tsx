@@ -351,7 +351,7 @@ function PartnerBand() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -top-2 left-0 z-10 flex items-center gap-3 rounded-2xl bg-background px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-black">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foreground">
               <TrendingUp className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" />
             </div>
             <div className="min-w-0 text-left">
