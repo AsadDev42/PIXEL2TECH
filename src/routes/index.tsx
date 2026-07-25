@@ -282,9 +282,17 @@ const work = [
   { title: "UI UX designing", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop" },
   { title: "Logo and branding", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop" },
   { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop" },
+  { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop" },
+  { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop" },
+  { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop" },
+  { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop" },
+  { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1571677419770-cd8c0f0c50c8?w=900&auto=format&fit=crop" },
+  { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop" },
+  { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop" },
 ];
 
 function Work() {
+  const loop = [...work, ...work];
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -300,23 +308,32 @@ function Work() {
             One team. All your creative and digital needs.
           </p>
         </FadeIn>
-        <Stagger className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {work.map((w) => (
-            <StaggerItem key={w.title}>
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-3xl">
-                <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
-                <div className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
-                  {w.title}
-                </div>
+      </div>
+      <div className="edge-fade-x mt-8 overflow-hidden sm:mt-10" aria-label="Our services">
+        <div className="marquee-rtl flex w-max gap-4 sm:gap-5" style={{ animationDuration: "60s" }}>
+          {loop.map((w, i) => (
+            <div
+              key={`${w.title}-${i}`}
+              className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
+            >
+              <img
+                src={w.img}
+                alt={i < work.length ? w.title : ""}
+                aria-hidden={i >= work.length ? "true" : undefined}
+                loading="lazy"
+                className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
+                {w.title}
               </div>
-            </StaggerItem>
+            </div>
           ))}
-        </Stagger>
-
+        </div>
       </div>
     </section>
   );
 }
+
 
 
 const team = [
