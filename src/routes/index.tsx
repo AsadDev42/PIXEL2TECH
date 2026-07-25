@@ -534,7 +534,7 @@ const team = [
 
 function Team() {
   return (
-    <section className="bg-muted py-16 sm:py-24">
+    <section aria-labelledby="team-section-title" className="bg-muted py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <FadeIn>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -542,7 +542,7 @@ function Team() {
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 OUR CREATIVE TEAM
               </div>
-              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+              <h2 id="team-section-title" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
                 Meet the people behind the work
               </h2>
               <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
@@ -562,19 +562,23 @@ function Team() {
         <Stagger className="mt-10 grid gap-6 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {team.map((m) => (
             <StaggerItem key={m.name}>
-              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]">
+              <article
+                aria-labelledby={`team-${m.name.replace(/\s+/g, "-")}-name`}
+                aria-describedby={`team-${m.name.replace(/\s+/g, "-")}-role`}
+                className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
+              >
                 <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                   <img
                     loading="lazy"
                     decoding="async"
                     src={m.img}
-                    alt={`${m.name} — ${m.role}`}
+                    alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
                     className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
                 </div>
                 <div className="p-5 sm:p-6">
-                  <div className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</div>
-                  <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</div>
+                  <h3 id={`team-${m.name.replace(/\s+/g, "-")}-name`} className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</h3>
+                  <p id={`team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</p>
                 </div>
               </article>
             </StaggerItem>
