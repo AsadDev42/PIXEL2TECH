@@ -30,25 +30,46 @@ function ContactPage() {
       <section className="mx-auto max-w-7xl px-8 pb-24">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr]">
           <div className="rounded-3xl bg-neutral-100 p-10 md:p-14">
-            <form onSubmit={(e) => e.preventDefault()} className="grid gap-6 md:grid-cols-2">
-              {[
-                ["First Name", "text"],
-                ["Last Name", "text"],
-                ["Email", "email"],
-                ["Phone", "tel"],
-              ].map(([label, type]) => (
-                <input
-                  key={label}
-                  type={type}
-                  placeholder={label}
-                  className="border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-500 outline-none focus:border-black"
-                />
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              aria-labelledby="contact-form-title"
+              className="grid gap-6 md:grid-cols-2"
+            >
+              <h2 id="contact-form-title" className="sr-only">Contact form</h2>
+              {([
+                { id: "firstName", label: "First Name", type: "text", autoComplete: "given-name", required: true },
+                { id: "lastName", label: "Last Name", type: "text", autoComplete: "family-name", required: true },
+                { id: "email", label: "Email", type: "email", autoComplete: "email", required: true },
+                { id: "phone", label: "Phone", type: "tel", autoComplete: "tel", required: false },
+              ] as const).map((f) => (
+                <div key={f.id} className="flex flex-col">
+                  <label htmlFor={f.id} className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-700">
+                    {f.label}{f.required && <span aria-hidden="true"> *</span>}
+                  </label>
+                  <input
+                    id={f.id}
+                    name={f.id}
+                    type={f.type}
+                    autoComplete={f.autoComplete}
+                    required={f.required}
+                    aria-required={f.required}
+                    className="border-0 border-b border-neutral-500 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-600 outline-none focus:border-black"
+                  />
+                </div>
               ))}
-              <textarea
-                rows={4}
-                placeholder="Message"
-                className="md:col-span-2 border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-500 outline-none focus:border-black"
-              />
+              <div className="md:col-span-2 flex flex-col">
+                <label htmlFor="message" className="mb-1 text-xs font-semibold uppercase tracking-wide text-neutral-700">
+                  Message <span aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  aria-required="true"
+                  className="border-0 border-b border-neutral-500 bg-transparent px-1 py-3 text-sm text-black placeholder:text-neutral-600 outline-none focus:border-black"
+                />
+              </div>
               <button
                 type="submit"
                 className="mt-4 w-fit rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white hover:opacity-90"
@@ -58,40 +79,41 @@ function ContactPage() {
             </form>
           </div>
 
-          <div className="flex flex-col justify-between rounded-3xl bg-black p-10 text-white md:p-12">
+          <aside aria-labelledby="direct-contact-title" className="flex flex-col justify-between rounded-3xl bg-black p-10 text-white md:p-12">
             <div>
-              <h3 className="text-2xl font-bold">Talk to us directly</h3>
-              <p className="mt-3 text-sm text-white/70">
+              <h2 id="direct-contact-title" className="text-2xl font-bold">Talk to us directly</h2>
+              <p className="mt-3 text-sm text-white/80">
                 Prefer to skip the form? Reach out on the channels below and a
                 team member will get back within one business day.
               </p>
-              <div className="mt-8 space-y-4 text-sm">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
+              <ul className="mt-8 space-y-4 text-sm">
+                <li className="flex items-center gap-3">
+                  <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
                     <Mail className="h-4 w-4" />
                   </span>
-                  sales@pixel2tech.com
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
+                  <a href="mailto:sales@pixel2tech.com" className="hover:underline">sales@pixel2tech.com</a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
                     <Phone className="h-4 w-4" />
                   </span>
-                  +92 317 7475233
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
+                  <a href="tel:+923177475233" className="hover:underline">+92 317 7475233</a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
                     <MapPin className="h-4 w-4" />
                   </span>
                   Pakistan Based, Serving Worldwide
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
-            <div className="mt-10 rounded-2xl bg-white/5 p-5 text-sm text-white/80">
-              Response time <span className="font-bold text-white">under 24h</span> · Mon – Sat
-            </div>
-          </div>
+            <p className="mt-10 rounded-2xl bg-white/10 p-5 text-sm text-white">
+              Response time <span className="font-bold">under 24h</span> · Mon – Sat
+            </p>
+          </aside>
         </div>
       </section>
     </PageShell>
   );
 }
+

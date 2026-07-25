@@ -153,27 +153,33 @@ function Brands() {
         </p>
       </div>
       <div className="marquee-viewport edge-fade-x mt-10 overflow-hidden">
-        <div className="marquee-track slow items-center gap-16 pr-16">
-          {loop.map((b, i) => (
-            <img
-              key={`${b.slug}-${i}`}
-              src={`https://cdn.simpleicons.org/${b.slug}/000000`}
-              alt={b.name}
-              title={b.name}
-              loading="lazy"
-              onError={(e) => {
-                const el = e.currentTarget as HTMLImageElement;
-                if (!el.dataset.fallback) {
-                  el.dataset.fallback = "1";
-                  el.src = `https://logo.clearbit.com/${b.slug}.com`;
-                } else {
-                  el.style.display = "none";
-                }
-              }}
-              className="h-9 w-auto shrink-0 object-contain opacity-60 transition hover:opacity-100 sm:h-10"
-            />
-          ))}
+        <div className="marquee-track slow items-center gap-16 pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
+          {loop.map((b, i) => {
+            const isDup = i >= brands.length;
+            return (
+              <img
+                key={`${b.slug}-${i}`}
+                src={`https://cdn.simpleicons.org/${b.slug}/000000`}
+                alt={isDup ? "" : `${b.name} logo`}
+                aria-hidden={isDup || undefined}
+                role={isDup ? "presentation" : "listitem"}
+                title={b.name}
+                loading="lazy"
+                onError={(e) => {
+                  const el = e.currentTarget as HTMLImageElement;
+                  if (!el.dataset.fallback) {
+                    el.dataset.fallback = "1";
+                    el.src = `https://logo.clearbit.com/${b.slug}.com`;
+                  } else {
+                    el.style.display = "none";
+                  }
+                }}
+                className="h-9 w-auto shrink-0 object-contain opacity-70 transition hover:opacity-100 sm:h-10"
+              />
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
