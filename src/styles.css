@@ -265,6 +265,10 @@
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
           mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
+.edge-fade-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
 
 @keyframes hero-col-up {
   0%   { transform: translateY(0); }

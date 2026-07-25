@@ -174,24 +174,18 @@ export const Route = createFileRoute("/")({
 const heroCols: string[][] = [
   [
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
@@ -224,33 +218,30 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 sm:gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
-          {heroCols.map((col, ci) => {
-            const loop = [...col, ...col];
-            const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
-            return (
-              <div
-                key={ci}
-                className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]"
-              >
-                <div className={`flex flex-col gap-2 sm:gap-3 ${dir}`}>
-                  {loop.map((src, i) => (
-                    <div
-                      key={i}
-                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
-                    >
-                      <img decoding="async"
-                        src={src}
-                        alt=""
-                        loading="lazy"
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          {heroCols.map((col, ci) => (
+            <div key={ci} className="h-[328px] sm:h-[412px]">
+              <LoopSlider
+                axis="y"
+                direction={ci % 2 === 0 ? "up" : "down"}
+                speed={30}
+                gapClassName="gap-2 sm:gap-3"
+                items={col}
+                keyFor={(_src, i) => `${ci}-${i}`}
+                renderItem={(src) => (
+                  <div className="h-[160px] w-full overflow-hidden rounded-xl bg-muted sm:h-[200px] sm:rounded-2xl">
+                    <img
+                      decoding="async"
+                      src={src}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

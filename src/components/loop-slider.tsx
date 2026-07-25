@@ -1,11 +1,17 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
+type Axis = "x" | "y";
+type DirX = "rtl" | "ltr";
+type DirY = "up" | "down";
+
 type Props<T> = {
   items: T[];
   renderItem: (item: T, index: number) => ReactNode;
   keyFor: (item: T, index: number) => string;
-  /** Auto-scroll direction. Default "rtl" (right→left). */
-  direction?: "rtl" | "ltr";
+  /** Scroll axis. Default "x". */
+  axis?: Axis;
+  /** Auto-scroll direction. Default "rtl" for x, "down" for y. */
+  direction?: DirX | DirY;
   /** Pixels per second. */
   speed?: number;
   /** Gap between items (Tailwind classes). */
@@ -17,16 +23,18 @@ type Props<T> = {
 };
 
 /**
- * LoopLoop Slider — draggable, momentum-preserving, seamlessly looping horizontal slider.
- * Users can grab and fling the track; when idle it drifts at a constant speed in the
- * configured direction and wraps forever. Original list is duplicated internally for
- * seamless wrap-around; only the first copy is announced to assistive tech.
+ * LoopLoop Slider — draggable, momentum-preserving, seamlessly looping slider.
+ * Supports horizontal (x) and vertical (y) axes. Users can grab and fling the track;
+ * when idle it drifts at a constant speed and wraps forever. The original list is
+ * duplicated internally for seamless wrap-around; only the first copy is announced
+ * to assistive tech.
  */
 export function LoopSlider<T>({
   items,
   renderItem,
   keyFor,
-  direction = "rtl",
+  axis = "x",
+  direction,
   speed = 40,
   gapClassName = "gap-4 sm:gap-6",
   className = "",
@@ -35,30 +43,34 @@ export function LoopSlider<T>({
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef({
-    x: 0,
-    halfWidth: 0,
+    pos: 0,
+    half: 0,
     dragging: false,
-    startX: 0,
-    startPosX: 0,
-    lastMoveX: 0,
+    start: 0,
+    startPos: 0,
+    lastMove: 0,
     lastMoveT: 0,
     velocity: 0,
     pointerId: null as number | null,
     moved: 0,
   });
 
+  const resolvedDir: DirX | DirY = direction ?? (axis === "x" ? "rtl" : "down");
+  const isX = axis === "x";
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     const measure = () => {
-      stateRef.current.halfWidth = track.scrollWidth / 2;
+      stateRef.current.half = isX ? track.scrollWidth / 2 : track.scrollHeight / 2;
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(track);
 
-    const dir = direction === "ltr" ? 1 : -1;
+    const dir =
+      resolvedDir === "ltr" || resolvedDir === "down" ? 1 : -1;
     let last = performance.now();
     let raf = 0;
 
@@ -67,17 +79,19 @@ export function LoopSlider<T>({
       last = now;
       const s = stateRef.current;
       if (!s.dragging) {
-        s.x += dir * speed * dt;
+        s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
-          s.x += s.velocity * dt;
+          s.pos += s.velocity * dt;
           s.velocity *= Math.pow(0.001, dt);
         }
       }
-      if (s.halfWidth > 0) {
-        while (s.x <= -s.halfWidth) s.x += s.halfWidth;
-        while (s.x > 0) s.x -= s.halfWidth;
+      if (s.half > 0) {
+        while (s.pos <= -s.half) s.pos += s.half;
+        while (s.pos > 0) s.pos -= s.half;
       }
-      track.style.transform = `translate3d(${s.x}px, 0, 0)`;
+      track.style.transform = isX
+        ? `translate3d(${s.pos}px, 0, 0)`
+        : `translate3d(0, ${s.pos}px, 0)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -85,9 +99,9 @@ export function LoopSlider<T>({
     const onDown = (e: PointerEvent) => {
       const s = stateRef.current;
       s.dragging = true;
-      s.startX = e.clientX;
-      s.startPosX = s.x;
-      s.lastMoveX = e.clientX;
+      s.start = isX ? e.clientX : e.clientY;
+      s.startPos = s.pos;
+      s.lastMove = s.start;
       s.lastMoveT = performance.now();
       s.velocity = 0;
       s.moved = 0;
@@ -98,13 +112,14 @@ export function LoopSlider<T>({
     const onMove = (e: PointerEvent) => {
       const s = stateRef.current;
       if (!s.dragging) return;
-      const dx = e.clientX - s.startX;
-      s.moved = Math.max(s.moved, Math.abs(dx));
-      s.x = s.startPosX + dx;
+      const client = isX ? e.clientX : e.clientY;
+      const d = client - s.start;
+      s.moved = Math.max(s.moved, Math.abs(d));
+      s.pos = s.startPos + d;
       const now = performance.now();
       const dt = (now - s.lastMoveT) / 1000;
-      if (dt > 0) s.velocity = (e.clientX - s.lastMoveX) / dt;
-      s.lastMoveX = e.clientX;
+      if (dt > 0) s.velocity = (client - s.lastMove) / dt;
+      s.lastMove = client;
       s.lastMoveT = now;
     };
     const onUp = () => {
@@ -141,13 +156,18 @@ export function LoopSlider<T>({
       track.removeEventListener("pointercancel", onUp);
       track.removeEventListener("click", onClickCapture, true);
     };
-  }, [direction, speed]);
+  }, [isX, resolvedDir, speed]);
+
+  const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
+  const trackClass = isX
+    ? `flex w-max touch-pan-y select-none ${gapClassName}`
+    : `flex flex-col h-max touch-pan-x select-none ${gapClassName}`;
 
   return (
-    <div className={`edge-fade-x overflow-hidden ${className}`} aria-label={ariaLabel}>
+    <div className={`${fadeClass} overflow-hidden ${className}`} aria-label={ariaLabel}>
       <div
         ref={trackRef}
-        className={`flex w-max touch-pan-y select-none ${gapClassName}`}
+        className={trackClass}
         style={{ willChange: "transform" }}
       >
         {loop.map((item, i) => (
