@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Play, Pause, Quote } from "lucide-react";
+import { LoopSlider } from "@/components/loop-slider";
 
 type Item = {
   name: string;
@@ -85,7 +86,7 @@ function VideoCard({ item }: { item: Item }) {
           aria-label={`Testimonial from ${item.name}`}
           onPause={() => setPlaying(false)}
           onPlay={() => setPlaying(true)}
-          className="h-full w-full object-cover"
+          className="pointer-events-none h-full w-full object-cover"
         />
         <button
           onClick={toggle}
@@ -102,10 +103,12 @@ function VideoCard({ item }: { item: Item }) {
         <Quote className="h-5 w-5 text-neutral-300 sm:h-6 sm:w-6" aria-hidden="true" />
         <p className="mt-2 text-sm leading-relaxed text-neutral-700">{item.quote}</p>
         <div className="mt-5 flex items-center gap-3 sm:mt-6">
-          <img decoding="async"
+          <img
+            decoding="async"
             src={item.poster}
             alt=""
             loading="lazy"
+            draggable={false}
             className="h-10 w-10 shrink-0 rounded-full object-cover"
           />
           <div className="min-w-0">
@@ -114,123 +117,11 @@ function VideoCard({ item }: { item: Item }) {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
 
 export function VideoTestimonials() {
-  const loop = [...items, ...items];
-  const trackRef = useRef<HTMLDivElement>(null);
-  const stateRef = useRef({
-    x: 0,
-    halfWidth: 0,
-    dragging: false,
-    startX: 0,
-    startPosX: 0,
-    lastMoveX: 0,
-    lastMoveT: 0,
-    velocity: 0,
-    pointerId: null as number | null,
-    moved: 0,
-  });
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const measure = () => {
-      stateRef.current.halfWidth = track.scrollWidth / 2;
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(track);
-
-    const SPEED = 40;
-    let last = performance.now();
-    let raf = 0;
-
-    const tick = (now: number) => {
-      const dt = Math.min(0.05, (now - last) / 1000);
-      last = now;
-      const s = stateRef.current;
-      if (!s.dragging) {
-        s.x -= SPEED * dt;
-        if (Math.abs(s.velocity) > 1) {
-          s.x += s.velocity * dt;
-          s.velocity *= Math.pow(0.001, dt);
-        }
-      }
-      if (s.halfWidth > 0) {
-        while (s.x <= -s.halfWidth) s.x += s.halfWidth;
-        while (s.x > 0) s.x -= s.halfWidth;
-      }
-      track.style.transform = `translate3d(${s.x}px, 0, 0)`;
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    const onDown = (e: PointerEvent) => {
-      const s = stateRef.current;
-      s.dragging = true;
-      s.startX = e.clientX;
-      s.startPosX = s.x;
-      s.lastMoveX = e.clientX;
-      s.lastMoveT = performance.now();
-      s.velocity = 0;
-      s.moved = 0;
-      s.pointerId = e.pointerId;
-      try { track.setPointerCapture(e.pointerId); } catch {}
-      track.style.cursor = "grabbing";
-    };
-    const onMove = (e: PointerEvent) => {
-      const s = stateRef.current;
-      if (!s.dragging) return;
-      const dx = e.clientX - s.startX;
-      s.moved = Math.max(s.moved, Math.abs(dx));
-      s.x = s.startPosX + dx;
-      const now = performance.now();
-      const dt = (now - s.lastMoveT) / 1000;
-      if (dt > 0) s.velocity = (e.clientX - s.lastMoveX) / dt;
-      s.lastMoveX = e.clientX;
-      s.lastMoveT = now;
-    };
-    const onUp = () => {
-      const s = stateRef.current;
-      if (!s.dragging) return;
-      s.dragging = false;
-      if (s.pointerId !== null) {
-        try { track.releasePointerCapture(s.pointerId); } catch {}
-      }
-      s.pointerId = null;
-      track.style.cursor = "grab";
-    };
-    const onClickCapture = (e: MouseEvent) => {
-      if (stateRef.current.moved > 5) {
-        e.preventDefault();
-        e.stopPropagation();
-        stateRef.current.moved = 0;
-      }
-    };
-
-    track.addEventListener("pointerdown", onDown);
-    track.addEventListener("pointermove", onMove);
-    track.addEventListener("pointerup", onUp);
-    track.addEventListener("pointercancel", onUp);
-    track.addEventListener("click", onClickCapture, true);
-    track.style.cursor = "grab";
-
-    return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      track.removeEventListener("pointerdown", onDown);
-      track.removeEventListener("pointermove", onMove);
-      track.removeEventListener("pointerup", onUp);
-      track.removeEventListener("pointercancel", onUp);
-      track.removeEventListener("click", onClickCapture, true);
-    };
-  }, []);
-
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -244,7 +135,7 @@ export function VideoTestimonials() {
             </h2>
             <p className="mt-2 max-w-xl text-[14px] text-neutral-600 sm:text-[15px]">
               Real founders, real results. Hear it directly from the teams
-              we've helped grow.
+              we've helped grow. Drag to explore.
             </p>
           </div>
           <a
@@ -256,18 +147,16 @@ export function VideoTestimonials() {
         </div>
       </div>
 
-      <div className="edge-fade-x mt-10 overflow-hidden sm:mt-12">
-        <div
-          ref={trackRef}
-          className="flex w-max touch-pan-y select-none gap-4 pr-4 sm:gap-6 sm:pr-6"
-          style={{ willChange: "transform" }}
-        >
-          {loop.map((t, i) => (
-            <VideoCard key={`${t.name}-${i}`} item={t} />
-          ))}
-        </div>
-      </div>
+      <LoopSlider
+        items={items}
+        keyFor={(t, i) => `${t.name}-${i}`}
+        direction="rtl"
+        speed={40}
+        gapClassName="gap-4 pr-4 sm:gap-6 sm:pr-6"
+        className="mt-10 sm:mt-12"
+        ariaLabel="Client testimonials"
+        renderItem={(t) => <VideoCard item={t} />}
+      />
     </section>
   );
 }
-
