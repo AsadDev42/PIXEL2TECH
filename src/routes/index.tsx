@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { Plus, TrendingUp, Star } from "lucide-react";
+import { motion } from "framer-motion";
+
 
 
 export const Route = createFileRoute("/")({
@@ -197,7 +199,12 @@ function PartnerBand() {
           <div className="mt-6 text-sm text-neutral-500 sm:mt-8">— Pixel2Tech Team</div>
         </div>
         <div className="relative mx-auto w-full max-w-[360px]">
-          <div className="absolute -top-2 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3">
+          <motion.div
+            initial={{ y: 0, rotate: -2 }}
+            animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-2 left-0 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+          >
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-black">
               <TrendingUp className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" />
             </div>
@@ -210,7 +217,7 @@ function PartnerBand() {
                 <span className="font-semibold text-black">4.9</span> (1520 Reviews)
               </div>
             </div>
-          </div>
+          </motion.div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full bg-[#1E90FF]">
             <img loading="lazy" decoding="async"
               src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop&fm=webp&q=70"
@@ -218,7 +225,24 @@ function PartnerBand() {
               className="h-full w-full object-cover mix-blend-luminosity"
             />
           </div>
+          <motion.div
+            initial={{ y: 0, rotate: 2 }}
+            animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            className="absolute -bottom-4 right-0 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+          >
+            <div className="min-w-0 text-left">
+              <div className="truncate text-xs font-bold text-black sm:text-sm">
+                100% Business Growth
+              </div>
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-neutral-500 sm:text-xs">
+                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                <span className="font-semibold text-black">4.9</span> (1520 Reviews)
+              </div>
+            </div>
+          </motion.div>
         </div>
+
       </div>
     </section>
   );
