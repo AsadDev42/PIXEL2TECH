@@ -42,7 +42,7 @@ function AboutPage() {
       />
 
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:gap-10 sm:px-8 sm:py-16 md:grid-cols-2 md:items-center">
-        <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-200 sm:rounded-3xl">
+        <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-200 dark:bg-muted sm:rounded-3xl">
           <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70" alt="Pixel2Tech team at work" className="h-full w-full object-cover" />
         </div>
         <div>

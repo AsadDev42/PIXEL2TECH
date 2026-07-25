@@ -112,7 +112,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
 export function PageLoader() {
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background">
       <motion.div
         className="flex items-center gap-3"
         initial={{ opacity: 0 }}
