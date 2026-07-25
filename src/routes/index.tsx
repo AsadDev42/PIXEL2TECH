@@ -220,7 +220,7 @@ function Hero() {
         </div>
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {heroCols.map((col, ci) => (
-            <div key={ci} className="h-[340px] sm:h-[420px]">
+            <div key={ci} className="h-[328px] sm:h-[412px]">
               <LoopSlider
                 axis="y"
                 direction={ci % 2 === 0 ? "up" : "down"}
