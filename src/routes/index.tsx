@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
-import { SOCIAL_LINKS } from "@/components/social-links";
+
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -575,20 +575,6 @@ function Team() {
                 <div className="p-5 sm:p-6">
                   <div className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</div>
                   <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</div>
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    {SOCIAL_LINKS.map(({ name, href, Icon }) => (
-                      <a
-                        key={name}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${m.name} on ${name}`}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 transition hover:text-foreground"
-                      >
-                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </article>
             </StaggerItem>
