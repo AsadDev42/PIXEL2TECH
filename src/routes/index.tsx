@@ -425,7 +425,7 @@ function Services() {
         <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
-              <div className="h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+              <div className="h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] sm:p-8">
                 <div className="text-4xl sm:text-5xl">{s.emoji}</div>
                 <h3 className="mt-5 text-lg font-bold text-foreground sm:mt-6">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
