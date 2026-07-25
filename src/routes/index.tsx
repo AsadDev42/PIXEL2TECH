@@ -257,6 +257,7 @@ function Hero() {
             <div key={ci} className="h-[328px] sm:h-[412px]">
               <LoopSlider
                 axis="y"
+                className="h-full"
                 direction={ci % 2 === 0 ? "up" : "down"}
                 speed={30}
                 gapClassName="gap-2 sm:gap-3"
