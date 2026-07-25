@@ -4,14 +4,8 @@ import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
 import { BookingModal } from "@/components/booking-modal";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Menu,
-  X,
-} from "lucide-react";
+import { SOCIAL_LINKS } from "@/components/social-links";
+import { Menu, X } from "lucide-react";
 
 
 const NAV = [
