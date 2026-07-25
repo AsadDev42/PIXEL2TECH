@@ -162,6 +162,8 @@ function WhatsAppButton() {
   );
 }
 
+import { CursorFollower } from "./cursor-follower";
+
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-white text-black">
@@ -169,6 +171,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       {children}
       <SiteFooter />
       <WhatsAppButton />
+      <CursorFollower />
     </div>
   );
 }
