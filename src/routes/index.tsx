@@ -80,17 +80,33 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {heroImgs.map((src, i) => (
-            <div
-              key={i}
-              className={`overflow-hidden rounded-2xl bg-neutral-100 aspect-[3/4] ${
-                i % 2 === 1 ? "mt-8" : ""
-              }`}
-            >
-              <img src={src} alt="" className="h-full w-full object-cover" />
-            </div>
-          ))}
+        <div className="grid grid-cols-3 gap-3 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+          {heroCols.map((col, ci) => {
+            const loop = [...col, ...col];
+            const dir = ci % 2 === 0 ? "hero-col-up" : "hero-col-down";
+            return (
+              <div
+                key={ci}
+                className="relative h-[520px] overflow-hidden"
+              >
+                <div className={`flex flex-col gap-3 ${dir}`}>
+                  {loop.map((src, i) => (
+                    <div
+                      key={i}
+                      className="aspect-[3/4] shrink-0 overflow-hidden rounded-2xl bg-neutral-100"
+                    >
+                      <img
+                        src={src}
+                        alt=""
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
