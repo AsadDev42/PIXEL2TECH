@@ -286,15 +286,18 @@ function Work() {
           One team. All your creative and digital needs.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-4">
-          {work.map((w) => (
-            <div key={w.title} className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900">
-              <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90" />
-              <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
-                {w.title}
+          {work.map((w, i) => (
+            <Reveal key={w.title} delay={i * 100} y={40}>
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-neutral-900">
+                <img src={w.img} alt={w.title} className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110" />
+                <div className="absolute inset-x-0 top-0 p-5 text-center text-lg font-semibold text-white drop-shadow">
+                  {w.title}
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
