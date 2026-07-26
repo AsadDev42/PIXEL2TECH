@@ -308,7 +308,7 @@ function ContactPage() {
               <div className="mt-9 flex w-full justify-center">
                 <Link
                   to="/services"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground active:translate-y-0 active:scale-[0.98]"
                 >
                   Get Started
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
