@@ -270,31 +270,25 @@ function ContactPage() {
       </section>
 
 
-      {/* Get in Touch intro */}
+      {/* Get in Touch + Map (unified section) */}
       <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
-            <div className="grid gap-10 md:grid-cols-2 md:items-center lg:gap-16">
-              <div>
-                <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                  Get in Touch
-                  <br />
-                  <span className="text-primary">with Us</span>
-                </h2>
-              </div>
-              <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                If you have any questions or need assistance, don&apos;t hesitate to reach out to us. We are here to help you with your marketing and design needs. You can also visit our office in Lahore, or contact us directly via phone or email for prompt support.
+            <div className="mx-auto max-w-3xl text-center">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
+                Visit or Reach Out
+              </span>
+              <h2 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl md:mt-4">
+                Get in Touch <span className="text-primary">with Us</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                If you have any questions or need assistance, don&apos;t hesitate to reach out. Visit our office in Lahore, or contact us directly via phone or email for prompt support.
               </p>
             </div>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* Map */}
-      <section className="bg-background pb-16 md:pb-24 lg:pb-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="overflow-hidden rounded-3xl border border-border shadow-sm">
+          <FadeIn delay={0.1}>
+            <div className="relative mt-10 overflow-hidden rounded-3xl border border-border shadow-lg md:mt-14">
               <iframe
                 title="Pixel2Tech office location — Lahore, Pakistan"
                 src="https://www.google.com/maps?q=Lahore,Pakistan&output=embed"
@@ -302,12 +296,33 @@ function ContactPage() {
                 height="450"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="block h-[360px] w-full border-0 sm:h-[450px]"
+                className="block h-[360px] w-full border-0 sm:h-[450px] lg:h-[520px]"
               />
+              <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-background/95 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <MapPin className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-semibold text-foreground">Pixel2Tech HQ</div>
+                    <div className="text-xs text-muted-foreground">Lahore, Pakistan</div>
+                  </div>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Lahore%2CPakistan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pointer-events-auto inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-xs font-semibold text-background transition hover:opacity-90"
+                >
+                  Open in Maps
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </FadeIn>
         </div>
       </section>
+
 
       {/* Our Location */}
       <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
