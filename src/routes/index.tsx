@@ -620,7 +620,8 @@ function Services() {
           </FadeIn>
         </div>
 
-        <div className="mb-10 mt-12 h-px w-full bg-border md:mb-14 md:mt-16" aria-hidden="true" />
+        <div className="mb-10 mt-10 h-px w-full bg-border md:mb-12 md:mt-12" aria-hidden="true" />
+
 
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
