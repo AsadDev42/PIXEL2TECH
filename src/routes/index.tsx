@@ -757,7 +757,7 @@ function Insights() {
 
 function Studio() {
   return (
-    <section className="bg-muted/60 py-16 dark:bg-white/[0.02] sm:py-24">
+    <section className="bg-muted/60 py-16 md:py-24 lg:py-32 dark:bg-white/[0.02]">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
           <FadeIn>

@@ -99,7 +99,7 @@ function BlogPostPage() {
 
   return (
     <PageShell>
-      <section className="bg-muted/40 pb-16 pt-10 sm:pb-24 sm:pt-14">
+      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           {/* Breadcrumb */}
           <FadeIn>

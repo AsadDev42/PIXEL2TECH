@@ -59,7 +59,7 @@ function PortfolioPage() {
   return (
     <PageShell>
       {/* Header */}
-      <section className="bg-background pb-10 pt-10 sm:pb-14 sm:pt-16">
+      <section className="bg-background py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
@@ -75,7 +75,7 @@ function PortfolioPage() {
       </section>
 
       {/* Tabs */}
-      <section className="bg-background pb-16 sm:pb-24">
+      <section className="bg-background pb-16 md:pb-24 lg:pb-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="flex justify-center">

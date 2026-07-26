@@ -291,7 +291,7 @@ function ContactPage() {
       </section>
 
       {/* Map */}
-      <section className="bg-background pb-16 sm:pb-24">
+      <section className="bg-background pb-16 md:pb-24 lg:pb-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="overflow-hidden rounded-3xl border border-border shadow-sm">
