@@ -359,12 +359,10 @@ function PartnerBand() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
-            Technology Partners Focused on Business Growth
+            A Full-Service Creative Agency Built Around Your Growth
           </h2>
           <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
-            We help businesses grow with smart digital solutions. Our mission is
-            to turn ideas into impactful brands and technology that drive real
-            results.
+            We're a creative agency that takes brands from idea to launch and beyond. Everything under one roof, one team, one standard — no chasing five different freelancers.
           </p>
           <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
         </div>
