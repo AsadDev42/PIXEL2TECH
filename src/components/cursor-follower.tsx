@@ -38,7 +38,7 @@ export function CursorFollower() {
       mouseY = e.clientY;
       if (!visible) setVisible(true);
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
+        dotRef.current.style.transform = `translate3d(${mouseX - 2}px, ${mouseY - 2}px, 0)`;
       }
     };
 
@@ -142,19 +142,31 @@ export function CursorFollower() {
         }
         .lv-cursor-dot{
           position: fixed; left: 0; top: 0; z-index: 10000;
-          height: 6px; width: 6px; border-radius: 9999px;
-          background: #ffffff;
-          mix-blend-mode: difference;
+          height: 26px; width: 26px;
           pointer-events: none;
           opacity: 0;
           transition: opacity .2s ease;
           will-change: transform;
+          filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
         }
       `}</style>
       <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" className="lv-cursor-blob">
         <span className="lv-cursor-label">Expand +</span>
       </div>
-      <div ref={dotRef} aria-hidden className="lv-cursor-dot" />
+      <div ref={dotRef} aria-hidden className="lv-cursor-dot">
+        <svg viewBox="0 0 512 512" width="26" height="26" fill="none" aria-hidden>
+          <defs>
+            <linearGradient id="lv-cursor-arrow" x1="60" y1="50" x2="440" y2="450" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#4da3ff" />
+              <stop offset="1" stopColor="#1b3a8f" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M63 46c-14-6-28 8-22 22l138 385c6 17 30 17 36 0l50-140a20 20 0 0 1 12-12l140-50c17-6 17-30 0-36L63 46z"
+            fill="url(#lv-cursor-arrow)"
+          />
+        </svg>
+      </div>
     </>
   );
 }
