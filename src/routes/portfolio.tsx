@@ -128,12 +128,12 @@ const WORK: Record<Category, Record<string, Item[]>> = {
       { title: "Review collector", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
     Automation: [
-      { title: "Email automation", img: "https://images.unsplash.com/photo-1563986768609-322da13575bb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "CRM automation", img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Zapier integrations", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "AI chatbot setup", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Webhook pipelines", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Data sync engine", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Email automation", img: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "CRM automation", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Zapier integrations", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "AI chatbot setup", img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Webhook pipelines", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&auto=format&fit=crop&fm=webp&q=70" },
+      { title: "Data sync engine", img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&auto=format&fit=crop&fm=webp&q=70" },
     ],
   },
 };
