@@ -99,25 +99,42 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
     );
   }
 
-  // Video categories → thumbnails with play overlay
+  // Video categories → embedded player (when available) + thumbnails with play overlay
   if (sub === "Short Form" || sub === "Long Form" || sub === "Commercial") {
     return (
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {all.slice(0, 6).map((src, i) => (
-          <FadeIn key={src + i} delay={0.04 * i}>
-            <div className="group relative overflow-hidden rounded-2xl border border-border bg-black dark:border-white/10">
-              <img src={src} alt={`${item.title} clip ${i + 1}`} loading="lazy" decoding="async" className="aspect-video w-full object-cover opacity-90 transition group-hover:scale-105" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-neutral-900 shadow-lg transition group-hover:scale-110">
-                  <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
-                </span>
-              </div>
+      <div className="space-y-8">
+        {item.video && (
+          <FadeIn>
+            <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-[1.75rem] border border-border bg-black shadow-lg dark:border-white/10">
+              <iframe
+                src={item.video}
+                title={`${item.title} video`}
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+                loading="lazy"
+                className="aspect-[9/16] w-full"
+              />
             </div>
           </FadeIn>
-        ))}
+        )}
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {all.slice(0, 6).map((src, i) => (
+            <FadeIn key={src + i} delay={0.04 * i}>
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-black dark:border-white/10">
+                <img src={src} alt={`${item.title} clip ${i + 1}`} loading="lazy" decoding="async" className="aspect-video w-full object-cover opacity-90 transition group-hover:scale-105" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-neutral-900 shadow-lg transition group-hover:scale-110">
+                    <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
+                  </span>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     );
   }
+
 
   // Branding → brand board (hero + palette + tiles)
   if (sub === "Branding") {
