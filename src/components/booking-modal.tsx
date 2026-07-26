@@ -73,7 +73,7 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm ring-1 ring-border hover:bg-muted"
+          className="absolute right-4 top-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-sm ring-1 ring-border hover:bg-muted"
         >
           <X className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -143,8 +143,8 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
           </div>
 
           {/* Right: session info + Calendly */}
-          <div className="border-t border-border bg-muted/40 p-6 sm:p-8 md:border-l md:border-t-0 md:p-10">
-            <div className="rounded-2xl border border-border bg-background p-5">
+          <div className="border-t border-border bg-muted/40 p-6 pt-16 sm:p-8 sm:pt-16 md:border-l md:border-t-0 md:p-10 md:pt-16">
+            <div className="relative z-10 rounded-2xl border border-border bg-background p-5 pr-12">
               <div className="text-lg font-bold text-foreground">Strategy Session</div>
               <div className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
                 <Clock className="h-4 w-4 text-[#0784ff]" aria-hidden="true" />
