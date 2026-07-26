@@ -228,6 +228,8 @@ const initial: FormState = { name: "", email: "", subject: "", message: "" };
 function ServicesPage() {
   const submit = useServerFn(submitContactForm);
   const [form, setForm] = useState<FormState>(initial);
+  const [website, setWebsite] = useState("");
+  const [loadedAt] = useState<number>(() => Date.now());
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
