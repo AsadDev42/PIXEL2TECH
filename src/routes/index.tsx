@@ -574,53 +574,47 @@ function Services() {
     <section className="bg-background py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
-          <div className="flex items-center gap-4">
-            <span className="h-px w-8 shrink-0 bg-[#1E90FF]" aria-hidden="true" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground sm:text-xs">
-              What We Do
-            </span>
-            <span className="h-px min-w-0 flex-1 bg-border" aria-hidden="true" />
-            <span className="shrink-0 text-[11px] font-semibold tracking-[0.18em] text-muted-foreground/70">
-              02 — SERVICES
-            </span>
-          </div>
-        </FadeIn>
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 dark:border-white/10 dark:bg-white/[0.03] md:p-12 lg:p-16">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#1E90FF]/10 blur-3xl md:h-64 md:w-64"
+            />
 
-        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-12 lg:items-start lg:gap-16">
-          <FadeIn className="lg:col-span-7">
-            <h2 className="text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
-              Everything You Need to{" "}
-              <span className="text-[#1E90FF]">Build, Grow and Scale</span>
-            </h2>
-          </FadeIn>
+            <div className="relative flex flex-col items-center text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground dark:border-white/10 dark:bg-white/[0.04] sm:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" aria-hidden="true" />
+                What We Do
+              </span>
 
-          <FadeIn delay={0.1} className="lg:col-span-5">
-            <div className="flex flex-col gap-6 lg:border-l lg:border-border lg:pl-10">
+              <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
+                Everything You Need to{" "}
+                <span className="text-[#1E90FF]">Build, Grow and Scale</span>
+              </h2>
 
-              <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                 From creative design and custom development to AI-powered automation and digital
                 solutions, we help businesses streamline operations, improve customer experiences,
                 and accelerate growth.
               </p>
-              <div>
+
+              <div className="mt-8 flex w-full flex-col items-center gap-6 border-t border-border pt-8 dark:border-white/10 md:flex-row md:justify-between md:gap-8 md:text-left">
                 <p className="text-base font-bold leading-snug tracking-tight text-foreground sm:text-lg">
-                  One Team. Multiple Expertise.
-                  <br />
-                  Real Business Impact.
+                  One Team. Multiple Expertise. Real Business Impact.
                 </p>
                 <Link
                   to="/contact"
-                  className="group mt-6 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90 sm:px-8 sm:py-3.5"
+                  className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90 sm:px-8 sm:py-4"
                 >
                   Start Your Project
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
                 </Link>
               </div>
             </div>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
 
-        <div className="mb-10 mt-10 h-px w-full bg-border md:mb-12 md:mt-12" aria-hidden="true" />
+        <div className="mb-10 mt-10 md:mb-12 md:mt-12" aria-hidden="true" />
+
 
 
 
