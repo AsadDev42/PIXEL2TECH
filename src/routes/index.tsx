@@ -388,9 +388,9 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 self-center sm:gap-3">
+        <div className="mx-auto grid w-full max-w-[420px] grid-cols-3 gap-2 self-center sm:max-w-[480px] sm:gap-3 md:max-w-[520px] lg:max-w-[560px]">
           {heroCols.map((col, ci) => (
-            <div key={ci} className="h-[320px] sm:h-[340px] md:h-[380px]">
+            <div key={ci} className="h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px]">
               <LoopSlider
                 axis="y"
                 className="h-full"
@@ -400,7 +400,7 @@ function Hero() {
                 items={col}
                 keyFor={(_src, i) => `${ci}-${i}`}
                 renderItem={(src, i) => (
-                  <div className="h-[150px] w-full overflow-hidden rounded-xl bg-muted sm:h-[160px] md:h-[180px] sm:rounded-2xl">
+                  <div className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl">
                     <img
                       decoding="async"
                       src={src}
