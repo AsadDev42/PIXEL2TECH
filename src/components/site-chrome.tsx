@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/theme-provider";
 import { BookingModal } from "@/components/booking-modal";
 import { SOCIAL_LINKS } from "@/components/social-links";
 import { Menu, X } from "lucide-react";
+import { useFocusTrap } from "@/lib/use-focus-trap";
 
 
 const NAV = [
@@ -29,8 +30,16 @@ export function SiteNav() {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
+  const mobileNavRef = useFocusTrap<HTMLDivElement>(open);
 
   return (
     <>
@@ -84,6 +93,11 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
+          ref={mobileNavRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          tabIndex={-1}
           className="fixed inset-x-0 top-[64px] z-40 border-t border-border bg-background lg:hidden"
           style={{ height: "calc(100dvh - 64px)" }}
         >
