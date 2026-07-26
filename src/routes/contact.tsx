@@ -9,19 +9,36 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { FadeIn } from "@/components/motion";
 
+const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — Pixel2Tech" },
-      { name: "description", content: "Get in touch with Pixel2Tech. Tell us about your project and let's build something great together." },
-      { property: "og:title", content: "Contact — Pixel2Tech" },
-      { property: "og:description", content: "Tell us about your project. We reply within one business day." },
+      { title: "Contact Pixel2Tech — Start a Project in Lahore" },
+      { name: "description", content: "Contact Pixel2Tech to start a branding, web, UI/UX or software project. Based in Lahore, working with clients worldwide. We reply within one business day." },
+      { property: "og:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
+      { property: "og:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/contact" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "/contact" },
+          ],
+        }),
+      },
+    ],
   }),
 });
 
