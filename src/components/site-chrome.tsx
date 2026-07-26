@@ -47,8 +47,8 @@ export function SiteNav() {
     <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex items-center">
-          <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
-          <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
+          <img fetchPriority="high" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
+          <img fetchPriority="high" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
         <nav aria-label="Primary" className="hidden items-center justify-center gap-6 text-[15px] font-medium text-foreground lg:flex xl:gap-8">
           {NAV.map((n) => {
@@ -183,8 +183,8 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <Link to="/" aria-label="Pixel2Tech — Home">
-              <img loading="lazy" decoding="async" src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
-              <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
+              <img loading="lazy" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
+              <img loading="lazy" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
               A full-service creative agency from Pakistan, serving clients worldwide.
