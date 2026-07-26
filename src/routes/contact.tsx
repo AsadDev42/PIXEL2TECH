@@ -295,29 +295,28 @@ function ContactPage() {
       </section>
 
       {/* Elevate CTA */}
-      <section className="bg-background pb-24 pt-8 sm:pb-32">
+      <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <FadeIn>
-            <div className="mx-auto flex min-h-[420px] w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background sm:min-h-[480px] sm:px-12 sm:py-20">
-              <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
+            <div className="mx-auto flex w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background md:px-12 md:py-20">
+              <h2 className="mx-auto mb-5 max-w-3xl text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
                 Ready to elevate your <span className="text-primary">brand</span> today?
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-center text-[15px] leading-relaxed text-background/70 sm:text-base">
+              <p className="mx-auto mb-8 max-w-2xl text-balance text-[15px] leading-relaxed text-background/70 sm:text-base">
                 Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
               </p>
-              <div className="mt-9 flex w-full justify-center">
-                <Link
-                  to="/services"
-                  className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground active:translate-y-0 active:scale-[0.98]"
-                >
-                  Get Started
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
+              <Link
+                to="/services"
+                className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground active:translate-y-0 active:scale-[0.98]"
+              >
+                Get Started
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </FadeIn>
         </div>
       </section>
+
     </PageShell>
   );
 }
