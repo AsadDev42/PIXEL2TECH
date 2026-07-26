@@ -20,6 +20,8 @@ type Props<T> = {
   className?: string;
   /** Optional aria-label for the scroller. */
   ariaLabel?: string;
+  /** Enable grab-and-fling drag interaction. Default true. */
+  draggable?: boolean;
 };
 
 /**
