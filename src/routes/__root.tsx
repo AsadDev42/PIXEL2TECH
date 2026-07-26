@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 
 function NotFoundComponent() {
   return (
@@ -87,6 +88,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Pixel2Tech is a full-service creative agency in Lahore. Branding, web, UI/UX, social media, video and custom software — all in-house.",
       },
       { name: "author", content: "Pixel2Tech" },
+      ...(import.meta.env.VITE_GSC_VERIFICATION
+        ? [{ name: "google-site-verification", content: import.meta.env.VITE_GSC_VERIFICATION as string }]
+        : []),
       { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
@@ -161,6 +165,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <AnalyticsTracker />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </ThemeProvider>

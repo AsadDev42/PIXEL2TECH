@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { FadeIn } from "@/components/motion";
+import { trackEvent } from "@/lib/analytics";
 
 const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -89,6 +90,7 @@ function ContactPage() {
     setLoading(true);
     try {
       await submit({ data: { ...parsed.data, website, ts: loadedAt } });
+      trackEvent("contact_form_submitted", { subject: parsed.data.subject });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
@@ -216,7 +218,7 @@ function ContactPage() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Get in touch</h2>
               <div className="mt-6 space-y-4">
-                <a href="mailto:sales@pixel2tech.com" className="group flex items-center gap-4">
+                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "contact_page" })} className="group flex items-center gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
                     <Mail className="h-5 w-5" aria-hidden="true" />
                   </span>
@@ -225,7 +227,7 @@ function ContactPage() {
                     <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
                   </div>
                 </a>
-                <a href="https://wa.me/923177475212" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                <a href="https://wa.me/923177475212" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("whatsapp_click", { location: "contact_page" })} className="group flex items-center gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
                     <WhatsAppIcon className="h-5 w-5" />
                   </span>

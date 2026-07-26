@@ -7,6 +7,7 @@ import { BookingModal } from "@/components/booking-modal";
 import { SOCIAL_LINKS } from "@/components/social-links";
 import { Menu, X } from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
+import { trackEvent } from "@/lib/analytics";
 
 
 const NAV = [
@@ -71,7 +72,7 @@ export function SiteNav() {
           <ThemeToggle />
           <button
             type="button"
-            onClick={() => setBookingOpen(true)}
+            onClick={() => { trackEvent("strategy_call_modal_opened", { source: "header" }); setBookingOpen(true); }}
             className="hidden shrink-0 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex sm:px-6"
           >
             Schedule a Strategy Session
@@ -117,7 +118,7 @@ export function SiteNav() {
             })}
             <button
               type="button"
-              onClick={() => { setOpen(false); setBookingOpen(true); }}
+              onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
               className="mt-4 inline-flex items-center justify-center rounded-full bg-foreground px-6 py-4 text-base font-semibold text-background"
             >
               Schedule a Strategy Session
@@ -234,12 +235,12 @@ export function SiteFooter() {
             <div className="text-lg font-bold text-foreground">Contact</div>
             <ul className="mt-5 space-y-3 text-sm text-foreground/80">
               <li>
-                <a href="mailto:sales@pixel2tech.com" className="hover:text-foreground">
+                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="hover:text-foreground">
                   sales@pixel2tech.com
                 </a>
               </li>
               <li>
-                <a href="tel:+923177475233" className="hover:text-foreground">
+                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="hover:text-foreground">
                   +92 317 7475233
                 </a>
               </li>
@@ -265,6 +266,7 @@ function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
       className="group fixed bottom-4 right-4 z-50 flex h-14 items-center gap-2 overflow-hidden rounded-full bg-[#25D366] pl-4 pr-4 text-white shadow-xl transition-all duration-300 hover:pr-5 sm:bottom-6 sm:right-6"
     >
       <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-300 group-hover:max-w-[160px] group-hover:pr-1 group-hover:opacity-100">

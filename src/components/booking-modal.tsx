@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, Video, Layers, ShieldCheck, Target, X } from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
+import { trackEvent } from "@/lib/analytics";
 
 const SERVICES = [
   "AI Solutions & Automation",
@@ -51,6 +52,19 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
+
+  // Track Calendly booking completion via postMessage
+  useEffect(() => {
+    if (!open) return;
+    const onMsg = (e: MessageEvent) => {
+      const d = e.data as { event?: string } | undefined;
+      if (d?.event === "calendly.event_scheduled") {
+        trackEvent("booking_completed", { service });
+      }
+    };
+    window.addEventListener("message", onMsg);
+    return () => window.removeEventListener("message", onMsg);
+  }, [open, service]);
 
   const dialogRef = useFocusTrap<HTMLDivElement>(open);
 
