@@ -68,7 +68,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   h.set("Referrer-Policy", "strict-origin-when-cross-origin");
   h.set(
     "Permissions-Policy",
-    "accelerometer=(), autoplay=(self), camera=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), fullscreen=(self)",
+    'accelerometer=(), autoplay=(self "https://drive.google.com" "https://www.youtube.com" "https://player.vimeo.com"), camera=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), fullscreen=(self "https://drive.google.com" "https://www.youtube.com" "https://player.vimeo.com")',
   );
   h.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
   h.set("Cross-Origin-Opener-Policy", "same-origin");
