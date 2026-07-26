@@ -229,13 +229,11 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
-            Growing Businesses Don't Need More Tools. They Need{" "}
-            <span className="text-[#1E90FF]">AI-Powered Systems</span>
+            Growing Brands Don't Need More Freelancers. They Need{" "}
+            <span className="text-[#1E90FF]">One Creative Agency</span>
           </h1>
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground sm:mt-6">
-            We help businesses automate workflows, build scalable software, and
-            create seamless digital experiences that improve efficiency,
-            customer experience, and growth.
+            A full-service creative agency handling everything your brand needs — design, development, social media, and software — so you can focus on growing the business.
           </p>
           <div className="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <Link
