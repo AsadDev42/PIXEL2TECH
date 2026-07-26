@@ -7,6 +7,7 @@ import type { Database } from "@/integrations/supabase/types";
 // Strip control chars / zero-width, collapse whitespace.
 const sanitize = (s: string) =>
   s
+    // eslint-disable-next-line no-control-regex -- intentional: strip control + zero-width chars
     .replace(/[\u0000-\u001F\u007F\u200B-\u200D\uFEFF]/g, "")
     .replace(/[ \t]+/g, " ")
     .trim();
