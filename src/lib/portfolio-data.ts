@@ -164,9 +164,44 @@ export function getRelated(item: PortfolioItem, limit = 3): PortfolioItem[] {
   ).slice(0, limit);
 }
 
+// Sibling images from the SAME subcategory — used to build a category-tailored gallery.
+export function getSubcategoryGallery(item: PortfolioItem, limit = 6): string[] {
+  const siblings = (WORK[item.category as Category]?.[item.subcategory] ?? [])
+    .filter((i) => i.slug !== item.slug)
+    .map((i) => i.img);
+  return siblings.slice(0, limit);
+}
+
 // Deterministic gallery: pick 3 sibling images for variety
 export function getGallery(item: PortfolioItem): string[] {
   const siblings = ALL_ITEMS.filter((i) => i.slug !== item.slug).map((i) => i.img);
   const start = Math.abs([...item.slug].reduce((a, c) => a + c.charCodeAt(0), 0)) % Math.max(1, siblings.length - 3);
   return siblings.slice(start, start + 3);
 }
+
+// Derive a friendly "brand" name from the project title (first 1-2 words).
+export function getBrandName(item: PortfolioItem): string {
+  const words = item.title.split(" ").filter(Boolean);
+  const base = words.slice(0, 2).join(" ");
+  return base.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Deliverables shown per subcategory on the detail page.
+export function getDeliverables(item: PortfolioItem): string[] {
+  const map: Record<string, string[]> = {
+    "Social Media": ["Content strategy", "Post design system", "Reels & carousels", "Monthly calendar"],
+    Branding: ["Logo & wordmark", "Color palette", "Typography system", "Brand guidelines"],
+    "Print & Merchandise": ["Print-ready artwork", "Packaging mockups", "Merch design", "Vendor handoff"],
+    Websites: ["UX wireframes", "Responsive UI", "Copy direction", "CMS handoff"],
+    "E-Commerce": ["Storefront design", "Product templates", "Checkout flow", "Launch support"],
+    "Mobile Apps": ["App UX", "UI system", "Prototype", "Design handoff"],
+    "Short Form": ["Scripting", "Editing", "Captions & motion", "Platform-ready exports"],
+    "Long Form": ["Full edit", "Color & sound", "Thumbnails", "Chapters"],
+    Commercial: ["Ad concept", "Edit & VFX", "Multiple cuts", "Aspect ratios"],
+    "Web Apps": ["Product design", "Frontend build", "Backend & auth", "Deployment"],
+    Tools: ["Discovery", "MVP build", "Integrations", "Docs & training"],
+    Automation: ["Workflow mapping", "Automation build", "Integrations", "Monitoring"],
+  };
+  return map[item.subcategory] ?? ["Discovery", "Design", "Build", "Handoff"];
+}
+

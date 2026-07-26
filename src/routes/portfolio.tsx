@@ -127,16 +127,26 @@ function PortfolioPage() {
                   className="group block overflow-hidden rounded-2xl bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                 >
                   <div className="relative aspect-[4/5]">
-                    <img loading="lazy" decoding="async" src={w.img} alt={w.title} className="h-full w-full object-cover transition group-hover:scale-105" />
-                    <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-6">
-                      <div className="text-[11px] uppercase tracking-widest opacity-70 sm:text-xs">{sub}</div>
-                      <div className="mt-1 text-base font-semibold sm:text-lg">{w.title}</div>
+                    <img loading="lazy" decoding="async" src={w.img} alt={w.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                    <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                    <div aria-hidden="true" className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
+                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-6">
+                      <div className="min-w-0">
+                        <div className="text-[11px] uppercase tracking-widest opacity-70 sm:text-xs">{sub}</div>
+                        <div className="mt-1 truncate text-base font-semibold sm:text-lg">{w.title}</div>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/90 text-neutral-900 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                      </span>
                     </div>
                   </div>
                 </Link>
               </FadeIn>
             ))}
+
           </div>
         </div>
       </section>
