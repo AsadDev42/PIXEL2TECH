@@ -295,10 +295,10 @@ a[role="button"],
 }
 button:not(:disabled):hover,
 a[role="button"]:hover,
-[data-slot="button"]:hover { transform: scale(1.02); }
+[data-slot="button"]:hover { transform: translateY(-1px); }
 button:not(:disabled):active,
 a[role="button"]:active,
-[data-slot="button"]:active { transform: scale(0.98); opacity: 0.9; }
+[data-slot="button"]:active { transform: translateY(0) scale(0.985); opacity: 0.92; }
 
 input, textarea, select {
   transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out,
