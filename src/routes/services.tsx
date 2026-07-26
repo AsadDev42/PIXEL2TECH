@@ -454,6 +454,11 @@ function ServicesPage() {
             <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Send us a message</h3>
             <form onSubmit={onSubmit} aria-labelledby="services-form-title" noValidate className="mt-6 space-y-5">
               <h2 id="services-form-title" className="sr-only">Services inquiry form</h2>
+              <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                <label htmlFor="hp-svc-website">Website</label>
+                <input id="hp-svc-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+              </div>
+
               {fields.map((f) => (
                 <div key={f.id} className="flex flex-col">
                   <label htmlFor={`svc-${f.id}`} className="mb-2 text-sm font-medium text-foreground">
