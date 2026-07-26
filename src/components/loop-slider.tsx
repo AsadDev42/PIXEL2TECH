@@ -66,8 +66,15 @@ export function LoopSlider<T>({
     if (!track) return;
 
     const measure = () => {
-      stateRef.current.half = isX ? track.scrollWidth / 2 : track.scrollHeight / 2;
+      // The track renders the list twice. Total size = 2 * content + (2n - 1) gaps,
+      // so one loop period is (total + one gap) / 2. Ignoring the gap makes the
+      // duplicated half drift and tiles visually overlap/jump on wrap-around.
+      const cs = getComputedStyle(track);
+      const gap = parseFloat(isX ? cs.columnGap : cs.rowGap) || 0;
+      const total = isX ? track.scrollWidth : track.scrollHeight;
+      stateRef.current.half = total > 0 ? (total + gap) / 2 : 0;
     };
+
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(track);
