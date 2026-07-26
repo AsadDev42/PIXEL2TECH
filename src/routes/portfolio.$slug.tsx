@@ -11,13 +11,14 @@ export const Route = createFileRoute("/portfolio/$slug")({
     if (!item) throw notFound();
     return { item };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
       return { meta: [{ title: "Project not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
     }
     const { item } = loaderData;
     const title = `${item.title} — Pixel2Tech`;
     const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the challenge, our approach and the outcome.`;
+    const url = `/portfolio/${params.slug}`;
     return {
       meta: [
         { title },
@@ -25,9 +26,25 @@ export const Route = createFileRoute("/portfolio/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { property: "og:image", content: item.img },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: item.img },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+              { "@type": "ListItem", position: 2, name: "Portfolio", item: "/portfolio" },
+              { "@type": "ListItem", position: 3, name: item.title, item: url },
+            ],
+          }),
+        },
       ],
     };
   },
