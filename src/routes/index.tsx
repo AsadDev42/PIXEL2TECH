@@ -507,18 +507,18 @@ function PartnerBand() {
             initial={{ y: 0, rotate: -2 }}
             animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-2 left-0 z-10 flex items-center gap-3 rounded-2xl bg-background px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+            className="absolute -top-2 left-2 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-xl shadow-black/10 sm:left-4 sm:px-5 sm:py-3"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foreground">
-              <TrendingUp className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-900">
+              <TrendingUp className="h-4 w-4 text-white" aria-hidden="true" />
             </div>
             <div className="min-w-0 text-left">
-              <div className="truncate text-xs font-bold text-foreground sm:text-sm">
+              <div className="truncate text-xs font-bold text-slate-900 sm:text-sm">
                 Trusted Creative Partner
               </div>
-              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-slate-500 sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-foreground">4.9</span> Client Rating
+                <span className="font-semibold text-slate-900">4.9</span> Client Rating
               </div>
             </div>
           </motion.div>
@@ -534,15 +534,15 @@ function PartnerBand() {
             initial={{ y: 0, rotate: 2 }}
             animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute -bottom-4 right-0 z-10 flex items-center gap-3 rounded-2xl bg-background px-4 py-2.5 shadow-lg sm:px-5 sm:py-3"
+            className="absolute -bottom-2 right-2 z-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-xl shadow-black/10 sm:right-4 sm:px-5 sm:py-3"
           >
             <div className="min-w-0 text-left">
-              <div className="truncate text-xs font-bold text-foreground sm:text-sm">
+              <div className="truncate text-xs font-bold text-slate-900 sm:text-sm">
                 15+ Happy Clients
               </div>
-              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
+              <div className="mt-0.5 flex items-center gap-1 text-[11px] text-slate-500 sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-foreground">4.9</span> Client Rating
+                <span className="font-semibold text-slate-900">4.9</span> Client Rating
               </div>
             </div>
           </motion.div>
