@@ -207,7 +207,7 @@ function AboutPage() {
               </p>
             </div>
           </FadeIn>
-          <Stagger className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-3 lg:gap-8">
+          <Stagger className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:mt-14 md:gap-6 lg:grid-cols-3">
             {team.map((m) => (
               <StaggerItem key={m.name}>
                 <article
@@ -215,7 +215,7 @@ function AboutPage() {
                   aria-describedby={`about-team-${m.name.replace(/\s+/g, "-")}-role`}
                   className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                  <div className="relative aspect-square overflow-hidden bg-muted">
                     <img
                       loading="lazy"
                       decoding="async"
@@ -224,14 +224,15 @@ function AboutPage() {
                       className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                     />
                   </div>
-                  <div className="p-4 sm:p-5 lg:p-6">
-                    <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</h3>
-                    <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</p>
+                  <div className="p-4 md:p-5">
+                    <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="text-sm font-bold tracking-tight text-foreground sm:text-base">{m.name}</h3>
+                    <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground">{m.role}</p>
                   </div>
                 </article>
               </StaggerItem>
             ))}
           </Stagger>
+
           <FadeIn delay={0.2}>
             <div className="mt-10 text-center sm:mt-14">
               <Link
