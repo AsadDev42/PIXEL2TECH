@@ -256,22 +256,28 @@ export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "Pixel2Tech — Full-Service Creative Agency in Lahore" },
+      { title: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
       {
         name: "description",
         content:
-          "Full-service creative agency in Lahore. Branding, web development, UI/UX, social media, motion and custom software — one team, one standard.",
+          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
       },
-      { property: "og:title", content: "Pixel2Tech — Full-Service Creative Agency in Lahore" },
+      { property: "og:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
       {
         property: "og:description",
         content:
-          "Branding, web, UI/UX, social, motion and software — all in-house at Pixel2Tech, Lahore. Serving clients worldwide.",
+          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      {
+        name: "twitter:description",
+        content:
+          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+      },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
