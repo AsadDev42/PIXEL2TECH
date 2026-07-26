@@ -17,6 +17,7 @@ export function CursorFollower() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
     setEnabled(true);
 
     let mouseX = window.innerWidth / 2;
