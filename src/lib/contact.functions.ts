@@ -43,7 +43,7 @@ function rateLimit(ip: string): boolean {
 }
 
 export const submitContactForm = createServerFn({ method: "POST" })
-  .inputValidator((input: SubmissionInput) => submissionSchema.parse(input))
+  .validator((input: SubmissionInput) => submissionSchema.parse(input))
 
   .handler(async ({ data }) => {
     // Honeypot: reject silently-ish if bot filled the field.
