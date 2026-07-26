@@ -85,7 +85,8 @@ function PortfolioPage() {
                     key={c}
                     type="button"
                     onClick={() => onCat(c)}
-                    className={`min-h-10 rounded-full px-5 py-2 text-sm font-semibold transition ${
+                    aria-pressed={cat === c}
+                    className={`min-h-11 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                       cat === c ? "bg-foreground text-background shadow" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -104,7 +105,8 @@ function PortfolioPage() {
                     key={s}
                     type="button"
                     onClick={() => setSub(s)}
-                    className={`min-h-10 rounded-full px-5 py-2 text-sm font-semibold transition ${
+                    aria-pressed={sub === s}
+                    className={`min-h-11 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                       sub === s ? "bg-foreground text-background shadow" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -132,7 +134,7 @@ function PortfolioPage() {
                     <div aria-hidden="true" className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-6">
                       <div className="min-w-0">
-                        <div className="text-[11px] uppercase tracking-widest opacity-70 sm:text-xs">{sub}</div>
+                        <div className="text-xs uppercase tracking-widest text-white/90">{sub}</div>
                         <div className="mt-1 truncate text-base font-semibold sm:text-lg">{w.title}</div>
                       </div>
                       <span
