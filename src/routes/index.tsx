@@ -418,12 +418,12 @@ function PartnerBand() {
 
 
 const services = [
-  { title: "Branding & Design", desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.", Icon: Palette },
-  { title: "Website Development", desc: "Modern, fast, and mobile-friendly websites that convert visitors into customers.", Icon: Globe },
-  { title: "Digital Marketing", desc: "Clean and simple designs that improve user experience and increase sales.", Icon: LineChart },
-  { title: "Social Media & Content", desc: "Creative posts, content ideas, and strategies that build authority and attract leads.", Icon: Megaphone },
-  { title: "Motion & Video", desc: "Reels, ads, and brand videos that grab attention.", Icon: Clapperboard },
-  { title: "AI Solutions", desc: "Smart tools and automation to save time and improve business performance.", Icon: Bot },
+  { title: "Branding & Design", desc: "Logos, brand kits, colors, and guidelines that make you look established from day one.", Icon: Palette },
+  { title: "Website Development", desc: "Fast, mobile-friendly websites built to load quickly and turn visitors into paying customers.", Icon: Globe },
+  { title: "UI/UX Design", desc: "Clean, simple interfaces that make your product easy to use and easy to buy from.", Icon: LineChart },
+  { title: "Social Media & Content", desc: "Posts, reels, and content plans that build authority and bring in consistent leads.", Icon: Megaphone },
+  { title: "Motion & Video", desc: "Reels, ads, and brand videos that stop the scroll and get watched.", Icon: Clapperboard },
+  { title: "Software & Automation", desc: "Custom web apps, dashboards, CRMs, and AI-assisted automation built around how your business actually works.", Icon: Bot },
 ];
 
 function Services() {
