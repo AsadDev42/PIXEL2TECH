@@ -502,7 +502,7 @@ function PartnerBand() {
           </p>
           <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
         </div>
-        <div className="relative mx-auto w-full max-w-[360px]">
+        <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px]">
           <motion.div
             initial={{ y: 0, rotate: -2 }}
             animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
