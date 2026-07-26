@@ -1,4 +1,6 @@
 import type { ComponentType } from 'react'
+import { template as contactNotification } from './contact-notification'
+import { template as contactConfirmation } from './contact-confirmation'
 
 export interface TemplateEntry {
   component: ComponentType<any>
