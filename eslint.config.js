@@ -4,6 +4,8 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
+import spacingPlugin from "./eslint-rules/no-unapproved-spacing.js";
+
 
 export default tseslint.config(
   { ignores: ["dist", ".output", ".vinxi"] },
@@ -17,9 +19,11 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
+      "lovable-spacing": spacingPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "lovable-spacing/no-unapproved-spacing": "error",
       "no-restricted-imports": [
         "error",
         {
