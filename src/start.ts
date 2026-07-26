@@ -3,7 +3,10 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 
-const errorMiddleware = createMiddleware().server(async ({ next }) => {
+const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
+  if (new URL(request.url).pathname.startsWith("/lovable/")) {
+    return next();
+  }
   try {
     return await next();
   } catch (error) {
@@ -21,6 +24,9 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
 // Force HTTPS + apply hardened security response headers to every request.
 const securityMiddleware = createMiddleware().server(async ({ request, next }) => {
   const url = new URL(request.url);
+  if (url.pathname.startsWith("/lovable/")) {
+    return next();
+  }
   const xfProto = request.headers.get("x-forwarded-proto");
   const isLocal = url.hostname === "localhost" || url.hostname === "127.0.0.1";
   const isHttp = url.protocol === "http:" || xfProto === "http";
