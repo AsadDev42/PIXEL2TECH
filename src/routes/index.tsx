@@ -356,7 +356,7 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-10 md:py-24 lg:py-32 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:gap-12 md:px-10 md:py-28">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             One Creative Agency.{" "}
@@ -380,9 +380,9 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+        <div className="grid grid-cols-3 gap-2 self-center sm:gap-3">
           {heroCols.map((col, ci) => (
-            <div key={ci} className="h-[328px] sm:h-[412px]">
+            <div key={ci} className="h-[280px] sm:h-[340px] md:h-[380px]">
               <LoopSlider
                 axis="y"
                 className="h-full"
@@ -392,7 +392,7 @@ function Hero() {
                 items={col}
                 keyFor={(_src, i) => `${ci}-${i}`}
                 renderItem={(src, i) => (
-                  <div className="h-[160px] w-full overflow-hidden rounded-xl bg-muted sm:h-[200px] sm:rounded-2xl">
+                  <div className="h-[130px] w-full overflow-hidden rounded-xl bg-muted sm:h-[160px] md:h-[180px] sm:rounded-2xl">
                     <img
                       decoding="async"
                       src={src}
@@ -411,6 +411,7 @@ function Hero() {
         </div>
       </div>
     </section>
+
   );
 }
 
