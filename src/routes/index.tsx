@@ -12,6 +12,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import officeStudioAsset from "@/assets/office-studio.webp.asset.json";
+import founderPortrait from "@/assets/founder-portrait.png.asset.json";
+
 const officeStudio = officeStudioAsset.url;
 
 const homeContactSchema = z.object({
