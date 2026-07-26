@@ -278,7 +278,7 @@ function ContactPage() {
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
                 Visit or Reach Out
               </span>
-              <h2 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl md:mt-4">
+              <h2 className="mt-3 text-[26px] font-bold leading-[1.12] tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl md:mt-4">
                 Get in Touch <span className="text-primary">with Us</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">

@@ -79,7 +79,7 @@ function PortfolioPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="flex justify-center">
-              <div className="inline-flex rounded-full bg-muted p-1.5">
+              <div className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-3xl bg-muted p-1.5 sm:rounded-full">
                 {CATEGORIES.map((c) => (
                   <button
                     key={c}
@@ -98,7 +98,7 @@ function PortfolioPage() {
 
           <FadeIn delay={0.05}>
             <div className="mt-4 flex justify-center">
-              <div className="inline-flex flex-wrap justify-center rounded-full bg-muted p-1.5">
+              <div className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-3xl bg-muted p-1.5 sm:rounded-full">
                 {SUBS[cat].map((s) => (
                   <button
                     key={s}
