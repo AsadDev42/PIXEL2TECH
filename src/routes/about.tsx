@@ -10,6 +10,7 @@ import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/team-noman.webp.asset.json";
+import officeImg from "@/assets/office.webp.asset.json";
 
 const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -210,8 +211,8 @@ function AboutPage() {
               <img
                 loading="lazy"
                 decoding="async"
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&fm=webp&q=70"
-                alt="Pixel2Tech team collaborating in a modern office"
+                src={officeImg.url}
+                alt="Pixel2Tech team working at the Lahore office"
                 className="h-full w-full object-cover"
               />
             </div>
