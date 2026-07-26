@@ -12,6 +12,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import officeStudioAsset from "@/assets/office-studio.webp.asset.json";
+import founderPortrait from "@/assets/founder-portrait.png.asset.json";
+
 const officeStudio = officeStudioAsset.url;
 
 const homeContactSchema = z.object({
@@ -520,13 +522,14 @@ function PartnerBand() {
               </div>
             </div>
           </motion.div>
-          <div className="mt-10 aspect-square w-full overflow-hidden rounded-full bg-[#1E90FF]">
-            <img loading="lazy" decoding="async"
-              src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=800&auto=format&fit=crop&fm=webp&q=70"
+          <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
+            <img loading="eager" decoding="async"
+              src={founderPortrait.url}
               alt="Pixel2Tech founder portrait"
-              className="h-full w-full object-cover mix-blend-luminosity"
+              className="h-full w-full object-contain"
             />
           </div>
+
           <motion.div
             initial={{ y: 0, rotate: 2 }}
             animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
