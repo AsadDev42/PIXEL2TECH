@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 
-import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
+import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight, Star, TrendingUp as TrendUp } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { useState } from "react";
+import portraitAsset from "@/assets/about-hero-portrait.png.asset.json";
 
 const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -147,50 +148,52 @@ function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Creative team collaborating"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Design workspace"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
+            <div className="relative mx-auto w-full max-w-[520px]">
+              {/* Circular gradient portrait */}
+              <div className="relative mx-auto aspect-square w-full">
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 50% 40%, #4bc8ff 0%, #1e90ff 45%, #0a1a2e 100%)",
+                  }}
+                  aria-hidden="true"
+                />
+                <img
+                  src={portraitAsset.url}
+                  alt="Pixel2Tech founder portrait"
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 h-full w-full object-contain object-bottom drop-shadow-2xl"
+                />
+              </div>
+
+              {/* Top-left card — behind the portrait */}
+              <div className="absolute left-0 top-6 z-0 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl sm:left-2 sm:gap-4 sm:px-5 sm:py-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0a0d1f] text-white sm:h-11 sm:w-11">
+                  <TrendUp className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <div className="space-y-3 pt-8 sm:space-y-4 sm:pt-12">
-                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Strategy session"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Developer at work"
-                      className="h-full w-full object-cover"
-                    />
+                <div>
+                  <div className="text-[13px] font-bold text-[#0a0d1f] sm:text-sm">Trusted Creative Partner</div>
+                  <div className="mt-0.5 flex items-center gap-1.5 text-xs text-[#0a0d1f]/70">
+                    <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                    <span className="font-semibold text-[#0a0d1f]">4.9</span>
+                    <span>Client Rating</span>
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute -right-2 -top-2 hidden h-16 w-16 rounded-full bg-[#2b7fff]/10 blur-2xl md:block" aria-hidden="true" />
+
+              {/* Bottom-right card — in front */}
+              <div className="absolute -bottom-4 right-0 z-20 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-2xl sm:-bottom-6 sm:right-2 sm:gap-4 sm:px-5 sm:py-4">
+                <div>
+                  <div className="text-[13px] font-bold text-[#0a0d1f] sm:text-sm">15+ Happy Clients</div>
+                  <div className="mt-0.5 flex items-center gap-1.5 text-xs text-[#0a0d1f]/70">
+                    <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                    <span className="font-semibold text-[#0a0d1f]">4.9</span>
+                    <span>Client Rating</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </FadeIn>
         </div>
