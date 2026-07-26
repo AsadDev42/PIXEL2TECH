@@ -229,13 +229,11 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
-            Growing Businesses Don't Need More Tools. They Need{" "}
-            <span className="text-[#1E90FF]">AI-Powered Systems</span>
+            Growing Brands Don't Need More Freelancers. They Need{" "}
+            <span className="text-[#1E90FF]">One Creative Agency</span>
           </h1>
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground sm:mt-6">
-            We help businesses automate workflows, build scalable software, and
-            create seamless digital experiences that improve efficiency,
-            customer experience, and growth.
+            A full-service creative agency handling everything your brand needs — design, development, social media, and software — so you can focus on growing the business.
           </p>
           <div className="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <Link
@@ -306,11 +304,10 @@ function Brands() {
     <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Brands That Trust Pixel2Tech
+          Industries We Work With
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px]">
-          We work with startups, businesses, and founders who want to grow
-          faster. From Pakistan to the world.
+          From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
 
@@ -362,12 +359,10 @@ function PartnerBand() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
-            Technology Partners Focused on Business Growth
+            A Full-Service Creative Agency Built Around Your Growth
           </h2>
           <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
-            We help businesses grow with smart digital solutions. Our mission is
-            to turn ideas into impactful brands and technology that drive real
-            results.
+            We're a creative agency that takes brands from idea to launch and beyond. Everything under one roof, one team, one standard — no chasing five different freelancers.
           </p>
           <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
         </div>
@@ -383,11 +378,11 @@ function PartnerBand() {
             </div>
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-foreground sm:text-sm">
-                Trusted Technology Partner
+                Trusted Creative Partner
               </div>
               <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-foreground">4.9</span> (1520 Reviews)
+                <span className="font-semibold text-foreground">4.9</span> Client Rating
               </div>
             </div>
           </motion.div>
@@ -406,11 +401,11 @@ function PartnerBand() {
           >
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-foreground sm:text-sm">
-                100% Business Growth
+                15+ Happy Clients
               </div>
               <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-foreground">4.9</span> (1520 Reviews)
+                <span className="font-semibold text-foreground">4.9</span> Client Rating
               </div>
             </div>
           </motion.div>
@@ -423,12 +418,12 @@ function PartnerBand() {
 
 
 const services = [
-  { title: "Branding & Design", desc: "Logo design, brand style, colors, guidelines. We help you look professional and stand out.", Icon: Palette },
-  { title: "Website Development", desc: "Modern, fast, and mobile-friendly websites that convert visitors into customers.", Icon: Globe },
-  { title: "Digital Marketing", desc: "Clean and simple designs that improve user experience and increase sales.", Icon: LineChart },
-  { title: "Social Media & Content", desc: "Creative posts, content ideas, and strategies that build authority and attract leads.", Icon: Megaphone },
-  { title: "Motion & Video", desc: "Reels, ads, and brand videos that grab attention.", Icon: Clapperboard },
-  { title: "AI Solutions", desc: "Smart tools and automation to save time and improve business performance.", Icon: Bot },
+  { title: "Branding & Design", desc: "Logos, brand kits, colors, and guidelines that make you look established from day one.", Icon: Palette },
+  { title: "Website Development", desc: "Fast, mobile-friendly websites built to load quickly and turn visitors into paying customers.", Icon: Globe },
+  { title: "UI/UX Design", desc: "Clean, simple interfaces that make your product easy to use and easy to buy from.", Icon: LineChart },
+  { title: "Social Media & Content", desc: "Posts, reels, and content plans that build authority and bring in consistent leads.", Icon: Megaphone },
+  { title: "Motion & Video", desc: "Reels, ads, and brand videos that stop the scroll and get watched.", Icon: Clapperboard },
+  { title: "Software & Automation", desc: "Custom web apps, dashboards, CRMs, and AI-assisted automation built around how your business actually works.", Icon: Bot },
 ];
 
 function Services() {
@@ -546,7 +541,7 @@ function Team() {
                 Meet the people behind the work
               </h2>
               <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-                A small, senior team of designers, engineers, and strategists building technology that creates measurable impact.
+                A small, senior team of designers, developers, and strategists building work that creates measurable impact.
               </p>
             </div>
             <Link
@@ -658,14 +653,14 @@ function Studio() {
                 Where the work <span className="text-[hsl(206_100%_50%)]">actually happens</span>
               </h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-                Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just a team building for clients around the world.
+                Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just one team building for clients around the world.
               </p>
 
               <dl className="mt-8 grid grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { k: "15+", v: "In-house experts" },
-                  { k: "120+", v: "Projects shipped" },
-                  { k: "6", v: "Years growing" },
+                  { k: "6", v: "In-house experts" },
+                  { k: "50+", v: "Projects shipped" },
+                  { k: "3", v: "Years growing" },
                 ].map((s) => (
                   <div key={s.v} className="rounded-2xl border border-border/60 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
                     <dt className="text-2xl font-bold text-foreground sm:text-3xl">{s.k}</dt>

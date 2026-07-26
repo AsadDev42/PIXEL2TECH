@@ -160,7 +160,7 @@ export function SiteFooter() {
     { label: "Web Design", to: "/services" as const },
     { label: "UI UX", to: "/services" as const },
     { label: "Social Media", to: "/services" as const },
-    { label: "AI Solutions", to: "/services" as const },
+    { label: "Software & Automation", to: "/services" as const },
   ];
   return (
     <footer className="bg-muted">
@@ -172,7 +172,7 @@ export function SiteFooter() {
               <img loading="lazy" decoding="async" src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Leading AI-Powered Creative Agency from Pakistan serving clients worldwide.
+              A full-service creative agency from Pakistan, serving clients worldwide.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               {SOCIAL_LINKS.filter((s) =>
