@@ -29,8 +29,11 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
     return new Response(null, { status: 301, headers: { location: url.toString() } });
   }
 
-  const res = await next();
-  const response = res instanceof Response ? res : new Response(res as unknown as BodyInit);
+  const result = await next();
+  const response =
+    result instanceof Response
+      ? result
+      : (result as { response: Response }).response;
   const h = response.headers;
   // Content Security Policy — tuned for the current app (Google Fonts, Unsplash,
   // Supabase, Lovable preview assets, Calendly booking modal, YouTube/Vimeo videos).
