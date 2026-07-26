@@ -105,26 +105,95 @@ function AboutPage() {
     <PageShell>
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-        <FadeIn>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-            About Us
-          </div>
-          <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
-            AI-Powered Technology Solution for{" "}
-            <span className="text-[#2b7fff]">Growth</span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            From design and development to AI automation and digital products, we help businesses build smarter systems, improve customer experiences, and scale with confidence.
-          </p>
-          <div className="mt-8">
-            <Link
-              to="/contact"
-              className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </FadeIn>
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+          <FadeIn>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
+              About Us
+            </div>
+            <h1 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
+              One Creative Agency.{" "}
+              <span className="text-[#2b7fff]">Not Ten Freelancers.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              A small, senior team of designers, developers and strategists — building brands, websites and digital products end-to-end under one roof.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
+              >
+                Contact Us
+              </Link>
+              <Link
+                to="/portfolio"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-foreground hover:bg-muted"
+              >
+                See Our Work <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-6">
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">50+</div>
+                <div className="mt-1 text-xs text-muted-foreground">Projects Delivered</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">6</div>
+                <div className="mt-1 text-xs text-muted-foreground">In-House Experts</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">5★</div>
+                <div className="mt-1 text-xs text-muted-foreground">Client Rating</div>
+              </div>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&fm=webp&q=70"
+                      alt="Creative team collaborating"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&fm=webp&q=70"
+                      alt="Design workspace"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-3 pt-8 sm:space-y-4 sm:pt-12">
+                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&fm=webp&q=70"
+                      alt="Strategy session"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&fm=webp&q=70"
+                      alt="Developer at work"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="pointer-events-none absolute -right-2 -top-2 hidden h-16 w-16 rounded-full bg-[#2b7fff]/10 blur-2xl md:block" aria-hidden="true" />
+            </div>
+          </FadeIn>
+        </div>
       </section>
 
       {/* Who We Are */}
