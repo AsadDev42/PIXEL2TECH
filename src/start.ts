@@ -30,7 +30,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   }
 
   const res = await next();
-  const response = res instanceof Response ? res : new Response(res as BodyInit);
+  const response = res instanceof Response ? res : new Response(res as unknown as BodyInit);
   const h = response.headers;
   // Content Security Policy — tuned for the current app (Google Fonts, Unsplash,
   // Supabase, Lovable preview assets, Calendly booking modal, YouTube/Vimeo videos).
