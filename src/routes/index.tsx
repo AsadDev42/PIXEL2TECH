@@ -541,7 +541,7 @@ function Team() {
                 Meet the people behind the work
               </h2>
               <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-                A small, senior team of designers, engineers, and strategists building technology that creates measurable impact.
+                A small, senior team of designers, developers, and strategists building work that creates measurable impact.
               </p>
             </div>
             <Link
