@@ -165,9 +165,14 @@ function ContactPage() {
                       aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
                       className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
                     />
-                    {errors[f.id] && (
-                      <p id={`${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
-                    )}
+                    <p
+                      id={`${f.id}-error`}
+                      role="alert"
+                      aria-live="polite"
+                      className="mt-1.5 min-h-[1rem] text-xs text-destructive"
+                    >
+                      {errors[f.id] ?? ""}
+                    </p>
                   </div>
                 ))}
                 <div className="flex flex-col">
@@ -185,9 +190,14 @@ function ContactPage() {
                     aria-describedby={errors.message ? "message-error" : undefined}
                     className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
                   />
-                  {errors.message && (
-                    <p id="message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
-                  )}
+                  <p
+                    id="message-error"
+                    role="alert"
+                    aria-live="polite"
+                    className="mt-1.5 min-h-[1rem] text-xs text-destructive"
+                  >
+                    {errors.message ?? ""}
+                  </p>
                 </div>
                 <button
                   type="submit"

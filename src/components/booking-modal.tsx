@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, Video, Layers, ShieldCheck, Target, X } from "lucide-react";
+import { useFocusTrap } from "@/lib/use-focus-trap";
 
 const SERVICES = [
   "AI Solutions & Automation",
@@ -51,6 +52,8 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
+  const dialogRef = useFocusTrap<HTMLDivElement>(open);
+
   if (!open) return null;
 
   const calUrl = service
@@ -66,8 +69,10 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
+        tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-6xl overflow-hidden rounded-2xl bg-background shadow-2xl sm:rounded-3xl"
+        className="relative w-full max-w-6xl overflow-hidden rounded-2xl bg-background shadow-2xl sm:rounded-3xl focus:outline-none"
       >
         <button
           type="button"
