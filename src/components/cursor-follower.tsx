@@ -48,9 +48,15 @@ export function CursorFollower() {
         'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]',
       );
     };
+    const isMedia = (el: EventTarget | null) => {
+      if (!(el instanceof Element)) return false;
+      return !!el.closest('img, picture, video, [data-cursor="expand"]');
+    };
     const onOver = (e: MouseEvent) => {
       if (!blobRef.current) return;
-      blobRef.current.dataset.hover = isInteractive(e.target) ? "1" : "0";
+      const media = isMedia(e.target);
+      blobRef.current.dataset.media = media ? "1" : "0";
+      blobRef.current.dataset.hover = !media && isInteractive(e.target) ? "1" : "0";
     };
     const onDown = () => {
       if (blobRef.current) blobRef.current.dataset.down = "1";
@@ -110,6 +116,30 @@ export function CursorFollower() {
         .lv-cursor-blob[data-down="1"]{
           height: 22px; width: 22px;
         }
+        .lv-cursor-blob[data-media="1"]{
+          height: 104px; width: 104px;
+          background: rgba(20,20,22,.62);
+          mix-blend-mode: normal;
+          backdrop-filter: blur(2px);
+        }
+        .lv-cursor-blob[data-media="1"][data-down="1"]{
+          height: 92px; width: 92px;
+        }
+        .lv-cursor-label{
+          display: flex; align-items: center; justify-content: center;
+          height: 100%; width: 100%;
+          font-size: 14px; font-weight: 500; letter-spacing: .01em;
+          color: #fff; white-space: nowrap;
+          opacity: 0; transform: scale(.9);
+          transition: opacity .2s ease, transform .28s cubic-bezier(.2,.8,.2,1);
+        }
+        .lv-cursor-blob[data-media="1"] .lv-cursor-label{
+          opacity: 1; transform: scale(1);
+        }
+        .lv-cursor-blob[data-media="1"] ~ .lv-cursor-dot{ opacity: 0 !important; }
+        @media (prefers-reduced-motion: reduce){
+          .lv-cursor-blob, .lv-cursor-label{ transition: opacity .2s ease; }
+        }
         .lv-cursor-dot{
           position: fixed; left: 0; top: 0; z-index: 10000;
           height: 6px; width: 6px; border-radius: 9999px;
@@ -121,7 +151,9 @@ export function CursorFollower() {
           will-change: transform;
         }
       `}</style>
-      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" className="lv-cursor-blob" />
+      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" className="lv-cursor-blob">
+        <span className="lv-cursor-label">Expand +</span>
+      </div>
       <div ref={dotRef} aria-hidden className="lv-cursor-dot" />
     </>
   );
