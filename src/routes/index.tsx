@@ -674,7 +674,10 @@ function Work() {
         className="mt-8 sm:mt-10"
         ariaLabel="Our services"
         renderItem={(w, i) => (
-          <div className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]">
+          <div
+            data-cursor="expand"
+            className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
+          >
             <img
               loading="lazy"
               decoding="async"
