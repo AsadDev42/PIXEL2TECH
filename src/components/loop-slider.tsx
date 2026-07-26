@@ -174,7 +174,9 @@ export function LoopSlider<T>({
 
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
   const touchClass = draggable
-    ? (isX ? "touch-pan-y" : "touch-none")
+    // Vertical sliders must never swallow page scrolling on touch devices:
+    // allow native pan-y on small screens and only capture the gesture from lg up.
+    ? (isX ? "touch-pan-y" : "touch-pan-y lg:touch-none")
     : "touch-auto";
   const trackClass = isX
     ? `flex w-max ${touchClass} select-none ${gapClassName}`
@@ -188,7 +190,7 @@ export function LoopSlider<T>({
         style={{ willChange: "transform" }}
       >
         {loop.map((item, i) => (
-          <div key={keyFor(item, i)} aria-hidden={i >= items.length ? "true" : undefined}>
+          <div key={keyFor(item, i)} className="shrink-0" aria-hidden={i >= items.length ? "true" : undefined}>
             {renderItem(item, i)}
           </div>
         ))}
