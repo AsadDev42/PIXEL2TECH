@@ -207,7 +207,7 @@ function AboutPage() {
                       className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                     />
                   </div>
-                  <div className="p-5 sm:p-6">
+                  <div className="p-4 sm:p-5 lg:p-6">
                     <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</h3>
                     <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</p>
                   </div>
