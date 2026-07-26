@@ -304,11 +304,10 @@ function Brands() {
     <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-          Brands That Trust Pixel2Tech
+          Industries We Work With
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px]">
-          We work with startups, businesses, and founders who want to grow
-          faster. From Pakistan to the world.
+          From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
 
