@@ -308,6 +308,8 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Pixel2Tech",
+          description:
+            "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
           image: OG_IMAGE,
           logo: LOGO_URL,
           url: "/",
