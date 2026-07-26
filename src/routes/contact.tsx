@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, MapPin, Phone, ArrowRight, Clock } from "lucide-react";
+import { Mail, Loader2, MapPin, Phone, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -84,142 +84,145 @@ function ContactPage() {
   }
 
   const fields = [
-    { id: "name", label: "YOUR NAME", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "YOUR EMAIL", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "SUBJECT", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
+    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
+    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
   ] as const;
 
   return (
     <PageShell>
-      <section className="bg-background pb-16 pt-10 sm:pb-24 sm:pt-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            {/* Left: heading + contact info */}
-            <FadeIn>
-              <div className="flex flex-col">
-                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                  Let&apos;s work together
-                </span>
-                <h1 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
-                  Ready to transform your brand?
-                </h1>
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-                  Get in touch with us today, and let&apos;s create something amazing.
-                </p>
+      {/* Let's work together — matches Services page contact section */}
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+        <FadeIn>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              Let&apos;s work together
+            </span>
+            <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px] lg:leading-[1.05]">
+              Ready to transform your <span className="text-primary">brand?</span>
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+              Get in touch with us today, and let&apos;s create something amazing.
+            </p>
+          </div>
+        </FadeIn>
 
-                <div className="mt-10 space-y-4 sm:mt-12">
-                  <a
-                    href="mailto:sales@pixel2tech.com"
-                    className="group flex items-center gap-4 rounded-3xl border border-border bg-background p-4 transition hover:bg-muted/40 sm:p-5"
-                  >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
-                      <Mail className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</div>
-                      <div className="mt-0.5 text-sm font-medium text-foreground group-hover:text-primary">sales@pixel2tech.com</div>
-                    </div>
-                  </a>
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-16 sm:mt-16">
+          {/* Left: Form */}
+          <FadeIn>
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Send us a message</h2>
+              <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="mt-6 space-y-5">
+                <h3 id="contact-form-title" className="sr-only">Contact form</h3>
+                {fields.map((f) => (
+                  <div key={f.id} className="flex flex-col">
+                    <label htmlFor={f.id} className="mb-2 text-sm font-medium text-foreground">
+                      {f.label}
+                    </label>
+                    <input
+                      id={f.id}
+                      name={f.id}
+                      type={f.type}
+                      autoComplete={f.autoComplete}
+                      placeholder={f.placeholder}
+                      value={form[f.id]}
+                      onChange={set(f.id)}
+                      aria-invalid={!!errors[f.id]}
+                      aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
+                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                    />
+                    {errors[f.id] && (
+                      <p id={`${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
+                    )}
+                  </div>
+                ))}
+                <div className="flex flex-col">
+                  <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={set("message")}
+                    placeholder="Tell us about your project"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                  />
+                  {errors.message && (
+                    <p id="message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
+                  )}
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-foreground text-base font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  {loading ? "Sending…" : "Send Message"}
+                </button>
+              </form>
+            </div>
+          </FadeIn>
 
-                  <a
-                    href="https://wa.me/923177475233?text=Hi%20Pixel2Tech%2C%20I%27d%20like%20to%20discuss%20a%20project."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-4 rounded-3xl border border-border bg-background p-4 transition hover:bg-muted/40 sm:p-5"
-                  >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
-                      <WhatsAppIcon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">WhatsApp</div>
-                      <div className="mt-0.5 text-sm font-medium text-foreground group-hover:text-primary">+92 317 7475212</div>
-                    </div>
-                  </a>
-
-                  <div className="flex items-center gap-4 rounded-3xl border border-border bg-background px-4 py-6 sm:px-5">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
-                      <Clock className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div className="min-w-0 space-y-1.5">
-                      <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Working Hours</div>
-                      <div className="mt-1 text-sm font-medium text-foreground">
-                        Mon - Fri: 9:00 AM - 6:00 PM
-                      </div>
-                      <div className="text-[11px] leading-snug text-muted-foreground/80">
-                        Sat: 10:00 AM - 4:00 PM · Sun: Closed
-                      </div>
-                    </div>
+          {/* Right: Get in touch */}
+          <FadeIn delay={0.1}>
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Get in touch</h2>
+              <div className="mt-6 space-y-4">
+                <a href="mailto:sales@pixel2tech.com" className="group flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
+                    <Mail className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-base font-semibold text-foreground">Email</div>
+                    <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
+                  </div>
+                </a>
+                <a href="https://wa.me/923177475212" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
+                    <WhatsAppIcon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-base font-semibold text-foreground">WhatsApp</div>
+                    <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475212</div>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
+                    <MapPin className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-base font-semibold text-foreground">Studio</div>
+                    <div className="text-sm text-muted-foreground">Lahore, Pakistan</div>
                   </div>
                 </div>
               </div>
-            </FadeIn>
 
-            {/* Right: form card */}
-            <FadeIn delay={0.1}>
-              <div className="rounded-[2rem] bg-muted/60 p-6 dark:bg-muted/40 sm:p-8 lg:p-10">
-                <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Send us a message
-                </h2>
-                <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="space-y-6">
-                  <h2 id="contact-form-title" className="sr-only">Contact form</h2>
-
-                  {fields.map((f) => (
-                    <div key={f.id} className="flex flex-col">
-                      <label htmlFor={f.id} className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground">
-                        {f.label} <span className="text-destructive" aria-hidden="true">*</span>
-                      </label>
-                      <input
-                        id={f.id}
-                        name={f.id}
-                        type={f.type}
-                        autoComplete={f.autoComplete}
-                        placeholder={f.placeholder}
-                        value={form[f.id]}
-                        onChange={set(f.id)}
-                        aria-invalid={!!errors[f.id]}
-                        aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                        className="min-h-11 w-full border-0 border-b border-border bg-transparent px-0 py-2.5 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:border-primary focus:bg-transparent"
-                      />
-                      {errors[f.id] && (
-                        <p id={`${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
-                      )}
-                    </div>
-                  ))}
-
-                  <div className="flex flex-col">
-                    <label htmlFor="message" className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground">
-                      MESSAGE <span className="text-destructive" aria-hidden="true">*</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={form.message}
-                      onChange={set("message")}
-                      placeholder="Tell us about your project"
-                      aria-invalid={!!errors.message}
-                      aria-describedby={errors.message ? "message-error" : undefined}
-                      className="w-full resize-none border-0 border-b border-border bg-transparent px-0 py-2.5 text-base text-foreground placeholder:text-muted-foreground outline-none ring-0 transition-colors focus:border-primary focus:bg-transparent"
-                    />
-                    {errors.message && (
-                      <p id="message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
-                    )}
+              <div className="mt-8 rounded-2xl bg-muted p-6 dark:bg-white/[0.04] sm:p-8">
+                <h3 className="text-xl font-semibold text-foreground">Business Hours</h3>
+                <dl className="mt-5 space-y-3 text-[15px]">
+                  <div className="flex items-center justify-between">
+                    <dt className="text-foreground">Monday – Friday</dt>
+                    <dd className="text-muted-foreground">9:00 AM – 6:00 PM</dd>
                   </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="mt-2 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-foreground px-8 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                    {loading ? "Sending…" : "Get in Touch"}
-                  </button>
-                </form>
+                  <div className="flex items-center justify-between">
+                    <dt className="text-foreground">Saturday</dt>
+                    <dd className="text-muted-foreground">10:00 AM – 4:00 PM</dd>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <dt className="text-foreground">Sunday</dt>
+                    <dd className="text-muted-foreground">Closed</dd>
+                  </div>
+                </dl>
               </div>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
+
 
       {/* Get in Touch intro */}
       <section className="bg-muted/40 py-16 sm:py-24">
@@ -300,7 +303,7 @@ function ContactPage() {
           <FadeIn>
             <div className="mx-auto flex w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background md:px-12 md:py-20">
               <h2 className="mx-auto mb-5 max-w-3xl text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
-                Ready to elevate your <span className="text-primary">brand</span> today?
+                Ready to elevate your <span className="text-[#2b7fff]">brand</span> today?
               </h2>
               <p className="mx-auto mb-8 max-w-2xl text-balance text-[15px] leading-relaxed text-background/70 sm:text-base">
                 Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
