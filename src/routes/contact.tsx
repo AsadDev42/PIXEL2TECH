@@ -114,7 +114,7 @@ function ContactPage() {
   return (
     <PageShell>
       {/* Let's work together — matches Services page contact section */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="mx-auto max-w-3xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
@@ -271,8 +271,8 @@ function ContactPage() {
 
 
       {/* Get in Touch intro */}
-      <section className="bg-muted/40 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="grid gap-10 md:grid-cols-2 md:items-center lg:gap-16">
               <div>
@@ -292,7 +292,7 @@ function ContactPage() {
 
       {/* Map */}
       <section className="bg-background pb-16 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="overflow-hidden rounded-3xl border border-border shadow-sm">
               <iframe
@@ -310,8 +310,8 @@ function ContactPage() {
       </section>
 
       {/* Our Location */}
-      <section className="bg-muted/40 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
@@ -344,8 +344,8 @@ function ContactPage() {
       </section>
 
       {/* Elevate CTA */}
-      <section className="bg-background py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+      <section className="bg-background py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-5xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto flex w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background md:px-12 md:py-20">
               <h2 className="mx-auto mb-5 max-w-3xl text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">

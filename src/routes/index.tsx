@@ -355,7 +355,7 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-10 md:py-24 lg:py-32 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             One Creative Agency.{" "}
@@ -433,7 +433,7 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Industries We Work With
@@ -560,8 +560,8 @@ const services = [
 
 function Services() {
   return (
-    <section className="bg-background py-14 sm:py-20">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -608,8 +608,8 @@ const work = [
 
 function Work() {
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
@@ -661,8 +661,8 @@ const team = [
 
 function Team() {
   return (
-    <section aria-labelledby="team-section-title" className="bg-muted py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section aria-labelledby="team-section-title" className="bg-muted py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
@@ -725,8 +725,8 @@ const posts = [
 
 function Insights() {
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:flex-wrap sm:justify-between sm:gap-6">
           <div className="min-w-0">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">Latest Insights</h2>
@@ -758,7 +758,7 @@ function Insights() {
 function Studio() {
   return (
     <section className="bg-muted/60 py-16 dark:bg-white/[0.02] sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
           <FadeIn>
             <div className="relative">

@@ -60,7 +60,7 @@ function PortfolioPage() {
     <PageShell>
       {/* Header */}
       <section className="bg-background pb-10 pt-10 sm:pb-14 sm:pt-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
@@ -76,7 +76,7 @@ function PortfolioPage() {
 
       {/* Tabs */}
       <section className="bg-background pb-16 sm:pb-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="flex justify-center">
               <div className="inline-flex rounded-full bg-muted p-1.5">
@@ -142,8 +142,8 @@ function PortfolioPage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-muted/60 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-muted/60 py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s, i) => (
               <FadeIn key={s.label} delay={0.05 * i}>
@@ -159,7 +159,7 @@ function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-background py-20 sm:py-28">
+      <section className="bg-background py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
           <FadeIn>
             <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">

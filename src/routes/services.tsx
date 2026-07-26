@@ -355,9 +355,9 @@ function ServicesPage() {
       </section>
 
       {/* Why Pixel2Tech */}
-      <section className="relative overflow-hidden bg-muted py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-muted py-16 md:py-24 lg:py-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background:radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_70%)]" />
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
@@ -438,7 +438,7 @@ function ServicesPage() {
       </section>
 
       {/* Let's work together */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px] lg:leading-[1.05]">
             Let&apos;s <span className="text-primary">work together</span>
