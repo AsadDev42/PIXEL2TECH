@@ -4,7 +4,10 @@ export type PortfolioItem = {
   category: string;
   subcategory: string;
   slug: string;
+  /** Optional embeddable video URL (e.g. Google Drive /preview link). */
+  video?: string;
 };
+
 
 export const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
 export type Category = typeof CATEGORIES[number];
