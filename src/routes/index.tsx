@@ -653,14 +653,14 @@ function Studio() {
                 Where the work <span className="text-[hsl(206_100%_50%)]">actually happens</span>
               </h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-                Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just a team building for clients around the world.
+                Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just one team building for clients around the world.
               </p>
 
               <dl className="mt-8 grid grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { k: "15+", v: "In-house experts" },
-                  { k: "120+", v: "Projects shipped" },
-                  { k: "6", v: "Years growing" },
+                  { k: "6", v: "In-house experts" },
+                  { k: "50+", v: "Projects shipped" },
+                  { k: "3", v: "Years growing" },
                 ].map((s) => (
                   <div key={s.v} className="rounded-2xl border border-border/60 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
                     <dt className="text-2xl font-bold text-foreground sm:text-3xl">{s.k}</dt>
