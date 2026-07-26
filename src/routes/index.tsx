@@ -559,7 +559,7 @@ function Team() {
           </div>
         </FadeIn>
 
-        <Stagger className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <Stagger className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {team.map((m) => (
             <StaggerItem key={m.name}>
               <article
