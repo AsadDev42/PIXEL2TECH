@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
-import { items as portfolioItems } from "@/lib/portfolio-data";
+import { ALL_ITEMS } from "@/lib/portfolio-data";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           priority: "0.6",
         }));
 
-        const portfolioEntries: SitemapEntry[] = portfolioItems.map((i) => ({
+        const portfolioEntries: SitemapEntry[] = ALL_ITEMS.map((i) => ({
           path: `/portfolio/${i.slug}`,
           changefreq: "monthly",
           priority: "0.6",
