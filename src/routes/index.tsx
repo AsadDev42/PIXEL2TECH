@@ -181,6 +181,63 @@ function HomeContact() {
 
 
 
+const homeFaqs = [
+  { q: "What services does Pixel2Tech offer?", a: "Branding and design, website development, UI/UX, social media and content, motion and video, plus custom software and automation — all handled in-house by one team." },
+  { q: "How long does a typical project take?", a: "Branding takes 2–3 weeks, websites 3–6 weeks, and custom software depends on scope. We share a clear timeline before starting." },
+  { q: "How much does a project cost?", a: "It depends on scope, but most projects start from a fixed package we agree on upfront. Book a free strategy call and we'll give you a clear quote." },
+  { q: "Do you work with international clients?", a: "Yes. We're based in Lahore, Pakistan and work with clients across the US, UK, Gulf, and Europe — communication over email, WhatsApp, and Google Meet." },
+  { q: "Can you handle both design and development?", a: "Yes. Design, development, content, and deployment all happen in-house, so there are no hand-offs between vendors." },
+  { q: "What happens after I book a strategy call?", a: "We discuss your goals on a 30-minute call, send a proposal with scope and timeline, and start once you approve." },
+];
+
+function HomeFaq() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="home-faq-title">
+      <FadeIn>
+        <div className="text-center">
+          <h2 id="home-faq-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+            Frequently Asked Questions
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+            Everything you need to know before starting a project with us.
+          </p>
+        </div>
+      </FadeIn>
+      <FadeIn delay={0.1}>
+        <div className="mt-8 sm:mt-10">
+          <div className="mx-auto max-w-3xl">
+            {homeFaqs.map((item, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={i} className="border-b border-border">
+                  <button
+                    type="button"
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between py-5 text-left text-base font-semibold text-foreground sm:text-lg"
+                  >
+                    {item.q}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={`ml-4 h-5 w-5 shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <div className={`grid transition-all ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                    <div className="overflow-hidden">
+                      <p className="pb-5 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </FadeIn>
+    </section>
+  );
+}
+
 export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
@@ -202,6 +259,20 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: homeFaqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
 });
 
