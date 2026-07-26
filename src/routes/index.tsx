@@ -559,7 +559,7 @@ function Team() {
           </div>
         </FadeIn>
 
-        <Stagger className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <Stagger className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {team.map((m) => (
             <StaggerItem key={m.name}>
               <article
@@ -576,7 +576,7 @@ function Team() {
                     className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
                 </div>
-                <div className="p-5 sm:p-6">
+                <div className="p-4 sm:p-5 lg:p-6">
                   <h3 id={`team-${m.name.replace(/\s+/g, "-")}-name`} className="text-base font-bold tracking-tight text-foreground sm:text-lg">{m.name}</h3>
                   <p id={`team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground sm:text-sm">{m.role}</p>
                 </div>
