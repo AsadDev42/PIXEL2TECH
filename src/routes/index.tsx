@@ -152,11 +152,11 @@ function HomeContact() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 lg:items-end">
-                <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:justify-end">
+              <div className="flex flex-col gap-4 lg:items-end">
+                <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:w-auto lg:justify-end">
                   <a
                     href="mailto:sales@pixel2tech.com"
-                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10 sm:justify-start"
                   >
                     <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
                       <Mail className="h-3.5 w-3.5" aria-hidden="true" />
@@ -165,21 +165,21 @@ function HomeContact() {
                   </a>
                   <a
                     href="tel:+923177475233"
-                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10 sm:justify-start"
                   >
                     <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
                       <Phone className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
                     +92 317 7475233
                   </a>
-                  <Link
-                    to="/contact"
-                    className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/30 ring-1 ring-white/20 transition hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                  >
-                    Contact Us
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-                  </Link>
                 </div>
+                <Link
+                  to="/contact"
+                  className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-background px-7 py-3 text-sm font-semibold text-foreground shadow-lg shadow-black/30 ring-1 ring-border transition hover:bg-primary hover:text-primary-foreground hover:ring-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-auto"
+                >
+                  Contact Us
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>
