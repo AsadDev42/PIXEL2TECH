@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { useState } from "react";
+import { CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/portfolio")({
   component: PortfolioPage,
@@ -18,125 +19,6 @@ export const Route = createFileRoute("/portfolio")({
     links: [{ rel: "canonical", href: "/portfolio" }],
   }),
 });
-
-type Item = { title: string; img: string };
-
-const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
-type Category = typeof CATEGORIES[number];
-
-const SUBS: Record<Category, string[]> = {
-  Creative: ["Social Media", "Branding", "Print & Merchandise"],
-  Design: ["Websites", "E-Commerce", "Mobile Apps"],
-  "Video Editing": ["Short Form", "Long Form", "Commercial"],
-  "Custom Platforms": ["Web Apps", "Tools", "Automation"],
-};
-
-const WORK: Record<Category, Record<string, Item[]>> = {
-  Creative: {
-    "Social Media": [
-      { title: "Product launch campaign", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Bakery brand posts", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Instagram grid design", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Cafe seasonal creatives", img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Fashion editorial reels", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    Branding: [
-      { title: "Coffee house identity", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Logo & brand system", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Studio rebrand", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Restaurant brand guide", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Startup visual identity", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Wellness brand mark", img: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    "Print & Merchandise": [
-      { title: "Business card set", img: "https://images.unsplash.com/photo-1606115915090-be18fea23ec7?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Packaging mockups", img: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Merchandise tees", img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Brand stationery kit", img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Menu & signage", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Tote bag prints", img: "https://images.unsplash.com/photo-1544441893-675973e31985?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-  },
-  Design: {
-    Websites: [
-      { title: "SaaS marketing site", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Agency portfolio", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Landing page series", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Coaching brand site", img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Studio one-pager", img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Real estate listings", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    "E-Commerce": [
-      { title: "Fashion storefront", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Skincare shop", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Electronics marketplace", img: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Food delivery store", img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Furniture catalog", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Jewelry boutique", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    "Mobile Apps": [
-      { title: "Fitness tracker app", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Food delivery app", img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Banking app redesign", img: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Meditation app", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Travel companion", img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Habit tracker", img: "https://images.unsplash.com/photo-1522199873717-bc67b1a5e32b?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-  },
-  "Video Editing": {
-    "Short Form": [
-      { title: "Brand reel series", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Product teaser shorts", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Behind the scenes cuts", img: "https://images.unsplash.com/photo-1493804714600-6edb1cd93080?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Founder story reels", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Event highlights", img: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Recipe shorts", img: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    "Long Form": [
-      { title: "Documentary edit", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Podcast video edit", img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Tutorial series", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Vlog cuts", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Interview episodes", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Webinar recordings", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    Commercial: [
-      { title: "Facebook video ads", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "TikTok ad series", img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "YouTube pre-roll", img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Testimonial ad cuts", img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "App promo videos", img: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Explainer animations", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-  },
-  "Custom Platforms": {
-    "Web Apps": [
-      { title: "Client dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Booking platform", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Analytics portal", img: "https://images.unsplash.com/photo-1551288049-4b39c6b5d9f6?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Membership portal", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "CRM workspace", img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Design system", img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    Tools: [
-      { title: "Internal workflow tool", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Invoice generator", img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Content calendar", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Lead tracker", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Report builder", img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Review collector", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-    Automation: [
-      { title: "Email automation", img: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "CRM automation", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Zapier integrations", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "AI chatbot setup", img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Webhook pipelines", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=900&auto=format&fit=crop&fm=webp&q=70" },
-      { title: "Data sync engine", img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=900&auto=format&fit=crop&fm=webp&q=70" },
-    ],
-  },
-};
 
 const STATS = [
   { value: "95%+", label: "Client Satisfaction", body: "We focus on quality work and strong client relationships." },
