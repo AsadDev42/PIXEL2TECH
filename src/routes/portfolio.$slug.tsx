@@ -1,8 +1,15 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
-import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp } from "lucide-react";
-import { getItemBySlug, getRelated, getGallery } from "@/lib/portfolio-data";
+import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play } from "lucide-react";
+import {
+  getItemBySlug,
+  getRelated,
+  getSubcategoryGallery,
+  getBrandName,
+  getDeliverables,
+  type PortfolioItem,
+} from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
@@ -17,7 +24,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     }
     const { item } = loaderData;
     const title = `${item.title} — Pixel2Tech`;
-    const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the challenge, our approach and the outcome.`;
+    const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the brand, our approach and the outcome.`;
     const url = `/portfolio/${params.slug}`;
     return {
       meta: [
@@ -50,14 +57,158 @@ export const Route = createFileRoute("/portfolio/$slug")({
   },
 });
 
+function CategoryShowcase({ item, images }: { item: PortfolioItem; images: string[] }) {
+  const sub = item.subcategory;
+  const all = [item.img, ...images];
+
+  // Mobile app → phone frames
+  if (sub === "Mobile Apps") {
+    return (
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {all.slice(0, 6).map((src, i) => (
+          <FadeIn key={src + i} delay={0.04 * i}>
+            <div className="mx-auto w-full max-w-[260px] rounded-[2.25rem] border-[10px] border-neutral-900 bg-neutral-900 shadow-xl dark:border-neutral-800">
+              <div className="overflow-hidden rounded-[1.5rem] bg-muted">
+                <img src={src} alt={`${item.title} screen ${i + 1}`} loading="lazy" decoding="async" className="aspect-[9/19] w-full object-cover" />
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    );
+  }
+
+  // Websites / e-commerce / web apps → browser chrome mockup
+  if (sub === "Websites" || sub === "E-Commerce" || sub === "Web Apps") {
+    return (
+      <div className="space-y-6">
+        {all.slice(0, 3).map((src, i) => (
+          <FadeIn key={src + i} delay={0.05 * i}>
+            <div className="overflow-hidden rounded-2xl border border-border bg-muted shadow-sm dark:border-white/10 dark:bg-white/[0.03]">
+              <div className="flex items-center gap-1.5 border-b border-border/70 bg-muted/60 px-4 py-2.5 dark:border-white/10">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+                <span className="ml-3 truncate text-xs text-muted-foreground">{getBrandName(item).toLowerCase().replace(/\s+/g, "")}.com</span>
+              </div>
+              <img src={src} alt={`${item.title} view ${i + 1}`} loading={i === 0 ? "eager" : "lazy"} decoding="async" className="aspect-[16/10] w-full object-cover" />
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    );
+  }
+
+  // Video categories → thumbnails with play overlay
+  if (sub === "Short Form" || sub === "Long Form" || sub === "Commercial") {
+    return (
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {all.slice(0, 6).map((src, i) => (
+          <FadeIn key={src + i} delay={0.04 * i}>
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-black dark:border-white/10">
+              <img src={src} alt={`${item.title} clip ${i + 1}`} loading="lazy" decoding="async" className="aspect-video w-full object-cover opacity-90 transition group-hover:scale-105" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-neutral-900 shadow-lg transition group-hover:scale-110">
+                  <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
+                </span>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    );
+  }
+
+  // Branding → brand board (hero + palette + tiles)
+  if (sub === "Branding") {
+    const palette = ["#0a0d1f", "#2b7fff", "#f5f2ec", "#111111", "#e7e2d6"];
+    return (
+      <div className="space-y-5">
+        <FadeIn>
+          <div className="overflow-hidden rounded-2xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
+            <img src={all[0]} alt={`${item.title} brand hero`} className="aspect-[16/9] w-full object-cover" loading="eager" decoding="async" />
+          </div>
+        </FadeIn>
+        <div className="grid gap-5 md:grid-cols-2">
+          <FadeIn delay={0.05}>
+            <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03]">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Color palette</div>
+              <div className="mt-4 flex overflow-hidden rounded-xl">
+                {palette.map((c) => (
+                  <div key={c} className="h-20 flex-1" style={{ backgroundColor: c }} title={c} />
+                ))}
+              </div>
+              <div className="mt-4 grid grid-cols-5 gap-2 text-[11px] text-muted-foreground">
+                {palette.map((c) => (<div key={c} className="text-center font-mono">{c}</div>))}
+              </div>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03]">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Typography</div>
+              <div className="mt-4">
+                <div className="font-heading text-4xl font-bold tracking-tight text-foreground">{getBrandName(item)}</div>
+                <div className="mt-1 text-sm text-muted-foreground">Display / Sora — 700</div>
+              </div>
+              <div className="mt-6">
+                <div className="text-lg text-foreground">The quick brown fox jumps over the lazy dog.</div>
+                <div className="mt-1 text-sm text-muted-foreground">Body / Manrope — 400</div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {all.slice(1, 4).map((src, i) => (
+            <FadeIn key={src + i} delay={0.05 * i}>
+              <div className="overflow-hidden rounded-2xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
+                <img src={src} alt={`${item.title} brand asset ${i + 1}`} loading="lazy" decoding="async" className="aspect-square w-full object-cover" />
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Social Media → square posts grid
+  if (sub === "Social Media") {
+    return (
+      <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 sm:gap-4">
+        {all.slice(0, 6).map((src, i) => (
+          <FadeIn key={src + i} delay={0.03 * i}>
+            <div className="overflow-hidden rounded-xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
+              <img src={src} alt={`${item.title} post ${i + 1}`} loading="lazy" decoding="async" className="aspect-square w-full object-cover transition hover:scale-105" />
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    );
+  }
+
+  // Default (Print & Merchandise, Tools, Automation, etc.) — clean gallery
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {all.slice(0, 6).map((src, i) => (
+        <FadeIn key={src + i} delay={0.04 * i}>
+          <div className="overflow-hidden rounded-2xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
+            <img src={src} alt={`${item.title} visual ${i + 1}`} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition hover:scale-[1.02]" />
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+  );
+}
+
 function PortfolioDetailPage() {
   const { item } = Route.useLoaderData();
-  const gallery = getGallery(item);
+  const gallery = getSubcategoryGallery(item);
   const related = getRelated(item);
+  const brand = getBrandName(item);
+  const deliverables = getDeliverables(item);
 
   return (
     <PageShell>
-      <section className="mx-auto max-w-5xl px-5 pt-16 md:px-10 md:pt-24 lg:pt-32">
+      <section className="mx-auto max-w-6xl px-5 pt-16 md:px-10 md:pt-24 lg:pt-32">
         <FadeIn>
           <Link
             to="/portfolio"
@@ -69,8 +220,8 @@ function PortfolioDetailPage() {
         </FadeIn>
       </section>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-5xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      {/* Hero: brand meta + summary */}
+      <section className="mx-auto max-w-6xl px-5 pt-8 md:px-10 md:pt-10">
         <FadeIn>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
             <span className="rounded-full bg-muted px-3 py-1 text-foreground dark:bg-white/[0.06]">{item.category}</span>
@@ -80,85 +231,90 @@ function PortfolioDetailPage() {
           <h1 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
             {item.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-            A {item.subcategory.toLowerCase()} project under our {item.category.toLowerCase()} practice — designed to help the client stand out, connect with the right audience, and turn attention into measurable growth.
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.1}>
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
-            <img
-              src={item.img}
-              alt={item.title}
-              className="h-full w-full object-cover"
-              loading="eager"
-              decoding="async"
-            />
+          <div className="mt-8 grid gap-8 md:grid-cols-3">
+            <div className="md:col-span-2">
+              <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                A {item.subcategory.toLowerCase()} project we shipped for <span className="font-semibold text-foreground">{brand}</span>.
+                We designed the full experience end-to-end — from strategy and concept to final production — to help the brand stand out,
+                connect with the right audience, and turn attention into measurable growth.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-5 dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
+              <dl className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Brand</dt>
+                  <dd className="mt-1 font-semibold text-foreground">{brand}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Practice</dt>
+                  <dd className="mt-1 font-semibold text-foreground">{item.category}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Service</dt>
+                  <dd className="mt-1 font-semibold text-foreground">{item.subcategory}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Year</dt>
+                  <dd className="mt-1 font-semibold text-foreground">2025</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </FadeIn>
       </section>
 
-      {/* Story */}
-      <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
-        <div className="grid gap-5 md:grid-cols-3">
+      {/* Category-specific showcase */}
+      <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+        <FadeIn>
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">The Work</div>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">What we designed for {brand}</h2>
+            </div>
+          </div>
+        </FadeIn>
+        <CategoryShowcase item={item} images={gallery} />
+      </section>
+
+      {/* Deliverables + Story */}
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
+        <div className="grid gap-8 lg:grid-cols-3">
+          <FadeIn>
+            <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Deliverables</div>
+              <ul className="mt-5 space-y-3">
+                {deliverables.map((d) => (
+                  <li key={d} className="flex items-start gap-3 text-sm text-foreground">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Check className="h-3 w-3" strokeWidth={3} />
+                    </span>
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
           {[
-            {
-              Icon: Target,
-              title: "The Challenge",
-              body: `The client needed a ${item.subcategory.toLowerCase()} solution that felt distinctly theirs — one that could compete against bigger players without inflating cost, and stay flexible as the brand evolved.`,
-            },
-            {
-              Icon: Wrench,
-              title: "What We Did",
-              body: `We ran a focused discovery, aligned on goals and audience, then designed and shipped the ${item.subcategory.toLowerCase()} end-to-end. Every decision was tied to a business outcome, not just aesthetics.`,
-            },
-            {
-              Icon: TrendingUp,
-              title: "The Result",
-              body: `A polished, on-brand ${item.subcategory.toLowerCase()} that helped the client attract the right customers, improve engagement, and create a foundation the team can keep building on.`,
-            },
-          ].map(({ Icon, title, body }) => (
+            { Icon: Target, title: "The Challenge", body: `${brand} needed a ${item.subcategory.toLowerCase()} solution that felt distinctly theirs — one that could compete against bigger players without inflating cost, and stay flexible as the brand evolved.` },
+            { Icon: Wrench, title: "What We Did", body: `We ran a focused discovery, aligned on goals and audience, then designed and shipped the ${item.subcategory.toLowerCase()} end-to-end. Every decision tied to a business outcome, not just aesthetics.` },
+            { Icon: TrendingUp, title: "The Result", body: `A polished, on-brand ${item.subcategory.toLowerCase()} that helped ${brand} attract the right customers, improve engagement, and create a foundation the team can keep building on.` },
+          ].slice(0, 2).map(({ Icon, title, body }) => (
             <FadeIn key={title}>
-              <div className="h-full rounded-2xl border border-border/70 bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-7">
+              <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
                 <div aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h2 className="text-lg font-bold text-foreground sm:text-xl">{title}</h2>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                <h3 className="text-lg font-bold text-foreground sm:text-xl">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
               </div>
             </FadeIn>
           ))}
         </div>
       </section>
 
-      {/* Gallery */}
-      {gallery.length > 0 && (
-        <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
-          <FadeIn>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Gallery</h2>
-            <p className="mt-2 text-sm text-muted-foreground">A closer look at the work.</p>
-          </FadeIn>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {gallery.map((src, i) => (
-              <FadeIn key={src + i} delay={0.05 * i}>
-                <div className="overflow-hidden rounded-2xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
-                  <img
-                    src={src}
-                    alt={`${item.title} — visual ${i + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[4/5] h-full w-full object-cover transition hover:scale-[1.02]"
-                  />
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Related */}
       {related.length > 0 && (
-        <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
+        <section className="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
           <FadeIn>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">More {item.category} work</h2>
           </FadeIn>
@@ -186,7 +342,7 @@ function PortfolioDetailPage() {
       )}
 
       {/* CTA */}
-      <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
             <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
