@@ -338,61 +338,26 @@ function ServicesPage() {
       </section>
 
       {/* Let's work together */}
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px] lg:leading-[1.05]">
+            Let&apos;s <span className="text-primary">work together</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+            Ready to transform your brand? Get in touch with us today, and let&apos;s create something amazing.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-16 sm:mt-16">
+          {/* Left: Form */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Let's work together</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">
-              Ready to transform your brand?
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Get in touch with us today, and let’s create something amazing.
-            </p>
-
-            <div className="mt-8 space-y-4 sm:mt-10">
-              <div className="flex items-center gap-4 rounded-2xl border border-border/70 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted dark:bg-white/[0.05]">
-                  <Mail className="h-4 w-4 text-foreground" />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Email</p>
-                  <a href="mailto:sales@pixel2tech.com" className="text-sm font-medium text-foreground hover:underline">
-                    sales@pixel2tech.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-2xl border border-border/70 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted dark:bg-white/[0.05]">
-                  <Phone className="h-4 w-4 text-foreground" />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">WhatsApp</p>
-                  <a href="https://wa.me/923177475212" target="_blank" rel="noreferrer" className="text-sm font-medium text-foreground hover:underline">
-                    +92 317 7475212
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-2xl border border-border/70 bg-background p-4 dark:border-white/10 dark:bg-white/[0.03] sm:p-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted dark:bg-white/[0.05]">
-                  <Clock className="h-4 w-4 text-foreground" />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Working Hours</p>
-                  <p className="text-sm font-medium text-foreground">Mon – Fri: 9:00 AM – 6:00 PM</p>
-                  <p className="text-xs text-muted-foreground">Sat: 10:00 AM – 4:00 PM · Sun: Closed</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl bg-muted p-6 dark:bg-white/[0.02] sm:rounded-3xl sm:p-8 md:p-10">
-            <h3 className="text-lg font-bold text-foreground sm:text-xl">Send us a message</h3>
-            <form onSubmit={onSubmit} aria-labelledby="services-form-title" noValidate className="mt-5 grid gap-5 sm:mt-6">
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Send us a message</h3>
+            <form onSubmit={onSubmit} aria-labelledby="services-form-title" noValidate className="mt-6 space-y-5">
               <h2 id="services-form-title" className="sr-only">Services inquiry form</h2>
               {fields.map((f) => (
                 <div key={f.id} className="flex flex-col">
-                  <label htmlFor={`svc-${f.id}`} className="mb-1 text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                    {f.label} <span aria-hidden="true">*</span>
+                  <label htmlFor={`svc-${f.id}`} className="mb-2 text-sm font-medium text-foreground">
+                    {f.label}
                   </label>
                   <input
                     id={`svc-${f.id}`}
@@ -404,16 +369,16 @@ function ServicesPage() {
                     onChange={set(f.id)}
                     aria-invalid={!!errors[f.id]}
                     aria-describedby={errors[f.id] ? `svc-${f.id}-error` : undefined}
-                    className="min-h-11 border-0 border-b border-neutral-500 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
+                    className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
                   />
                   {errors[f.id] && (
-                    <p id={`svc-${f.id}-error`} className="mt-1 text-xs text-red-600">{errors[f.id]}</p>
+                    <p id={`svc-${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
                   )}
                 </div>
               ))}
               <div className="flex flex-col">
-                <label htmlFor="svc-message" className="mb-1 text-xs font-semibold uppercase tracking-wide text-foreground/80">
-                  Message <span aria-hidden="true">*</span>
+                <label htmlFor="svc-message" className="mb-2 text-sm font-medium text-foreground">
+                  Message
                 </label>
                 <textarea
                   id="svc-message"
@@ -424,21 +389,83 @@ function ServicesPage() {
                   placeholder="Tell us about your project"
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "svc-message-error" : undefined}
-                  className="border-0 border-b border-neutral-500 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
+                  className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
                 />
                 {errors.message && (
-                  <p id="svc-message-error" className="mt-1 text-xs text-red-600">{errors.message}</p>
+                  <p id="svc-message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
                 )}
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-foreground text-base font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                {loading ? "Sending…" : "Get in Touch"}
+                {loading ? "Sending…" : "Send Message"}
               </button>
             </form>
+          </div>
+
+          {/* Right: Get in touch */}
+          <div>
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Get in touch</h3>
+            <div className="mt-6 space-y-4">
+              <a href="mailto:sales@pixel2tech.com" className="group flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
+                  <Mail className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <div className="text-base font-semibold text-foreground">Email</div>
+                  <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
+                </div>
+              </a>
+              <a href="https://wa.me/923177475212" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
+                  <Phone className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <div className="text-base font-semibold text-foreground">WhatsApp</div>
+                  <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475212</div>
+                </div>
+              </a>
+            </div>
+
+            <h3 className="mt-10 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Follow us</h3>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {SOCIAL_LINKS.filter((s) => ["Facebook", "X / Twitter", "Instagram", "LinkedIn"].includes(s.name)).map((s) => {
+                const Icon = s.Icon;
+                return (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background text-foreground transition hover:bg-muted dark:bg-white/[0.02] dark:hover:bg-white/[0.06]"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 rounded-2xl bg-muted p-6 dark:bg-white/[0.04] sm:p-8">
+              <h4 className="text-xl font-semibold text-foreground">Business Hours</h4>
+              <dl className="mt-5 space-y-3 text-[15px]">
+                <div className="flex items-center justify-between">
+                  <dt className="text-foreground">Monday – Friday</dt>
+                  <dd className="text-muted-foreground">9:00 AM – 6:00 PM</dd>
+                </div>
+                <div className="flex items-center justify-between">
+                  <dt className="text-foreground">Saturday</dt>
+                  <dd className="text-muted-foreground">10:00 AM – 4:00 PM</dd>
+                </div>
+                <div className="flex items-center justify-between">
+                  <dt className="text-foreground">Sunday</dt>
+                  <dd className="text-muted-foreground">Closed</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
