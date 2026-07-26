@@ -3,8 +3,7 @@ import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://pixel2tech.lovable.app";
 
 interface SitemapEntry {
   path: string;
