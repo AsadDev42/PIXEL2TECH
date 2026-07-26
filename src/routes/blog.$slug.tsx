@@ -27,7 +27,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:image", content: post.img },
         { property: "article:author", content: post.author },
         { property: "article:published_time", content: post.date },
-        { property: "article:section", content: post.category },
+        { property: "article:section", content: post.tag },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: post.img },
       ],
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/blog/$slug")({
               logo: { "@type": "ImageObject", url: "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
             },
             mainEntityOfPage: url,
-            articleSection: post.category,
+            articleSection: post.tag,
           }),
         },
         {
