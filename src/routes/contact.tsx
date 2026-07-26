@@ -63,6 +63,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 function ContactPage() {
   const submit = useServerFn(submitContactForm);
   const [form, setForm] = useState<FormState>(initial);
+  const [website, setWebsite] = useState(""); // honeypot
+  const [loadedAt] = useState<number>(() => Date.now());
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [loading, setLoading] = useState(false);
 
@@ -70,6 +72,7 @@ function ContactPage() {
     setForm((f) => ({ ...f, [k]: e.target.value }));
     if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
   };
+
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -85,7 +88,7 @@ function ContactPage() {
     }
     setLoading(true);
     try {
-      await submit({ data: parsed.data });
+      await submit({ data: { ...parsed.data, website, ts: loadedAt } });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
@@ -131,6 +134,20 @@ function ContactPage() {
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Send us a message</h2>
               <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="mt-6 space-y-5">
                 <h3 id="contact-form-title" className="sr-only">Contact form</h3>
+                {/* Honeypot: hidden from users & screen readers, visible to bots */}
+                <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
+                  <label htmlFor="website">Website (leave empty)</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
+
                 {fields.map((f) => (
                   <div key={f.id} className="flex flex-col">
                     <label htmlFor={f.id} className="mb-2 text-sm font-medium text-foreground">

@@ -26,8 +26,11 @@ const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", pho
 function HomeContact() {
   const submit = useServerFn(submitContactForm);
   const [form, setForm] = useState<HomeFormState>(homeInitial);
+  const [website, setWebsite] = useState("");
+  const [loadedAt] = useState<number>(() => Date.now());
   const [errors, setErrors] = useState<Partial<Record<keyof HomeFormState, string>>>({});
   const [loading, setLoading] = useState(false);
+
 
   const set = (k: keyof HomeFormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -55,8 +58,11 @@ function HomeContact() {
           email: d.email,
           subject: `New inquiry from ${d.firstName} ${d.lastName} (${d.phone})`,
           message: d.message,
+          website,
+          ts: loadedAt,
         },
       });
+
       toast.success("Message sent!", { description: "Thanks — we'll get back to you within one business day." });
       setForm(homeInitial);
       setErrors({});
@@ -85,6 +91,11 @@ function HomeContact() {
             </p>
 
             <form onSubmit={onSubmit} noValidate className="mt-8 grid gap-x-8 gap-y-5 sm:mt-10 sm:grid-cols-2">
+              <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                <label htmlFor="hp-home-website">Website</label>
+                <input id="hp-home-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+              </div>
+
               <div>
                 <label htmlFor="firstName" className="sr-only">First Name</label>
                 <input id="firstName" name="firstName" autoComplete="given-name" placeholder="First Name" value={form.firstName} onChange={set("firstName")} aria-invalid={!!errors.firstName} className={inputCls} />
