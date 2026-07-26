@@ -45,9 +45,29 @@ export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator((input: SubmissionInput) => submissionSchema.parse(input))
 
   .handler(async ({ data }) => {
+    // Honeypot: reject silently-ish if bot filled the field.
+    if (data.website && data.website.length > 0) {
+      return { ok: true as const };
+    }
+    // Speed trap: reject sub-1s submissions (bots).
+    if (typeof data.ts === "number" && Date.now() - data.ts < 1000) {
+      throw new Error("Please take a moment to review your message.");
+    }
+
+    // Rate limit per client IP.
+    const ip =
+      (getRequestHeader("cf-connecting-ip") ||
+        getRequestHeader("x-forwarded-for")?.split(",")[0].trim() ||
+        getRequestHeader("x-real-ip") ||
+        "unknown").toString();
+    if (!rateLimit(ip)) {
+      throw new Error("Too many submissions. Please try again in a few minutes.");
+    }
+
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
     if (!url || !key) throw new Error("Backend not configured");
+
 
     const supabase = createClient<Database>(url, key, {
       auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
