@@ -145,8 +145,8 @@ function HomeContact() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/80 backdrop-blur">
                   <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Let's Talk
                 </span>
-                <h2 id="home-cta-title" className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
-                  Ready to Get <span className="text-white">Started?</span>
+                <h2 id="home-cta-title" className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                  Ready to Get Started?
                 </h2>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
                   Contact us today and let's discuss how we can help grow your brand.
