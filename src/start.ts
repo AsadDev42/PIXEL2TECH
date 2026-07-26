@@ -57,7 +57,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com",
       "connect-src 'self' https: wss:",
       "media-src 'self' https: blob:",
-      "frame-src 'self' https://calendly.com https://*.calendly.com https://www.youtube.com https://player.vimeo.com https://www.google.com https://maps.google.com",
+      "frame-src 'self' https://calendly.com https://*.calendly.com https://www.youtube.com https://player.vimeo.com https://www.google.com https://maps.google.com https://drive.google.com",
       "worker-src 'self' blob:",
       "manifest-src 'self'",
       "upgrade-insecure-requests",
