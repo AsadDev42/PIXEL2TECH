@@ -58,8 +58,11 @@ function HomeContact() {
           email: d.email,
           subject: `New inquiry from ${d.firstName} ${d.lastName} (${d.phone})`,
           message: d.message,
+          website,
+          ts: loadedAt,
         },
       });
+
       toast.success("Message sent!", { description: "Thanks — we'll get back to you within one business day." });
       setForm(homeInitial);
       setErrors({});
