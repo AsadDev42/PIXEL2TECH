@@ -20,6 +20,8 @@ type Props<T> = {
   className?: string;
   /** Optional aria-label for the scroller. */
   ariaLabel?: string;
+  /** Enable grab-and-fling drag interaction. Default true. */
+  draggable?: boolean;
 };
 
 /**
@@ -39,6 +41,7 @@ export function LoopSlider<T>({
   gapClassName = "gap-4 sm:gap-6",
   className = "",
   ariaLabel,
+  draggable = true,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
@@ -140,28 +143,35 @@ export function LoopSlider<T>({
       }
     };
 
-    track.addEventListener("pointerdown", onDown);
-    track.addEventListener("pointermove", onMove);
-    track.addEventListener("pointerup", onUp);
-    track.addEventListener("pointercancel", onUp);
-    track.addEventListener("click", onClickCapture, true);
-    track.style.cursor = "grab";
+    if (draggable) {
+      track.addEventListener("pointerdown", onDown);
+      track.addEventListener("pointermove", onMove);
+      track.addEventListener("pointerup", onUp);
+      track.addEventListener("pointercancel", onUp);
+      track.addEventListener("click", onClickCapture, true);
+      track.style.cursor = "grab";
+    }
 
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      track.removeEventListener("pointerdown", onDown);
-      track.removeEventListener("pointermove", onMove);
-      track.removeEventListener("pointerup", onUp);
-      track.removeEventListener("pointercancel", onUp);
-      track.removeEventListener("click", onClickCapture, true);
+      if (draggable) {
+        track.removeEventListener("pointerdown", onDown);
+        track.removeEventListener("pointermove", onMove);
+        track.removeEventListener("pointerup", onUp);
+        track.removeEventListener("pointercancel", onUp);
+        track.removeEventListener("click", onClickCapture, true);
+      }
     };
-  }, [isX, resolvedDir, speed]);
+  }, [isX, resolvedDir, speed, draggable]);
 
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
+  const touchClass = draggable
+    ? (isX ? "touch-pan-y" : "touch-none")
+    : "touch-auto";
   const trackClass = isX
-    ? `flex w-max touch-pan-y select-none ${gapClassName}`
-    : `flex flex-col h-max touch-pan-x select-none ${gapClassName}`;
+    ? `flex w-max ${touchClass} select-none ${gapClassName}`
+    : `flex flex-col h-max ${touchClass} select-none ${gapClassName}`;
 
   return (
     <div className={`${fadeClass} overflow-hidden ${className}`} aria-label={ariaLabel}>
