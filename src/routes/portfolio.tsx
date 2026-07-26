@@ -160,7 +160,7 @@ function PortfolioPage() {
 
       {/* CTA */}
       <section className="bg-background py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <div className="mx-auto max-w-4xl px-5 md:px-10 text-center">
           <FadeIn>
             <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
               Ready to Take Your Brand to the Next Level?

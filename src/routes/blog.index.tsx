@@ -47,7 +47,7 @@ function BlogPage() {
         subtitle="Tips, trends, and thought leadership from the Pixel2Tech team."
       />
 
-      <section className="mx-auto max-w-7xl px-5 pb-10 sm:px-8 sm:pb-12">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-6 rounded-2xl bg-muted p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
           <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
             <img loading="lazy" decoding="async" src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
@@ -71,7 +71,7 @@ function BlogPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
             <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">

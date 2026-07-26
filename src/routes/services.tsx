@@ -284,7 +284,7 @@ function ServicesPage() {
       />
 
       {/* Intro */}
-      <section className="mx-auto max-w-7xl px-5 pb-6 sm:px-8 sm:pb-10">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border/70 bg-muted p-6 dark:border-white/10 dark:bg-white/[0.02] sm:flex-row sm:items-center sm:rounded-3xl sm:p-8 md:p-10">
           <div className="max-w-2xl">
             <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
@@ -301,7 +301,7 @@ function ServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="mb-8 text-center sm:mb-12">
           <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">Our Services</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
@@ -333,7 +333,7 @@ function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="mb-8 text-center sm:mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">How We Work</p>
           <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">
@@ -404,7 +404,7 @@ function ServicesPage() {
       <VideoTestimonials />
 
       {/* FAQ */}
-      <section className="mx-auto max-w-4xl px-5 py-12 sm:px-8 sm:py-16" aria-labelledby="faq-title">
+      <section className="mx-auto max-w-4xl px-5 py-16 md:px-10 md:py-24 lg:py-32" aria-labelledby="faq-title">
         <h2 id="faq-title" className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">
           Frequently Asked Questions
         </h2>

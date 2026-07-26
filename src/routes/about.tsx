@@ -104,7 +104,7 @@ function AboutPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-5 pt-10 pb-14 sm:px-8 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
             About Us
@@ -128,7 +128,7 @@ function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
           <FadeIn>
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
@@ -294,7 +294,7 @@ function AboutPage() {
 
 
       {/* FAQ */}
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -310,7 +310,7 @@ function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl bg-[#0a0d1f] p-8 text-white shadow-[0_30px_80px_-30px_rgba(59,130,246,0.45)] sm:p-12 lg:p-14">
             <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
