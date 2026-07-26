@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
+import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
 import { CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
 
