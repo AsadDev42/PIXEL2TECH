@@ -300,7 +300,7 @@ function ContactPage() {
           <FadeIn>
             <div className="mx-auto flex w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background md:px-12 md:py-20">
               <h2 className="mx-auto mb-5 max-w-3xl text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
-                Ready to elevate your <span className="text-primary">brand</span> today?
+                Ready to elevate your <span className="text-[#2b7fff]">brand</span> today?
               </h2>
               <p className="mx-auto mb-8 max-w-2xl text-balance text-[15px] leading-relaxed text-background/70 sm:text-base">
                 Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.

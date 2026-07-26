@@ -142,7 +142,7 @@ function HomeContact() {
               </div>
 
               <div className="flex flex-col gap-3 lg:items-end">
-                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
+                <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:justify-end">
                   <a
                     href="mailto:sales@pixel2tech.com"
                     className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
@@ -161,14 +161,14 @@ function HomeContact() {
                     </span>
                     +92 317 7475233
                   </a>
+                  <Link
+                    to="/contact"
+                    className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/30 ring-1 ring-white/20 transition hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    Contact Us
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                  </Link>
                 </div>
-                <Link
-                  to="/contact"
-                  className="group inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/20 transition hover:bg-primary hover:text-white sm:self-auto lg:self-end"
-                >
-                  Contact Us
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-                </Link>
               </div>
             </div>
           </div>
