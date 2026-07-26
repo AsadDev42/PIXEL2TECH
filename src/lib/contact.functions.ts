@@ -96,47 +96,34 @@ export const submitContactForm = createServerFn({ method: "POST" })
       throw new Error("Could not save your message. Please try again.");
     }
 
-    // Best-effort owner notification via Lovable managed email API.
-    // Silently skipped if no email domain / API key is configured yet.
-    const apiKey = process.env.LOVABLE_API_KEY;
+    // Owner notification + visitor confirmation via Lovable's managed email API.
+    // Best-effort: a delivery problem must not fail the submission itself.
     const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sales@pixel2tech.com";
-    const senderDomain = process.env.SENDER_DOMAIN;
-    if (apiKey && senderDomain) {
-      try {
-        await fetch("https://api.lovable.dev/v1/email/send", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: `Pixel2Tech <notify@${senderDomain}>`,
-            to: ownerEmail,
-            reply_to: data.email,
-            subject: `New contact form: ${data.subject}`,
-            html: `
-              <h2>New contact form submission</h2>
-              <p><strong>Name:</strong> ${escape(data.name)}</p>
-              <p><strong>Email:</strong> ${escape(data.email)}</p>
-              <p><strong>Subject:</strong> ${escape(data.subject)}</p>
-              <p><strong>Message:</strong></p>
-              <p>${escape(data.message).replace(/\n/g, "<br/>")}</p>
-            `,
-          }),
-        });
-      } catch (e) {
-        console.warn("[contact] email notification failed", e);
-      }
+    const eventId = `${data.email}-${Date.now()}`;
+    try {
+      const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+      await sendTemplateEmail("contact-notification", ownerEmail, {
+        templateData: {
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        idempotencyKey: `contact-notification-${eventId}`,
+        replyTo: data.email,
+      });
+      await sendTemplateEmail("contact-confirmation", data.email, {
+        templateData: {
+          name: data.name,
+          subject: data.subject,
+          message: data.message,
+        },
+        idempotencyKey: `contact-confirmation-${eventId}`,
+      });
+    } catch (e) {
+      console.warn("[contact] email notification failed", e);
     }
 
     return { ok: true as const };
   });
 
-function escape(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
