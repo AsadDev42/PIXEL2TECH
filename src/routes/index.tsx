@@ -26,8 +26,11 @@ const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", pho
 function HomeContact() {
   const submit = useServerFn(submitContactForm);
   const [form, setForm] = useState<HomeFormState>(homeInitial);
+  const [website, setWebsite] = useState("");
+  const [loadedAt] = useState<number>(() => Date.now());
   const [errors, setErrors] = useState<Partial<Record<keyof HomeFormState, string>>>({});
   const [loading, setLoading] = useState(false);
+
 
   const set = (k: keyof HomeFormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((f) => ({ ...f, [k]: e.target.value }));
