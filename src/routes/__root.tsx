@@ -106,6 +106,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://cdn.simpleicons.org", crossOrigin: "anonymous" },
       { rel: "dns-prefetch", href: "https://logo.clearbit.com" },
       {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap",
+      },
+      {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap",
       },
