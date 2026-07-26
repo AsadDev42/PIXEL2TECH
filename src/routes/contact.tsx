@@ -298,7 +298,7 @@ function ContactPage() {
       <section className="bg-background pb-24 pt-8 sm:pb-32">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <FadeIn>
-            <div className="mx-auto flex min-h-[360px] w-full flex-col items-center justify-center rounded-3xl bg-foreground px-5 py-12 text-center text-background sm:min-h-[480px] sm:px-12 sm:py-20">
+            <div className="mx-auto flex min-h-[420px] w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background sm:min-h-[480px] sm:px-12 sm:py-20">
               <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
                 Ready to elevate your <span className="text-primary">brand</span> today?
               </h2>
