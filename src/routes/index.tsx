@@ -587,7 +587,7 @@ function Services() {
         </FadeIn>
 
         <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-16">
-          <FadeIn className="lg:col-span-7">
+          <FadeIn className="lg:col-span-7 lg:flex lg:items-center">
             <h2 className="text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
               Everything You Need to{" "}
               <span className="text-[#1E90FF]">Build, Grow and Scale</span>
