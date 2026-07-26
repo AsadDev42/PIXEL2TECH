@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, MapPin, Phone, ArrowRight, Clock } from "lucide-react";
+import { Mail, Loader2, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -84,9 +84,9 @@ function ContactPage() {
   }
 
   const fields = [
-    { id: "name", label: "YOUR NAME", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "YOUR EMAIL", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "SUBJECT", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
+    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
+    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
   ] as const;
 
   return (
