@@ -586,8 +586,8 @@ function Services() {
           </div>
         </FadeIn>
 
-        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-16">
-          <FadeIn className="lg:col-span-7 lg:flex lg:items-center">
+        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-12 lg:items-start lg:gap-16">
+          <FadeIn className="lg:col-span-7">
             <h2 className="text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
               Everything You Need to{" "}
               <span className="text-[#1E90FF]">Build, Grow and Scale</span>
@@ -595,7 +595,8 @@ function Services() {
           </FadeIn>
 
           <FadeIn delay={0.1} className="lg:col-span-5">
-            <div className="flex h-full flex-col justify-between gap-6 lg:border-l lg:border-border lg:pl-10">
+            <div className="flex flex-col gap-6 lg:border-l lg:border-border lg:pl-10">
+
               <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                 From creative design and custom development to AI-powered automation and digital
                 solutions, we help businesses streamline operations, improve customer experiences,
@@ -619,7 +620,8 @@ function Services() {
           </FadeIn>
         </div>
 
-        <div className="mb-10 mt-12 h-px w-full bg-border md:mb-14 md:mt-16" aria-hidden="true" />
+        <div className="mb-10 mt-10 h-px w-full bg-border md:mb-12 md:mt-12" aria-hidden="true" />
+
 
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
