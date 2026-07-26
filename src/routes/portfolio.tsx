@@ -100,8 +100,13 @@ function PortfolioPage() {
           {/* Grid */}
           <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((w, i) => (
-              <FadeIn key={`${cat}-${sub}-${w.title}`} delay={0.03 * i}>
-                <div className="group cursor-pointer overflow-hidden rounded-2xl bg-neutral-900 sm:rounded-3xl">
+              <FadeIn key={w.slug} delay={0.03 * i}>
+                <Link
+                  to="/portfolio/$slug"
+                  params={{ slug: w.slug }}
+                  aria-label={`View case study: ${w.title}`}
+                  className="group block overflow-hidden rounded-2xl bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
+                >
                   <div className="relative aspect-[4/5]">
                     <img loading="lazy" decoding="async" src={w.img} alt={w.title} className="h-full w-full object-cover transition group-hover:scale-105" />
                     <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
@@ -110,7 +115,7 @@ function PortfolioPage() {
                       <div className="mt-1 text-base font-semibold sm:text-lg">{w.title}</div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </FadeIn>
             ))}
           </div>
