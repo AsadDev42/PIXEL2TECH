@@ -27,7 +27,18 @@ import {
   Phone,
   Clock,
   Loader2,
+  Sparkles,
+  Target,
+  ArrowUpRight,
 } from "lucide-react";
+import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
+
+const whyReasons = [
+  { title: "One Agency, Every Skill", desc: "Design, development, content, and strategy under one roof — no chasing multiple freelancers.", icon: "Sparkles" },
+  { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions.", icon: "Layers" },
+  { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables.", icon: "Target" },
+  { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
+];
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
@@ -299,6 +310,53 @@ function ServicesPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Why Pixel2Tech */}
+      <section className="relative overflow-hidden bg-muted py-16 sm:py-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background:radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_70%)]" />
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <FadeIn>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Why Pixel2Tech
+              </span>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+                Built to be your unfair advantage
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+                We act like your in-house creative department — without the high cost.
+              </p>
+            </div>
+          </FadeIn>
+          <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+            {whyReasons.map((r, i) => {
+              const Icon = { Sparkles, Layers, Target, TrendingUp }[r.icon as "Sparkles"];
+              return (
+                <StaggerItem key={r.title}>
+                  <HoverLift>
+                    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--primary)_35%,transparent)] dark:bg-white/[0.03] sm:p-7">
+                      <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="flex items-center justify-between">
+                        <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                          <Icon className="h-5 w-5" aria-hidden />
+                        </div>
+                        <span className="text-xs font-semibold tabular-nums text-muted-foreground/70">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-lg font-bold leading-tight text-foreground sm:text-xl">{r.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">{r.desc}</p>
+                      <div className="mt-5 flex items-center gap-1.5 text-xs font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        Learn more <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                      </div>
+                    </div>
+                  </HoverLift>
+                </StaggerItem>
+              );
+            })}
+          </Stagger>
         </div>
       </section>
 
