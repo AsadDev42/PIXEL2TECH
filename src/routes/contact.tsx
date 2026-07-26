@@ -165,13 +165,13 @@ function ContactPage() {
                       onChange={set(f.id)}
                       aria-invalid={!!errors[f.id]}
                       aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/50"
                     />
                     <p
                       id={`${f.id}-error`}
                       role="alert"
                       aria-live="polite"
-                      className="mt-1.5 min-h-[1rem] text-xs text-destructive"
+                      className="mt-1.5 min-h-[1.25rem] text-sm text-destructive"
                     >
                       {errors[f.id] ?? ""}
                     </p>
@@ -190,13 +190,13 @@ function ContactPage() {
                     placeholder="Tell us about your project"
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? "message-error" : undefined}
-                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/50"
                   />
                   <p
                     id="message-error"
                     role="alert"
                     aria-live="polite"
-                    className="mt-1.5 min-h-[1rem] text-xs text-destructive"
+                    className="mt-1.5 min-h-[1.25rem] text-sm text-destructive"
                   >
                     {errors.message ?? ""}
                   </p>
@@ -305,14 +305,14 @@ function ContactPage() {
                   </span>
                   <div>
                     <div className="text-sm font-semibold text-foreground">Pixel2Tech HQ</div>
-                    <div className="text-xs text-muted-foreground">Lahore, Pakistan</div>
+                    <div className="text-sm text-muted-foreground">Lahore, Pakistan</div>
                   </div>
                 </div>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Lahore%2CPakistan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pointer-events-auto inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-xs font-semibold text-background transition hover:opacity-90"
+                  className="pointer-events-auto inline-flex items-center gap-1.5 min-h-11 rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   Open in Maps
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
