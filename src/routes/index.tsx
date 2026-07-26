@@ -565,20 +565,41 @@ function Services() {
     <section className="bg-background py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
+              What We Do
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Everything You Need to{" "}
-              <span className="text-[#1E90FF]">Build &amp; Grow</span>
+              <span className="text-[#1E90FF]">Build, Grow and Scale</span>
             </h2>
-            <p className="mt-4 text-[14px] text-muted-foreground sm:text-[15px]">
-              One team. All your creative and digital needs.
+            <p className="mx-auto mt-3 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px] md:mt-4">
+              From creative design and custom development to AI-powered automation and digital solutions, we help businesses streamline operations, improve customer experiences, and accelerate growth.
             </p>
           </div>
         </FadeIn>
-        <Stagger className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+
+        <FadeIn delay={0.1}>
+          <div className="mb-10 rounded-2xl bg-muted p-6 md:mb-14 md:p-8 lg:p-10">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="max-w-xl text-xl font-bold leading-snug tracking-tight text-foreground sm:text-2xl lg:text-[28px]">
+                One Team. Multiple Expertise. Real Business Impact.
+              </h3>
+              <Link
+                to="/contact"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90 sm:px-8 sm:py-3.5"
+              >
+                Start Your Project
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </FadeIn>
+
+        <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((s) => (
-            <StaggerItem key={s.title}>
-              <div className="group h-full rounded-2xl border border-border bg-background p-6 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] sm:p-8">
+            <StaggerItem key={s.title} className="h-full">
+              <div className="group h-full rounded-2xl border border-border bg-background p-5 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] md:p-6 lg:p-8">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1E90FF]/10 text-[#1E90FF] transition group-hover:scale-110 sm:h-16 sm:w-16">
                   <s.Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.75} aria-hidden="true" />
                 </div>
