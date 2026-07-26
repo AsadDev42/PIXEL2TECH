@@ -63,6 +63,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 function ContactPage() {
   const submit = useServerFn(submitContactForm);
   const [form, setForm] = useState<FormState>(initial);
+  const [website, setWebsite] = useState(""); // honeypot
+  const [loadedAt] = useState<number>(() => Date.now());
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [loading, setLoading] = useState(false);
 
@@ -70,6 +72,7 @@ function ContactPage() {
     setForm((f) => ({ ...f, [k]: e.target.value }));
     if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
   };
+
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
