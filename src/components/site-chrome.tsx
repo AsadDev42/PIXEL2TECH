@@ -259,11 +259,9 @@ export function SiteFooter() {
 }
 
 function WhatsAppButton() {
-  const number = "923177475233";
-  const msg = encodeURIComponent("Hi Pixel2Tech, I'd like to discuss a project.");
   return (
     <a
-      href={`https://wa.me/${number}?text=${msg}`}
+      href="https://api.whatsapp.com/send/?phone=923177475212&text&type=phone_number&app_absent=0"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
