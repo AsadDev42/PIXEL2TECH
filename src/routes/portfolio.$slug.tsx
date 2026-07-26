@@ -105,16 +105,19 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
       <div className="space-y-8">
         {item.video && (
           <FadeIn>
-            <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-[1.75rem] border border-border bg-black shadow-lg dark:border-white/10">
+            <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[1.75rem] border border-border bg-black shadow-lg dark:border-white/10">
               <iframe
                 src={item.video}
                 title={`${item.title} video`}
-                allow="autoplay; encrypted-media; fullscreen"
-                allowFullScreen
+                allow="autoplay; encrypted-media"
                 loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-presentation"
                 className="aspect-[9/16] w-full"
               />
+              {/* Blocks the provider's pop-out / open-in-new-tab control (top-right) */}
+              <div aria-hidden="true" className="pointer-events-auto absolute right-0 top-0 h-16 w-24 bg-transparent" />
             </div>
+
           </FadeIn>
         )}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
