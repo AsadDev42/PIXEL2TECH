@@ -238,25 +238,30 @@ function HomeFaq() {
   );
 }
 
+const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const LOGO_URL = "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
+
 export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "Pixel2Tech — Design. Develop. Grow." },
+      { title: "Pixel2Tech — Full-Service Creative Agency in Lahore" },
       {
         name: "description",
         content:
-          "AI-powered creative agency. Branding, web design, marketing, motion and AI solutions that help businesses grow.",
+          "Full-service creative agency in Lahore. Branding, web development, UI/UX, social media, motion and custom software — one team, one standard.",
       },
-      { property: "og:title", content: "Pixel2Tech — Design. Develop. Grow." },
+      { property: "og:title", content: "Pixel2Tech — Full-Service Creative Agency in Lahore" },
       {
         property: "og:description",
         content:
-          "AI-powered creative agency for branding, web design, marketing and automation.",
+          "Branding, web, UI/UX, social, motion and software — all in-house at Pixel2Tech, Lahore. Serving clients worldwide.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -270,6 +275,32 @@ export const Route = createFileRoute("/")({
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Pixel2Tech",
+          image: OG_IMAGE,
+          logo: LOGO_URL,
+          url: "/",
+          email: "hello@pixel2tech.com",
+          telephone: "+92-300-0000000",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lahore",
+            addressCountry: "PK",
+          },
+          areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
+          priceRange: "$$",
+          sameAs: [
+            "https://www.facebook.com/pixel2tech",
+            "https://www.instagram.com/pixel2tech",
+            "https://x.com/pixel2tech",
+            "https://www.linkedin.com/company/pixel2tech",
+          ],
         }),
       },
     ],
