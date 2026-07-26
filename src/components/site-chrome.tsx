@@ -101,7 +101,7 @@ export function SiteNav() {
           tabIndex={-1}
           className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg lg:hidden"
         >
-          <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-6 text-lg">
+          <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 text-base">
             {NAV.map((n) => {
               const active = pathname === n.to;
               return (
@@ -109,7 +109,7 @@ export function SiteNav() {
                   key={n.to}
                   to={n.to}
                   aria-current={active ? "page" : undefined}
-                  className={`rounded-xl px-4 py-4 ${active ? "bg-muted font-semibold" : "text-foreground"}`}
+                  className={`flex min-h-12 items-center rounded-xl px-4 py-3 text-[17px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${active ? "bg-muted font-semibold text-foreground" : "text-foreground hover:bg-muted/60"}`}
                 >
                   {n.label}
                 </Link>
@@ -118,11 +118,12 @@ export function SiteNav() {
             <button
               type="button"
               onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-foreground px-6 py-4 text-base font-semibold text-background"
+              className="mt-3 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 py-3 text-base font-semibold text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Schedule a Strategy Session
             </button>
           </nav>
+
         </div>
       )}
     </header>
