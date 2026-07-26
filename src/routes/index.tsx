@@ -13,6 +13,12 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import officeStudioAsset from "@/assets/office-studio.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
+import teamUsama from "@/assets/team-usama.webp.asset.json";
+import teamAsad from "@/assets/team-asad.webp.asset.json";
+import teamSaad from "@/assets/team-saad.webp.asset.json";
+import teamGul from "@/assets/team-gul.webp.asset.json";
+import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
+import teamNoman from "@/assets/team-noman.webp.asset.json";
 
 const officeStudio = officeStudioAsset.url;
 
@@ -677,12 +683,12 @@ function Work() {
 
 
 const team = [
-  { name: "Usama Farooq", role: "CEO & Founder", img: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Saad", role: "Creative Video Editor", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Gul E Zahra", role: "Creative Brand Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Ahsan Mushtaq", role: "Website Developer", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&fm=webp&q=70" },
-  { name: "Noman Ahmed", role: "Video Editor", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&fm=webp&q=70" },
+  { name: "Usama Farooq", role: "CEO & Founder", img: teamUsama.url },
+  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: teamAsad.url },
+  { name: "Saad", role: "Creative Video Editor", img: teamSaad.url },
+  { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
+  { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
+  { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
 ];
 
 function Team() {
