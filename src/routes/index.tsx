@@ -401,11 +401,11 @@ function PartnerBand() {
           >
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-foreground sm:text-sm">
-                100% Business Growth
+                15+ Happy Clients
               </div>
               <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-foreground">4.9</span> (1520 Reviews)
+                <span className="font-semibold text-foreground">4.9</span> Client Rating
               </div>
             </div>
           </motion.div>
