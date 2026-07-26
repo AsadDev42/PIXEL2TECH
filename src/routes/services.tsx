@@ -276,27 +276,43 @@ function ServicesPage() {
 
   return (
     <PageShell>
-      <PageHeader
-        eyebrow="WHAT WE DO"
-        title="Everything You Need to"
-        highlight="Build, Grow and Scale"
-        subtitle="From creative design and custom development to AI-powered automation and digital solutions, we help businesses streamline operations, improve customer experiences, and accelerate growth."
-      />
+      {/* What We Do */}
+      <section className="bg-background py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <FadeIn>
+            <div className="flex flex-col items-center text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground dark:border-white/10 dark:bg-white/[0.04] sm:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" aria-hidden="true" />
+                What We Do
+              </span>
 
-      {/* Intro */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
-        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border/70 bg-muted p-6 dark:border-white/10 dark:bg-white/[0.02] sm:flex-row sm:items-center sm:rounded-3xl sm:p-8 md:p-10">
-          <div className="max-w-2xl">
-            <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-              One Team. Multiple Expertise. Real Business Impact.
-            </h2>
-          </div>
-          <Link
-            to="/contact"
-            className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
-          >
-            Start Your Project
-          </Link>
+              <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
+                Everything You Need to{" "}
+                <span className="text-[#1E90FF]">Build, Grow and Scale</span>
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                From creative design and custom development to AI-powered automation and digital
+                solutions, we help businesses streamline operations, improve customer experiences,
+                and accelerate growth.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="mt-10 flex flex-col items-center gap-6 rounded-3xl bg-muted p-6 dark:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between sm:p-8 md:p-10 lg:p-12">
+              <p className="text-center text-base font-bold leading-snug tracking-tight text-foreground sm:text-left sm:text-lg lg:text-xl">
+                One Team. Multiple Expertise. Real Business Impact.
+              </p>
+              <Link
+                to="/contact"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90 sm:px-8 sm:py-4"
+              >
+                Start Your Project
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
