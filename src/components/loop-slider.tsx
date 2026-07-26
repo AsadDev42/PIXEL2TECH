@@ -41,6 +41,7 @@ export function LoopSlider<T>({
   gapClassName = "gap-4 sm:gap-6",
   className = "",
   ariaLabel,
+  draggable = true,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
