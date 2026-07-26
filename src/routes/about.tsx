@@ -291,7 +291,7 @@ function AboutPage() {
                   aria-describedby={`about-team-${m.name.replace(/\s+/g, "-")}-role`}
                   className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
                 >
-                  <div className="relative aspect-square overflow-hidden bg-muted">
+                  <div className="relative aspect-[9/16] overflow-hidden bg-muted">
                     <img
                       loading="lazy"
                       decoding="async"
