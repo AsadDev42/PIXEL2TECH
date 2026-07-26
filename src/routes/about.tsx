@@ -5,19 +5,36 @@ import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, A
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { useState } from "react";
 
+const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About Us — Pixel2Tech" },
-      { name: "description", content: "Pixel2Tech is an AI-powered creative agency from Pakistan, serving founders and marketing leaders worldwide." },
-      { property: "og:title", content: "About Us — Pixel2Tech" },
-      { property: "og:description", content: "Meet the team behind Pixel2Tech." },
+      { title: "About Pixel2Tech — Creative Agency in Lahore" },
+      { name: "description", content: "Meet Pixel2Tech, a full-service creative agency in Lahore. A small, senior team of designers, developers and strategists building brands worldwide." },
+      { property: "og:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
+      { property: "og:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+            { "@type": "ListItem", position: 2, name: "About", item: "/about" },
+          ],
+        }),
+      },
+    ],
   }),
 });
 

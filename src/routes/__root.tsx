@@ -73,19 +73,27 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Pixel2Tech — Full-Service Creative Agency" },
+      {
+        name: "description",
+        content:
+          "Pixel2Tech is a full-service creative agency in Lahore. Branding, web, UI/UX, social media, video and custom software — all in-house.",
+      },
+      { name: "author", content: "Pixel2Tech" },
+      { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       {
@@ -102,7 +110,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap",
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
-
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Pixel2Tech",
+          url: "/",
+          logo: "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          sameAs: [
+            "https://www.facebook.com/pixel2tech",
+            "https://www.instagram.com/pixel2tech",
+            "https://x.com/pixel2tech",
+            "https://www.linkedin.com/company/pixel2tech",
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
