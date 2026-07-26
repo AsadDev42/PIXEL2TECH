@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, PageHeader } from "@/components/site-chrome";
+import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
