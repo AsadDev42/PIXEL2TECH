@@ -7,7 +7,7 @@ import { CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
 
 const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
-export const Route = createFileRoute("/portfolio")({
+export const Route = createFileRoute("/portfolio/")({
   component: PortfolioPage,
   head: () => ({
     meta: [
