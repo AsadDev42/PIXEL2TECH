@@ -4,8 +4,6 @@ export type PortfolioItem = {
   category: string;
   subcategory: string;
   slug: string;
-  /** Optional embeddable video URL (e.g. Google Drive /preview link) */
-  videoUrl?: string;
 };
 
 export const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
@@ -18,7 +16,7 @@ export const SUBS: Record<Category, string[]> = {
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
-type RawWork = Record<Category, Record<string, { title: string; img: string; videoUrl?: string }[]>>;
+type RawWork = Record<Category, Record<string, { title: string; img: string }[]>>;
 
 const RAW: RawWork = {
   Creative: {
@@ -75,7 +73,7 @@ const RAW: RawWork = {
   },
   "Video Editing": {
     "Short Form": [
-      { title: "Brand reel series", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&auto=format&fit=crop&fm=webp&q=75", videoUrl: "https://drive.google.com/file/d/1T0J1ANuSTaboPx3Jinx42P8yP3XEyDAb/preview" },
+      { title: "Brand reel series", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Product teaser shorts", img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Behind the scenes cuts", img: "https://images.unsplash.com/photo-1493804714600-6edb1cd93080?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Founder story reels", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&auto=format&fit=crop&fm=webp&q=75" },
