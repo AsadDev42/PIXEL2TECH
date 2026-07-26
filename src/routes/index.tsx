@@ -11,7 +11,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
-import officeStudio from "@/assets/office-studio.jpg";
+import officeStudioAsset from "@/assets/office-studio.webp.asset.json";
+const officeStudio = officeStudioAsset.url;
 
 const homeContactSchema = z.object({
   firstName: z.string().trim().min(1, "Required").max(80),
@@ -768,6 +769,8 @@ function Studio() {
                   alt="Inside the Pixel2Tech studio — team working at their desks"
                   loading="lazy"
                   decoding="async"
+                  width={1600}
+                  height={1067}
                   className="h-full w-full object-cover"
                 />
               </div>
