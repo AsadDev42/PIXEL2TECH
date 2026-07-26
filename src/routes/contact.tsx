@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Loader2, MapPin, Phone, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
