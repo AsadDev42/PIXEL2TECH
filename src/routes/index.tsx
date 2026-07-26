@@ -580,7 +580,7 @@ function Services() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="mt-10 rounded-2xl bg-muted p-6 sm:mt-12 md:p-8 lg:p-10">
+          <div className="mb-10 rounded-2xl bg-muted p-6 md:mb-14 md:p-8 lg:p-10">
             <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
               <h3 className="max-w-xl text-xl font-bold leading-snug tracking-tight text-foreground sm:text-2xl lg:text-[28px]">
                 One Team. Multiple Expertise. Real Business Impact.
@@ -596,7 +596,7 @@ function Services() {
           </div>
         </FadeIn>
 
-        <Stagger className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((s) => (
             <StaggerItem key={s.title} className="h-full">
               <div className="group h-full rounded-2xl border border-border bg-background p-5 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] md:p-6 lg:p-8">
