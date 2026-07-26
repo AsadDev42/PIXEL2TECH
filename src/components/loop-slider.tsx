@@ -167,11 +167,11 @@ export function LoopSlider<T>({
 
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
   const touchClass = draggable
-    ? (isX ? "touch-pan-y" : "touch-pan-x")
+    ? (isX ? "touch-pan-y" : "touch-none")
     : "touch-auto";
   const trackClass = isX
     ? `flex w-max ${touchClass} select-none ${gapClassName}`
-    : `flex flex-col h-max ${touchClass} ${gapClassName}`;
+    : `flex flex-col h-max ${touchClass} select-none ${gapClassName}`;
 
   return (
     <div className={`${fadeClass} overflow-hidden ${className}`} aria-label={ariaLabel}>
