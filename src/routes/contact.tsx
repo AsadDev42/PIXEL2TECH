@@ -88,7 +88,7 @@ function ContactPage() {
     }
     setLoading(true);
     try {
-      await submit({ data: parsed.data });
+      await submit({ data: { ...parsed.data, website, ts: loadedAt } });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
