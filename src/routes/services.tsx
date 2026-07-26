@@ -34,7 +34,7 @@ import {
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 
 const whyReasons = [
-  { title: "One Agency, Every Skill", desc: "Design, development, content, and strategy under one roof — no chasing multiple freelancers.", icon: "Sparkles" },
+  { title: "One Agency, Every Skill", desc: "Design, content, development, and software handled in-house by one team. No chasing five different freelancers.", icon: "Sparkles" },
   { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions.", icon: "Layers" },
   { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables.", icon: "Target" },
   { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
@@ -371,12 +371,12 @@ function ServicesPage() {
               </p>
             </div>
           </FadeIn>
-          <Stagger className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+          <Stagger className="mt-10 grid items-stretch gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {whyReasons.map((r, i) => {
               const Icon = { Sparkles, Layers, Target, TrendingUp }[r.icon as "Sparkles"];
               return (
-                <StaggerItem key={r.title}>
-                  <HoverLift>
+                <StaggerItem key={r.title} className="h-full">
+                  <HoverLift className="h-full">
                     <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--primary)_35%,transparent)] dark:bg-white/[0.03] sm:p-7">
                       <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
                       <div className="flex items-center justify-between">
