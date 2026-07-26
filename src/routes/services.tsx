@@ -34,7 +34,7 @@ import {
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 
 const whyReasons = [
-  { title: "One Agency, Every Skill", desc: "Design, development, content, and strategy under one roof — no chasing multiple freelancers.", icon: "Sparkles" },
+  { title: "One Agency, Every Skill", desc: "Design, content, development, and software handled in-house by one team. No chasing five different freelancers.", icon: "Sparkles" },
   { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions.", icon: "Layers" },
   { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables.", icon: "Target" },
   { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
