@@ -5,7 +5,7 @@
  * Arbitrary values like p-[13px] are always rejected.
  */
 const APPROVED = new Set([
-  "0", "1", "2", "3", "4", "6", "8", "10", "12", "16", "20", "24", "32",
+  "0", "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "16", "20", "24", "32",
   "px", "auto", "full",
 ]);
 
@@ -34,7 +34,7 @@ function findViolations(text) {
   return bad;
 }
 
-const APPROVED_LIST = "0, 1, 2, 3, 4, 6, 8, 10, 12, 16, 20, 24, 32, px, auto, full";
+const APPROVED_LIST = "0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 20, 24, 32, px, auto, full";
 
 function report(context, node, text) {
   const violations = findViolations(text);
