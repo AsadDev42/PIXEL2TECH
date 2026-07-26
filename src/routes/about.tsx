@@ -192,7 +192,7 @@ function AboutPage() {
       </section>
 
       {/* Team */}
-      <section aria-labelledby="about-team-title" className="bg-muted py-16 md:py-24 lg:py-32">
+      <section aria-labelledby="about-team-title" className="bg-muted pb-16 md:pb-24 lg:pb-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="max-w-2xl">
@@ -246,7 +246,7 @@ function AboutPage() {
       </section>
 
       {/* Why Choose */}
-      <section className="relative overflow-hidden bg-muted py-16 md:py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-muted pb-16 md:pb-24 lg:pb-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background:radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_70%)]" />
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>

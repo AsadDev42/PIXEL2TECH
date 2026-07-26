@@ -434,7 +434,7 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-background py-16 md:py-24 lg:py-32">
+    <section className="bg-background pb-16 md:pb-24 lg:pb-32">
       <div className="mx-auto max-w-6xl px-5 md:px-10 text-center">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Industries We Work With
@@ -609,7 +609,7 @@ const work = [
 
 function Work() {
   return (
-    <section className="bg-background py-16 md:py-24 lg:py-32">
+    <section className="bg-background pb-16 md:pb-24 lg:pb-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">

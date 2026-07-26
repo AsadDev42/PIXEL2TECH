@@ -301,7 +301,7 @@ function ServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="mb-8 text-center sm:mb-12">
           <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">Our Services</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
@@ -333,7 +333,7 @@ function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="mb-8 text-center sm:mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">How We Work</p>
           <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">
@@ -438,7 +438,7 @@ function ServicesPage() {
       </section>
 
       {/* Let's work together */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px] lg:leading-[1.05]">
             Let&apos;s <span className="text-primary">work together</span>
