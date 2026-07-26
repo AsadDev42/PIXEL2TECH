@@ -769,6 +769,7 @@ function HomePage() {
       <Team />
       <Studio />
       <Insights />
+      <HomeFaq />
       <HomeContact />
     </PageShell>
 
