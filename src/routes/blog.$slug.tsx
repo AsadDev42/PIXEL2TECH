@@ -99,8 +99,8 @@ function BlogPostPage() {
 
   return (
     <PageShell>
-      <section className="bg-muted/40 pb-16 pt-10 sm:pb-24 sm:pt-14">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           {/* Breadcrumb */}
           <FadeIn>
             <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">

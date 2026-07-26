@@ -57,7 +57,7 @@ function PortfolioDetailPage() {
 
   return (
     <PageShell>
-      <section className="mx-auto max-w-5xl px-5 pt-8 sm:px-8 sm:pt-12">
+      <section className="mx-auto max-w-5xl px-5 pt-16 md:px-10 md:pt-24 lg:pt-32">
         <FadeIn>
           <Link
             to="/portfolio"
@@ -70,7 +70,7 @@ function PortfolioDetailPage() {
       </section>
 
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-5 pb-10 pt-6 sm:px-8 sm:pb-14 sm:pt-8">
+      <section className="mx-auto max-w-5xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
             <span className="rounded-full bg-muted px-3 py-1 text-foreground dark:bg-white/[0.06]">{item.category}</span>
@@ -99,7 +99,7 @@ function PortfolioDetailPage() {
       </section>
 
       {/* Story */}
-      <section className="mx-auto max-w-5xl px-5 pb-10 sm:px-8 sm:pb-16">
+      <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-5 md:grid-cols-3">
           {[
             {
@@ -133,7 +133,7 @@ function PortfolioDetailPage() {
 
       {/* Gallery */}
       {gallery.length > 0 && (
-        <section className="mx-auto max-w-5xl px-5 pb-10 sm:px-8 sm:pb-16">
+        <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
           <FadeIn>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Gallery</h2>
             <p className="mt-2 text-sm text-muted-foreground">A closer look at the work.</p>
@@ -158,7 +158,7 @@ function PortfolioDetailPage() {
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="mx-auto max-w-5xl px-5 pb-10 sm:px-8 sm:pb-16">
+        <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
           <FadeIn>
             <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">More {item.category} work</h2>
           </FadeIn>
@@ -186,7 +186,7 @@ function PortfolioDetailPage() {
       )}
 
       {/* CTA */}
-      <section className="mx-auto max-w-5xl px-5 pb-20 sm:px-8 sm:pb-28">
+      <section className="mx-auto max-w-5xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="rounded-3xl bg-foreground px-6 py-14 text-center text-background sm:px-12 sm:py-20">
             <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">

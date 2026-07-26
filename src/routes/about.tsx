@@ -104,7 +104,7 @@ function AboutPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-5 pt-10 pb-14 sm:px-8 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
             About Us
@@ -128,7 +128,7 @@ function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
           <FadeIn>
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
@@ -158,8 +158,8 @@ function AboutPage() {
       </section>
 
       {/* Video Intro */}
-      <section className="bg-muted py-14 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="bg-muted py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="text-center">
               <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
@@ -192,8 +192,8 @@ function AboutPage() {
       </section>
 
       {/* Team */}
-      <section aria-labelledby="about-team-title" className="bg-muted py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section aria-labelledby="about-team-title" className="bg-muted py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="max-w-2xl">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
@@ -246,9 +246,9 @@ function AboutPage() {
       </section>
 
       {/* Why Choose */}
-      <section className="relative overflow-hidden bg-muted py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-muted py-16 md:py-24 lg:py-32">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background:radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_70%)]" />
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
@@ -294,7 +294,7 @@ function AboutPage() {
 
 
       {/* FAQ */}
-      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -310,7 +310,7 @@ function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl bg-[#0a0d1f] p-8 text-white shadow-[0_30px_80px_-30px_rgba(59,130,246,0.45)] sm:p-12 lg:p-14">
             <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />

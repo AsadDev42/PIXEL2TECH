@@ -80,7 +80,7 @@ function HomeContact() {
 
   return (
     <>
-      <section aria-labelledby="home-contact-title" className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+      <section aria-labelledby="home-contact-title" className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="rounded-2xl bg-muted p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -132,7 +132,7 @@ function HomeContact() {
         </FadeIn>
       </section>
 
-      <section aria-labelledby="home-cta-title" className="mx-auto max-w-7xl px-5 pb-20 sm:px-8 sm:pb-28">
+      <section aria-labelledby="home-cta-title" className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl bg-[#0a0d1f] p-8 text-white shadow-[0_30px_80px_-30px_rgba(59,130,246,0.45)] sm:p-12 lg:p-14">
             <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
@@ -204,7 +204,7 @@ const homeFaqs = [
 function HomeFaq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="home-faq-title">
+    <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32" aria-labelledby="home-faq-title">
       <FadeIn>
         <div className="text-center">
           <h2 id="home-faq-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -355,7 +355,7 @@ const heroCols: string[][] = [
 function Hero() {
   return (
     <section className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-10 md:py-24 lg:py-32 md:grid-cols-2 md:items-center md:gap-12">
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             One Creative Agency.{" "}
@@ -433,8 +433,8 @@ function Brands() {
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 md:px-10 text-center">
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Industries We Work With
         </h2>
@@ -488,7 +488,7 @@ function Brands() {
 function PartnerBand() {
   return (
     <section className="bg-black dark:bg-background">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 md:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:px-10 md:py-24 lg:py-32 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             A Full-Service Creative Agency Built Around Your Growth
@@ -560,8 +560,8 @@ const services = [
 
 function Services() {
   return (
-    <section className="bg-background py-14 sm:py-20">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
@@ -608,8 +608,8 @@ const work = [
 
 function Work() {
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
@@ -661,8 +661,8 @@ const team = [
 
 function Team() {
   return (
-    <section aria-labelledby="team-section-title" className="bg-muted py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section aria-labelledby="team-section-title" className="bg-muted py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <FadeIn>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
@@ -725,8 +725,8 @@ const posts = [
 
 function Insights() {
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-background py-16 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:flex-wrap sm:justify-between sm:gap-6">
           <div className="min-w-0">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">Latest Insights</h2>
@@ -757,8 +757,8 @@ function Insights() {
 
 function Studio() {
   return (
-    <section className="bg-muted/60 py-16 dark:bg-white/[0.02] sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="bg-muted/60 py-16 md:py-24 lg:py-32 dark:bg-white/[0.02]">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
           <FadeIn>
             <div className="relative">
