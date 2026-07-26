@@ -90,6 +90,7 @@ function ContactPage() {
     setLoading(true);
     try {
       await submit({ data: { ...parsed.data, website, ts: loadedAt } });
+      trackEvent("contact_form_submitted", { subject: parsed.data.subject });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
