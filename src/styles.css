@@ -282,6 +282,106 @@
 .hero-col-down { animation: hero-col-down 30s linear infinite; will-change: transform; }
 
 
+/* ============================================================
+   Subtle interaction animations (transform + opacity only)
+   ============================================================ */
+
+button:not(:disabled),
+a[role="button"],
+[data-slot="button"] {
+  transition: transform 0.2s ease-out, background-color 0.2s ease-out,
+    color 0.2s ease-out, opacity 0.2s ease-out, box-shadow 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+button:not(:disabled):hover,
+a[role="button"]:hover,
+[data-slot="button"]:hover { transform: scale(1.02); }
+button:not(:disabled):active,
+a[role="button"]:active,
+[data-slot="button"]:active { transform: scale(0.98); opacity: 0.9; }
+
+input, textarea, select {
+  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out,
+    background-color 0.2s ease-out;
+}
+
+a { transition: color 0.2s ease-out, opacity 0.2s ease-out; }
+
+.nav-link { position: relative; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  height: 2px; width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s ease-out;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+[data-slot="card"],
+.hover-lift {
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out,
+    border-color 0.25s ease-out;
+  will-change: transform;
+}
+[data-slot="card"]:hover,
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -12px rgb(0 0 0 / 0.18);
+}
+
+.img-zoom { overflow: hidden; }
+.img-zoom img,
+[data-slot="card"] img {
+  transition: transform 0.4s ease-out;
+  will-change: transform;
+}
+.img-zoom:hover img,
+[data-slot="card"]:hover img { transform: scale(1.03); }
+
+button svg,
+[data-slot="button"] svg,
+a svg { transition: transform 0.2s ease-out; }
+button:hover svg,
+[data-slot="button"]:hover svg,
+a:hover svg { transform: translateX(2px); }
+
+[data-slot="accordion-trigger"] > svg,
+[data-radix-accordion-trigger] svg { transition: transform 0.3s ease; }
+
+[data-state="open"][data-slot="dialog-content"],
+[data-state="open"][data-slot="sheet-content"] {
+  animation: ui-in 0.25s ease-out;
+}
+[data-state="closed"][data-slot="dialog-content"],
+[data-state="closed"][data-slot="sheet-content"] {
+  animation: ui-out 0.25s ease-out;
+}
+@keyframes ui-in {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes ui-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.98); }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-stagger > * {
+  opacity: 0;
+  animation: hero-rise 0.4s ease-out forwards;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 0s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.24s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.36s; }
+.hero-stagger > *:nth-child(5) { animation-delay: 0.48s; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -290,4 +390,7 @@
     scroll-behavior: auto !important;
   }
   .hero-col-up, .hero-col-down { animation: none !important; }
+  .hero-stagger > * { opacity: 1 !important; transform: none !important; }
+  [data-slot="card"]:hover,
+  .hover-lift:hover { transform: none !important; }
 }
