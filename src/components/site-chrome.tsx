@@ -99,8 +99,9 @@ export function SiteNav() {
           aria-modal="true"
           aria-label="Site navigation"
           tabIndex={-1}
-          className="fixed inset-x-0 top-[64px] z-40 border-t border-border bg-background lg:hidden"
-          style={{ height: "calc(100dvh - 64px)" }}
+          // Anchored to the header itself (top-full) so it can never overlap or
+          // leave a gap when the header height changes across breakpoints.
+          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg lg:hidden"
         >
           <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-6 text-lg">
             {NAV.map((n) => {
