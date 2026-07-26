@@ -81,11 +81,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixel2Tech — Full-Service Creative Agency" },
+      { title: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
       {
         name: "description",
         content:
-          "Pixel2Tech is a full-service creative agency in Lahore. Branding, web, UI/UX, social media, video and custom software — all in-house.",
+          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
       },
       { name: "author", content: "Pixel2Tech" },
       ...(import.meta.env.VITE_GSC_VERIFICATION
