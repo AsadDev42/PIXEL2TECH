@@ -136,16 +136,16 @@ function ContactPage() {
                     </div>
                   </a>
 
-                  <div className="flex items-center gap-4 rounded-3xl border border-border bg-background p-4 sm:p-5">
+                  <div className="flex items-center gap-4 rounded-3xl border border-border bg-background px-4 py-6 sm:px-5">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
                       <Clock className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <div>
+                    <div className="min-w-0 space-y-1.5">
                       <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Working Hours</div>
-                      <div className="mt-0.5 text-sm font-medium text-foreground">
+                      <div className="mt-1 text-sm font-medium text-foreground">
                         Mon - Fri: 9:00 AM - 6:00 PM
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-[11px] leading-snug text-muted-foreground/80">
                         Sat: 10:00 AM - 4:00 PM · Sun: Closed
                       </div>
                     </div>
