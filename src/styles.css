@@ -281,3 +281,13 @@
 .hero-col-up   { animation: hero-col-up 30s linear infinite; will-change: transform; }
 .hero-col-down { animation: hero-col-down 30s linear infinite; will-change: transform; }
 
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-col-up, .hero-col-down { animation: none !important; }
+}
