@@ -68,8 +68,8 @@ export function CursorFollower() {
     const onEnter = () => setVisible(true);
 
     const tick = () => {
-      blobX += (mouseX - blobX) * 0.18;
-      blobY += (mouseY - blobY) * 0.18;
+      blobX += (mouseX - blobX) * 0.085;
+      blobY += (mouseY - blobY) * 0.085;
       if (blobRef.current) {
         blobRef.current.style.transform = `translate3d(${blobX}px, ${blobY}px, 0) translate(-50%, -50%)`;
       }
