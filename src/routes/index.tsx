@@ -263,7 +263,15 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      {
+        rel: "preload",
+        as: "image",
+        href: "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
+        fetchpriority: "high",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -363,13 +371,16 @@ function Hero() {
                 gapClassName="gap-2 sm:gap-3"
                 items={col}
                 keyFor={(_src, i) => `${ci}-${i}`}
-                renderItem={(src) => (
+                renderItem={(src, i) => (
                   <div className="h-[160px] w-full overflow-hidden rounded-xl bg-muted sm:h-[200px] sm:rounded-2xl">
                     <img
                       decoding="async"
                       src={src}
                       alt=""
-                      loading="lazy"
+                      width={600}
+                      height={400}
+                      loading={ci === 0 && i === 0 ? "eager" : "lazy"}
+                      fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
                       className="h-full w-full object-cover"
                     />
                   </div>
