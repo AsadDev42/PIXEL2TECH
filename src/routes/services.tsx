@@ -283,85 +283,52 @@ function ServicesPage() {
         subtitle="From creative design and custom development to AI-powered automation and digital solutions, we help businesses streamline operations, improve customer experiences, and accelerate growth."
       />
 
-      {/* What We Do — premium glassmorphism section */}
-      <section className="relative overflow-hidden bg-[#0b0d12] py-16 md:py-24 lg:py-32">
-        {/* Ambient glow backdrop */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
-          <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[#1E90FF]/25 blur-[140px]" />
-          <div className="absolute bottom-0 right-0 h-[380px] w-[380px] rounded-full bg-fuchsia-500/15 blur-[120px]" />
-          <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:56px_56px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-5 md:px-10">
-          {/* Header */}
-          <div className="mx-auto max-w-4xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF] shadow-[0_0_10px_#1E90FF]" />
-              What We Do
-            </span>
-            <h2 className="mt-6 text-3xl font-black leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              One Team.{" "}
-              <span className="bg-gradient-to-r from-[#1E90FF] via-[#5eb2ff] to-[#a78bfa] bg-clip-text text-transparent">
-                Multiple Expertise.
-              </span>{" "}
-              Real Business Impact.
+      {/* Intro */}
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border/70 bg-muted p-6 dark:border-white/10 dark:bg-white/[0.02] sm:flex-row sm:items-center sm:rounded-3xl sm:p-8 md:p-10">
+          <div className="max-w-2xl">
+            <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+              One Team. Multiple Expertise. Real Business Impact.
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
-              Design, development, AI, automation, and marketing — everything your brand needs to build, grow, and scale, delivered by one senior team.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <Link
-                to="/contact"
-                className="group relative inline-flex min-h-12 items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-white/[0.08] px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition hover:border-white/40 hover:bg-white/[0.14] hover:shadow-[0_0_40px_rgba(30,144,255,0.45)]"
-              >
-                <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1E90FF]/0 via-[#1E90FF]/30 to-[#a78bfa]/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                Start Your Project
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.25} />
-              </Link>
-            </div>
           </div>
+          <Link
+            to="/contact"
+            className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
+          >
+            Start Your Project
+          </Link>
+        </div>
+      </section>
 
-          {/* Services grid */}
-          <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 md:mt-20 lg:grid-cols-3 lg:gap-6">
+      {/* Services grid */}
+      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[40px]">Our Services</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
+            Everything your business needs to grow online — design, development, marketing, automation, and SEO under one roof.
+          </p>
+        </div>
+        <div className="rounded-2xl bg-muted p-3 sm:rounded-3xl sm:p-4 md:p-6 dark:bg-white/[0.02]">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <StaggerItem key={s.title} className="h-full">
-                <HoverLift className="h-full">
-                  <article className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/[0.07] hover:shadow-[0_20px_60px_-20px_rgba(30,144,255,0.5)] md:p-8">
-                    {/* Corner gradient glow on hover */}
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#1E90FF]/40 to-fuchsia-500/30 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                    {/* Icon */}
-                    <div
-                      aria-hidden
-                      className="relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-gradient-to-br from-[#1E90FF]/25 to-[#a78bfa]/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-transform duration-300 group-hover:scale-110"
-                    >
-                      <s.Icon className="h-6 w-6" strokeWidth={1.75} />
-                    </div>
-
-                    <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/60">
-                      {s.desc}
-                    </p>
-
-                    <Link
-                      to="/contact"
-                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#5eb2ff] transition-colors hover:text-white"
-                    >
-                      Learn More
-                      <ArrowUpRight
-                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
-                        strokeWidth={2.25}
-                      />
-                    </Link>
-                  </article>
-                </HoverLift>
-              </StaggerItem>
+              <div key={s.title} className="rounded-2xl border border-border/70 bg-background p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:p-6">
+                <div className="flex items-center gap-3">
+                  <div aria-hidden="true" className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${s.accent}`}>
+                    <s.Icon className="h-5 w-5" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground sm:text-lg">{s.title}</h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <span key={t} className="rounded-md border border-border bg-muted px-2.5 py-1 text-xs text-foreground/80 dark:border-white/10 dark:bg-white/[0.05]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
