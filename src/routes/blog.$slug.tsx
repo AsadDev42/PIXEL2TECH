@@ -16,12 +16,15 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const { post } = loaderData;
     const url = `https://pixel2tech.com/blog/${post.slug}`;
+    const title = post.metaTitle ?? `${post.title} — Pixel2Tech`;
+    const description = post.metaDescription ?? post.excerpt;
     return {
       meta: [
-        { title: `${post.title} — Pixel2Tech` },
-        { name: "description", content: post.excerpt },
+        { title },
+        { name: "description", content: description },
+        ...(post.keywords?.length ? [{ name: "keywords", content: post.keywords.join(", ") }] : []),
         { property: "og:title", content: post.title },
-        { property: "og:description", content: post.excerpt },
+        { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { property: "og:image", content: post.img },
@@ -32,6 +35,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:image", content: post.img },
       ],
       links: [{ rel: "canonical", href: url }],
+
       scripts: [
         {
           type: "application/ld+json",
@@ -64,7 +68,24 @@ export const Route = createFileRoute("/blog/$slug")({
             ],
           }),
         },
+        ...(post.faqs?.length
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: post.faqs.map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: { "@type": "Answer", text: f.a },
+                  })),
+                }),
+              },
+            ]
+          : []),
       ],
+
     };
   },
   component: BlogPostPage,
@@ -145,8 +166,25 @@ function BlogPostPage() {
                     </section>
                   </FadeIn>
                 ))}
+
+                {post.faqs?.length ? (
+                  <FadeIn>
+                    <section>
+                      <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
+                      <div className="mt-6 space-y-4">
+                        {post.faqs.map((f: { q: string; a: string }) => (
+                          <div key={f.q} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
+                            <h3 className="text-base font-semibold text-foreground sm:text-lg">{f.q}</h3>
+                            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground sm:text-base">{f.a}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  </FadeIn>
+                ) : null}
               </div>
             </article>
+
 
             {/* Sidebar */}
             <aside className="lg:sticky lg:top-24 lg:self-start">
