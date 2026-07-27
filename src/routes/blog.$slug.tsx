@@ -172,7 +172,7 @@ function BlogPostPage() {
                     <section>
                       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
                       <div className="mt-6 space-y-4">
-                        {post.faqs.map((f) => (
+                        {post.faqs.map((f: { q: string; a: string }) => (
                           <div key={f.q} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
                             <h3 className="text-base font-semibold text-foreground sm:text-lg">{f.q}</h3>
                             <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground sm:text-base">{f.a}</p>
