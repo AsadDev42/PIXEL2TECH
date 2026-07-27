@@ -788,7 +788,7 @@ function Insights() {
           </Link>
         </div>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
-          {latest.map((p) => (
+          {latest.map((p: BlogPost) => (
             <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
