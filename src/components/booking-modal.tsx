@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Clock, Video, ShieldCheck, Target, X } from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
 
-const SERVICES = [
-  "AI Solutions & Automation",
-  "Website Development",
-  "Custom Platform / SaaS",
-  "Systems & Workflow Automation",
-  "Digital Experience & UX",
-  "Branding & Design",
-  "SEO & Search Growth",
-  "Social Media & Email",
-  "Video Editing & Ads",
-  "General Consultation",
-];
-
 const CAL_URL = "https://calendly.com/pixel2tech/strategy-call?primary_color=0784ff&hide_gdpr_banner=1";
 
 export function BookingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [service, setService] = useState("");
-  const [notes, setNotes] = useState("");
+
 
   // Lock body scroll
   useEffect(() => {
