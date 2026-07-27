@@ -34,8 +34,8 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-            { "@type": "ListItem", position: 2, name: "Contact", item: "/contact" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://pixel2tech.com/contact" },
           ],
         }),
       },
