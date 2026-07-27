@@ -533,7 +533,7 @@ function PartnerBand() {
             </div>
           </motion.div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
-            <img loading="eager" decoding="async"
+            <img loading="eager" decoding="async" fetchPriority="high"
               src={founderPortrait.url}
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-contain"
