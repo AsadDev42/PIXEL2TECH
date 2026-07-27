@@ -550,7 +550,6 @@ textarea::placeholder {
  * SVG icons and any image marked as a logo/icon keep their ratio.
  * --------------------------------------------------------------- */
 img[alt*="logo" i],
-img[alt*="Pixel2Tech" i],
 img[src$=".svg"],
 img.logo,
 .logo img,
@@ -558,6 +557,7 @@ img[data-icon],
 [data-slot="avatar"] img {
   object-fit: contain !important;
 }
+
 
 svg {
   flex-shrink: 0;
