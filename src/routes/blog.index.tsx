@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHeader } from "@/components/site-chrome";
 import { posts } from "@/lib/blog-posts";
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/blog/")({
   component: BlogPage,
@@ -13,12 +13,12 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
       { property: "og:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: "https://pixel2tech.com/blog" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/blog" }],
     scripts: [
       {
         type: "application/ld+json",

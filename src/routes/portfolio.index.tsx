@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
 import { CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/portfolio/")({
   component: PortfolioPage,
@@ -16,12 +16,12 @@ export const Route = createFileRoute("/portfolio/")({
       { property: "og:title", content: "Portfolio — Branding, Web & Product Work | Pixel2Tech" },
       { property: "og:description", content: "Selected work from Pixel2Tech across branding, web, UI/UX, video and custom platforms." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/portfolio" },
+      { property: "og:url", content: "https://pixel2tech.com/portfolio" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/portfolio" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/portfolio" }],
     scripts: [
       {
         type: "application/ld+json",

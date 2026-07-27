@@ -15,7 +15,7 @@ export const Route = createFileRoute("/blog/$slug")({
       return { meta: [{ title: "Not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
     }
     const { post } = loaderData;
-    const url = `/blog/${post.slug}`;
+    const url = `https://pixel2tech.com/blog/${post.slug}`;
     return {
       meta: [
         { title: `${post.title} — Pixel2Tech` },
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/blog/$slug")({
             publisher: {
               "@type": "Organization",
               name: "Pixel2Tech",
-              logo: { "@type": "ImageObject", url: "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
+              logo: { "@type": "ImageObject", url: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
             },
             mainEntityOfPage: url,
             articleSection: post.tag,

@@ -12,7 +12,7 @@ import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/team-noman.webp.asset.json";
 import officeImg from "@/assets/office.webp.asset.json";
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -23,12 +23,12 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
       { property: "og:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://pixel2tech.com/about" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/about" }],
     scripts: [
       {
         type: "application/ld+json",

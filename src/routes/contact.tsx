@@ -10,7 +10,7 @@ import { submitContactForm } from "@/lib/contact.functions";
 import { FadeIn } from "@/components/motion";
 import { trackEvent } from "@/lib/analytics";
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -21,12 +21,12 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
       { property: "og:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://pixel2tech.com/contact" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/contact" }],
     scripts: [
       {
         type: "application/ld+json",

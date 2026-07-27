@@ -74,7 +74,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -135,8 +135,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           description:
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
-          url: "/",
-          logo: "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          url: "https://pixel2tech.com/",
+          logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           sameAs: [
             "https://www.facebook.com/pixel2tech",
             "https://www.instagram.com/pixel2tech",

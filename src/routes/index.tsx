@@ -258,8 +258,8 @@ function HomeFaq() {
   );
 }
 
-const OG_IMAGE = "/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const LOGO_URL = "/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const LOGO_URL = "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -278,7 +278,7 @@ export const Route = createFileRoute("/")({
           "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://pixel2tech.com/" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
@@ -290,7 +290,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: "https://pixel2tech.com/" },
       {
         rel: "preload",
         as: "image",
@@ -321,9 +321,9 @@ export const Route = createFileRoute("/")({
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
           image: OG_IMAGE,
           logo: LOGO_URL,
-          url: "/",
+          url: "https://pixel2tech.com/",
           email: "hello@pixel2tech.com",
-          telephone: "+92-300-0000000",
+          telephone: "+92-317-7475212",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Lahore",

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     const { item } = loaderData;
     const title = `${item.title} — Pixel2Tech`;
     const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the brand, our approach and the outcome.`;
-    const url = `/portfolio/${params.slug}`;
+    const url = `https://pixel2tech.com/portfolio/${params.slug}`;
     return {
       meta: [
         { title },
