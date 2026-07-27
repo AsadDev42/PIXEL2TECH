@@ -351,7 +351,7 @@ function AboutPage() {
                         <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                           <Icon className="h-5 w-5" aria-hidden />
                         </div>
-                        <span className="text-xs font-semibold tabular-nums text-muted-foreground/70">
+                        <span className="text-xs font-semibold tabular-nums text-muted-foreground">
                           0{i + 1}
                         </span>
                       </div>

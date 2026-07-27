@@ -165,7 +165,7 @@ function ContactPage() {
                       onChange={set(f.id)}
                       aria-invalid={!!errors[f.id]}
                       aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
                     />
                     <p
                       id={`${f.id}-error`}
@@ -190,7 +190,7 @@ function ContactPage() {
                     placeholder="Tell us about your project"
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? "message-error" : undefined}
-                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/50"
+                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
                   />
                   <p
                     id="message-error"
