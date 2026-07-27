@@ -1,0 +1,16 @@
+# Pixel2Tech
+
+> Pixel2Tech is a full-service creative agency in Lahore, Pakistan — branding, web design, UI/UX, social media, video and custom software for clients worldwide. One agency instead of ten freelancers.
+
+## Pages
+
+- [Home](https://pixel2tech.com/): Overview of the agency, services, work and client results.
+- [About](https://pixel2tech.com/about): Our story, team, values and frequently asked questions.
+- [Services](https://pixel2tech.com/services): Branding, web design & development, UI/UX, social media, video, and custom software.
+- [Portfolio](https://pixel2tech.com/portfolio): Case studies and creative work across branding, web and video.
+- [Blog](https://pixel2tech.com/blog): Essays and insights on branding, web development, UI/UX and AI.
+- [Contact](https://pixel2tech.com/contact): Email, WhatsApp, working hours, studio location and project enquiry form.
+
+## Optional
+
+- [Sitemap](https://pixel2tech.com/sitemap.xml): Full list of indexable pages.

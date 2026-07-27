@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 
-const BASE_URL = "https://pixel2tech.lovable.app";
+const BASE_URL = "https://pixel2tech.com";
 
 interface SitemapEntry {
   path: string;
