@@ -16,12 +16,15 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const { post } = loaderData;
     const url = `https://pixel2tech.com/blog/${post.slug}`;
+    const title = post.metaTitle ?? `${post.title} — Pixel2Tech`;
+    const description = post.metaDescription ?? post.excerpt;
     return {
       meta: [
-        { title: `${post.title} — Pixel2Tech` },
-        { name: "description", content: post.excerpt },
+        { title },
+        { name: "description", content: description },
+        ...(post.keywords?.length ? [{ name: "keywords", content: post.keywords.join(", ") }] : []),
         { property: "og:title", content: post.title },
-        { property: "og:description", content: post.excerpt },
+        { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { property: "og:image", content: post.img },
@@ -32,6 +35,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:image", content: post.img },
       ],
       links: [{ rel: "canonical", href: url }],
+
       scripts: [
         {
           type: "application/ld+json",
