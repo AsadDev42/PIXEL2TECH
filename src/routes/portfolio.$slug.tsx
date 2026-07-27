@@ -245,7 +245,7 @@ function PortfolioDetailPage() {
         <FadeIn>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
             <span className="rounded-full bg-muted px-3 py-1 text-foreground dark:bg-white/[0.06]">{item.category}</span>
-            <span className="text-muted-foreground/60">/</span>
+            <span className="text-muted-foreground">/</span>
             <span>{item.subcategory}</span>
           </div>
           <h1 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">

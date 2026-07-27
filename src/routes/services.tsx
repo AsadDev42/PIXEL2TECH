@@ -359,7 +359,7 @@ function ServicesPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p) => (
             <div key={p.title} className="relative rounded-2xl border border-border/70 bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-7">
-              <span className="absolute right-5 top-5 text-xs font-bold text-muted-foreground/60">{p.step}</span>
+              <span className="absolute right-5 top-5 text-xs font-bold text-muted-foreground">{p.step}</span>
               <div aria-hidden="true" className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
                 <p.Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
@@ -399,7 +399,7 @@ function ServicesPage() {
                         <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                           <Icon className="h-5 w-5" aria-hidden />
                         </div>
-                        <span className="text-xs font-semibold tabular-nums text-muted-foreground/70">
+                        <span className="text-xs font-semibold tabular-nums text-muted-foreground">
                           0{i + 1}
                         </span>
                       </div>

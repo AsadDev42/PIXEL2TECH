@@ -294,6 +294,12 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
+        href: founderPortrait.url,
+        fetchpriority: "high",
+      },
+      {
+        rel: "preload",
+        as: "image",
         href: "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
         fetchpriority: "high",
       },
@@ -405,8 +411,6 @@ function Hero() {
                       decoding="async"
                       src={src}
                       alt=""
-                      width={600}
-                      height={400}
                       loading={ci === 0 && i === 0 ? "eager" : "lazy"}
                       fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
                       className="h-full w-full object-cover"
@@ -503,7 +507,7 @@ function PartnerBand() {
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             A Full-Service Creative Agency Built Around Your Growth
           </h2>
-          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-400 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
+          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-600 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
             We're a creative agency that takes brands from idea to launch and beyond. Everything under one roof, one team, one standard — no chasing five different freelancers.
           </p>
           <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
@@ -529,7 +533,7 @@ function PartnerBand() {
             </div>
           </motion.div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
-            <img loading="eager" decoding="async"
+            <img loading="eager" decoding="async" fetchPriority="high"
               src={founderPortrait.url}
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-contain"
