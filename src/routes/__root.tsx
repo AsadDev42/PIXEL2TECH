@@ -102,8 +102,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
       { property: "og:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
       { name: "twitter:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f98bbd41-e757-43d7-8336-18855aa6bdc9/id-preview-b2cfbb64--e2a5516f-fcc9-4ab8-9f90-891f41244225.lovable.app-1785073003838.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f98bbd41-e757-43d7-8336-18855aa6bdc9/id-preview-b2cfbb64--e2a5516f-fcc9-4ab8-9f90-891f41244225.lovable.app-1785073003838.png" },
     ],
     links: [
       {
