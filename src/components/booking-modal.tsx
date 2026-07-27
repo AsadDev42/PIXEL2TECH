@@ -119,45 +119,6 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
               <Pill icon={<Target className="h-3.5 w-3.5" />} label="Actionable plan" />
             </div>
 
-            <div className="space-y-5">
-              <div>
-                <label htmlFor="booking-service" className="block text-sm font-semibold text-foreground">
-                  What would you like to discuss?
-                </label>
-                <div className="relative mt-2">
-                  <select
-                    id="booking-service"
-                    value={service}
-                    onChange={(e) => setService(e.target.value)}
-                    className="w-full appearance-none rounded-xl border border-border bg-background px-4 py-3 pr-10 text-sm text-foreground transition focus:border-[#0784ff] focus:outline-none focus:ring-2 focus:ring-[#0784ff]/25"
-                  >
-                    <option value="">Select a service (optional)</option>
-                    {SERVICES.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
-                  <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="booking-notes" className="block text-sm font-semibold text-foreground">
-                  Anything we should know?
-                </label>
-                <textarea
-                  id="booking-notes"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value.slice(0, 500))}
-                  placeholder="Your project, goals, or current challenges…"
-                  rows={3}
-                  className="mt-2 w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground transition focus:border-[#0784ff] focus:outline-none focus:ring-2 focus:ring-[#0784ff]/25"
-                />
-                <div className="mt-1 text-right text-xs text-muted-foreground">{notes.length}/500</div>
-              </div>
-            </div>
-
             <p className="mt-auto text-xs text-muted-foreground">
               🔒 Your details stay private and are never shared.
             </p>
