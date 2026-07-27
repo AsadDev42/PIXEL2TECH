@@ -294,6 +294,12 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
+        href: founderPortrait.url,
+        fetchpriority: "high",
+      },
+      {
+        rel: "preload",
+        as: "image",
         href: "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
         fetchpriority: "high",
       },
