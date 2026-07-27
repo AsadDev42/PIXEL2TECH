@@ -59,12 +59,13 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
     const onMsg = (e: MessageEvent) => {
       const d = e.data as { event?: string } | undefined;
       if (d?.event === "calendly.event_scheduled") {
-        trackEvent("booking_completed", { service });
+        trackEvent("booking_completed", {});
       }
     };
     window.addEventListener("message", onMsg);
     return () => window.removeEventListener("message", onMsg);
-  }, [open, service]);
+  }, [open]);
+
 
   const dialogRef = useFocusTrap<HTMLDivElement>(open);
 
