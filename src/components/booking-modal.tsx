@@ -70,9 +70,8 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
 
   if (!open) return null;
 
-  const calUrl = service
-    ? `${CAL_URL}&a1=${encodeURIComponent(service)}${notes ? `&a2=${encodeURIComponent(notes)}` : ""}`
-    : CAL_URL;
+  const calUrl = CAL_URL;
+
 
   return (
     <div
