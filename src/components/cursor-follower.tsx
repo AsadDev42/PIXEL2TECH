@@ -111,11 +111,18 @@ export function CursorFollower() {
           transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
         }
         .lv-cursor-blob[data-hover="1"]{
-          height: 68px; width: 68px;
+          height: 56px; width: 56px;
+          background: transparent;
+          mix-blend-mode: normal;
+          box-shadow: inset 0 0 0 1.5px rgba(7,132,255,.75);
         }
         .lv-cursor-blob[data-down="1"]{
           height: 22px; width: 22px;
         }
+        .lv-cursor-blob[data-hover="1"][data-down="1"]{
+          height: 44px; width: 44px;
+        }
+
         .lv-cursor-blob[data-media="1"]{
           height: 104px; width: 104px;
           background: rgba(20,20,22,.62);
