@@ -24,7 +24,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Businesses Don't Need More Software. They Need Better Systems",
     excerpt:
       "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software — it's the system behind it.",
-    img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&fm=webp&q=70",
     metaTitle: "Why Businesses Need Better Systems Instead of More Software | Pixel2Tech",
     metaDescription:
       "Learn why businesses struggle despite using multiple software tools and how AI, automation, and connected systems help companies scale more efficiently.",
