@@ -507,10 +507,11 @@ function PartnerBand() {
           <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-white dark:text-foreground sm:text-4xl lg:text-[54px]">
             A Full-Service Creative Agency Built Around Your Growth
           </h2>
-          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-600 dark:text-muted-foreground sm:mt-6 sm:text-[15px]">
+          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-200 dark:text-foreground/90 sm:mt-6 sm:text-[15px]">
             We're a creative agency that takes brands from idea to launch and beyond. Everything under one roof, one team, one standard — no chasing five different freelancers.
           </p>
-          <div className="mt-6 text-sm text-muted-foreground sm:mt-8">— Pixel2Tech Team</div>
+          <div className="mt-6 text-sm text-neutral-300 dark:text-foreground/80 sm:mt-8">— Pixel2Tech Team</div>
+
         </div>
         <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px]">
           <motion.div
