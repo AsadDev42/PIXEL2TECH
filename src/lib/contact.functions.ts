@@ -18,7 +18,7 @@ const submissionSchema = z.object({
   subject: z.string().transform(sanitize).pipe(z.string().min(2, "Subject is required").max(200)),
   message: z.string().transform(sanitize).pipe(z.string().min(10, "Message is too short").max(5000)),
   // Honeypot — real users leave this empty. Bots fill it.
-  website: z.string().max(0).optional(),
+  website: z.string().max(200).optional(),
   // Anti-instant-submit — client stamps form load time; reject sub-second submits.
   ts: z.number().int().optional(),
 });
