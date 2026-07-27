@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
+import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
+
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
@@ -771,13 +773,8 @@ function Team() {
 }
 
 
-const posts = [
-  { tag: "Creative", date: "June 22, 2026", title: "How AI is Changing Modern Branding", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Creative", date: "April 5, 2026", title: "Why Every Business Needs a Modern Website in 2026", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { tag: "Creative", date: "April 5, 2026", title: "The Power of Good Branding for Business Growth", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&fm=webp&q=70" },
-];
-
 function Insights() {
+  const latest = blogPosts.slice(0, 3);
   return (
     <section className="bg-background py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
@@ -791,8 +788,8 @@ function Insights() {
           </Link>
         </div>
         <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 md:grid-cols-3">
-          {posts.map((p) => (
-            <Link key={p.title} to="/blog" className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
+          {latest.map((p: BlogPost) => (
+            <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
@@ -803,6 +800,7 @@ function Insights() {
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   );
