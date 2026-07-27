@@ -435,7 +435,6 @@ function Brands() {
   const brands = [
     { slug: "google", name: "Google" },
     { slug: "microsoft", name: "Microsoft" },
-    { slug: "shopify", name: "Shopify" },
     { slug: "stripe", name: "Stripe" },
     { slug: "spotify", name: "Spotify" },
     { slug: "notion", name: "Notion" },
