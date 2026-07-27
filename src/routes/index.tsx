@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site-chrome";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
+import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
+
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
