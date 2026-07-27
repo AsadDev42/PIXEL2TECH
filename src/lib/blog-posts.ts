@@ -24,7 +24,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Freelancers Fail on Upwork (And What Clients Actually Want)",
     excerpt:
       "Most freelancers lose Upwork projects for the same reason: they focus on getting hired while clients focus on getting results.",
-    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: "https://images.unsplash.com/photo-1761426952799-108385c4753d?w=1600&auto=format&fit=crop&fm=webp&q=70",
     metaTitle: "Why You're Not Winning Upwork Projects | Pixel2Tech",
     metaDescription:
       "Discover why many freelancers struggle on Upwork and how to win more projects by thinking like a client instead of just another applicant.",
