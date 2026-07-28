@@ -703,14 +703,26 @@ function Work() {
             data-cursor="expand"
             className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
-            <img
-              loading="lazy"
-              decoding="async"
-              src={w.img}
-              alt={i < work.length ? w.title : ""}
-              draggable={false}
-              className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
-            />
+            {("video" in w && (w as { video?: boolean }).video) ? (
+              <video
+                src={w.img}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            ) : (
+              <img
+                loading="lazy"
+                decoding="async"
+                src={w.img}
+                alt={i < work.length ? w.title : ""}
+                draggable={false}
+                className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            )}
             <div className="pointer-events-none absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
               {w.title}
             </div>
