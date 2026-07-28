@@ -367,7 +367,7 @@ const heroCols: string[][] = [
   ],
   [
     heroLimaAsset.url,
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroLaptopCodeAsset.url,
     heroSpiralAsset.url,
   ],
 ];
