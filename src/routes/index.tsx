@@ -26,6 +26,12 @@ import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
 import locksAndCoLogo from "@/assets/locks-and-co.webp.asset.json";
+import biscuitsLogo from "@/assets/industry-biscuits.webp.asset.json";
+import achhsoftLogo from "@/assets/industry-achhsoft.webp.asset.json";
+import mixmastersLogo from "@/assets/industry-mixmasters.webp.asset.json";
+import gallopLogo from "@/assets/industry-gallop.webp.asset.json";
+import escadaLogo from "@/assets/industry-escada.webp.asset.json";
+import caveLogo from "@/assets/industry-cave.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -453,17 +459,13 @@ function Hero() {
 
 function Brands() {
   const brands = [
-    { slug: "google", name: "Google" },
-    { slug: "microsoft", name: "Microsoft" },
-    { slug: "stripe", name: "Stripe" },
     { slug: "locks-and-co", name: "Locks & Co", src: locksAndCoLogo.url },
-    { slug: "notion", name: "Notion" },
-    { slug: "figma", name: "Figma" },
-    { slug: "netflix", name: "Netflix" },
-    { slug: "meta", name: "Meta" },
-    { slug: "tesla", name: "Tesla" },
-    { slug: "apple", name: "Apple" },
-    { slug: "github", name: "GitHub" },
+    { slug: "biscuits-backyard", name: "Biscuit's Backyard", src: biscuitsLogo.url },
+    { slug: "achhsoft", name: "AchhSoft", src: achhsoftLogo.url },
+    { slug: "mixmasters", name: "Mix Masters", src: mixmastersLogo.url },
+    { slug: "gallop", name: "Gallop", src: gallopLogo.url },
+    { slug: "escada", name: "Escada", src: escadaLogo.url },
+    { slug: "cave-magazine", name: "Cave Magazine", src: caveLogo.url },
   ];
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
