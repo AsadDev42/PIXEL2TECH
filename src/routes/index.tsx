@@ -15,6 +15,7 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
 import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
+import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -357,9 +358,11 @@ const heroCols: string[][] = [
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroArmpearlAsset.url,
     heroDeskVideoAsset.url,
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
@@ -367,8 +370,10 @@ const heroCols: string[][] = [
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
+
 
 function Hero() {
   return (
