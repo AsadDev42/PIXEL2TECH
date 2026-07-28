@@ -22,6 +22,7 @@ import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
 import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
+import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
