@@ -353,7 +353,7 @@ export const Route = createFileRoute("/")({
 const heroCols: string[][] = [
   [
     heroSpiralAsset.url,
-    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroStickynotesAsset.url,
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
     heroRavokafeAsset.url,
   ],
