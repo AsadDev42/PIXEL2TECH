@@ -413,9 +413,10 @@ function Hero() {
                       decoding="async"
                       src={src}
                       alt=""
+                      draggable={false}
                       loading={ci === 0 && i === 0 ? "eager" : "lazy"}
                       fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
-                      className="h-full w-full object-cover"
+                      className="pointer-events-none h-full w-full select-none object-cover"
                     />
                   </div>
                 )}

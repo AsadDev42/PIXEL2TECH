@@ -108,6 +108,8 @@ export function LoopSlider<T>({
 
     const onDown = (e: PointerEvent) => {
       const s = stateRef.current;
+      if (e.button !== undefined && e.button !== 0) return;
+      if (e.pointerType === "mouse") e.preventDefault();
       s.dragging = true;
       s.start = isX ? e.clientX : e.clientY;
       s.startPos = s.pos;
