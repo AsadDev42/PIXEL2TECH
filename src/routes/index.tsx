@@ -18,6 +18,7 @@ import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
 import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
 import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
+import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
 import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
