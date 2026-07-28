@@ -491,7 +491,7 @@ function Brands() {
               >
                 <img
                   decoding="async"
-                  src={`https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
+                  src={(b as { src?: string }).src ?? `https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
                   alt={isDup ? "" : `${b.name} logo`}
                   title={b.name}
                   loading="lazy"
