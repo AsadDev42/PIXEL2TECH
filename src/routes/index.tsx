@@ -18,6 +18,7 @@ import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
 import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
 import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
+import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
 import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
@@ -668,7 +669,7 @@ const work = [
   { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
   { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop&fm=webp&q=70" },
@@ -702,14 +703,26 @@ function Work() {
             data-cursor="expand"
             className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
-            <img
-              loading="lazy"
-              decoding="async"
-              src={w.img}
-              alt={i < work.length ? w.title : ""}
-              draggable={false}
-              className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
-            />
+            {("video" in w && (w as { video?: boolean }).video) ? (
+              <video
+                src={w.img}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            ) : (
+              <img
+                loading="lazy"
+                decoding="async"
+                src={w.img}
+                alt={i < work.length ? w.title : ""}
+                draggable={false}
+                className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            )}
             <div className="pointer-events-none absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
               {w.title}
             </div>
