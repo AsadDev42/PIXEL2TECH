@@ -355,11 +355,11 @@ const heroCols: string[][] = [
   [
     heroSpiralAsset.url,
     heroStickynotesAsset.url,
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroCoffeemockAsset.url,
     heroRavokafeAsset.url,
   ],
   [
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroCoffeemockAsset.url,
     heroArmpearlAsset.url,
     heroDeskVideoAsset.url,
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
