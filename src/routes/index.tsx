@@ -38,6 +38,16 @@ import mixmastersLogo from "@/assets/industry-mixmasters.webp.asset.json";
 import gallopLogo from "@/assets/industry-gallop.webp.asset.json";
 import escadaLogo from "@/assets/industry-escada.webp.asset.json";
 import caveLogo from "@/assets/industry-cave.webp.asset.json";
+import vahubLogo from "@/assets/industry-vahub.png.asset.json";
+import swishtagLogo from "@/assets/industry-swishtag.png.asset.json";
+import globbyLogo from "@/assets/industry-globby.png.asset.json";
+import threeflamesLogo from "@/assets/industry-threeflames.png.asset.json";
+import forbesLogo from "@/assets/industry-forbes.png.asset.json";
+import coinmarketfeesLogo from "@/assets/industry-coinmarketfees.png.asset.json";
+import publishprosperLogo from "@/assets/industry-publishprosper.png.asset.json";
+import hollowayLogo from "@/assets/industry-holloway.png.asset.json";
+import newscallLogo from "@/assets/industry-newscall.png.asset.json";
+import luxuriousLogo from "@/assets/industry-luxurious.png.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -472,6 +482,16 @@ function Brands() {
     { slug: "gallop", name: "Gallop", src: gallopLogo.url },
     { slug: "escada", name: "Escada", src: escadaLogo.url },
     { slug: "cave-magazine", name: "Cave Magazine", src: caveLogo.url },
+    { slug: "vahub-pro", name: "VA Hub Pro", src: vahubLogo.url },
+    { slug: "swishtag", name: "Swishtag", src: swishtagLogo.url },
+    { slug: "globby", name: "Globby", src: globbyLogo.url },
+    { slug: "three-flames", name: "Three Flames", src: threeflamesLogo.url },
+    { slug: "the-forbes-group", name: "The Forbes Group", src: forbesLogo.url },
+    { slug: "coinmarketfees", name: "CoinMarketFees", src: coinmarketfeesLogo.url },
+    { slug: "publish-and-prosper", name: "Publish and Prosper", src: publishprosperLogo.url },
+    { slug: "holloway-diamonds", name: "Holloway Diamonds", src: hollowayLogo.url },
+    { slug: "newscall", name: "Newscall", src: newscallLogo.url },
+    { slug: "luxurious", name: "Luxurious", src: luxuriousLogo.url },
   ];
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
