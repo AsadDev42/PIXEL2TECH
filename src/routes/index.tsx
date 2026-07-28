@@ -511,12 +511,12 @@ function Brands() {
         axis="x"
         direction="rtl"
         speed={40}
-        gapClassName="gap-12 sm:gap-16"
+        gapClassName="gap-8 sm:gap-12"
         ariaLabel="Brands that trust Pixel2Tech"
         items={brands}
         keyFor={(b, i) => `${b.slug}-${i}`}
         renderItem={(b) => (
-          <div className="flex h-10 w-28 items-center justify-center sm:h-12 sm:w-32">
+          <div className="flex h-20 w-40 shrink-0 items-center justify-center sm:h-24 sm:w-48">
             <img
               decoding="async"
               draggable={false}
@@ -536,7 +536,7 @@ function Brands() {
                   el.style.display = "none";
                 }
               }}
-              className="max-h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:max-h-7"
+              className="max-h-full max-w-full object-contain opacity-80 transition hover:opacity-100"
             />
           </div>
         )}
