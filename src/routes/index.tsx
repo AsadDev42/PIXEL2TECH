@@ -25,6 +25,7 @@ import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
 import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
+import locksAndCoLogo from "@/assets/locks-and-co.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -455,7 +456,7 @@ function Brands() {
     { slug: "google", name: "Google" },
     { slug: "microsoft", name: "Microsoft" },
     { slug: "stripe", name: "Stripe" },
-    { slug: "spotify", name: "Spotify" },
+    { slug: "locks-and-co", name: "Locks & Co", src: locksAndCoLogo.url },
     { slug: "notion", name: "Notion" },
     { slug: "figma", name: "Figma" },
     { slug: "netflix", name: "Netflix" },
@@ -490,7 +491,7 @@ function Brands() {
               >
                 <img
                   decoding="async"
-                  src={`https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
+                  src={(b as { src?: string }).src ?? `https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
                   alt={isDup ? "" : `${b.name} logo`}
                   title={b.name}
                   loading="lazy"
