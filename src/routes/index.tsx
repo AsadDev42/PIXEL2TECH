@@ -534,7 +534,7 @@ function Brands() {
                   el.style.display = "none";
                 }
               }}
-              className="max-h-full max-w-full object-contain opacity-80 transition hover:opacity-100"
+              className="h-full w-full scale-110 object-contain opacity-80 transition hover:scale-[1.18] hover:opacity-100"
             />
           </div>
         )}
