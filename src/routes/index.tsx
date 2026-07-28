@@ -357,19 +357,16 @@ const heroCols: string[][] = [
     heroSpiralAsset.url,
     heroStickynotesAsset.url,
     heroCoffeemockAsset.url,
-    heroRavokafeAsset.url,
   ],
   [
     heroCoffeemockAsset.url,
     heroArmpearlAsset.url,
     heroDeskVideoAsset.url,
-    heroLimaAsset.url,
   ],
   [
     heroLimaAsset.url,
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
     heroSpiralAsset.url,
-    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
