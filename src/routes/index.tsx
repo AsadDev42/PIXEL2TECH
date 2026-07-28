@@ -514,7 +514,7 @@ function Brands() {
         items={brands}
         keyFor={(b, i) => `${b.slug}-${i}`}
         renderItem={(b) => (
-          <div className="flex h-20 w-40 shrink-0 items-center justify-center sm:h-24 sm:w-48">
+          <div className="flex h-[7.5rem] w-60 shrink-0 items-center justify-center px-2 sm:h-36 sm:w-72">
             <img
               decoding="async"
               draggable={false}
