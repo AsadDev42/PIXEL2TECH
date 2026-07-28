@@ -410,15 +410,27 @@ function Hero() {
                 keyFor={(_src, i) => `${ci}-${i}`}
                 renderItem={(src, i) => (
                   <div className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl">
-                    <img
-                      decoding="async"
-                      src={src}
-                      alt=""
-                      draggable={false}
-                      loading={ci === 0 && i === 0 ? "eager" : "lazy"}
-                      fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
-                      className="pointer-events-none h-full w-full select-none object-cover"
-                    />
+                    {src.endsWith(".mp4") ? (
+                      <video
+                        src={src}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="pointer-events-none h-full w-full select-none object-cover"
+                      />
+                    ) : (
+                      <img
+                        decoding="async"
+                        src={src}
+                        alt=""
+                        draggable={false}
+                        loading={ci === 0 && i === 0 ? "eager" : "lazy"}
+                        fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
+                        className="pointer-events-none h-full w-full select-none object-cover"
+                      />
+                    )}
                   </div>
                 )}
               />
