@@ -456,7 +456,7 @@ function Brands() {
     { slug: "google", name: "Google" },
     { slug: "microsoft", name: "Microsoft" },
     { slug: "stripe", name: "Stripe" },
-    { slug: "spotify", name: "Spotify" },
+    { slug: "locks-and-co", name: "Locks & Co", src: locksAndCoLogo.url },
     { slug: "notion", name: "Notion" },
     { slug: "figma", name: "Figma" },
     { slug: "netflix", name: "Netflix" },
