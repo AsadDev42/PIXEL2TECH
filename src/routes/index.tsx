@@ -669,7 +669,7 @@ const work = [
   { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { title: "Automation & CRM", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
   { title: "AI Solutions", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "SEO & Search Growth", img: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Social Media & Email", img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&auto=format&fit=crop&fm=webp&q=70" },
