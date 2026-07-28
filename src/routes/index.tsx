@@ -20,6 +20,7 @@ import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
 import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
+import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -362,10 +363,10 @@ const heroCols: string[][] = [
     heroCoffeemockAsset.url,
     heroArmpearlAsset.url,
     heroDeskVideoAsset.url,
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroLimaAsset.url,
   ],
   [
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
+    heroLimaAsset.url,
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
     heroSpiralAsset.url,
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
