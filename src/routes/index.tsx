@@ -25,6 +25,7 @@ import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
 import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
+import locksAndCoLogo from "@/assets/locks-and-co.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
