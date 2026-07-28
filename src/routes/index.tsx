@@ -480,44 +480,41 @@ function Brands() {
         </p>
       </div>
 
-      <div className="marquee-viewport edge-fade-x mt-8 overflow-hidden sm:mt-10">
-        <div className="marquee-track slow items-center gap-12 pr-12 sm:gap-16 sm:pr-16" role="list" aria-label="Brands that trust Pixel2Tech">
-          {loop.map((b, i) => {
-            const isDup = i >= brands.length;
-            return (
-              <div
-                key={`${b.slug}-${i}`}
-                className="flex h-10 w-28 shrink-0 items-center justify-center sm:h-12 sm:w-32"
-                role={isDup ? "presentation" : "listitem"}
-                aria-hidden={isDup || undefined}
-              >
-                <img
-                  decoding="async"
-                  src={(b as { src?: string }).src ?? `https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
-                  alt={isDup ? "" : `${b.name} logo`}
-                  title={b.name}
-                  loading="lazy"
-                  onError={(e) => {
-                    const el = e.currentTarget as HTMLImageElement;
-                    if (!el.dataset.fallback) {
-                      el.dataset.fallback = "1";
-                      el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
-                    } else if (el.dataset.fallback === "1") {
-                      el.dataset.fallback = "2";
-                      el.src = `https://logo.clearbit.com/${b.slug}.com`;
-                    } else {
-                      el.style.display = "none";
-                    }
-                  }}
-                  className="max-h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:max-h-7"
-                />
-              </div>
-            );
-          })}
-        </div>
-
-
-      </div>
+      <LoopSlider
+        className="mt-8 sm:mt-10"
+        axis="x"
+        direction="rtl"
+        speed={40}
+        gapClassName="gap-12 sm:gap-16"
+        ariaLabel="Brands that trust Pixel2Tech"
+        items={brands}
+        keyFor={(b, i) => `${b.slug}-${i}`}
+        renderItem={(b) => (
+          <div className="flex h-10 w-28 items-center justify-center sm:h-12 sm:w-32">
+            <img
+              decoding="async"
+              draggable={false}
+              src={(b as { src?: string }).src ?? `https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
+              alt={`${b.name} logo`}
+              title={b.name}
+              loading="lazy"
+              onError={(e) => {
+                const el = e.currentTarget as HTMLImageElement;
+                if (!el.dataset.fallback) {
+                  el.dataset.fallback = "1";
+                  el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
+                } else if (el.dataset.fallback === "1") {
+                  el.dataset.fallback = "2";
+                  el.src = `https://logo.clearbit.com/${b.slug}.com`;
+                } else {
+                  el.style.display = "none";
+                }
+              }}
+              className="max-h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:max-h-7"
+            />
+          </div>
+        )}
+      />
     </section>
   );
 }
