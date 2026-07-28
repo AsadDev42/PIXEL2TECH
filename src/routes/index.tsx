@@ -403,7 +403,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="mx-auto grid w-full max-w-[420px] grid-cols-3 gap-2 self-center sm:max-w-[480px] sm:gap-3 md:max-w-[520px] lg:max-w-[560px]">
+        <div className="mx-auto grid w-full max-w-[420px] grid-cols-4 gap-2 self-center sm:max-w-[520px] sm:gap-3 md:max-w-[600px] lg:max-w-[680px]">
           {heroCols.map((col, ci) => (
             <div key={ci} className="h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px]">
               <LoopSlider
