@@ -361,7 +361,7 @@ const heroCols: string[][] = [
   ],
   [
     heroCoffeemockAsset.url,
-    heroArmpearlAsset.url,
+    heroMidCozyAsset.url,
     heroDeskVideoAsset.url,
   ],
   [
