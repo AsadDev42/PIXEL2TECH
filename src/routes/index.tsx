@@ -17,6 +17,7 @@ import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
 import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
 import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
 import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
+import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -305,7 +306,7 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: "__SPIRAL__",
+        href: heroSpiralAsset.url,
         fetchpriority: "high",
       },
     ],
@@ -356,7 +357,7 @@ export const Route = createFileRoute("/")({
 
 const heroCols: string[][] = [
   [
-    "__SPIRAL__",
+    heroSpiralAsset.url,
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
     heroRavokafeAsset.url,
@@ -370,7 +371,7 @@ const heroCols: string[][] = [
   [
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "__SPIRAL__",
+    heroSpiralAsset.url,
     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
