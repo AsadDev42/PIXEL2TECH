@@ -357,10 +357,10 @@ const heroCols: string[][] = [
   [
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    armPearlAsset.url,
   ],
   [
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
+    armPearlAsset.url,
     heroDeskVideoAsset.url,
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
@@ -368,6 +368,11 @@ const heroCols: string[][] = [
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
+  ],
+  [
+    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&auto=format&fit=crop&fm=webp&q=70",
+    "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
