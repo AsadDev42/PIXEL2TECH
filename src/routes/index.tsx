@@ -303,12 +303,6 @@ export const Route = createFileRoute("/")({
         href: founderPortrait.url,
         fetchpriority: "high",
       },
-      {
-        rel: "preload",
-        as: "image",
-        href: heroSpiralAsset.url,
-        fetchpriority: "high",
-      },
     ],
     scripts: [
       {
