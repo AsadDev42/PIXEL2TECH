@@ -22,6 +22,7 @@ import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.webp.asset.json";
 import workSeo from "@/assets/work-seo.jpg.asset.json";
 import workSocialMedia from "@/assets/work-social-media.jpg.asset.json";
+import workWeb from "@/assets/work-web.mp4.asset.json";
 import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
 import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
@@ -666,7 +667,7 @@ function Services() {
 
 
 const work = [
-  { title: "Web design and development", img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Web design and development", img: workWeb.url, video: true },
   { title: "UI UX designing", img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Logo and branding", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop&fm=webp&q=70" },
