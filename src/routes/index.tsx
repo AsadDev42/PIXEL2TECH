@@ -20,6 +20,7 @@ import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
 import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
 import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
+import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
@@ -360,7 +361,7 @@ const heroCols: string[][] = [
   ],
   [
     heroCoffeemockAsset.url,
-    heroArmpearlAsset.url,
+    heroMidCozyAsset.url,
     heroDeskVideoAsset.url,
   ],
   [
