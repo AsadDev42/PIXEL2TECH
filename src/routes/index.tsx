@@ -15,7 +15,6 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
 import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
-import armPearlAsset from "@/assets/arm-pearl.webp.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -357,10 +356,10 @@ const heroCols: string[][] = [
   [
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&auto=format&fit=crop&fm=webp&q=70",
-    armPearlAsset.url,
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
   [
-    armPearlAsset.url,
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&fm=webp&q=70",
     heroDeskVideoAsset.url,
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
@@ -368,11 +367,6 @@ const heroCols: string[][] = [
     "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&fm=webp&q=70",
     "https://images.unsplash.com/photo-1618172193763-c511deb635ca?w=600&auto=format&fit=crop&fm=webp&q=70",
-  ],
-  [
-    "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&auto=format&fit=crop&fm=webp&q=70",
-    "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=600&auto=format&fit=crop&fm=webp&q=70",
   ],
 ];
 
@@ -403,7 +397,7 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="mx-auto grid w-full max-w-[420px] grid-cols-4 gap-2 self-center sm:max-w-[520px] sm:gap-3 md:max-w-[600px] lg:max-w-[680px]">
+        <div className="mx-auto grid w-full max-w-[420px] grid-cols-3 gap-2 self-center sm:max-w-[480px] sm:gap-3 md:max-w-[520px] lg:max-w-[560px]">
           {heroCols.map((col, ci) => (
             <div key={ci} className="h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px]">
               <LoopSlider
