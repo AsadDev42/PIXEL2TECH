@@ -459,17 +459,13 @@ function Hero() {
 
 function Brands() {
   const brands = [
-    { slug: "google", name: "Google" },
-    { slug: "microsoft", name: "Microsoft" },
-    { slug: "stripe", name: "Stripe" },
     { slug: "locks-and-co", name: "Locks & Co", src: locksAndCoLogo.url },
-    { slug: "notion", name: "Notion" },
-    { slug: "figma", name: "Figma" },
-    { slug: "netflix", name: "Netflix" },
-    { slug: "meta", name: "Meta" },
-    { slug: "tesla", name: "Tesla" },
-    { slug: "apple", name: "Apple" },
-    { slug: "github", name: "GitHub" },
+    { slug: "biscuits-backyard", name: "Biscuit's Backyard", src: biscuitsLogo.url },
+    { slug: "achhsoft", name: "AchhSoft", src: achhsoftLogo.url },
+    { slug: "mixmasters", name: "Mix Masters", src: mixmastersLogo.url },
+    { slug: "gallop", name: "Gallop", src: gallopLogo.url },
+    { slug: "escada", name: "Escada", src: escadaLogo.url },
+    { slug: "cave-magazine", name: "Cave Magazine", src: caveLogo.url },
   ];
   // Duplicate list so translateX(-50%) creates a seamless right→left loop
   const loop = [...brands, ...brands];
