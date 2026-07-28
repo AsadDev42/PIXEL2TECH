@@ -32,11 +32,11 @@ import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
 import locksAndCoLogo from "@/assets/locks-and-co.png.asset.json";
-import biscuitsLogo from "@/assets/industry-biscuits.webp.asset.json";
-import achhsoftLogo from "@/assets/industry-achhsoft.webp.asset.json";
-import mixmastersLogo from "@/assets/industry-mixmasters.webp.asset.json";
-import gallopLogo from "@/assets/industry-gallop.webp.asset.json";
-import escadaLogo from "@/assets/industry-escada.webp.asset.json";
+import biscuitsLogo from "@/assets/industry-biscuits.png.asset.json";
+import achhsoftLogo from "@/assets/industry-achhsoft.png.asset.json";
+import mixmastersLogo from "@/assets/industry-mixmasters.png.asset.json";
+import gallopLogo from "@/assets/industry-gallop.png.asset.json";
+import escadaLogo from "@/assets/industry-escada.png.asset.json";
 import caveLogo from "@/assets/industry-cave.png.asset.json";
 import vahubLogo from "@/assets/industry-vahub.png.asset.json";
 import swishtagLogo from "@/assets/industry-swishtag.png.asset.json";
@@ -44,7 +44,6 @@ import globbyLogo from "@/assets/industry-globby.png.asset.json";
 import threeflamesLogo from "@/assets/industry-threeflames.png.asset.json";
 import forbesLogo from "@/assets/industry-forbes.png.asset.json";
 import coinmarketfeesLogo from "@/assets/industry-coinmarketfees.png.asset.json";
-import publishprosperLogo from "@/assets/industry-publishprosper.png.asset.json";
 import hollowayLogo from "@/assets/industry-holloway.png.asset.json";
 import newscallLogo from "@/assets/industry-newscall.png.asset.json";
 import luxuriousLogo from "@/assets/industry-luxurious.png.asset.json";
@@ -488,7 +487,6 @@ function Brands() {
     { slug: "three-flames", name: "Three Flames", src: threeflamesLogo.url },
     { slug: "the-forbes-group", name: "The Forbes Group", src: forbesLogo.url },
     { slug: "coinmarketfees", name: "CoinMarketFees", src: coinmarketfeesLogo.url },
-    { slug: "publish-and-prosper", name: "Publish and Prosper", src: publishprosperLogo.url },
     { slug: "holloway-diamonds", name: "Holloway Diamonds", src: hollowayLogo.url },
     { slug: "newscall", name: "Newscall", src: newscallLogo.url },
     { slug: "luxurious", name: "Luxurious", src: luxuriousLogo.url },
