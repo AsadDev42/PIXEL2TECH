@@ -508,7 +508,7 @@ function Brands() {
         keyFor={(b, i) => `${b.name}-${i}`}
         direction="rtl"
         speed={40}
-        gapClassName="gap-12 sm:gap-[72px]"
+        gapClassName="gap-14 sm:gap-[84px]"
         className="mt-10 sm:mt-12"
         ariaLabel="Industries we work with"
 
