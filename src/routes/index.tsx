@@ -28,6 +28,11 @@ import indEscada from "@/assets/ind-escada.webp.asset.json";
 import indGallop from "@/assets/ind-gallop.webp.asset.json";
 import indMixmasters from "@/assets/ind-mixmasters.webp.asset.json";
 import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
+import indLocks from "@/assets/ind-locks.webp.asset.json";
+import indHolloway from "@/assets/ind-holloway.webp.asset.json";
+import indForbes from "@/assets/ind-forbes.webp.asset.json";
+import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
+import indFlorica from "@/assets/ind-florica.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.webp.asset.json";
 import workSeo from "@/assets/work-seo.jpg.asset.json";
@@ -480,6 +485,11 @@ const industryLogos = [
   { name: "Gallop", src: indGallop.url, sizeClass: "max-h-12 sm:max-h-14" },
   { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-8 sm:max-h-9" },
   { name: "AchhSoft", src: indAchhsoft.url },
+  { name: "Locks & Co", src: indLocks.url },
+  { name: "Holloway Diamonds", src: indHolloway.url },
+  { name: "The Forbes Group", src: indForbes.url },
+  { name: "Coinmarketfees", src: indCoinmarketfees.url },
+  { name: "Florica Luxurious Properties", src: indFlorica.url },
 ];
 
 function Brands() {
