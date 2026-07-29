@@ -38,7 +38,7 @@ import mixmastersLogo from "@/assets/industry-mixmasters.png.asset.json";
 import gallopLogo from "@/assets/industry-gallop.png.asset.json";
 import escadaLogo from "@/assets/industry-escada.png.asset.json";
 import caveLogo from "@/assets/industry-cave.png.asset.json";
-import vahubLogo from "@/assets/industry-vahub.png.asset.json";
+import vahubLogo from "@/assets/industry-vahub-new.webp.asset.json";
 import swishtagLogo from "@/assets/industry-swishtag.png.asset.json";
 import globbyLogo from "@/assets/industry-globby.png.asset.json";
 import threeflamesLogo from "@/assets/industry-threeflames.png.asset.json";
