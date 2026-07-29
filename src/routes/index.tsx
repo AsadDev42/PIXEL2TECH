@@ -505,14 +505,14 @@ function Brands() {
         ariaLabel="Industries we work with"
 
         renderItem={(b) => (
-          <div className="flex h-8 w-28 shrink-0 items-center justify-center sm:h-10 sm:w-36">
+          <div className="flex h-6 w-20 shrink-0 items-center justify-center sm:h-8 sm:w-28">
             <img
               loading="lazy"
               decoding="async"
               src={b.src}
               alt={b.name}
               draggable={false}
-              className="pointer-events-none h-8 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-10"
+              className="pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-8"
             />
           </div>
         )}
