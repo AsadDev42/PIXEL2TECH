@@ -459,6 +459,19 @@ function Hero() {
 
 
 
+const industryLogos = [
+  { name: "VA Hub PRO", src: indVahub.url },
+  { name: "Swishtag", src: indSwishtag.url },
+  { name: "Newscall", src: indNewscall.url },
+  { name: "Three Flames", src: indThreeflames.url },
+  { name: "Biscuit's Backyard", src: indBiscuits.url },
+  { name: "Cave Magazine", src: indCave.url },
+  { name: "Escada", src: indEscada.url },
+  { name: "Gallop", src: indGallop.url },
+  { name: "Mix Masters", src: indMixmasters.url },
+  { name: "AchhSoft", src: indAchhsoft.url },
+];
+
 function Brands() {
   return (
     <section className="bg-background pb-16 md:pb-24 lg:pb-32">
@@ -470,6 +483,27 @@ function Brands() {
           From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
+      <LoopSlider
+        items={industryLogos}
+        keyFor={(b, i) => `${b.name}-${i}`}
+        direction="rtl"
+        speed={40}
+        gapClassName="gap-8 sm:gap-12"
+        className="mt-10 sm:mt-12"
+        ariaLabel="Industries we work with"
+        renderItem={(b) => (
+          <div className="flex h-20 w-40 shrink-0 items-center justify-center sm:h-24 sm:w-48">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={b.src}
+              alt={b.name}
+              draggable={false}
+              className="pointer-events-none max-h-12 w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert sm:max-h-14"
+            />
+          </div>
+        )}
+      />
     </section>
   );
 }
