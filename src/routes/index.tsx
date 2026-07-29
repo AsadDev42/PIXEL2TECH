@@ -476,26 +476,6 @@ function Hero() {
 
 
 function Brands() {
-  const brands = [
-    { slug: "locks-and-co", name: "Locks & Co", src: locksAndCoLogo.url },
-    { slug: "biscuits-backyard", name: "Biscuit's Backyard", src: biscuitsLogo.url },
-    { slug: "achhsoft", name: "AchhSoft", src: achhsoftLogo.url },
-    { slug: "mixmasters", name: "Mix Masters", src: mixmastersLogo.url },
-    { slug: "gallop", name: "Gallop", src: gallopLogo.url },
-    { slug: "escada", name: "Escada", src: escadaLogo.url },
-    { slug: "cave-magazine", name: "Cave Magazine", src: caveLogo.url },
-    { slug: "vahub-pro", name: "VA Hub Pro", src: vahubLogo.url },
-    { slug: "swishtag", name: "Swishtag", src: swishtagLogo.url },
-    { slug: "globby", name: "Globby", src: globbyLogo.url },
-    { slug: "three-flames", name: "Three Flames", src: threeflamesLogo.url },
-    { slug: "the-forbes-group", name: "The Forbes Group", src: forbesLogo.url },
-    { slug: "coinmarketfees", name: "CoinMarketFees", src: coinmarketfeesLogo.url },
-    { slug: "holloway-diamonds", name: "Holloway Diamonds", src: hollowayLogo.url },
-    { slug: "newscall", name: "Newscall", src: newscallLogo.url },
-    { slug: "luxurious", name: "Luxurious", src: luxuriousLogo.url },
-  ];
-  // Duplicate list so translateX(-50%) creates a seamless right→left loop
-  const loop = [...brands, ...brands];
   return (
     <section className="bg-background pb-16 md:pb-24 lg:pb-32">
       <div className="mx-auto max-w-6xl px-5 md:px-10 text-center">
@@ -506,42 +486,6 @@ function Brands() {
           From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
-
-      <LoopSlider
-        className="mt-8 sm:mt-10"
-        axis="x"
-        direction="rtl"
-        speed={40}
-        gapClassName="gap-8 sm:gap-12"
-        ariaLabel="Brands that trust Pixel2Tech"
-        items={brands}
-        keyFor={(b, i) => `${b.slug}-${i}`}
-        renderItem={(b) => (
-          <div className="flex h-24 w-44 shrink-0 items-center justify-center px-2 sm:h-28 sm:w-56">
-            <img
-              decoding="async"
-              draggable={false}
-              src={(b as { src?: string }).src ?? `https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/${b.slug}.svg`}
-              alt={`${b.name} logo`}
-              title={b.name}
-              loading="lazy"
-              onError={(e) => {
-                const el = e.currentTarget as HTMLImageElement;
-                if (!el.dataset.fallback) {
-                  el.dataset.fallback = "1";
-                  el.src = `https://www.vectorlogo.zone/logos/${b.slug}/${b.slug}-ar21.svg`;
-                } else if (el.dataset.fallback === "1") {
-                  el.dataset.fallback = "2";
-                  el.src = `https://logo.clearbit.com/${b.slug}.com`;
-                } else {
-                  el.style.display = "none";
-                }
-              }}
-              className="max-h-12 sm:max-h-14 w-auto max-w-full object-contain opacity-80 transition hover:opacity-100"
-            />
-          </div>
-        )}
-      />
     </section>
   );
 }
