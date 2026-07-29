@@ -517,7 +517,7 @@ function Brands() {
         items={brands}
         keyFor={(b, i) => `${b.slug}-${i}`}
         renderItem={(b) => (
-          <div className="flex h-[7.5rem] w-60 shrink-0 items-center justify-center px-2 sm:h-36 sm:w-72">
+          <div className="flex h-24 w-44 shrink-0 items-center justify-center px-2 sm:h-28 sm:w-56">
             <img
               decoding="async"
               draggable={false}
@@ -537,7 +537,7 @@ function Brands() {
                   el.style.display = "none";
                 }
               }}
-              className="h-full w-full scale-110 object-contain opacity-80 transition hover:scale-[1.18] hover:opacity-100"
+              className="max-h-12 sm:max-h-14 w-auto max-w-full object-contain opacity-80 transition hover:opacity-100"
             />
           </div>
         )}
