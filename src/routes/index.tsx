@@ -20,8 +20,6 @@ import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
 import indVahub from "@/assets/ind-vahub.png.asset.json";
 import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
-import indNewscall from "@/assets/ind-newscall.webp.asset.json";
-import indThreeflames from "@/assets/ind-threeflames.webp.asset.json";
 import indBiscuits from "@/assets/ind-biscuits.webp.asset.json";
 import indCave from "@/assets/ind-cave.webp.asset.json";
 import indEscada from "@/assets/ind-escada.webp.asset.json";
@@ -30,9 +28,7 @@ import indMixmasters from "@/assets/ind-mixmasters.webp.asset.json";
 import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
-import indForbes from "@/assets/ind-forbes.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
-import indFlorica from "@/assets/ind-florica.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
 import workSeo from "@/assets/work-seo.jpg.asset.json";
@@ -477,8 +473,6 @@ function Hero() {
 const industryLogos = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
-  { name: "Newscall", src: indNewscall.url },
-  { name: "Three Flames", src: indThreeflames.url },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
   { name: "Cave Magazine", src: indCave.url },
   { name: "Escada", src: indEscada.url },
@@ -487,9 +481,7 @@ const industryLogos = [
   { name: "AchhSoft", src: indAchhsoft.url },
   { name: "Locks & Co", src: indLocks.url },
   { name: "Holloway Diamonds", src: indHolloway.url },
-  { name: "The Forbes Group", src: indForbes.url },
   { name: "Coinmarketfees", src: indCoinmarketfees.url },
-  { name: "Florica Luxurious Properties", src: indFlorica.url },
 ];
 
 function Brands() {
