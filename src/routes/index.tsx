@@ -475,10 +475,10 @@ const industryLogos = [
   { name: "Newscall", src: indNewscall.url },
   { name: "Three Flames", src: indThreeflames.url, sizeClass: "max-h-24 sm:max-h-28" },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
-  { name: "Cave Magazine", src: indCave.url, sizeClass: "max-h-6 sm:max-h-7" },
+  { name: "Cave Magazine", src: indCave.url, sizeClass: "max-h-8 sm:max-h-9" },
   { name: "Escada", src: indEscada.url },
   { name: "Gallop", src: indGallop.url },
-  { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-6 sm:max-h-7" },
+  { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-8 sm:max-h-9" },
   { name: "AchhSoft", src: indAchhsoft.url },
 ];
 
