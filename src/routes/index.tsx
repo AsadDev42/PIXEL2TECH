@@ -498,9 +498,10 @@ function Brands() {
         keyFor={(b, i) => `${b.name}-${i}`}
         direction="rtl"
         speed={40}
-        gapClassName="gap-8 sm:gap-12"
+        gapClassName="gap-12 sm:gap-[72px]"
         className="mt-10 sm:mt-12"
         ariaLabel="Industries we work with"
+
         renderItem={(b) => (
           <div className="flex h-20 w-40 shrink-0 items-center justify-center sm:h-24 sm:w-48">
             <img
