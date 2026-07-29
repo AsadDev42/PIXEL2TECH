@@ -509,7 +509,7 @@ function Brands() {
               src={b.src}
               alt={b.name}
               draggable={false}
-              className="pointer-events-none max-h-12 w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert sm:max-h-14"
+              className={`pointer-events-none w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert ${(b as { sizeClass?: string }).sizeClass ?? "max-h-12 sm:max-h-14"}`}
             />
           </div>
         )}
