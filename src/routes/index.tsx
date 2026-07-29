@@ -18,6 +18,16 @@ import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
 import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
 import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
 import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
+import indVahub from "@/assets/ind-vahub.png.asset.json";
+import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
+import indNewscall from "@/assets/ind-newscall.webp.asset.json";
+import indThreeflames from "@/assets/ind-threeflames.webp.asset.json";
+import indBiscuits from "@/assets/ind-biscuits.webp.asset.json";
+import indCave from "@/assets/ind-cave.webp.asset.json";
+import indEscada from "@/assets/ind-escada.webp.asset.json";
+import indGallop from "@/assets/ind-gallop.webp.asset.json";
+import indMixmasters from "@/assets/ind-mixmasters.webp.asset.json";
+import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.webp.asset.json";
 import workSeo from "@/assets/work-seo.jpg.asset.json";
@@ -459,6 +469,19 @@ function Hero() {
 
 
 
+const industryLogos = [
+  { name: "VA Hub PRO", src: indVahub.url },
+  { name: "Swishtag", src: indSwishtag.url },
+  { name: "Newscall", src: indNewscall.url },
+  { name: "Three Flames", src: indThreeflames.url },
+  { name: "Biscuit's Backyard", src: indBiscuits.url },
+  { name: "Cave Magazine", src: indCave.url },
+  { name: "Escada", src: indEscada.url },
+  { name: "Gallop", src: indGallop.url },
+  { name: "Mix Masters", src: indMixmasters.url },
+  { name: "AchhSoft", src: indAchhsoft.url },
+];
+
 function Brands() {
   return (
     <section className="bg-background pb-16 md:pb-24 lg:pb-32">
@@ -470,6 +493,27 @@ function Brands() {
           From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
+      <LoopSlider
+        items={industryLogos}
+        keyFor={(b, i) => `${b.name}-${i}`}
+        direction="rtl"
+        speed={40}
+        gapClassName="gap-8 sm:gap-12"
+        className="mt-10 sm:mt-12"
+        ariaLabel="Industries we work with"
+        renderItem={(b) => (
+          <div className="flex h-20 w-40 shrink-0 items-center justify-center sm:h-24 sm:w-48">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={b.src}
+              alt={b.name}
+              draggable={false}
+              className="pointer-events-none max-h-12 w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert sm:max-h-14"
+            />
+          </div>
+        )}
+      />
     </section>
   );
 }
