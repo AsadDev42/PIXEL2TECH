@@ -436,7 +436,10 @@ function Hero() {
                 items={col}
                 keyFor={(_src, i) => `${ci}-${i}`}
                 renderItem={(src, i) => (
-                  <div className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl">
+                  <div
+                    data-cursor="expand"
+                    className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
+                  >
                     {src.endsWith(".mp4") ? (
                       <video
                         src={src}
