@@ -34,7 +34,7 @@ import indForbes from "@/assets/ind-forbes.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
 import indFlorica from "@/assets/ind-florica.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
-import workAiSolutions from "@/assets/work-ai-solutions.webp.asset.json";
+import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
 import workSeo from "@/assets/work-seo.jpg.asset.json";
 import workSocialMedia from "@/assets/work-social-media.jpg.asset.json";
 import workWeb from "@/assets/work-web.mp4.asset.json";
