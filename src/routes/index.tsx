@@ -472,12 +472,12 @@ function Hero() {
 const industryLogos = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
-  { name: "Newscall", src: indNewscall.url },
+  { name: "Newscall", src: indNewscall.url, sizeClass: "max-h-12 sm:max-h-14" },
   { name: "Three Flames", src: indThreeflames.url, sizeClass: "max-h-24 sm:max-h-28" },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
   { name: "Cave Magazine", src: indCave.url, sizeClass: "max-h-8 sm:max-h-9" },
   { name: "Escada", src: indEscada.url },
-  { name: "Gallop", src: indGallop.url },
+  { name: "Gallop", src: indGallop.url, sizeClass: "max-h-12 sm:max-h-14" },
   { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-8 sm:max-h-9" },
   { name: "AchhSoft", src: indAchhsoft.url },
 ];
