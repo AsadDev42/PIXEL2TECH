@@ -477,18 +477,18 @@ function Hero() {
 const industryLogos = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
-  { name: "Newscall", src: indNewscall.url, sizeClass: "max-h-10 sm:max-h-12" },
-  { name: "Three Flames", src: indThreeflames.url, sizeClass: "max-h-20 sm:max-h-24" },
+  { name: "Newscall", src: indNewscall.url },
+  { name: "Three Flames", src: indThreeflames.url },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
-  { name: "Cave Magazine", src: indCave.url, sizeClass: "max-h-7 sm:max-h-8" },
+  { name: "Cave Magazine", src: indCave.url },
   { name: "Escada", src: indEscada.url },
-  { name: "Gallop", src: indGallop.url, sizeClass: "max-h-10 sm:max-h-12" },
-  { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-7 sm:max-h-8" },
+  { name: "Gallop", src: indGallop.url },
+  { name: "Mix Masters", src: indMixmasters.url },
   { name: "AchhSoft", src: indAchhsoft.url },
   { name: "Locks & Co", src: indLocks.url },
   { name: "Holloway Diamonds", src: indHolloway.url },
-  { name: "The Forbes Group", src: indForbes.url, sizeClass: "max-h-14 sm:max-h-16" },
-  { name: "Coinmarketfees", src: indCoinmarketfees.url, sizeClass: "max-h-12 sm:max-h-14" },
+  { name: "The Forbes Group", src: indForbes.url },
+  { name: "Coinmarketfees", src: indCoinmarketfees.url },
   { name: "Florica Luxurious Properties", src: indFlorica.url },
 ];
 
@@ -513,14 +513,14 @@ function Brands() {
         ariaLabel="Industries we work with"
 
         renderItem={(b) => (
-          <div className="flex h-16 w-36 shrink-0 items-center justify-center sm:h-20 sm:w-44">
+          <div className="flex h-8 w-28 shrink-0 items-center justify-center sm:h-10 sm:w-36">
             <img
               loading="lazy"
               decoding="async"
               src={b.src}
               alt={b.name}
               draggable={false}
-              className={`pointer-events-none w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert ${(b as { sizeClass?: string }).sizeClass ?? "max-h-10 sm:max-h-12"}`}
+              className="pointer-events-none max-h-full max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert"
             />
           </div>
         )}
