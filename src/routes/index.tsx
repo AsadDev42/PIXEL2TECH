@@ -32,7 +32,7 @@ import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
 import workSeo from "@/assets/work-seo.mp4.asset.json";
-import workSocialMedia from "@/assets/work-social-new.png.asset.json";
+import workSocialMedia from "@/assets/work-social-new.mp4.asset.json";
 import workWeb from "@/assets/work-web.mp4.asset.json";
 import workUiux from "@/assets/work-uiux.jpg.asset.json";
 import workLogo from "@/assets/work-logo.mp4.asset.json";
@@ -674,7 +674,7 @@ const work = [
   { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
   { title: "AI Solutions", img: workAiSolutions.url, video: true },
   { title: "SEO & Search Growth", img: workSeo.url, video: true },
-  { title: "Social Media & Email", img: workSocialMedia.url },
+  { title: "Social Media & Email", img: workSocialMedia.url, video: true },
   { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
 ];
 
