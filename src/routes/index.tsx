@@ -672,7 +672,7 @@ const work = [
   { title: "WordPress & Shopify", img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
-  { title: "AI Solutions", img: workAiSolutions.url },
+  { title: "AI Solutions", img: workAiSolutions.url, video: true },
   { title: "SEO & Search Growth", img: workSeo.url },
   { title: "Social Media & Email", img: workSocialMedia.url },
   { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
