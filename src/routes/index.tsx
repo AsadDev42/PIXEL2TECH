@@ -31,21 +31,21 @@ import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
 import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
 import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
 import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
-import locksAndCoLogo from "@/assets/locks-and-co.png.asset.json";
-import biscuitsLogo from "@/assets/industry-biscuits.png.asset.json";
-import achhsoftLogo from "@/assets/industry-achhsoft.png.asset.json";
-import mixmastersLogo from "@/assets/industry-mixmasters.png.asset.json";
-import gallopLogo from "@/assets/industry-gallop.png.asset.json";
-import escadaLogo from "@/assets/industry-escada.png.asset.json";
-import caveLogo from "@/assets/industry-cave.png.asset.json";
+import locksAndCoLogo from "@/assets/industry-locksandco-v2.webp.asset.json";
+import biscuitsLogo from "@/assets/industry-biscuits-v2.webp.asset.json";
+import achhsoftLogo from "@/assets/industry-achhsoft-v2.webp.asset.json";
+import mixmastersLogo from "@/assets/industry-mixmasters-v2.webp.asset.json";
+import gallopLogo from "@/assets/industry-gallop-v2.webp.asset.json";
+import escadaLogo from "@/assets/industry-escada-v2.webp.asset.json";
+import caveLogo from "@/assets/industry-cave-v2.webp.asset.json";
 import vahubLogo from "@/assets/industry-vahub-new.webp.asset.json";
-import swishtagLogo from "@/assets/industry-swishtag.png.asset.json";
+import swishtagLogo from "@/assets/industry-swishtag-v2.webp.asset.json";
 import globbyLogo from "@/assets/industry-globby.png.asset.json";
-import threeflamesLogo from "@/assets/industry-threeflames.png.asset.json";
+import threeflamesLogo from "@/assets/industry-threeflames-v2.webp.asset.json";
 import forbesLogo from "@/assets/industry-forbes.png.asset.json";
 import coinmarketfeesLogo from "@/assets/industry-coinmarketfees.png.asset.json";
 import hollowayLogo from "@/assets/industry-holloway.png.asset.json";
-import newscallLogo from "@/assets/industry-newscall.png.asset.json";
+import newscallLogo from "@/assets/industry-newscall-v2.webp.asset.json";
 import luxuriousLogo from "@/assets/industry-luxurious.png.asset.json";
 import founderPortrait from "@/assets/founder-portrait.png.asset.json";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
@@ -517,7 +517,7 @@ function Brands() {
         items={brands}
         keyFor={(b, i) => `${b.slug}-${i}`}
         renderItem={(b) => (
-          <div className="flex h-[7.5rem] w-60 shrink-0 items-center justify-center px-2 sm:h-36 sm:w-72">
+          <div className="flex h-24 w-44 shrink-0 items-center justify-center px-2 sm:h-28 sm:w-56">
             <img
               decoding="async"
               draggable={false}
@@ -537,7 +537,7 @@ function Brands() {
                   el.style.display = "none";
                 }
               }}
-              className="h-full w-full scale-110 object-contain opacity-80 transition hover:scale-[1.18] hover:opacity-100"
+              className="max-h-12 sm:max-h-14 w-auto max-w-full object-contain opacity-80 transition hover:opacity-100"
             />
           </div>
         )}
