@@ -520,7 +520,7 @@ function Brands() {
               src={b.src}
               alt={b.name}
               draggable={false}
-              className="pointer-events-none max-h-full max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert"
+              className="pointer-events-none h-8 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-10"
             />
           </div>
         )}
