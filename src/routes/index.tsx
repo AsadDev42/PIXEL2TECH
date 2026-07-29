@@ -487,7 +487,7 @@ const industryLogos = [
   { name: "AchhSoft", src: indAchhsoft.url },
   { name: "Locks & Co", src: indLocks.url },
   { name: "Holloway Diamonds", src: indHolloway.url },
-  { name: "The Forbes Group", src: indForbes.url },
+  { name: "The Forbes Group", src: indForbes.url, sizeClass: "max-h-14 sm:max-h-16" },
   { name: "Coinmarketfees", src: indCoinmarketfees.url },
   { name: "Florica Luxurious Properties", src: indFlorica.url },
 ];
