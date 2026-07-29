@@ -473,12 +473,12 @@ const industryLogos = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
   { name: "Newscall", src: indNewscall.url },
-  { name: "Three Flames", src: indThreeflames.url },
+  { name: "Three Flames", src: indThreeflames.url, sizeClass: "max-h-24 sm:max-h-28" },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
-  { name: "Cave Magazine", src: indCave.url },
+  { name: "Cave Magazine", src: indCave.url, sizeClass: "max-h-6 sm:max-h-7" },
   { name: "Escada", src: indEscada.url },
   { name: "Gallop", src: indGallop.url },
-  { name: "Mix Masters", src: indMixmasters.url },
+  { name: "Mix Masters", src: indMixmasters.url, sizeClass: "max-h-6 sm:max-h-7" },
   { name: "AchhSoft", src: indAchhsoft.url },
 ];
 
@@ -509,7 +509,7 @@ function Brands() {
               src={b.src}
               alt={b.name}
               draggable={false}
-              className="pointer-events-none max-h-12 w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert sm:max-h-14"
+              className={`pointer-events-none w-auto object-contain opacity-80 transition hover:opacity-100 dark:invert ${(b as { sizeClass?: string }).sizeClass ?? "max-h-12 sm:max-h-14"}`}
             />
           </div>
         )}
