@@ -143,6 +143,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Pixel2Tech",
+          url: "https://www.pixel2tech.com/",
+          inLanguage: "en",
+          publisher: { "@type": "Organization", name: "Pixel2Tech", url: "https://www.pixel2tech.com/" },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
