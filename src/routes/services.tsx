@@ -12,6 +12,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
+import { useFormValidation } from "@/lib/use-form-validation";
+
 import { SOCIAL_LINKS } from "@/components/social-links";
 import {
   Palette,
