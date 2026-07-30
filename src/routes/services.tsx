@@ -1,7 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { VideoTestimonials } from "@/components/video-testimonials";
-import { useState } from "react";
+import { LazySection } from "@/components/lazy-section";
+import { lazy, Suspense, useState } from "react";
+
+// Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
+const VideoTestimonials = lazy(() =>
+  import("@/components/video-testimonials").then((m) => ({ default: m.VideoTestimonials })),
+);
+
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -419,7 +425,19 @@ function ServicesPage() {
         </div>
       </section>
 
-      <VideoTestimonials />
+      <LazySection minHeight={520}>
+        <Suspense
+          fallback={
+            <div
+              aria-hidden="true"
+              className="mx-auto h-[520px] max-w-7xl animate-pulse rounded-3xl bg-muted/60"
+            />
+          }
+        >
+          <VideoTestimonials />
+        </Suspense>
+      </LazySection>
+
 
       {/* FAQ */}
       <section className="mx-auto max-w-4xl px-5 py-16 md:px-10 md:py-24 lg:py-32" aria-labelledby="faq-title">

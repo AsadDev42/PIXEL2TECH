@@ -1,14 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
+import { AutoVideo } from "@/components/auto-video";
+import { LazySection } from "@/components/lazy-section";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
+
 import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
 
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
+
+// Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
+const VideoTestimonials = lazy(() =>
+  import("@/components/video-testimonials").then((m) => ({ default: m.VideoTestimonials })),
+);
+
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -436,16 +444,12 @@ function Hero() {
                     className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
                   >
                     {src.endsWith(".mp4") ? (
-                      <video
+                      <AutoVideo
                         src={src}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     ) : (
+
                       <img
                         decoding="async"
                         src={src}
@@ -707,15 +711,11 @@ function Work() {
             className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
             {("video" in w && (w as { video?: boolean }).video) ? (
-              <video
+              <AutoVideo
                 src={w.img}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
                 className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
+
             ) : (
               <img
                 loading="lazy"
@@ -913,7 +913,19 @@ function HomePage() {
       <PartnerBand />
       <Services />
       <Work />
-      <VideoTestimonials />
+      <LazySection minHeight={520}>
+        <Suspense
+          fallback={
+            <div
+              aria-hidden="true"
+              className="mx-auto h-[520px] max-w-7xl animate-pulse rounded-3xl bg-muted/60"
+            />
+          }
+        >
+          <VideoTestimonials />
+        </Suspense>
+      </LazySection>
+
       <Team />
       <Studio />
       <Insights />
