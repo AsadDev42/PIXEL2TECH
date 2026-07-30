@@ -74,7 +74,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -93,6 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         : []),
       { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -133,14 +134,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           description:
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
-          url: "https://pixel2tech.com/",
-          logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          url: "https://www.pixel2tech.com/",
+          logo: "https://www.pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           sameAs: [
             "https://www.facebook.com/pixel2tech",
             "https://www.instagram.com/pixel2tech",
             "https://x.com/pixel2tech",
             "https://www.linkedin.com/company/pixel2tech",
           ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Pixel2Tech",
+          url: "https://www.pixel2tech.com/",
+          inLanguage: "en",
+          publisher: { "@type": "Organization", name: "Pixel2Tech", url: "https://www.pixel2tech.com/" },
         }),
       },
     ],

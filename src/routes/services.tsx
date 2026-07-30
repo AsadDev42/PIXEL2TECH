@@ -40,7 +40,7 @@ const whyReasons = [
   { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
 ];
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
@@ -51,12 +51,14 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
       { property: "og:description", content: "Branding, web, UI/UX, social, motion and custom software — everything you need to build and grow your brand, in-house at Pixel2Tech." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://pixel2tech.com/services" },
+      { property: "og:url", content: "https://www.pixel2tech.com/services" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
+      { name: "twitter:description", content: "Branding, web, UI/UX, social, motion and custom software — everything you need to build and grow your brand, in-house at Pixel2Tech." },
     ],
-    links: [{ rel: "canonical", href: "https://pixel2tech.com/services" }],
+    links: [{ rel: "canonical", href: "https://www.pixel2tech.com/services" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -64,7 +66,7 @@ export const Route = createFileRoute("/services")({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Creative agency services",
-          provider: { "@type": "Organization", name: "Pixel2Tech", url: "/" },
+          provider: { "@type": "Organization", name: "Pixel2Tech", url: "https://www.pixel2tech.com/" },
           areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
           hasOfferCatalog: {
             "@type": "OfferCatalog",
@@ -86,8 +88,8 @@ export const Route = createFileRoute("/services")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Services", item: "https://pixel2tech.com/services" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
+            { "@type": "ListItem", position: 2, name: "Services", item: "https://www.pixel2tech.com/services" },
           ],
         }),
       },
