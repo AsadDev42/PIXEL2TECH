@@ -143,13 +143,17 @@ function ContactPage() {
                       id={f.id}
                       name={f.id}
                       type={f.type}
+                      inputMode={f.inputMode}
+                      enterKeyHint={f.enterKeyHint}
                       autoComplete={f.autoComplete}
                       placeholder={f.placeholder}
                       value={form[f.id]}
-                      onChange={set(f.id)}
+                      onChange={setField(f.id)}
+                      onBlur={handleBlur(f.id)}
+                      disabled={loading}
                       aria-invalid={!!errors[f.id]}
-                      aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
+                      aria-describedby={`${f.id}-error`}
+                      className={`min-h-12 rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors[f.id] ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                     />
                     <p
                       id={`${f.id}-error`}
@@ -161,6 +165,7 @@ function ContactPage() {
                     </p>
                   </div>
                 ))}
+
                 <div className="flex flex-col">
                   <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
                     Message
