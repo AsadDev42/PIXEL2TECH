@@ -711,15 +711,11 @@ function Work() {
             className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
             {("video" in w && (w as { video?: boolean }).video) ? (
-              <video
+              <AutoVideo
                 src={w.img}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
                 className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
+
             ) : (
               <img
                 loading="lazy"
