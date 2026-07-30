@@ -484,17 +484,21 @@ function ServicesPage() {
                     id={`svc-${f.id}`}
                     name={f.id}
                     type={f.type}
+                    inputMode={f.inputMode}
+                    enterKeyHint={f.enterKeyHint}
                     autoComplete={f.autoComplete}
                     placeholder={f.placeholder}
                     value={form[f.id]}
-                    onChange={set(f.id)}
+                    onChange={setField(f.id)}
+                    onBlur={handleBlur(f.id)}
+                    disabled={loading}
                     aria-invalid={!!errors[f.id]}
-                    aria-describedby={errors[f.id] ? `svc-${f.id}-error` : undefined}
-                    className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
+                    aria-describedby={`svc-${f.id}-error`}
+                    className={`min-h-12 rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 dark:bg-white/[0.04] ${errors[f.id] ? "border-destructive focus:border-destructive" : "border-transparent focus:border-foreground/30"}`}
                   />
-                  {errors[f.id] && (
-                    <p id={`svc-${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
-                  )}
+                  <p id={`svc-${f.id}-error`} role="alert" aria-live="polite" className="mt-1.5 min-h-[1.25rem] text-xs text-destructive">
+                    {errors[f.id] ?? ""}
+                  </p>
                 </div>
               ))}
               <div className="flex flex-col">
@@ -506,15 +510,18 @@ function ServicesPage() {
                   name="message"
                   rows={5}
                   value={form.message}
-                  onChange={set("message")}
+                  onChange={setField("message")}
+                  onBlur={handleBlur("message")}
+                  disabled={loading}
                   placeholder="Tell us about your project"
                   aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? "svc-message-error" : undefined}
-                  className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
+                  aria-describedby="svc-message-error"
+                  className={`resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 dark:bg-white/[0.04] ${errors.message ? "border-destructive focus:border-destructive" : "border-transparent focus:border-foreground/30"}`}
                 />
-                {errors.message && (
-                  <p id="svc-message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
-                )}
+                <p id="svc-message-error" role="alert" aria-live="polite" className="mt-1.5 min-h-[1.25rem] text-xs text-destructive">
+                  {errors.message ?? ""}
+                </p>
+
               </div>
               <button
                 type="submit"
