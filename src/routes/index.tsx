@@ -41,6 +41,7 @@ import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
 import workWordpressShopify from "@/assets/work-wordpress-shopify.mp4.asset.json";
+import workConcept from "@/assets/work-concept.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
 import workSeo from "@/assets/work-seo.mp4.asset.json";
 import workSocialMedia from "@/assets/work-social-new.mp4.asset.json";
@@ -659,7 +660,7 @@ const work = [
   { title: "Web design and development", img: workWeb.url, video: true },
   { title: "UI UX designing", img: workUiux.url, video: true },
   { title: "Logo and branding", img: workLogo.url, video: true },
-  { title: "Concept creation", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=900&auto=format&fit=crop&fm=webp&q=70" },
+  { title: "Concept creation", img: workConcept.url, video: true },
   { title: "WordPress & Shopify", img: workWordpressShopify.url, video: true },
   { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
   { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
