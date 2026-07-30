@@ -236,6 +236,21 @@
 .dark .shadow-lg { box-shadow: 0 10px 30px rgba(0,0,0,0.55) !important; }
 .dark .shadow-xl { box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important; }
 
+/* Escape hatch: elements that sit on a permanently dark surface (e.g. the
+   "Ready to Get Started?" CTA card) must stay light in dark mode, otherwise the
+   global `.dark .bg-white` override makes them invisible. */
+.dark .p2t-on-dark,
+html.dark .p2t-on-dark {
+  background-color: #ffffff !important;
+  color: #0a0d1f !important;
+}
+.dark .p2t-on-dark:hover,
+html.dark .p2t-on-dark:hover {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+
 
 @keyframes marquee-rtl {
   0%   { transform: translateX(0); }
