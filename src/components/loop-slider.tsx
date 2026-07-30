@@ -200,3 +200,9 @@ function LoopSliderImpl<T>({
     </div>
   );
 }
+
+/**
+ * Memoized so parent re-renders (theme toggles, form state) don't rebuild the
+ * whole duplicated track. Cast keeps the generic signature intact.
+ */
+export const LoopSlider = memo(LoopSliderImpl) as typeof LoopSliderImpl;
