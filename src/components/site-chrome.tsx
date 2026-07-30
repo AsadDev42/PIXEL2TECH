@@ -80,7 +80,7 @@ export function SiteNav() {
           <button
             type="button"
             onClick={() => { trackEvent("strategy_call_modal_opened", { source: "header" }); setBookingOpen(true); }}
-            className="hidden shrink-0 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex sm:px-6"
+            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex md:hidden lg:inline-flex lg:px-6"
           >
             Schedule a Strategy Session
           </button>
@@ -90,10 +90,11 @@ export function SiteNav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground md:hidden"
           >
             {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
+
         </div>
       </div>
 
