@@ -9,6 +9,8 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { FadeIn } from "@/components/motion";
 import { trackEvent } from "@/lib/analytics";
+import { useFormValidation } from "@/lib/use-form-validation";
+
 
 const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
