@@ -31,7 +31,7 @@ type Props<T> = {
  * duplicated internally for seamless wrap-around; only the first copy is announced
  * to assistive tech.
  */
-export function LoopSlider<T>({
+function LoopSliderImpl<T>({
   items,
   renderItem,
   keyFor,
