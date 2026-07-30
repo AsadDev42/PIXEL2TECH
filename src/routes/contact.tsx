@@ -175,12 +175,15 @@ function ContactPage() {
                     name="message"
                     rows={5}
                     value={form.message}
-                    onChange={set("message")}
+                    onChange={setField("message")}
+                    onBlur={handleBlur("message")}
+                    disabled={loading}
                     placeholder="Tell us about your project"
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error" : undefined}
-                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
+                    aria-describedby="message-error"
+                    className={`resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                   />
+
                   <p
                     id="message-error"
                     role="alert"
