@@ -1,3 +1,5 @@
+import klingImage from "@/assets/kling-o1-ai-video.webp.asset.json";
+
 export type BlogPost = {
   slug: string;
   tag: string;
@@ -24,7 +26,7 @@ export const posts: BlogPost[] = [
     title: "Kling O1 Explained: Features, Use Cases & Business Benefits (2026 Guide)",
     excerpt:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing and content creation.",
-    img: "https://pixel2tech.com/__l5e/assets-v1/61c4c1ad-cd93-4f23-8296-d8a71611bb2f/kling-o1-ai-video.webp",
+    img: klingImage.url,
     metaTitle: "Kling O1 Explained: Features, Use Cases & Business Benefits | Pixel2Tech",
     metaDescription:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing, content creation, and digital experiences.",
