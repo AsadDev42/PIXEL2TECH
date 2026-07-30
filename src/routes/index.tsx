@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { VideoTestimonials } from "@/components/video-testimonials";
 import { LoopSlider } from "@/components/loop-slider";
+import { AutoVideo } from "@/components/auto-video";
+import { LazySection } from "@/components/lazy-section";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
+
 import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
 
 
