@@ -66,53 +66,32 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 function ContactPage() {
   const submit = useServerFn(submitContactForm);
-  const [form, setForm] = useState<FormState>(initial);
   const [website, setWebsite] = useState(""); // honeypot
   const [loadedAt] = useState<number>(() => Date.now());
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [loading, setLoading] = useState(false);
+  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
+    useFormValidation(clientSchema, initial);
 
-  const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
-  };
-
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const parsed = clientSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof FormState, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof FormState;
-        if (!next[k]) next[k] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setLoading(true);
+  const onSubmit = handleSubmit(async (data) => {
     try {
-      await submit({ data: { ...parsed.data, website, ts: loadedAt } });
-      trackEvent("contact_form_submitted", { subject: parsed.data.subject });
+      await submit({ data: { ...data, website, ts: loadedAt } });
+      trackEvent("contact_form_submitted", { subject: data.subject });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
-      setForm(initial);
-      setErrors({});
+      reset();
     } catch (err) {
       toast.error("Couldn't send message", {
         description: err instanceof Error ? err.message : "Please try again in a moment.",
       });
-    } finally {
-      setLoading(false);
     }
-  }
+  });
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe", inputMode: "text", enterKeyHint: "next" },
+    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
+    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry", inputMode: "text", enterKeyHint: "next" },
   ] as const;
+
 
   return (
     <PageShell>
