@@ -76,7 +76,7 @@ function BlogPage() {
           {rest.map((p) => (
             <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
-                <img loading="lazy" decoding="async" src={p.img} alt={p.title} className="h-full w-full object-cover" />
+                <img loading="lazy" decoding="async" width={1600} height={1000} src={p.img} alt={p.title} className="h-full w-full object-cover" />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
