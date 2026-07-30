@@ -159,7 +159,10 @@ export function CursorFollower() {
           mix-blend-mode: difference;
           pointer-events: none;
           opacity: 0;
-          will-change: transform, width, height, border-radius;
+          /* Only transform is compositor-animated; hinting width/height/border-radius
+             cannot be composited and only costs extra memory + repaints. */
+          will-change: transform;
+          contain: layout style paint;
           transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
         }
         .lv-cursor-blob[data-hover="1"]{
