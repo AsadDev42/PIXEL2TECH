@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
-import { BookingModal } from "@/components/booking-modal";
+import { lazy, Suspense } from "react";
+
+// Modal code (and its Calendly embed) is only fetched when a user opens it.
+const BookingModal = lazy(() =>
+  import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
+);
+
 import { SOCIAL_LINKS } from "@/components/social-links";
 import { Menu, X } from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
