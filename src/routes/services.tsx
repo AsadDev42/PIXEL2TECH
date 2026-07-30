@@ -1,7 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { VideoTestimonials } from "@/components/video-testimonials";
-import { useState } from "react";
+import { LazySection } from "@/components/lazy-section";
+import { lazy, Suspense, useState } from "react";
+
+// Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
+const VideoTestimonials = lazy(() =>
+  import("@/components/video-testimonials").then((m) => ({ default: m.VideoTestimonials })),
+);
+
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
