@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
@@ -150,7 +151,15 @@ function BlogPostPage() {
                 </div>
 
                 <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
-                  <img src={post.img} alt={post.title} className="h-full w-full object-cover" loading="eager" decoding="async" />
+                  <ResponsiveImage
+                    src={post.img}
+                    alt={post.title}
+                    width={1600}
+                    height={900}
+                    sizes="(min-width: 1024px) 66vw, 92vw"
+                    className="h-full w-full object-cover"
+                    priority
+                  />
                 </div>
               </FadeIn>
 
@@ -232,7 +241,14 @@ function BlogPostPage() {
                         <li key={r.slug}>
                           <Link to="/blog/$slug" params={{ slug: r.slug }} className="group flex gap-3">
                             <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
-                              <img src={r.img} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                              <ResponsiveImage
+                                src={r.img}
+                                alt=""
+                                width={480}
+                                height={480}
+                                sizes="96px"
+                                className="h-full w-full object-cover"
+                              />
                             </div>
                             <div className="min-w-0">
                               <div className="text-xs text-muted-foreground">{r.date}</div>
