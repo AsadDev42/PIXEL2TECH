@@ -432,7 +432,7 @@ function AboutPage() {
                 </div>
                 <Link
                   to="/contact"
-                  className="group inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/20 transition hover:bg-primary hover:text-white sm:self-auto lg:self-end"
+                  className="group inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full p2t-on-dark bg-white px-7 py-3.5 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/20 transition hover:bg-primary hover:text-white sm:self-auto lg:self-end"
                 >
                   Contact Us
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
