@@ -40,6 +40,7 @@ import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
 import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
+import workWordpressShopify from "@/assets/work-wordpress-shopify.mp4.asset.json";
 import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
 import workSeo from "@/assets/work-seo.mp4.asset.json";
 import workSocialMedia from "@/assets/work-social-new.mp4.asset.json";
