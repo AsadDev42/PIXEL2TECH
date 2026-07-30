@@ -40,12 +40,18 @@ export function SiteNav() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    // Close the drawer if the viewport grows into the desktop nav breakpoint.
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => { if (mq.matches) setOpen(false); };
+    mq.addEventListener("change", onChange);
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onChange);
     };
   }, [open]);
+
   const mobileNavRef = useFocusTrap<HTMLDivElement>(open);
 
   return (
