@@ -191,8 +191,9 @@ export function SiteFooter() {
   ];
   return (
     <footer className="bg-muted">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-5 pt-16 pb-10 md:px-10">
+        <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+
           <div>
             <Link to="/" aria-label="Pixel2Tech — Home">
               <img loading="lazy" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
