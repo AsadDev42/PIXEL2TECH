@@ -72,33 +72,13 @@ const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", pho
 
 function HomeContact() {
   const submit = useServerFn(submitContactForm);
-  const [form, setForm] = useState<HomeFormState>(homeInitial);
   const [website, setWebsite] = useState("");
   const [loadedAt] = useState<number>(() => Date.now());
-  const [errors, setErrors] = useState<Partial<Record<keyof HomeFormState, string>>>({});
-  const [loading, setLoading] = useState(false);
+  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
+    useFormValidation(homeContactSchema, homeInitial);
 
-
-  const set = (k: keyof HomeFormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    if (errors[k]) setErrors((p) => ({ ...p, [k]: undefined }));
-  };
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const parsed = homeContactSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof HomeFormState, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof HomeFormState;
-        if (!next[k]) next[k] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setLoading(true);
+  const onSubmit = handleSubmit(async (d) => {
     try {
-      const d = parsed.data;
       await submit({
         data: {
           name: `${d.firstName} ${d.lastName}`.trim(),
@@ -111,19 +91,21 @@ function HomeContact() {
       });
 
       toast.success("Message sent!", { description: "Thanks — we'll get back to you within one business day." });
-      setForm(homeInitial);
-      setErrors({});
+      reset();
     } catch (err) {
       toast.error("Couldn't send message", {
         description: err instanceof Error ? err.message : "Please try again in a moment.",
       });
-    } finally {
-      setLoading(false);
     }
-  }
+  });
 
-  const inputCls =
-    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground dark:border-white/25 dark:focus:border-white";
+  const inputCls = (invalid?: string) =>
+    `min-h-11 w-full border-0 border-b bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 ${
+      invalid
+        ? "border-red-600 focus:border-red-600 dark:border-red-400 dark:focus:border-red-400"
+        : "border-neutral-400 focus:border-foreground dark:border-white/25 dark:focus:border-white"
+    }`;
+
 
   return (
     <>
