@@ -325,7 +325,7 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: founderPortrait.url,
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
     ],
     scripts: [

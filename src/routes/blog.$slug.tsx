@@ -16,6 +16,7 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const { post } = loaderData;
     const url = `https://pixel2tech.com/blog/${post.slug}`;
+    const image = post.img.startsWith("http") ? post.img : `https://pixel2tech.com${post.img}`;
     const title = post.metaTitle ?? `${post.title} — Pixel2Tech`;
     const description = post.metaDescription ?? post.excerpt;
     return {
@@ -27,12 +28,12 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { property: "og:image", content: post.img },
+        { property: "og:image", content: image },
         { property: "article:author", content: post.author },
         { property: "article:published_time", content: post.date },
         { property: "article:section", content: post.tag },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: post.img },
+        { name: "twitter:image", content: image },
       ],
       links: [{ rel: "canonical", href: url }],
 
@@ -44,7 +45,7 @@ export const Route = createFileRoute("/blog/$slug")({
             "@type": "BlogPosting",
             headline: post.title,
             description: post.excerpt,
-            image: post.img,
+            image,
             datePublished: post.date,
             author: { "@type": "Person", name: post.author },
             publisher: {
@@ -111,7 +112,7 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
-  const shareUrl = typeof window !== "undefined" ? window.location.href : `/blog/${post.slug}`;
+  const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
   const socials = [
     { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
     { Icon: Twitter, label: "X", href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}` },
