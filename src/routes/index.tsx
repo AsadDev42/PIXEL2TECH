@@ -127,29 +127,30 @@ function HomeContact() {
 
               <div>
                 <label htmlFor="firstName" className="sr-only">First Name</label>
-                <input id="firstName" name="firstName" autoComplete="given-name" placeholder="First Name" value={form.firstName} onChange={set("firstName")} aria-invalid={!!errors.firstName} className={inputCls} />
-                {errors.firstName && <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>}
+                <input id="firstName" name="firstName" autoComplete="given-name" enterKeyHint="next" placeholder="First Name" value={form.firstName} onChange={setField("firstName")} onBlur={handleBlur("firstName")} disabled={loading} aria-invalid={!!errors.firstName} aria-describedby="firstName-error" className={inputCls(errors.firstName)} />
+                <p id="firstName-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.firstName ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="lastName" className="sr-only">Last Name</label>
-                <input id="lastName" name="lastName" autoComplete="family-name" placeholder="Last Name" value={form.lastName} onChange={set("lastName")} aria-invalid={!!errors.lastName} className={inputCls} />
-                {errors.lastName && <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>}
+                <input id="lastName" name="lastName" autoComplete="family-name" enterKeyHint="next" placeholder="Last Name" value={form.lastName} onChange={setField("lastName")} onBlur={handleBlur("lastName")} disabled={loading} aria-invalid={!!errors.lastName} aria-describedby="lastName-error" className={inputCls(errors.lastName)} />
+                <p id="lastName-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.lastName ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" placeholder="Email" value={form.email} onChange={set("email")} aria-invalid={!!errors.email} className={inputCls} />
-                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+                <input id="email" name="email" type="email" inputMode="email" autoComplete="email" enterKeyHint="next" placeholder="Email" value={form.email} onChange={setField("email")} onBlur={handleBlur("email")} disabled={loading} aria-invalid={!!errors.email} aria-describedby="email-error" className={inputCls(errors.email)} />
+                <p id="email-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.email ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="phone" className="sr-only">Phone</label>
-                <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="Phone" value={form.phone} onChange={set("phone")} aria-invalid={!!errors.phone} className={inputCls} />
-                {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+                <input id="phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" enterKeyHint="next" placeholder="Phone" value={form.phone} onChange={setField("phone")} onBlur={handleBlur("phone")} disabled={loading} aria-invalid={!!errors.phone} aria-describedby="phone-error" className={inputCls(errors.phone)} />
+                <p id="phone-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.phone ?? ""}</p>
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" name="message" rows={3} placeholder="Message" value={form.message} onChange={set("message")} aria-invalid={!!errors.message} className={inputCls} />
-                {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
+                <textarea id="message" name="message" rows={3} enterKeyHint="send" placeholder="Message" value={form.message} onChange={setField("message")} onBlur={handleBlur("message")} disabled={loading} aria-invalid={!!errors.message} aria-describedby="message-error" className={inputCls(errors.message)} />
+                <p id="message-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.message ?? ""}</p>
               </div>
+
               <div className="sm:col-span-2">
                 <button type="submit" disabled={loading} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
                   {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
