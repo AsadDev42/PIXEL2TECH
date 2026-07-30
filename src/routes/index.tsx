@@ -436,16 +436,12 @@ function Hero() {
                     className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
                   >
                     {src.endsWith(".mp4") ? (
-                      <video
+                      <AutoVideo
                         src={src}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     ) : (
+
                       <img
                         decoding="async"
                         src={src}
