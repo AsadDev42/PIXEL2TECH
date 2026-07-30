@@ -10,7 +10,13 @@ import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
+
+// Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
+const VideoTestimonials = lazy(() =>
+  import("@/components/video-testimonials").then((m) => ({ default: m.VideoTestimonials })),
+);
+
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
