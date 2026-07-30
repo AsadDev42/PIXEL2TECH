@@ -134,7 +134,12 @@ export function SiteNav() {
         </div>
       )}
     </header>
-    <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+    {bookingOpen && (
+      <Suspense fallback={null}>
+        <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+      </Suspense>
+    )}
+
     </>
   );
 }
