@@ -214,7 +214,7 @@ function HomeContact() {
                 </div>
                 <Link
                   to="/contact"
-                  className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/30 transition hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:w-auto"
+                  className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full p2t-on-dark bg-white px-7 py-3 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/30 transition hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:w-auto"
                 >
                   Contact Us
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
