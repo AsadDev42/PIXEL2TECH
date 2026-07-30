@@ -19,47 +19,64 @@ function AutoVideoImpl({ src, className = "", poster }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   // Only attach the media source once the element gets close to the viewport.
   const [active, setActive] = useState(false);
+  const inViewRef = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    const play = () => {
+      // play() rejects when autoplay is blocked or the element is detached.
+      void el.play().catch(() => undefined);
+    };
+
     if (typeof IntersectionObserver === "undefined") {
+      inViewRef.current = true;
       setActive(true);
       return;
     }
 
     const io = new IntersectionObserver(
       (entries) => {
-        const entry = entries[0];
+        const entry = entries[entries.length - 1];
         if (!entry) return;
+        inViewRef.current = entry.isIntersecting;
         if (entry.isIntersecting) {
           setActive(true);
-          // play() rejects when autoplay is blocked or the element unmounts.
-          void el.play().catch(() => undefined);
+          play();
         } else if (!el.paused) {
           el.pause();
         }
       },
       { rootMargin: "200px 0px", threshold: 0.01 },
     );
-
     io.observe(el);
 
+    // The source is attached one render after the element becomes active, so
+    // resume playback as soon as the media is actually ready.
+    const onCanPlay = () => {
+      if (inViewRef.current && !document.hidden) play();
+    };
+    el.addEventListener("loadeddata", onCanPlay);
+
     const onVisibility = () => {
-      if (document.hidden) {
-        el.pause();
-      } else if (active) {
-        void el.play().catch(() => undefined);
-      }
+      if (document.hidden) el.pause();
+      else if (inViewRef.current) play();
     };
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
       io.disconnect();
+      el.removeEventListener("loadeddata", onCanPlay);
       document.removeEventListener("visibilitychange", onVisibility);
     };
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (active && el && inViewRef.current) void el.play().catch(() => undefined);
   }, [active]);
+
 
   return (
     <video
