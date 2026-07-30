@@ -495,31 +495,29 @@ function Brands() {
           From startups to established businesses — ecommerce, real estate, health, food, and professional services.
         </p>
       </div>
-      <LoopSlider
-        items={industryLogos}
-        keyFor={(b, i) => `${b.name}-${i}`}
-        direction="rtl"
-        speed={40}
-        gapClassName="gap-14 sm:gap-[84px]"
-        className="mt-10 sm:mt-12"
-        ariaLabel="Industries we work with"
-
-        renderItem={(b) => (
-          <div
-            data-cursor="hover"
-            className="flex h-6 w-20 shrink-0 items-center justify-center sm:h-8 sm:w-28"
-          >
-            <img
-              loading="lazy"
-              decoding="async"
-              src={b.src}
-              alt={b.name}
-              draggable={false}
-              className="pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-8"
-            />
-          </div>
-        )}
-      />
+      <div data-cursor="expand">
+        <LoopSlider
+          items={industryLogos}
+          keyFor={(b, i) => `${b.name}-${i}`}
+          direction="rtl"
+          speed={40}
+          gapClassName="gap-14 sm:gap-[84px]"
+          className="mt-10 sm:mt-12"
+          ariaLabel="Industries we work with"
+          renderItem={(b) => (
+            <div className="flex h-6 w-20 shrink-0 items-center justify-center sm:h-8 sm:w-28">
+              <img
+                loading="lazy"
+                decoding="async"
+                src={b.src}
+                alt={b.name}
+                draggable={false}
+                className="pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-8"
+              />
+            </div>
+          )}
+        />
+      </div>
     </section>
   );
 }
