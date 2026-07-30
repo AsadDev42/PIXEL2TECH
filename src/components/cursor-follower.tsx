@@ -24,7 +24,14 @@ export function CursorFollower() {
     let mouseY = window.innerHeight / 2;
     let blobX = mouseX;
     let blobY = mouseY;
+    // Last values actually committed to the DOM, so we can skip redundant
+    // style writes (each write repaints the blend-mode layer).
+    let lastDotX = Number.NaN;
+    let lastDotY = Number.NaN;
+    let lastBlobX = Number.NaN;
+    let lastBlobY = Number.NaN;
     let raf = 0;
+    let running = false;
     let visible = false;
 
     const setVisible = (v: boolean) => {
@@ -37,45 +44,89 @@ export function CursorFollower() {
       mouseX = e.clientX;
       mouseY = e.clientY;
       if (!visible) setVisible(true);
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX - 2}px, ${mouseY - 2}px, 0)`;
-      }
+      // Do NOT write styles here: mousemove can fire several times per frame on
+      // high-polling-rate mice. The rAF loop commits at display refresh rate.
+      start();
     };
 
-    const isInteractive = (el: EventTarget | null) => {
-      if (!(el instanceof Element)) return false;
-      return !!el.closest(
-        'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]',
-      );
-    };
-    const isMedia = (el: EventTarget | null) => {
-      if (!(el instanceof Element)) return false;
-      return !!el.closest('img, picture, video, [data-cursor="expand"]');
-    };
+    // Single DOM walk per mouseover instead of two, and only commit dataset
+    // changes when the state actually differs (dataset writes invalidate the
+    // mix-blend-mode layer and force a repaint).
+    const MEDIA_SEL = 'img, picture, video, [data-cursor="expand"]';
+    const INTERACTIVE_SEL =
+      'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]';
+
     const onOver = (e: MouseEvent) => {
-      if (!blobRef.current) return;
-      const media = isMedia(e.target);
-      blobRef.current.dataset.media = media ? "1" : "0";
-      blobRef.current.dataset.hover = !media && isInteractive(e.target) ? "1" : "0";
+      const blob = blobRef.current;
+      if (!blob) return;
+      const el = e.target instanceof Element ? e.target : null;
+      const media = el ? !!el.closest(MEDIA_SEL) : false;
+      const hover = !media && el ? !!el.closest(INTERACTIVE_SEL) : false;
+      const mediaVal = media ? "1" : "0";
+      const hoverVal = hover ? "1" : "0";
+      if (blob.dataset.media !== mediaVal) blob.dataset.media = mediaVal;
+      if (blob.dataset.hover !== hoverVal) blob.dataset.hover = hoverVal;
     };
     const onDown = () => {
-      if (blobRef.current) blobRef.current.dataset.down = "1";
+      const blob = blobRef.current;
+      if (blob && blob.dataset.down !== "1") blob.dataset.down = "1";
     };
     const onUp = () => {
-      if (blobRef.current) blobRef.current.dataset.down = "0";
+      const blob = blobRef.current;
+      if (blob && blob.dataset.down !== "0") blob.dataset.down = "0";
     };
     const onLeave = () => setVisible(false);
-    const onEnter = () => setVisible(true);
+    const onEnter = () => {
+      setVisible(true);
+      start();
+    };
 
-    const tick = () => {
+    const tick = (/* now */) => {
+      // Identical easing constant and per-frame math as before, so the trail
+      // feel/speed is unchanged.
       blobX += (mouseX - blobX) * 0.18;
       blobY += (mouseY - blobY) * 0.18;
-      if (blobRef.current) {
-        blobRef.current.style.transform = `translate3d(${blobX}px, ${blobY}px, 0) translate(-50%, -50%)`;
+
+      const dot = dotRef.current;
+      if (dot) {
+        const dx = mouseX - 2;
+        const dy = mouseY - 2;
+        if (dx !== lastDotX || dy !== lastDotY) {
+          dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+          lastDotX = dx;
+          lastDotY = dy;
+        }
+      }
+
+      const blob = blobRef.current;
+      if (blob && (blobX !== lastBlobX || blobY !== lastBlobY)) {
+        blob.style.transform = `translate3d(${blobX}px, ${blobY}px, 0) translate(-50%, -50%)`;
+        lastBlobX = blobX;
+        lastBlobY = blobY;
+      }
+
+      // Once the blob has caught up with the pointer (sub-pixel distance),
+      // park the loop. It restarts on the next pointer movement. This frees
+      // the compositor during scrolling and idle time.
+      const settled =
+        Math.abs(mouseX - blobX) < 0.01 && Math.abs(mouseY - blobY) < 0.01;
+      if (settled) {
+        blobX = mouseX;
+        blobY = mouseY;
+        running = false;
+        raf = 0;
+        return;
       }
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      raf = requestAnimationFrame(tick);
+    };
+
+    start();
 
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver, { passive: true });
@@ -85,7 +136,8 @@ export function CursorFollower() {
     document.addEventListener("mouseenter", onEnter);
 
     return () => {
-      cancelAnimationFrame(raf);
+      if (raf) cancelAnimationFrame(raf);
+      running = false;
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mousedown", onDown);
@@ -107,7 +159,10 @@ export function CursorFollower() {
           mix-blend-mode: difference;
           pointer-events: none;
           opacity: 0;
-          will-change: transform, width, height, border-radius;
+          /* Only transform is compositor-animated; hinting width/height/border-radius
+             cannot be composited and only costs extra memory + repaints. */
+          will-change: transform;
+          contain: layout style paint;
           transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
         }
         .lv-cursor-blob[data-hover="1"]{
