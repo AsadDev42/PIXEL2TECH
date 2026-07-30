@@ -83,6 +83,8 @@ function LoopSliderImpl<T>({
       resolvedDir === "ltr" || resolvedDir === "down" ? 1 : -1;
     let last = performance.now();
     let raf = 0;
+    let running = false;
+    let lastTransform = "";
 
     const tick = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000);
@@ -99,12 +101,53 @@ function LoopSliderImpl<T>({
         while (s.pos <= -s.half) s.pos += s.half;
         while (s.pos > 0) s.pos -= s.half;
       }
-      track.style.transform = isX
-        ? `translate3d(${s.pos}px, 0, 0)`
-        : `translate3d(0, ${s.pos}px, 0)`;
+      const next = isX
+        ? `translate3d(${s.pos.toFixed(2)}px, 0, 0)`
+        : `translate3d(0, ${s.pos.toFixed(2)}px, 0)`;
+      // Skip redundant style writes; each one invalidates the compositor.
+      if (next !== lastTransform) {
+        track.style.transform = next;
+        lastTransform = next;
+      }
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      if (!running) return;
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+
+    // Only animate while the slider is actually visible and the tab is active.
+    let visible = true;
+    let io: IntersectionObserver | null = null;
+    const sync = () => {
+      if (visible && !document.hidden) start();
+      else stop();
+    };
+
+    if (typeof IntersectionObserver !== "undefined") {
+      visible = false;
+      io = new IntersectionObserver(
+        (entries) => {
+          visible = entries.some((e) => e.isIntersecting);
+          sync();
+        },
+        { rootMargin: "150px 0px" },
+      );
+      io.observe(track);
+    }
+
+    const onVisibility = () => sync();
+    document.addEventListener("visibilitychange", onVisibility);
+    sync();
+
 
     const onDown = (e: PointerEvent) => {
       const s = stateRef.current;
