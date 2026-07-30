@@ -55,6 +55,8 @@ export const Route = createFileRoute("/services")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
+      { name: "twitter:description", content: "Branding, web, UI/UX, social, motion and custom software — everything you need to build and grow your brand, in-house at Pixel2Tech." },
     ],
     links: [{ rel: "canonical", href: "https://www.pixel2tech.com/services" }],
     scripts: [
@@ -64,7 +66,7 @@ export const Route = createFileRoute("/services")({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Creative agency services",
-          provider: { "@type": "Organization", name: "Pixel2Tech", url: "/" },
+          provider: { "@type": "Organization", name: "Pixel2Tech", url: "https://www.pixel2tech.com/" },
           areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
           hasOfferCatalog: {
             "@type": "OfferCatalog",

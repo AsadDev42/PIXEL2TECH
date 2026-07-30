@@ -25,6 +25,8 @@ export const Route = createFileRoute("/contact")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
+      { name: "twitter:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
     ],
     links: [{ rel: "canonical", href: "https://www.pixel2tech.com/contact" }],
     scripts: [

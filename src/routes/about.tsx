@@ -27,6 +27,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
+      { name: "twitter:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
     ],
     links: [{ rel: "canonical", href: "https://www.pixel2tech.com/about" }],
     scripts: [

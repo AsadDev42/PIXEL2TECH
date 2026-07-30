@@ -18,6 +18,8 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
+      { name: "twitter:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
     ],
     links: [{ rel: "canonical", href: "https://www.pixel2tech.com/blog" }],
     scripts: [

@@ -20,6 +20,8 @@ export const Route = createFileRoute("/portfolio/")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Portfolio — Branding, Web & Product Work | Pixel2Tech" },
+      { name: "twitter:description", content: "Selected work from Pixel2Tech across branding, web, UI/UX, video and custom platforms." },
     ],
     links: [{ rel: "canonical", href: "https://www.pixel2tech.com/portfolio" }],
     scripts: [
