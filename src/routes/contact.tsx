@@ -9,6 +9,8 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { FadeIn } from "@/components/motion";
 import { trackEvent } from "@/lib/analytics";
+import { useFormValidation } from "@/lib/use-form-validation";
+
 
 const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -66,53 +68,32 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 function ContactPage() {
   const submit = useServerFn(submitContactForm);
-  const [form, setForm] = useState<FormState>(initial);
   const [website, setWebsite] = useState(""); // honeypot
   const [loadedAt] = useState<number>(() => Date.now());
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [loading, setLoading] = useState(false);
+  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
+    useFormValidation(clientSchema, initial);
 
-  const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
-  };
-
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const parsed = clientSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof FormState, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof FormState;
-        if (!next[k]) next[k] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setLoading(true);
+  const onSubmit = handleSubmit(async (data) => {
     try {
-      await submit({ data: { ...parsed.data, website, ts: loadedAt } });
-      trackEvent("contact_form_submitted", { subject: parsed.data.subject });
+      await submit({ data: { ...data, website, ts: loadedAt } });
+      trackEvent("contact_form_submitted", { subject: data.subject });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
-      setForm(initial);
-      setErrors({});
+      reset();
     } catch (err) {
       toast.error("Couldn't send message", {
         description: err instanceof Error ? err.message : "Please try again in a moment.",
       });
-    } finally {
-      setLoading(false);
     }
-  }
+  });
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe", inputMode: "text", enterKeyHint: "next" },
+    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
+    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry", inputMode: "text", enterKeyHint: "next" },
   ] as const;
+
 
   return (
     <PageShell>
@@ -162,13 +143,17 @@ function ContactPage() {
                       id={f.id}
                       name={f.id}
                       type={f.type}
+                      inputMode={f.inputMode}
+                      enterKeyHint={f.enterKeyHint}
                       autoComplete={f.autoComplete}
                       placeholder={f.placeholder}
                       value={form[f.id]}
-                      onChange={set(f.id)}
+                      onChange={setField(f.id)}
+                      onBlur={handleBlur(f.id)}
+                      disabled={loading}
                       aria-invalid={!!errors[f.id]}
-                      aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                      className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
+                      aria-describedby={`${f.id}-error`}
+                      className={`min-h-12 rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors[f.id] ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                     />
                     <p
                       id={`${f.id}-error`}
@@ -180,6 +165,7 @@ function ContactPage() {
                     </p>
                   </div>
                 ))}
+
                 <div className="flex flex-col">
                   <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
                     Message
@@ -189,12 +175,15 @@ function ContactPage() {
                     name="message"
                     rows={5}
                     value={form.message}
-                    onChange={set("message")}
+                    onChange={setField("message")}
+                    onBlur={handleBlur("message")}
+                    disabled={loading}
                     placeholder="Tell us about your project"
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error" : undefined}
-                    className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-white/[0.04] dark:placeholder:text-white/70"
+                    aria-describedby="message-error"
+                    className={`resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                   />
+
                   <p
                     id="message-error"
                     role="alert"

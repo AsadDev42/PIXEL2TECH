@@ -21,6 +21,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
+import { useFormValidation } from "@/lib/use-form-validation";
+
 import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
 import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
 import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
@@ -72,33 +74,13 @@ const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", pho
 
 function HomeContact() {
   const submit = useServerFn(submitContactForm);
-  const [form, setForm] = useState<HomeFormState>(homeInitial);
   const [website, setWebsite] = useState("");
   const [loadedAt] = useState<number>(() => Date.now());
-  const [errors, setErrors] = useState<Partial<Record<keyof HomeFormState, string>>>({});
-  const [loading, setLoading] = useState(false);
+  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
+    useFormValidation(homeContactSchema, homeInitial);
 
-
-  const set = (k: keyof HomeFormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    if (errors[k]) setErrors((p) => ({ ...p, [k]: undefined }));
-  };
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const parsed = homeContactSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof HomeFormState, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof HomeFormState;
-        if (!next[k]) next[k] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setLoading(true);
+  const onSubmit = handleSubmit(async (d) => {
     try {
-      const d = parsed.data;
       await submit({
         data: {
           name: `${d.firstName} ${d.lastName}`.trim(),
@@ -111,19 +93,21 @@ function HomeContact() {
       });
 
       toast.success("Message sent!", { description: "Thanks — we'll get back to you within one business day." });
-      setForm(homeInitial);
-      setErrors({});
+      reset();
     } catch (err) {
       toast.error("Couldn't send message", {
         description: err instanceof Error ? err.message : "Please try again in a moment.",
       });
-    } finally {
-      setLoading(false);
     }
-  }
+  });
 
-  const inputCls =
-    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground dark:border-white/25 dark:focus:border-white";
+  const inputCls = (invalid?: string) =>
+    `min-h-11 w-full border-0 border-b bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 ${
+      invalid
+        ? "border-red-600 focus:border-red-600 dark:border-red-400 dark:focus:border-red-400"
+        : "border-neutral-400 focus:border-foreground dark:border-white/25 dark:focus:border-white"
+    }`;
+
 
   return (
     <>
@@ -145,29 +129,30 @@ function HomeContact() {
 
               <div>
                 <label htmlFor="firstName" className="sr-only">First Name</label>
-                <input id="firstName" name="firstName" autoComplete="given-name" placeholder="First Name" value={form.firstName} onChange={set("firstName")} aria-invalid={!!errors.firstName} className={inputCls} />
-                {errors.firstName && <p className="mt-1 text-xs text-red-600">{errors.firstName}</p>}
+                <input id="firstName" name="firstName" autoComplete="given-name" enterKeyHint="next" placeholder="First Name" value={form.firstName} onChange={setField("firstName")} onBlur={handleBlur("firstName")} disabled={loading} aria-invalid={!!errors.firstName} aria-describedby="firstName-error" className={inputCls(errors.firstName)} />
+                <p id="firstName-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.firstName ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="lastName" className="sr-only">Last Name</label>
-                <input id="lastName" name="lastName" autoComplete="family-name" placeholder="Last Name" value={form.lastName} onChange={set("lastName")} aria-invalid={!!errors.lastName} className={inputCls} />
-                {errors.lastName && <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>}
+                <input id="lastName" name="lastName" autoComplete="family-name" enterKeyHint="next" placeholder="Last Name" value={form.lastName} onChange={setField("lastName")} onBlur={handleBlur("lastName")} disabled={loading} aria-invalid={!!errors.lastName} aria-describedby="lastName-error" className={inputCls(errors.lastName)} />
+                <p id="lastName-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.lastName ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" placeholder="Email" value={form.email} onChange={set("email")} aria-invalid={!!errors.email} className={inputCls} />
-                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+                <input id="email" name="email" type="email" inputMode="email" autoComplete="email" enterKeyHint="next" placeholder="Email" value={form.email} onChange={setField("email")} onBlur={handleBlur("email")} disabled={loading} aria-invalid={!!errors.email} aria-describedby="email-error" className={inputCls(errors.email)} />
+                <p id="email-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.email ?? ""}</p>
               </div>
               <div>
                 <label htmlFor="phone" className="sr-only">Phone</label>
-                <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="Phone" value={form.phone} onChange={set("phone")} aria-invalid={!!errors.phone} className={inputCls} />
-                {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
+                <input id="phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" enterKeyHint="next" placeholder="Phone" value={form.phone} onChange={setField("phone")} onBlur={handleBlur("phone")} disabled={loading} aria-invalid={!!errors.phone} aria-describedby="phone-error" className={inputCls(errors.phone)} />
+                <p id="phone-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.phone ?? ""}</p>
               </div>
               <div className="sm:col-span-2">
                 <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" name="message" rows={3} placeholder="Message" value={form.message} onChange={set("message")} aria-invalid={!!errors.message} className={inputCls} />
-                {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
+                <textarea id="message" name="message" rows={3} enterKeyHint="send" placeholder="Message" value={form.message} onChange={setField("message")} onBlur={handleBlur("message")} disabled={loading} aria-invalid={!!errors.message} aria-describedby="message-error" className={inputCls(errors.message)} />
+                <p id="message-error" role="alert" aria-live="polite" className="mt-1 min-h-4 text-xs text-red-600 dark:text-red-400">{errors.message ?? ""}</p>
               </div>
+
               <div className="sm:col-span-2">
                 <button type="submit" disabled={loading} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
                   {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}

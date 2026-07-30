@@ -12,6 +12,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
+import { useFormValidation } from "@/lib/use-form-validation";
+
 import { SOCIAL_LINKS } from "@/components/social-links";
 import {
   Palette,
@@ -235,52 +237,32 @@ const initial: FormState = { name: "", email: "", subject: "", message: "" };
 
 function ServicesPage() {
   const submit = useServerFn(submitContactForm);
-  const [form, setForm] = useState<FormState>(initial);
   const [website, setWebsite] = useState("");
   const [loadedAt] = useState<number>(() => Date.now());
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
+    useFormValidation(clientSchema, initial);
 
-  const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    if (errors[k]) setErrors((prev) => ({ ...prev, [k]: undefined }));
-  };
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const parsed = clientSchema.safeParse(form);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof FormState, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const k = issue.path[0] as keyof FormState;
-        if (!next[k]) next[k] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setLoading(true);
+  const onSubmit = handleSubmit(async (data) => {
     try {
-      await submit({ data: { ...parsed.data, website, ts: loadedAt } });
+      await submit({ data: { ...data, website, ts: loadedAt } });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });
-      setForm(initial);
-      setErrors({});
+      reset();
     } catch (err) {
       toast.error("Couldn't send message", {
         description: err instanceof Error ? err.message : "Please try again in a moment.",
       });
-    } finally {
-      setLoading(false);
     }
-  }
+  });
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry" },
+    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe", inputMode: "text", enterKeyHint: "next" },
+    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
+    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry", inputMode: "text", enterKeyHint: "next" },
   ] as const;
+
 
   return (
     <PageShell>
@@ -504,17 +486,21 @@ function ServicesPage() {
                     id={`svc-${f.id}`}
                     name={f.id}
                     type={f.type}
+                    inputMode={f.inputMode}
+                    enterKeyHint={f.enterKeyHint}
                     autoComplete={f.autoComplete}
                     placeholder={f.placeholder}
                     value={form[f.id]}
-                    onChange={set(f.id)}
+                    onChange={setField(f.id)}
+                    onBlur={handleBlur(f.id)}
+                    disabled={loading}
                     aria-invalid={!!errors[f.id]}
-                    aria-describedby={errors[f.id] ? `svc-${f.id}-error` : undefined}
-                    className="min-h-12 rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
+                    aria-describedby={`svc-${f.id}-error`}
+                    className={`min-h-12 rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 dark:bg-white/[0.04] ${errors[f.id] ? "border-destructive focus:border-destructive" : "border-transparent focus:border-foreground/30"}`}
                   />
-                  {errors[f.id] && (
-                    <p id={`svc-${f.id}-error`} className="mt-1.5 text-xs text-destructive">{errors[f.id]}</p>
-                  )}
+                  <p id={`svc-${f.id}-error`} role="alert" aria-live="polite" className="mt-1.5 min-h-[1.25rem] text-xs text-destructive">
+                    {errors[f.id] ?? ""}
+                  </p>
                 </div>
               ))}
               <div className="flex flex-col">
@@ -526,15 +512,18 @@ function ServicesPage() {
                   name="message"
                   rows={5}
                   value={form.message}
-                  onChange={set("message")}
+                  onChange={setField("message")}
+                  onBlur={handleBlur("message")}
+                  disabled={loading}
                   placeholder="Tell us about your project"
                   aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? "svc-message-error" : undefined}
-                  className="resize-none rounded-xl border border-transparent bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground/30 dark:bg-white/[0.04]"
+                  aria-describedby="svc-message-error"
+                  className={`resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors disabled:opacity-60 dark:bg-white/[0.04] ${errors.message ? "border-destructive focus:border-destructive" : "border-transparent focus:border-foreground/30"}`}
                 />
-                {errors.message && (
-                  <p id="svc-message-error" className="mt-1.5 text-xs text-destructive">{errors.message}</p>
-                )}
+                <p id="svc-message-error" role="alert" aria-live="polite" className="mt-1.5 min-h-[1.25rem] text-xs text-destructive">
+                  {errors.message ?? ""}
+                </p>
+
               </div>
               <button
                 type="submit"
