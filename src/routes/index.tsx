@@ -115,7 +115,7 @@ function HomeContact() {
   }
 
   const inputCls =
-    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground";
+    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground dark:border-white/25 dark:focus:border-white";
 
   return (
     <>
