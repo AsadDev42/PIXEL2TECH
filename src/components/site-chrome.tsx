@@ -222,10 +222,10 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Quick Links</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               {quick.map((q) => (
                 <li key={q.to}>
-                  <Link to={q.to} className="hover:text-foreground">
+                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                     {q.label}
                   </Link>
                 </li>
@@ -234,10 +234,10 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Services</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               {svc.map((q) => (
                 <li key={q.label}>
-                  <Link to={q.to} className="hover:text-foreground">
+                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                     {q.label}
                   </Link>
                 </li>
@@ -246,20 +246,21 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Contact</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               <li>
-                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="hover:text-foreground">
+                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="inline-flex min-h-10 items-center break-all py-1 hover:text-foreground">
                   sales@pixel2tech.com
                 </a>
               </li>
               <li>
-                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="hover:text-foreground">
+                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                   +92 317 7475233
                 </a>
               </li>
-              <li>Pakistan Based, Serving Worldwide</li>
+              <li className="py-1">Pakistan Based, Serving Worldwide</li>
             </ul>
           </div>
+
         </div>
         <div className="mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12">
           © 2024 Pixel2Tech. All rights reserved.
