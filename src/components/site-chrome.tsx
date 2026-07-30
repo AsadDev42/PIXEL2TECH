@@ -40,24 +40,30 @@ export function SiteNav() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    // Close the drawer if the viewport grows into the desktop nav breakpoint.
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => { if (mq.matches) setOpen(false); };
+    mq.addEventListener("change", onChange);
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onChange);
     };
   }, [open]);
+
   const mobileNavRef = useFocusTrap<HTMLDivElement>(open);
 
   return (
     <>
     <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-4 sm:gap-4 sm:py-5 md:px-8 lg:px-10">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex shrink-0 items-center">
 
           <img fetchPriority="high" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
           <img fetchPriority="high" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
-        <nav aria-label="Primary" className="hidden items-center justify-center gap-6 text-[15px] font-medium text-foreground lg:flex xl:gap-8">
+        <nav aria-label="Primary" className="hidden min-w-0 items-center justify-center gap-4 text-sm font-medium text-foreground md:flex lg:gap-6 lg:text-[15px] xl:gap-8">
           {NAV.map((n) => {
             const active = pathname === n.to;
             return (
@@ -80,7 +86,7 @@ export function SiteNav() {
           <button
             type="button"
             onClick={() => { trackEvent("strategy_call_modal_opened", { source: "header" }); setBookingOpen(true); }}
-            className="hidden shrink-0 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex sm:px-6"
+            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex md:hidden lg:inline-flex lg:px-6"
           >
             Schedule a Strategy Session
           </button>
@@ -90,10 +96,11 @@ export function SiteNav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground md:hidden"
           >
             {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
+
         </div>
       </div>
 
@@ -106,7 +113,7 @@ export function SiteNav() {
           aria-modal="true"
           aria-label="Site navigation"
           tabIndex={-1}
-          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg lg:hidden"
+          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg md:hidden"
         >
           <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 text-base">
             {NAV.map((n) => {
@@ -191,8 +198,9 @@ export function SiteFooter() {
   ];
   return (
     <footer className="bg-muted">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-5 pt-16 pb-10 md:px-10">
+        <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+
           <div>
             <Link to="/" aria-label="Pixel2Tech — Home">
               <img loading="lazy" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
@@ -221,10 +229,10 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Quick Links</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               {quick.map((q) => (
                 <li key={q.to}>
-                  <Link to={q.to} className="hover:text-foreground">
+                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                     {q.label}
                   </Link>
                 </li>
@@ -233,10 +241,10 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Services</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               {svc.map((q) => (
                 <li key={q.label}>
-                  <Link to={q.to} className="hover:text-foreground">
+                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                     {q.label}
                   </Link>
                 </li>
@@ -245,20 +253,21 @@ export function SiteFooter() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Contact</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
               <li>
-                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="hover:text-foreground">
+                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="inline-flex min-h-10 items-center break-all py-1 hover:text-foreground">
                   sales@pixel2tech.com
                 </a>
               </li>
               <li>
-                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="hover:text-foreground">
+                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
                   +92 317 7475233
                 </a>
               </li>
-              <li>Pakistan Based, Serving Worldwide</li>
+              <li className="py-1">Pakistan Based, Serving Worldwide</li>
             </ul>
           </div>
+
         </div>
         <div className="mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12">
           © 2024 Pixel2Tech. All rights reserved.
