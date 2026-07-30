@@ -115,13 +115,13 @@ function HomeContact() {
   }
 
   const inputCls =
-    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground";
+    "min-h-11 w-full border-0 border-b border-neutral-400 bg-transparent px-1 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground dark:border-white/25 dark:focus:border-white";
 
   return (
     <>
       <section aria-labelledby="home-contact-title" className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <FadeIn>
-          <div className="rounded-2xl bg-muted p-6 dark:bg-neutral-900 sm:rounded-3xl sm:p-10 md:p-14">
+          <div className="rounded-2xl border border-transparent bg-muted p-6 dark:border-white/10 dark:bg-[#0a0d1f] sm:rounded-3xl sm:p-10 md:p-14">
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
