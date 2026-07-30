@@ -107,7 +107,7 @@ export function SiteNav() {
           aria-modal="true"
           aria-label="Site navigation"
           tabIndex={-1}
-          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg lg:hidden"
+          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg md:hidden"
         >
           <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 text-base">
             {NAV.map((n) => {
