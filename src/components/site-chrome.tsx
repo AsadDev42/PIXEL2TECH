@@ -57,7 +57,7 @@ export function SiteNav() {
           <img fetchPriority="high" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
           <img fetchPriority="high" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
-        <nav aria-label="Primary" className="hidden items-center justify-center gap-6 text-[15px] font-medium text-foreground lg:flex xl:gap-8">
+        <nav aria-label="Primary" className="hidden min-w-0 items-center justify-center gap-4 text-sm font-medium text-foreground md:flex lg:gap-6 lg:text-[15px] xl:gap-8">
           {NAV.map((n) => {
             const active = pathname === n.to;
             return (
