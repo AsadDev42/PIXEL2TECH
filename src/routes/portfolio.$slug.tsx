@@ -25,7 +25,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     const { item } = loaderData;
     const title = `${item.title} — Pixel2Tech`;
     const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the brand, our approach and the outcome.`;
-    const url = `https://pixel2tech.com/portfolio/${params.slug}`;
+    const url = `https://www.pixel2tech.com/portfolio/${params.slug}`;
     return {
       meta: [
         { title },
@@ -46,8 +46,8 @@ export const Route = createFileRoute("/portfolio/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-              { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://pixel2tech.com/portfolio" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
+              { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://www.pixel2tech.com/portfolio" },
               { "@type": "ListItem", position: 3, name: item.title, item: url },
             ],
           }),

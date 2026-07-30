@@ -16,8 +16,8 @@ export const Route = createFileRoute("/blog/$slug")({
       return { meta: [{ title: "Not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
     }
     const { post } = loaderData;
-    const url = `https://pixel2tech.com/blog/${post.slug}`;
-    const image = post.img.startsWith("http") ? post.img : `https://pixel2tech.com${post.img}`;
+    const url = `https://www.pixel2tech.com/blog/${post.slug}`;
+    const image = post.img.startsWith("http") ? post.img : `https://www.pixel2tech.com${post.img}`;
     const title = post.metaTitle ?? `${post.title} — Pixel2Tech`;
     const description = post.metaDescription ?? post.excerpt;
     return {
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/blog/$slug")({
             publisher: {
               "@type": "Organization",
               name: "Pixel2Tech",
-              logo: { "@type": "ImageObject", url: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
+              logo: { "@type": "ImageObject", url: "https://www.pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
             },
             mainEntityOfPage: url,
             articleSection: post.tag,
@@ -64,8 +64,8 @@ export const Route = createFileRoute("/blog/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-              { "@type": "ListItem", position: 2, name: "Blog", item: "https://pixel2tech.com/blog" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.pixel2tech.com/blog" },
               { "@type": "ListItem", position: 3, name: post.title, item: url },
             ],
           }),
@@ -113,7 +113,7 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
-  const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
+  const shareUrl = `https://www.pixel2tech.com/blog/${post.slug}`;
   const socials = [
     { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
     { Icon: Twitter, label: "X", href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}` },
