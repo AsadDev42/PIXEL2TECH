@@ -205,8 +205,12 @@ function LoopSliderImpl<T>({
     }
 
     return () => {
+      stop();
       cancelAnimationFrame(raf);
+      io?.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
       ro.disconnect();
+
       if (draggable) {
         track.removeEventListener("pointerdown", onDown);
         track.removeEventListener("pointermove", onMove);
