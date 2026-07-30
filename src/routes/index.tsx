@@ -917,7 +917,19 @@ function HomePage() {
       <PartnerBand />
       <Services />
       <Work />
-      <VideoTestimonials />
+      <LazySection minHeight={520}>
+        <Suspense
+          fallback={
+            <div
+              aria-hidden="true"
+              className="mx-auto h-[520px] max-w-7xl animate-pulse rounded-3xl bg-muted/60"
+            />
+          }
+        >
+          <VideoTestimonials />
+        </Suspense>
+      </LazySection>
+
       <Team />
       <Studio />
       <Insights />
