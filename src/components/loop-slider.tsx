@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { memo, useEffect, useRef, type ReactNode } from "react";
 
 type Axis = "x" | "y";
 type DirX = "rtl" | "ltr";
