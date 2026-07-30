@@ -125,6 +125,7 @@ function PortfolioPage() {
                   to="/portfolio/$slug"
                   params={{ slug: w.slug }}
                   aria-label={`View case study: ${w.title}`}
+                  data-cursor="expand"
                   onClick={() => trackEvent("portfolio_project_opened", { slug: w.slug, title: w.title })}
                   className="group block overflow-hidden rounded-2xl bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                 >
