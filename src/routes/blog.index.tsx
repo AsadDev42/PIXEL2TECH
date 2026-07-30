@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
 import { posts } from "@/lib/blog-posts";
 
@@ -50,7 +51,16 @@ function BlogPage() {
       <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-6 rounded-2xl bg-muted p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
           <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
-            <img loading="eager" fetchPriority="high" decoding="async" width={1600} height={900} src={featured.img} alt={featured.title} className="h-full w-full object-cover" />
+            <ResponsiveImage
+              src={featured.img}
+              alt={featured.title}
+              width={1600}
+              height={1000}
+              sizes="(min-width: 768px) 45vw, 92vw"
+              className="h-full w-full object-cover"
+              priority
+            />
+
           </div>
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:gap-4">
@@ -76,7 +86,14 @@ function BlogPage() {
           {rest.map((p) => (
             <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
-                <img loading="lazy" decoding="async" width={1600} height={1000} src={p.img} alt={p.title} className="h-full w-full object-cover" />
+                <ResponsiveImage
+                  src={p.img}
+                  alt={p.title}
+                  width={1600}
+                  height={1000}
+                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:mt-5 sm:gap-4">
                 <span>{p.tag}</span><span>{p.date}</span>
