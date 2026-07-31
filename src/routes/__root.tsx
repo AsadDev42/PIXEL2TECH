@@ -143,13 +143,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
+          "@id": "https://pixel2tech.com/#organization",
           name: "Pixel2Tech",
           description:
-            "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
-          url: "https://pixel2tech.com/",
+            "A full-service creative agency from Pakistan, serving clients worldwide — branding, web design, UI/UX, social media, and software.",
+          url: "https://pixel2tech.com",
           logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           email: "sales@pixel2tech.com",
-          telephone: "+92 317 7475233",
+          telephone: "+923177475233",
+          foundingDate: "2023",
+          numberOfEmployees: 6,
+          founder: [
+            { "@type": "Person", name: "Usama Farooq", jobTitle: "CEO & Founder" },
+            { "@type": "Person", name: "Asad Farooq", jobTitle: "Co-Founder & Creative Director" },
+          ],
           address: {
             "@type": "PostalAddress",
             addressLocality: "Lahore",
@@ -161,9 +168,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "@type": "ContactPoint",
               contactType: "sales",
               email: "sales@pixel2tech.com",
-              telephone: "+92 317 7475233",
-              areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
-              availableLanguage: ["en"],
+              telephone: "+923177475233",
+              areaServed: "Worldwide",
+              availableLanguage: ["English", "Urdu"],
             },
           ],
           sameAs: [
