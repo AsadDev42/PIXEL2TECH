@@ -60,8 +60,8 @@ export function SiteNav() {
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-4 sm:gap-4 sm:py-5 md:px-8 lg:px-10">
         <Link to="/" aria-label="Pixel2Tech — Home" className="flex shrink-0 items-center">
 
-          <img fetchPriority="high" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
-          <img fetchPriority="high" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
+          <img fetchPriority="high" decoding="async" width={411} height={98} src={logoAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 block dark:hidden" />
+          <img fetchPriority="high" decoding="async" width={411} height={98} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-9 w-auto sm:h-11 hidden dark:block" />
         </Link>
         <nav aria-label="Primary" className="hidden min-w-0 items-center justify-center gap-4 text-sm font-medium text-foreground md:flex lg:gap-6 lg:text-[15px] xl:gap-8">
           {NAV.map((n) => {
@@ -203,8 +203,8 @@ export function SiteFooter() {
 
           <div>
             <Link to="/" aria-label="Pixel2Tech — Home">
-              <img loading="lazy" decoding="async" width={176} height={44} src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
-              <img loading="lazy" decoding="async" width={176} height={44} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
+              <img loading="lazy" decoding="async" width={411} height={98} src={logoAsset.url} alt="Pixel2Tech" className="h-11 w-auto block dark:hidden" />
+              <img loading="lazy" decoding="async" width={411} height={98} src={logoDarkAsset.url} alt="Pixel2Tech" className="h-11 w-auto hidden dark:block" />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
               A full-service creative agency from Pakistan, serving clients worldwide.
