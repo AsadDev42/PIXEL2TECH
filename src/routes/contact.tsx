@@ -36,6 +36,29 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Pixel2Tech",
+          url: "https://pixel2tech.com/contact",
+          mainEntity: {
+            "@type": "Organization",
+            "@id": "https://pixel2tech.com/#organization",
+            name: "Pixel2Tech",
+            url: "https://pixel2tech.com",
+          },
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+923177475233",
+            email: "sales@pixel2tech.com",
+            contactType: "sales",
+            areaServed: "Worldwide",
+            availableLanguage: ["English", "Urdu"],
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Pixel2Tech",
           description:
