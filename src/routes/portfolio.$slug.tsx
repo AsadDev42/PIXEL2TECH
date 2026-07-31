@@ -44,6 +44,20 @@ export const Route = createFileRoute("/portfolio/$slug")({
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            headline: item.title,
+            name: item.title,
+            description: desc,
+            image: item.img,
+            url,
+            genre: `${item.category} · ${item.subcategory}`,
+            creator: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
