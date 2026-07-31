@@ -96,11 +96,19 @@ export function HoverLift({
   );
 }
 
-export function PageTransition({ children }: { children: ReactNode }) {
+export function PageTransition({
+  children,
+  skipInitial = false,
+}: {
+  children: ReactNode;
+  /** Skip the enter animation on the very first (server-rendered) paint so the
+   * hero heading is painted immediately instead of waiting for hydration. */
+  skipInitial?: boolean;
+}) {
   const reduce = useReducedMotion();
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 12 }}
+      initial={reduce || skipInitial ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       exit={reduce ? undefined : { opacity: 0, y: -8 }}
       transition={{ duration: 0.3, ease }}
