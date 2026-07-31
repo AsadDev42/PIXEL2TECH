@@ -74,18 +74,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      { title: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         name: "description",
         content:
-          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
       },
       { name: "author", content: "Pixel2Tech" },
       ...(import.meta.env.VITE_GSC_VERIFICATION
@@ -99,10 +99,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { property: "og:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
-      { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
-      { property: "og:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
-      { name: "twitter:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
+      { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
+      { name: "twitter:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
+      { property: "og:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
+      { name: "twitter:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
     ],
     links: [
       {
@@ -134,8 +134,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           description:
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
-          url: "https://www.pixel2tech.com/",
-          logo: "https://www.pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          url: "https://pixel2tech.com/",
+          logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           sameAs: [
             "https://www.facebook.com/pixel2tech",
             "https://www.instagram.com/pixel2tech",
@@ -150,9 +150,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Pixel2Tech",
-          url: "https://www.pixel2tech.com/",
+          url: "https://pixel2tech.com/",
           inLanguage: "en",
-          publisher: { "@type": "Organization", name: "Pixel2Tech", url: "https://www.pixel2tech.com/" },
+          publisher: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
         }),
       },
     ],

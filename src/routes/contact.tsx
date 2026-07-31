@@ -12,7 +12,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useFormValidation } from "@/lib/use-form-validation";
 
 
-const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -23,14 +23,14 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
       { property: "og:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.pixel2tech.com/contact" },
+      { property: "og:url", content: "https://pixel2tech.com/contact" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
       { name: "twitter:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
     ],
-    links: [{ rel: "canonical", href: "https://www.pixel2tech.com/contact" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/contact" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -38,8 +38,8 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.pixel2tech.com/contact" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
+            { "@type": "ListItem", position: 2, name: "Contact", item: "https://pixel2tech.com/contact" },
           ],
         }),
       },

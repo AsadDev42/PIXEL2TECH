@@ -12,7 +12,7 @@ import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/team-noman.webp.asset.json";
 import officeImg from "@/assets/office.webp.asset.json";
 
-const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -23,14 +23,14 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
       { property: "og:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.pixel2tech.com/about" },
+      { property: "og:url", content: "https://pixel2tech.com/about" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
       { name: "twitter:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
     ],
-    links: [{ rel: "canonical", href: "https://www.pixel2tech.com/about" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/about" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -38,8 +38,8 @@ export const Route = createFileRoute("/about")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "About", item: "https://www.pixel2tech.com/about" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
+            { "@type": "ListItem", position: 2, name: "About", item: "https://pixel2tech.com/about" },
           ],
         }),
       },

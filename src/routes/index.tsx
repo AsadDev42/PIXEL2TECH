@@ -283,39 +283,39 @@ function HomeFaq() {
   );
 }
 
-const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const LOGO_URL = "https://www.pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const LOGO_URL = "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      { title: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         name: "description",
         content:
-          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
       },
-      { property: "og:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         property: "og:description",
         content:
-          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.pixel2tech.com/" },
+      { property: "og:url", content: "https://pixel2tech.com/" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      { name: "twitter:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         name: "twitter:description",
         content:
-          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
       },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
-      { rel: "canonical", href: "https://www.pixel2tech.com/" },
+      { rel: "canonical", href: "https://pixel2tech.com/" },
       {
         rel: "preload",
         as: "image",
@@ -346,7 +346,7 @@ export const Route = createFileRoute("/")({
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
           image: OG_IMAGE,
           logo: LOGO_URL,
-          url: "https://www.pixel2tech.com/",
+          url: "https://pixel2tech.com/",
           email: "hello@pixel2tech.com",
           telephone: "+92-317-7475212",
           address: {
