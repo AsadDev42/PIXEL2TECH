@@ -81,11 +81,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
+      { title: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         name: "description",
         content:
-          "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients.",
+          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
       },
       { name: "author", content: "Pixel2Tech" },
       ...(import.meta.env.VITE_GSC_VERIFICATION
@@ -99,10 +99,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { property: "og:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
-      { name: "twitter:title", content: "Pixel2Tech | One Agency Instead of Ten Freelancers" },
-      { property: "og:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
-      { name: "twitter:description", content: "Branding, websites, social media, and custom software — everything your brand needs to grow, built by one team in Lahore. Worldwide clients." },
+      { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
+      { name: "twitter:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
+      { property: "og:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
+      { name: "twitter:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
     ],
     links: [
       {
