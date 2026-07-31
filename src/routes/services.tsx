@@ -279,7 +279,7 @@ function ServicesPage() {
               <h1 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
                 Everything You Need to{" "}
                 <span className="text-[#1E90FF]">Build, Grow and Scale</span>
-              </h2>
+              </h1>
 
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                 From creative design and custom development to AI-powered automation and digital
