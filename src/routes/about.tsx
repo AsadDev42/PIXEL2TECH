@@ -36,6 +36,39 @@ export const Route = createFileRoute("/about")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Pixel2Tech",
+          url: "https://pixel2tech.com/about",
+          mainEntity: {
+            "@type": "Organization",
+            "@id": "https://pixel2tech.com/#organization",
+            name: "Pixel2Tech",
+            url: "https://pixel2tech.com",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": team.map((m) => ({
+            "@type": "Person",
+            name: m.name,
+            jobTitle: m.role,
+            image: m.img.startsWith("http") ? m.img : `https://pixel2tech.com${m.img}`,
+            worksFor: {
+              "@type": "Organization",
+              "@id": "https://pixel2tech.com/#organization",
+              name: "Pixel2Tech",
+              url: "https://pixel2tech.com",
+            },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
