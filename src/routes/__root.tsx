@@ -112,6 +112,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        children:
+          "setTimeout(function(){document.documentElement.classList.add('p2t-ready')},600)",
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",

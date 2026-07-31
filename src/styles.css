@@ -577,3 +577,12 @@ img[data-icon],
 svg {
   flex-shrink: 0;
 }
+
+/* Intro loader: dismissed from first paint (see inline script in __root.tsx)
+   so the hero heading's LCP is not gated on React hydration. */
+.p2t-ready #p2t-page-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
