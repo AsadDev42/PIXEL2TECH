@@ -243,7 +243,7 @@ function BlogPostPage() {
                             <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
                               <ResponsiveImage
                                 src={r.img}
-                                alt=""
+                                alt={r.title}
                                 width={480}
                                 height={480}
                                 sizes="96px"

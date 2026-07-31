@@ -106,7 +106,7 @@ function VideoCard({ item }: { item: Item }) {
           <img
             decoding="async"
             src={item.poster}
-            alt=""
+            alt={`${item.name}, Pixel2Tech client`}
             loading="lazy"
             draggable={false}
             className="h-10 w-10 shrink-0 rounded-full object-cover"
