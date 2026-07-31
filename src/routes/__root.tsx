@@ -113,8 +113,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     scripts: [
       {
         children:
-          "setTimeout(function(){document.documentElement.classList.add('p2t-ready')},600)",
+          "requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add('p2t-ready')})})",
       },
+
       {
         type: "application/ld+json",
         children: JSON.stringify({
