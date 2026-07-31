@@ -311,7 +311,9 @@ import { AnimatePresence } from "framer-motion";
 export function PageShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [loading, setLoading] = useState(true);
+  const firstPaint = useRef(true);
   useEffect(() => {
+    firstPaint.current = false;
     const t = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(t);
   }, []);
@@ -321,7 +323,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <AnimatePresence>{loading && <PageLoader key="loader" />}</AnimatePresence>
       <SiteNav />
       <AnimatePresence mode="wait">
-        <PageTransition key={pathname}>
+        <PageTransition key={pathname} skipInitial={firstPaint.current}>
           <main id="main-content" tabIndex={-1} className="focus:outline-none">{children}</main>
         </PageTransition>
       </AnimatePresence>
