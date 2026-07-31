@@ -3,7 +3,7 @@ import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
 import { posts } from "@/lib/blog-posts";
 
-const OG_IMAGE = "https://www.pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createFileRoute("/blog/")({
   component: BlogPage,
@@ -14,14 +14,14 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
       { property: "og:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.pixel2tech.com/blog" },
+      { property: "og:url", content: "https://pixel2tech.com/blog" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
       { name: "twitter:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
     ],
-    links: [{ rel: "canonical", href: "https://www.pixel2tech.com/blog" }],
+    links: [{ rel: "canonical", href: "https://pixel2tech.com/blog" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -29,8 +29,8 @@ export const Route = createFileRoute("/blog/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.pixel2tech.com/blog" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://pixel2tech.com/blog" },
           ],
         }),
       },
