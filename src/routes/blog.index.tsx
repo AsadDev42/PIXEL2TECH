@@ -9,17 +9,17 @@ export const Route = createFileRoute("/blog/")({
   component: BlogPage,
   head: () => ({
     meta: [
-      { title: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
-      { name: "description", content: "Tips, essays and case studies on branding, web development, UI/UX and AI from the Pixel2Tech creative agency team." },
-      { property: "og:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
-      { property: "og:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
+      { title: "Blog | Branding, Web Design & AI Insights by Pixel2Tech" },
+      { name: "description", content: "Practical insights on branding, web design, AI tools and digital growth for startups and businesses." },
+      { property: "og:title", content: "Blog | Branding, Web Design & AI Insights by Pixel2Tech" },
+      { property: "og:description", content: "Practical insights on branding, web design, AI tools and digital growth for startups and businesses." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/blog" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Blog — Insights on Branding, Web & AI | Pixel2Tech" },
-      { name: "twitter:description", content: "Ideas, essays and case studies from the Pixel2Tech team." },
+      { name: "twitter:title", content: "Blog | Branding, Web Design & AI Insights by Pixel2Tech" },
+      { name: "twitter:description", content: "Practical insights on branding, web design, AI tools and digital growth for startups and businesses." },
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/blog" }],
     scripts: [

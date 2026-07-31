@@ -14,23 +14,45 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 
+const NOT_FOUND_LINKS = [
+  { to: "/services" as const, label: "Services" },
+  { to: "/portfolio" as const, label: "Portfolio" },
+  { to: "/blog" as const, label: "Blog" },
+  { to: "/about" as const, label: "About" },
+  { to: "/contact" as const, label: "Contact" },
+];
+
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex min-h-screen items-center justify-center bg-background px-5 py-16">
+      <div className="max-w-lg text-center">
+        <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Error 404</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          This page doesn&apos;t exist
+        </h1>
+        <p className="mt-4 text-[15px] text-muted-foreground">
+          The page you&apos;re looking for was moved, renamed, or never existed. Try one of the pages below,
+          or head back to the homepage.
         </p>
-        <div className="mt-6">
+        <div className="mt-8 flex justify-center">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90"
           >
-            Go home
+            Back to homepage
           </Link>
         </div>
+        <nav aria-label="Helpful links" className="mt-8 flex flex-wrap justify-center gap-2">
+          {NOT_FOUND_LINKS.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="inline-flex min-h-10 items-center rounded-full border border-border px-4 text-sm font-medium text-foreground transition hover:bg-accent"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </div>
   );
@@ -126,11 +148,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "Pixel2Tech is a full-service creative agency in Lahore, Pakistan, offering branding, web design, UI/UX, social media, video, and custom software development for clients worldwide.",
           url: "https://pixel2tech.com/",
           logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          email: "sales@pixel2tech.com",
+          telephone: "+92 317 7475233",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lahore",
+            addressRegion: "Punjab",
+            addressCountry: "PK",
+          },
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "sales",
+              email: "sales@pixel2tech.com",
+              telephone: "+92 317 7475233",
+              areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
+              availableLanguage: ["en"],
+            },
+          ],
           sameAs: [
-            "https://www.facebook.com/pixel2tech",
-            "https://www.instagram.com/pixel2tech",
-            "https://x.com/pixel2tech",
+            "https://www.facebook.com/profile.php?id=61575635244591",
+            "https://www.instagram.com/pixel_2tech/",
+            "https://x.com/Pixel2tech",
             "https://www.linkedin.com/company/pixel2tech",
+            "https://www.pinterest.com/pixel2tech/",
           ],
         }),
       },

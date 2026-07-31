@@ -294,13 +294,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
+          "One creative agency, not ten freelancers. Branding, web design, UI/UX, social media & software — all under one roof. Book a free strategy call.",
       },
       { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         property: "og:description",
         content:
-          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
+          "One creative agency, not ten freelancers. Branding, web design, UI/UX, social media & software — all under one roof. Book a free strategy call.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/" },
@@ -310,7 +310,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
+          "One creative agency, not ten freelancers. Branding, web design, UI/UX, social media & software — all under one roof. Book a free strategy call.",
       },
       { name: "twitter:image", content: OG_IMAGE },
     ],
@@ -341,8 +341,8 @@ export const Route = createFileRoute("/")({
           image: OG_IMAGE,
           logo: LOGO_URL,
           url: "https://pixel2tech.com/",
-          email: "hello@pixel2tech.com",
-          telephone: "+92-317-7475212",
+          email: "sales@pixel2tech.com",
+          telephone: "+92 317 7475233",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Lahore",
@@ -351,10 +351,11 @@ export const Route = createFileRoute("/")({
           areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
           priceRange: "$$",
           sameAs: [
-            "https://www.facebook.com/pixel2tech",
-            "https://www.instagram.com/pixel2tech",
-            "https://x.com/pixel2tech",
+            "https://www.facebook.com/profile.php?id=61575635244591",
+            "https://www.instagram.com/pixel_2tech/",
+            "https://x.com/Pixel2tech",
             "https://www.linkedin.com/company/pixel2tech",
+            "https://www.pinterest.com/pixel2tech/",
           ],
         }),
       },
@@ -434,7 +435,7 @@ function Hero() {
                       <img
                         decoding="async"
                         src={src}
-                        alt=""
+                        alt="Pixel2Tech branding and web design project preview"
                         draggable={false}
                         loading={ci === 0 && i === 0 ? "eager" : "lazy"}
                         fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}

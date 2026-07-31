@@ -11,17 +11,17 @@ export const Route = createFileRoute("/portfolio/")({
   component: PortfolioPage,
   head: () => ({
     meta: [
-      { title: "Portfolio — Branding, Web & Product Work | Pixel2Tech" },
-      { name: "description", content: "Selected Pixel2Tech work across branding, web design, UI/UX, video and custom platforms — 50+ projects shipped for growing brands worldwide." },
-      { property: "og:title", content: "Portfolio — Branding, Web & Product Work | Pixel2Tech" },
-      { property: "og:description", content: "Selected work from Pixel2Tech across branding, web, UI/UX, video and custom platforms." },
+      { title: "Portfolio & Case Studies | Pixel2Tech Client Work" },
+      { name: "description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
+      { property: "og:title", content: "Portfolio & Case Studies | Pixel2Tech Client Work" },
+      { property: "og:description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/portfolio" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Portfolio — Branding, Web & Product Work | Pixel2Tech" },
-      { name: "twitter:description", content: "Selected work from Pixel2Tech across branding, web, UI/UX, video and custom platforms." },
+      { name: "twitter:title", content: "Portfolio & Case Studies | Pixel2Tech Client Work" },
+      { name: "twitter:description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/portfolio" }],
     scripts: [

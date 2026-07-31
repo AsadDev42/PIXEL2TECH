@@ -18,17 +18,17 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About Pixel2Tech — Creative Agency in Lahore" },
-      { name: "description", content: "Meet Pixel2Tech, a full-service creative agency in Lahore. A small, senior team of designers, developers and strategists building brands worldwide." },
-      { property: "og:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
-      { property: "og:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
+      { title: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
+      { name: "description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
+      { property: "og:title", content: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
+      { property: "og:description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/about" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "About Pixel2Tech — Creative Agency in Lahore" },
-      { name: "twitter:description", content: "The team, story and values behind Pixel2Tech — a full-service creative agency in Lahore serving clients worldwide." },
+      { name: "twitter:title", content: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
+      { name: "twitter:description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/about" }],
     scripts: [

@@ -18,17 +18,17 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact Pixel2Tech — Start a Project in Lahore" },
-      { name: "description", content: "Contact Pixel2Tech to start a branding, web, UI/UX or software project. Based in Lahore, working with clients worldwide. We reply within one business day." },
-      { property: "og:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
-      { property: "og:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
+      { title: "Contact Pixel2Tech | Book a Free Strategy Call" },
+      { name: "description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
+      { property: "og:title", content: "Contact Pixel2Tech | Book a Free Strategy Call" },
+      { property: "og:description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/contact" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Contact Pixel2Tech — Start a Project in Lahore" },
-      { name: "twitter:description", content: "Tell us about your project. Pixel2Tech replies within one business day." },
+      { name: "twitter:title", content: "Contact Pixel2Tech | Book a Free Strategy Call" },
+      { name: "twitter:description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/contact" }],
     scripts: [
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/contact")({
             "Full-service creative agency offering branding, web design, UI/UX, social media, video and custom software.",
           url: "https://pixel2tech.com/contact",
           email: "sales@pixel2tech.com",
-          telephone: "+92 317 7475212",
+          telephone: "+92 317 7475233",
           image: OG_IMAGE,
           address: {
             "@type": "PostalAddress",
