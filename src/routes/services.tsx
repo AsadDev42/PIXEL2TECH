@@ -276,7 +276,7 @@ function ServicesPage() {
                 What We Do
               </span>
 
-              <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
+              <h1 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
                 Everything You Need to{" "}
                 <span className="text-[#1E90FF]">Build, Grow and Scale</span>
               </h2>
