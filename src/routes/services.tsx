@@ -72,22 +72,24 @@ export const Route = createFileRoute("/services")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Creative agency services",
-          provider: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
-          areaServed: ["US", "GB", "AE", "SA", "EU", "PK"],
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: "Pixel2Tech services",
-            itemListElement: [
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding & Design" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media & Content" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Motion & Video" } },
-              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software & Automation" } },
-            ],
-          },
+          "@type": "ItemList",
+          name: "Pixel2Tech services",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Service",
+              name: s.title,
+              description: s.desc,
+              areaServed: "Worldwide",
+              provider: {
+                "@type": "Organization",
+                "@id": "https://pixel2tech.com/#organization",
+                name: "Pixel2Tech",
+                url: "https://pixel2tech.com",
+              },
+            },
+          })),
         }),
       },
       {
