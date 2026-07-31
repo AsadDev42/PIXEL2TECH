@@ -54,17 +54,17 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
   head: () => ({
     meta: [
-      { title: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
-      { name: "description", content: "Full-service creative agency services: branding, website development, UI/UX, social media, motion, and custom software — all handled in-house by one team." },
-      { property: "og:title", content: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
-      { property: "og:description", content: "Branding, web, UI/UX, social, motion and custom software — everything you need to build and grow your brand, in-house at Pixel2Tech." },
+      { title: "Services | Branding, Web Design, UI/UX & AI Automation" },
+      { name: "description", content: "Full-service creative solutions: branding, website development, UI/UX design, social media, motion video, and custom software & AI automation." },
+      { property: "og:title", content: "Services | Branding, Web Design, UI/UX & AI Automation" },
+      { property: "og:description", content: "Full-service creative solutions: branding, website development, UI/UX design, social media, motion video, and custom software & AI automation." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/services" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Services — Branding, Web, UI/UX & Software | Pixel2Tech" },
-      { name: "twitter:description", content: "Branding, web, UI/UX, social, motion and custom software — everything you need to build and grow your brand, in-house at Pixel2Tech." },
+      { name: "twitter:title", content: "Services | Branding, Web Design, UI/UX & AI Automation" },
+      { name: "twitter:description", content: "Full-service creative solutions: branding, website development, UI/UX design, social media, motion video, and custom software & AI automation." },
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/services" }],
     scripts: [
