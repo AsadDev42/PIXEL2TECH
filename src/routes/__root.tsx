@@ -74,35 +74,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
-      {
-        name: "description",
-        content:
-          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
-      },
       { name: "author", content: "Pixel2Tech" },
       ...(import.meta.env.VITE_GSC_VERIFICATION
         ? [{ name: "google-site-verification", content: import.meta.env.VITE_GSC_VERIFICATION as string }]
         : []),
       { property: "og:site_name", content: "Pixel2Tech" },
-      { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
-      { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: OG_IMAGE },
-      { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
-      { name: "twitter:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
-      { property: "og:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
-      { name: "twitter:description", content: "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business." },
     ],
     links: [
       {

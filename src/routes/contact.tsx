@@ -36,6 +36,39 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Pixel2Tech",
+          description:
+            "Full-service creative agency offering branding, web design, UI/UX, social media, video and custom software.",
+          url: "https://pixel2tech.com/contact",
+          email: "sales@pixel2tech.com",
+          telephone: "+92 317 7475212",
+          image: OG_IMAGE,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lahore",
+            addressCountry: "PK",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "18:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Saturday"],
+              opens: "10:00",
+              closes: "16:00",
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },

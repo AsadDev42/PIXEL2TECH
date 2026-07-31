@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
-import { CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
+import { ALL_ITEMS, CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
 
 const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -25,6 +25,27 @@ export const Route = createFileRoute("/portfolio/")({
     ],
     links: [{ rel: "canonical", href: "https://pixel2tech.com/portfolio" }],
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Pixel2Tech Portfolio",
+          description:
+            "Selected Pixel2Tech work across branding, web design, UI/UX, video and custom platforms.",
+          url: "https://pixel2tech.com/portfolio",
+          isPartOf: { "@type": "WebSite", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: ALL_ITEMS.slice(0, 20).map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: item.title,
+              url: `https://pixel2tech.com/portfolio/${item.slug}`,
+            })),
+          },
+        }),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({
