@@ -281,7 +281,7 @@ export function SiteFooter() {
 function WhatsAppButton() {
   return (
     <a
-      href="https://api.whatsapp.com/send/?phone=923177475212&text&type=phone_number&app_absent=0"
+      href="https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

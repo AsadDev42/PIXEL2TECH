@@ -564,13 +564,13 @@ function ServicesPage() {
                   <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
                 </div>
               </a>
-              <a href="https://wa.me/923177475212" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+              <a href="https://api.whatsapp.com/send/?phone=923177475233" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
                   <Phone className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <div>
                   <div className="text-base font-semibold text-foreground">WhatsApp</div>
-                  <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475212</div>
+                  <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475233</div>
                 </div>
               </a>
             </div>
