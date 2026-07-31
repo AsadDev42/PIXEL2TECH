@@ -294,13 +294,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
+          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
       },
       { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
         property: "og:description",
         content:
-          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
+          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://pixel2tech.com/" },
@@ -310,7 +310,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "One creative agency, not ten freelancers. Full-service agency handling design, development, social media, and software so you can focus on growing your business.",
+          "One creative agency, not ten freelancers. Design, development, social media and software handled by one team so you can focus on growing.",
       },
       { name: "twitter:image", content: OG_IMAGE },
     ],
