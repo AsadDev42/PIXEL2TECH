@@ -69,7 +69,10 @@ export const Route = createFileRoute("/contact")({
           image: OG_IMAGE,
           address: {
             "@type": "PostalAddress",
+            streetAddress: "Office 12, Main Boulevard, Gulberg III",
             addressLocality: "Lahore",
+            addressRegion: "Punjab",
+            postalCode: "54000",
             addressCountry: "PK",
           },
           openingHoursSpecification: [

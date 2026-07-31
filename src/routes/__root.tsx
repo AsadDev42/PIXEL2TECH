@@ -159,8 +159,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
           address: {
             "@type": "PostalAddress",
+            streetAddress: "Office 12, Main Boulevard, Gulberg III",
             addressLocality: "Lahore",
             addressRegion: "Punjab",
+            postalCode: "54000",
             addressCountry: "PK",
           },
           contactPoint: [
