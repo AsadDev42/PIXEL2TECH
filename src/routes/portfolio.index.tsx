@@ -29,6 +29,27 @@ export const Route = createFileRoute("/portfolio/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Pixel2Tech Portfolio",
+          description:
+            "Selected Pixel2Tech work across branding, web design, UI/UX, video and custom platforms.",
+          url: "https://pixel2tech.com/portfolio",
+          isPartOf: { "@type": "WebSite", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: ALL_ITEMS.slice(0, 20).map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: item.title,
+              url: `https://pixel2tech.com/portfolio/${item.slug}`,
+            })),
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
