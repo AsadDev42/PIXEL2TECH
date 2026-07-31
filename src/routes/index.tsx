@@ -316,12 +316,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://pixel2tech.com/" },
-      {
-        rel: "preload",
-        as: "image",
-        href: founderPortrait.url,
-        fetchPriority: "high",
-      },
     ],
     scripts: [
       {
