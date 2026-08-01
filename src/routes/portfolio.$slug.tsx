@@ -10,6 +10,8 @@ import {
   getDeliverables,
   type PortfolioItem,
 } from "@/lib/portfolio-data";
+import { getProjectCopy } from "@/lib/portfolio-copy";
+
 
 export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
