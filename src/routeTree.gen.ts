@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
@@ -58,6 +59,11 @@ const SitemapDotrssRoute = SitemapDotrssRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
+  id: '/sitemap_index.xml',
+  path: '/sitemap_index.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
+    | '/sitemap_index.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
+    | '/sitemap_index.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
+    | '/sitemap_index.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -217,6 +229,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -276,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap_index.xml': {
+      id: '/sitemap_index.xml'
+      path: '/sitemap_index.xml'
+      fullPath: '/sitemap_index.xml'
+      preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -345,6 +365,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
