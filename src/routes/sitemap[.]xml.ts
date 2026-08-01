@@ -1,14 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
-import { ALL_ITEMS } from "@/lib/portfolio-data";
 
 const BASE_URL = "https://pixel2tech.com";
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority?: string;
+}
+
+/** "August 1, 2026" -> "2026-08-01"; returns undefined when unparseable. */
+function toIsoDate(value: string): string | undefined {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return undefined;
+  return parsed.toISOString().slice(0, 10);
 }
 
 export const Route = createFileRoute("/sitemap.xml")({
@@ -26,22 +33,20 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         const blogEntries: SitemapEntry[] = posts.map((p) => ({
           path: `/blog/${p.slug}`,
+          lastmod: toIsoDate(p.date),
           changefreq: "monthly",
           priority: "0.6",
         }));
 
-        const portfolioEntries: SitemapEntry[] = ALL_ITEMS.map((i) => ({
-          path: `/portfolio/${i.slug}`,
-          changefreq: "monthly",
-          priority: "0.6",
-        }));
-
-        const entries = [...staticEntries, ...blogEntries, ...portfolioEntries];
+        // Portfolio detail pages are templated showcase pages with no unique
+        // written content, so they are marked noindex and excluded here.
+        const entries = [...staticEntries, ...blogEntries];
 
         const urls = entries.map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
@@ -49,6 +54,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             .filter(Boolean)
             .join("\n"),
         );
+
 
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,

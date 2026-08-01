@@ -21,14 +21,25 @@ const LEGACY_MAP: Record<string, string> = {
 };
 
 function resolveLegacy(splat: string): string | null {
-  const path = splat.replace(/^\/+|\/+$/g, "").toLowerCase();
+  let path = splat.replace(/^\/+|\/+$/g, "").toLowerCase();
   if (!path) return null;
   if (LEGACY_MAP[path]) return LEGACY_MAP[path];
+
+  // Legacy WordPress feeds: /blog/feed, /category/software/feed, ...
+  path = path.replace(/\/(feed|rss|rss2|atom)$/, "");
+  if (!path) return "/";
+  if (LEGACY_MAP[path]) return LEGACY_MAP[path];
+
+  // Legacy WordPress taxonomy and archive URLs -> the blog index.
+  if (/^(tag|category|author|archives?|page|comments)(\/|$)/.test(path)) return "/blog";
+  if (/^\d{4}(\/\d{2})*(\/|$)/.test(path)) return "/blog";
+
   if (path.startsWith("portfolio-")) return "/portfolio";
   if (path.startsWith("service-") || path.startsWith("services-")) return "/services";
   if (path.startsWith("blog-")) return "/blog";
   return null;
 }
+
 
 export const Route = createFileRoute("/$")({
   beforeLoad: ({ params }) => {
