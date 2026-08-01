@@ -17,6 +17,7 @@ export type BlogPost = {
   keywords?: string[];
   faqs?: { q: string; a: string }[];
   related?: string[];
+  cta?: { title?: string; body?: string; primaryLabel?: string; secondaryLabel?: string };
   content: { heading: string; body: string[] }[];
 };
 
