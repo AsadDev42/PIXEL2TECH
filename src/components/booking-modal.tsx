@@ -98,9 +98,6 @@ export function BookingModal({
     <AnimatePresence>
       {open && (
         <motion.div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Book a Pixel2Tech Strategy Session"
           className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto p-4 sm:items-center sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -122,6 +119,9 @@ export function BookingModal({
           <motion.div
             ref={dialogRef}
             tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Book a Pixel2Tech Strategy Session"
             onClick={(e) => e.stopPropagation()}
             className="relative z-10 w-full max-w-6xl overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
             style={{ boxShadow: "var(--elev-3)" }}
@@ -174,7 +174,7 @@ export function BookingModal({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
                     >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-primary-foreground">
                         <b.icon
                           className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
                           aria-hidden="true"
