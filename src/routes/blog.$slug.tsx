@@ -3,7 +3,7 @@ import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
-import { getPost, posts, type BlogPost } from "@/lib/blog-posts";
+import { getPost, getRelatedPosts, posts, type BlogPost } from "@/lib/blog-posts";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
