@@ -3,7 +3,7 @@ import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
-import { getPost, posts, type BlogPost } from "@/lib/blog-posts";
+import { getPost, getRelatedPosts, posts, type BlogPost } from "@/lib/blog-posts";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -120,7 +120,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
-  const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const related = getRelatedPosts(post, 4);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
   const socials = [
     { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
@@ -200,8 +200,48 @@ function BlogPostPage() {
                     </section>
                   </FadeIn>
                 ) : null}
+
+                <FadeIn>
+                  <section aria-labelledby="related-articles">
+                    <h2 id="related-articles" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      Related Articles
+                    </h2>
+                    <p className="mt-2 text-[15px] text-muted-foreground sm:text-base">
+                      More reading on AI, automation, and building better business systems.
+                    </p>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                      {related.map((r) => (
+                        <Link
+                          key={r.slug}
+                          to="/blog/$slug"
+                          params={{ slug: r.slug }}
+                          className="group flex gap-4 rounded-2xl border border-border bg-background p-4 transition hover:bg-muted"
+                        >
+                          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-muted">
+                            <ResponsiveImage
+                              src={r.img}
+                              alt={r.title}
+                              width={480}
+                              height={480}
+                              sizes="120px"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-xs text-muted-foreground">{r.tag} · {r.time}</div>
+                            <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF] sm:text-base">
+                              {r.title}
+                            </h3>
+                            <p className="mt-1 line-clamp-2 text-xs text-muted-foreground sm:text-sm">{r.excerpt}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+                </FadeIn>
               </div>
             </article>
+
 
 
             {/* Sidebar */}
@@ -245,7 +285,7 @@ function BlogPostPage() {
                   <div>
                     <h3 className="text-base font-semibold text-foreground">Related Blogs</h3>
                     <ul className="mt-4 space-y-4">
-                      {related.map((r) => (
+                      {related.slice(0, 3).map((r) => (
                         <li key={r.slug}>
                           <Link to="/blog/$slug" params={{ slug: r.slug }} className="group flex gap-3">
                             <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
