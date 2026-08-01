@@ -285,7 +285,7 @@ function BlogPostPage() {
                   <div>
                     <h3 className="text-base font-semibold text-foreground">Related Blogs</h3>
                     <ul className="mt-4 space-y-4">
-                      {related.map((r) => (
+                      {related.slice(0, 3).map((r) => (
                         <li key={r.slug}>
                           <Link to="/blog/$slug" params={{ slug: r.slug }} className="group flex gap-3">
                             <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
