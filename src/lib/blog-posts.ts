@@ -1,6 +1,19 @@
-import klingImage from "@/assets/kling-o1-ai-video.webp.asset.json";
-import replaceAgencyImage from "@/assets/blog-replace-marketing-agency.jpg";
-import aiMeetingImage from "@/assets/blog-ai-meeting-assistants.jpg";
+import aiMeetingCover from "@/assets/ai-meeting-assistants-cover.jpg.asset.json";
+import replaceAgencyCover from "@/assets/replace-digital-marketing-agency-cover.jpg.asset.json";
+import startupInvestorCover from "@/assets/startup-investor-ready-guide-cover.jpg.asset.json";
+import aiVideoCover from "@/assets/ai-video-technology-cover.jpg.asset.json";
+import cybersecurityCover from "@/assets/cybersecurity-ai-protection-cover.jpg.asset.json";
+import aiRoiCover from "@/assets/ai-business-roi-cover.jpg.asset.json";
+import freelancerCover from "@/assets/freelancer-business-workspace-cover.jpg.asset.json";
+import betterSystemsCover from "@/assets/why-businesses-need-better-systems-cover.jpg.asset.json";
+import aiBrandingCover from "@/assets/ai-changing-modern-branding-cover.jpg.asset.json";
+import modernWebsiteCover from "@/assets/modern-website-2026-cover.jpg.asset.json";
+import goodBrandingCover from "@/assets/power-of-good-branding-cover.jpg.asset.json";
+import rebrandCover from "@/assets/rebrand-vs-refresh-cover.jpg.asset.json";
+import aiOpsCover from "@/assets/ai-ops-layer-cover.jpg.asset.json";
+import designSystemsCover from "@/assets/design-systems-small-teams-cover.jpg.asset.json";
+
+
 
 
 export type BlogPost = {
