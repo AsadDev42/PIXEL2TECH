@@ -17,6 +17,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
+import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
@@ -64,6 +65,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
   id: '/sitemap_index.xml',
   path: '/sitemap_index.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
+  id: '/wp-sitemap.xml',
+  path: '/wp-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
+  WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -296,6 +309,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap_index.xml'
       fullPath: '/sitemap_index.xml'
       preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wp-sitemap.xml': {
+      id: '/wp-sitemap.xml'
+      path: '/wp-sitemap.xml'
+      fullPath: '/wp-sitemap.xml'
+      preLoaderRoute: typeof WpSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -366,6 +386,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
+  WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
