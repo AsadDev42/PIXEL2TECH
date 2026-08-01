@@ -12,10 +12,21 @@ const sanitize = (s: string) =>
     .replace(/[ \t]+/g, " ")
     .trim();
 
+const optionalText = (max: number) =>
+  z
+    .string()
+    .max(max)
+    .transform(sanitize)
+    .optional();
+
 const submissionSchema = z.object({
-  name: z.string().transform(sanitize).pipe(z.string().min(2, "Name is required").max(100)),
+  // Newer forms send firstName/lastName/phone; older sections still send `name`.
+  firstName: optionalText(100),
+  lastName: optionalText(100),
+  name: optionalText(200),
+  phone: optionalText(40),
   email: z.string().transform((s) => sanitize(s).toLowerCase()).pipe(z.string().email("Invalid email").max(255)),
-  subject: z.string().transform(sanitize).pipe(z.string().min(2, "Subject is required").max(200)),
+  subject: optionalText(200),
   message: z.string().transform(sanitize).pipe(z.string().min(10, "Message is too short").max(5000)),
   // Honeypot — real users leave this empty. Bots fill it.
   website: z.string().max(200).optional(),
@@ -23,7 +34,7 @@ const submissionSchema = z.object({
   ts: z.number().int().optional(),
 });
 
-export type SubmissionInput = z.infer<typeof submissionSchema>;
+export type SubmissionInput = z.input<typeof submissionSchema>;
 
 // In-memory rate limit: max 5 submissions per IP per 10 minutes.
 // Resets on worker restart; sufficient as a lightweight spam brake.
@@ -65,6 +76,14 @@ export const submitContactForm = createServerFn({ method: "POST" })
       throw new Error("Too many submissions. Please try again in a few minutes.");
     }
 
+    // Normalise the name into first/last regardless of which form submitted.
+    const fallback = (data.name ?? "").split(" ").filter(Boolean);
+    const firstName = data.firstName || fallback[0] || "";
+    const lastName = data.lastName || fallback.slice(1).join(" ") || "";
+    if (!firstName) throw new Error("Please enter your name.");
+    const fullName = [firstName, lastName].filter(Boolean).join(" ");
+    const phone = data.phone ?? "";
+
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
     if (!url || !key) throw new Error("Backend not configured");
@@ -84,10 +103,11 @@ export const submitContactForm = createServerFn({ method: "POST" })
       },
     });
 
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: data.name,
+    const { error } = await supabase.from("contacts").insert({
+      first_name: firstName,
+      last_name: lastName,
       email: data.email,
-      subject: data.subject,
+      phone,
       message: data.message,
     });
 
@@ -98,24 +118,33 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // Owner notification + visitor confirmation via Lovable's managed email API.
     // Best-effort: a delivery problem must not fail the submission itself.
-    const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sales@pixel2tech.com";
+    const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sale@pixel2tech.com";
     const eventId = `${data.email}-${Date.now()}`;
+    const submittedAt = new Date().toLocaleString("en-US", {
+      timeZone: "Asia/Karachi",
+      dateStyle: "full",
+      timeStyle: "short",
+    });
     try {
       const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
       await sendTemplateEmail("contact-notification", ownerEmail, {
         templateData: {
-          name: data.name,
+          firstName,
+          lastName,
+          name: fullName,
           email: data.email,
-          subject: data.subject,
+          phone,
+          subject: data.subject ?? "",
           message: data.message,
+          submittedAt,
         },
         idempotencyKey: `contact-notification-${eventId}`,
         replyTo: data.email,
       });
       await sendTemplateEmail("contact-confirmation", data.email, {
         templateData: {
-          name: data.name,
-          subject: data.subject,
+          name: firstName,
+          subject: data.subject ?? "",
           message: data.message,
         },
         idempotencyKey: `contact-confirmation-${eventId}`,
@@ -126,4 +155,3 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     return { ok: true as const };
   });
-
