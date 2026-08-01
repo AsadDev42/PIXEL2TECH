@@ -30,6 +30,10 @@ export const Route = createFileRoute("/portfolio/$slug")({
       meta: [
         { title },
         { name: "description", content: desc },
+        // Templated showcase pages without unique written content: keep them
+        // crawlable and link-following, but out of the index.
+        { name: "robots", content: "noindex, follow" },
+
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
