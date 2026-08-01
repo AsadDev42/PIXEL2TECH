@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play } from "lucide-react";
@@ -10,29 +10,34 @@ import {
   getDeliverables,
   type PortfolioItem,
 } from "@/lib/portfolio-data";
+import { getProjectCopy } from "@/lib/portfolio-copy";
+
 
 export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
   loader: ({ params }) => {
     const item = getItemBySlug(params.slug);
-    if (!item) throw notFound();
+    // Unknown project slugs are almost always retired WordPress URLs, so send
+    // them to the portfolio index with a 301 rather than serving a 404.
+    if (!item) throw redirect({ to: "/portfolio", statusCode: 301 });
     return { item };
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Project not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Project — Pixel2Tech" }] };
     }
     const { item } = loaderData;
-    const title = `${item.title} — Pixel2Tech`;
-    const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the brand, our approach and the outcome.`;
+    const copy = getProjectCopy(item);
+    const title = `${item.title} — ${item.subcategory} Case Study | Pixel2Tech`;
+    const desc = copy.metaDescription;
     const url = `https://pixel2tech.com/portfolio/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        // Templated showcase pages without unique written content: keep them
-        // crawlable and link-following, but out of the index.
-        { name: "robots", content: "noindex, follow" },
+        { name: "robots", content: "index, follow" },
+
+
 
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
@@ -243,6 +248,8 @@ function PortfolioDetailPage() {
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
+  const copy = getProjectCopy(item);
+
 
   return (
     <PageShell>
@@ -272,10 +279,9 @@ function PortfolioDetailPage() {
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             <div className="md:col-span-2">
               <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                A {item.subcategory.toLowerCase()} project we shipped for <span className="font-semibold text-foreground">{brand}</span>.
-                We designed the full experience end-to-end — from strategy and concept to final production — to help the brand stand out,
-                connect with the right audience, and turn attention into measurable growth.
+                {copy.overview}
               </p>
+
             </div>
             <div className="rounded-2xl border border-border bg-background p-5 dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
               <dl className="grid grid-cols-2 gap-4 text-sm">
@@ -333,10 +339,9 @@ function PortfolioDetailPage() {
             </div>
           </FadeIn>
           {[
-            { Icon: Target, title: "The Challenge", body: `${brand} needed a ${item.subcategory.toLowerCase()} solution that felt distinctly theirs — one that could compete against bigger players without inflating cost, and stay flexible as the brand evolved.` },
-            { Icon: Wrench, title: "What We Did", body: `We ran a focused discovery, aligned on goals and audience, then designed and shipped the ${item.subcategory.toLowerCase()} end-to-end. Every decision tied to a business outcome, not just aesthetics.` },
-            { Icon: TrendingUp, title: "The Result", body: `A polished, on-brand ${item.subcategory.toLowerCase()} that helped ${brand} attract the right customers, improve engagement, and create a foundation the team can keep building on.` },
-          ].slice(0, 2).map(({ Icon, title, body }) => (
+            { Icon: Target, title: "The challenge", body: copy.challenge },
+            { Icon: Wrench, title: "Our approach", body: copy.approach },
+          ].map(({ Icon, title, body }) => (
             <FadeIn key={title}>
               <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
                 <div aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -348,7 +353,27 @@ function PortfolioDetailPage() {
             </FadeIn>
           ))}
         </div>
+
+        {/* Outcome + measurable results */}
+        <FadeIn>
+          <div className="mt-8 rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <div aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <TrendingUp className="h-5 w-5" strokeWidth={1.75} />
+            </div>
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">The outcome</h3>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">{copy.outcome}</p>
+            <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+              {copy.results.map((r) => (
+                <div key={r.label} className="rounded-xl bg-muted px-5 py-4 dark:bg-white/[0.04]">
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">{r.label}</dt>
+                  <dd className="mt-1 font-heading text-2xl font-bold text-foreground">{r.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </FadeIn>
       </section>
+
 
       {/* Related */}
       {related.length > 0 && (

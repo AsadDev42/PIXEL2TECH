@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
+import { ALL_ITEMS } from "@/lib/portfolio-data";
+
 
 const BASE_URL = "https://pixel2tech.com";
 
@@ -38,9 +40,14 @@ export const Route = createFileRoute("/sitemap.xml")({
           priority: "0.6",
         }));
 
-        // Portfolio detail pages are templated showcase pages with no unique
-        // written content, so they are marked noindex and excluded here.
-        const entries = [...staticEntries, ...blogEntries];
+        const portfolioEntries: SitemapEntry[] = ALL_ITEMS.map((i) => ({
+          path: `/portfolio/${i.slug}`,
+          changefreq: "monthly",
+          priority: "0.5",
+        }));
+
+        const entries = [...staticEntries, ...blogEntries, ...portfolioEntries];
+
 
         const urls = entries.map((e) =>
           [
