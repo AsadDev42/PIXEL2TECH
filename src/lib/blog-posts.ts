@@ -1,4 +1,6 @@
 import klingImage from "@/assets/kling-o1-ai-video.webp.asset.json";
+import replaceAgencyImage from "@/assets/blog-replace-marketing-agency.jpg";
+
 
 export type BlogPost = {
   slug: string;
