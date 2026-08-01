@@ -132,10 +132,15 @@ export function resolveLegacy(splat: string): string | null {
   path = path.replace(/^\/+|\/+$/g, "").toLowerCase();
   if (!path) return null;
 
+  // Bare WordPress feed endpoints (/feed, /rss, /atom, /feed.xml) belong on
+  // the blog index, not the homepage.
+  if (/^(feed|rss|rss2|atom)(\.xml)?$/.test(path)) return "/blog";
+
   // Drop WordPress feed / pagination suffixes: /blog/feed, /category/x/page/2
-  path = path.replace(/\/(feed|rss|rss2|atom|amp)$/, "");
+  path = path.replace(/\/(feed|rss|rss2|atom|amp)(\.xml)?$/, "");
   path = path.replace(/\/page\/\d+$/, "");
   if (!path) return "/";
+
 
   if (LEGACY_MAP[path]) return LEGACY_MAP[path];
 
