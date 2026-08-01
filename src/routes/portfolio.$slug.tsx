@@ -17,24 +17,27 @@ export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
   loader: ({ params }) => {
     const item = getItemBySlug(params.slug);
-    if (!item) throw notFound();
+    // Unknown project slugs are almost always retired WordPress URLs, so send
+    // them to the portfolio index with a 301 rather than serving a 404.
+    if (!item) throw redirect({ to: "/portfolio", statusCode: 301 });
     return { item };
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Project not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Project — Pixel2Tech" }] };
     }
     const { item } = loaderData;
-    const title = `${item.title} — Pixel2Tech`;
-    const desc = `${item.category} · ${item.subcategory} — a Pixel2Tech case study covering the brand, our approach and the outcome.`;
+    const copy = getProjectCopy(item);
+    const title = `${item.title} — ${item.subcategory} Case Study | Pixel2Tech`;
+    const desc = copy.metaDescription;
     const url = `https://pixel2tech.com/portfolio/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        // Templated showcase pages without unique written content: keep them
-        // crawlable and link-following, but out of the index.
-        { name: "robots", content: "noindex, follow" },
+        { name: "robots", content: "index, follow" },
+
+
 
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
