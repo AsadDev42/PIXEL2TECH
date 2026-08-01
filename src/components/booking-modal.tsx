@@ -1,13 +1,51 @@
 import { useEffect } from "react";
-import { Clock, Video, ShieldCheck, Target, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Clock,
+  Video,
+  ShieldCheck,
+  Target,
+  X,
+  Lock,
+  CalendarDays,
+  ArrowRight,
+} from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
 
-const CAL_URL = "https://calendly.com/pixel2tech/strategy-call?primary_color=0784ff&hide_gdpr_banner=1";
+const CAL_URL =
+  "https://calendly.com/pixel2tech/strategy-call?primary_color=1e90ff&hide_gdpr_banner=1&hide_event_type_details=1&background_color=ffffff&text_color=0f172a";
 
-export function BookingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+const benefits = [
+  {
+    icon: Clock,
+    label: "30-minute consultation",
+    desc: "A focused call to understand your goals.",
+  },
+  {
+    icon: Video,
+    label: "Google Meet call",
+    desc: "Join instantly from any device.",
+  },
+  {
+    icon: ShieldCheck,
+    label: "No sales pressure",
+    desc: "Honest advice, no aggressive pitches.",
+  },
+  {
+    icon: Target,
+    label: "Actionable recommendations",
+    desc: "Leave with a clear next-step plan.",
+  },
+];
 
-
+export function BookingModal({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   // Lock body scroll
   useEffect(() => {
     if (!open) return;
@@ -21,7 +59,9 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
   // Load Calendly script once
   useEffect(() => {
     if (!open) return;
-    const existing = document.querySelector<HTMLScriptElement>('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src="https://assets.calendly.com/assets/external/widget.js"]',
+    );
     if (existing) return;
     const s = document.createElement("script");
     s.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -52,84 +92,154 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
     return () => window.removeEventListener("message", onMsg);
   }, [open]);
 
-
   const dialogRef = useFocusTrap<HTMLDivElement>(open);
 
-  if (!open) return null;
-
-  const calUrl = CAL_URL;
-
-
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Schedule a Strategy Session"
-      className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-foreground/40 p-4 backdrop-blur-md sm:items-center sm:p-6"
-      onClick={onClose}
-    >
-      <div
-        ref={dialogRef}
-        tabIndex={-1}
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-border bg-background shadow-2xl focus:outline-none"
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute right-4 top-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background/80 text-muted-foreground backdrop-blur ring-1 ring-border transition hover:bg-muted hover:text-foreground"
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto p-4 sm:items-center sm:p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
         >
-          <X className="h-5 w-5" aria-hidden="true" />
-        </button>
+          {/* Backdrop */}
+          <motion.div
+            className="absolute inset-0 bg-foreground/25 backdrop-blur-md"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            aria-hidden="true"
+          />
 
-        <div className="grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-          {/* Left: essentials */}
-          <div className="flex flex-col gap-8 border-b border-border bg-muted/40 p-6 sm:p-8 md:border-b-0 md:border-r md:p-10">
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0784ff]">
-                Strategy Session
-              </div>
-              <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
-                Let&apos;s map out your next move
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                A focused 30-minute call to understand your goals and outline what we&apos;d build.
-              </p>
+          {/* Modal */}
+          <motion.div
+            ref={dialogRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Book a Pixel2Tech Strategy Session"
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 w-full max-w-6xl overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
+            style={{ boxShadow: "var(--elev-3)" }}
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.98, y: 16 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Close button */}
+            <motion.button
+              type="button"
+              onClick={onClose}
+              aria-label="Close booking modal"
+              className="absolute right-5 top-5 z-50 grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-[var(--elev-1)] transition-all duration-200 hover:rotate-90 hover:border-brand/30 hover:text-brand hover:shadow-[var(--elev-2)]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </motion.button>
+
+            <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+              {/* Left: value + trust */}
+              <motion.div
+                className="flex flex-col gap-8 border-b border-border/60 bg-gradient-to-br from-muted/50 to-muted/20 p-8 lg:border-b-0 lg:border-r lg:border-border/60 lg:p-10"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
+                    <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
+                    Free Strategy Session
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                    Let&apos;s Build Something Great Together
+                  </h2>
+                  <p className="max-w-md text-[15px] leading-relaxed text-muted-foreground">
+                    Book a free 30-minute strategy session with our team to
+                    discuss your goals, challenges, and the right digital
+                    solution for your business.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {benefits.map((b, i) => (
+                    <motion.div
+                      key={b.label}
+                      className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-background p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[var(--elev-2)]"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
+                    >
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-primary-foreground">
+                        <b.icon
+                          className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-foreground">
+                          {b.label}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {b.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex items-start gap-3 rounded-2xl border border-border/40 bg-background/60 p-4 text-sm text-muted-foreground">
+                  <Lock
+                    className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    Your information stays private and is only used to prepare
+                    for your session.
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Right: Calendly embed */}
+              <motion.div
+                className="flex flex-col gap-5 p-6 lg:p-8"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                      Pixel2Tech Strategy Session
+                    </h3>
+                    <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+                      A focused conversation to understand your business goals
+                      and explore how we can help you Design, Develop, and
+                      Grow.
+                    </p>
+                  </div>
+                  <span className="hidden h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid">
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                </div>
+
+                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
+                  <div
+                    key={CAL_URL}
+                    className="calendly-inline-widget"
+                    data-url={CAL_URL}
+                    style={{ minWidth: 280, height: 640 }}
+                  />
+                </div>
+              </motion.div>
             </div>
-
-            <div className="flex flex-wrap gap-2">
-              <Pill icon={<Clock className="h-3.5 w-3.5" />} label="30 min" />
-              <Pill icon={<Video className="h-3.5 w-3.5" />} label="Google Meet" />
-              <Pill icon={<ShieldCheck className="h-3.5 w-3.5" />} label="No sales pitch" />
-              <Pill icon={<Target className="h-3.5 w-3.5" />} label="Actionable plan" />
-            </div>
-
-            <p className="mt-auto text-xs text-muted-foreground">
-              🔒 Your details stay private and are never shared.
-            </p>
-          </div>
-
-          {/* Right: scheduler */}
-          <div className="p-4 sm:p-6 md:p-8">
-            <div
-              key={calUrl}
-              className="calendly-inline-widget overflow-hidden rounded-2xl border border-border bg-background"
-              data-url={calUrl}
-              style={{ minWidth: 280, height: 640 }}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground">
-      <span className="text-[#0784ff]" aria-hidden="true">{icon}</span>
-      {label}
-    </span>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
