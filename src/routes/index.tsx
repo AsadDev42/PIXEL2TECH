@@ -69,7 +69,7 @@ const homeContactSchema = z.object({
   lastName: z.string().trim().min(1, "Required").max(80),
   email: z.string().trim().email("Enter a valid email").max(255),
   phone: z.string().trim().regex(/^[0-9+\-\s().#*]{6,25}$/, "Only numbers and phone characters (#, -, *, etc) are accepted."),
-  message: z.string().trim().min(1, "Required").max(5000),
+  message: z.string().trim().min(10, "Please write at least 10 characters").max(5000),
 });
 type HomeFormState = z.infer<typeof homeContactSchema>;
 const homeInitial: HomeFormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };

@@ -244,7 +244,7 @@ const clientSchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
   subject: z.string().trim().min(1, "Please enter a subject").max(200),
-  message: z.string().trim().min(1, "Please write a message").max(5000),
+  message: z.string().trim().min(10, "Please write at least 10 characters").max(5000),
 });
 
 type FormState = { name: string; email: string; subject: string; message: string };
