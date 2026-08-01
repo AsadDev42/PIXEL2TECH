@@ -43,7 +43,7 @@ export const posts: BlogPost[] = [
     "author": "Pixel2Tech Team",
     "title": "AI Meeting Assistants: Are They Worth It for Your Business in 2026?",
     "excerpt": "Automated notes, transcripts, and action items sound great on paper. Here is an honest look at the benefits, limits, ROI, and how to choose the right AI meeting assistant.",
-    "img": aiMeetingImage,
+    "img": aiMeetingCover.url,
     "related": [
       "is-ai-worth-the-investment",
       "why-modern-brands-need-an-ai-ops-layer",
