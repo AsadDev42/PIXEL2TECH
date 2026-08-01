@@ -1,7 +1,9 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
+import { classifyLegacyPath, renderGonePage } from "./lib/legacy-urls";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+
 
 const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
   if (new URL(request.url).pathname.startsWith("/lovable/")) {
