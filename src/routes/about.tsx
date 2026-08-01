@@ -166,9 +166,10 @@ function AboutPage() {
               About Us
             </div>
             <h1 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
-              One Creative Agency.{" "}
-              <span className="text-[#2b7fff]">Not Ten Freelancers.</span>
+              The Creative Agency{" "}
+              <span className="text-[#2b7fff]">Behind the Work.</span>
             </h1>
+
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               A small, senior team of designers, developers and strategists — building brands, websites and digital products end-to-end under one roof.
             </p>
