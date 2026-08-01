@@ -4,6 +4,7 @@ import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
 import { getPost, getRelatedPosts, posts, type BlogPost } from "@/lib/blog-posts";
+import { BlogCta } from "@/components/blog-cta";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
