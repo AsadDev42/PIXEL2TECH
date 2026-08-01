@@ -241,7 +241,7 @@ export const posts: BlogPost[] = [
     title: "10 Signs It's Time to Replace Your Digital Marketing Agency",
     excerpt:
       "Is your marketing agency failing to deliver results? Here are the warning signs, the hidden costs, and what a real digital growth partner looks like.",
-    img: replaceAgencyImage,
+    img: replaceAgencyCover.url,
     metaTitle: "10 Signs to Replace Your Digital Marketing Agency | Pixel2Tech",
     metaDescription:
       "Is your marketing agency failing to deliver? Discover the warning signs, hidden costs, and how the right digital partner accelerates business growth.",
@@ -444,7 +444,7 @@ export const posts: BlogPost[] = [
     title: "Before You Raise Funding, Make Sure Your Startup Looks Investable",
     excerpt:
       "Investors research your website, product and brand long before they read your deck. Here is how to make your startup look investor-ready before you raise.",
-    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: startupInvestorCover.url,
     metaTitle: "How to Make Your Startup Investor-Ready Before Raising Funding | Pixel2Tech",
     metaDescription:
       "Learn what investors look for before funding a startup and discover how a professional website, MVP, branding, and product strategy can increase your chances of raising investment.",
@@ -543,7 +543,7 @@ export const posts: BlogPost[] = [
     title: "Kling O1 Explained: Features, Use Cases & Business Benefits (2026 Guide)",
     excerpt:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing and content creation.",
-    img: klingImage.url,
+    img: aiVideoCover.url,
     metaTitle: "Kling O1 Explained: Features, Use Cases & Business Benefits | Pixel2Tech",
     metaDescription:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing, content creation, and digital experiences.",
@@ -640,7 +640,7 @@ export const posts: BlogPost[] = [
     title: "Bots Have Officially Taken Over the Internet — Here's What It Means for Your Website in 2026",
     excerpt:
       "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
-    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: cybersecurityCover.url,
     metaTitle: "Bots Now Outnumber Humans Online: What It Means for You",
     metaDescription:
       "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
@@ -717,7 +717,7 @@ export const posts: BlogPost[] = [
     title: "Is AI Worth the Investment? A Business Owner's Guide to Understanding the Real Value of AI",
     excerpt:
       "Learn when AI is worth investing in, where businesses waste money on AI, and how to implement AI strategically for real business growth.",
-    img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: aiRoiCover.url,
     metaTitle: "Is AI Worth the Investment for Your Business? | Pixel2Tech",
     metaDescription:
       "Learn when AI is worth investing in, where businesses waste money on AI, and how to implement AI strategically for real business growth.",
@@ -827,7 +827,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Freelancers Fail on Upwork (And What Clients Actually Want)",
     excerpt:
       "Most freelancers lose Upwork projects for the same reason: they focus on getting hired while clients focus on getting results.",
-    img: "https://images.unsplash.com/photo-1761426952799-108385c4753d?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: freelancerCover.url,
     metaTitle: "Why You're Not Winning Upwork Projects | Pixel2Tech",
     metaDescription:
       "Discover why many freelancers struggle on Upwork and how to win more projects by thinking like a client instead of just another applicant.",
@@ -919,7 +919,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Businesses Don't Need More Software. They Need Better Systems",
     excerpt:
       "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software — it's the system behind it.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: betterSystemsCover.url,
     metaTitle: "Why Businesses Need Better Systems Instead of More Software | Pixel2Tech",
     metaDescription:
       "Learn why businesses struggle despite using multiple software tools and how AI, automation, and connected systems help companies scale more efficiently.",
@@ -1009,7 +1009,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "How AI is Changing Modern Branding",
     excerpt: "The tools have changed. The principles haven't. Here's how we blend both.",
-    img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: aiBrandingCover.url,
     content: [
       { heading: "Introduction", body: [
         "AI is reshaping how brands research, design, and communicate — but the fundamentals of clarity and consistency still decide who wins.",
@@ -1032,7 +1032,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Why Every Business Needs a Modern Website in 2026",
     excerpt: "A 10-point audit to figure out if your website is helping or hurting.",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: modernWebsiteCover.url,
     content: [
       { heading: "Introduction", body: [
         "Your website is your storefront, your salesperson, and your credibility check — all before a human ever replies.",
@@ -1054,7 +1054,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "The Power of Good Branding for Business Growth",
     excerpt: "Why a strong brand system compounds every marketing dollar you spend.",
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: goodBrandingCover.url,
     content: [
       { heading: "Introduction", body: [
         "Branding is more than just a logo. It is the overall identity of your business and how customers perceive your company.",
@@ -1076,7 +1076,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Rebrand vs. Refresh: A Founder's Decision Framework",
     excerpt: "Not sure whether to rebrand? Answer these five questions first.",
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: rebrandCover.url,
     content: [
       { heading: "Introduction", body: [
         "A full rebrand is expensive and risky. A refresh is often enough. Here's how to tell them apart.",
@@ -1097,7 +1097,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Why Modern Brands Need an AI Ops Layer",
     excerpt: "The teams that win in the next 5 years will run on AI-native workflows.",
-    img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: aiOpsCover.url,
     content: [
       { heading: "Introduction", body: [
         "AI Ops is the connective tissue between your tools, your data, and your team.",
@@ -1119,7 +1119,7 @@ export const posts: BlogPost[] = [
     title: "Design Systems for Small Teams: How to Build Better Products Faster",
     excerpt:
       "A design system isn't only for large companies. Here's how small teams build simple, practical systems that improve consistency, speed, and product quality.",
-    img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600&auto=format&fit=crop&fm=webp&q=70",
+    img: designSystemsCover.url,
     metaTitle: "Design Systems for Small Teams: A Practical Guide | Pixel2Tech",
     metaDescription:
       "Learn how small teams can build effective design systems using simple components, tokens, and patterns to improve consistency, speed, and product quality.",
