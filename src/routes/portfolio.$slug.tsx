@@ -243,6 +243,8 @@ function PortfolioDetailPage() {
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
+  const copy = getProjectCopy(item);
+
 
   return (
     <PageShell>
