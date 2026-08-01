@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { posts } from "@/lib/blog-posts";
+import { ALL_ITEMS } from "@/lib/portfolio-data";
+
 
 const BASE_URL = "https://pixel2tech.com";
 
