@@ -9,7 +9,10 @@ import { BlogCta } from "@/components/blog-cta";
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
     const post = getPost(params.slug);
-    if (!post) throw notFound();
+    // Retired WordPress article URLs land here — 301 to the blog index
+    // instead of serving a 404 to Googlebot.
+    if (!post) throw redirect({ to: "/blog", statusCode: 301 });
+
     return { post };
   },
   head: ({ loaderData }) => {
