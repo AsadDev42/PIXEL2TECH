@@ -30,6 +30,13 @@ export const posts: BlogPost[] = [
     "title": "AI Meeting Assistants: Are They Worth It for Your Business in 2026?",
     "excerpt": "Automated notes, transcripts, and action items sound great on paper. Here is an honest look at the benefits, limits, ROI, and how to choose the right AI meeting assistant.",
     "img": aiMeetingImage,
+    "related": [
+      "is-ai-worth-the-investment",
+      "why-modern-brands-need-an-ai-ops-layer",
+      "why-businesses-need-better-systems",
+      "how-ai-is-changing-modern-branding",
+      "design-systems-for-small-teams",
+    ],
     "metaTitle": "AI Meeting Assistants: Are They Worth It for Your Business? | Pixel2Tech",
     "metaDescription": "Discover whether AI meeting assistants are worth the investment for your business. Learn the benefits, challenges, ROI, and how to choose the right solution.",
     "keywords": [
