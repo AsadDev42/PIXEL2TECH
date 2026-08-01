@@ -157,6 +157,12 @@ const REDIRECT_PREFIXES: [RegExp, string][] = [
   [/^blog-/, "/blog"],
 ];
 
+/** Live top-level pages — never classified as legacy (would self-redirect). */
+const LIVE_EXACT = new Set(["about", "services", "portfolio", "blog", "contact"]);
+
+/** Live sections with dynamic children: /blog/$slug, /portfolio/$slug. */
+const LIVE_PREFIXES = ["blog", "portfolio"];
+
 /** Lowercase, strip query/hash and surrounding slashes. */
 export function normalizePath(input: string): string {
   const path = input.split("?")[0]!.split("#")[0]!;
@@ -166,6 +172,16 @@ export function normalizePath(input: string): string {
 /**
  * Classify a request path. Returns `null` when the path is not a legacy URL
  * and should be handled by the router as normal.
+ *
+ * Order matters:
+ *  1. reserved/internal paths pass through untouched;
+ *  2. exact legacy pages redirect (most specific rule wins);
+ *  3. retired CMS shapes return 410 — this runs before the generic prefix
+ *     redirects so taxonomy archives like /portfolio-category/x are dropped
+ *     rather than funnelled into /portfolio;
+ *  4. live routes pass through — critical, otherwise /services would match
+ *     the /service* prefix rule and redirect to itself forever;
+ *  5. remaining legacy prefixes redirect.
  */
 export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
   const path = normalizePath(rawPath);
@@ -175,19 +191,23 @@ export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
   if (RESERVED_PREFIXES.includes(first)) return null;
   if (RESERVED_EXACT.has(path)) return null;
 
-  // Redirects win over 410 so that, e.g., /services/branding keeps its equity
-  // even though /service/* looks archive-shaped.
-  if (REDIRECT_MAP[path]) return { type: "redirect", target: REDIRECT_MAP[path] };
-  for (const [pattern, target] of REDIRECT_PREFIXES) {
-    if (pattern.test(path)) return { type: "redirect", target };
-  }
+  const mapped = REDIRECT_MAP[path];
+  if (mapped) return { type: "redirect", target: mapped };
 
   for (const pattern of GONE_PATTERNS) {
     if (pattern.test(path)) return { type: "gone" };
   }
 
+  if (LIVE_EXACT.has(path)) return null;
+  if (LIVE_PREFIXES.includes(first)) return null;
+
+  for (const [pattern, target] of REDIRECT_PREFIXES) {
+    if (pattern.test(path)) return { type: "redirect", target };
+  }
+
   return null;
 }
+
 
 /** Minimal, self-contained 410 page. Marked noindex so it is never surfaced. */
 export function renderGonePage(path: string): string {
