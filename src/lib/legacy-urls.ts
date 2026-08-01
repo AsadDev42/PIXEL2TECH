@@ -93,7 +93,7 @@ const REDIRECT_MAP: Record<string, string> = {
   // --- About / team ---
   "about-us": "/about",
   aboutus: "/about",
-  about: "/about",
+  
   team: "/about",
   "team-details": "/about",
   "team-stye-4": "/about",
