@@ -200,8 +200,48 @@ function BlogPostPage() {
                     </section>
                   </FadeIn>
                 ) : null}
+
+                <FadeIn>
+                  <section aria-labelledby="related-articles">
+                    <h2 id="related-articles" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      Related Articles
+                    </h2>
+                    <p className="mt-2 text-[15px] text-muted-foreground sm:text-base">
+                      More reading on AI, automation, and building better business systems.
+                    </p>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                      {related.map((r) => (
+                        <Link
+                          key={r.slug}
+                          to="/blog/$slug"
+                          params={{ slug: r.slug }}
+                          className="group flex gap-4 rounded-2xl border border-border bg-background p-4 transition hover:bg-muted"
+                        >
+                          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-muted">
+                            <ResponsiveImage
+                              src={r.img}
+                              alt={r.title}
+                              width={480}
+                              height={480}
+                              sizes="120px"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-xs text-muted-foreground">{r.tag} · {r.time}</div>
+                            <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF] sm:text-base">
+                              {r.title}
+                            </h3>
+                            <p className="mt-1 line-clamp-2 text-xs text-muted-foreground sm:text-sm">{r.excerpt}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+                </FadeIn>
               </div>
             </article>
+
 
 
             {/* Sidebar */}
