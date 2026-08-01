@@ -120,7 +120,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
-  const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const related = getRelatedPosts(post, 4);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
   const socials = [
     { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
