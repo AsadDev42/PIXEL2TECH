@@ -272,10 +272,9 @@ function PortfolioDetailPage() {
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             <div className="md:col-span-2">
               <p className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                A {item.subcategory.toLowerCase()} project we shipped for <span className="font-semibold text-foreground">{brand}</span>.
-                We designed the full experience end-to-end — from strategy and concept to final production — to help the brand stand out,
-                connect with the right audience, and turn attention into measurable growth.
+                {copy.overview}
               </p>
+
             </div>
             <div className="rounded-2xl border border-border bg-background p-5 dark:border-white/10 dark:bg-white/[0.03] sm:p-6">
               <dl className="grid grid-cols-2 gap-4 text-sm">
