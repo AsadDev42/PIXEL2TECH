@@ -141,10 +141,8 @@ function ContactPage() {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await submit({ data: { ...data, website, ts: loadedAt } });
-      trackEvent("contact_form_submitted", { subject: data.subject });
-      toast.success("Message sent!", {
-        description: "Thanks — we'll get back to you within one business day.",
-      });
+      trackEvent("contact_form_submitted", {});
+      toast.success("Thank you for contacting us. Our team will get back to you soon.");
       reset();
     } catch (err) {
       toast.error("Couldn't send message", {
@@ -154,10 +152,12 @@ function ContactPage() {
   });
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe", inputMode: "text", enterKeyHint: "next" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry", inputMode: "text", enterKeyHint: "next" },
+    { id: "firstName", label: "First Name", type: "text", autoComplete: "given-name", placeholder: "John", inputMode: "text", enterKeyHint: "next" },
+    { id: "lastName", label: "Last Name", type: "text", autoComplete: "family-name", placeholder: "Doe", inputMode: "text", enterKeyHint: "next" },
+    { id: "email", label: "Email Address", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
+    { id: "phone", label: "Phone Number", type: "tel", autoComplete: "tel", placeholder: "+92 300 1234567", inputMode: "tel", enterKeyHint: "next" },
   ] as const;
+
 
 
   return (
