@@ -16,6 +16,7 @@ export type BlogPost = {
   metaDescription?: string;
   keywords?: string[];
   faqs?: { q: string; a: string }[];
+  related?: string[];
   content: { heading: string; body: string[] }[];
 };
 
