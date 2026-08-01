@@ -107,15 +107,21 @@ export const Route = createFileRoute("/contact")({
 });
 
 const clientSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(100),
+  firstName: z.string().trim().min(2, "Please enter your first name").max(100),
+  lastName: z.string().trim().min(1, "Please enter your last name").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  subject: z.string().trim().min(2, "Please enter a subject").max(200),
+  phone: z
+    .string()
+    .trim()
+    .min(7, "Please enter a valid phone number")
+    .max(40)
+    .regex(/^[+]?[\d\s()-]{7,20}$/, "Please enter a valid phone number"),
   message: z.string().trim().min(10, "Please write at least 10 characters").max(5000),
-
 });
 
-type FormState = { name: string; email: string; subject: string; message: string };
-const initial: FormState = { name: "", email: "", subject: "", message: "" };
+type FormState = { firstName: string; lastName: string; email: string; phone: string; message: string };
+const initial: FormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
+
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -135,10 +141,8 @@ function ContactPage() {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await submit({ data: { ...data, website, ts: loadedAt } });
-      trackEvent("contact_form_submitted", { subject: data.subject });
-      toast.success("Message sent!", {
-        description: "Thanks — we'll get back to you within one business day.",
-      });
+      trackEvent("contact_form_submitted", {});
+      toast.success("Thank you for contacting us. Our team will get back to you soon.");
       reset();
     } catch (err) {
       toast.error("Couldn't send message", {
@@ -148,10 +152,12 @@ function ContactPage() {
   });
 
   const fields = [
-    { id: "name", label: "Your Name", type: "text", autoComplete: "name", placeholder: "John Doe", inputMode: "text", enterKeyHint: "next" },
-    { id: "email", label: "Your Email", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
-    { id: "subject", label: "Subject", type: "text", autoComplete: "off", placeholder: "Project Inquiry", inputMode: "text", enterKeyHint: "next" },
+    { id: "firstName", label: "First Name", type: "text", autoComplete: "given-name", placeholder: "John", inputMode: "text", enterKeyHint: "next" },
+    { id: "lastName", label: "Last Name", type: "text", autoComplete: "family-name", placeholder: "Doe", inputMode: "text", enterKeyHint: "next" },
+    { id: "email", label: "Email Address", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
+    { id: "phone", label: "Phone Number", type: "tel", autoComplete: "tel", placeholder: "+92 300 1234567", inputMode: "tel", enterKeyHint: "next" },
   ] as const;
+
 
 
   return (
@@ -206,7 +212,7 @@ function ContactPage() {
                       enterKeyHint={f.enterKeyHint}
                       autoComplete={f.autoComplete}
                       placeholder={f.placeholder}
-                      value={form[f.id]}
+                      value={String(form[f.id] ?? "")}
                       onChange={setField(f.id)}
                       onBlur={handleBlur(f.id)}
                       disabled={loading}
