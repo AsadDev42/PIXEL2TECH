@@ -187,7 +187,64 @@ function PortfolioPage() {
         </div>
       </section>
 
+      {/*
+        Full project directory.
+
+        The tabbed grid above only renders the active subcategory, so on the
+        server exactly one tab's projects appear in the HTML. Crawlers never
+        run the tab state, which left every other case study with no inbound
+        internal link at all. This section renders every project as a plain
+        link on the server so the whole portfolio is reachable and indexable.
+      */}
+      <section className="border-t border-border bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <FadeIn>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Browse all projects
+            </h2>
+            <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
+              Every case study we&apos;ve published, grouped by discipline.
+            </p>
+          </FadeIn>
+
+          <div className="mt-10 space-y-10">
+            {CATEGORIES.map((c) => (
+              <div key={c}>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                  {c}
+                </h3>
+                <div className="mt-4 space-y-6">
+                  {SUBS[c].map((s) => {
+                    const group = WORK[c][s] ?? [];
+                    if (group.length === 0) return null;
+                    return (
+                      <div key={`${c}-${s}`}>
+                        <h4 className="text-sm font-semibold text-foreground">{s}</h4>
+                        <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+                          {group.map((w) => (
+                            <li key={w.slug}>
+                              <Link
+                                to="/portfolio/$slug"
+                                params={{ slug: w.slug }}
+                                className="text-sm text-muted-foreground underline-offset-4 transition hover:text-foreground hover:underline"
+                              >
+                                {w.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
+
       <section className="bg-muted/60 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
