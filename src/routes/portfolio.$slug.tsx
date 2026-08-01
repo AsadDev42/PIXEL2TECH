@@ -1,4 +1,4 @@
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play } from "lucide-react";
@@ -17,9 +17,11 @@ export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
   loader: ({ params }) => {
     const item = getItemBySlug(params.slug);
-    // Unknown project slugs are almost always retired WordPress URLs, so send
-    // them to the portfolio index with a 301 rather than serving a 404.
-    if (!item) throw redirect({ to: "/portfolio", statusCode: 301 });
+    // A slug that does not exist is a genuine 404. Redirecting every unknown
+    // slug to /portfolio would be a soft 404, which Google reports as
+    // "Crawled - currently not indexed" instead of dropping the URL.
+    if (!item) throw notFound();
+
     return { item };
   },
   head: ({ loaderData, params }) => {

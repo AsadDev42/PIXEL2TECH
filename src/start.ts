@@ -1,7 +1,9 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
+import { classifyLegacyPath, renderGonePage } from "./lib/legacy-urls";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+
 
 const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
   if (new URL(request.url).pathname.startsWith("/lovable/")) {
@@ -21,7 +23,7 @@ const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
   }
 });
 
-// Force HTTPS + apply hardened security response headers to every request.
+// Canonical host + HTTPS + retired-WordPress-URL policy + hardened headers.
 const securityMiddleware = createMiddleware().server(async ({ request, next }) => {
   const url = new URL(request.url);
   if (url.pathname.startsWith("/lovable/")) {
@@ -30,10 +32,45 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   const xfProto = request.headers.get("x-forwarded-proto");
   const isLocal = url.hostname === "localhost" || url.hostname === "127.0.0.1";
   const isHttp = url.protocol === "http:" || xfProto === "http";
-  if (!isLocal && isHttp) {
+
+  // Canonicalise scheme and host in a single 301: http -> https and
+  // www.pixel2tech.com -> pixel2tech.com. Doing both at once avoids the
+  // redirect chain a crawler would otherwise walk.
+  const isWww = url.hostname.startsWith("www.");
+  if (!isLocal && (isHttp || isWww)) {
     url.protocol = "https:";
-    return new Response(null, { status: 301, headers: { location: url.toString() } });
+    if (isWww) url.hostname = url.hostname.slice(4);
+    return new Response(null, {
+      status: 301,
+      headers: { location: url.toString(), "cache-control": "public, max-age=86400" },
+    });
   }
+
+  // The old WordPress site is fully retired. Redirect only what still has a
+  // live equivalent; answer everything else with 410 Gone so Google removes
+  // it instead of re-crawling soft 404s.
+  const verdict = classifyLegacyPath(url.pathname);
+  if (verdict?.type === "redirect") {
+    return new Response(null, {
+      status: 301,
+      headers: {
+        location: verdict.target + url.search,
+        "cache-control": "public, max-age=86400",
+      },
+    });
+  }
+  if (verdict?.type === "gone") {
+    return new Response(renderGonePage(url.pathname.replace(/^\/+/, "")), {
+      status: 410,
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "no-store",
+      },
+    });
+  }
+
+
 
   const result = await next();
   const response =
