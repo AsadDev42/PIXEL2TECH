@@ -212,7 +212,7 @@ function ContactPage() {
                       enterKeyHint={f.enterKeyHint}
                       autoComplete={f.autoComplete}
                       placeholder={f.placeholder}
-                      value={form[f.id]}
+                      value={String(form[f.id] ?? "")}
                       onChange={setField(f.id)}
                       onBlur={handleBlur(f.id)}
                       disabled={loading}
