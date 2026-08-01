@@ -332,10 +332,9 @@ function PortfolioDetailPage() {
             </div>
           </FadeIn>
           {[
-            { Icon: Target, title: "The Challenge", body: `${brand} needed a ${item.subcategory.toLowerCase()} solution that felt distinctly theirs — one that could compete against bigger players without inflating cost, and stay flexible as the brand evolved.` },
-            { Icon: Wrench, title: "What We Did", body: `We ran a focused discovery, aligned on goals and audience, then designed and shipped the ${item.subcategory.toLowerCase()} end-to-end. Every decision tied to a business outcome, not just aesthetics.` },
-            { Icon: TrendingUp, title: "The Result", body: `A polished, on-brand ${item.subcategory.toLowerCase()} that helped ${brand} attract the right customers, improve engagement, and create a foundation the team can keep building on.` },
-          ].slice(0, 2).map(({ Icon, title, body }) => (
+            { Icon: Target, title: "The challenge", body: copy.challenge },
+            { Icon: Wrench, title: "Our approach", body: copy.approach },
+          ].map(({ Icon, title, body }) => (
             <FadeIn key={title}>
               <div className="h-full rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
                 <div aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -347,7 +346,27 @@ function PortfolioDetailPage() {
             </FadeIn>
           ))}
         </div>
+
+        {/* Outcome + measurable results */}
+        <FadeIn>
+          <div className="mt-8 rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <div aria-hidden="true" className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <TrendingUp className="h-5 w-5" strokeWidth={1.75} />
+            </div>
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">The outcome</h3>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">{copy.outcome}</p>
+            <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+              {copy.results.map((r) => (
+                <div key={r.label} className="rounded-xl bg-muted px-5 py-4 dark:bg-white/[0.04]">
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">{r.label}</dt>
+                  <dd className="mt-1 font-heading text-2xl font-bold text-foreground">{r.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </FadeIn>
       </section>
+
 
       {/* Related */}
       {related.length > 0 && (
