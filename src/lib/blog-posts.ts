@@ -1114,3 +1114,20 @@ export const posts: BlogPost[] = [
 export function getPost(slug: string) {
   return posts.find((p) => p.slug === slug);
 }
+
+/**
+ * Related articles for a post: explicit `related` slugs first, then same-tag
+ * posts, then the most recent remaining posts. Always returns 3–5 items.
+ */
+export function getRelatedPosts(post: BlogPost, limit = 4): BlogPost[] {
+  const picked: BlogPost[] = [];
+  const push = (p?: BlogPost) => {
+    if (p && p.slug !== post.slug && !picked.some((x) => x.slug === p.slug)) picked.push(p);
+  };
+
+  post.related?.forEach((slug) => push(getPost(slug)));
+  posts.filter((p) => p.tag === post.tag).forEach(push);
+  posts.forEach(push);
+
+  return picked.slice(0, Math.max(3, limit));
+}
