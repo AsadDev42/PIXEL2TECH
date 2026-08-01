@@ -13,30 +13,44 @@ import {
 import type { TemplateEntry } from './registry'
 
 interface Props {
+  firstName?: string
+  lastName?: string
   name?: string
   email?: string
+  phone?: string
   subject?: string
   message?: string
+  submittedAt?: string
 }
 
-const Email = ({ name, email, subject, message }: Props) => (
+const Email = ({ firstName, lastName, email, phone, subject, message, submittedAt }: Props) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>{`New enquiry from ${name || 'a visitor'}`}</Preview>
+    <Preview>{`New enquiry from ${firstName || 'a visitor'}`}</Preview>
     <Body style={main}>
       <Container style={container}>
         <Text style={eyebrow}>PIXEL2TECH — CONTACT FORM</Text>
-        <Heading style={h1}>New enquiry received</Heading>
+        <Heading style={h1}>New contact form submission</Heading>
         <Hr style={hr} />
         <Section>
-          <Text style={label}>Name</Text>
-          <Text style={value}>{name || '—'}</Text>
-          <Text style={label}>Email</Text>
+          <Text style={label}>First Name</Text>
+          <Text style={value}>{firstName || '—'}</Text>
+          <Text style={label}>Last Name</Text>
+          <Text style={value}>{lastName || '—'}</Text>
+          <Text style={label}>Email Address</Text>
           <Text style={value}>{email || '—'}</Text>
-          <Text style={label}>Subject</Text>
-          <Text style={value}>{subject || '—'}</Text>
+          <Text style={label}>Phone Number</Text>
+          <Text style={value}>{phone || '—'}</Text>
+          {subject ? (
+            <>
+              <Text style={label}>Subject</Text>
+              <Text style={value}>{subject}</Text>
+            </>
+          ) : null}
           <Text style={label}>Message</Text>
           <Text style={{ ...value, whiteSpace: 'pre-wrap' }}>{message || '—'}</Text>
+          <Text style={label}>Submitted</Text>
+          <Text style={value}>{submittedAt || '—'}</Text>
         </Section>
       </Container>
     </Body>
@@ -45,14 +59,16 @@ const Email = ({ name, email, subject, message }: Props) => (
 
 export const template = {
   component: Email,
-  subject: (data: Record<string, unknown>) =>
-    `New contact form: ${(data.subject as string) || 'No subject'}`,
+  subject: 'New Contact Form Submission - Pixel2Tech Website',
   displayName: 'Contact form notification',
   previewData: {
-    name: 'Jane Doe',
+    firstName: 'Jane',
+    lastName: 'Doe',
     email: 'jane@example.com',
+    phone: '+92 300 1234567',
     subject: 'Website redesign',
     message: 'Hi, we would like a quote for a new brand site.',
+    submittedAt: 'Saturday, August 1, 2026 at 9:15 PM',
   },
 } satisfies TemplateEntry
 
