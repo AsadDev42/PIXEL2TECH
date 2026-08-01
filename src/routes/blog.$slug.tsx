@@ -202,6 +202,11 @@ function BlogPostPage() {
                 ) : null}
 
                 <FadeIn>
+                  <BlogCta {...(post.cta ?? {})} />
+                </FadeIn>
+
+
+                <FadeIn>
                   <section aria-labelledby="related-articles">
                     <h2 id="related-articles" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                       Related Articles
