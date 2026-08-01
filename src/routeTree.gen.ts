@@ -19,7 +19,6 @@ import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
-import { Route as Zz410TestRouteImport } from './routes/zz-410-test'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
@@ -79,11 +78,6 @@ const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
   path: '/wp-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Zz410TestRoute = Zz410TestRouteImport.update({
-  id: '/zz-410-test',
-  path: '/zz-410-test',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -138,7 +132,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/zz-410-test': typeof Zz410TestRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -159,7 +152,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/zz-410-test': typeof Zz410TestRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -181,7 +173,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/zz-410-test': typeof Zz410TestRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -204,7 +195,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/wp-sitemap.xml'
-    | '/zz-410-test'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -225,7 +215,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/wp-sitemap.xml'
-    | '/zz-410-test'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog'
@@ -246,7 +235,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/wp-sitemap.xml'
-    | '/zz-410-test'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/blog/'
@@ -268,7 +256,6 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
-  Zz410TestRoute: typeof Zz410TestRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -351,13 +338,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WpSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/zz-410-test': {
-      id: '/zz-410-test'
-      path: '/zz-410-test'
-      fullPath: '/zz-410-test'
-      preLoaderRoute: typeof Zz410TestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -428,7 +408,6 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
-  Zz410TestRoute: Zz410TestRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
