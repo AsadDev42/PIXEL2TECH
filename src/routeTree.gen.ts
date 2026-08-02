@@ -12,11 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
+import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
+import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
@@ -49,6 +53,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
+  id: '/blog-sitemap.xml',
+  path: '/blog-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -57,6 +66,11 @@ const ContactRoute = ContactRouteImport.update({
 const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
   id: '/favicon.ico',
   path: '/favicon.ico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
+  id: '/images-sitemap.xml',
+  path: '/images-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -69,9 +83,19 @@ const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
   path: '/pages-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
+  id: '/portfolio-sitemap.xml',
+  path: '/portfolio-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSitemapDotxmlRoute = ServicesSitemapDotxmlRouteImport.update({
+  id: '/services-sitemap.xml',
+  path: '/services-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotrssRoute = SitemapDotrssRouteImport.update({
@@ -164,11 +188,15 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/services': typeof ServicesRoute
+  '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
@@ -190,11 +218,15 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/services': typeof ServicesRoute
+  '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
@@ -217,11 +249,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/services': typeof ServicesRoute
+  '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
@@ -245,11 +281,15 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
+    | '/images-sitemap.xml'
     | '/mcp'
     | '/pages-sitemap.xml'
+    | '/portfolio-sitemap.xml'
     | '/services'
+    | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
@@ -271,11 +311,15 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
+    | '/images-sitemap.xml'
     | '/mcp'
     | '/pages-sitemap.xml'
+    | '/portfolio-sitemap.xml'
     | '/services'
+    | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
@@ -297,11 +341,15 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
+    | '/images-sitemap.xml'
     | '/mcp'
     | '/pages-sitemap.xml'
+    | '/portfolio-sitemap.xml'
     | '/services'
+    | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
@@ -324,11 +372,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  BlogSitemapDotxmlRoute: typeof BlogSitemapDotxmlRoute
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
+  ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
   McpRoute: typeof McpRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
+  PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
   ServicesRoute: typeof ServicesRoute
+  ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
@@ -370,6 +422,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog-sitemap.xml': {
+      id: '/blog-sitemap.xml'
+      path: '/blog-sitemap.xml'
+      fullPath: '/blog-sitemap.xml'
+      preLoaderRoute: typeof BlogSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -382,6 +441,13 @@ declare module '@tanstack/react-router' {
       path: '/favicon.ico'
       fullPath: '/favicon.ico'
       preLoaderRoute: typeof FaviconDoticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/images-sitemap.xml': {
+      id: '/images-sitemap.xml'
+      path: '/images-sitemap.xml'
+      fullPath: '/images-sitemap.xml'
+      preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -398,11 +464,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portfolio-sitemap.xml': {
+      id: '/portfolio-sitemap.xml'
+      path: '/portfolio-sitemap.xml'
+      fullPath: '/portfolio-sitemap.xml'
+      preLoaderRoute: typeof PortfolioSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services-sitemap.xml': {
+      id: '/services-sitemap.xml'
+      path: '/services-sitemap.xml'
+      fullPath: '/services-sitemap.xml'
+      preLoaderRoute: typeof ServicesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.rss': {
@@ -524,11 +604,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  BlogSitemapDotxmlRoute: BlogSitemapDotxmlRoute,
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
+  ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
   McpRoute: McpRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
+  PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
   ServicesRoute: ServicesRoute,
+  ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
