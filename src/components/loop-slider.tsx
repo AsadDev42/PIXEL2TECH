@@ -22,7 +22,12 @@ type Props<T> = {
   ariaLabel?: string;
   /** Enable grab-and-fling drag interaction. Default true. */
   draggable?: boolean;
+  /** Auto-scroll drift. Set false to stop drifting (drag still works). Default true. */
+  autoplay?: boolean;
+  /** Pause the drift while the pointer hovers the track. Default false. */
+  pauseOnHover?: boolean;
 };
+
 
 /**
  * LoopLoop Slider — draggable, momentum-preserving, seamlessly looping slider.
