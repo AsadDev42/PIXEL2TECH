@@ -775,13 +775,24 @@ function Team() {
                 A small, senior team of designers, developers, and strategists building work that creates measurable impact.
               </p>
             </div>
-            <Link
-              to="/about"
-              className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
-            >
-              About the team
-              <Plus className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setAutoplay((v) => !v)}
+                aria-pressed={autoplay}
+                className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
+              >
+                {autoplay ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
+                {autoplay ? "Pause autoplay" : "Play autoplay"}
+              </button>
+              <Link
+                to="/about"
+                className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
+              >
+                About the team
+                <Plus className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </FadeIn>
       </div>
@@ -792,11 +803,14 @@ function Team() {
           keyFor={(m, i) => `${m.name}-${i}`}
           direction="ltr"
           speed={40}
+          autoplay={autoplay}
+          pauseOnHover
           gapClassName="gap-4 md:gap-6"
           className="mt-10 sm:mt-14"
           ariaLabel="Pixel2Tech creative team"
           renderItem={(m) => (
-            <article className="group w-[75vw] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[42vw] lg:w-[30vw] xl:w-[24vw]">
+            <article className="group w-[78vw] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[44vw] lg:w-[30vw] xl:w-[23vw] 2xl:max-w-none">
+
               <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                 <img
                   loading="lazy"
