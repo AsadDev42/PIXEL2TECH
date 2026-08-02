@@ -22,7 +22,12 @@ type Props<T> = {
   ariaLabel?: string;
   /** Enable grab-and-fling drag interaction. Default true. */
   draggable?: boolean;
+  /** Auto-scroll drift. Set false to stop drifting (drag still works). Default true. */
+  autoplay?: boolean;
+  /** Pause the drift while the pointer hovers the track. Default false. */
+  pauseOnHover?: boolean;
 };
+
 
 /**
  * LoopLoop Slider — draggable, momentum-preserving, seamlessly looping slider.
@@ -42,6 +47,8 @@ function LoopSliderImpl<T>({
   className = "",
   ariaLabel,
   draggable = true,
+  autoplay = true,
+  pauseOnHover = false,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
@@ -56,10 +63,17 @@ function LoopSliderImpl<T>({
     velocity: 0,
     pointerId: null as number | null,
     moved: 0,
+    hovering: false,
   });
+  // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
+  const autoplayRef = useRef(autoplay);
+  autoplayRef.current = autoplay;
+  const pauseOnHoverRef = useRef(pauseOnHover);
+  pauseOnHoverRef.current = pauseOnHover;
 
   const resolvedDir: DirX | DirY = direction ?? (axis === "x" ? "rtl" : "down");
   const isX = axis === "x";
+
 
   useEffect(() => {
     const track = trackRef.current;
@@ -91,12 +105,15 @@ function LoopSliderImpl<T>({
       last = now;
       const s = stateRef.current;
       if (!s.dragging) {
-        s.pos += dir * speed * dt;
+        const drifting =
+          autoplayRef.current && !(pauseOnHoverRef.current && s.hovering);
+        if (drifting) s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
           s.pos += s.velocity * dt;
           s.velocity *= Math.pow(0.001, dt);
         }
       }
+
       if (s.half > 0) {
         while (s.pos <= -s.half) s.pos += s.half;
         while (s.pos > 0) s.pos -= s.half;
@@ -195,6 +212,13 @@ function LoopSliderImpl<T>({
       }
     };
 
+    // Hover pause is opt-in per instance but always wired, so the prop can flip
+    // at runtime without tearing down the animation loop.
+    const onEnter = () => { stateRef.current.hovering = true; };
+    const onLeave = () => { stateRef.current.hovering = false; };
+    track.addEventListener("pointerenter", onEnter);
+    track.addEventListener("pointerleave", onLeave);
+
     if (draggable) {
       track.addEventListener("pointerdown", onDown);
       track.addEventListener("pointermove", onMove);
@@ -210,6 +234,8 @@ function LoopSliderImpl<T>({
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       ro.disconnect();
+      track.removeEventListener("pointerenter", onEnter);
+      track.removeEventListener("pointerleave", onLeave);
 
       if (draggable) {
         track.removeEventListener("pointerdown", onDown);
@@ -220,6 +246,7 @@ function LoopSliderImpl<T>({
       }
     };
   }, [isX, resolvedDir, speed, draggable]);
+
 
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
   const touchClass = draggable
