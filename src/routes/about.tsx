@@ -159,6 +159,7 @@ function Accordion() {
 }
 
 function AboutPage() {
+  const [teamAutoplay, setTeamAutoplay] = useState(true);
   return (
     <PageShell>
       {/* Hero */}
