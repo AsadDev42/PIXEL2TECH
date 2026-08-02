@@ -299,7 +299,17 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://pixel2tech.com/" },
+      // Only the hero (LCP) bitmap is preloaded — everything else lazy-loads.
+      {
+        rel: "preload",
+        as: "image",
+        href: heroLcpImage.src,
+        imagesrcset: heroLcpImage.srcSet,
+        imagesizes: "(max-width: 640px) 32vw, 190px",
+        fetchpriority: "high",
+      },
     ],
+
     scripts: [
       {
         type: "application/ld+json",
