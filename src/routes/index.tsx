@@ -666,19 +666,8 @@ function Services() {
 }
 
 
-const work = [
-  { title: "Web design and development", img: workWeb.url, video: true },
-  { title: "UI UX designing", img: workUiux.url, video: true },
-  { title: "Logo and branding", img: workLogo.url, video: true },
-  { title: "Concept creation", img: workConcept.url, video: true },
-  { title: "WordPress & Shopify", img: workWordpressShopify.url, video: true },
-  { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
-  { title: "AI Solutions", img: workAiSolutions.url, video: true },
-  { title: "SEO & Search Growth", img: workSeo.url, video: true },
-  { title: "Social Media & Email", img: workSocialMedia.url, video: true },
-  { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-];
+const work = workItems;
+
 
 function Work() {
   return (
