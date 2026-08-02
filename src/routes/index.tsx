@@ -5,7 +5,7 @@ import { AutoVideo } from "@/components/auto-video";
 import { LazySection } from "@/components/lazy-section";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 
-import { posts as blogPosts, type BlogPost } from "@/lib/blog-posts";
+import { getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
@@ -830,7 +830,7 @@ function Team() {
 
 
 function Insights() {
-  const latest = blogPosts.slice(0, 3);
+  const latest = getSortedPosts().slice(0, 3);
   return (
     <section className="bg-background py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-10">

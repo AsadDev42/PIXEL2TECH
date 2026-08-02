@@ -1441,3 +1441,12 @@ export function getRelatedPosts(post: BlogPost, limit = 4): BlogPost[] {
 
   return picked.slice(0, Math.max(3, limit));
 }
+
+/** Posts sorted newest-first (date, then time). Use everywhere posts are listed. */
+export function getSortedPosts(): BlogPost[] {
+  return [...posts].sort((a, b) => {
+    const dateDifference = Date.parse(b.date) - Date.parse(a.date);
+    if (dateDifference !== 0) return dateDifference;
+    return Date.parse(`January 1, 2000 ${b.time}`) - Date.parse(`January 1, 2000 ${a.time}`);
+  });
+}

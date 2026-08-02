@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
-import { posts } from "@/lib/blog-posts";
+import { posts, getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
@@ -57,11 +57,7 @@ export const Route = createFileRoute("/blog/")({
 
 
 function BlogPage() {
-  const sortedPosts = [...posts].sort((a, b) => {
-    const dateDifference = Date.parse(b.date) - Date.parse(a.date);
-    if (dateDifference !== 0) return dateDifference;
-    return Date.parse(`January 1, 2000 ${b.time}`) - Date.parse(`January 1, 2000 ${a.time}`);
-  });
+  const sortedPosts = getSortedPosts();
   const [featured, ...rest] = sortedPosts;
   return (
     <PageShell>
@@ -107,7 +103,7 @@ function BlogPage() {
 
       <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((p) => (
+          {rest.map((p: BlogPost) => (
             <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="block rounded-3xl bg-muted p-3 transition hover:bg-neutral-200/60 dark:hover:bg-muted/70 sm:p-4">
               <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
                 <ResponsiveImage
