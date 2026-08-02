@@ -9,7 +9,7 @@ import teamAsad from "@/assets/team-asad.webp.asset.json";
 import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
-import teamNoman from "@/assets/team-noman.webp.asset.json";
+import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
 import officeImg from "@/assets/office.webp.asset.json";
 
 const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";

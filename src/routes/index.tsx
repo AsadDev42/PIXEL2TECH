@@ -23,11 +23,8 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { useFormValidation } from "@/lib/use-form-validation";
 
-import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
-import heroDeskVideoAsset from "@/assets/hero-desk.mp4.asset.json";
-import heroArmpearlAsset from "@/assets/hero-armpearl.webp.asset.json";
-import heroRavokafeAsset from "@/assets/hero-ravokafe.png.asset.json";
-import heroSpiralAsset from "@/assets/hero-spiral.mp4.asset.json";
+import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
+import { heroColumns, heroLcpImage, workItems } from "@/lib/home-media";
 import indVahub from "@/assets/ind-vahub.png.asset.json";
 import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
 import indBiscuits from "@/assets/ind-biscuits.webp.asset.json";
@@ -39,28 +36,15 @@ import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
-import workAutomationVideo from "@/assets/work-automation.mp4.asset.json";
-import workWordpressShopify from "@/assets/work-wordpress-shopify.mp4.asset.json";
-import workConcept from "@/assets/work-concept.mp4.asset.json";
-import workAiSolutions from "@/assets/work-ai-solutions.mp4.asset.json";
-import workSeo from "@/assets/work-seo.mp4.asset.json";
-import workSocialMedia from "@/assets/work-social-new.mp4.asset.json";
-import workWeb from "@/assets/work-web.mp4.asset.json";
-import workUiux from "@/assets/work-uiux.mp4.asset.json";
-import workLogo from "@/assets/work-logo.mp4.asset.json";
-import heroStickynotesAsset from "@/assets/hero-stickynotes.mp4.asset.json";
-import heroCoffeemockAsset from "@/assets/hero-coffeemock.png.asset.json";
-import heroMidCozyAsset from "@/assets/hero-midcozy.mp4.asset.json";
-import heroLovebitesAsset from "@/assets/hero-lovebites.webp.asset.json";
-import heroLimaAsset from "@/assets/hero-lima.jpg.asset.json";
-import heroLaptopCodeAsset from "@/assets/hero-laptopcode.mp4.asset.json";
-import founderPortrait from "@/assets/founder-portrait.png.asset.json";
+import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
+import founderPortrait1080 from "@/assets/opt-founder-portrait-1080.webp.asset.json";
+
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
 import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
-import teamNoman from "@/assets/team-noman.webp.asset.json";
+import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
 
 const officeStudio = officeStudioAsset.url;
 
@@ -316,7 +300,17 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://pixel2tech.com/" },
+      // Only the hero (LCP) bitmap is preloaded — everything else lazy-loads.
+      {
+        rel: "preload",
+        as: "image",
+        href: heroLcpImage.src,
+        imageSrcSet: heroLcpImage.srcSet,
+        imageSizes: "(max-width: 640px) 32vw, 190px",
+        fetchPriority: "high",
+      },
     ],
+
     scripts: [
       {
         type: "application/ld+json",
@@ -404,23 +398,8 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const heroCols: string[][] = [
-  [
-    heroSpiralAsset.url,
-    heroStickynotesAsset.url,
-    heroCoffeemockAsset.url,
-  ],
-  [
-    heroRavokafeAsset.url,
-    heroLovebitesAsset.url,
-    heroDeskVideoAsset.url,
-  ],
-  [
-    heroLimaAsset.url,
-    heroLaptopCodeAsset.url,
-    heroArmpearlAsset.url,
-  ],
-];
+const heroCols = heroColumns;
+
 
 
 function Hero() {
@@ -460,31 +439,37 @@ function Hero() {
                 speed={30}
                 gapClassName="gap-2 sm:gap-3"
                 items={col}
-                keyFor={(_src, i) => `${ci}-${i}`}
-                renderItem={(src, i) => (
+                keyFor={(_m, i) => `${ci}-${i}`}
+                renderItem={(m, i) => (
                   <div
                     data-cursor="expand"
                     className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
                   >
-                    {src.endsWith(".mp4") ? (
+                    {m.kind === "video" ? (
                       <AutoVideo
-                        src={src}
+                        src={m.src}
+                        poster={m.poster}
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     ) : (
 
                       <img
                         decoding="async"
-                        src={src}
+                        src={m.src}
+                        srcSet={m.srcSet}
+                        sizes="(max-width: 640px) 32vw, 190px"
+                        width={384}
+                        height={683}
                         alt="Pixel2Tech branding and web design project preview"
                         draggable={false}
-                        loading={ci === 0 && i === 0 ? "eager" : "lazy"}
-                        fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
+                        loading={ci === 1 && i === 0 ? "eager" : "lazy"}
+                        fetchPriority={ci === 1 && i === 0 ? "high" : "auto"}
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     )}
                   </div>
                 )}
+
               />
             </div>
           ))}
@@ -584,8 +569,12 @@ function PartnerBand() {
             </div>
           </motion.div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
-            <img loading="eager" decoding="async" fetchPriority="high"
+            <img loading="lazy" decoding="async"
               src={founderPortrait.url}
+              srcSet={`${founderPortrait.url} 540w, ${founderPortrait1080.url} 1080w`}
+              sizes="(max-width: 640px) 90vw, 540px"
+              width={540}
+              height={707}
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-contain"
             />
@@ -692,19 +681,8 @@ function Services() {
 }
 
 
-const work = [
-  { title: "Web design and development", img: workWeb.url, video: true },
-  { title: "UI UX designing", img: workUiux.url, video: true },
-  { title: "Logo and branding", img: workLogo.url, video: true },
-  { title: "Concept creation", img: workConcept.url, video: true },
-  { title: "WordPress & Shopify", img: workWordpressShopify.url, video: true },
-  { title: "Custom Platforms & Apps", img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&fm=webp&q=70" },
-  { title: "Automation & CRM", img: workAutomationVideo.url, video: true },
-  { title: "AI Solutions", img: workAiSolutions.url, video: true },
-  { title: "SEO & Search Growth", img: workSeo.url, video: true },
-  { title: "Social Media & Email", img: workSocialMedia.url, video: true },
-  { title: "Video Editing & Ads", img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&auto=format&fit=crop&fm=webp&q=70" },
-];
+const work = workItems;
+
 
 function Work() {
   return (
@@ -733,9 +711,10 @@ function Work() {
             data-cursor="expand"
             className="group relative aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
-            {("video" in w && (w as { video?: boolean }).video) ? (
+            {w.video ? (
               <AutoVideo
                 src={w.img}
+                poster={w.poster}
                 className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
 
@@ -744,11 +723,14 @@ function Work() {
                 loading="lazy"
                 decoding="async"
                 src={w.img}
+                width={640}
+                height={853}
                 alt={i < work.length ? w.title : ""}
                 draggable={false}
                 className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
             )}
+
             <div className="pointer-events-none absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
               {w.title}
             </div>
@@ -876,8 +858,8 @@ function Studio() {
                   alt="Inside the Pixel2Tech studio — team working at their desks"
                   loading="lazy"
                   decoding="async"
-                  width={1600}
-                  height={1067}
+                  width={800}
+                  height={600}
                   className="h-full w-full object-cover"
                 />
               </div>
