@@ -3,10 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /lovable/
 
-Sitemap: https://pixel2tech.com/sitemap.xml
 Sitemap: https://pixel2tech.com/sitemap_index.xml
-Sitemap: https://pixel2tech.com/pages-sitemap.xml
-Sitemap: https://pixel2tech.com/blog-sitemap.xml
-Sitemap: https://pixel2tech.com/services-sitemap.xml
-Sitemap: https://pixel2tech.com/portfolio-sitemap.xml
-Sitemap: https://pixel2tech.com/images-sitemap.xml
