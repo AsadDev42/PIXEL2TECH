@@ -538,7 +538,7 @@ export const posts: BlogPost[] = [
     title: "Kling O1 Explained: Features, Use Cases & Business Benefits (2026 Guide)",
     excerpt:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing and content creation.",
-    img: stock("1492691527719-9d1e07e534b4"),
+    img: stock("1574717024653-61fd2cf4d44d"),
     metaTitle: "Kling O1 Explained: Features, Use Cases & Business Benefits | Pixel2Tech",
     metaDescription:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing, content creation, and digital experiences.",
