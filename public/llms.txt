@@ -13,4 +13,4 @@
 
 ## Optional
 
-- [Sitemap](https://pixel2tech.com/sitemap.xml): Full list of indexable pages.
+- [Sitemap](https://pixel2tech.com/sitemap_index.xml): Full list of indexable pages.
