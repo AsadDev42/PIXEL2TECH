@@ -336,6 +336,15 @@ function AboutPage() {
               </p>
             </div>
           </FadeIn>
+          <button
+            type="button"
+            onClick={() => setTeamAutoplay((v) => !v)}
+            aria-pressed={teamAutoplay}
+            className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
+          >
+            {teamAutoplay ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
+            {teamAutoplay ? "Pause autoplay" : "Play autoplay"}
+          </button>
         </div>
         <div data-cursor="expand">
           <LoopSlider
@@ -343,12 +352,14 @@ function AboutPage() {
             keyFor={(m, i) => `${m.name}-${i}`}
             direction="ltr"
             speed={40}
+            autoplay={teamAutoplay}
+            pauseOnHover
             gapClassName="gap-4 md:gap-6"
-            className="mt-10 sm:mt-14"
+            className="mt-8 sm:mt-10"
             ariaLabel="Pixel2Tech creative team"
             renderItem={(m) => (
               <article
-                className="group w-[75vw] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[42vw] lg:w-[30vw] xl:w-[24vw]"
+                className="group w-[78vw] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[44vw] lg:w-[30vw] xl:w-[23vw] 2xl:max-w-none"
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                   <img
