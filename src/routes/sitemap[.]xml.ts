@@ -20,18 +20,37 @@ function toIsoDate(value: string): string | undefined {
   return parsed.toISOString().slice(0, 10);
 }
 
+/**
+ * Last significant content change per static page, taken from that page's
+ * source history. Update the date here when a page's content changes.
+ */
+const STATIC_LASTMOD: Record<string, string> = {
+  "/": "2026-08-02",
+  "/about": "2026-08-02",
+  "/services": "2026-08-01",
+  "/portfolio": "2026-08-01",
+  "/contact": "2026-08-01",
+};
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        // Blog index reflects the newest published post.
+        const newestPostDate = posts
+          .map((p) => toIsoDate(p.date))
+          .filter((d): d is string => Boolean(d))
+          .sort()
+          .reverse()[0];
+
         const staticEntries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
           { path: "/services", changefreq: "monthly", priority: "0.9" },
           { path: "/portfolio", changefreq: "weekly", priority: "0.8" },
-          { path: "/blog", changefreq: "weekly", priority: "0.7" },
+          { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: newestPostDate },
           { path: "/contact", changefreq: "yearly", priority: "0.6" },
-        ];
+        ].map((e) => ({ ...e, lastmod: e.lastmod ?? STATIC_LASTMOD[e.path] }));
 
         const blogEntries: SitemapEntry[] = posts.map((p) => ({
           path: `/blog/${p.slug}`,
@@ -42,11 +61,13 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         const portfolioEntries: SitemapEntry[] = ALL_ITEMS.map((i) => ({
           path: `/portfolio/${i.slug}`,
+          lastmod: STATIC_LASTMOD["/portfolio"],
           changefreq: "monthly",
           priority: "0.5",
         }));
 
         const entries = [...staticEntries, ...blogEntries, ...portfolioEntries];
+
 
 
         const urls = entries.map((e) =>
