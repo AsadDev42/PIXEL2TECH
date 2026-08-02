@@ -12,7 +12,7 @@ export const Route = createFileRoute("/wp-sitemap.xml")({
         new Response(null, {
           status: 301,
           headers: {
-            Location: "https://pixel2tech.com/sitemap.xml",
+            Location: "https://pixel2tech.com/sitemap_index.xml",
             "Cache-Control": "public, max-age=86400",
           },
         }),
