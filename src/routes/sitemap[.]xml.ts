@@ -43,14 +43,15 @@ export const Route = createFileRoute("/sitemap.xml")({
           .sort()
           .reverse()[0];
 
-        const staticEntries: SitemapEntry[] = [
+        const staticEntries: SitemapEntry[] = ([
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
           { path: "/services", changefreq: "monthly", priority: "0.9" },
           { path: "/portfolio", changefreq: "weekly", priority: "0.8" },
           { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: newestPostDate },
           { path: "/contact", changefreq: "yearly", priority: "0.6" },
-        ].map((e) => ({ ...e, lastmod: e.lastmod ?? STATIC_LASTMOD[e.path] }));
+        ] satisfies SitemapEntry[]).map((e) => ({ ...e, lastmod: e.lastmod ?? STATIC_LASTMOD[e.path] }));
+
 
         const blogEntries: SitemapEntry[] = posts.map((p) => ({
           path: `/blog/${p.slug}`,
