@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
-import { posts } from "@/lib/blog-posts";
+import { posts, getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 
