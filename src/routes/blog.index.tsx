@@ -57,11 +57,7 @@ export const Route = createFileRoute("/blog/")({
 
 
 function BlogPage() {
-  const sortedPosts = [...posts].sort((a, b) => {
-    const dateDifference = Date.parse(b.date) - Date.parse(a.date);
-    if (dateDifference !== 0) return dateDifference;
-    return Date.parse(`January 1, 2000 ${b.time}`) - Date.parse(`January 1, 2000 ${a.time}`);
-  });
+  const sortedPosts = getSortedPosts();
   const [featured, ...rest] = sortedPosts;
   return (
     <PageShell>
