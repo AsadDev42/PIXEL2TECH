@@ -35,7 +35,13 @@ const RESERVED_EXACT = new Set([
   "sitemap.xml",
   "sitemap.rss",
   "sitemap_index.xml",
+  "pages-sitemap.xml",
+  "blog-sitemap.xml",
+  "services-sitemap.xml",
+  "portfolio-sitemap.xml",
+  "images-sitemap.xml",
   "wp-sitemap.xml",
+
   "favicon.ico",
   "favicon.png",
   "manifest.json",
