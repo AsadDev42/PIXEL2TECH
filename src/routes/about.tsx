@@ -347,7 +347,7 @@ function AboutPage() {
             ariaLabel="Pixel2Tech creative team"
             renderItem={(m) => (
               <article
-                className="group w-[220px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[260px]"
+                className="group w-[75vw] max-w-[420px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[42vw] lg:w-[30vw] xl:w-[24vw]"
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                   <img
