@@ -1235,7 +1235,7 @@ export const posts: BlogPost[] = [
     title: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
     excerpt:
       "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
-    img: aiSeoMistakesCover.url,
+    img: aiSeoMistakesCover,
     metaTitle: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
     metaDescription:
       "The most common AI SEO mistakes businesses make in 2026, why AI content stops ranking, and a practical framework to fix visibility in Google and AI search.",
