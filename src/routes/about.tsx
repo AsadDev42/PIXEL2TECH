@@ -3,6 +3,7 @@ import { PageShell } from "@/components/site-chrome";
 
 import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
+import { LoopSlider } from "@/components/loop-slider";
 import { useState } from "react";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
@@ -334,31 +335,40 @@ function AboutPage() {
               </p>
             </div>
           </FadeIn>
-          <Stagger className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:mt-14 md:gap-6 lg:grid-cols-3">
-            {team.map((m) => (
-              <StaggerItem key={m.name}>
-                <article
-                  aria-labelledby={`about-team-${m.name.replace(/\s+/g, "-")}-name`}
-                  aria-describedby={`about-team-${m.name.replace(/\s+/g, "-")}-role`}
-                  className="group h-full overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]"
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src={m.img}
-                      alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
-                      className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
-                    />
-                  </div>
-                  <div className="p-4 md:p-5">
-                    <h3 id={`about-team-${m.name.replace(/\s+/g, "-")}-name`} className="text-sm font-bold tracking-tight text-foreground sm:text-base">{m.name}</h3>
-                    <p id={`about-team-${m.name.replace(/\s+/g, "-")}-role`} className="mt-1 text-xs text-muted-foreground">{m.role}</p>
-                  </div>
-                </article>
-              </StaggerItem>
-            ))}
-          </Stagger>
+        </div>
+        <div data-cursor="expand">
+          <LoopSlider
+            items={team}
+            keyFor={(m, i) => `${m.name}-${i}`}
+            direction="ltr"
+            speed={40}
+            gapClassName="gap-4 md:gap-6"
+            className="mt-10 sm:mt-14"
+            ariaLabel="Pixel2Tech creative team"
+            renderItem={(m) => (
+              <article
+                className="group w-[220px] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[260px]"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={m.img}
+                    alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
+                    draggable={false}
+                    className="pointer-events-none h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+                  />
+                </div>
+                <div className="p-4 md:p-5">
+                  <h3 className="text-sm font-bold tracking-tight text-foreground sm:text-base">{m.name}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{m.role}</p>
+                </div>
+              </article>
+            )}
+          />
+        </div>
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+
 
           <FadeIn delay={0.2}>
             <div className="mt-10 text-center sm:mt-14">
