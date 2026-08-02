@@ -3,6 +3,7 @@ import { PageShell } from "@/components/site-chrome";
 
 import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
+import { LoopSlider } from "@/components/loop-slider";
 import { useState } from "react";
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
