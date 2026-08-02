@@ -47,6 +47,8 @@ function LoopSliderImpl<T>({
   className = "",
   ariaLabel,
   draggable = true,
+  autoplay = true,
+  pauseOnHover = false,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
@@ -61,10 +63,17 @@ function LoopSliderImpl<T>({
     velocity: 0,
     pointerId: null as number | null,
     moved: 0,
+    hovering: false,
   });
+  // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
+  const autoplayRef = useRef(autoplay);
+  autoplayRef.current = autoplay;
+  const pauseOnHoverRef = useRef(pauseOnHover);
+  pauseOnHoverRef.current = pauseOnHover;
 
   const resolvedDir: DirX | DirY = direction ?? (axis === "x" ? "rtl" : "down");
   const isX = axis === "x";
+
 
   useEffect(() => {
     const track = trackRef.current;
