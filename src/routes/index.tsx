@@ -387,23 +387,8 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const heroCols: string[][] = [
-  [
-    heroSpiralAsset.url,
-    heroStickynotesAsset.url,
-    heroCoffeemockAsset.url,
-  ],
-  [
-    heroRavokafeAsset.url,
-    heroLovebitesAsset.url,
-    heroDeskVideoAsset.url,
-  ],
-  [
-    heroLimaAsset.url,
-    heroLaptopCodeAsset.url,
-    heroArmpearlAsset.url,
-  ],
-];
+const heroCols = heroColumns;
+
 
 
 function Hero() {
