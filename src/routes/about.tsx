@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 
-import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
+import { Play, Pause, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { LoopSlider } from "@/components/loop-slider";
 import { useState } from "react";
