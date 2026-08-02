@@ -305,9 +305,9 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: heroLcpImage.src,
-        imagesrcset: heroLcpImage.srcSet,
-        imagesizes: "(max-width: 640px) 32vw, 190px",
-        fetchpriority: "high",
+        imageSrcSet: heroLcpImage.srcSet,
+        imageSizes: "(max-width: 640px) 32vw, 190px",
+        fetchPriority: "high",
       },
     ],
 
