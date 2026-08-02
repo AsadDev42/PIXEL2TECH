@@ -12,6 +12,7 @@ import goodBrandingCover from "@/assets/power-of-good-branding-cover.jpg.asset.j
 import rebrandCover from "@/assets/rebrand-vs-refresh-cover.jpg.asset.json";
 import aiOpsCover from "@/assets/ai-ops-layer-cover.jpg.asset.json";
 import designSystemsCover from "@/assets/design-systems-small-teams-cover.jpg.asset.json";
+import aiSeoMistakesCover from "@/assets/ai-seo-mistakes-cover.jpg";
 
 
 
@@ -1222,6 +1223,199 @@ export const posts: BlogPost[] = [
         "Start with the basics: colors, typography, spacing, and core components. Build the smallest useful system, then improve it as your product grows and new challenges appear.",
         "A simple design system today can save hundreds of hours tomorrow.",
       ]},
+    ],
+  },
+
+  {
+    slug: "ai-seo-mistakes",
+    tag: "Technology Strategy",
+    date: "August 2, 2026",
+    time: "09:00 am",
+    author: "Pixel2Tech Team",
+    title: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
+    excerpt:
+      "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
+    img: aiSeoMistakesCover,
+    metaTitle: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
+    metaDescription:
+      "The most common AI SEO mistakes businesses make in 2026, why AI content stops ranking, and a practical framework to fix visibility in Google and AI search.",
+    keywords: [
+      "AI SEO Mistakes",
+      "AI SEO",
+      "SEO Mistakes",
+      "AI Content SEO",
+      "Google AI Search",
+      "AI Search Optimization",
+      "Business SEO",
+      "Technical SEO",
+      "Content Strategy",
+      "EEAT",
+      "AI Overviews",
+      "AI SEO mistakes businesses make",
+      "Why AI content is not ranking",
+      "How to optimize for Google AI Overview",
+      "AI search optimization guide",
+      "Common SEO mistakes in 2026",
+      "How AI affects Google rankings",
+      "AI SEO best practices",
+      "Human and AI content strategy",
+    ],
+    related: [
+      "why-modern-brands-need-an-ai-ops-layer",
+      "why-businesses-need-better-systems",
+      "is-ai-worth-the-investment",
+      "how-ai-is-changing-modern-branding",
+    ],
+    cta: {
+      title: "Your systems, not your content calendar, decide how fast you grow",
+      body:
+        "Most businesses don't struggle because they lack technology. They struggle because their technology doesn't work together. If your operations feel slower as your business grows, it may be time to rethink your systems. Pixel2Tech helps businesses simplify complexity through AI, automation, and scalable technology solutions.",
+      primaryLabel: "Talk through your systems",
+      secondaryLabel: "See how we work",
+    },
+    faqs: [
+      {
+        q: "What are the most common AI SEO mistakes?",
+        a: "Publishing unedited AI drafts, targeting keywords instead of questions, ignoring first-hand experience, duplicating what already ranks, weak internal linking, and no technical foundation. Each one makes a page easy for a search engine to skip.",
+      },
+      {
+        q: "Why is my AI content not ranking on Google?",
+        a: "Usually because it adds nothing new. Search engines already have hundreds of pages that summarise the same public information. Content ranks when it contains original data, real examples, clear opinions, or specific processes that only your business can describe.",
+      },
+      {
+        q: "Does Google penalise AI-generated content?",
+        a: "No. Google evaluates usefulness, not the tool used to write. Mass-produced pages made purely to game rankings are treated as spam, whether a human or an AI wrote them. Helpful, reviewed, accurate AI-assisted content is fine.",
+      },
+      {
+        q: "How do I optimise for Google AI Overviews and AI search?",
+        a: "Answer one question clearly per section, put the direct answer in the first two sentences, use plain language, add structured data, keep facts current, and make your expertise verifiable. AI systems quote sources that are easy to extract and safe to trust.",
+      },
+      {
+        q: "How much human editing does AI content need?",
+        a: "Enough to add what the model cannot know: your numbers, your client situations, your judgement, and your corrections. In practice that is usually thirty to fifty percent of the final page.",
+      },
+      {
+        q: "How long does it take to recover rankings after fixing AI SEO mistakes?",
+        a: "Technical fixes can show results within weeks. Content quality and authority changes typically take two to four months to be reflected consistently, because search engines need repeated crawls to re-evaluate a site.",
+      },
+    ],
+    content: [
+      {
+        heading: "More Content, Less Traffic",
+        body: [
+          "Something strange is happening inside most businesses right now. They are publishing more content than at any point in their history, and getting less traffic from it.",
+          "The blog is active. The keyword list is long. The team is using AI to produce in a day what used to take a week. And the analytics graph is flat, or falling.",
+          "This is not a content volume problem. It is a systems problem. AI made publishing cheap, so the internet filled with pages that all say roughly the same thing. Search engines adjusted. Buyers adjusted. The bar for being worth reading moved, and most content strategies did not move with it.",
+          "This article covers the AI SEO mistakes we see most often when we audit a business, why they happen, what they cost, and a simple framework for fixing them.",
+        ],
+      },
+      {
+        heading: "The Real Problem: AI Removed the Cost of Publishing, Not the Cost of Being Useful",
+        body: [
+          "For twenty years, writing was the bottleneck. It took effort to produce a page, so effort itself was a rough signal of quality. Search engines could lean on that signal.",
+          "AI removed the bottleneck. Anyone can now produce fifty competent articles a month. Competent is no longer rare, so it no longer ranks.",
+          "What is still rare is knowledge that exists inside a business and nowhere else: what actually happened on a project, what a process really costs, why a decision was wrong, what the numbers looked like afterwards. No language model has that. It is the only durable advantage a company has in search now.",
+        ],
+      },
+      {
+        heading: "Why This Keeps Happening",
+        body: [
+          "Teams are measured on output. Publishing twelve articles is easy to report. Publishing three articles that a customer actually cites in a sales call is not.",
+          "Nobody owns the outcome. Marketing owns the blog, sales owns the pipeline, and the connection between them is never modelled.",
+          "The tools are used backwards. AI is used to generate the thinking instead of to speed up the production of thinking that already exists in the business.",
+          "And SEO advice is out of date. Much of what teams follow was written for a search engine that returned ten blue links, not one that summarises an answer before anyone clicks.",
+        ],
+      },
+      {
+        heading: "The Business Impact",
+        body: [
+          "Weak search visibility rarely shows up as one dramatic number. It shows up as a slow tightening across the business.",
+          "Paid acquisition costs rise, because organic traffic is not carrying its share of pipeline. Sales cycles get longer, because buyers arrive uninformed. Content spend becomes unjustifiable, because nobody can trace a lead to it. And competitors who publish less but publish better become the default reference in your category.",
+          "One client came to us publishing sixteen AI-assisted posts a month with 4,000 monthly organic sessions and almost no enquiries. The content was not bad. It was interchangeable.",
+        ],
+      },
+      {
+        heading: "A Real-World Example",
+        body: [
+          "A B2B software company we worked with had 340 published articles. Two hundred and ten of them had never received a single organic visit.",
+          "We did not write more. We cut. Ninety pages were removed or merged. Forty were rewritten with real product data, screenshots of actual workflows, and honest limitations. Internal links were rebuilt so that every important page sat within two clicks of the homepage. Schema and page speed were fixed.",
+          "Four months later, organic sessions were up sixty-two percent on a smaller site, and demo requests from organic search had roughly tripled. Fewer pages, more business.",
+        ],
+      },
+      {
+        heading: "The Nine AI SEO Mistakes",
+        body: [
+          "1. Publishing the first AI draft. A model writes a fluent average of everything already published. Average is invisible.",
+          "2. Writing for keywords instead of questions. People and AI systems both search in questions now. A page built around a keyword string answers none of them cleanly.",
+          "3. No first-hand experience. No numbers, no examples, no client situations, no opinions. Nothing a search engine can treat as new information.",
+          "4. Ignoring the technical layer. Slow pages, broken internal links, missing structured data, and thin duplicate URLs quietly cap everything else.",
+          "5. Orphan content. Pages nobody links to internally. Search engines treat them as unimportant because your own site treats them as unimportant.",
+          "6. Treating volume as strategy. Fifty thin pages compete with each other for the same intent and dilute the whole domain.",
+          "7. No expertise signals. No named author, no credentials, no evidence of who is behind the advice. Trust is now a ranking input, not a nicety.",
+          "8. Never updating. A 2024 article about AI search is wrong today. Stale facts are one of the fastest ways to lose a cited position.",
+          "9. Measuring the wrong things. Impressions and word counts feel productive. Enquiries, assisted conversions, and branded search demand are what matter.",
+        ],
+      },
+      {
+        heading: "The Framework: Source, Shape, Signal, System",
+        body: [
+          "We use four questions to audit any content operation. A page that fails one of them will underperform no matter how well written it is.",
+          "Source — what does this page know that no model can generate? A number, a workflow, an outcome, a mistake, a screenshot, a client story. If the answer is nothing, do not publish it.",
+          "Shape — is the answer extractable? One question per section, direct answer in the first two sentences, plain language, short paragraphs, clear headings. This is how AI systems select what to quote.",
+          "Signal — can a stranger verify who is behind this? Named author, role, experience, sources, a real business address, and consistent facts across the site.",
+          "System — does the page connect to the rest of the site and to the business? Internal links in and out, a relevant next step, and a measurable outcome attached to it.",
+        ],
+      },
+      {
+        heading: "Step-by-Step: How to Fix It",
+        body: [
+          "Step 1 — Audit what exists. Export every URL with its clicks and impressions from Search Console. Anything with zero clicks in six months is a decision to make, not a page to keep.",
+          "Step 2 — Cut and merge. Delete pages with no purpose. Merge overlapping pages into one strong version and redirect the rest. Fewer, better URLs.",
+          "Step 3 — Fix the foundation. Page speed, mobile rendering, canonical tags, structured data, sitemap accuracy, and internal linking. This is unglamorous work with fast returns.",
+          "Step 4 — Rebuild the top twenty pages using the Source, Shape, Signal, System test. Add your own data. Add named authors. Add examples.",
+          "Step 5 — Change how AI is used. Use it for research, outlines, structure, editing, and repurposing. Do not use it to invent your point of view.",
+          "Step 6 — Publish on a slower cadence. Two substantial pages a month beat twelve interchangeable ones.",
+          "Step 7 — Measure business outcomes. Track enquiries, qualified leads, and branded search growth. Report those, not word counts.",
+        ],
+      },
+      {
+        heading: "Mistakes to Avoid While Fixing It",
+        body: [
+          "Do not delete everything at once. Remove in batches so you can see what the change did.",
+          "Do not chase every AI search feature. The fundamentals that get you quoted in an AI answer are the same ones that get you ranked.",
+          "Do not stop publishing entirely during a cleanup. Momentum matters.",
+          "Do not hide AI use. Disclose it where it is relevant and take editorial responsibility for accuracy.",
+          "Do not expect results in three weeks. Search engines re-evaluate slowly.",
+        ],
+      },
+      {
+        heading: "Best Practices That Still Work",
+        body: [
+          "Answer one clear question per page. Put the answer at the top. Support it with specifics.",
+          "Publish under real people with real credentials.",
+          "Keep a review date on every article and update the important ones quarterly.",
+          "Use structured data honestly — Article, FAQ, Organization, Breadcrumb — so machines can parse what humans read.",
+          "Build internal links deliberately, from your strongest pages to the pages that need authority.",
+          "Keep the site technically fast. It is the cheapest ranking factor you control.",
+        ],
+      },
+      {
+        heading: "Where This Is Heading",
+        body: [
+          "Search is becoming an answer layer. Fewer people will click through, and the businesses that get named inside the answer will capture disproportionate demand.",
+          "That shifts the goal from traffic to citation. Being the source an AI system trusts enough to quote is worth more than ten mid-page rankings.",
+          "It also raises the value of proprietary information. Original research, aggregated customer data, benchmarks, and documented processes become the assets that compound.",
+          "And it turns content into an operational problem, not a creative one. Which is where most businesses actually struggle — the publishing, updating, linking, measuring, and reviewing is a system, and most companies do not have one.",
+        ],
+      },
+      {
+        heading: "Final Thoughts",
+        body: [
+          "AI did not break SEO. It exposed how much content was being produced without a reason to exist.",
+          "The businesses winning in search right now are not the ones publishing the most. They are the ones with something specific to say and a system that gets it published, updated, linked, and measured reliably.",
+          "Fix the system, and the rankings tend to follow.",
+        ],
+      },
     ],
   },
 
