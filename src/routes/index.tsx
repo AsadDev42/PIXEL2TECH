@@ -428,31 +428,37 @@ function Hero() {
                 speed={30}
                 gapClassName="gap-2 sm:gap-3"
                 items={col}
-                keyFor={(_src, i) => `${ci}-${i}`}
-                renderItem={(src, i) => (
+                keyFor={(_m, i) => `${ci}-${i}`}
+                renderItem={(m, i) => (
                   <div
                     data-cursor="expand"
                     className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted sm:rounded-2xl"
                   >
-                    {src.endsWith(".mp4") ? (
+                    {m.kind === "video" ? (
                       <AutoVideo
-                        src={src}
+                        src={m.src}
+                        poster={m.poster}
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     ) : (
 
                       <img
                         decoding="async"
-                        src={src}
+                        src={m.src}
+                        srcSet={m.srcSet}
+                        sizes="(max-width: 640px) 32vw, 190px"
+                        width={384}
+                        height={683}
                         alt="Pixel2Tech branding and web design project preview"
                         draggable={false}
-                        loading={ci === 0 && i === 0 ? "eager" : "lazy"}
-                        fetchPriority={ci === 0 && i === 0 ? "high" : "auto"}
+                        loading={ci === 1 && i === 0 ? "eager" : "lazy"}
+                        fetchPriority={ci === 1 && i === 0 ? "high" : "auto"}
                         className="pointer-events-none h-full w-full select-none object-cover"
                       />
                     )}
                   </div>
                 )}
+
               />
             </div>
           ))}
