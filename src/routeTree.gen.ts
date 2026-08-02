@@ -19,11 +19,13 @@ import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -88,6 +90,11 @@ const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
   path: '/portfolio-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -111,6 +118,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
   id: '/sitemap_index.xml',
   path: '/sitemap_index.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
@@ -195,11 +207,13 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -225,11 +239,13 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -256,11 +272,13 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -288,11 +306,13 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/terms-and-conditions'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -318,11 +338,13 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/terms-and-conditions'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -348,11 +370,13 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/terms-and-conditions'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -379,11 +403,13 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -471,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -504,6 +537,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap_index.xml'
       fullPath: '/sitemap_index.xml'
       preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wp-sitemap.xml': {
@@ -611,11 +651,13 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
