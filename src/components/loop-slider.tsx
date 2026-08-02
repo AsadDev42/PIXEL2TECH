@@ -105,12 +105,15 @@ function LoopSliderImpl<T>({
       last = now;
       const s = stateRef.current;
       if (!s.dragging) {
-        s.pos += dir * speed * dt;
+        const drifting =
+          autoplayRef.current && !(pauseOnHoverRef.current && s.hovering);
+        if (drifting) s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
           s.pos += s.velocity * dt;
           s.velocity *= Math.pow(0.001, dt);
         }
       }
+
       if (s.half > 0) {
         while (s.pos <= -s.half) s.pos += s.half;
         while (s.pos > 0) s.pos -= s.half;
