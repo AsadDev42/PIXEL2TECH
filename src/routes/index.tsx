@@ -45,6 +45,8 @@ import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
+import teamRashail from "@/assets/team-rashail.webp.asset.json";
+
 
 const officeStudio = officeStudioAsset.url;
 
