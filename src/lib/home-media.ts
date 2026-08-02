@@ -88,7 +88,7 @@ export const workItems: WorkItem[] = [
   },
   { title: "Automation & CRM", img: workAutomation.url, poster: workAutomationPoster.url, video: true },
   { title: "AI Solutions", img: workAi.url, poster: workAiPoster.url, video: true },
-  { title: "SEO & Search Growth", img: workSeo.url, poster: workSeoPoster.url, video: true },
+  { title: "SEO & Search Growth", img: seoCard.url },
   { title: "Social Media & Email", img: workSocial.url, poster: workSocialPoster.url, video: true },
   {
     title: "Video Editing & Ads",
