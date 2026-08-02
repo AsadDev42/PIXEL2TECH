@@ -269,9 +269,14 @@ export function SiteFooter() {
           </div>
 
         </div>
-        <div className="mt-10 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12">
-          © 2026 Pixel2Tech. All rights reserved.
+        <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12 sm:flex-row sm:justify-between sm:text-left">
+          <span>© 2026 Pixel2Tech. All rights reserved.</span>
+          <span className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-foreground">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-foreground">Terms &amp; Conditions</Link>
+          </span>
         </div>
+
       </div>
       <FooterMarquee />
     </footer>
