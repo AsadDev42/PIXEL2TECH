@@ -15,6 +15,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -61,6 +62,11 @@ const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
+  id: '/pages-sitemap.xml',
+  path: '/pages-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/mcp': typeof McpRoute
+  '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/mcp': typeof McpRoute
+  '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/mcp': typeof McpRoute
+  '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/services': typeof ServicesRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/mcp'
+    | '/pages-sitemap.xml'
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/mcp'
+    | '/pages-sitemap.xml'
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/mcp'
+    | '/pages-sitemap.xml'
     | '/services'
     | '/sitemap.rss'
     | '/sitemap.xml'
@@ -315,6 +327,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   McpRoute: typeof McpRoute
+  PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -376,6 +389,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages-sitemap.xml': {
+      id: '/pages-sitemap.xml'
+      path: '/pages-sitemap.xml'
+      fullPath: '/pages-sitemap.xml'
+      preLoaderRoute: typeof PagesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -507,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
   McpRoute: McpRoute,
+  PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
