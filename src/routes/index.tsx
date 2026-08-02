@@ -23,7 +23,7 @@ import { z } from "zod";
 import { submitContactForm } from "@/lib/contact.functions";
 import { useFormValidation } from "@/lib/use-form-validation";
 
-import officeStudioAsset from "@/assets/office-studio-2.webp.asset.json";
+import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
 import { heroColumns, heroLcpImage, workItems } from "@/lib/home-media";
 import indVahub from "@/assets/ind-vahub.png.asset.json";
 import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
@@ -36,14 +36,15 @@ import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
-import founderPortrait from "@/assets/founder-portrait.png.asset.json";
+import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
+import founderPortrait1080 from "@/assets/opt-founder-portrait-1080.webp.asset.json";
 
 import teamUsama from "@/assets/team-usama.webp.asset.json";
 import teamAsad from "@/assets/team-asad.webp.asset.json";
 import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
-import teamNoman from "@/assets/team-noman.webp.asset.json";
+import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
 
 const officeStudio = officeStudioAsset.url;
 
@@ -568,8 +569,12 @@ function PartnerBand() {
             </div>
           </motion.div>
           <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
-            <img loading="eager" decoding="async" fetchPriority="high"
+            <img loading="lazy" decoding="async"
               src={founderPortrait.url}
+              srcSet={`${founderPortrait.url} 540w, ${founderPortrait1080.url} 1080w`}
+              sizes="(max-width: 640px) 90vw, 540px"
+              width={540}
+              height={707}
               alt="Pixel2Tech founder portrait"
               className="h-full w-full object-contain"
             />
@@ -853,8 +858,8 @@ function Studio() {
                   alt="Inside the Pixel2Tech studio — team working at their desks"
                   loading="lazy"
                   decoding="async"
-                  width={1600}
-                  height={1067}
+                  width={800}
+                  height={600}
                   className="h-full w-full object-cover"
                 />
               </div>
