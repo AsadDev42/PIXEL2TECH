@@ -23,6 +23,7 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as ApiPublicHooksSubmitSitemapRouteImport } from './routes/api/public/hooks/submit-sitemap'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
@@ -98,6 +99,11 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   path: '/portfolio/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicHooksSubmitSitemapRoute =
   ApiPublicHooksSubmitSitemapRouteImport.update({
     id: '/api/public/hooks/submit-sitemap',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByTo {
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog': typeof BlogIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/portfolio/$slug'
     | '/blog/'
     | '/portfolio/'
+    | '/.lovable/oauth/consent'
     | '/api/public/hooks/submit-sitemap'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/portfolio/$slug'
     | '/blog'
     | '/portfolio'
+    | '/.lovable/oauth/consent'
     | '/api/public/hooks/submit-sitemap'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -239,6 +250,7 @@ export interface FileRouteTypes {
     | '/portfolio/$slug'
     | '/blog/'
     | '/portfolio/'
+    | '/.lovable/oauth/consent'
     | '/api/public/hooks/submit-sitemap'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
+  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   ApiPublicHooksSubmitSitemapRoute: typeof ApiPublicHooksSubmitSitemapRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -366,6 +379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/hooks/submit-sitemap': {
       id: '/api/public/hooks/submit-sitemap'
       path: '/api/public/hooks/submit-sitemap'
@@ -412,6 +432,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioSlugRoute: PortfolioSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
+  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   ApiPublicHooksSubmitSitemapRoute: ApiPublicHooksSubmitSitemapRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
