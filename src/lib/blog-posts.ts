@@ -1,23 +1,15 @@
-import aiMeetingCover from "@/assets/ai-meeting-assistants-cover.jpg.asset.json";
-import replaceAgencyCover from "@/assets/replace-digital-marketing-agency-cover.jpg.asset.json";
-import startupInvestorCover from "@/assets/startup-investor-ready-guide-cover.jpg.asset.json";
-import aiVideoCover from "@/assets/ai-video-technology-cover.jpg.asset.json";
-import cybersecurityCover from "@/assets/cybersecurity-ai-protection-cover.jpg.asset.json";
-import aiRoiCover from "@/assets/ai-business-roi-cover.jpg.asset.json";
-import freelancerCover from "@/assets/freelancer-business-workspace-cover.jpg.asset.json";
-import betterSystemsCover from "@/assets/why-businesses-need-better-systems-cover.jpg.asset.json";
-import aiBrandingCover from "@/assets/ai-changing-modern-branding-cover.jpg.asset.json";
-import modernWebsiteCover from "@/assets/modern-website-2026-cover.jpg.asset.json";
-import goodBrandingCover from "@/assets/power-of-good-branding-cover.jpg.asset.json";
-import rebrandCover from "@/assets/rebrand-vs-refresh-cover.jpg.asset.json";
-import aiOpsCover from "@/assets/ai-ops-layer-cover.jpg.asset.json";
-import designSystemsCover from "@/assets/design-systems-small-teams-cover.jpg.asset.json";
-import aiSeoMistakesCover from "@/assets/ai-seo-mistakes-cover.jpg";
-import linkedinOutreachCover from "@/assets/linkedin-outreach-platforms-cover.jpg";
-import headlessShopifyCover from "@/assets/headless-shopify-commerce-cover.jpg";
 
 
 
+
+/**
+ * Blog cover photography.
+ * All covers use licensed Unsplash stock photos so each article has a clear,
+ * literal visual. `stock()` returns a plain Unsplash URL; `getImageSources()`
+ * in `blog-images.ts` derives the AVIF/WebP srcsets from it automatically.
+ */
+const stock = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=70`;
 
 export type BlogPost = {
   slug: string;
@@ -46,7 +38,7 @@ export const posts: BlogPost[] = [
     "author": "Pixel2Tech Team",
     "title": "AI Meeting Assistants: Are They Worth It for Your Business in 2026?",
     "excerpt": "Automated notes, transcripts, and action items sound great on paper. Here is an honest look at the benefits, limits, ROI, and how to choose the right AI meeting assistant.",
-    "img": aiMeetingCover.url,
+    "img": stock("1522071820081-009f0129c71c"),
     "related": [
       "is-ai-worth-the-investment",
       "why-modern-brands-need-an-ai-ops-layer",
@@ -244,7 +236,7 @@ export const posts: BlogPost[] = [
     title: "10 Signs It's Time to Replace Your Digital Marketing Agency",
     excerpt:
       "Is your marketing agency failing to deliver results? Here are the warning signs, the hidden costs, and what a real digital growth partner looks like.",
-    img: replaceAgencyCover.url,
+    img: stock("1559526324-4b87b5e36e44"),
     metaTitle: "10 Signs to Replace Your Digital Marketing Agency | Pixel2Tech",
     metaDescription:
       "Is your marketing agency failing to deliver? Discover the warning signs, hidden costs, and how the right digital partner accelerates business growth.",
@@ -447,7 +439,7 @@ export const posts: BlogPost[] = [
     title: "Before You Raise Funding, Make Sure Your Startup Looks Investable",
     excerpt:
       "Investors research your website, product and brand long before they read your deck. Here is how to make your startup look investor-ready before you raise.",
-    img: startupInvestorCover.url,
+    img: stock("1542744173-8e7e53415bb0"),
     metaTitle: "How to Make Your Startup Investor-Ready Before Raising Funding | Pixel2Tech",
     metaDescription:
       "Learn what investors look for before funding a startup and discover how a professional website, MVP, branding, and product strategy can increase your chances of raising investment.",
@@ -546,7 +538,7 @@ export const posts: BlogPost[] = [
     title: "Kling O1 Explained: Features, Use Cases & Business Benefits (2026 Guide)",
     excerpt:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing and content creation.",
-    img: aiVideoCover.url,
+    img: stock("1574717024653-61fd2cf4d44d"),
     metaTitle: "Kling O1 Explained: Features, Use Cases & Business Benefits | Pixel2Tech",
     metaDescription:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing, content creation, and digital experiences.",
@@ -643,7 +635,7 @@ export const posts: BlogPost[] = [
     title: "Bots Have Officially Taken Over the Internet — Here's What It Means for Your Website in 2026",
     excerpt:
       "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
-    img: cybersecurityCover.url,
+    img: stock("1526374965328-7f61d4dc18c5"),
     metaTitle: "Bots Now Outnumber Humans Online: What It Means for You",
     metaDescription:
       "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
@@ -720,7 +712,7 @@ export const posts: BlogPost[] = [
     title: "Is AI Worth the Investment? A Business Owner's Guide to Understanding the Real Value of AI",
     excerpt:
       "Learn when AI is worth investing in, where businesses waste money on AI, and how to implement AI strategically for real business growth.",
-    img: aiRoiCover.url,
+    img: stock("1551288049-bebda4e38f71"),
     metaTitle: "Is AI Worth the Investment for Your Business? | Pixel2Tech",
     metaDescription:
       "Learn when AI is worth investing in, where businesses waste money on AI, and how to implement AI strategically for real business growth.",
@@ -830,7 +822,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Freelancers Fail on Upwork (And What Clients Actually Want)",
     excerpt:
       "Most freelancers lose Upwork projects for the same reason: they focus on getting hired while clients focus on getting results.",
-    img: freelancerCover.url,
+    img: stock("1556155092-490a1ba16284"),
     metaTitle: "Why You're Not Winning Upwork Projects | Pixel2Tech",
     metaDescription:
       "Discover why many freelancers struggle on Upwork and how to win more projects by thinking like a client instead of just another applicant.",
@@ -922,7 +914,7 @@ export const posts: BlogPost[] = [
     title: "Why Most Businesses Don't Need More Software. They Need Better Systems",
     excerpt:
       "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software — it's the system behind it.",
-    img: betterSystemsCover.url,
+    img: stock("1454165804606-c3d57bc86b40"),
     metaTitle: "Why Businesses Need Better Systems Instead of More Software | Pixel2Tech",
     metaDescription:
       "Learn why businesses struggle despite using multiple software tools and how AI, automation, and connected systems help companies scale more efficiently.",
@@ -1012,7 +1004,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "How AI is Changing Modern Branding",
     excerpt: "The tools have changed. The principles haven't. Here's how we blend both.",
-    img: aiBrandingCover.url,
+    img: stock("1550751827-4bd374c3f58b"),
     content: [
       { heading: "Introduction", body: [
         "AI is reshaping how brands research, design, and communicate — but the fundamentals of clarity and consistency still decide who wins.",
@@ -1035,7 +1027,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Why Every Business Needs a Modern Website in 2026",
     excerpt: "A 10-point audit to figure out if your website is helping or hurting.",
-    img: modernWebsiteCover.url,
+    img: stock("1499951360447-b19be8fe80f5"),
     content: [
       { heading: "Introduction", body: [
         "Your website is your storefront, your salesperson, and your credibility check — all before a human ever replies.",
@@ -1057,7 +1049,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "The Power of Good Branding for Business Growth",
     excerpt: "Why a strong brand system compounds every marketing dollar you spend.",
-    img: goodBrandingCover.url,
+    img: stock("1552664730-d307ca884978"),
     content: [
       { heading: "Introduction", body: [
         "Branding is more than just a logo. It is the overall identity of your business and how customers perceive your company.",
@@ -1079,7 +1071,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Rebrand vs. Refresh: A Founder's Decision Framework",
     excerpt: "Not sure whether to rebrand? Answer these five questions first.",
-    img: rebrandCover.url,
+    img: stock("1533750349088-cd871a92f312"),
     content: [
       { heading: "Introduction", body: [
         "A full rebrand is expensive and risky. A refresh is often enough. Here's how to tell them apart.",
@@ -1100,7 +1092,7 @@ export const posts: BlogPost[] = [
     author: "Asad Farooq",
     title: "Why Modern Brands Need an AI Ops Layer",
     excerpt: "The teams that win in the next 5 years will run on AI-native workflows.",
-    img: aiOpsCover.url,
+    img: stock("1531403009284-440f080d1e12"),
     content: [
       { heading: "Introduction", body: [
         "AI Ops is the connective tissue between your tools, your data, and your team.",
@@ -1122,7 +1114,7 @@ export const posts: BlogPost[] = [
     title: "Design Systems for Small Teams: How to Build Better Products Faster",
     excerpt:
       "A design system isn't only for large companies. Here's how small teams build simple, practical systems that improve consistency, speed, and product quality.",
-    img: designSystemsCover.url,
+    img: stock("1581291518857-4e27b48ff24e"),
     metaTitle: "Design Systems for Small Teams: A Practical Guide | Pixel2Tech",
     metaDescription:
       "Learn how small teams can build effective design systems using simple components, tokens, and patterns to improve consistency, speed, and product quality.",
@@ -1237,7 +1229,7 @@ export const posts: BlogPost[] = [
     title: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
     excerpt:
       "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
-    img: aiSeoMistakesCover,
+    img: stock("1526628953301-3e589a6a8b74"),
     metaTitle: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
     metaDescription:
       "The most common AI SEO mistakes businesses make in 2026, why AI content stops ranking, and a practical framework to fix visibility in Google and AI search.",
@@ -1430,7 +1422,7 @@ export const posts: BlogPost[] = [
     title: "Best LinkedIn Outreach Platforms in 2026",
     excerpt:
       "A practical look at the best LinkedIn outreach platforms in 2026 — what each one is actually good for, how to choose, and the mistakes that quietly kill reply rates.",
-    img: linkedinOutreachCover,
+    img: stock("1616469829581-73993eb86b02"),
     metaTitle: "Best LinkedIn Outreach Platforms in 2026 | Pixel2Tech",
     metaDescription:
       "Compare the best LinkedIn outreach platforms in 2026 — pricing, best use cases, pros and cons, plus how to choose the right tool for your B2B sales system.",
@@ -1584,7 +1576,7 @@ export const posts: BlogPost[] = [
     title: "Headless Shopify: A Practical Guide for Founders and eCommerce Brands",
     excerpt:
       "What headless Shopify actually means, when it is worth the cost, when a well-built theme wins, and how to plan the move without breaking revenue.",
-    img: headlessShopifyCover,
+    img: stock("1556742049-0cfed4f6a45d"),
     metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands | Pixel2Tech",
     metaDescription:
       "Understand headless Shopify commerce: how it works, real benefits and costs, when to switch, and how to migrate without losing SEO, speed, or revenue.",
