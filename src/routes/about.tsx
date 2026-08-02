@@ -101,6 +101,7 @@ const team = [
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
+  { name: "Muhammad Rashail", role: "Head of Engineering & Automation", img: teamRashail.url },
 ];
 
 const reasons = [
