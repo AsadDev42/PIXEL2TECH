@@ -28,6 +28,8 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/services": "2026-08-01",
   "/portfolio": "2026-08-01",
   "/contact": "2026-08-01",
+  "/privacy-policy": "2026-08-02",
+  "/terms-and-conditions": "2026-08-02",
 };
 
 /** Newest published blog post date, used for the blog index lastmod. */
@@ -48,9 +50,12 @@ export function pageEntries(): SitemapEntry[] {
       { path: "/portfolio", changefreq: "weekly", priority: "0.8" },
       { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: newestPostDate() },
       { path: "/contact", changefreq: "yearly", priority: "0.6" },
+      { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
+      { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.3" },
     ] satisfies SitemapEntry[]
   ).map((e) => ({ ...e, lastmod: e.lastmod ?? STATIC_LASTMOD[e.path] }));
 }
+
 
 /** Service pages. Currently a single hub route; new service routes go here. */
 export function serviceEntries(): SitemapEntry[] {
