@@ -17,8 +17,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
+import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
@@ -80,6 +82,11 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
+  id: '/page-sitemap.xml',
+  path: '/page-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
   id: '/pages-sitemap.xml',
   path: '/pages-sitemap.xml',
@@ -88,6 +95,11 @@ const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
 const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
   id: '/portfolio-sitemap.xml',
   path: '/portfolio-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostSitemapDotxmlRoute = PostSitemapDotxmlRouteImport.update({
+  id: '/post-sitemap.xml',
+  path: '/post-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -205,8 +217,10 @@ export interface FileRoutesByFullPath {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
+  '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -237,8 +251,10 @@ export interface FileRoutesByTo {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
+  '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -270,8 +286,10 @@ export interface FileRoutesById {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/mcp': typeof McpRoute
+  '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
+  '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -304,8 +322,10 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/images-sitemap.xml'
     | '/mcp'
+    | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/post-sitemap.xml'
     | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
@@ -336,8 +356,10 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/images-sitemap.xml'
     | '/mcp'
+    | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/post-sitemap.xml'
     | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
@@ -368,8 +390,10 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/images-sitemap.xml'
     | '/mcp'
+    | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
+    | '/post-sitemap.xml'
     | '/privacy-policy'
     | '/services'
     | '/services-sitemap.xml'
@@ -401,8 +425,10 @@ export interface RootRouteChildren {
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
   McpRoute: typeof McpRoute
+  PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
+  PostSitemapDotxmlRoute: typeof PostSitemapDotxmlRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
@@ -483,6 +509,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/page-sitemap.xml': {
+      id: '/page-sitemap.xml'
+      path: '/page-sitemap.xml'
+      fullPath: '/page-sitemap.xml'
+      preLoaderRoute: typeof PageSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pages-sitemap.xml': {
       id: '/pages-sitemap.xml'
       path: '/pages-sitemap.xml'
@@ -495,6 +528,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio-sitemap.xml'
       fullPath: '/portfolio-sitemap.xml'
       preLoaderRoute: typeof PortfolioSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/post-sitemap.xml': {
+      id: '/post-sitemap.xml'
+      path: '/post-sitemap.xml'
+      fullPath: '/post-sitemap.xml'
+      preLoaderRoute: typeof PostSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -649,8 +689,10 @@ const rootRouteChildren: RootRouteChildren = {
   FaviconDoticoRoute: FaviconDoticoRoute,
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
   McpRoute: McpRoute,
+  PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
+  PostSitemapDotxmlRoute: PostSitemapDotxmlRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,

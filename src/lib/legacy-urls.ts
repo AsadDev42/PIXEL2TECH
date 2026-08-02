@@ -41,6 +41,10 @@ const RESERVED_EXACT = new Set([
   "portfolio-sitemap.xml",
   "images-sitemap.xml",
   "wp-sitemap.xml",
+  // Legacy Yoast sitemap names that 301 to their current equivalents.
+  "post-sitemap.xml",
+  "page-sitemap.xml",
+
 
   "favicon.ico",
   "favicon.png",
