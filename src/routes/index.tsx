@@ -8,7 +8,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 
-import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown, Pause, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 
