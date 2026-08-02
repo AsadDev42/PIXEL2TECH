@@ -10,6 +10,7 @@ import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
+import teamRashail from "@/assets/team-rashail.webp.asset.json";
 import officeImg from "@/assets/office.webp.asset.json";
 
 const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
@@ -100,6 +101,7 @@ const team = [
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
+  { name: "Muhammad Rashail", role: "Head of Engineering & Automation", img: teamRashail.url },
 ];
 
 const reasons = [
