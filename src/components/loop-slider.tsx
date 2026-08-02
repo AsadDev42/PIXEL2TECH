@@ -212,6 +212,13 @@ function LoopSliderImpl<T>({
       }
     };
 
+    // Hover pause is opt-in per instance but always wired, so the prop can flip
+    // at runtime without tearing down the animation loop.
+    const onEnter = () => { stateRef.current.hovering = true; };
+    const onLeave = () => { stateRef.current.hovering = false; };
+    track.addEventListener("pointerenter", onEnter);
+    track.addEventListener("pointerleave", onLeave);
+
     if (draggable) {
       track.addEventListener("pointerdown", onDown);
       track.addEventListener("pointermove", onMove);
@@ -227,6 +234,8 @@ function LoopSliderImpl<T>({
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       ro.disconnect();
+      track.removeEventListener("pointerenter", onEnter);
+      track.removeEventListener("pointerleave", onLeave);
 
       if (draggable) {
         track.removeEventListener("pointerdown", onDown);
@@ -237,6 +246,7 @@ function LoopSliderImpl<T>({
       }
     };
   }, [isX, resolvedDir, speed, draggable]);
+
 
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
   const touchClass = draggable
