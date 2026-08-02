@@ -41,8 +41,7 @@ import workAutomation from "@/assets/opt-work-automation-640.mp4.asset.json";
 import workAutomationPoster from "@/assets/opt-work-automation-poster.webp.asset.json";
 import workAi from "@/assets/opt-work-ai-solutions-640.mp4.asset.json";
 import workAiPoster from "@/assets/opt-work-ai-solutions-poster.webp.asset.json";
-import workSeo from "@/assets/opt-work-seo-640.mp4.asset.json";
-import workSeoPoster from "@/assets/opt-work-seo-poster.webp.asset.json";
+import seoCard from "@/assets/ai-seo-mistakes-card.png.asset.json";
 import workSocial from "@/assets/opt-work-social-new-640.mp4.asset.json";
 import workSocialPoster from "@/assets/opt-work-social-new-poster.webp.asset.json";
 
@@ -88,7 +87,7 @@ export const workItems: WorkItem[] = [
   },
   { title: "Automation & CRM", img: workAutomation.url, poster: workAutomationPoster.url, video: true },
   { title: "AI Solutions", img: workAi.url, poster: workAiPoster.url, video: true },
-  { title: "SEO & Search Growth", img: workSeo.url, poster: workSeoPoster.url, video: true },
+  { title: "SEO & Search Growth", img: seoCard.url },
   { title: "Social Media & Email", img: workSocial.url, poster: workSocialPoster.url, video: true },
   {
     title: "Video Editing & Ads",
