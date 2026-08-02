@@ -13,6 +13,7 @@ import rebrandCover from "@/assets/rebrand-vs-refresh-cover.jpg.asset.json";
 import aiOpsCover from "@/assets/ai-ops-layer-cover.jpg.asset.json";
 import designSystemsCover from "@/assets/design-systems-small-teams-cover.jpg.asset.json";
 import aiSeoMistakesCover from "@/assets/ai-seo-mistakes-cover.jpg";
+import linkedinOutreachCover from "@/assets/linkedin-outreach-platforms-cover.jpg";
 
 
 
