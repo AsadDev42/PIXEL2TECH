@@ -15,7 +15,7 @@ import {
 import { BlogCta } from "@/components/blog-cta";
 import {
   ArticleSection,
-  AuthorCard,
+  
   InternalLinks,
   KeyTakeaways,
   PrevNextNav,
