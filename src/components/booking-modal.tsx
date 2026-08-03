@@ -223,7 +223,7 @@ export function BookingModal({
                   </span>
                 </div>
 
-                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]]">
+                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
                   <div
                     key={CAL_URL}
                     className="calendly-inline-widget h-[420px] sm:h-[480px] lg:h-[560px]"
