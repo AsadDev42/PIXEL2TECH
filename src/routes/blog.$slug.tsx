@@ -158,6 +158,7 @@ function BlogPostPage() {
 
   return (
     <PageShell>
+      <ReadingProgress />
       <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           {/* Breadcrumb */}
@@ -179,17 +180,26 @@ function BlogPostPage() {
                   {post.title}
                 </h1>
 
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  {post.excerpt}
+                </p>
+
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                   <span className="inline-flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{post.author}</span>
                   <span className="inline-flex items-center gap-2"><Folder className="h-4 w-4" aria-hidden="true" />{post.tag}</span>
                   <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" aria-hidden="true" />{post.date}</span>
-                  <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{post.time}</span>
+                  <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{readingMinutes} min read</span>
+                  <span className="inline-flex items-center gap-2"><RefreshCw className="h-4 w-4" aria-hidden="true" />Updated {post.updated ?? post.date}</span>
+                </div>
+
+                <div className="mt-6">
+                  <ShareBar url={shareUrl} title={post.title} />
                 </div>
 
                 <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
                   <ResponsiveImage
                     src={post.img}
-                    alt={post.title}
+                    alt={post.imgAlt ?? post.title}
                     width={1600}
                     height={900}
                     sizes="(min-width: 1024px) 66vw, 92vw"
@@ -197,6 +207,7 @@ function BlogPostPage() {
                     priority
                   />
                 </div>
+
               </FadeIn>
 
               <div className="mt-10 space-y-10">
