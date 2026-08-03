@@ -1839,3 +1839,46 @@ export function getSortedPosts(): BlogPost[] {
     return Date.parse(`January 1, 2000 ${b.time}`) - Date.parse(`January 1, 2000 ${a.time}`);
   });
 }
+
+/**
+ * Pixel2Tech service pages every article can link to. Used to suggest
+ * internal links when a post does not define its own `internalLinks`.
+ */
+export const SITE_LINKS: { label: string; to: string }[] = [
+  { label: "AI Automation", to: "/services" },
+  { label: "Web Development", to: "/services" },
+  { label: "Branding", to: "/services" },
+  { label: "UI/UX Design", to: "/services" },
+  { label: "Video Editing", to: "/services" },
+  { label: "Shopify Development", to: "/services" },
+  { label: "SEO", to: "/services" },
+  { label: "Digital Marketing", to: "/services" },
+  { label: "Our Work", to: "/portfolio" },
+  { label: "About Pixel2Tech", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
+
+/** Previous (newer) and next (older) article in the newest-first ordering. */
+export function getAdjacentPosts(post: BlogPost) {
+  const sorted = getSortedPosts();
+  const i = sorted.findIndex((p) => p.slug === post.slug);
+  return {
+    previous: i > 0 ? sorted[i - 1] : undefined,
+    next: i >= 0 && i < sorted.length - 1 ? sorted[i + 1] : undefined,
+  };
+}
+
+/** Estimated reading time in minutes from the article body. */
+export function getReadingMinutes(post: BlogPost) {
+  const words = post.content.reduce((total, section) => {
+    const parts = [
+      ...section.body,
+      ...(section.bullets ?? []),
+      ...(section.subsections?.flatMap((s) => [...s.body, ...(s.bullets ?? [])]) ?? []),
+      section.definition ?? "",
+      section.callout?.body ?? "",
+    ];
+    return total + parts.join(" ").split(/\s+/).filter(Boolean).length;
+  }, 0);
+  return Math.max(1, Math.round(words / 225));
+}
