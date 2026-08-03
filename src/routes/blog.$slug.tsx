@@ -12,6 +12,7 @@ import {
   type BlogSection,
 } from "@/lib/blog-posts";
 import { BlogCta } from "@/components/blog-cta";
+import { NewsletterForm } from "@/components/newsletter-form";
 import {
   ArticleSection,
   
