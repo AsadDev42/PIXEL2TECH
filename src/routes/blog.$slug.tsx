@@ -182,7 +182,7 @@ function BlogPostPage() {
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
             {/* Main */}
-            <article className="lg:order-1">
+            <article className="min-w-0 lg:order-1">
 
               <div>
                 <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
@@ -324,7 +324,7 @@ function BlogPostPage() {
 
 
             {/* Sidebar */}
-            <aside className="lg:order-2 lg:sticky lg:top-24 lg:self-start">
+            <aside className="min-w-0 lg:order-2 lg:sticky lg:top-24 lg:self-start">
               <div>
                 <div className="hidden lg:block">
                   <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
