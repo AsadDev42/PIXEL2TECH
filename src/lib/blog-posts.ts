@@ -74,6 +74,8 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  mobileAppDesignProcessPost,
+
   {
     "slug": "ai-meeting-assistants-business-guide",
     "tag": "Artificial Intelligence",
