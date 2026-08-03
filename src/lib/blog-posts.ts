@@ -1616,11 +1616,36 @@ export const posts: BlogPost[] = [
     tag: "eCommerce",
     date: "August 2, 2026",
     time: "3:00 pm",
+    updated: "August 3, 2026",
     author: "Asad Farooq",
+    authorRole: "eCommerce Lead, Pixel2Tech",
+    authorBio:
+      "Asad leads Shopify and headless commerce builds at Pixel2Tech, from theme optimisation for early-stage brands to composable storefronts for multi-market retailers.",
     title: "Headless Shopify: A Practical Guide for Founders and eCommerce Brands",
     excerpt:
       "What headless Shopify actually means, when it is worth the cost, when a well-built theme wins, and how to plan the move without breaking revenue.",
     img: stock("1556742049-0cfed4f6a45d"),
+    imgAlt: "Merchant reviewing an online store dashboard on a laptop while packing customer orders",
+    keyTakeaways: [
+      "Headless Shopify separates the storefront from Shopify's checkout and admin, giving full control over the customer experience.",
+      "It is worth the investment when content complexity, multi-market needs, or custom UX genuinely exceed what a theme can do.",
+      "For most stores under roughly £1m revenue, disciplined theme optimisation returns more per pound spent.",
+      "Plan migrations around a redirect map, structured data, and Core Web Vitals to protect existing organic traffic.",
+      "Server-rendered HTML matters more than ever, because AI answer engines read your pages directly.",
+    ],
+    sources: [
+      { label: "Shopify — Headless commerce overview", href: "https://www.shopify.com/enterprise/blog/headless-commerce" },
+      { label: "Google Search Central — Core Web Vitals and page experience", href: "https://developers.google.com/search/docs/appearance/page-experience" },
+      { label: "Google Search Central — Site migration best practices", href: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+    ],
+    internalLinks: [
+      { label: "Shopify Development", to: "/services" },
+      { label: "Web Development", to: "/services" },
+      { label: "UI/UX Design", to: "/services" },
+      { label: "SEO", to: "/services" },
+      { label: "Our Work", to: "/portfolio" },
+      { label: "Contact", to: "/contact" },
+    ],
     metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands | Pixel2Tech",
     metaDescription:
       "Understand headless Shopify commerce: how it works, real benefits and costs, when to switch, and how to migrate without losing SEO, speed, or revenue.",
