@@ -211,22 +211,27 @@ function BlogPostPage() {
               </FadeIn>
 
               <div className="mt-10 space-y-10">
-                {post.content.map((section: BlogPost["content"][number], i: number) => (
+                {post.keyTakeaways?.length ? (
+                  <FadeIn>
+                    <KeyTakeaways items={post.keyTakeaways} />
+                  </FadeIn>
+                ) : null}
+
+                <FadeIn>
+                  <div className="lg:hidden">
+                    <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
+                  </div>
+                </FadeIn>
+
+                {post.content.map((section, i) => (
                   <FadeIn key={section.heading} delay={0.05 * (i + 1)}>
-                    <section>
-                      <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{section.heading}</h2>
-                      <div className="mt-4 space-y-4">
-                        {section.body.map((p: string, idx: number) => (
-                          <p key={idx} className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">{p}</p>
-                        ))}
-                      </div>
-                    </section>
+                    <ArticleSection section={section} />
                   </FadeIn>
                 ))}
 
                 {post.faqs?.length ? (
                   <FadeIn>
-                    <section>
+                    <section id="faqs" className="scroll-mt-28">
                       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
                       <div className="mt-6 space-y-4">
                         {post.faqs.map((f: { q: string; a: string }) => (
@@ -240,9 +245,29 @@ function BlogPostPage() {
                   </FadeIn>
                 ) : null}
 
+                {post.sources?.length ? (
+                  <FadeIn>
+                    <SourceList sources={post.sources} />
+                  </FadeIn>
+                ) : null}
+
+                <FadeIn>
+                  <AuthorCard post={post} />
+                </FadeIn>
+
                 <FadeIn>
                   <BlogCta {...(post.cta ?? {})} />
                 </FadeIn>
+
+                <FadeIn>
+                  <InternalLinks links={internalLinks} />
+                </FadeIn>
+
+                <FadeIn>
+                  <PrevNextNav previous={previous} next={next} />
+                </FadeIn>
+
+
 
 
                 <FadeIn>
