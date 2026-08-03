@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 
-import { Play, Pause, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
+import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { LoopSlider } from "@/components/loop-slider";
 import { useState } from "react";
@@ -159,7 +159,6 @@ function Accordion() {
 }
 
 function AboutPage() {
-  const [teamAutoplay, setTeamAutoplay] = useState(true);
   return (
     <PageShell>
       {/* Hero */}
@@ -336,15 +335,6 @@ function AboutPage() {
               </p>
             </div>
           </FadeIn>
-          <button
-            type="button"
-            onClick={() => setTeamAutoplay((v) => !v)}
-            aria-pressed={teamAutoplay}
-            className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
-          >
-            {teamAutoplay ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
-            {teamAutoplay ? "Pause autoplay" : "Play autoplay"}
-          </button>
         </div>
         <div data-cursor="expand">
           <LoopSlider
@@ -352,10 +342,9 @@ function AboutPage() {
             keyFor={(m, i) => `${m.name}-${i}`}
             direction="ltr"
             speed={40}
-            autoplay={teamAutoplay}
-            pauseOnHover
+            autoplay
             gapClassName="gap-4 md:gap-6"
-            className="mt-8 sm:mt-10"
+            className="mt-10 sm:mt-14"
             ariaLabel="Pixel2Tech creative team"
             renderItem={(m) => (
               <article
