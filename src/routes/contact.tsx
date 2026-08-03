@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Mail, Loader2, MapPin, Phone, ArrowRight, AlertCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -199,11 +199,11 @@ function ContactPage() {
                   />
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                 {fields.map((f) => (
                   <div key={f.id} className="flex min-w-0 flex-col">
 
-                    <label htmlFor={f.id} className="mb-2 text-sm font-medium text-foreground">
+                    <label htmlFor={f.id} className="mb-1.5 text-sm font-medium text-foreground">
                       {f.label}
                     </label>
                     <input
@@ -219,17 +219,20 @@ function ContactPage() {
                       onBlur={handleBlur(f.id)}
                       disabled={loading}
                       aria-invalid={!!errors[f.id]}
-                      aria-describedby={`${f.id}-error`}
-                      className={`min-h-12 rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors[f.id] ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
+                      aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
+                      className={`min-h-12 w-full touch-manipulation rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors[f.id] ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                     />
-                    <p
-                      id={`${f.id}-error`}
-                      role="alert"
-                      aria-live="polite"
-                      className="mt-1.5 min-h-[1.25rem] text-sm text-destructive"
-                    >
-                      {errors[f.id] ?? ""}
-                    </p>
+                    <p aria-live="polite" className="sr-only">{errors[f.id] ?? ""}</p>
+                    {errors[f.id] ? (
+                      <p
+                        id={`${f.id}-error`}
+                        role="alert"
+                        className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-destructive"
+                      >
+                        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                        <span className="min-w-0">{errors[f.id]}</span>
+                      </p>
+                    ) : null}
                   </div>
                 ))}
                 </div>
@@ -237,7 +240,7 @@ function ContactPage() {
 
 
                 <div className="flex flex-col">
-                  <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
+                  <label htmlFor="message" className="mb-1.5 text-sm font-medium text-foreground">
                     Message
                   </label>
                   <textarea
@@ -250,23 +253,26 @@ function ContactPage() {
                     disabled={loading}
                     placeholder="Tell us about your project"
                     aria-invalid={!!errors.message}
-                    aria-describedby="message-error"
-                    className={`resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className={`min-h-32 w-full touch-manipulation resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
                   />
 
-                  <p
-                    id="message-error"
-                    role="alert"
-                    aria-live="polite"
-                    className="mt-1.5 min-h-[1.25rem] text-sm text-destructive"
-                  >
-                    {errors.message ?? ""}
-                  </p>
+                  <p aria-live="polite" className="sr-only">{errors.message ?? ""}</p>
+                  {errors.message ? (
+                    <p
+                      id="message-error"
+                      role="alert"
+                      className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-destructive"
+                    >
+                      <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      <span className="min-w-0">{errors.message}</span>
+                    </p>
+                  ) : null}
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-foreground text-base font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-1 inline-flex h-14 w-full touch-manipulation items-center justify-center gap-2 rounded-2xl bg-foreground text-base font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                   {loading ? "Sending…" : "Send Message"}
