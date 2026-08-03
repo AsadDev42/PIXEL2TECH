@@ -88,7 +88,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Can Pixel2Tech also handle the content calendar and copy?", a: "We can. Social media design sits alongside our branding and digital marketing work, so the calendar, copy direction and post design can all be handled by one team rather than split across freelancers." },
     ],
     relatedReading: CREATIVE_READING,
-    relatedServices: ["Social Media Marketing", "Branding & Identity", "Graphic Design"],
+    relatedServices: ["Social Media & Email", "Branding & Design", "Video Editing & Ads"],
   },
   Branding: {
     process: [
@@ -108,7 +108,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Will the identity work in print as well as digital?", a: "Yes. We build outward from the smallest digital use case — a 16px favicon — and test upward through web, social, print and signage, supplying CMYK and vector artwork for production." },
     ],
     relatedReading: CREATIVE_READING,
-    relatedServices: ["Branding & Identity", "Graphic Design", "Website Design & Development"],
+    relatedServices: ["Branding & Design", "Website Development", "Social Media & Email"],
   },
   "Print & Merchandise": {
     process: [
@@ -128,7 +128,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Do you handle packaging design as well as stationery?", a: "Yes — packaging, labels, dielines, menus, signage, business cards and apparel all fall inside this practice, and all are designed against the same brand system." },
     ],
     relatedReading: CREATIVE_READING,
-    relatedServices: ["Graphic Design", "Branding & Identity", "Social Media Marketing"],
+    relatedServices: ["Branding & Design", "Social Media & Email", "Website Development"],
   },
   Websites: {
     process: [
@@ -148,7 +148,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Is SEO included in the build?", a: "Technical SEO is built in — semantic HTML, heading hierarchy, metadata, structured data, sitemaps, image optimisation and performance. Ongoing content and link strategy is offered separately as an SEO engagement." },
     ],
     relatedReading: WEB_READING,
-    relatedServices: ["Website Design & Development", "UI/UX Design", "SEO & Search Growth"],
+    relatedServices: ["Website Development", "Branding & Design", "SEO & Search Growth"],
   },
   "E-Commerce": {
     process: [
@@ -168,7 +168,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "What actually improves e-commerce conversion?", a: "In our experience: faster product pages, fewer checkout steps, guest purchase, honest shipping and returns information shown before the cart, and product photography that answers the sizing and material questions people would otherwise email about." },
     ],
     relatedReading: COMMERCE_READING,
-    relatedServices: ["Website Design & Development", "UI/UX Design", "Digital Marketing"],
+    relatedServices: ["WordPress & Shopify", "Website Development", "SEO & Search Growth"],
   },
   "Mobile Apps": {
     process: [
@@ -188,7 +188,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "How do you validate the design before development?", a: "Interactive prototypes are tested with real users on real devices before any code is written, which is far cheaper than discovering the same navigation problem after the build." },
     ],
     relatedReading: WEB_READING,
-    relatedServices: ["UI/UX Design", "Custom Software & AI Automation", "Website Design & Development"],
+    relatedServices: ["Custom Platforms & Apps", "AI Solutions", "Website Development"],
   },
   "Short Form": {
     process: [
@@ -208,7 +208,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Can you edit footage we film ourselves?", a: "Certainly. Many clients shoot in-house and send us the raw files; we handle structure, editing, colour, sound, captions and delivery." },
     ],
     relatedReading: VIDEO_READING,
-    relatedServices: ["Video Editing & Motion", "Social Media Marketing", "Digital Marketing"],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
   },
   "Long Form": {
     process: [
@@ -228,7 +228,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Can you repurpose the episode into short clips?", a: "That is usually the highest-value add-on. One long-form edit typically produces eight to fifteen short-form clips using the same footage and grade." },
     ],
     relatedReading: VIDEO_READING,
-    relatedServices: ["Video Editing & Motion", "Social Media Marketing", "Branding & Identity"],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "SEO & Search Growth"],
   },
   Commercial: {
     process: [
@@ -248,7 +248,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Will the ads meet platform technical requirements?", a: "Yes. Exports are checked against current Meta, Google Ads, TikTok and broadcast specifications, including duration, safe zones, bitrate and captioning." },
     ],
     relatedReading: VIDEO_READING,
-    relatedServices: ["Video Editing & Motion", "Digital Marketing", "Branding & Identity"],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
   },
   "Web Apps": {
     process: [
@@ -268,7 +268,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "Do we own the code?", a: "Yes. You own the codebase, the data and the infrastructure accounts. We hand over repositories and documentation, and you are free to continue with any development team." },
     ],
     relatedReading: SYSTEMS_READING,
-    relatedServices: ["Custom Software & AI Automation", "UI/UX Design", "Website Design & Development"],
+    relatedServices: ["Custom Platforms & Apps", "AI Solutions", "Automation & CRM"],
   },
   Tools: {
     process: [
@@ -288,7 +288,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "What happens if requirements change later?", a: "The tools are built on a typed, documented stack so they can be extended. You own the code, and we offer ongoing support if you prefer us to handle changes." },
     ],
     relatedReading: SYSTEMS_READING,
-    relatedServices: ["Custom Software & AI Automation", "Website Design & Development", "UI/UX Design"],
+    relatedServices: ["Custom Platforms & Apps", "Automation & CRM", "Website Development"],
   },
   Automation: {
     process: [
@@ -308,7 +308,7 @@ const BANKS: Record<string, DetailBank> = {
       { q: "How do you prevent automations from failing silently?", a: "Every workflow includes error handling, retry logic and alerting, plus logging so any failed run is visible and traceable rather than discovered when a customer complains." },
     ],
     relatedReading: SYSTEMS_READING,
-    relatedServices: ["Custom Software & AI Automation", "Digital Marketing", "SEO & Search Growth"],
+    relatedServices: ["Automation & CRM", "AI Solutions", "Custom Platforms & Apps"],
   },
 };
 
