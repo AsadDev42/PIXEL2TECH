@@ -134,10 +134,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
-      {
-        children:
-          "requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add('p2t-ready')})})",
-      },
+
 
       {
         type: "application/ld+json",
