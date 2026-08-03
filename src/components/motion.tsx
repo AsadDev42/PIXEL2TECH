@@ -118,34 +118,5 @@ export function PageTransition({
   );
 }
 
-export function PageLoader() {
-  return (
-    <div
-      id="p2t-page-loader"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
-    >
-      <motion.div
-        className="flex items-center gap-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.25 }}
-      >
-        <motion.div
-          className="h-3 w-3 rounded-full bg-[#1E90FF]"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-[#1E90FF]"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-[#1E90FF]"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-        />
-      </motion.div>
-    </div>
-  );
-}
+
+
