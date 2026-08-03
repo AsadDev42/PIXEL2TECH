@@ -123,7 +123,7 @@ export function BookingModal({
             aria-modal="true"
             aria-label="Book a Pixel2Tech Strategy Session"
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full max-w-6xl overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
+            className="relative z-10 flex w-full max-w-6xl max-h-[90vh] flex-col overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
             style={{ boxShadow: "var(--elev-3)" }}
             initial={{ opacity: 0, scale: 0.96, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
