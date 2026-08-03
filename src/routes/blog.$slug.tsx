@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
-import { FadeIn } from "@/components/motion";
 import { Calendar, Clock, User, Folder, ChevronRight, RefreshCw } from "lucide-react";
 import {
   getAdjacentPosts,
@@ -171,7 +170,7 @@ function BlogPostPage() {
       <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           {/* Breadcrumb */}
-          <FadeIn>
+          <div>
             <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-foreground">Home</Link>
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
@@ -179,13 +178,13 @@ function BlogPostPage() {
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
               <span className="text-foreground">{post.title}</span>
             </nav>
-          </FadeIn>
+          </div>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
             {/* Main */}
             <article className="lg:order-1">
 
-              <FadeIn>
+              <div>
                 <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   {post.title}
                 </h1>
@@ -220,35 +219,35 @@ function BlogPostPage() {
                   />
                 </div>
 
-              </FadeIn>
+              </div>
 
               <div className="mt-10 space-y-10">
                 {post.keyTakeaways?.length ? (
-                  <FadeIn>
+                  <div>
                     <KeyTakeaways items={post.keyTakeaways} />
-                  </FadeIn>
+                  </div>
                 ) : null}
 
-                <FadeIn>
+                <div>
                   <div className="lg:hidden">
                     <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
                   </div>
-                </FadeIn>
+                </div>
 
                 {post.content.map((section: BlogSection, i: number) => (
-                  <FadeIn key={section.heading} delay={0.05 * (i + 1)}>
+                  <div key={section.heading}>
                     <ArticleSection section={section} />
-                  </FadeIn>
+                  </div>
                 ))}
 
                 {post.sources?.length ? (
-                  <FadeIn>
+                  <div>
                     <SourceList sources={post.sources} />
-                  </FadeIn>
+                  </div>
                 ) : null}
 
                 {post.faqs?.length ? (
-                  <FadeIn>
+                  <div>
                     <section id="faqs" className="scroll-mt-28">
                       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
                       <div className="mt-6 space-y-4">
@@ -260,28 +259,28 @@ function BlogPostPage() {
                         ))}
                       </div>
                     </section>
-                  </FadeIn>
+                  </div>
                 ) : null}
 
 
 
 
-                <FadeIn>
+                <div>
                   <BlogCta {...(post.cta ?? {})} />
-                </FadeIn>
+                </div>
 
-                <FadeIn>
+                <div>
                   <InternalLinks links={internalLinks} />
-                </FadeIn>
+                </div>
 
-                <FadeIn>
+                <div>
                   <PrevNextNav previous={previous} next={next} />
-                </FadeIn>
+                </div>
 
 
 
 
-                <FadeIn>
+                <div>
                   <section aria-labelledby="related-articles">
                     <h2 id="related-articles" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                       Related Articles
@@ -318,7 +317,7 @@ function BlogPostPage() {
                       ))}
                     </div>
                   </section>
-                </FadeIn>
+                </div>
               </div>
             </article>
 
@@ -326,7 +325,7 @@ function BlogPostPage() {
 
             {/* Sidebar */}
             <aside className="lg:order-2 lg:sticky lg:top-24 lg:self-start">
-              <FadeIn delay={0.15}>
+              <div>
                 <div className="hidden lg:block">
                   <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
                 </div>
@@ -408,7 +407,7 @@ function BlogPostPage() {
                     </form>
                   </div>
                 </div>
-              </FadeIn>
+              </div>
             </aside>
           </div>
         </div>
