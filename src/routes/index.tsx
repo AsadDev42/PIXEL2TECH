@@ -76,7 +76,7 @@ function HomeContact() {
           subject: `New inquiry from ${d.firstName} ${d.lastName} (${d.phone})`,
           message: d.message,
           website,
-          ts: loadedAt,
+          elapsedMs: Date.now() - loadedAt,
         },
       });
 
