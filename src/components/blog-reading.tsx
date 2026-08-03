@@ -219,27 +219,28 @@ export function ArticleSection({ section }: { section: BlogSection }) {
 export function SourceList({ sources }: { sources: { label: string; href: string }[] }) {
   if (!sources.length) return null;
   return (
-    <section aria-labelledby="sources" className="rounded-2xl border border-border bg-background p-5 sm:p-6">
-      <h2 id="sources" className="text-lg font-bold tracking-tight text-foreground">
+    <div aria-labelledby="sources" className="border-t border-border pt-6">
+      <h3 id="sources" className="text-base font-semibold tracking-tight text-foreground">
         Sources and further reading
-      </h2>
-      <ul className="mt-4 space-y-2">
+      </h3>
+      <ul className="mt-3 list-disc space-y-1.5 pl-5 marker:text-muted-foreground">
         {sources.map((s) => (
           <li key={s.href}>
             <a
               href={s.href}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="text-sm text-[#1E90FF] underline-offset-4 hover:underline"
+              className="text-[15px] leading-relaxed text-muted-foreground underline underline-offset-4 hover:text-foreground"
             >
               {s.label}
             </a>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 }
+
 
 /* ------------------------------------------------------------------ */
 /* Author card                                                         */
