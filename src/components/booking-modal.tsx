@@ -39,6 +39,12 @@ const benefits = [
   },
 ];
 
+const calendlyHeights = {
+  mobile: 360,
+  tablet: 420,
+  desktop: 480,
+};
+
 export function BookingModal({
   open,
   onClose,
