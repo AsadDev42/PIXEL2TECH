@@ -2,9 +2,27 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
-import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
-import { getPost, getRelatedPosts, posts, type BlogPost } from "@/lib/blog-posts";
+import { Calendar, Clock, User, Folder, ChevronRight, RefreshCw } from "lucide-react";
+import {
+  getAdjacentPosts,
+  getPost,
+  getReadingMinutes,
+  getRelatedPosts,
+  posts,
+  SITE_LINKS,
+} from "@/lib/blog-posts";
 import { BlogCta } from "@/components/blog-cta";
+import {
+  ArticleSection,
+  AuthorCard,
+  InternalLinks,
+  KeyTakeaways,
+  PrevNextNav,
+  ReadingProgress,
+  ShareBar,
+  SourceList,
+  TableOfContents,
+} from "@/components/blog-reading";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
