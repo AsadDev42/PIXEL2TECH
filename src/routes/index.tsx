@@ -776,15 +776,6 @@ function Team() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setAutoplay((v) => !v)}
-                aria-pressed={autoplay}
-                className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
-              >
-                {autoplay ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
-                {autoplay ? "Pause autoplay" : "Play autoplay"}
-              </button>
               <Link
                 to="/about"
                 className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
