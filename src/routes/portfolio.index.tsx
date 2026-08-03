@@ -250,7 +250,7 @@ function PortfolioPage() {
                                 <Link
                                   to="/portfolio/$slug"
                                   params={{ slug: w.slug }}
-                                  className="group -mx-2 flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground focus-visible:outline-none"
+                                  className="group -mx-2 flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground focus-visible:outline-none"
                                 >
                                   <span className="min-w-0 truncate">{w.title}</span>
                                   <span
