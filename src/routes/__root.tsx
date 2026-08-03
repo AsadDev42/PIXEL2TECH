@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { Toaster } from "@/components/ui/sonner";
 
 const NOT_FOUND_LINKS = [
   { to: "/services" as const, label: "Services" },
