@@ -79,13 +79,21 @@ export const Route = createFileRoute("/blog/$slug")({
             keywords: post.keywords?.join(", "),
             datePublished: post.date,
             dateModified: post.updated ?? post.date,
-            author: {
-              "@type": "Organization",
-              "@id": "https://pixel2tech.com/#organization",
-              name: "Pixel2Tech",
-              url: "https://pixel2tech.com",
-              logo: { "@type": "ImageObject", url: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
-            },
+            author:
+              post.author === "Pixel2Tech Team"
+                ? {
+                    "@type": "Organization",
+                    "@id": "https://pixel2tech.com/#organization",
+                    name: "Pixel2Tech",
+                    url: "https://pixel2tech.com",
+                  }
+                : {
+                    "@type": "Person",
+                    name: post.author,
+                    jobTitle: post.authorRole,
+                    worksFor: { "@type": "Organization", "@id": "https://pixel2tech.com/#organization", name: "Pixel2Tech" },
+                    url: "https://pixel2tech.com/about",
+                  },
             publisher: {
               "@type": "Organization",
               name: "Pixel2Tech",
