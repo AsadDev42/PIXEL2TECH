@@ -757,7 +757,7 @@ const team = [
 
 
 function Team() {
-  const [autoplay, setAutoplay] = useState(true);
+  
   return (
 
     <section aria-labelledby="team-section-title" className="bg-muted py-16 md:py-24 lg:py-32">
