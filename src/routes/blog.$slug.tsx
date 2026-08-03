@@ -150,12 +150,11 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const related = getRelatedPosts(post, 4);
+  const { previous, next } = getAdjacentPosts(post);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
-  const socials = [
-    { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
-    { Icon: Twitter, label: "X", href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}` },
-    { Icon: Linkedin, label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}` },
-  ];
+  const readingMinutes = getReadingMinutes(post);
+  const internalLinks = post.internalLinks?.length ? post.internalLinks : SITE_LINKS;
+
 
   return (
     <PageShell>
