@@ -93,7 +93,7 @@ function BlogPage() {
               {featured.title}
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">{featured.excerpt}</p>
-            <a href="#" className="sr-only">read</a>
+            
             <Link to="/blog/$slug" params={{ slug: featured.slug }} className="mt-5 inline-flex min-h-11 w-fit items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:mt-6">
               Read Article
             </Link>
