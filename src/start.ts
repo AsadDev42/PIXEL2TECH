@@ -91,7 +91,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com",
       "connect-src 'self' https: wss:",
       "media-src 'self' https: blob:",
       "frame-src 'self' https://calendly.com https://*.calendly.com https://www.youtube.com https://player.vimeo.com https://drive.google.com https://www.google.com https://maps.google.com",
