@@ -6,10 +6,10 @@ import { ArrowRight, Sparkles } from "lucide-react";
  * "Book a call" / "Contact us" language.
  */
 export function BlogCta({
-  title = "Ready to Grow Smarter, Not Harder?",
-  body = "Whether you need a high-converting website, AI automation, branding, video production, or a complete growth strategy, our team builds systems that help businesses scale faster.",
-  primaryLabel = "Get My Free Growth Strategy",
-  secondaryLabel = "See Our Work",
+  title = "Ready to Build a Smarter Growth System?",
+  body = "Whether you're improving SEO, launching a new brand, building a high-converting website, or implementing AI automation, the right strategy creates long-term growth instead of short-term wins.",
+  primaryLabel = "Get My Growth Blueprint",
+  secondaryLabel = "Explore Pixel2Tech",
 }: {
   title?: string;
   body?: string;
@@ -45,7 +45,7 @@ export function BlogCta({
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           <Link
-            to="/portfolio"
+            to="/services"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-background/30 px-7 py-3 text-sm font-semibold text-background transition hover:bg-background/10"
           >
             {secondaryLabel}
