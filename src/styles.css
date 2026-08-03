@@ -272,11 +272,10 @@ html.dark .p2t-on-dark:hover {
 }
 .marquee-track.slow { animation-duration: 60s; }
 .marquee-track.fast { animation-duration: 25s; }
-.marquee-viewport:hover .marquee-track { animation-play-state: paused; }
 
 .marquee-rtl { animation: marquee-rtl 40s linear infinite; will-change: transform; }
 .marquee-ltr { animation: marquee-ltr 40s linear infinite; will-change: transform; }
-.marquee-rtl:hover, .marquee-ltr:hover { animation-play-state: paused; }
+
 
 
 .edge-fade-x {
