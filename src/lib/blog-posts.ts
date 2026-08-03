@@ -1178,12 +1178,6 @@ export const posts: BlogPost[] = [
       "ai-meeting-assistants-business-guide",
       "is-ai-worth-the-investment",
     ],
-    cta: {
-      title: "Ready to Build a Scalable Digital Product?",
-      body: "A strong product starts with a strong foundation. At Pixel2Tech, we help businesses design and develop scalable digital experiences through UI/UX design, development, design systems, and modern technology solutions. Whether you're building a startup MVP, SaaS platform, or enterprise product, we help you create products that are consistent, user-friendly, and ready to grow. Design. Develop. Grow.",
-      primaryLabel: "Start your project",
-      secondaryLabel: "Book a call",
-    },
     faqs: [
       {
         q: "What is a design system?",
@@ -1304,13 +1298,6 @@ export const posts: BlogPost[] = [
       "is-ai-worth-the-investment",
       "how-ai-is-changing-modern-branding",
     ],
-    cta: {
-      title: "Your systems, not your content calendar, decide how fast you grow",
-      body:
-        "Most businesses don't struggle because they lack technology. They struggle because their technology doesn't work together. If your operations feel slower as your business grows, it may be time to rethink your systems. Pixel2Tech helps businesses simplify complexity through AI, automation, and scalable technology solutions.",
-      primaryLabel: "Talk through your systems",
-      secondaryLabel: "See how we work",
-    },
     faqs: [
       {
         q: "What are the most common AI SEO mistakes?",
@@ -1489,13 +1476,6 @@ export const posts: BlogPost[] = [
       "ai-seo-mistakes",
       "ai-meeting-assistants-business-guide",
     ],
-    cta: {
-      title: "A better outreach system beats a better outreach tool",
-      body:
-        "If your sales team is spending more time finding prospects than building relationships, it may be time to improve your outreach system. Pixel2Tech helps businesses build smarter sales workflows using AI, automation, and scalable technology.",
-      primaryLabel: "Talk through your sales workflow",
-      secondaryLabel: "See how we work",
-    },
     faqs: [
       {
         q: "What is the best LinkedIn outreach platform in 2026?",
@@ -1670,13 +1650,6 @@ export const posts: BlogPost[] = [
       "ai-seo-mistakes",
       "why-modern-brands-need-an-ai-ops-layer",
     ],
-    cta: {
-      title: "Thinking about headless? Start with the business case, not the stack.",
-      body:
-        "Pixel2Tech builds Shopify stores, headless storefronts, custom web applications, and UI/UX systems for eCommerce brands. We will tell you honestly whether headless is the right move for your store, and build it properly if it is.",
-      primaryLabel: "Book a free eCommerce strategy call",
-      secondaryLabel: "See our services",
-    },
     faqs: [
       {
         q: "What is headless Shopify?",
