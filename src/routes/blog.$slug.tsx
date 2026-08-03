@@ -223,7 +223,7 @@ function BlogPostPage() {
                   </div>
                 </FadeIn>
 
-                {post.content.map((section, i) => (
+                {post.content.map((section: BlogSection, i: number) => (
                   <FadeIn key={section.heading} delay={0.05 * (i + 1)}>
                     <ArticleSection section={section} />
                   </FadeIn>
