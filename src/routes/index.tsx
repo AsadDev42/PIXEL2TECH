@@ -794,8 +794,7 @@ function Team() {
           keyFor={(m, i) => `${m.name}-${i}`}
           direction="ltr"
           speed={40}
-          autoplay={autoplay}
-          pauseOnHover
+          autoplay
           gapClassName="gap-4 md:gap-6"
           className="mt-10 sm:mt-14"
           ariaLabel="Pixel2Tech creative team"
