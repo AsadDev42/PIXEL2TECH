@@ -202,14 +202,14 @@ export function BookingModal({
 
               {/* Right: Calendly embed */}
               <motion.div
-                className="flex flex-col gap-5 p-6 lg:p-8"
+                className="flex min-h-0 flex-col gap-4 p-5 lg:gap-5 lg:p-8"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
-                    <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                    <h3 className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
                       Pixel2Tech Strategy Session
                     </h3>
                     <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
@@ -218,17 +218,17 @@ export function BookingModal({
                       Grow.
                     </p>
                   </div>
-                  <span className="hidden h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid">
-                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  <span className="hidden h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid lg:h-10 lg:w-10">
+                    <ArrowRight className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden="true" />
                   </span>
                 </div>
 
-                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
+                <div className="min-h-0 flex-1 overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
                   <div
                     key={CAL_URL}
                     className="calendly-inline-widget"
                     data-url={CAL_URL}
-                    style={{ minWidth: 280, height: 640 }}
+                    style={{ minWidth: 280, height: "100%", minHeight: 420 }}
                   />
                 </div>
               </motion.div>
