@@ -12,6 +12,7 @@ import {
   type BlogSection,
 } from "@/lib/blog-posts";
 import { BlogCta } from "@/components/blog-cta";
+import { NewsletterForm } from "@/components/newsletter-form";
 import {
   ArticleSection,
   
@@ -388,23 +389,8 @@ function BlogPostPage() {
                     <p className="mt-2 text-sm text-muted-foreground">
                       Get expert insights on business strategy, growth frameworks, leadership, and performance delivered to your inbox.
                     </p>
-                    <form className="mt-4 space-y-3" onSubmit={(e) => e.preventDefault()}>
-                      <div>
-                        <label htmlFor="newsletter-email" className="mb-1.5 block text-xs font-medium text-foreground">
-                          Email <span className="text-destructive">*</span>
-                        </label>
-                        <input
-                          id="newsletter-email"
-                          type="email"
-                          required
-                          placeholder="example@yourmail.com"
-                          className="min-h-11 w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring"
-                        />
-                      </div>
-                      <button type="submit" className="min-h-11 w-full rounded-lg bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition hover:opacity-90">
-                        Subscribe
-                      </button>
-                    </form>
+                    <NewsletterForm />
+
                   </div>
                 </div>
               </div>
