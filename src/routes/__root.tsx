@@ -104,9 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Pixel2Tech" },
-      ...(import.meta.env.VITE_GSC_VERIFICATION
-        ? [{ name: "google-site-verification", content: import.meta.env.VITE_GSC_VERIFICATION as string }]
-        : []),
+      {
+        name: "google-site-verification",
+        content: "S6ztcxzh9YNUQjvX1iYls3EVoH7JCdpqj684i-0I_rs",
+      },
       { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:locale", content: "en_US" },
       { property: "og:image:width", content: "1200" },
