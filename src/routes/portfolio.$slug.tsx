@@ -31,6 +31,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     }
     const { item } = loaderData;
     const copy = getProjectCopy(item);
+    const detail = getProjectDetail(item);
     const title = `${item.title} — ${item.subcategory} Case Study | Pixel2Tech`;
     const desc = copy.metaDescription;
     const url = `https://pixel2tech.com/portfolio/${params.slug}`;
@@ -64,6 +65,18 @@ export const Route = createFileRoute("/portfolio/$slug")({
             url,
             genre: `${item.category} · ${item.subcategory}`,
             creator: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: detail.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           }),
         },
         {
