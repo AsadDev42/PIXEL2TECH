@@ -11,6 +11,7 @@ import {
   type PortfolioItem,
 } from "@/lib/portfolio-data";
 import { getProjectCopy } from "@/lib/portfolio-copy";
+import { getProjectDetail } from "@/lib/portfolio-detail";
 
 
 export const Route = createFileRoute("/portfolio/$slug")({
@@ -30,6 +31,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     }
     const { item } = loaderData;
     const copy = getProjectCopy(item);
+    const detail = getProjectDetail(item);
     const title = `${item.title} — ${item.subcategory} Case Study | Pixel2Tech`;
     const desc = copy.metaDescription;
     const url = `https://pixel2tech.com/portfolio/${params.slug}`;
@@ -63,6 +65,18 @@ export const Route = createFileRoute("/portfolio/$slug")({
             url,
             genre: `${item.category} · ${item.subcategory}`,
             creator: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: detail.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
           }),
         },
         {
@@ -251,6 +265,7 @@ function PortfolioDetailPage() {
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
   const copy = getProjectCopy(item);
+  const detail = getProjectDetail(item);
 
 
   return (
@@ -374,6 +389,112 @@ function PortfolioDetailPage() {
             </dl>
           </div>
         </FadeIn>
+      </section>
+
+      {/* Process · Technologies · Why it matters */}
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32" aria-labelledby="process-title">
+        <h2 id="process-title" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          How we delivered this {item.subcategory.toLowerCase()} project
+        </h2>
+        <ol className="mt-8 grid gap-5 sm:grid-cols-2">
+          {detail.process.map((step, i) => (
+            <li key={step.title} className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03]">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Step {String(i + 1).padStart(2, "0")}
+              </div>
+              <h3 className="mt-2 text-lg font-bold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">Technologies and tools used</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              The stack below was chosen for this engagement because it matched the scale of the work, the team
+              that would maintain it afterwards, and the performance the brief required.
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {detail.technologies.map((t) => (
+                <li key={t} className="rounded-md border border-border bg-muted px-2.5 py-1 text-xs text-foreground/80 dark:border-white/10 dark:bg-white/[0.05]">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">Why this project matters</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{detail.whyItMatters}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              If you are weighing up similar work, our{" "}
+              <Link to="/services" className="font-medium text-foreground underline underline-offset-4">
+                services overview
+              </Link>{" "}
+              explains how we scope engagements, and{" "}
+              <Link to="/about" className="font-medium text-foreground underline underline-offset-4">
+                about Pixel2Tech
+              </Link>{" "}
+              introduces the team who would run it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="mx-auto max-w-4xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32" aria-labelledby="project-faq-title">
+        <h2 id="project-faq-title" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          Frequently asked questions
+        </h2>
+        <dl className="mt-8 space-y-4">
+          {detail.faqs.map((f) => (
+            <div key={f.q} className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03]">
+              <dt className="text-base font-semibold text-foreground">{f.q}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* Related services + reading */}
+      <section className="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32" aria-labelledby="related-links-title">
+        <h2 id="related-links-title" className="sr-only">Related services and articles</h2>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <nav aria-label="Related services" className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">Related services</h3>
+            <ul className="mt-4 space-y-2">
+              {detail.relatedServices.map((s) => (
+                <li key={s}>
+                  <Link
+                    to="/services"
+                    hash={s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                    className="flex min-h-11 items-center justify-between gap-3 rounded-xl px-3 text-sm font-medium text-foreground transition hover:bg-muted dark:hover:bg-white/[0.05]"
+                  >
+                    {s}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Related articles" className="rounded-2xl border border-border bg-background p-6 dark:border-white/10 dark:bg-white/[0.03] sm:p-8">
+            <h3 className="text-lg font-bold text-foreground sm:text-xl">Related articles</h3>
+            <ul className="mt-4 space-y-2">
+              {detail.relatedReading.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: r.slug }}
+                    className="flex min-h-11 items-center justify-between gap-3 rounded-xl px-3 text-sm font-medium text-foreground transition hover:bg-muted dark:hover:bg-white/[0.05]"
+                  >
+                    <span>{r.label}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </section>
 
 

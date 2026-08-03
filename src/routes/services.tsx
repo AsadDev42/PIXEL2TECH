@@ -332,7 +332,7 @@ function ServicesPage() {
         <div className="rounded-2xl bg-muted p-3 sm:rounded-3xl sm:p-4 md:p-6 dark:bg-white/[0.02]">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <div key={s.title} className="rounded-2xl border border-border/70 bg-background p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:p-6">
+              <div key={s.title} id={s.title.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")} className="scroll-mt-28 rounded-2xl border border-border/70 bg-background p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:p-6">
                 <div className="flex items-center gap-3">
                   <div aria-hidden="true" className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${s.accent}`}>
                     <s.Icon className="h-5 w-5" strokeWidth={1.75} />

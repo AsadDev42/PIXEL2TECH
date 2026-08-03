@@ -242,6 +242,27 @@ export function ArticleSection({ section }: { section: BlogSection }) {
 /* Sources                                                             */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Trusted publishers and official documentation: these earn a normal followed
+ * link. Everything else keeps rel="nofollow".
+ */
+const TRUSTED_LINK_HOSTS = [
+  "google.com", "developers.google.com", "support.google.com", "search.google.com", "web.dev", "schema.org",
+  "microsoft.com", "learn.microsoft.com", "openai.com", "platform.openai.com", "anthropic.com",
+  "github.com", "figma.com", "shopify.com", "shopify.dev", "react.dev", "nextjs.org", "supabase.com",
+  "developer.mozilla.org", "w3.org", "wikipedia.org", "gartner.com", "mckinsey.com", "hbr.org",
+  "statista.com", "nngroup.com", "semrush.com", "ahrefs.com", "cloudflare.com", "stripe.com",
+];
+
+function isTrustedLink(href: string): boolean {
+  try {
+    const host = new URL(href).hostname.replace(/^www\./, "");
+    return TRUSTED_LINK_HOSTS.some((h) => host === h || host.endsWith(`.${h}`));
+  } catch {
+    return false;
+  }
+}
+
 export function SourceList({ sources }: { sources: { label: string; href: string }[] }) {
   if (!sources.length) return null;
   return (
@@ -255,7 +276,7 @@ export function SourceList({ sources }: { sources: { label: string; href: string
             <a
               href={s.href}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel={isTrustedLink(s.href) ? "noopener noreferrer" : "noopener noreferrer nofollow"}
               className="text-[15px] leading-relaxed text-muted-foreground underline underline-offset-4 hover:text-foreground"
             >
               {s.label}
