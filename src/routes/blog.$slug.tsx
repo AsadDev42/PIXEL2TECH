@@ -10,6 +10,7 @@ import {
   getRelatedPosts,
   posts,
   SITE_LINKS,
+  type BlogSection,
 } from "@/lib/blog-posts";
 import { BlogCta } from "@/components/blog-cta";
 import {
