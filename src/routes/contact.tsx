@@ -199,8 +199,10 @@ function ContactPage() {
                   />
                 </div>
 
+                <div className="grid gap-5 sm:grid-cols-2">
                 {fields.map((f) => (
-                  <div key={f.id} className="flex flex-col">
+                  <div key={f.id} className="flex min-w-0 flex-col">
+
                     <label htmlFor={f.id} className="mb-2 text-sm font-medium text-foreground">
                       {f.label}
                     </label>
@@ -230,6 +232,9 @@ function ContactPage() {
                     </p>
                   </div>
                 ))}
+                </div>
+
+
 
                 <div className="flex flex-col">
                   <label htmlFor="message" className="mb-2 text-sm font-medium text-foreground">
