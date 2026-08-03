@@ -1268,11 +1268,11 @@ export const posts: BlogPost[] = [
     date: "August 2, 2026",
     time: "09:00 am",
     author: "Pixel2Tech Team",
-    title: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
+    title: "Why Your AI Content Is Not Ranking (And How to Fix It)",
     excerpt:
       "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
     img: stock("1526628953301-3e589a6a8b74"),
-    metaTitle: "AI SEO Mistakes: Why Your AI Content Is Not Ranking",
+    metaTitle: "AI SEO Mistakes in 2026 | Why Your Content Isn't Ranking | Pixel2Tech",
     metaDescription:
       "The most common AI SEO mistakes businesses make in 2026, why AI content stops ranking, and a practical framework to fix visibility in Google and AI search.",
     keywords: [
