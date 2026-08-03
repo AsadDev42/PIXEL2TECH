@@ -315,24 +315,11 @@ import { AnimatePresence } from "framer-motion";
 
 
 export function PageShell({ children }: { children: React.ReactNode }) {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  // No intro overlay: the page is server-rendered, so covering it with a
-  // full-screen loader until hydration is what caused the white flash on
-  // refresh. Content paints immediately instead.
-  const firstPaint = useRef(true);
-  useEffect(() => {
-    firstPaint.current = false;
-  }, []);
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <SiteNav />
-      <AnimatePresence mode="wait">
-        <PageTransition key={pathname} skipInitial={firstPaint.current}>
-          <main id="main-content" tabIndex={-1} className="focus:outline-none">{children}</main>
-        </PageTransition>
-      </AnimatePresence>
-
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">{children}</main>
       <SiteFooter />
       <WhatsAppButton />
       <CursorFollower />
