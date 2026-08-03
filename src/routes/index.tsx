@@ -8,7 +8,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/motion";
 import { getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 
-import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown, Pause, Play } from "lucide-react";
+import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 
@@ -757,7 +757,7 @@ const team = [
 
 
 function Team() {
-  const [autoplay, setAutoplay] = useState(true);
+  
   return (
 
     <section aria-labelledby="team-section-title" className="bg-muted py-16 md:py-24 lg:py-32">
@@ -776,15 +776,6 @@ function Team() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setAutoplay((v) => !v)}
-                aria-pressed={autoplay}
-                className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
-              >
-                {autoplay ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
-                {autoplay ? "Pause autoplay" : "Play autoplay"}
-              </button>
               <Link
                 to="/about"
                 className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-foreground hover:text-background"
@@ -803,8 +794,7 @@ function Team() {
           keyFor={(m, i) => `${m.name}-${i}`}
           direction="ltr"
           speed={40}
-          autoplay={autoplay}
-          pauseOnHover
+          autoplay
           gapClassName="gap-4 md:gap-6"
           className="mt-10 sm:mt-14"
           ariaLabel="Pixel2Tech creative team"
