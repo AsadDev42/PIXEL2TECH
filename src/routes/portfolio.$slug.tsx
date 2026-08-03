@@ -265,6 +265,7 @@ function PortfolioDetailPage() {
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
   const copy = getProjectCopy(item);
+  const detail = getProjectDetail(item);
 
 
   return (
