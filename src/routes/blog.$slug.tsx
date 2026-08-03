@@ -181,9 +181,10 @@ function BlogPostPage() {
             </nav>
           </FadeIn>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-12">
             {/* Main */}
-            <article>
+            <article className="lg:order-2">
+
               <FadeIn>
                 <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   {post.title}
@@ -260,9 +261,8 @@ function BlogPostPage() {
                   </FadeIn>
                 ) : null}
 
-                <FadeIn>
-                  <AuthorCard post={post} />
-                </FadeIn>
+
+
 
                 <FadeIn>
                   <BlogCta {...(post.cta ?? {})} />
@@ -323,7 +323,7 @@ function BlogPostPage() {
 
 
             {/* Sidebar */}
-            <aside className="lg:sticky lg:top-24 lg:self-start">
+            <aside className="lg:order-1 lg:sticky lg:top-24 lg:self-start">
               <FadeIn delay={0.15}>
                 <div className="hidden lg:block">
                   <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
