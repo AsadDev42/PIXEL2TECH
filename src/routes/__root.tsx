@@ -206,7 +206,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // The inline boot script adds a `p2t-ready` class / theme class to <html>
+    // before hydration, so attribute differences here are expected.
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -227,6 +229,7 @@ function RootComponent() {
         <AnalyticsTracker />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <Toaster position="top-center" richColors closeButton />
       </ThemeProvider>
     </QueryClientProvider>
   );
