@@ -11,23 +11,67 @@
 const stock = (id: string) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=70`;
 
+/** A comparison table rendered inside an article section. */
+export type BlogTable = {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+};
+
+/** One H2 section of an article. Everything except `heading` is optional. */
+export type BlogSection = {
+  heading: string;
+  /** Optional one-line definition rendered before the prose (GEO extraction). */
+  definition?: string;
+  body: string[];
+  bullets?: string[];
+  table?: BlogTable;
+  /** Highlighted expert insight / example box. */
+  callout?: { title?: string; body: string };
+  /** H3 blocks under this section. */
+  subsections?: { heading: string; body: string[]; bullets?: string[] }[];
+};
+
 export type BlogPost = {
   slug: string;
   tag: string;
   date: string;
   time: string;
+  /** Human-readable last-updated date, e.g. "August 3, 2026". */
+  updated?: string;
   author: string;
+  authorRole?: string;
+  authorBio?: string;
   title: string;
   excerpt: string;
   img: string;
+  imgAlt?: string;
   metaTitle?: string;
   metaDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
   keywords?: string[];
+  /** Scannable summary rendered near the top and reused by AI answer engines. */
+  keyTakeaways?: string[];
   faqs?: { q: string; a: string }[];
   related?: string[];
+  /** Pixel2Tech pages this article should link to. */
+  internalLinks?: { label: string; to: string }[];
+  /** Credible external references (Google, Ahrefs, Shopify, HubSpot…). */
+  sources?: { label: string; href: string }[];
   cta?: { title?: string; body?: string; primaryLabel?: string; secondaryLabel?: string };
-  content: { heading: string; body: string[] }[];
+  content: BlogSection[];
 };
+
+/** Stable anchor id for a heading, used by the table of contents. */
+export function headingId(heading: string) {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .slice(0, 60);
+}
 
 export const posts: BlogPost[] = [
   {
@@ -1134,12 +1178,6 @@ export const posts: BlogPost[] = [
       "ai-meeting-assistants-business-guide",
       "is-ai-worth-the-investment",
     ],
-    cta: {
-      title: "Ready to Build a Scalable Digital Product?",
-      body: "A strong product starts with a strong foundation. At Pixel2Tech, we help businesses design and develop scalable digital experiences through UI/UX design, development, design systems, and modern technology solutions. Whether you're building a startup MVP, SaaS platform, or enterprise product, we help you create products that are consistent, user-friendly, and ready to grow. Design. Develop. Grow.",
-      primaryLabel: "Start your project",
-      secondaryLabel: "Book a call",
-    },
     faqs: [
       {
         q: "What is a design system?",
@@ -1260,13 +1298,6 @@ export const posts: BlogPost[] = [
       "is-ai-worth-the-investment",
       "how-ai-is-changing-modern-branding",
     ],
-    cta: {
-      title: "Your systems, not your content calendar, decide how fast you grow",
-      body:
-        "Most businesses don't struggle because they lack technology. They struggle because their technology doesn't work together. If your operations feel slower as your business grows, it may be time to rethink your systems. Pixel2Tech helps businesses simplify complexity through AI, automation, and scalable technology solutions.",
-      primaryLabel: "Talk through your systems",
-      secondaryLabel: "See how we work",
-    },
     faqs: [
       {
         q: "What are the most common AI SEO mistakes?",
@@ -1445,13 +1476,6 @@ export const posts: BlogPost[] = [
       "ai-seo-mistakes",
       "ai-meeting-assistants-business-guide",
     ],
-    cta: {
-      title: "A better outreach system beats a better outreach tool",
-      body:
-        "If your sales team is spending more time finding prospects than building relationships, it may be time to improve your outreach system. Pixel2Tech helps businesses build smarter sales workflows using AI, automation, and scalable technology.",
-      primaryLabel: "Talk through your sales workflow",
-      secondaryLabel: "See how we work",
-    },
     faqs: [
       {
         q: "What is the best LinkedIn outreach platform in 2026?",
@@ -1572,11 +1596,36 @@ export const posts: BlogPost[] = [
     tag: "eCommerce",
     date: "August 2, 2026",
     time: "3:00 pm",
+    updated: "August 3, 2026",
     author: "Asad Farooq",
+    authorRole: "eCommerce Lead, Pixel2Tech",
+    authorBio:
+      "Asad leads Shopify and headless commerce builds at Pixel2Tech, from theme optimisation for early-stage brands to composable storefronts for multi-market retailers.",
     title: "Headless Shopify: A Practical Guide for Founders and eCommerce Brands",
     excerpt:
       "What headless Shopify actually means, when it is worth the cost, when a well-built theme wins, and how to plan the move without breaking revenue.",
     img: stock("1556742049-0cfed4f6a45d"),
+    imgAlt: "Merchant reviewing an online store dashboard on a laptop while packing customer orders",
+    keyTakeaways: [
+      "Headless Shopify separates the storefront from Shopify's checkout and admin, giving full control over the customer experience.",
+      "It is worth the investment when content complexity, multi-market needs, or custom UX genuinely exceed what a theme can do.",
+      "For most stores under roughly £1m revenue, disciplined theme optimisation returns more per pound spent.",
+      "Plan migrations around a redirect map, structured data, and Core Web Vitals to protect existing organic traffic.",
+      "Server-rendered HTML matters more than ever, because AI answer engines read your pages directly.",
+    ],
+    sources: [
+      { label: "Shopify — Headless commerce overview", href: "https://www.shopify.com/enterprise/blog/headless-commerce" },
+      { label: "Google Search Central — Core Web Vitals and page experience", href: "https://developers.google.com/search/docs/appearance/page-experience" },
+      { label: "Google Search Central — Site migration best practices", href: "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes" },
+    ],
+    internalLinks: [
+      { label: "Shopify Development", to: "/services" },
+      { label: "Web Development", to: "/services" },
+      { label: "UI/UX Design", to: "/services" },
+      { label: "SEO", to: "/services" },
+      { label: "Our Work", to: "/portfolio" },
+      { label: "Contact", to: "/contact" },
+    ],
     metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands | Pixel2Tech",
     metaDescription:
       "Understand headless Shopify commerce: how it works, real benefits and costs, when to switch, and how to migrate without losing SEO, speed, or revenue.",
@@ -1601,13 +1650,6 @@ export const posts: BlogPost[] = [
       "ai-seo-mistakes",
       "why-modern-brands-need-an-ai-ops-layer",
     ],
-    cta: {
-      title: "Thinking about headless? Start with the business case, not the stack.",
-      body:
-        "Pixel2Tech builds Shopify stores, headless storefronts, custom web applications, and UI/UX systems for eCommerce brands. We will tell you honestly whether headless is the right move for your store, and build it properly if it is.",
-      primaryLabel: "Book a free eCommerce strategy call",
-      secondaryLabel: "See our services",
-    },
     faqs: [
       {
         q: "What is headless Shopify?",
@@ -1794,4 +1836,47 @@ export function getSortedPosts(): BlogPost[] {
     if (dateDifference !== 0) return dateDifference;
     return Date.parse(`January 1, 2000 ${b.time}`) - Date.parse(`January 1, 2000 ${a.time}`);
   });
+}
+
+/**
+ * Pixel2Tech service pages every article can link to. Used to suggest
+ * internal links when a post does not define its own `internalLinks`.
+ */
+export const SITE_LINKS: { label: string; to: string }[] = [
+  { label: "AI Automation", to: "/services" },
+  { label: "Web Development", to: "/services" },
+  { label: "Branding", to: "/services" },
+  { label: "UI/UX Design", to: "/services" },
+  { label: "Video Editing", to: "/services" },
+  { label: "Shopify Development", to: "/services" },
+  { label: "SEO", to: "/services" },
+  { label: "Digital Marketing", to: "/services" },
+  { label: "Our Work", to: "/portfolio" },
+  { label: "About Pixel2Tech", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
+
+/** Previous (newer) and next (older) article in the newest-first ordering. */
+export function getAdjacentPosts(post: BlogPost) {
+  const sorted = getSortedPosts();
+  const i = sorted.findIndex((p) => p.slug === post.slug);
+  return {
+    previous: i > 0 ? sorted[i - 1] : undefined,
+    next: i >= 0 && i < sorted.length - 1 ? sorted[i + 1] : undefined,
+  };
+}
+
+/** Estimated reading time in minutes from the article body. */
+export function getReadingMinutes(post: BlogPost) {
+  const words = post.content.reduce((total, section) => {
+    const parts = [
+      ...section.body,
+      ...(section.bullets ?? []),
+      ...(section.subsections?.flatMap((s) => [...s.body, ...(s.bullets ?? [])]) ?? []),
+      section.definition ?? "",
+      section.callout?.body ?? "",
+    ];
+    return total + parts.join(" ").split(/\s+/).filter(Boolean).length;
+  }, 0);
+  return Math.max(1, Math.round(words / 225));
 }

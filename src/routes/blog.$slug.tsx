@@ -2,9 +2,28 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
-import { Calendar, Clock, User, Folder, ChevronRight, Facebook, Twitter, Linkedin } from "lucide-react";
-import { getPost, getRelatedPosts, posts, type BlogPost } from "@/lib/blog-posts";
+import { Calendar, Clock, User, Folder, ChevronRight, RefreshCw } from "lucide-react";
+import {
+  getAdjacentPosts,
+  getPost,
+  getReadingMinutes,
+  getRelatedPosts,
+  posts,
+  SITE_LINKS,
+  type BlogSection,
+} from "@/lib/blog-posts";
 import { BlogCta } from "@/components/blog-cta";
+import {
+  ArticleSection,
+  AuthorCard,
+  InternalLinks,
+  KeyTakeaways,
+  PrevNextNav,
+  ReadingProgress,
+  ShareBar,
+  SourceList,
+  TableOfContents,
+} from "@/components/blog-reading";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -31,16 +50,19 @@ export const Route = createFileRoute("/blog/$slug")({
         { title },
         { name: "description", content: description },
         ...(post.keywords?.length ? [{ name: "keywords", content: post.keywords.join(", ") }] : []),
-        { property: "og:title", content: post.title },
-        { property: "og:description", content: description },
+        { property: "og:title", content: post.ogTitle ?? post.title },
+        { property: "og:description", content: post.ogDescription ?? description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { property: "og:image", content: image },
         { property: "article:author", content: post.author },
         { property: "article:published_time", content: post.date },
+        { property: "article:modified_time", content: post.updated ?? post.date },
         { property: "article:section", content: post.tag },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: image },
+        { name: "twitter:title", content: post.ogTitle ?? post.title },
+        { name: "twitter:description", content: post.ogDescription ?? description },
       ],
       links: [{ rel: "canonical", href: url }],
 
@@ -53,15 +75,25 @@ export const Route = createFileRoute("/blog/$slug")({
             headline: post.title,
             description: post.excerpt,
             image,
+            wordCount: post.content.reduce((n, s) => n + s.body.join(" ").split(/\s+/).length, 0),
+            keywords: post.keywords?.join(", "),
             datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              "@type": "Organization",
-              "@id": "https://pixel2tech.com/#organization",
-              name: "Pixel2Tech",
-              url: "https://pixel2tech.com",
-              logo: { "@type": "ImageObject", url: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
-            },
+            dateModified: post.updated ?? post.date,
+            author:
+              post.author === "Pixel2Tech Team"
+                ? {
+                    "@type": "Organization",
+                    "@id": "https://pixel2tech.com/#organization",
+                    name: "Pixel2Tech",
+                    url: "https://pixel2tech.com",
+                  }
+                : {
+                    "@type": "Person",
+                    name: post.author,
+                    jobTitle: post.authorRole,
+                    worksFor: { "@type": "Organization", "@id": "https://pixel2tech.com/#organization", name: "Pixel2Tech" },
+                    url: "https://pixel2tech.com/about",
+                  },
             publisher: {
               "@type": "Organization",
               name: "Pixel2Tech",
@@ -127,15 +159,15 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const related = getRelatedPosts(post, 4);
+  const { previous, next } = getAdjacentPosts(post);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
-  const socials = [
-    { Icon: Facebook, label: "Facebook", href: `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
-    { Icon: Twitter, label: "X", href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}` },
-    { Icon: Linkedin, label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}` },
-  ];
+  const readingMinutes = getReadingMinutes(post);
+  const internalLinks = post.internalLinks?.length ? post.internalLinks : SITE_LINKS;
+
 
   return (
     <PageShell>
+      <ReadingProgress />
       <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           {/* Breadcrumb */}
@@ -157,17 +189,26 @@ function BlogPostPage() {
                   {post.title}
                 </h1>
 
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  {post.excerpt}
+                </p>
+
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                   <span className="inline-flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{post.author}</span>
                   <span className="inline-flex items-center gap-2"><Folder className="h-4 w-4" aria-hidden="true" />{post.tag}</span>
                   <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" aria-hidden="true" />{post.date}</span>
-                  <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{post.time}</span>
+                  <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{readingMinutes} min read</span>
+                  <span className="inline-flex items-center gap-2"><RefreshCw className="h-4 w-4" aria-hidden="true" />Updated {post.updated ?? post.date}</span>
+                </div>
+
+                <div className="mt-6">
+                  <ShareBar url={shareUrl} title={post.title} />
                 </div>
 
                 <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
                   <ResponsiveImage
                     src={post.img}
-                    alt={post.title}
+                    alt={post.imgAlt ?? post.title}
                     width={1600}
                     height={900}
                     sizes="(min-width: 1024px) 66vw, 92vw"
@@ -175,25 +216,31 @@ function BlogPostPage() {
                     priority
                   />
                 </div>
+
               </FadeIn>
 
               <div className="mt-10 space-y-10">
-                {post.content.map((section: BlogPost["content"][number], i: number) => (
+                {post.keyTakeaways?.length ? (
+                  <FadeIn>
+                    <KeyTakeaways items={post.keyTakeaways} />
+                  </FadeIn>
+                ) : null}
+
+                <FadeIn>
+                  <div className="lg:hidden">
+                    <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
+                  </div>
+                </FadeIn>
+
+                {post.content.map((section: BlogSection, i: number) => (
                   <FadeIn key={section.heading} delay={0.05 * (i + 1)}>
-                    <section>
-                      <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{section.heading}</h2>
-                      <div className="mt-4 space-y-4">
-                        {section.body.map((p: string, idx: number) => (
-                          <p key={idx} className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">{p}</p>
-                        ))}
-                      </div>
-                    </section>
+                    <ArticleSection section={section} />
                   </FadeIn>
                 ))}
 
                 {post.faqs?.length ? (
                   <FadeIn>
-                    <section>
+                    <section id="faqs" className="scroll-mt-28">
                       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
                       <div className="mt-6 space-y-4">
                         {post.faqs.map((f: { q: string; a: string }) => (
@@ -207,9 +254,29 @@ function BlogPostPage() {
                   </FadeIn>
                 ) : null}
 
+                {post.sources?.length ? (
+                  <FadeIn>
+                    <SourceList sources={post.sources} />
+                  </FadeIn>
+                ) : null}
+
+                <FadeIn>
+                  <AuthorCard post={post} />
+                </FadeIn>
+
                 <FadeIn>
                   <BlogCta {...(post.cta ?? {})} />
                 </FadeIn>
+
+                <FadeIn>
+                  <InternalLinks links={internalLinks} />
+                </FadeIn>
+
+                <FadeIn>
+                  <PrevNextNav previous={previous} next={next} />
+                </FadeIn>
+
+
 
 
                 <FadeIn>
@@ -258,25 +325,18 @@ function BlogPostPage() {
             {/* Sidebar */}
             <aside className="lg:sticky lg:top-24 lg:self-start">
               <FadeIn delay={0.15}>
-                <div className="rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-7">
+                <div className="hidden lg:block">
+                  <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
+                </div>
+                <div className="mt-6 rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-7">
                   {/* Share */}
                   <div>
-                    <h3 className="text-base font-semibold text-foreground">Share on Social Media</h3>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {socials.map(({ Icon, label, href }) => (
-                        <a
-                          key={label}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Share on ${label}`}
-                          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition hover:bg-muted"
-                        >
-                          <Icon className="h-4 w-4" aria-hidden="true" />
-                        </a>
-                      ))}
+                    <h3 className="text-base font-semibold text-foreground">Share this article</h3>
+                    <div className="mt-4">
+                      <ShareBar url={shareUrl} title={post.title} />
                     </div>
                   </div>
+
 
                   <hr className="my-6 border-border" />
 

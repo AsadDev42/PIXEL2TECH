@@ -1,52 +1,61 @@
-import { lazy, Suspense, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-const BookingModal = lazy(() =>
-  import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
-);
-
+/**
+ * Premium, value-driven blog CTA. Intentionally avoids generic
+ * "Book a call" / "Contact us" language.
+ */
 export function BlogCta({
-  title = "Ready to turn these ideas into results?",
-  body = "Pixel2Tech is a full-service creative agency for branding, web design, development, AI and automation. Book a free strategy call and we will map the fastest path to your goals.",
-  primaryLabel = "Book a Free Strategy Call",
-  secondaryLabel = "Contact the team",
+  title = "Ready to Grow Smarter, Not Harder?",
+  body = "Whether you need a high-converting website, AI automation, branding, video production, or a complete growth strategy, our team builds systems that help businesses scale faster.",
+  primaryLabel = "Get My Free Growth Strategy",
+  secondaryLabel = "See Our Work",
 }: {
   title?: string;
   body?: string;
   primaryLabel?: string;
   secondaryLabel?: string;
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <section aria-labelledby="blog-cta" className="rounded-3xl border border-border bg-foreground p-6 sm:p-8 md:p-10">
-      <h2 id="blog-cta" className="text-2xl font-bold tracking-tight text-background sm:text-3xl">
-        {title}
-      </h2>
-      <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-background/75 sm:text-base">{body}</p>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground transition hover:opacity-90"
-        >
-          <CalendarDays className="h-4 w-4" aria-hidden="true" />
-          {primaryLabel}
-        </button>
-        <Link
-          to="/contact"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-background/30 px-6 py-3 text-sm font-semibold text-background transition hover:bg-background/10"
-        >
-          {secondaryLabel}
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+    <section
+      aria-labelledby="blog-cta"
+      className="relative overflow-hidden rounded-3xl border border-border bg-foreground p-6 sm:p-9 md:p-11"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gradient-to-br from-[#1E90FF] to-[#7C3AED] opacity-30 blur-3xl"
+      />
+      <div className="relative">
+        <span className="inline-flex items-center gap-2 rounded-full border border-background/25 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-background/80">
+          <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+          Growth systems, not guesswork
+        </span>
+
+        <h2 id="blog-cta" className="mt-5 text-2xl font-bold tracking-tight text-background sm:text-3xl md:text-4xl">
+          {title}
+        </h2>
+        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-background/75 sm:text-base">{body}</p>
+
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link
+            to="/contact"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1E90FF] to-[#7C3AED] px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+          >
+            {primaryLabel}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+          <Link
+            to="/portfolio"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-background/30 px-7 py-3 text-sm font-semibold text-background transition hover:bg-background/10"
+          >
+            {secondaryLabel}
+          </Link>
+        </div>
+
+        <p className="mt-5 text-xs text-background/60">
+          No pitch decks. A senior strategist reviews your site, funnel and systems, then sends a prioritised plan.
+        </p>
       </div>
-      {open ? (
-        <Suspense fallback={null}>
-          <BookingModal open={open} onClose={() => setOpen(false)} />
-        </Suspense>
-      ) : null}
     </section>
   );
 }
