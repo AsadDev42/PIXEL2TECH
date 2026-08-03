@@ -45,7 +45,7 @@ export function BlogCta({
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           <Link
-            to="/portfolio"
+            to="/services"
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-background/30 px-7 py-3 text-sm font-semibold text-background transition hover:bg-background/10"
           >
             {secondaryLabel}
