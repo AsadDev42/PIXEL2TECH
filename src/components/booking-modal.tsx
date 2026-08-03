@@ -123,7 +123,7 @@ export function BookingModal({
             aria-modal="true"
             aria-label="Book a Pixel2Tech Strategy Session"
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full max-w-6xl overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
+            className="relative z-10 flex w-full max-w-6xl max-h-[90vh] flex-col overflow-hidden rounded-[2rem] bg-background ring-1 ring-border/60 focus:outline-none"
             style={{ boxShadow: "var(--elev-3)" }}
             initial={{ opacity: 0, scale: 0.96, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -142,26 +142,25 @@ export function BookingModal({
               <X className="h-5 w-5" aria-hidden="true" />
             </motion.button>
 
-            <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+            <div className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
               {/* Left: value + trust */}
               <motion.div
-                className="flex flex-col gap-8 border-b border-border/60 bg-gradient-to-br from-muted/50 to-muted/20 p-8 lg:border-b-0 lg:border-r lg:border-border/60 lg:p-10"
+                className="flex flex-col gap-6 border-b border-border/60 bg-gradient-to-br from-muted/50 to-muted/20 p-6 lg:gap-8 lg:border-b-0 lg:border-r lg:border-border/60 lg:p-10"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
               >
-                <div className="space-y-4">
+                <div className="space-y-3 lg:space-y-4">
                   <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
                     <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
                     Free Strategy Session
                   </div>
-                  <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                     Let&apos;s Build Something Great Together
                   </h2>
                   <p className="max-w-md text-[15px] leading-relaxed text-muted-foreground">
-                    Book a free 30-minute strategy session with our team to
-                    discuss your goals, challenges, and the right digital
-                    solution for your business.
+                    Book a free 30-minute strategy session to discuss your goals
+                    and the right digital solution for your business.
                   </p>
                 </div>
 
@@ -169,22 +168,22 @@ export function BookingModal({
                   {benefits.map((b, i) => (
                     <motion.div
                       key={b.label}
-                      className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-background p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[var(--elev-2)]"
+                      className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-background p-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[var(--elev-2)] lg:gap-4 lg:p-4"
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
                     >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-primary-foreground">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-primary-foreground lg:h-10 lg:w-10">
                         <b.icon
-                          className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                          className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 lg:h-5 lg:w-5"
                           aria-hidden="true"
                         />
                       </span>
                       <div className="min-w-0">
-                        <p className="font-semibold text-foreground">
+                        <p className="text-sm font-semibold text-foreground">
                           {b.label}
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs text-muted-foreground lg:text-sm">
                           {b.desc}
                         </p>
                       </div>
@@ -192,28 +191,25 @@ export function BookingModal({
                   ))}
                 </div>
 
-                <div className="mt-auto flex items-start gap-3 rounded-2xl border border-border/40 bg-background/60 p-4 text-sm text-muted-foreground">
+                <div className="mt-auto flex items-start gap-3 rounded-2xl border border-border/40 bg-background/60 p-3.5 text-xs text-muted-foreground lg:p-4 lg:text-sm">
                   <Lock
                     className="mt-0.5 h-4 w-4 shrink-0 text-brand"
                     aria-hidden="true"
                   />
-                  <span>
-                    Your information stays private and is only used to prepare
-                    for your session.
-                  </span>
+                  <span>Your information stays private and is only used to prepare for your session.</span>
                 </div>
               </motion.div>
 
               {/* Right: Calendly embed */}
               <motion.div
-                className="flex flex-col gap-5 p-6 lg:p-8"
+                className="flex min-h-0 flex-col gap-4 p-5 lg:gap-5 lg:p-8"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
-                    <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                    <h3 className="text-lg font-semibold tracking-tight text-foreground lg:text-xl">
                       Pixel2Tech Strategy Session
                     </h3>
                     <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
@@ -222,17 +218,17 @@ export function BookingModal({
                       Grow.
                     </p>
                   </div>
-                  <span className="hidden h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid">
-                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  <span className="hidden h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid lg:h-10 lg:w-10">
+                    <ArrowRight className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden="true" />
                   </span>
                 </div>
 
                 <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
                   <div
                     key={CAL_URL}
-                    className="calendly-inline-widget"
+                    className="calendly-inline-widget h-[420px] sm:h-[480px] lg:h-[560px]"
                     data-url={CAL_URL}
-                    style={{ minWidth: 280, height: 640 }}
+                    style={{ minWidth: 280 }}
                   />
                 </div>
               </motion.div>
