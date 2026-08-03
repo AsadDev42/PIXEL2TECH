@@ -181,9 +181,9 @@ function BlogPostPage() {
             </nav>
           </FadeIn>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-12">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
             {/* Main */}
-            <article className="lg:order-2">
+            <article className="lg:order-1">
 
               <FadeIn>
                 <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
@@ -239,6 +239,12 @@ function BlogPostPage() {
                   </FadeIn>
                 ))}
 
+                {post.sources?.length ? (
+                  <FadeIn>
+                    <SourceList sources={post.sources} />
+                  </FadeIn>
+                ) : null}
+
                 {post.faqs?.length ? (
                   <FadeIn>
                     <section id="faqs" className="scroll-mt-28">
@@ -252,12 +258,6 @@ function BlogPostPage() {
                         ))}
                       </div>
                     </section>
-                  </FadeIn>
-                ) : null}
-
-                {post.sources?.length ? (
-                  <FadeIn>
-                    <SourceList sources={post.sources} />
                   </FadeIn>
                 ) : null}
 
@@ -323,7 +323,7 @@ function BlogPostPage() {
 
 
             {/* Sidebar */}
-            <aside className="lg:order-1 lg:sticky lg:top-24 lg:self-start">
+            <aside className="lg:order-2 lg:sticky lg:top-24 lg:self-start">
               <FadeIn delay={0.15}>
                 <div className="hidden lg:block">
                   <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
