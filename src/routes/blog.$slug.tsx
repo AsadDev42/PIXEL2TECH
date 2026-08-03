@@ -316,25 +316,18 @@ function BlogPostPage() {
             {/* Sidebar */}
             <aside className="lg:sticky lg:top-24 lg:self-start">
               <FadeIn delay={0.15}>
-                <div className="rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-7">
+                <div className="hidden lg:block">
+                  <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
+                </div>
+                <div className="mt-6 rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-7">
                   {/* Share */}
                   <div>
-                    <h3 className="text-base font-semibold text-foreground">Share on Social Media</h3>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {socials.map(({ Icon, label, href }) => (
-                        <a
-                          key={label}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Share on ${label}`}
-                          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition hover:bg-muted"
-                        >
-                          <Icon className="h-4 w-4" aria-hidden="true" />
-                        </a>
-                      ))}
+                    <h3 className="text-base font-semibold text-foreground">Share this article</h3>
+                    <div className="mt-4">
+                      <ShareBar url={shareUrl} title={post.title} />
                     </div>
                   </div>
+
 
                   <hr className="my-6 border-border" />
 
