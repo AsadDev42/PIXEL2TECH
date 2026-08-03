@@ -196,52 +196,84 @@ function PortfolioPage() {
         internal link at all. This section renders every project as a plain
         link on the server so the whole portfolio is reachable and indexable.
       */}
-      <section className="border-t border-border bg-background py-16 md:py-24">
+      <section className="border-t border-border bg-muted/30 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <FadeIn>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Browse all projects
-            </h2>
-            <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
-              Every case study we&apos;ve published, grouped by discipline.
-            </p>
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:justify-between">
+              <div className="min-w-0">
+                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  Browse all projects
+                </h2>
+                <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
+                  Every case study we&apos;ve published, grouped by discipline.
+                </p>
+              </div>
+              <span className="shrink-0 rounded-full border border-border bg-background px-4 py-1.5 text-xs font-semibold text-muted-foreground">
+                {ALL_ITEMS.length} projects
+              </span>
+            </div>
           </FadeIn>
 
-          <div className="mt-10 space-y-10">
-            {CATEGORIES.map((c) => (
-              <div key={c}>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                  {c}
-                </h3>
-                <div className="mt-4 space-y-6">
-                  {SUBS[c].map((s) => {
-                    const group = WORK[c][s] ?? [];
-                    if (group.length === 0) return null;
-                    return (
-                      <div key={`${c}-${s}`}>
-                        <h4 className="text-sm font-semibold text-foreground">{s}</h4>
-                        <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-                          {group.map((w) => (
-                            <li key={w.slug}>
-                              <Link
-                                to="/portfolio/$slug"
-                                params={{ slug: w.slug }}
-                                className="text-sm text-muted-foreground underline-offset-4 transition hover:text-foreground hover:underline"
-                              >
-                                {w.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    );
-                  })}
+          <div className="mt-10 space-y-12 md:mt-14 md:space-y-16">
+            {CATEGORIES.map((c, ci) => {
+              const count = SUBS[c].reduce((n, s) => n + (WORK[c][s]?.length ?? 0), 0);
+              return (
+                <div key={c}>
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs font-bold tabular-nums text-muted-foreground/60">
+                      {String(ci + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
+                      {c}
+                    </h3>
+                    <span className="h-px flex-1 bg-border" />
+                    <span className="shrink-0 text-xs font-medium text-muted-foreground">
+                      {count}
+                    </span>
+                  </div>
+
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {SUBS[c].map((s) => {
+                      const group = WORK[c][s] ?? [];
+                      if (group.length === 0) return null;
+                      return (
+                        <div
+                          key={`${c}-${s}`}
+                          className="rounded-2xl border border-border bg-background p-5 transition-shadow hover:shadow-md sm:p-6"
+                        >
+                          <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
+                            {s}
+                          </h4>
+                          <ul className="mt-4 space-y-1">
+                            {group.map((w) => (
+                              <li key={w.slug}>
+                                <Link
+                                  to="/portfolio/$slug"
+                                  params={{ slug: w.slug }}
+                                  className="group -mx-2 flex items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground focus-visible:outline-none"
+                                >
+                                  <span className="min-w-0 truncate">{w.title}</span>
+                                  <span
+                                    aria-hidden="true"
+                                    className="shrink-0 text-xs opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
+                                  >
+                                    →
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
+
 
       {/* Stats */}
 
