@@ -223,12 +223,12 @@ export function BookingModal({
                   </span>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
+                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]]">
                   <div
                     key={CAL_URL}
-                    className="calendly-inline-widget"
+                    className="calendly-inline-widget h-[420px] sm:h-[480px] lg:h-[560px]"
                     data-url={CAL_URL}
-                    style={{ minWidth: 280, height: "100%", minHeight: 420 }}
+                    style={{ minWidth: 280 }}
                   />
                 </div>
               </motion.div>
