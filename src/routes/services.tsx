@@ -260,7 +260,7 @@ function ServicesPage() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await submit({ data: { ...data, website, ts: loadedAt } });
+      await submit({ data: { ...data, website, elapsedMs: Date.now() - loadedAt } });
       toast.success("Message sent!", {
         description: "Thanks — we'll get back to you within one business day.",
       });

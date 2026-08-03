@@ -140,7 +140,7 @@ function ContactPage() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await submit({ data: { ...data, website, ts: loadedAt } });
+      await submit({ data: { ...data, website, elapsedMs: Date.now() - loadedAt } });
       trackEvent("contact_form_submitted", {});
       toast.success("Thank you for contacting us. Our team will get back to you soon.");
       reset();

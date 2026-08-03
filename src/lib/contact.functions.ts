@@ -30,8 +30,10 @@ const submissionSchema = z.object({
   message: z.string().transform(sanitize).pipe(z.string().min(10, "Message is too short").max(5000)),
   // Honeypot — real users leave this empty. Bots fill it.
   website: z.string().max(200).optional(),
-  // Anti-instant-submit — client stamps form load time; reject sub-second submits.
-  ts: z.number().int().optional(),
+  // Anti-instant-submit — client sends ms elapsed since the form mounted.
+  // Elapsed time (not a wall-clock stamp) so a skewed device clock can't
+  // wrongly reject a real visitor.
+  elapsedMs: z.number().int().nonnegative().optional(),
 });
 
 export type SubmissionInput = z.input<typeof submissionSchema>;
@@ -62,7 +64,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
       return { ok: true as const };
     }
     // Speed trap: reject sub-1s submissions (bots).
-    if (typeof data.ts === "number" && Date.now() - data.ts < 1000) {
+    if (typeof data.elapsedMs === "number" && data.elapsedMs < 1000) {
       throw new Error("Please take a moment to review your message.");
     }
 
