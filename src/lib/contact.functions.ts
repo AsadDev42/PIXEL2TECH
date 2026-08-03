@@ -120,7 +120,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // Owner notification + visitor confirmation via Lovable's managed email API.
     // Best-effort: a delivery problem must not fail the submission itself.
-    const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sale@pixel2tech.com";
+    const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sales@pixel2tech.com";
     const eventId = `${data.email}-${Date.now()}`;
     const submittedAt = new Date().toLocaleString("en-US", {
       timeZone: "Asia/Karachi",
