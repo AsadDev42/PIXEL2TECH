@@ -227,7 +227,7 @@ export function BookingModal({
                 <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
                   <div
                     key={CAL_URL}
-                    className="calendly-inline-widget h-[340px] sm:h-[380px] lg:h-[440px]"
+                    className="calendly-inline-widget h-[300px] sm:h-[360px] lg:h-[420px]"
                     data-url={CAL_URL}
                     style={{ minWidth: 280 }}
                   />
