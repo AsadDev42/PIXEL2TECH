@@ -55,29 +55,55 @@ export function ReadingProgress() {
 /* Table of contents                                                   */
 /* ------------------------------------------------------------------ */
 
-export function TableOfContents({ sections, hasFaqs }: { sections: BlogSection[]; hasFaqs: boolean }) {
+export function TableOfContents({
+  sections,
+  hasFaqs,
+  maxVisible = 6,
+}: {
+  sections: BlogSection[];
+  hasFaqs: boolean;
+  maxVisible?: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
   const items = [
     ...sections.map((s) => ({ id: headingId(s.heading), label: s.heading })),
-    ...(hasFaqs ? [{ id: "faqs", label: "Frequently Asked Questions" }] : []),
+    ...(hasFaqs ? [{ id: "faqs", label: "FAQs" }] : []),
   ];
   if (items.length < 3) return null;
 
+  const hasMore = items.length > maxVisible;
+  const visibleItems = expanded ? items : items.slice(0, maxVisible);
+
   return (
     <nav aria-label="Table of contents" className="rounded-2xl border border-border bg-background p-5 sm:p-6">
-      <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+      <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         <ListChecks className="h-4 w-4" aria-hidden="true" />
         Table of contents
       </h2>
-      <ol className="mt-4 space-y-2 text-sm">
-        {items.map((item, i) => (
-          <li key={item.id} className="flex gap-3">
-            <span className="tabular-nums text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
-            <a href={`#${item.id}`} className="text-foreground transition hover:text-[#1E90FF]">
+      <ol className="mt-4 space-y-1.5 text-[13px]">
+        {visibleItems.map((item, i) => (
+          <li key={item.id} className="flex items-start gap-2.5">
+            <span className="mt-0.5 w-5 tabular-nums text-muted-foreground/70">{i + 1}.</span>
+            <a
+              href={`#${item.id}`}
+              className="line-clamp-2 leading-snug text-foreground transition hover:text-[#1E90FF]"
+              title={item.label}
+            >
               {item.label}
             </a>
           </li>
         ))}
       </ol>
+      {hasMore ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-3 text-xs font-semibold text-[#1E90FF] transition hover:underline"
+          aria-expanded={expanded}
+        >
+          {expanded ? "Show less" : `Show all ${items.length} sections`}
+        </button>
+      ) : null}
     </nav>
   );
 }
