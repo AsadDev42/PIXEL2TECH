@@ -202,9 +202,11 @@ function BlogPostPage() {
                   <span className="inline-flex items-center gap-2"><RefreshCw className="h-4 w-4" aria-hidden="true" />Updated {post.updated ?? post.date}</span>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-6 lg:hidden">
                   <ShareBar url={shareUrl} title={post.title} />
                 </div>
+
+
 
                 <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
                   <ResponsiveImage
