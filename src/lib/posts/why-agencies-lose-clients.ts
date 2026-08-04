@@ -1,5 +1,7 @@
 import type { BlogPost } from "@/lib/blog-posts";
-import cover from "@/assets/why-agencies-lose-clients-cover.jpg";
+import coverAsset from "@/assets/why-agencies-lose-clients-cover.png.asset.json";
+
+const cover = coverAsset.url;
 
 /**
  * Why digital marketing agencies lose clients — retention playbook for 2026.
@@ -23,7 +25,7 @@ export const whyAgenciesLoseClientsPost: BlogPost = {
     "Client churn is the most expensive problem in agency life. Here are the twelve reasons a digital marketing agency loses accounts in 2026 — and the retention fixes that actually work.",
   img: cover,
   imgAlt:
-    "Digital marketing agency team reviewing a live revenue and lead-generation dashboard during a client strategy meeting",
+    "Two colleagues at a desk with laptops reviewing hand-drawn website wireframes and marketing plans",
   metaTitle: "Why Digital Marketing Agencies Lose Clients in 2026",
   metaDescription:
     "Twelve reasons a digital marketing agency loses clients — vanity metrics, ignoring AI search, weak reporting — plus proven client retention fixes for 2026.",
