@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 
 // Modal code (and its Calendly embed) is only fetched when a user opens it.
-const BookingModal = lazy(() =>
+const BookingModal = lazyWithRetry(() =>
   import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
 );
 
