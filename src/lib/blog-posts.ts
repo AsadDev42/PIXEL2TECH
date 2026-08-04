@@ -1271,6 +1271,7 @@ export const posts: BlogPost[] = [
     time: "09:00 am",
     author: "Pixel2Tech Team",
     title: "Why Your AI Content Is Not Ranking (And How to Fix It)",
+    h1: "The AI SEO Mistakes Stopping Your Content From Ranking in 2026",
     excerpt:
       "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
     img: stock("1526628953301-3e589a6a8b74"),
