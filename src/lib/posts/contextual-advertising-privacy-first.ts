@@ -19,9 +19,9 @@ export const contextualAdvertisingPost: BlogPost = {
   h1: "Advanced Contextual Advertising: How Privacy-First Targeting Actually Works",
   excerpt:
     "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about — protecting privacy, brand safety, and performance at the same time.",
-  img: cover,
+  img: cover.url,
   imgAlt:
-    "Laptop displaying a web article surrounded by privacy shield, targeting, and AI network icons representing privacy-first contextual advertising",
+    "Hands typing on a laptop with a glowing growth chart and shopping cart icons showing data-driven digital advertising performance",
   metaTitle: "Advanced Contextual Advertising: Privacy-First Marketing",
   metaDescription:
     "Learn how advanced contextual advertising uses AI, semantic analysis, and brand safety data to target ads without cookies — and why it now outperforms tracking.",
