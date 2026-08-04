@@ -70,18 +70,24 @@ function BlogPage() {
 
       <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
         <div className="grid gap-6 rounded-2xl bg-muted p-5 sm:gap-8 sm:rounded-3xl sm:p-6 md:grid-cols-2 md:p-8">
-          <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background">
+          <Link
+            to="/blog/$slug"
+            params={{ slug: featured.slug }}
+            aria-label={featured.title}
+            className="block aspect-[16/10] overflow-hidden rounded-2xl bg-neutral-300 dark:bg-background"
+          >
             <ResponsiveImage
               src={featured.img}
               alt={featured.title}
               width={1600}
               height={1000}
               sizes="(min-width: 768px) 45vw, 92vw"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
               priority
             />
 
-          </div>
+          </Link>
+
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:gap-4">
               <span className="rounded-full bg-[#1E90FF]/10 px-2.5 py-1 font-semibold text-[#1E90FF]">
