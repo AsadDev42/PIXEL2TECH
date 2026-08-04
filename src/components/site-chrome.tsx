@@ -104,42 +104,77 @@ export function SiteNav() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div
-          id="mobile-nav"
-          ref={mobileNavRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site navigation"
-          tabIndex={-1}
-          className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-background shadow-lg md:hidden"
-        >
-          <nav aria-label="Mobile" className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 text-base">
-            {NAV.map((n) => {
-              const active = pathname === n.to;
-              return (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  aria-current={active ? "page" : undefined}
-                  className={`flex min-h-12 items-center rounded-xl px-4 py-3 text-[17px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${active ? "bg-muted font-semibold text-foreground" : "text-foreground hover:bg-muted/60"}`}
-                >
-                  {n.label}
-                </Link>
-              );
-            })}
-            <button
-              type="button"
-              onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
-              className="mt-3 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 py-3 text-base font-semibold text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              Schedule a Strategy Session
-            </button>
-          </nav>
-
+      {/* Mobile drawer — premium slide-in panel (mobile only) */}
+      <div
+        aria-hidden={!open}
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-40 bg-foreground/40 backdrop-blur-[2px] transition-opacity duration-300 md:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      <div
+        id="mobile-nav"
+        ref={mobileNavRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+        aria-hidden={!open}
+        tabIndex={-1}
+        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
+          open ? "translate-x-0" : "pointer-events-none translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between px-6 pb-2 pt-5">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            Menu
+          </span>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition active:scale-95"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
         </div>
-      )}
+
+        <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
+          {NAV.map((n, i) => {
+            const active = pathname === n.to;
+            return (
+              <Link
+                key={n.to}
+                to={n.to}
+                aria-current={active ? "page" : undefined}
+                style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
+                className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-[19px] font-semibold tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  open ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
+                } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
+              >
+                <span>{n.label}</span>
+                {active && (
+                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#1E90FF]" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="mt-auto space-y-4 px-6 pb-8 pt-8">
+          <button
+            type="button"
+            onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
+            className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Schedule a Strategy Session
+          </button>
+          <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+            <a href="mailto:sales@pixel2tech.com" className="min-h-11 py-2">sales@pixel2tech.com</a>
+            <a href="tel:+923177475233" className="min-h-11 py-2">+92 317 7475233</a>
+          </div>
+        </div>
+      </div>
+
     </header>
     {bookingOpen && (
       <Suspense fallback={null}>
