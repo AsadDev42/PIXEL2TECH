@@ -5,6 +5,7 @@
 import { mobileAppDesignProcessPost } from "@/lib/posts/mobile-app-design-process";
 import { contextualAdvertisingPost } from "@/lib/posts/contextual-advertising-privacy-first";
 import { verifiedWholesaleSourcingPost } from "@/lib/posts/verified-wholesale-sourcing";
+import { whyAgenciesLoseClientsPost } from "@/lib/posts/why-agencies-lose-clients";
 
 /**
  * Blog cover photography.
