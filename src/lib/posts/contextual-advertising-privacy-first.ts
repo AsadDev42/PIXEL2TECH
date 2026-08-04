@@ -1,5 +1,5 @@
 import type { BlogPost } from "@/lib/blog-posts";
-import cover from "@/assets/contextual-advertising-cover.jpg";
+import cover from "@/assets/contextual-advertising-cover-new.jpg";
 
 /**
  * Advanced contextual advertising pillar post.
