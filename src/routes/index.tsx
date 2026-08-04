@@ -10,7 +10,8 @@ import { getSortedPosts, type BlogPost } from "@/lib/blog-posts";
 
 import { Plus, TrendingUp, Star, Mail, Phone, Loader2, Palette, Globe, LineChart, Megaphone, Clapperboard, Bot, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { lazy, Suspense, useState } from "react";
+import { Suspense, useState } from "react";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 
 // Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
 const VideoTestimonials = lazyWithRetry(() =>
