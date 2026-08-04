@@ -431,7 +431,29 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <div className="mx-auto grid w-full max-w-[420px] grid-cols-3 gap-2 self-center sm:max-w-[480px] sm:gap-3 md:max-w-[520px] lg:max-w-[560px]">
+        {/* Mobile: static tiles — no video, no loop animation (fast FCP/LCP, zero CLS). */}
+        <div className="mx-auto grid w-full max-w-[420px] grid-cols-3 gap-2 md:hidden">
+          {heroMobileTiles.map((t, i) => (
+            <div key={i} className="aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted">
+              <img
+                src={t.src}
+                srcSet={t.srcSet}
+                sizes="32vw"
+                width={384}
+                height={683}
+                alt="Pixel2Tech branding and web design project preview"
+                draggable={false}
+                decoding={i === 0 ? "sync" : "async"}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
+                className="pointer-events-none h-full w-full select-none object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop / tablet: animated looping columns (unchanged). */}
+        <div className="mx-auto hidden w-full max-w-[420px] grid-cols-3 gap-2 self-center sm:max-w-[480px] sm:gap-3 md:grid md:max-w-[520px] lg:max-w-[560px]">
           {heroCols.map((col, ci) => (
             <div key={ci} className="h-[420px] sm:h-[460px] md:h-[500px] lg:h-[520px]">
               <LoopSlider
