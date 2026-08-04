@@ -62,9 +62,25 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const chunkError = isChunkLoadError(error);
+
   useEffect(() => {
+    // A stale tab whose asset hashes no longer exist should silently recover
+    // instead of showing an error page mid-scroll.
+    if (chunkError && typeof window !== "undefined") {
+      if (!sessionStorage.getItem("p2t-chunk-reloaded")) {
+        sessionStorage.setItem("p2t-chunk-reloaded", "1");
+        window.location.reload();
+      }
+      return;
+    }
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+  }, [error, chunkError]);
+
+  if (chunkError) {
+    return <div className="min-h-screen bg-background" aria-hidden />;
+  }
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
