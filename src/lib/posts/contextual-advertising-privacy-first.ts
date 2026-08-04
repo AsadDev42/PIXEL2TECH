@@ -1,5 +1,5 @@
 import type { BlogPost } from "@/lib/blog-posts";
-import cover from "@/assets/contextual-advertising-cover.jpg";
+import cover from "@/assets/contextual-advertising-cover-new.jpg";
 
 /**
  * Advanced contextual advertising pillar post.
@@ -21,7 +21,7 @@ export const contextualAdvertisingPost: BlogPost = {
     "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about — protecting privacy, brand safety, and performance at the same time.",
   img: cover,
   imgAlt:
-    "Laptop showing an article page with AI semantic analysis highlighting content categories for contextual ad targeting",
+    "Laptop displaying a web article surrounded by privacy shield, targeting, and AI network icons representing privacy-first contextual advertising",
   metaTitle: "Advanced Contextual Advertising: Privacy-First Marketing",
   metaDescription:
     "Learn how advanced contextual advertising uses AI, semantic analysis, and brand safety data to target ads without cookies — and why it now outperforms tracking.",
