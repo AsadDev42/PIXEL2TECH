@@ -81,7 +81,9 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  whyAgenciesLoseClientsPost,
   verifiedWholesaleSourcingPost,
+
   contextualAdvertisingPost,
   mobileAppDesignProcessPost,
 
