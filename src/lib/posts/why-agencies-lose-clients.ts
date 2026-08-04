@@ -1,5 +1,7 @@
 import type { BlogPost } from "@/lib/blog-posts";
-import cover from "@/assets/why-agencies-lose-clients-cover.jpg";
+import coverAsset from "@/assets/why-agencies-lose-clients-cover.png.asset.json";
+
+const cover = coverAsset.url;
 
 /**
  * Why digital marketing agencies lose clients — retention playbook for 2026.
