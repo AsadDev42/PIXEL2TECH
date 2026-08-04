@@ -73,6 +73,20 @@ export const heroLcpImage = {
   srcSet: `${heroRavokafe384.url} 384w, ${heroRavokafe576.url} 576w`,
 };
 
+/**
+ * Mobile-only hero tiles: still images only (no video, no animation loops) so
+ * phones paint the hero immediately instead of streaming four clips.
+ * The first tile is the preloaded LCP bitmap.
+ */
+export const heroMobileTiles: { src: string; srcSet?: string }[] = [
+  { src: heroRavokafe384.url, srcSet: `${heroRavokafe384.url} 384w, ${heroRavokafe576.url} 576w` },
+  { src: heroLovebites384.url, srcSet: `${heroLovebites384.url} 384w, ${heroLovebites576.url} 576w` },
+  { src: heroLima384.url, srcSet: `${heroLima384.url} 384w, ${heroLima576.url} 576w` },
+  { src: heroCoffee384.url, srcSet: `${heroCoffee384.url} 384w, ${heroCoffee576.url} 576w` },
+  { src: heroArmpearl384.url, srcSet: `${heroArmpearl384.url} 384w, ${heroArmpearl576.url} 576w` },
+  { src: heroSpiralPoster.url },
+];
+
 export type WorkItem = { title: string; img: string; video?: boolean; poster?: string };
 
 export const workItems: WorkItem[] = [
