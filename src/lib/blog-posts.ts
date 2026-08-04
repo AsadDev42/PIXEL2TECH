@@ -3,6 +3,7 @@
 
 
 import { mobileAppDesignProcessPost } from "@/lib/posts/mobile-app-design-process";
+import { contextualAdvertisingPost } from "@/lib/posts/contextual-advertising-privacy-first";
 
 /**
  * Blog cover photography.
@@ -78,6 +79,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  contextualAdvertisingPost,
   mobileAppDesignProcessPost,
 
   {
