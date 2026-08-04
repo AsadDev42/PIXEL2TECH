@@ -280,7 +280,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One creative agency, not ten freelancers. Branding, web design, UI/UX, social media & software — all under one roof. Book a free strategy call.",
+          "Pixel2Tech is a full-service creative agency delivering branding, web design, UI/UX, social media and custom software under one roof. Book a free call.",
       },
       { property: "og:title", content: "Pixel2Tech | AI Creative Agency for Branding & Web Design" },
       {
