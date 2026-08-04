@@ -45,6 +45,8 @@ export type BlogPost = {
   authorRole?: string;
   authorBio?: string;
   title: string;
+  /** Optional override for the on-page H1. Defaults to title. */
+  h1?: string;
   excerpt: string;
   img: string;
   imgAlt?: string;
