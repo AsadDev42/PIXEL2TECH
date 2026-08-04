@@ -1458,12 +1458,9 @@ export const posts: BlogPost[] = [
       },
       {
         q: "Should LinkedIn outreach be combined with email?",
-        a: "Yes. Multichannel sequences that mix LinkedIn touches with email consistently outperform LinkedIn-only campaigns, because you reach people where they actually respond. The key is one shared message and one shared record in your CRM, not two disconnected campaigns.",
+        a: "Yes. Multichannel sequences that mix LinkedIn touches with email consistently outperform LinkedIn-only campaigns. The key is one shared message and one shared record in your CRM, not two disconnected campaigns.",
       },
-      {
-        q: "How do I stop my LinkedIn account from getting restricted?",
-        a: "Warm the account up over two to three weeks, keep daily actions modest, use one tool per account, avoid running automation from multiple locations at once, and keep your profile complete and active. Restrictions usually follow sudden spikes in activity, not steady use.",
-      },
+
     ],
     content: [
       {
