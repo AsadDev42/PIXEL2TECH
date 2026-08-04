@@ -24,7 +24,7 @@ import { submitContactForm } from "@/lib/contact.functions";
 import { useFormValidation } from "@/lib/use-form-validation";
 
 import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
-import { heroColumns, heroLcpImage, workItems } from "@/lib/home-media";
+import { heroColumns, heroLcpImage, heroMobileTiles, workItems } from "@/lib/home-media";
 import indVahub from "@/assets/ind-vahub.png.asset.json";
 import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
 import indBiscuits from "@/assets/ind-biscuits.webp.asset.json";
