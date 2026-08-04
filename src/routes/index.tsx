@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 
 // Heavy, below-the-fold: its chunk is fetched only when the user scrolls near it.
-const VideoTestimonials = lazy(() =>
+const VideoTestimonials = lazyWithRetry(() =>
   import("@/components/video-testimonials").then((m) => ({ default: m.VideoTestimonials })),
 );
 
