@@ -82,45 +82,26 @@ export const mobileAppDesignProcessPost: BlogPost = {
   faqs: [
     {
       q: "What is the mobile app design process?",
-      a: "The mobile app design process is the structured sequence a team follows to turn an idea into a launched application: validating the problem, researching the market and users, defining information architecture and user flows, wireframing, prototyping, designing the UI and design system, testing usability, handing off to engineering, running QA and beta, launching to the App Store and Google Play, and improving continuously afterwards.",
+      a: "It is the structured sequence that turns an idea into a launched app: validate the problem, research users, define information architecture and flows, wireframe, prototype, design the UI and design system, test usability, hand off to engineering, launch, and keep improving.",
     },
     {
       q: "How long does it take to design a mobile app?",
-      a: "A focused version one usually takes 6 to 14 weeks of design work. Roughly 1 to 3 weeks go to discovery and research, 2 to 4 weeks to architecture, flows, and wireframes, 3 to 6 weeks to UI design and the design system, and 1 to 2 weeks to testing, handoff, and design QA. Complex products with multiple user roles, regulated workflows, or several platforms take longer.",
+      a: "A focused version one usually needs 6 to 14 weeks of design: 1–3 weeks discovery, 2–4 weeks architecture and wireframes, 3–6 weeks UI and design system, 1–2 weeks testing and handoff. Multiple roles or platforms extend that.",
     },
     {
       q: "How much does mobile app design cost?",
-      a: "Design-only budgets commonly fall between roughly $6,000 and $40,000 depending on screen count, number of user roles, how much original research is required, and whether you need one platform or both. The cost driver is rarely the visual work — it is the number of distinct states, edge cases, and flows the app must handle.",
+      a: "Design-only budgets commonly run from roughly $6,000 to $40,000. The driver is not visual polish — it is the number of screens, states, user roles, and edge cases the app must handle.",
     },
     {
       q: "What is the difference between UI and UX in app design?",
-      a: "UX is the structure and behaviour of the product: what problem it solves, how information is organised, and how a user moves from intent to outcome. UI is the visible layer: typography, colour, spacing, components, iconography, and motion. Strong UI on weak UX produces an app that looks good and gets uninstalled.",
-    },
-    {
-      q: "Should I design for iOS or Android first?",
-      a: "Design for the platform where your paying users actually are. If you have no data, look at your target market's device split and your monetisation model. Many teams design one shared system with platform-specific adaptations for navigation, typography, and system components, which is cheaper than two separate design tracks.",
-    },
-    {
-      q: "Do I need wireframes if I already have a clear idea?",
-      a: "Yes. Wireframes are the cheapest place to be wrong. Changing a screen layout in a wireframe costs minutes; changing it after UI, engineering, and QA costs days. Wireframes also force clarity on empty states, error states, and edge cases that a mental picture always skips.",
+      a: "UX is structure and behaviour: what problem the app solves and how users reach an outcome. UI is the visible layer: type, colour, spacing, components, motion. Strong UI on weak UX still gets uninstalled.",
     },
     {
       q: "How many users should I test with?",
-      a: "Five to eight participants per round of moderated usability testing catches most serious issues. Multiple small rounds across the project beat one large round at the end, because each round tests a version that has already absorbed the previous round's fixes.",
-    },
-    {
-      q: "What makes an app get rejected from the App Store?",
-      a: "The most common causes are incomplete metadata or demo credentials, crashes during review, broken links in privacy or support fields, missing or inaccurate privacy disclosures, purchases that bypass in-app payment rules, and placeholder content. Almost all rejections are process failures rather than design failures, which is why a pre-submission checklist matters.",
-    },
-    {
-      q: "What is a design system and does a small app need one?",
-      a: "A design system is a documented set of reusable components, tokens, and rules shared by design and engineering. Even a small app benefits, because it stops every new screen from reinventing spacing, colour, and button behaviour. For an app expected to grow, it is the single highest-leverage investment in long-term velocity.",
-    },
-    {
-      q: "What happens after the app launches?",
-      a: "Launch starts the learning phase. You monitor crash rates, activation, retention, funnel drop-off, store reviews, and support tickets, then run a continuous improvement loop: observe, hypothesise, ship a small change, measure. The best-performing apps improve monthly rather than waiting for an annual redesign.",
+      a: "Five to eight participants per round of moderated testing catches most serious issues. Several small rounds during the project beat one large round at the end.",
     },
   ],
+
   content: [
     {
       heading: "Quick Answer: What Is the Mobile App Design Process?",
