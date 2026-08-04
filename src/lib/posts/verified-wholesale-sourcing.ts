@@ -71,7 +71,7 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
     },
   ],
   related: [
-    "headless-shopify-worth-it",
+    "headless-shopify-commerce-guide",
     "why-modern-brands-need-an-ai-ops-layer",
     "why-businesses-need-better-systems",
     "why-every-business-needs-a-modern-website-in-2026",
