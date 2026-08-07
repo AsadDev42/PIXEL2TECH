@@ -37,6 +37,8 @@ import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
+import indMadluvv from "@/assets/ind-madluvv.png.asset.json";
+import indMadluvvWhite from "@/assets/ind-madluvv-white.png.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
 import founderPortrait1080 from "@/assets/opt-founder-portrait-1080.webp.asset.json";
 
