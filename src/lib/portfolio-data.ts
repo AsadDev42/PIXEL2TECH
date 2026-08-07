@@ -6,6 +6,8 @@ export type PortfolioItem = {
   slug: string;
   /** Optional embeddable video URL (e.g. Google Drive /preview link). */
   video?: string;
+  /** Optional extra images belonging to this same project (shown in its gallery). */
+  images?: string[];
 };
 
 
@@ -19,7 +21,7 @@ export const SUBS: Record<Category, string[]> = {
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
-type RawWork = Record<Category, Record<string, { title: string; img: string; video?: string }[]>>;
+type RawWork = Record<Category, Record<string, { title: string; img: string; video?: string; images?: string[] }[]>>;
 
 const RAW: RawWork = {
   Creative: {
@@ -186,6 +188,7 @@ export function getRelated(item: PortfolioItem, limit = 3): PortfolioItem[] {
 
 // Sibling images from the SAME subcategory — used to build a category-tailored gallery.
 export function getSubcategoryGallery(item: PortfolioItem, limit = 6): string[] {
+  if (item.images?.length) return item.images.slice(0, limit);
   const siblings = (WORK[item.category as Category]?.[item.subcategory] ?? [])
     .filter((i) => i.slug !== item.slug)
     .map((i) => i.img);
