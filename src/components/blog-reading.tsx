@@ -144,7 +144,7 @@ export function KeyTakeaways({ items }: { items: string[] }) {
  * article prose, bullets and table cells. Plain text passes through as-is.
  */
 export function renderInline(text: string) {
-  const parts: (string | JSX.Element)[] = [];
+  const parts: React.ReactNode[] = [];
   const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
   let last = 0;
   let m: RegExpExecArray | null;
