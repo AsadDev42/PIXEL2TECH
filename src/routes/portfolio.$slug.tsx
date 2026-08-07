@@ -12,6 +12,7 @@ import {
 } from "@/lib/portfolio-data";
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
+import { Coverflow3D } from "@/components/coverflow-3d";
 
 
 export const Route = createFileRoute("/portfolio/$slug")({
