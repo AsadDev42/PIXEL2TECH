@@ -356,6 +356,8 @@ const BANKS: Record<string, Bank> = {
 const FALLBACK: Bank = BANKS["Websites"]!;
 
 export function getProjectCopy(item: PortfolioItem): ProjectCopy {
+  const override = OVERRIDES[item.slug];
+  if (override) return override;
   const bank = BANKS[item.subcategory] ?? FALLBACK;
   const seed = hash(item.slug);
   const title = item.title;
