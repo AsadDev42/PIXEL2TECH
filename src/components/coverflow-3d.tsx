@@ -82,14 +82,14 @@ export function Coverflow3D({ images, alt, aspect = "1 / 1", className = "" }: P
                   cursor: offset === 0 ? "grab" : "pointer",
                 }}
               >
-                <div className="h-full w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl dark:border-white/10 dark:bg-white/[0.03]">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl dark:border-white/10 dark:bg-white/[0.03]">
                   <img
                     src={src}
                     alt={alt(i)}
                     loading={i === 0 ? "eager" : "lazy"}
                     decoding="async"
                     draggable={false}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               </div>
