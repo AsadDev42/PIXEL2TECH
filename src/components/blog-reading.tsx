@@ -1,4 +1,6 @@
+import type * as React from "react";
 import { useEffect, useState } from "react";
+
 import { Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -139,6 +141,36 @@ export function KeyTakeaways({ items }: { items: string[] }) {
 /* Article body renderer                                               */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Renders inline markdown links — [label](https://example.com) — inside
+ * article prose, bullets and table cells. Plain text passes through as-is.
+ */
+export function renderInline(text: string) {
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    const href = m[2];
+    parts.push(
+      <a
+        key={`${href}-${m.index}`}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="font-medium text-[#1E90FF] underline underline-offset-4 hover:opacity-80"
+      >
+        {m[1]}
+      </a>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? parts : text;
+}
+
+
 export function ArticleSection({ section }: { section: BlogSection }) {
   return (
     <section id={headingId(section.heading)} className="scroll-mt-28">
@@ -153,7 +185,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
       <div className="mt-4 space-y-4">
         {section.body.map((p, i) => (
           <p key={i} className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-            {p}
+            {renderInline(p)}
           </p>
         ))}
       </div>
@@ -163,7 +195,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
           {section.bullets.map((b) => (
             <li key={b} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1E90FF]" aria-hidden="true" />
-              <span>{b}</span>
+              <span>{renderInline(b)}</span>
             </li>
           ))}
         </ul>
@@ -189,7 +221,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
                 <tr key={i} className="border-t border-border">
                   {row.map((cell, j) => (
                     <td key={j} className="px-4 py-3 align-top text-muted-foreground">
-                      {cell}
+                      {renderInline(cell)}
                     </td>
                   ))}
                 </tr>
@@ -204,7 +236,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
           {section.callout.title ? (
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[#1E90FF]">{section.callout.title}</h3>
           ) : null}
-          <p className="mt-2 text-[15px] leading-relaxed text-foreground sm:text-base">{section.callout.body}</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-foreground sm:text-base">{renderInline(section.callout.body)}</p>
         </aside>
       ) : null}
 
@@ -216,7 +248,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
               <div className="mt-3 space-y-3">
                 {sub.body.map((p, i) => (
                   <p key={i} className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                    {p}
+                    {renderInline(p)}
                   </p>
                 ))}
               </div>
@@ -225,7 +257,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
                   {sub.bullets.map((b) => (
                     <li key={b} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED]" aria-hidden="true" />
-                      <span>{b}</span>
+                      <span>{renderInline(b)}</span>
                     </li>
                   ))}
                 </ul>
