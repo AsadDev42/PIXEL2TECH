@@ -37,6 +37,8 @@ import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
 import indLocks from "@/assets/ind-locks.webp.asset.json";
 import indHolloway from "@/assets/ind-holloway.webp.asset.json";
 import indCoinmarketfees from "@/assets/ind-coinmarketfees.webp.asset.json";
+import indMadluvv from "@/assets/ind-madluvv.png.asset.json";
+import indMadluvvWhite from "@/assets/ind-madluvv-white.png.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
 import founderPortrait1080 from "@/assets/opt-founder-portrait-1080.webp.asset.json";
 
@@ -507,7 +509,7 @@ function Hero() {
 
 
 
-const industryLogos = [
+const industryLogos: { name: string; src: string; darkSrc?: string }[] = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
@@ -519,7 +521,10 @@ const industryLogos = [
   { name: "Locks & Co", src: indLocks.url },
   { name: "Holloway Diamonds", src: indHolloway.url },
   { name: "Coinmarketfees", src: indCoinmarketfees.url },
+  { name: "MADLUVV", src: indMadluvv.url, darkSrc: indMadluvvWhite.url },
 ];
+
+
 
 function Brands() {
   return (
@@ -549,10 +554,21 @@ function Brands() {
                 src={b.src}
                 alt={b.name}
                 draggable={false}
-                className="pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-8"
+                className={`pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:h-8 ${b.darkSrc ? "dark:hidden" : "dark:invert"}`}
               />
+              {b.darkSrc ? (
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={b.darkSrc}
+                  alt={b.name}
+                  draggable={false}
+                  className="pointer-events-none hidden h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:block sm:h-8"
+                />
+              ) : null}
             </div>
           )}
+
         />
       </div>
     </section>
