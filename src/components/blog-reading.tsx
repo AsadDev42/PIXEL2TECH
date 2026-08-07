@@ -139,6 +139,36 @@ export function KeyTakeaways({ items }: { items: string[] }) {
 /* Article body renderer                                               */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Renders inline markdown links — [label](https://example.com) — inside
+ * article prose, bullets and table cells. Plain text passes through as-is.
+ */
+export function renderInline(text: string) {
+  const parts: (string | JSX.Element)[] = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    const href = m[2];
+    parts.push(
+      <a
+        key={`${href}-${m.index}`}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="font-medium text-[#1E90FF] underline underline-offset-4 hover:opacity-80"
+      >
+        {m[1]}
+      </a>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? parts : text;
+}
+
+
 export function ArticleSection({ section }: { section: BlogSection }) {
   return (
     <section id={headingId(section.heading)} className="scroll-mt-28">
