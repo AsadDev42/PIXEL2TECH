@@ -554,10 +554,21 @@ function Brands() {
                 src={b.src}
                 alt={b.name}
                 draggable={false}
-                className="pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:invert sm:h-8"
+                className={`pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:h-8 ${b.darkSrc ? "dark:hidden" : "dark:invert"}`}
               />
+              {b.darkSrc ? (
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={b.darkSrc}
+                  alt={b.name}
+                  draggable={false}
+                  className="pointer-events-none hidden h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 dark:block sm:h-8"
+                />
+              ) : null}
             </div>
           )}
+
         />
       </div>
     </section>
