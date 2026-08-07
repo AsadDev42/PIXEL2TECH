@@ -233,7 +233,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
   if (sub === "Social Media") {
     return (
       <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 sm:gap-4">
-        {all.slice(0, 6).map((src, i) => (
+        {all.slice(0, 12).map((src, i) => (
           <FadeIn key={src + i} delay={0.03 * i}>
             <div className="overflow-hidden rounded-xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
               <img src={src} alt={`${item.title} post ${i + 1}`} loading="lazy" decoding="async" className="aspect-square w-full object-cover transition hover:scale-105" />
@@ -260,7 +260,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
 
 function PortfolioDetailPage() {
   const { item } = Route.useLoaderData();
-  const gallery = getSubcategoryGallery(item);
+  const gallery = getSubcategoryGallery(item, item.images?.length ?? 6);
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
