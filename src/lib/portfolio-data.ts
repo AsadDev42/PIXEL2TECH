@@ -171,7 +171,7 @@ export const WORK: Record<Category, Record<string, PortfolioItem[]>> = Object.fr
           ...w,
           category: cat,
           subcategory: sub,
-          slug: slugify(`${cat}-${sub}-${w.title}`),
+          slug: w.slug ?? slugify(`${cat}-${sub}-${w.title}`),
         })),
       ])
     ),
