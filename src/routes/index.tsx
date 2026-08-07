@@ -509,7 +509,7 @@ function Hero() {
 
 
 
-const industryLogos = [
+const industryLogos: { name: string; src: string; darkSrc?: string }[] = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
@@ -521,7 +521,10 @@ const industryLogos = [
   { name: "Locks & Co", src: indLocks.url },
   { name: "Holloway Diamonds", src: indHolloway.url },
   { name: "Coinmarketfees", src: indCoinmarketfees.url },
+  { name: "MADLUVV", src: indMadluvv.url, darkSrc: indMadluvvWhite.url },
 ];
+
+
 
 function Brands() {
   return (
