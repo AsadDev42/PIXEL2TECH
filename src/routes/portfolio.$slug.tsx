@@ -237,7 +237,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
         <Coverflow3D
           images={all.slice(0, 12)}
           alt={(i) => `${item.title} post ${i + 1}`}
-          aspect="1 / 1"
+          aspect="4 / 5"
         />
       </FadeIn>
     );
