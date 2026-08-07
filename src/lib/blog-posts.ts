@@ -6,6 +6,7 @@ import { mobileAppDesignProcessPost } from "@/lib/posts/mobile-app-design-proces
 import { contextualAdvertisingPost } from "@/lib/posts/contextual-advertising-privacy-first";
 import { verifiedWholesaleSourcingPost } from "@/lib/posts/verified-wholesale-sourcing";
 import { whyAgenciesLoseClientsPost } from "@/lib/posts/why-agencies-lose-clients";
+import { seoMistakes2026Post } from "@/lib/posts/seo-mistakes-2026";
 
 /**
  * Blog cover photography.
@@ -81,6 +82,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  seoMistakes2026Post,
   whyAgenciesLoseClientsPost,
   verifiedWholesaleSourcingPost,
 
