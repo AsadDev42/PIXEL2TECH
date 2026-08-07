@@ -12,6 +12,7 @@ import {
 } from "@/lib/portfolio-data";
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
+import { Coverflow3D } from "@/components/coverflow-3d";
 
 
 export const Route = createFileRoute("/portfolio/$slug")({
@@ -229,20 +230,19 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
     );
   }
 
-  // Social Media → square posts grid
+  // Social Media → 3D coverflow slider of the posts
   if (sub === "Social Media") {
     return (
-      <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 sm:gap-4">
-        {all.slice(0, 12).map((src, i) => (
-          <FadeIn key={src + i} delay={0.03 * i}>
-            <div className="overflow-hidden rounded-xl border border-border bg-muted dark:border-white/10 dark:bg-white/[0.03]">
-              <img src={src} alt={`${item.title} post ${i + 1}`} loading="lazy" decoding="async" className="aspect-square w-full object-cover transition hover:scale-105" />
-            </div>
-          </FadeIn>
-        ))}
-      </div>
+      <FadeIn>
+        <Coverflow3D
+          images={all.slice(0, 12)}
+          alt={(i) => `${item.title} post ${i + 1}`}
+          aspect="1 / 1"
+        />
+      </FadeIn>
     );
   }
+
 
   // Default (Print & Merchandise, Tools, Automation, etc.) — clean gallery
   return (
