@@ -152,6 +152,12 @@ const REDIRECT_MAP: Record<string, string> = {
   "blog-list": "/blog",
   news: "/blog",
   articles: "/blog",
+
+  // --- Renamed portfolio slugs ---
+  "portfolio/creative-social-media-madluvv-social-and-meta-ads":
+    "/portfolio/madluvv-social-media-meta-ads",
+  "portfolio/creative-social-media-madluvv-social-meta-ads":
+    "/portfolio/madluvv-social-media-meta-ads",
 };
 
 /**

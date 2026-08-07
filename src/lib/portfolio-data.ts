@@ -21,13 +21,19 @@ export const SUBS: Record<Category, string[]> = {
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
-type RawWork = Record<Category, Record<string, { title: string; img: string; video?: string; images?: string[] }[]>>;
+type RawWork = Record<
+  Category,
+  Record<string, { title: string; img: string; video?: string; images?: string[]; slug?: string }[]>
+>;
 
 const RAW: RawWork = {
   Creative: {
     "Social Media": [
       {
-        title: "MADLUVV social & Meta ads",
+        // Short, keyword-led URL instead of the auto-generated
+        // "creative-social-media-…" pattern.
+        slug: "madluvv-social-media-meta-ads",
+        title: "MADLUVV social media & Meta ads",
         img: "/__l5e/assets-v1/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
         images: [
           "/__l5e/assets-v1/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",
@@ -165,7 +171,7 @@ export const WORK: Record<Category, Record<string, PortfolioItem[]>> = Object.fr
           ...w,
           category: cat,
           subcategory: sub,
-          slug: slugify(`${cat}-${sub}-${w.title}`),
+          slug: w.slug ?? slugify(`${cat}-${sub}-${w.title}`),
         })),
       ])
     ),
