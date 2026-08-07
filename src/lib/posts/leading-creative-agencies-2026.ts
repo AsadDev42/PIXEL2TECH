@@ -20,9 +20,9 @@ export const leadingCreativeAgencies2026Post: BlogPost = {
   h1: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
   excerpt:
     "Creativity now sits alongside technology, customer experience and AI. Here are twelve creative agencies enterprises and growing brands are working with in 2026 — and how to pick the right one.",
-  img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=70",
+  img: "/__l5e/assets-v1/73321028-4cec-4360-b59e-b09aa4ed5b96/leading-creative-agencies-cover.png",
   imgAlt:
-    "Creative agency team collaborating around a table reviewing brand and web design work",
+    "Creative agency team reviewing campaign reports, analytics dashboards and brand performance charts around a wooden table",
   metaTitle: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
   metaDescription:
     "A practical list of 12 leading creative agencies for enterprises and brands in 2026 — what each is best at, plus how to choose the right creative partner.",
