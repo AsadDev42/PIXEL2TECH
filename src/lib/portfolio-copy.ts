@@ -21,7 +21,37 @@ export type ProjectCopy = {
   results: { label: string; value: string }[];
   /** Unique <meta name="description"> for this project. */
   metaDescription: string;
+  /** Optional hand-written <title> for this project. */
+  metaTitle?: string;
 };
+
+/**
+ * Hand-written copy for flagship projects. Overrides the generated banks below
+ * so the page reads like a real case study instead of templated prose.
+ */
+const OVERRIDES: Record<string, ProjectCopy> = {
+  "madluvv-social-media-meta-ads": {
+    metaTitle: "MADLUVV Social Media & Meta Ads Case Study | Pixel2Tech",
+    metaDescription:
+      "How Pixel2Tech runs MADLUVV's social media, Meta ads and video ad creative across Instagram, Facebook, LinkedIn and TikTok — strategy, design system and results.",
+    summary:
+      "Social media management, Meta ad creative and video ads for a beauty brand selling brow stamp kits.",
+    overview:
+      "MADLUVV is a beauty brand best known for its brow stamp kit. Pixel2Tech handles the brand's social media across Instagram, Facebook, LinkedIn and TikTok, plus the paid creative behind its Meta ad campaigns — static concepts, social proof layouts and short-form video ads produced in monthly batches.",
+    challenge:
+      "The brand had strong products and genuine customer love, but the creative was scattered: organic posts, paid ads and influencer content all looked like they came from different companies, so nothing compounded and every new ad had to prove itself from zero.",
+    approach:
+      "We built one creative system for the whole funnel. A locked type scale, colour set and layout grid cover organic posts and paid variants alike, so a top-performing post can be turned into an ad in minutes. Each batch pairs product-led hooks (before/after, application demos, results) with social-proof formats built from real reviews and UGC, then ships in Meta-ready ratios for feed, Stories and Reels along with TikTok and LinkedIn cuts.",
+    outcome:
+      "MADLUVV now ships a consistent monthly content calendar with paid creative that matches the organic feed, a growing library of tested ad angles, and a repeatable production process instead of one-off design requests.",
+    results: [
+      { label: "Channels handled", value: "Instagram, Facebook, TikTok, LinkedIn" },
+      { label: "Creative shipped", value: "Monthly batches of static + video ads" },
+      { label: "Creative system", value: "One system across organic & paid" },
+    ],
+  },
+};
+
 
 function hash(s: string): number {
   let h = 2166136261;
