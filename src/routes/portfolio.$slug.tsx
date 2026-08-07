@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
 import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play } from "lucide-react";
@@ -14,10 +14,19 @@ import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
 import { Coverflow3D } from "@/components/coverflow-3d";
 
+/** Old auto-generated slugs → their current, shorter URL (301). */
+const RENAMED_SLUGS: Record<string, string> = {
+  "creative-social-media-madluvv-social-and-meta-ads": "madluvv-social-media-meta-ads",
+  "creative-social-media-madluvv-social-meta-ads": "madluvv-social-media-meta-ads",
+};
 
 export const Route = createFileRoute("/portfolio/$slug")({
   component: PortfolioDetailPage,
   loader: ({ params }) => {
+    const renamed = RENAMED_SLUGS[params.slug];
+    if (renamed) {
+      throw redirect({ to: "/portfolio/$slug", params: { slug: renamed }, statusCode: 301 });
+    }
     const item = getItemBySlug(params.slug);
     // A slug that does not exist is a genuine 404. Redirecting every unknown
     // slug to /portfolio would be a soft 404, which Google reports as
@@ -26,6 +35,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
 
     return { item };
   },
+
   head: ({ loaderData, params }) => {
     if (!loaderData) {
       return { meta: [{ title: "Project — Pixel2Tech" }] };
