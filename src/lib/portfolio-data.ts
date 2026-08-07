@@ -24,16 +24,22 @@ type RawWork = Record<Category, Record<string, { title: string; img: string; vid
 const RAW: RawWork = {
   Creative: {
     "Social Media": [
-      { title: "MADLUVV brow stamp hero ad", img: "/__l5e/assets-v1/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png" },
-      { title: "MADLUVV social proof ad", img: "/__l5e/assets-v1/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png" },
-      { title: "MADLUVV smudge-proof Meta ad", img: "/__l5e/assets-v1/5ca499ea-9272-400e-9a5f-c971dd39de9b/madluvv-3.png" },
-      { title: "MADLUVV chat-style ad creative", img: "/__l5e/assets-v1/89733ae3-ce34-47b7-8da1-ae426679b42c/madluvv-4.png" },
-      { title: "MADLUVV before & after creative", img: "/__l5e/assets-v1/907cdda9-156c-4f46-8db0-8636373881c6/madluvv-5.png" },
-      { title: "MADLUVV product launch post", img: "/__l5e/assets-v1/d86bb39b-e140-4bc3-aa43-3065ee73af4c/madluvv-6.png" },
-      { title: "MADLUVV steady hand video ad", img: "/__l5e/assets-v1/dea8407c-4606-411f-8493-ed3fede95eb6/madluvv-7.png" },
-      { title: "MADLUVV brow frustration ad", img: "/__l5e/assets-v1/21615bc5-1b59-4ed8-8da8-7c294082eb0f/madluvv-8.png" },
-      { title: "MADLUVV nine shapes campaign", img: "/__l5e/assets-v1/d3c35c06-c103-4ae7-a58a-856e1edd0c53/madluvv-9.png" },
-      { title: "MADLUVV reviews carousel", img: "/__l5e/assets-v1/526d0055-df91-415a-a35e-4bd6e9b161e3/madluvv-10.png" },
+      {
+        title: "MADLUVV social & Meta ads",
+        img: "/__l5e/assets-v1/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
+        images: [
+          "/__l5e/assets-v1/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",
+          "/__l5e/assets-v1/5ca499ea-9272-400e-9a5f-c971dd39de9b/madluvv-3.png",
+          "/__l5e/assets-v1/89733ae3-ce34-47b7-8da1-ae426679b42c/madluvv-4.png",
+          "/__l5e/assets-v1/907cdda9-156c-4f46-8db0-8636373881c6/madluvv-5.png",
+          "/__l5e/assets-v1/d86bb39b-e140-4bc3-aa43-3065ee73af4c/madluvv-6.png",
+          "/__l5e/assets-v1/dea8407c-4606-411f-8493-ed3fede95eb6/madluvv-7.png",
+          "/__l5e/assets-v1/21615bc5-1b59-4ed8-8da8-7c294082eb0f/madluvv-8.png",
+          "/__l5e/assets-v1/d3c35c06-c103-4ae7-a58a-856e1edd0c53/madluvv-9.png",
+          "/__l5e/assets-v1/526d0055-df91-415a-a35e-4bd6e9b161e3/madluvv-10.png",
+        ],
+      },
+
 
       { title: "Product launch campaign", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Bakery brand posts", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&auto=format&fit=crop&fm=webp&q=75" },
