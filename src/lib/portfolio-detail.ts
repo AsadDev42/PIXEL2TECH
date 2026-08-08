@@ -69,6 +69,60 @@ const VIDEO_READING: RelatedLink[] = [
   { slug: "replace-digital-marketing-agency", label: "10 Signs It's Time to Replace Your Marketing Agency" },
 ];
 
+const OVERRIDES: Record<string, ProjectDetail> = {
+  "social-media-and-digital-marketing-campaigns": {
+    process: [
+      {
+        title: "Content Strategy & Mapping",
+        body: "We mapped out the brand's key promotional periods, including Black Friday and new collection drops, to ensure a steady flow of relevant creatives across all digital channels.",
+      },
+      {
+        title: "Multi-Channel Creative Design",
+        body: "We developed a unified visual system for social posts, email newsletters, and paid ad creatives, ensuring the brand voice remained consistent whether the user was on Instagram or checking their inbox.",
+      },
+      {
+        title: "Performance Asset Support",
+        body: "We created specific asset sets for Meta and Google Ads, focusing on high-contrast visuals and clear value propositions to support the brand's acquisition goals.",
+      },
+      {
+        title: "Launch & Optimization",
+        body: "Assets were deployed across social, email, and affiliate channels, with creative iterations based on the performance of different promotional hooks and visual styles.",
+      },
+    ],
+    technologies: [
+      "Figma",
+      "Adobe Creative Suite",
+      "Klaviyo / Email Design",
+      "Meta Ads Manager",
+      "Google Ads Creative Lab",
+      "Social Media Management Tools",
+    ],
+    whyItMatters:
+      "For modern consumer brands, the creative is the variable that drives performance. By unifying social, email, and paid ad creatives under one strategic umbrella, we remove the friction between discovery and conversion, building long-term brand equity while hitting short-term sales targets.",
+    faqs: [
+      {
+        q: "What was your specific role in the paid advertising?",
+        a: "I provided creative design support, developing the visual assets (static banners, carousels, and stories) used within Meta and Google Ads campaigns, rather than managing the media buying strategy itself.",
+      },
+      {
+        q: "How did you handle the email marketing component?",
+        a: "We designed promotional newsletters, seasonal campaign flows, and automated email creatives, focusing on mobile-responsive layouts that mirrored the brand's social media aesthetic.",
+      },
+      {
+        q: "Which images in the gallery were for the campaigns?",
+        a: "The gallery showcases a mix of Black Friday sales creatives, 'Start Small, Save Big' promotional banners, affiliate marketing assets, and lifestyle lookbook content.",
+      },
+    ],
+    relatedReading: CREATIVE_READING,
+    relatedServices: [
+      "Social Media Management",
+      "Email Marketing Design",
+      "Performance Creative Support",
+      "Brand Content Creation",
+    ],
+  },
+};
+
 const BANKS: Record<string, DetailBank> = {
   "Social Media": {
     process: [
