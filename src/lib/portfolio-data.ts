@@ -34,8 +34,9 @@ const RAW: RawWork = {
         // "creative-social-media-…" pattern.
         slug: "madluvv-social-media-meta-ads",
         title: "MADLUVV social media & Meta ads",
-        img: "/__l5e/assets-v1/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
+        img: "/__l5e/assets-v1/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
         images: [
+          "/__l5e/assets-v1/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
           "/__l5e/assets-v1/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",
           "/__l5e/assets-v1/5ca499ea-9272-400e-9a5f-c971dd39de9b/madluvv-3.png",
           "/__l5e/assets-v1/89733ae3-ce34-47b7-8da1-ae426679b42c/madluvv-4.png",
