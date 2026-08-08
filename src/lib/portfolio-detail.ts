@@ -70,55 +70,55 @@ const VIDEO_READING: RelatedLink[] = [
 ];
 
 const OVERRIDES: Record<string, ProjectDetail> = {
-  "social-media-and-digital-marketing-campaigns": {
+  "nayyer-carpets-creative-direction-mockups": {
     process: [
       {
-        title: "Content Strategy & Mapping",
-        body: "We mapped out the brand's key promotional periods, including Black Friday and new collection drops, to ensure a steady flow of relevant creatives across all digital channels.",
+        title: "Creative Direction & Collaboration",
+        body: "I worked as a creative partner alongside the Nayyer Carpets internal team, helping to refine their visual concepts and bring a fresh design perspective to their ongoing marketing efforts.",
       },
       {
-        title: "Multi-Channel Creative Design",
-        body: "We developed a unified visual system for social posts, email newsletters, and paid ad creatives, ensuring the brand voice remained consistent whether the user was on Instagram or checking their inbox.",
+        title: "Product Mockup Creation",
+        body: "I developed custom, realistic carpet mockups that placed the brand's designs in premium interior settings, providing customers with a clear and aspirational visualization of the products.",
       },
       {
-        title: "Performance Asset Support",
-        body: "We created specific asset sets for Meta and Google Ads, focusing on high-contrast visuals and clear value propositions to support the brand's acquisition goals.",
+        title: "Social Media Creative Design",
+        body: "We designed a series of engaging social media posts and Meta ad creatives that leveraged the new product mockups to drive higher engagement and brand interest.",
       },
       {
-        title: "Launch & Optimization",
-        body: "Assets were deployed across social, email, and affiliate channels, with creative iterations based on the performance of different promotional hooks and visual styles.",
+        title: "Visual Consistency Support",
+        body: "I ensured that the visual quality of the product mockups translated seamlessly across both the website and social media, creating a unified brand experience for the digital customer.",
       },
     ],
     technologies: [
-      "Figma",
-      "Adobe Creative Suite",
-      "Klaviyo / Email Design",
-      "Meta Ads Manager",
-      "Google Ads Creative Lab",
-      "Social Media Management Tools",
+      "Adobe Photoshop",
+      "Creative Direction",
+      "Product Visualization",
+      "Mockup Design",
+      "Meta Creative Studio",
+      "Digital Design Systems",
     ],
     whyItMatters:
-      "For modern consumer brands, the creative is the variable that drives performance. By unifying social, email, and paid ad creatives under one strategic umbrella, we remove the friction between discovery and conversion, building long-term brand equity while hitting short-term sales targets.",
+      "High-end product visualization is the bridge between a customer's curiosity and their confidence to purchase. By placing carpets in realistic, premium environments, we didn't just show a product—we sold a vision of a home, significantly elevating the brand's digital presence in the process.",
     faqs: [
       {
-        q: "What was your specific role in the paid advertising?",
-        a: "I provided creative design support, developing the visual assets (static banners, carousels, and stories) used within Meta and Google Ads campaigns, rather than managing the media buying strategy itself.",
+        q: "Did you manage the entire marketing for Nayyer Carpets?",
+        a: "No, I worked as a creative and design partner alongside their internal team, providing creative direction, design improvements, and specific visual assets like mockups.",
       },
       {
-        q: "How did you handle the email marketing component?",
-        a: "We designed promotional newsletters, seasonal campaign flows, and automated email creatives, focusing on mobile-responsive layouts that mirrored the brand's social media aesthetic.",
+        q: "What were the product mockups used for?",
+        a: "The mockups were used to present carpet designs in realistic environments on the website and were repurposed for social media content to maintain visual quality across channels.",
       },
       {
-        q: "Which images in the gallery were for the campaigns?",
-        a: "The gallery showcases a mix of Black Friday sales creatives, 'Start Small, Save Big' promotional banners, affiliate marketing assets, and lifestyle lookbook content.",
+        q: "What specific contributions did you make?",
+        a: "My role included social media creative design, Meta creative support, carpet/product mockup creation, website visual support, and overall design refinement and feedback.",
       },
     ],
     relatedReading: CREATIVE_READING,
     relatedServices: [
-      "Social Media Management",
-      "Email Marketing Design",
-      "Performance Creative Support",
-      "Brand Content Creation",
+      "Creative Direction",
+      "Product Visualization",
+      "Social Media Design",
+      "Mockup Creation",
     ],
   },
 };
