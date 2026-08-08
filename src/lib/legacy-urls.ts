@@ -57,6 +57,22 @@ const RESERVED_EXACT = new Set([
  * Patterns are tested against the normalised path (lowercase, no slashes at
  * either end, query/hash already stripped).
  */
+const GONE_EXACT = new Set([
+  // Retired theme demo homepages — no equivalent page, so 410 rather than a
+  // misleading redirect to the homepage.
+  "home-two",
+  "home-three",
+  "home-three-2",
+  "corporate-agencyone-page",
+  "creative-agency-one-page",
+  "digital-agency-onepage",
+  "fullscreen-slider",
+  "sample-page",
+  "wishlist",
+  "coming-soon",
+  "maintenance",
+]);
+
 const GONE_PATTERNS: RegExp[] = [
   // --- Core WordPress plumbing -------------------------------------------
   // NOTE: deliberately does NOT match "wp-sitemap.xml", which still 301s.
@@ -80,6 +96,23 @@ const GONE_PATTERNS: RegExp[] = [
 
   // --- Theme / plugin scaffolding that was never real content -------------
   /^(elementor|elementor-hf|rtelements_pro|tcg_teb|rt-portfolios|rt-portfolio|cf7|contact-form-7)(\/|$)/,
+  /^(header|footer|pxl-template|pxl_template|pxl-templates|templates|template)(\/|$)/,
+
+  // --- Retired theme onepage demo homepages --------------------------------
+  /^home-\d+-onepage$/,
+  /^home-onepage(-\d+)?$/,
+  /^(onepage|one-page)(-\d+)?$/,
+
+  // --- Demo careers / job listings from the old theme ----------------------
+  /^(career|careers|job|jobs|job-listing|career-details|job-details)(\/|$)/,
+
+  // --- Theme demo portfolio entries (never real client work) ---------------
+  /^portfolio\/(figma-digital-agency|nice-guy|mails-mobile-app|astro-architecture|vortex-media)(-|$)/,
+  /^portfolio\/(demo|sample|theme)-/,
+
+  // --- Theme sample blog posts --------------------------------------------
+  /^blog\/(hello-world|sample-post|demo-post|lorem-ipsum)(-|$)/,
+  /^hello-world$/,
 ];
 
 /**
@@ -90,15 +123,6 @@ const GONE_PATTERNS: RegExp[] = [
 const REDIRECT_MAP: Record<string, string> = {
   // --- Home / retired theme demo pages ---
   home: "/",
-  "home-two": "/",
-  "home-three": "/",
-  "home-three-2": "/",
-  "home-6-onepage": "/",
-  "corporate-agencyone-page": "/",
-  "creative-agency-one-page": "/",
-  "digital-agency-onepage": "/",
-  "fullscreen-slider": "/",
-  "sample-page": "/",
 
   // --- About / team ---
   "about-us": "/about",
@@ -168,7 +192,6 @@ const REDIRECT_PREFIXES: [RegExp, string][] = [
   [/^(service|services)(\/|$)/, "/services"],
   [/^services?-/, "/services"],
   [/^(teams|team)(\/|$)/, "/about"],
-  [/^careers?(\/|$)/, "/about"],
   [/^portfolio-/, "/portfolio"],
   [/^blog-/, "/blog"],
 ];
@@ -209,6 +232,8 @@ export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
 
   const mapped = REDIRECT_MAP[path];
   if (mapped) return { type: "redirect", target: mapped };
+
+  if (GONE_EXACT.has(path)) return { type: "gone" };
 
   for (const pattern of GONE_PATTERNS) {
     if (pattern.test(path)) return { type: "gone" };
