@@ -351,6 +351,18 @@ function AboutPage() {
                 className="group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[320px]"
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+                {m.name === "Asad Farooq" && (
+                  <Link
+                    to="/asad-farooq"
+                    onClick={(e) => e.stopPropagation()}
+                    draggable={false}
+                    aria-label="View Asad Farooq's profile page"
+                    className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-neutral-900 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)] backdrop-blur-md transition duration-300 hover:scale-[1.06] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:bg-black/80"
+                  >
+                    View Profile
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
                   <img
                     loading="lazy"
                     decoding="async"

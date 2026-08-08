@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AsadFarooqRouteImport } from './routes/asad-farooq'
 import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
@@ -55,6 +56,11 @@ const SplatRoute = SplatRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsadFarooqRoute = AsadFarooqRouteImport.update({
+  id: '/asad-farooq',
+  path: '/asad-farooq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
@@ -212,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
@@ -246,6 +253,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
@@ -281,6 +289,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
@@ -317,6 +326,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/asad-farooq'
     | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
@@ -351,6 +361,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/asad-farooq'
     | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
@@ -385,6 +396,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/asad-farooq'
     | '/blog-sitemap.xml'
     | '/contact'
     | '/favicon.ico'
@@ -420,6 +432,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  AsadFarooqRoute: typeof AsadFarooqRoute
   BlogSitemapDotxmlRoute: typeof BlogSitemapDotxmlRoute
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
@@ -472,6 +485,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asad-farooq': {
+      id: '/asad-farooq'
+      path: '/asad-farooq'
+      fullPath: '/asad-farooq'
+      preLoaderRoute: typeof AsadFarooqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog-sitemap.xml': {
@@ -684,6 +704,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  AsadFarooqRoute: AsadFarooqRoute,
   BlogSitemapDotxmlRoute: BlogSitemapDotxmlRoute,
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
