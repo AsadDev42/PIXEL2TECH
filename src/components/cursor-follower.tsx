@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
 /**
  * Premium custom cursor with a strong hover state:
@@ -13,6 +14,15 @@ export function CursorFollower() {
   const blobRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
+  const showRef = useRef<(() => void) | null>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Route changes can swallow the pointer events that keep the cursor visible
+  // (and reset hover state), so force it back on after every navigation.
+  useEffect(() => {
+    showRef.current?.();
+  }, [pathname]);
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
