@@ -13,7 +13,7 @@ import {
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
 import { Coverflow3D } from "@/components/coverflow-3d";
-import { VideoCarousel } from "@/components/video-carousel";
+import { VideoSpotlight } from "@/components/video-spotlight";
 import affinityVideo1 from "@/assets/affinity-video-1.mp4.asset.json";
 import affinityVideo2 from "@/assets/affinity-video-2.mp4.asset.json";
 import affinityVideo3 from "@/assets/affinity-video-3.mp4.asset.json";
@@ -375,7 +375,7 @@ function PortfolioDetailPage() {
               </div>
             </FadeIn>
             <FadeIn>
-              <VideoCarousel videos={videos} />
+              <VideoSpotlight videos={videos} />
             </FadeIn>
           </div>
         )}
