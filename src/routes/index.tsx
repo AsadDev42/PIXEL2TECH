@@ -592,17 +592,14 @@ function PartnerBand() {
         </div>
         <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px]">
           <motion.div
-            initial={{ y: 0, rotate: -2 }}
-            animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[35%] right-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[40%] sm:-right-4 sm:px-5 sm:py-3 lg:-right-8"
+            initial={{ y: 0, rotate: 2 }}
+            animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            className="absolute top-[40%] left-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[45%] sm:-left-4 sm:px-5 sm:py-3 lg:-left-8"
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
-              <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
-            </div>
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-card-foreground sm:text-sm">
-                Trusted Creative Partner
+                15+ Happy Clients
               </div>
               <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
@@ -623,14 +620,17 @@ function PartnerBand() {
           </div>
 
           <motion.div
-            initial={{ y: 0, rotate: 2 }}
-            animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute top-[60%] left-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[65%] sm:-left-4 sm:px-5 sm:py-3 lg:-left-8"
+            initial={{ y: 0, rotate: -2 }}
+            animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[60%] right-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[65%] sm:-right-4 sm:px-5 sm:py-3 lg:-right-8"
           >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
+              <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
+            </div>
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-card-foreground sm:text-sm">
-                15+ Happy Clients
+                Trusted Creative Partner
               </div>
               <div className="mt-0.5 flex items-center gap-1 text-[11px] text-muted-foreground sm:text-xs">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" aria-hidden="true" />
