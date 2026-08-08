@@ -837,6 +837,7 @@ function Team() {
           autoplay
           gapClassName="gap-4 md:gap-6"
           className="mt-10 sm:mt-14"
+          pauseOnHover
           ariaLabel="Pixel2Tech creative team"
           renderItem={(m) => (
             <article className="group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[320px]">

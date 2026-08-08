@@ -346,6 +346,7 @@ function AboutPage() {
             autoplay
             gapClassName="gap-4 md:gap-6"
             className="mt-10 sm:mt-14"
+            pauseOnHover
             ariaLabel="Pixel2Tech creative team"
             renderItem={(m) => (
               <article
