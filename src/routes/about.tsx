@@ -337,7 +337,7 @@ function AboutPage() {
             </div>
           </FadeIn>
         </div>
-        <div data-cursor="expand">
+        <div>
           <LoopSlider
             items={team}
             keyFor={(m, i) => `${m.name}-${i}`}
@@ -352,7 +352,7 @@ function AboutPage() {
               <article
                 className="group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[320px]"
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+                <div data-cursor="expand" className="relative aspect-[3/4] overflow-hidden bg-muted">
                 {m.name === "Asad Farooq" && (
                   <Link
                     to="/asad-farooq"

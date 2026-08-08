@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouterState } from "@tanstack/react-router";
 
 /**
  * Premium custom cursor with a strong hover state:
@@ -13,6 +14,15 @@ export function CursorFollower() {
   const blobRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
+  const showRef = useRef<(() => void) | null>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // Route changes can swallow the pointer events that keep the cursor visible
+  // (and reset hover state), so force it back on after every navigation.
+  useEffect(() => {
+    showRef.current?.();
+  }, [pathname]);
+
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -39,6 +49,18 @@ export function CursorFollower() {
       if (blobRef.current) blobRef.current.style.opacity = v ? "1" : "0";
       if (dotRef.current) dotRef.current.style.opacity = v ? "1" : "0";
     };
+
+    showRef.current = () => {
+      const blob = blobRef.current;
+      if (blob) {
+        blob.dataset.media = "0";
+        blob.dataset.hover = "0";
+        blob.dataset.down = "0";
+      }
+      setVisible(true);
+    };
+
+
 
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -75,7 +97,12 @@ export function CursorFollower() {
       const blob = blobRef.current;
       if (blob && blob.dataset.down !== "0") blob.dataset.down = "0";
     };
-    const onLeave = () => setVisible(false);
+    const onLeave = (e: MouseEvent) => {
+      // Ignore leaves that just move into a child/overlay element; only hide
+      // when the pointer really exits the window.
+      if (e.relatedTarget) return;
+      setVisible(false);
+    };
     const onEnter = () => {
       setVisible(true);
       start();
