@@ -8,6 +8,7 @@ import { verifiedWholesaleSourcingPost } from "@/lib/posts/verified-wholesale-so
 import { whyAgenciesLoseClientsPost } from "@/lib/posts/why-agencies-lose-clients";
 import { seoMistakes2026Post } from "@/lib/posts/seo-mistakes-2026";
 import { leadingCreativeAgencies2026Post } from "@/lib/posts/leading-creative-agencies-2026";
+import { betterSystemsPost } from "@/lib/posts/better-systems";
 
 /**
  * Blog cover photography.
@@ -83,6 +84,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  betterSystemsPost,
   leadingCreativeAgencies2026Post,
   seoMistakes2026Post,
   whyAgenciesLoseClientsPost,
