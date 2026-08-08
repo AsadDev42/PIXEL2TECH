@@ -82,14 +82,24 @@ export function Coverflow3D({ images, alt, aspect = "1 / 1", className = "" }: P
                   cursor: offset === 0 ? "grab" : "pointer",
                 }}
               >
-                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl dark:border-white/10 dark:bg-white/[0.03]">
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl dark:border-white/10 dark:bg-white/[0.03]">
+                  {/* Blurred Background Layer */}
+                  <div 
+                    className="absolute inset-0 z-0 scale-110 blur-xl brightness-50 contrast-125"
+                    style={{
+                      backgroundImage: `url(${src})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  />
+                  {/* Main Image Layer */}
                   <img
                     src={src}
                     alt={alt(i)}
                     loading={i === 0 ? "eager" : "lazy"}
                     decoding="async"
                     draggable={false}
-                    className="h-full w-full object-contain"
+                    className="relative z-10 h-full w-full object-contain"
                   />
                 </div>
               </div>
