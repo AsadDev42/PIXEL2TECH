@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isChunkLoadError } from "@/lib/lazy-with-retry";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { ContentProtection } from "@/components/content-protection";
+
 import { Toaster } from "@/components/ui/sonner";
 
 const NOT_FOUND_LINKS = [
