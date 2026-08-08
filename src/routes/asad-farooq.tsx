@@ -250,21 +250,19 @@ const industries = [
   "Professional Services",
 ];
 
-const caseStudies = [
+const caseStudies: { title: string; result: string; slug?: string }[] = [
   {
     title: "MADLUVV — social media & Meta ads",
     result: "Full social handling plus Meta, LinkedIn and TikTok ad creative for a beauty brand — a repeatable creative system instead of one-off posts.",
-    href: "/portfolio/madluvv-social-media-meta-ads",
+    slug: "madluvv-social-media-meta-ads",
   },
   {
     title: "Shopify Plus brand creative",
     result: "Conversion-led ad creative and brand consistency across a portfolio of e-commerce brands as Creative Director at SwishTag.",
-    href: "/portfolio",
   },
   {
     title: "B2B agency creative systems",
     result: "Design systems, pitch collateral and campaign creative that helped service businesses look enterprise-grade and win larger accounts.",
-    href: "/portfolio",
   },
 ];
 
@@ -578,7 +576,9 @@ function AsadPage() {
             {caseStudies.map((c) => (
               <StaggerItem key={c.title}>
                 <Link
-                  to={c.href}
+                  {...(c.slug
+                    ? ({ to: "/portfolio/$slug", params: { slug: c.slug } } as const)
+                    : ({ to: "/portfolio" } as const))}
                   className="group flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03]"
                 >
                   <h3 className="text-base font-bold tracking-tight text-foreground">{c.title}</h3>
