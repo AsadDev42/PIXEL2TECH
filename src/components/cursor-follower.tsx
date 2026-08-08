@@ -50,6 +50,18 @@ export function CursorFollower() {
       if (dotRef.current) dotRef.current.style.opacity = v ? "1" : "0";
     };
 
+    showRef.current = () => {
+      const blob = blobRef.current;
+      if (blob) {
+        blob.dataset.media = "0";
+        blob.dataset.hover = "0";
+        blob.dataset.down = "0";
+      }
+      setVisible(true);
+    };
+
+
+
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
