@@ -49,7 +49,22 @@ const RAW: RawWork = {
       },
 
 
-      { title: "Product launch campaign", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1600&auto=format&fit=crop&fm=webp&q=75" },
+      {
+        slug: "affinity-law-social-media-ad-creatives",
+        title: "Affinity Law social media & ad creatives",
+        img: "/__l5e/assets-v1/eae62611-b17c-4924-8ea3-d63bdb502eb6/affinity-law-1.png",
+        images: [
+          "/__l5e/assets-v1/2aaa2cc7-874b-4689-aaaf-49a46eeb8e98/affinity-law-2.png",
+          "/__l5e/assets-v1/f2f103de-7f42-450f-8bc9-9a1b5a31137f/affinity-law-3.png",
+          "/__l5e/assets-v1/d7fd411a-4c8f-4bf5-9782-a22c50a77129/affinity-law-4.png",
+          "/__l5e/assets-v1/813f1b8c-f0c3-4440-a56a-2c1d469a5703/affinity-law-5.png",
+          "/__l5e/assets-v1/b8537865-3d00-46d4-b967-86468ac24adf/affinity-law-6.png",
+          "/__l5e/assets-v1/088b50fb-f17b-4a19-8c6e-10a40aae279b/affinity-law-7.png",
+          "/__l5e/assets-v1/82f7253d-19fa-4af2-b6cb-92278ebc9c7f/affinity-law-8.png",
+          "/__l5e/assets-v1/c115fc4c-5d96-40d9-ac4d-63891e1ef0a6/affinity-law-9.png",
+          "/__l5e/assets-v1/5649d816-c234-46bf-a52a-57844c7458db/affinity-law-10.png",
+        ],
+      },
       { title: "Bakery brand posts", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Instagram grid design", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75" },
