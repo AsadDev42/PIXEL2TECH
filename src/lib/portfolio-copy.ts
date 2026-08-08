@@ -31,24 +31,25 @@ export type ProjectCopy = {
  */
 const OVERRIDES: Record<string, ProjectCopy> = {
   "madluvv-social-media-meta-ads": {
-    metaTitle: "MADLUVV Social Media & Meta Ads Case Study | Pixel2Tech",
+    metaTitle: "MADLUVV Social Media, Meta Ads, SEO & Web Development | Pixel2Tech",
     metaDescription:
-      "How Pixel2Tech runs MADLUVV's social media, Meta ads and video ad creative across Instagram, Facebook, LinkedIn and TikTok — strategy, design system and results.",
+      "How Pixel2Tech supports MADLUVV with social media, Meta ad creative, short-form video, SEO and Shopify web development — strategy, design system and results.",
     summary:
-      "Social media management, Meta ad creative and video ads for a beauty brand selling brow stamp kits.",
+      "Social media, Meta ad creative, short-form video, SEO and web development support for a beauty brand selling brow stamp kits.",
     overview:
-      "MADLUVV is a beauty brand best known for its brow stamp kit. Pixel2Tech handles the brand's social media across Instagram, Facebook, LinkedIn and TikTok, plus the paid creative behind its Meta ad campaigns — static concepts, social proof layouts and short-form video ads produced in monthly batches.",
+      "MADLUVV is a beauty brand best known for its brow stamp kit. Pixel2Tech handles the brand's social media across Instagram, Facebook, LinkedIn and TikTok, the paid creative behind its Meta campaigns, and — alongside the creative work — ongoing SEO and web development support for the brand's online store.",
     challenge:
-      "The brand had strong products and genuine customer love, but the creative was scattered: organic posts, paid ads and influencer content all looked like they came from different companies, so nothing compounded and every new ad had to prove itself from zero.",
+      "The brand had strong products and genuine customer love, but the creative was scattered: organic posts, paid ads and influencer content all looked like they came from different companies. On the store side, product and collection pages were thin on search-friendly content and slow on mobile, so paid traffic carried almost all the weight while organic discovery stayed flat.",
     approach:
-      "We built one creative system for the whole funnel. A locked type scale, colour set and layout grid cover organic posts and paid variants alike, so a top-performing post can be turned into an ad in minutes. Each batch pairs product-led hooks (before/after, application demos, results) with social-proof formats built from real reviews and UGC, then ships in Meta-ready ratios for feed, Stories and Reels along with TikTok and LinkedIn cuts.",
+      "We built one creative system for the whole funnel. A locked type scale, colour set and layout grid cover organic posts and paid variants alike, so a top-performing post can be turned into an ad in minutes. Each batch pairs product-led hooks (before/after, application demos, results) with social-proof formats built from real reviews and UGC, then ships in Meta-ready ratios for feed, Stories and Reels along with TikTok and LinkedIn cuts. In parallel, our web team worked on the store itself: keyword-led product and collection copy, cleaner title tags, meta descriptions and heading structure, product and FAQ schema, internal linking between related products and content, plus front-end fixes for page speed, image optimisation and mobile layout so the pages the ads point to actually convert.",
     outcome:
-      "MADLUVV now ships a consistent monthly content calendar with paid creative that matches the organic feed, a growing library of tested ad angles, and a repeatable production process instead of one-off design requests.",
+      "MADLUVV now ships a consistent monthly content calendar with paid creative that matches the organic feed, a growing library of tested ad angles, and a store that is faster, better structured for search and easier to extend — creative, SEO and development all handled by one team.",
     results: [
       { label: "Channels handled", value: "Instagram, Facebook, TikTok, LinkedIn" },
       { label: "Creative shipped", value: "Monthly batches of static + video ads" },
-      { label: "Creative system", value: "One system across organic & paid" },
+      { label: "Beyond creative", value: "SEO + web development support" },
     ],
+
   },
   "affinity-law-social-media-ad-creatives": {
     metaTitle: "Affinity Law Social Media & Ad Creatives Case Study | Pixel2Tech",
