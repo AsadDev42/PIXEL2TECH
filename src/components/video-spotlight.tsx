@@ -17,11 +17,12 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
   const [playing, setPlaying] = useState<Record<number, boolean>>({});
   const refs = useRef<Array<HTMLVideoElement | null>>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
   const count = videos.length;
 
   // Manual scroll position for drag
   const x = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 30 });
+  const springX = useSpring(x, { stiffness: 400, damping: 40 }); // Slightly snappier
 
   const getScrollAmount = useCallback(() => {
     const container = containerRef.current;
@@ -58,10 +59,22 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
     }
   }, [pauseAllExcept]);
 
-  // Sync index to visual scroll position
+  // Update constraints and position
   useEffect(() => {
-    const amount = getScrollAmount();
-    x.set(-index * amount);
+    const update = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const scrollWidth = container.scrollWidth;
+      const offsetWidth = container.offsetWidth;
+      setConstraints({ left: -(scrollWidth - offsetWidth), right: 0 });
+
+      const amount = getScrollAmount();
+      x.set(-index * amount);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, [index, getScrollAmount, x]);
 
   // Handle drag end to snap to nearest index
@@ -100,7 +113,9 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
         <motion.div
           ref={containerRef}
           drag="x"
-          dragConstraints={{ left: -((count - 1) * 300), right: 0 }} // Dynamic constraints would be better but this is a safe fallback
+          dragConstraints={constraints}
+          dragMomentum={false}
+          dragElastic={0.1}
           onDragEnd={onDragEnd}
           style={{ x: springX }}
           className="flex cursor-grab gap-4 active:cursor-grabbing lg:gap-6"
