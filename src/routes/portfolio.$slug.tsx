@@ -13,6 +13,20 @@ import {
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
 import { Coverflow3D } from "@/components/coverflow-3d";
+import { VideoCarousel } from "@/components/video-carousel";
+import affinityVideo1 from "@/assets/affinity-video-1.mp4.asset.json";
+import affinityVideo2 from "@/assets/affinity-video-2.mp4.asset.json";
+import affinityVideo3 from "@/assets/affinity-video-3.mp4.asset.json";
+import affinityVideo4 from "@/assets/affinity-video-4.mp4.asset.json";
+
+const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
+  "affinity-law-social-media-ad-creatives": [
+    { src: affinityVideo1.url, title: "He accepted the first offer and couldn't go back" },
+    { src: affinityVideo2.url, title: "Partly at fault? You may still have a claim" },
+    { src: affinityVideo3.url, title: "Insurance companies check your social media" },
+    { src: affinityVideo4.url, title: "What to expect after hiring a lawyer" },
+  ],
+};
 
 /** Old auto-generated slugs → their current, shorter URL (301). */
 const RENAMED_SLUGS: Record<string, string> = {
@@ -276,6 +290,7 @@ function PortfolioDetailPage() {
   const deliverables = getDeliverables(item);
   const copy = getProjectCopy(item);
   const detail = getProjectDetail(item);
+  const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
 
   return (
@@ -345,6 +360,25 @@ function PortfolioDetailPage() {
           </div>
         </FadeIn>
         <CategoryShowcase item={item} images={gallery} />
+
+        {videos.length > 0 && (
+          <div className="mt-16 md:mt-24">
+            <FadeIn>
+              <div className="mb-8">
+                <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Video Content</div>
+                <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  Short-form video creatives
+                </h2>
+                <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
+                  Vertical video assets produced for organic social and paid campaigns.
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn>
+              <VideoCarousel videos={videos} />
+            </FadeIn>
+          </div>
+        )}
       </section>
 
       {/* Deliverables + Story */}
