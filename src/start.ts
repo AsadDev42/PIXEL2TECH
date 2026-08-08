@@ -59,6 +59,17 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
       },
     });
   }
+  // Trailing slashes: the router would answer with a 307, which Search Console
+  // reports as "Page with redirect". Emit a single permanent redirect instead.
+  if (!verdict && url.pathname !== "/" && url.pathname.endsWith("/")) {
+    return new Response(null, {
+      status: 301,
+      headers: {
+        location: url.pathname.replace(/\/+$/, "") + url.search,
+        "cache-control": "public, max-age=86400",
+      },
+    });
+  }
   if (verdict?.type === "gone") {
     return new Response(renderGonePage(url.pathname.replace(/^\/+/, "")), {
       status: 410,
