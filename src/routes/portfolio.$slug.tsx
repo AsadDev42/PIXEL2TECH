@@ -18,6 +18,12 @@ import affinityVideo1 from "@/assets/affinity-video-1.mp4.asset.json";
 import affinityVideo2 from "@/assets/affinity-video-2.mp4.asset.json";
 import affinityVideo3 from "@/assets/affinity-video-3.mp4.asset.json";
 import affinityVideo4 from "@/assets/affinity-video-4.mp4.asset.json";
+import madluvvVideo1 from "@/assets/madluvv-video-1.mp4.asset.json";
+import madluvvVideo2 from "@/assets/madluvv-video-2.mp4.asset.json";
+import madluvvVideo3 from "@/assets/madluvv-video-3.mp4.asset.json";
+import madluvvVideo4 from "@/assets/madluvv-video-4.mp4.asset.json";
+import madluvvVideo5 from "@/assets/madluvv-video-5.mp4.asset.json";
+import madluvvVideo6 from "@/assets/madluvv-video-6.mp4.asset.json";
 
 const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
   "affinity-law-social-media-ad-creatives": [
@@ -26,7 +32,16 @@ const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
     { src: affinityVideo3.url, title: "Insurance companies check your social media" },
     { src: affinityVideo4.url, title: "What to expect after hiring a lawyer" },
   ],
+  "madluvv-social-media-meta-ads": [
+    { src: madluvvVideo1.url, title: "Creator review: new favourite eyebrow product" },
+    { src: madluvvVideo2.url, title: "Mother's Day PSA" },
+    { src: madluvvVideo3.url, title: "Beach day approved: waterproof brows" },
+    { src: madluvvVideo4.url, title: "Brow Stamp Kit: easier than you expect" },
+    { src: madluvvVideo5.url, title: "Simple brow routine with Laminate Me gel" },
+    { src: madluvvVideo6.url, title: "Set Me Setting Spray for melting makeup" },
+  ],
 };
+
 
 /** Old auto-generated slugs → their current, shorter URL (301). */
 const RENAMED_SLUGS: Record<string, string> = {
