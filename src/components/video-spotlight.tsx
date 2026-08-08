@@ -45,12 +45,15 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
     }
   }, [pauseAllExcept]);
 
-  // Infinite items mapping for the 3 visible slots
-  const visibleIndices = [
-    (index - 1 + count) % count,
-    index,
-    (index + 1) % count,
-  ];
+  // Infinite items mapping for the 4 visible slots
+  const visibleIndices = count >= 4
+    ? [
+        (index - 1 + count) % count,
+        index,
+        (index + 1) % count,
+        (index + 2) % count,
+      ]
+    : videos.map((_, i) => i);
 
   const anyPlaying = Object.values(playing).some(Boolean);
   const [paused, setPaused] = useState(false);
