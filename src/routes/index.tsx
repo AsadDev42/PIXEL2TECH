@@ -595,7 +595,7 @@ function PartnerBand() {
             initial={{ y: 0, rotate: -2 }}
             animate={{ y: [0, -8, 0], rotate: [-2, 1, -2] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[18%] right-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[20%] sm:-right-4 sm:px-5 sm:py-3 lg:-right-8"
+            className="absolute top-[18%] right-0 -z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[20%] sm:-right-4 sm:px-5 sm:py-3 lg:-right-8"
           >
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
               <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
