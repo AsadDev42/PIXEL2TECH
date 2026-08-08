@@ -314,7 +314,30 @@ const BANKS: Record<string, DetailBank> = {
 
 const FALLBACK = BANKS["Websites"]!;
 
+const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "affinity-law-social-media-ad-creatives": {
+    process: [
+      { title: "Brand and market review", body: "We started from Affinity Law's existing identity and the reality of a competitive Toronto and GTA personal injury market, where trust, clarity and credibility decide whether a creative is believed." },
+      { title: "Creative strategy and angles", body: "We mapped the service angles worth owning — car accidents, slip and fall, negligence, accident claims, wrongful death, free case reviews and no-upfront-fee messaging — and gave each one a clear message and call to action." },
+      { title: "Content and creative production", body: "Social posts and promotional creatives were produced against one visual language: gold and black, high-contrast layouts, strong headline typography and emotionally relevant imagery." },
+      { title: "Paid media creative support", body: "We created and adapted static and video-supporting assets for advertising campaigns on Meta, AppLovin and Google Ads, keeping brand consistency across every placement. This was creative and advertising support rather than budget, targeting or campaign optimisation." },
+    ],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Figma", "After Effects", "Meta Ads creative specs", "Google Ads creative specs", "AppLovin creative specs"],
+    whyItMatters:
+      "In legal services the creative is often the first credibility signal a potential client receives. Consistent, clearly written visuals that name the problem and the next step do more for enquiry volume than any single clever ad, and a reusable creative library means the firm can keep both organic and paid channels fed without restarting from a blank canvas each month.",
+    faqs: [
+      { q: "What work did Pixel2Tech do for Affinity Law?", a: "Social media management and content planning, engagement-focused posts, promotional and campaign creatives for personal injury services, static ad creatives, video content support, and creative support for advertising campaigns on Meta, AppLovin and Google Ads." },
+      { q: "Did Pixel2Tech manage the ad campaigns themselves?", a: "This engagement covered creative and advertising support — producing and adapting the visual assets used in campaigns. It did not include owning ad budgets, targeting or campaign optimisation." },
+      { q: "What were the outcomes of the project?", a: "A more consistent social media presence, a reusable library of campaign creatives, multiple tested creative angles across personal injury services, and closer alignment between organic social content and paid advertising creative." },
+    ],
+    relatedReading: CREATIVE_READING,
+    relatedServices: ["Social Media & Email", "Branding & Design", "Video Editing & Ads"],
+  },
+};
+
 export function getProjectDetail(item: PortfolioItem): ProjectDetail {
+  const override = DETAIL_OVERRIDES[item.slug];
+  if (override) return override;
   const bank = BANKS[item.subcategory] ?? FALLBACK;
   const seed = hash(item.slug);
   return {
