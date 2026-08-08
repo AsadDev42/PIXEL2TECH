@@ -31,25 +31,24 @@ export type ProjectCopy = {
  */
 const OVERRIDES: Record<string, ProjectCopy> = {
   "madluvv-social-media-meta-ads": {
-    metaTitle: "MADLUVV Social Media, Meta Ads, SEO & Web Development | Pixel2Tech",
+    metaTitle: "MADLUVV | Social Media Management, Meta Ads & Shopify Development",
     metaDescription:
-      "How Pixel2Tech supports MADLUVV with social media, Meta ad creative, short-form video, SEO and Shopify web development — strategy, design system and results.",
+      "A deep dive into how Pixel2Tech transformed MADLUVV's digital presence through high-converting Meta ads, a cohesive social media strategy, and technical Shopify SEO.",
     summary:
-      "Social media, Meta ad creative, short-form video, SEO and web development support for a beauty brand selling brow stamp kits.",
+      "Scaling a premium beauty brand through scroll-stopping creative and technical e-commerce optimization.",
     overview:
-      "MADLUVV is a beauty brand best known for its brow stamp kit. Pixel2Tech handles the brand's social media across Instagram, Facebook, LinkedIn and TikTok, the paid creative behind its Meta campaigns, and — alongside the creative work — ongoing SEO and web development support for the brand's online store.",
+      "MADLUVV, a leader in the beauty industry famous for their innovative brow stamp kits, partnered with Pixel2Tech to unify their digital ecosystem. We took over their full social media presence—managing Instagram, Facebook, TikTok, and LinkedIn—while simultaneously overhauling their paid creative strategy and technical Shopify infrastructure.",
     challenge:
-      "The brand had strong products and genuine customer love, but the creative was scattered: organic posts, paid ads and influencer content all looked like they came from different companies. On the store side, product and collection pages were thin on search-friendly content and slow on mobile, so paid traffic carried almost all the weight while organic discovery stayed flat.",
+      "Despite having a cult-favorite product, MADLUVV's digital touchpoints were disjointed. Their organic social felt disconnected from their paid ads, and their Shopify store was struggling with slow mobile performance and poor organic search visibility. They needed a partner who could bridge the gap between high-end aesthetic design and hard-hitting performance marketing.",
     approach:
-      "We built one creative system for the whole funnel. A locked type scale, colour set and layout grid cover organic posts and paid variants alike, so a top-performing post can be turned into an ad in minutes. Each batch pairs product-led hooks (before/after, application demos, results) with social-proof formats built from real reviews and UGC, then ships in Meta-ready ratios for feed, Stories and Reels along with TikTok and LinkedIn cuts. In parallel, our web team worked on the store itself: keyword-led product and collection copy, cleaner title tags, meta descriptions and heading structure, product and FAQ schema, internal linking between related products and content, plus front-end fixes for page speed, image optimisation and mobile layout so the pages the ads point to actually convert.",
+      "We implemented a '360-degree Creative System.' First, we standardized their visual identity across all platforms, ensuring every Reel, Story, and Ad felt unmistakably 'MADLUVV.' We shifted their Meta ad strategy to focus on 'Problem-Solution' video content—using UGC-style hooks, ASMR brow applications, and 'Girl Math' marketing to drive high-intent traffic. On the technical side, we performed a deep-dive Shopify audit. We rebuilt their product page hierarchy for better conversion, implemented advanced SEO schema to win Google's 'Rich Snippets,' and optimized their front-end code to drastically improve mobile load times. By aligning their social content with their store's technical performance, we created a seamless path from discovery to checkout.",
     outcome:
-      "MADLUVV now ships a consistent monthly content calendar with paid creative that matches the organic feed, a growing library of tested ad angles, and a store that is faster, better structured for search and easier to extend — creative, SEO and development all handled by one team.",
+      "The result was a total brand alignment. MADLUVV now operates with a high-performance content engine that delivers dozens of unique ad creatives monthly. Their organic social growth has accelerated, and their Shopify store now ranks for high-volume beauty keywords, providing a sustainable stream of organic revenue alongside their scaled paid campaigns.",
     results: [
-      { label: "Channels handled", value: "Instagram, Facebook, TikTok, LinkedIn" },
-      { label: "Creative shipped", value: "Monthly batches of static + video ads" },
-      { label: "Beyond creative", value: "SEO + web development support" },
+      { label: "Content Frequency", value: "Daily Organic + Weekly Paid Batches" },
+      { label: "Platform Coverage", value: "IG, FB, TikTok, LinkedIn, Shopify" },
+      { label: "Technical Wins", value: "Custom Schema + Page Speed Optimization" },
     ],
-
   },
   "affinity-law-social-media-ad-creatives": {
     metaTitle: "Affinity Law Social Media & Ad Creatives Case Study | Pixel2Tech",
