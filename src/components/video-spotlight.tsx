@@ -7,61 +7,57 @@ export type SpotlightVideo = {
 };
 
 /**
- * Video Spotlight — a premium gallery made for a small number of vertical videos.
- *
- * A large active player sits next to a clickable thumbnail strip. Switching
- * fades between videos, and only the active clip plays. Designed so 3–5
- * vertical assets feel intentional rather than sparse.
+ * Video Strip — a flat, snap-scroll carousel made for a small number of
+ * vertical videos. Multiple cards are visible at once on larger screens,
+ * so 3–5 clips feel like a deliberate gallery instead of a sparse coverflow.
  */
 export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const [isFading, setIsFading] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [playing, setPlaying] = useState<Record<number, boolean>>({});
+  const refs = useRef<Array<HTMLVideoElement | null>>([]);
+  const stripRef = useRef<HTMLDivElement | null>(null);
   const count = videos.length;
 
-  const active = videos[index]!;
+  const pauseAllExcept = useCallback((active: number) => {
+    refs.current.forEach((v, i) => {
+      if (v && i !== active) v.pause();
+    });
+  }, []);
 
   const go = useCallback(
     (dir: number) => {
-      setIsFading(true);
-      setPlaying(false);
-      setTimeout(() => {
-        setIndex((i) => (i + dir + count) % count);
-        setIsFading(false);
-      }, 220);
+      const next = (index + dir + count) % count;
+      setIndex(next);
+      pauseAllExcept(next);
     },
-    [count],
+    [count, index, pauseAllExcept],
   );
 
-  const select = useCallback(
-    (i: number) => {
-      if (i === index) return;
-      setIsFading(true);
-      setPlaying(false);
-      setTimeout(() => {
-        setIndex(i);
-        setIsFading(false);
-      }, 220);
-    },
-    [index],
-  );
+  const toggle = useCallback((i: number) => {
+    const v = refs.current[i];
+    if (!v) return;
+    if (v.paused) {
+      pauseAllExcept(i);
+      void v.play();
+    } else {
+      v.pause();
+    }
+  }, [pauseAllExcept]);
 
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (playing) void v.play();
-    else v.pause();
-  }, [playing, active]);
+    const strip = stripRef.current;
+    if (!strip) return;
+    const card = strip.firstElementChild as HTMLElement | null;
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(strip).gap) || 0;
+    const scrollAmount = card.offsetWidth + gap;
+    strip.scrollTo({ left: index * scrollAmount, behavior: "smooth" });
+  }, [index]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "ArrowRight") go(1);
-      if (e.key === " " || e.key === "k") {
-        e.preventDefault();
-        setPlaying((p) => !p);
-      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -69,175 +65,103 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
 
   if (count === 0) return null;
 
-  const toggle = () => setPlaying((p) => !p);
-
   return (
-    <div className="mx-auto max-w-5xl">
-      <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-        {/* Main player */}
-        <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
-          <div
-            className={`relative overflow-hidden rounded-3xl border border-border bg-black shadow-2xl dark:border-white/10 transition-opacity duration-200 ${isFading ? "opacity-40" : "opacity-100"}`}
-            style={{ aspectRatio: "9 / 16" }}
-          >
-            <video
-              ref={videoRef}
-              key={active.src}
-              src={active.src}
-              playsInline
-              loop
-              preload="metadata"
-              aria-label={active.title}
-              onPlay={() => setPlaying(true)}
-              onPause={() => setPlaying(false)}
-              className="h-full w-full object-cover"
-            />
-
-            <button
-              type="button"
-              onClick={toggle}
-              aria-label={playing ? `Pause ${active.title}` : `Play ${active.title}`}
-              className="absolute inset-0 flex items-center justify-center transition hover:bg-black/10"
+    <div className="relative">
+      {/* Scroll viewport */}
+      <div
+        ref={stripRef}
+        className="edge-fade-x -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 pt-2 sm:-mx-10 sm:px-10 lg:gap-6"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {videos.map((video, i) => {
+          const active = i === index;
+          const isPlaying = !!playing[i];
+          return (
+            <div
+              key={video.src}
+              className={`relative shrink-0 snap-center transition-all duration-300 ${active ? "scale-100 opacity-100" : "scale-[0.96] opacity-70"}`}
+              style={{ width: "min(280px, 72vw)" }}
             >
-              <span
-                aria-hidden="true"
-                className={`flex h-16 w-16 items-center justify-center rounded-full bg-background/95 text-foreground shadow-2xl ring-1 ring-border/40 backdrop-blur-md transition ${playing ? "opacity-0 hover:opacity-100" : "opacity-100"}`}
-              >
-                {playing ? (
-                  <Pause className="h-6 w-6" />
-                ) : (
-                  <Play className="ml-1 h-6 w-6" fill="currentColor" />
-                )}
-              </span>
-            </button>
-          </div>
-
-          {/* Mobile arrows */}
-          <div className="absolute -bottom-12 left-1/2 flex -translate-x-1/2 items-center gap-3 lg:hidden">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label="Previous video"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/90 text-foreground backdrop-blur transition hover:bg-background dark:border-white/10"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <span className="min-w-[3.5rem] text-center text-sm font-medium tabular-nums text-muted-foreground">
-              {index + 1} / {count}
-            </span>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label="Next video"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/90 text-foreground backdrop-blur transition hover:bg-background dark:border-white/10"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Thumbnail strip */}
-        <div className="hidden flex-col gap-4 lg:flex">
-          <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Select a clip
-          </div>
-          <div className="space-y-3">
-            {videos.map((video, i) => {
-              const selected = i === index;
-              return (
-                <button
-                  key={video.src}
-                  type="button"
-                  onClick={() => select(i)}
-                  aria-label={`Play ${video.title}`}
-                  aria-current={selected}
-                  className={`group flex w-full items-center gap-4 rounded-2xl border p-2.5 text-left transition ${selected ? "border-primary/40 bg-primary/[0.06]" : "border-border bg-background hover:bg-muted dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.06]"}`}
-                >
-                  <div className="relative shrink-0 overflow-hidden rounded-xl bg-black" style={{ aspectRatio: "9 / 16", width: "56px" }}>
-                    <video
-                      src={video.src}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className="h-full w-full object-cover opacity-80 transition group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm">
-                        <Play className="h-2.5 w-2.5 translate-x-0.5" fill="currentColor" />
-                      </span>
-                    </div>
-                  </div>
-                  <div className="min-w-0">
-                    <div className={`text-sm font-semibold leading-snug ${selected ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}>
-                      {video.title}
-                    </div>
-                    <div className="mt-1 text-xs text-muted-foreground/80">
-                      {selected ? "Now playing" : `Clip ${i + 1}`}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="mt-2 flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label="Previous video"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <span className="min-w-[3.5rem] text-center text-sm font-medium tabular-nums text-muted-foreground">
-              {index + 1} / {count}
-            </span>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label="Next video"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile thumbnail strip */}
-        <div className="mt-16 flex gap-3 overflow-x-auto pb-2 lg:hidden">
-          {videos.map((video, i) => {
-            const selected = i === index;
-            return (
-              <button
-                key={video.src}
-                type="button"
-                onClick={() => select(i)}
-                aria-label={`Play ${video.title}`}
-                aria-current={selected}
-                className={`group relative shrink-0 overflow-hidden rounded-xl border bg-black transition ${selected ? "w-20 border-primary" : "w-16 border-border opacity-70 hover:opacity-100 dark:border-white/10"}`}
+              <div
+                className="relative overflow-hidden rounded-2xl border border-border bg-black shadow-xl dark:border-white/10"
                 style={{ aspectRatio: "9 / 16" }}
               >
                 <video
+                  ref={(el) => { refs.current[i] = el; }}
                   src={video.src}
-                  preload="metadata"
-                  muted
                   playsInline
+                  loop
+                  preload="metadata"
+                  aria-label={video.title}
+                  onPlay={() => {
+                    setPlaying((p) => ({ ...p, [i]: true }));
+                    pauseAllExcept(i);
+                  }}
+                  onPause={() => setPlaying((p) => ({ ...p, [i]: false }))}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-sm">
-                    <Play className="h-2 w-2 translate-x-0.5" fill="currentColor" />
+                <button
+                  type="button"
+                  onClick={() => toggle(i)}
+                  aria-label={isPlaying ? `Pause ${video.title}` : `Play ${video.title}`}
+                  className="absolute inset-0 flex items-center justify-center transition hover:bg-black/10"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`flex h-14 w-14 items-center justify-center rounded-full bg-background/95 text-foreground shadow-2xl ring-1 ring-border/40 backdrop-blur-md transition ${isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"}`}
+                  >
+                    {isPlaying ? (
+                      <Pause className="h-5 w-5" />
+                    ) : (
+                      <Play className="ml-0.5 h-5 w-5" fill="currentColor" />
+                    )}
                   </span>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                </button>
+              </div>
+              <p className={`mt-4 text-center text-sm font-medium transition-colors ${active ? "text-foreground" : "text-muted-foreground"}`}>
+                {video.title}
+              </p>
+            </div>
+          );
+        })}
       </div>
 
-      <p className="mt-6 hidden text-center text-sm font-semibold text-foreground lg:block">
-        {active.title}
-      </p>
+      {/* Controls */}
+      <div className="mt-8 flex items-center justify-center gap-4">
+        <button
+          type="button"
+          onClick={() => go(-1)}
+          aria-label="Previous video"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+
+        <div className="flex items-center gap-2">
+          {videos.map((v, i) => (
+            <button
+              key={v.src}
+              type="button"
+              onClick={() => {
+                setIndex(i);
+                pauseAllExcept(i);
+              }}
+              aria-label={`Go to video ${i + 1}`}
+              aria-current={i === index}
+              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/60"}`}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => go(1)}
+          aria-label="Next video"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
     </div>
   );
 }
