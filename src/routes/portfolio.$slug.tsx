@@ -24,7 +24,6 @@ import madluvvVideo3 from "@/assets/madluvv-video-3.mp4.asset.json";
 import madluvvVideo4 from "@/assets/madluvv-video-4.mp4.asset.json";
 import madluvvVideo5 from "@/assets/madluvv-video-5.mp4.asset.json";
 import madluvvVideo6 from "@/assets/madluvv-video-6.mp4.asset.json";
-import madluvvVideo7 from "@/assets/madluvv-video-7.mp4.asset.json";
 import madluvvVideo8 from "@/assets/madluvv-video-8.mp4.asset.json";
 import madluvvVideo9 from "@/assets/madluvv-video-9.mp4.asset.json";
 import madluvvVideo10 from "@/assets/madluvv-video-10.mp4.asset.json";
@@ -47,7 +46,6 @@ const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
     { src: madluvvVideo4.url, title: "Brow Stamp Kit: easier than you expect" },
     { src: madluvvVideo5.url, title: "Simple brow routine with Laminate Me gel" },
     { src: madluvvVideo6.url, title: "Set Me Setting Spray for melting makeup" },
-    { src: madluvvVideo7.url, title: "Set Me Setting Spray: makeup that stays put" },
     { src: madluvvVideo8.url, title: "The science behind perfectly shaped brows" },
     { src: madluvvVideo9.url, title: "Clean stencil, clean brows" },
     { src: madluvvVideo10.url, title: "Brow Stamp ASMR moment" },
