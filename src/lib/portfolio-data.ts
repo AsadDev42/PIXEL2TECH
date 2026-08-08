@@ -1,3 +1,4 @@
+import { jacquesAssets } from "@/assets/jacques-assets";
 export type PortfolioItem = {
   title: string;
   img: string;
@@ -72,18 +73,8 @@ const RAW: RawWork = {
       {
         slug: "social-media-and-digital-marketing-campaigns",
         title: "Social Media & Digital Marketing Campaigns",
-        img: "/src/assets/jacques-cover.jpg.asset.json",
-        images: [
-          "/src/assets/jacques-bf-1.jpg.asset.json",
-          "/src/assets/jacques-bf-2.jpg.asset.json",
-          "/src/assets/jacques-looks.jpg.asset.json",
-          "/src/assets/jacques-knitwear.jpg.asset.json",
-          "/src/assets/jacques-drop.jpg.asset.json",
-          "/src/assets/jacques-fresh.jpg.asset.json",
-          "/src/assets/jacques-suit-1.jpg.asset.json",
-          "/src/assets/jacques-elegance.jpg.asset.json",
-          "/src/assets/jacques-vibe.jpg.asset.json",
-        ],
+        img: jacquesAssets.cover,
+        images: jacquesAssets.images,
       },
       { title: "Instagram grid design", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75" },
