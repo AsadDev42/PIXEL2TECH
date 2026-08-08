@@ -626,7 +626,7 @@ function PartnerBand() {
             initial={{ y: 0, rotate: 2 }}
             animate={{ y: [0, 8, 0], rotate: [2, -1, 2] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute bottom-[18%] left-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:bottom-[20%] sm:-left-4 sm:px-5 sm:py-3 lg:-left-8"
+            className="absolute top-[60%] left-0 z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-xl shadow-black/20 sm:top-[65%] sm:-left-4 sm:px-5 sm:py-3 lg:-left-8"
           >
             <div className="min-w-0 text-left">
               <div className="truncate text-xs font-bold text-card-foreground sm:text-sm">
