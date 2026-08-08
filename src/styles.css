@@ -443,6 +443,15 @@ a:hover svg { transform: translateX(2px); }
     text-rendering: optimizeLegibility;
   }
 
+  /* Content protection: images/videos can't be dragged out or long-press saved. */
+  img,
+  video {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+
   body {
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
     letter-spacing: -0.005em;

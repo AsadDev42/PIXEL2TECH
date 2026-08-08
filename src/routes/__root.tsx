@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isChunkLoadError } from "@/lib/lazy-with-retry";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { ContentProtection } from "@/components/content-protection";
+
 import { Toaster } from "@/components/ui/sonner";
 
 const NOT_FOUND_LINKS = [
@@ -246,6 +248,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AnalyticsTracker />
+        <ContentProtection />
+
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <Toaster position="top-center" richColors closeButton />
