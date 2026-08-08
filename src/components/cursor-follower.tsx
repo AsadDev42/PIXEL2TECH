@@ -97,7 +97,12 @@ export function CursorFollower() {
       const blob = blobRef.current;
       if (blob && blob.dataset.down !== "0") blob.dataset.down = "0";
     };
-    const onLeave = () => setVisible(false);
+    const onLeave = (e: MouseEvent) => {
+      // Ignore leaves that just move into a child/overlay element; only hide
+      // when the pointer really exits the window.
+      if (e.relatedTarget) return;
+      setVisible(false);
+    };
     const onEnter = () => {
       setVisible(true);
       start();
