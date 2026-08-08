@@ -169,7 +169,13 @@ function LoopSliderImpl<T>({
     const onDown = (e: PointerEvent) => {
       const s = stateRef.current;
       if (e.button !== undefined && e.button !== 0) return;
+      // Never start a drag (and never capture the pointer) on interactive
+      // children — pointer capture retargets the click to the track, which
+      // silently swallows link and button activation.
+      const target = e.target as Element | null;
+      if (target?.closest?.("a,button,[role='button'],input,textarea,select")) return;
       if (e.pointerType === "mouse") e.preventDefault();
+
       s.dragging = true;
       s.start = isX ? e.clientX : e.clientY;
       s.startPos = s.pos;
