@@ -1,3 +1,4 @@
+import { jacquesAssets } from "@/assets/jacques-assets";
 export type PortfolioItem = {
   title: string;
   img: string;
