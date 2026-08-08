@@ -70,6 +70,26 @@ const OVERRIDES: Record<string, ProjectCopy> = {
       { label: "Creative angles", value: "Accidents, negligence, claims, wrongful death" },
     ],
   },
+  "social-media-and-digital-marketing-campaigns": {
+    metaTitle: "Social Media & Digital Marketing Campaigns Case Study | Pixel2Tech",
+    metaDescription:
+      "A professional creative and digital marketing case study showcasing social media management, email marketing, and performance creatives for a consumer brand.",
+    summary:
+      "Social Media, Email Marketing & Performance Creative support for a modern consumer brand.",
+    overview:
+      "I worked on the brand's digital presence across social media, email marketing, and paid advertising channels. The work focused on creating engaging visual content, promotional campaigns, email newsletters, affiliate banners, and advertising creatives designed to support brand awareness, engagement, and customer acquisition.",
+    challenge:
+      "The brand needed to maintain a high volume of quality creative assets across multiple channels while keeping a consistent brand voice. The challenge was to produce diverse creatives—from sales-focused Black Friday banners to lifestyle-oriented lookbooks—that felt unified and performed well in both organic and paid environments.",
+    approach:
+      "We implemented a multi-channel creative strategy. For social media, we focused on high-aesthetic lifestyle imagery and trend-relevant designs. For email, we designed conversion-optimized newsletters and promotional flows. For paid media, we supported Meta and Google Ads with clean, punchy creatives that highlighted key value propositions like 'Start Small, Save Big' and exclusive collection drops. Every asset was designed to balance brand aesthetic with performance-driven design principles.",
+    outcome:
+      "The project resulted in a comprehensive library of digital assets that unified the brand's voice across every touchpoint. By providing creative support for paid ads alongside social and email management, we helped create a seamless journey for the customer from first impression to purchase, resulting in a significantly more professional and cohesive digital presence.",
+    results: [
+      { label: "Channels Managed", value: "Social, Email, Paid Ad Creative" },
+      { label: "Creative Scope", value: "Meta Ads, Google Ads, Newsletters, Banners" },
+      { label: "Campaign Focus", value: "Awareness, Engagement & Acquisition" },
+    ],
+  },
 };
 
 
