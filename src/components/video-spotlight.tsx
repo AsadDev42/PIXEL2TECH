@@ -90,15 +90,17 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
             const isActive = displayPos === 1;
             const isPlaying = !!playing[video.src];
 
-            // position: -1 (left), 0 (center), 1 (right)
+            // 4-card strip: active is the 2nd card; shift group so it feels centered
             const position = displayPos - 1;
+            const gap = 300;
+            const groupShift = gap / 2;
 
             return (
               <motion.div
                 key={video.src}
                 initial={false}
                 animate={{
-                  x: position * 320,
+                  x: position * gap - groupShift,
                   scale: isActive ? 1 : 0.92,
                   opacity: isActive ? 1 : 0.45,
                   zIndex: isActive ? 10 : 0,
@@ -109,7 +111,7 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
                   if (!isActive) go(position < 0 ? -1 : 1);
                 }}
                 className="absolute shrink-0 cursor-pointer"
-                style={{ width: "min(280px, 72vw)" }}
+                style={{ width: "min(260px, 65vw)" }}
               >
                 <div
                   className="relative overflow-hidden rounded-2xl border border-border bg-black shadow-xl dark:border-white/10"
