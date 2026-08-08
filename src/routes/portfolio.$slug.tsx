@@ -359,6 +359,25 @@ function PortfolioDetailPage() {
           </div>
         </FadeIn>
         <CategoryShowcase item={item} images={gallery} />
+
+        {videos.length > 0 && (
+          <div className="mt-16 md:mt-24">
+            <FadeIn>
+              <div className="mb-8">
+                <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Video Content</div>
+                <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  Short-form video creatives
+                </h2>
+                <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
+                  Vertical video assets produced for organic social and paid campaigns.
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn>
+              <VideoCarousel videos={videos} />
+            </FadeIn>
+          </div>
+        )}
       </section>
 
       {/* Deliverables + Story */}
