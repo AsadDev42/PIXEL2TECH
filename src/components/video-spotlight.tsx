@@ -95,6 +95,7 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
                   aria-label={video.title}
                   onPlay={() => {
                     setPlaying((p) => ({ ...p, [i]: true }));
+                    setIndex(i);
                     pauseAllExcept(i);
                   }}
                   onPause={() => setPlaying((p) => ({ ...p, [i]: false }))}
