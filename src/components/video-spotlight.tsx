@@ -73,9 +73,9 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <div className="grid gap-6 lg:grid-cols-[1fr_280px] lg:items-center">
+      <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
         {/* Main player */}
-        <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[400px] lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
           <div
             className={`relative overflow-hidden rounded-3xl border border-border bg-black shadow-2xl dark:border-white/10 transition-opacity duration-200 ${isFading ? "opacity-40" : "opacity-100"}`}
             style={{ aspectRatio: "9 / 16" }}
