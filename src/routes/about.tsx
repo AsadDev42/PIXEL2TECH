@@ -365,6 +365,18 @@ function AboutPage() {
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </Link>
                 )}
+                {m.name === "Usama Farooq" && (
+                  <Link
+                    to="/usama-farooq"
+                    onClick={(e) => e.stopPropagation()}
+                    draggable={false}
+                    aria-label="View Usama Farooq's profile page"
+                    className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-neutral-900 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)] backdrop-blur-md transition duration-300 hover:scale-[1.06] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:bg-black/80"
+                  >
+                    View Profile
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
                   <img
                     loading="lazy"
                     decoding="async"

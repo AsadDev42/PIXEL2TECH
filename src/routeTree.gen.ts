@@ -29,6 +29,7 @@ import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -143,6 +144,11 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
+  id: '/usama-farooq',
+  path: '/usama-farooq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
   id: '/wp-sitemap.xml',
   path: '/wp-sitemap.xml',
@@ -235,6 +241,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -270,6 +277,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -306,6 +314,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -343,6 +352,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
+    | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -378,6 +388,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
+    | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -413,6 +424,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
+    | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -449,6 +461,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  UsamaFarooqRoute: typeof UsamaFarooqRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -606,6 +619,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/usama-farooq': {
+      id: '/usama-farooq'
+      path: '/usama-farooq'
+      fullPath: '/usama-farooq'
+      preLoaderRoute: typeof UsamaFarooqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wp-sitemap.xml': {
       id: '/wp-sitemap.xml'
       path: '/wp-sitemap.xml'
@@ -721,6 +741,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  UsamaFarooqRoute: UsamaFarooqRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
