@@ -57,6 +57,22 @@ const RESERVED_EXACT = new Set([
  * Patterns are tested against the normalised path (lowercase, no slashes at
  * either end, query/hash already stripped).
  */
+const GONE_EXACT = new Set([
+  // Retired theme demo homepages — no equivalent page, so 410 rather than a
+  // misleading redirect to the homepage.
+  "home-two",
+  "home-three",
+  "home-three-2",
+  "corporate-agencyone-page",
+  "creative-agency-one-page",
+  "digital-agency-onepage",
+  "fullscreen-slider",
+  "sample-page",
+  "wishlist",
+  "coming-soon",
+  "maintenance",
+]);
+
 const GONE_PATTERNS: RegExp[] = [
   // --- Core WordPress plumbing -------------------------------------------
   // NOTE: deliberately does NOT match "wp-sitemap.xml", which still 301s.
@@ -107,14 +123,6 @@ const GONE_PATTERNS: RegExp[] = [
 const REDIRECT_MAP: Record<string, string> = {
   // --- Home / retired theme demo pages ---
   home: "/",
-  "home-two": "/",
-  "home-three": "/",
-  "home-three-2": "/",
-  "corporate-agencyone-page": "/",
-  "creative-agency-one-page": "/",
-  "digital-agency-onepage": "/",
-  "fullscreen-slider": "/",
-  "sample-page": "/",
 
   // --- About / team ---
   "about-us": "/about",
@@ -224,6 +232,8 @@ export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
 
   const mapped = REDIRECT_MAP[path];
   if (mapped) return { type: "redirect", target: mapped };
+
+  if (GONE_EXACT.has(path)) return { type: "gone" };
 
   for (const pattern of GONE_PATTERNS) {
     if (pattern.test(path)) return { type: "gone" };
