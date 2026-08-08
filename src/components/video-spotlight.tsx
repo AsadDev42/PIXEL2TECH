@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 export type SpotlightVideo = {
   src: string;
@@ -14,50 +14,64 @@ export type SpotlightVideo = {
  */
 export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState<Record<number, boolean>>({});
-  const refs = useRef<Array<HTMLVideoElement | null>>([]);
+  const [playing, setPlaying] = useState<Record<string, boolean>>({});
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
   const count = videos.length;
 
-  // Manual scroll position for drag
-  const x = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 400, damping: 40 }); // Slightly snappier
-
-  const getScrollAmount = useCallback(() => {
+  const getCardWidth = useCallback(() => {
     const container = containerRef.current;
     if (!container) return 0;
     const card = container.querySelector("[data-video-card]") as HTMLElement | null;
-    if (!card) return 0;
-    const gap = parseFloat(getComputedStyle(container).gap) || 0;
-    return card.offsetWidth + gap;
+    return card?.offsetWidth || 280;
   }, []);
 
-  const pauseAllExcept = useCallback((active: number) => {
-    refs.current.forEach((v, i) => {
-      if (v && i !== active) v.pause();
+  const getGap = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return 0;
+    return parseFloat(getComputedStyle(container).gap) || 24;
+  }, []);
+
+  const getCenterOffset = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return 0;
+    const cardWidth = getCardWidth();
+    return (container.offsetWidth - cardWidth) / 2;
+  }, [getCardWidth]);
+
+  const pauseAllExcept = useCallback((activeSrc: string) => {
+    Object.entries(videoRefs.current).forEach(([src, v]) => {
+      if (v && src !== activeSrc) v.pause();
     });
   }, []);
 
   const go = useCallback(
     (dir: number) => {
-      const next = Math.max(0, Math.min(index + dir, count - 1));
+      const next = (index + dir + count) % count;
       setIndex(next);
-      pauseAllExcept(next);
+      const nextVideo = videos[next];
+      if (nextVideo) pauseAllExcept(nextVideo.src);
     },
-    [count, index, pauseAllExcept],
+    [count, index, pauseAllExcept, videos],
   );
 
-  const toggle = useCallback((i: number) => {
-    const v = refs.current[i];
+  const toggle = useCallback((src: string) => {
+    const v = videoRefs.current[src];
     if (!v) return;
     if (v.paused) {
-      pauseAllExcept(i);
+      pauseAllExcept(src);
       void v.play();
     } else {
       v.pause();
     }
   }, [pauseAllExcept]);
+
+  // Infinite items mapping
+  const visibleIndices = [
+    (index - 1 + count) % count,
+    index,
+    (index + 1) % count,
+  ];
 
   // Update constraints and position
   useEffect(() => {
@@ -173,7 +187,6 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
             </div>
           );
           })}
-        </motion.div>
       </div>
 
       {/* Controls */}
@@ -188,13 +201,14 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
         </button>
 
         <div className="flex items-center gap-2">
-          {videos.map((v, i) => (
+          {videos.map((_, i) => (
             <button
-              key={v.src}
+              key={i}
               type="button"
               onClick={() => {
                 setIndex(i);
-                pauseAllExcept(i);
+                const v = videos[i];
+                if (v) pauseAllExcept(v.src);
               }}
               aria-label={`Go to video ${i + 1}`}
               aria-current={i === index}
