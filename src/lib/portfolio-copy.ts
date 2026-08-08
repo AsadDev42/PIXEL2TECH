@@ -50,7 +50,28 @@ const OVERRIDES: Record<string, ProjectCopy> = {
       { label: "Creative system", value: "One system across organic & paid" },
     ],
   },
+  "affinity-law-social-media-ad-creatives": {
+    metaTitle: "Affinity Law Social Media & Ad Creatives Case Study | Pixel2Tech",
+    metaDescription:
+      "Social media management and campaign creative for Affinity Law, a Toronto and GTA personal injury firm — content design, static ad creatives and paid media creative support.",
+    summary:
+      "Social media management, campaign creative and paid ad creative support for a Toronto & GTA personal injury law firm.",
+    overview:
+      "Affinity Law is a personal injury law firm serving Toronto and the GTA. Working as part of Pixel2Tech, we managed their social media presence and produced engagement-focused posts, promotional creatives and campaign visuals, plus creative support for advertising across Meta, AppLovin and Google Ads, and assets for video content.",
+    challenge:
+      "Personal injury is a crowded, trust-driven market. The content had to state the service clearly, feel professional and approachable rather than alarming, and work equally well as an organic post and as a paid ad unit.",
+    approach:
+      "We built a consistent visual language on top of Affinity Law's existing brand: gold and black, high-contrast compositions, strong headline typography, emotionally relevant imagery and one clear call to action per creative. Angles were developed around car accidents, slip and fall, negligence, wrongful death, accident claims, free case reviews, no-upfront-fee messaging and local GTA service areas — designed to stop the scroll, name the problem, build trust and prompt the next step.",
+    outcome:
+      "Affinity Law now has a more consistent social presence and a reusable library of campaign creatives covering multiple personal injury angles, with organic and paid creative finally speaking the same visual language.",
+    results: [
+      { label: "Work delivered", value: "Social management + campaign creative" },
+      { label: "Ad platforms supported", value: "Meta, AppLovin, Google Ads" },
+      { label: "Creative angles", value: "Accidents, negligence, claims, wrongful death" },
+    ],
+  },
 };
+
 
 
 function hash(s: string): number {
