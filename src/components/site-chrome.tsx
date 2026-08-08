@@ -105,78 +105,88 @@ export function SiteNav() {
         </div>
       </div>
 
-      {/* Mobile drawer — premium slide-in panel (mobile only) */}
-      <div
-        aria-hidden={!open}
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-foreground/40 backdrop-blur-[2px] transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      />
-      <div
-        id="mobile-nav"
-        ref={mobileNavRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site navigation"
-        aria-hidden={!open}
-        tabIndex={-1}
-        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
-          open ? "translate-x-0" : "pointer-events-none translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between px-6 pb-2 pt-5">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-            Menu
-          </span>
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label="Close menu"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition active:scale-95"
-          >
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
+    </header>
 
-        <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
-          {NAV.map((n, i) => {
-            const active = pathname === n.to;
-            return (
-              <Link
-                key={n.to}
-                to={n.to}
-                aria-current={active ? "page" : undefined}
-                style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
-                className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-[19px] font-semibold tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                  open ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
-                } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
-              >
-                <span>{n.label}</span>
-                {active && (
-                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#1E90FF]" />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="mt-auto space-y-4 px-6 pb-8 pt-8">
-          <button
-            type="button"
-            onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
-            className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            Schedule a Strategy Session
-          </button>
-          <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-            <a href="mailto:sales@pixel2tech.com" className="min-h-11 py-2">sales@pixel2tech.com</a>
-            <a href="tel:+923177475233" className="min-h-11 py-2">+92 317 7475233</a>
-          </div>
-        </div>
+    {/* Mobile drawer — rendered outside the sticky/backdrop-blurred header so the
+        fixed panel animates against the viewport (no jitter/shake). */}
+    <div
+      aria-hidden={!open}
+      onClick={() => setOpen(false)}
+      className={`fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-300 ease-out md:hidden ${
+        open ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
+    />
+    <div
+      id="mobile-nav"
+      ref={mobileNavRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      aria-hidden={!open}
+      tabIndex={-1}
+      style={{
+        transform: open ? "translate3d(0,0,0)" : "translate3d(100%,0,0)",
+        willChange: "transform",
+        backfaceVisibility: "hidden",
+      }}
+      className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
+        open ? "" : "pointer-events-none"
+      }`}
+    >
+      <div className="flex items-center justify-between px-6 pb-2 pt-5">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+          Menu
+        </span>
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition active:scale-95"
+        >
+          <X className="h-5 w-5" aria-hidden="true" />
+        </button>
       </div>
 
-    </header>
+      <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
+        {NAV.map((n, i) => {
+          const active = pathname === n.to;
+          return (
+            <Link
+              key={n.to}
+              to={n.to}
+              aria-current={active ? "page" : undefined}
+              style={{
+                transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
+                transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
+              }}
+              className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-[19px] font-semibold tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                open ? "opacity-100" : "opacity-0"
+              } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
+            >
+              <span>{n.label}</span>
+              {active && (
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#1E90FF]" />
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="mt-auto space-y-4 px-6 pb-8 pt-8">
+        <button
+          type="button"
+          onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
+          className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Schedule a Strategy Session
+        </button>
+        <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+          <a href="mailto:sales@pixel2tech.com" className="min-h-11 py-2">sales@pixel2tech.com</a>
+          <a href="tel:+923177475233" className="min-h-11 py-2">+92 317 7475233</a>
+        </div>
+      </div>
+    </div>
+
     {bookingOpen && (
       <Suspense fallback={null}>
         <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
