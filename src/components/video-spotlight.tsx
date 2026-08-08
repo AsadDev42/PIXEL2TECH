@@ -52,6 +52,9 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
     (index + 1) % count,
   ];
 
+  const anyPlaying = Object.values(playing).some(Boolean);
+  const [paused, setPaused] = useState(false);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") go(-1);
@@ -61,51 +64,48 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [go]);
 
+  // Continuous autoplay loop — pauses while a video plays or on hover
+  useEffect(() => {
+    if (anyPlaying || paused || count < 2) return;
+    const id = window.setInterval(() => go(1), 3500);
+    return () => window.clearInterval(id);
+  }, [anyPlaying, paused, go, count]);
+
   if (count === 0) return null;
 
   return (
     <div className="relative">
       {/* Centered Infinite Viewport */}
-      <div className="edge-fade-x relative -mx-5 flex h-[580px] items-center justify-center overflow-hidden px-5 sm:-mx-10 sm:px-10">
-        <AnimatePresence initial={false} mode="popLayout">
+      <div
+        className="edge-fade-x relative -mx-5 flex h-[580px] items-center justify-center overflow-hidden px-5 sm:-mx-10 sm:px-10"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <AnimatePresence initial={false}>
           {visibleIndices.map((actualIdx, displayPos) => {
             const video = videos[actualIdx]!;
             const isActive = displayPos === 1;
             const isPlaying = !!playing[video.src];
-            
+
             // position: -1 (left), 0 (center), 1 (right)
             const position = displayPos - 1;
 
             return (
               <motion.div
-                key={`${video.src}-${actualIdx}-${position}`}
-                layout
-                initial={{ 
-                  x: position * 320, 
-                  scale: 0.8, 
-                  opacity: 0,
-                  zIndex: 0 
-                }}
-                animate={{ 
-                  x: position * 320, 
-                  scale: isActive ? 1 : 0.9, 
-                  opacity: isActive ? 1 : 0.4,
+                key={video.src}
+                initial={false}
+                animate={{
+                  x: position * 320,
+                  scale: isActive ? 1 : 0.92,
+                  opacity: isActive ? 1 : 0.45,
                   zIndex: isActive ? 10 : 0,
                 }}
-                exit={{ 
-                  x: position * 320, 
-                  scale: 0.8, 
-                  opacity: 0,
-                  zIndex: 0 
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => {
-                  if (!isActive) {
-                    if (position < 0) go(-1);
-                    else go(1);
-                  }
+                  if (!isActive) go(position < 0 ? -1 : 1);
                 }}
-                className={`absolute shrink-0 cursor-pointer transition-all duration-300`}
+                className="absolute shrink-0 cursor-pointer"
                 style={{ width: "min(280px, 72vw)" }}
               >
                 <div
@@ -131,6 +131,7 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
+                      if (!isActive) { go(position < 0 ? -1 : 1); return; }
                       toggle(video.src);
                     }}
                     aria-label={isPlaying ? `Pause ${video.title}` : `Play ${video.title}`}
@@ -156,6 +157,7 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
           })}
         </AnimatePresence>
       </div>
+
 
       {/* Controls */}
       <div className="mt-8 flex items-center justify-center gap-4">
