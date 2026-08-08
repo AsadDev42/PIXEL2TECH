@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, memo } from "react";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,7 +12,7 @@ export type SpotlightVideo = {
  * The active video stays in the middle. Clicking side videos or 
  * using arrows rotates the gallery seamlessly.
  */
-export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
+export const VideoSpotlight = memo(({ videos }: { videos: SpotlightVideo[] }) => {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState<Record<string, boolean>>({});
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
@@ -203,4 +203,4 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
       </div>
     </div>
   );
-}
+});

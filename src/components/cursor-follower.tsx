@@ -108,7 +108,7 @@ export function CursorFollower() {
       start();
     };
 
-    const tick = (/* now */) => {
+    const tick = (now: number) => {
       // Identical easing constant and per-frame math as before, so the trail
       // feel/speed is unchanged.
       blobX += (mouseX - blobX) * 0.18;
@@ -116,8 +116,8 @@ export function CursorFollower() {
 
       const dot = dotRef.current;
       if (dot) {
-        const dx = mouseX - 2;
-        const dy = mouseY - 2;
+        const dx = mouseX - 13;
+        const dy = mouseY - 13;
         if (dx !== lastDotX || dy !== lastDotY) {
           dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
           lastDotX = dx;
@@ -136,7 +136,7 @@ export function CursorFollower() {
       // park the loop. It restarts on the next pointer movement. This frees
       // the compositor during scrolling and idle time.
       const settled =
-        Math.abs(mouseX - blobX) < 0.01 && Math.abs(mouseY - blobY) < 0.01;
+        Math.abs(mouseX - blobX) < 0.05 && Math.abs(mouseY - blobY) < 0.05;
       if (settled) {
         blobX = mouseX;
         blobY = mouseY;
@@ -190,7 +190,7 @@ export function CursorFollower() {
              cannot be composited and only costs extra memory + repaints. */
           will-change: transform;
           contain: layout style paint;
-          transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
+          transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease, background-color .2s ease, box-shadow .2s ease;
         }
         .lv-cursor-blob[data-hover="1"]{
           height: 56px; width: 56px;
