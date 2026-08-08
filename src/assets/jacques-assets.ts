@@ -1,4 +1,4 @@
-import jacquesCover from "@/assets/jacques-main-cover.png.asset.json";
+import jacquesCover from "@/assets/jacques-main-cover-updated.png.asset.json";
 import jacquesBF1 from "@/assets/jacques-bf-1.jpg.asset.json";
 import jacquesBF2 from "@/assets/jacques-bf-2.jpg.asset.json";
 import jacquesLooks from "@/assets/jacques-looks.jpg.asset.json";
