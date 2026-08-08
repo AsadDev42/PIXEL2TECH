@@ -80,6 +80,23 @@ const GONE_PATTERNS: RegExp[] = [
 
   // --- Theme / plugin scaffolding that was never real content -------------
   /^(elementor|elementor-hf|rtelements_pro|tcg_teb|rt-portfolios|rt-portfolio|cf7|contact-form-7)(\/|$)/,
+  /^(header|footer|pxl-template|pxl_template|pxl-templates|templates|template)(\/|$)/,
+
+  // --- Retired theme onepage demo homepages --------------------------------
+  /^home-\d+-onepage$/,
+  /^home-onepage(-\d+)?$/,
+  /^(onepage|one-page)(-\d+)?$/,
+
+  // --- Demo careers / job listings from the old theme ----------------------
+  /^(career|careers|job|jobs|job-listing|career-details|job-details)(\/|$)/,
+
+  // --- Theme demo portfolio entries (never real client work) ---------------
+  /^portfolio\/(figma-digital-agency|nice-guy|mails-mobile-app|astro-architecture|vortex-media)(-|$)/,
+  /^portfolio\/(demo|sample|theme)-/,
+
+  // --- Theme sample blog posts --------------------------------------------
+  /^blog\/(hello-world|sample-post|demo-post|lorem-ipsum)(-|$)/,
+  /^hello-world$/,
 ];
 
 /**
@@ -93,7 +110,6 @@ const REDIRECT_MAP: Record<string, string> = {
   "home-two": "/",
   "home-three": "/",
   "home-three-2": "/",
-  "home-6-onepage": "/",
   "corporate-agencyone-page": "/",
   "creative-agency-one-page": "/",
   "digital-agency-onepage": "/",
@@ -168,7 +184,6 @@ const REDIRECT_PREFIXES: [RegExp, string][] = [
   [/^(service|services)(\/|$)/, "/services"],
   [/^services?-/, "/services"],
   [/^(teams|team)(\/|$)/, "/about"],
-  [/^careers?(\/|$)/, "/about"],
   [/^portfolio-/, "/portfolio"],
   [/^blog-/, "/blog"],
 ];
