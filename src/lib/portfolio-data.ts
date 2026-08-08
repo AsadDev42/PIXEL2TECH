@@ -47,6 +47,8 @@ const RAW: RawWork = {
           "/__l5e/assets-v1/d3c35c06-c103-4ae7-a58a-856e1edd0c53/madluvv-9.png",
           "/__l5e/assets-v1/526d0055-df91-415a-a35e-4bd6e9b161e3/madluvv-10.png",
           "/__l5e/assets-v1/7db7c628-1bb0-4e8e-893e-cea7e58d3a9a/madluvv-11.jpg",
+          "/__l5e/assets-v1/a83227d7-7e64-4cf6-8a2d-369e3bfeb039/madluvv-12.jpg",
+          "/__l5e/assets-v1/106746bf-ed5e-434a-b77b-c15943ac2fe5/madluvv-13.jpg",
         ],
       },
 

@@ -24,6 +24,14 @@ import madluvvVideo3 from "@/assets/madluvv-video-3.mp4.asset.json";
 import madluvvVideo4 from "@/assets/madluvv-video-4.mp4.asset.json";
 import madluvvVideo5 from "@/assets/madluvv-video-5.mp4.asset.json";
 import madluvvVideo6 from "@/assets/madluvv-video-6.mp4.asset.json";
+import madluvvVideo7 from "@/assets/madluvv-video-7.mp4.asset.json";
+import madluvvVideo8 from "@/assets/madluvv-video-8.mp4.asset.json";
+import madluvvVideo9 from "@/assets/madluvv-video-9.mp4.asset.json";
+import madluvvVideo10 from "@/assets/madluvv-video-10.mp4.asset.json";
+import madluvvVideo11 from "@/assets/madluvv-video-11.mp4.asset.json";
+import madluvvVideo12 from "@/assets/madluvv-video-12.mp4.asset.json";
+import madluvvVideo13 from "@/assets/madluvv-video-13.mp4.asset.json";
+import madluvvVideo14 from "@/assets/madluvv-video-14.mp4.asset.json";
 
 const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
   "affinity-law-social-media-ad-creatives": [
@@ -39,8 +47,17 @@ const PROJECT_VIDEOS: Record<string, { src: string; title: string }[]> = {
     { src: madluvvVideo4.url, title: "Brow Stamp Kit: easier than you expect" },
     { src: madluvvVideo5.url, title: "Simple brow routine with Laminate Me gel" },
     { src: madluvvVideo6.url, title: "Set Me Setting Spray for melting makeup" },
+    { src: madluvvVideo7.url, title: "Set Me Setting Spray: makeup that stays put" },
+    { src: madluvvVideo8.url, title: "The science behind perfectly shaped brows" },
+    { src: madluvvVideo9.url, title: "Clean stencil, clean brows" },
+    { src: madluvvVideo10.url, title: "Brow Stamp ASMR moment" },
+    { src: madluvvVideo11.url, title: "Celebrating Social Media Day with the community" },
+    { src: madluvvVideo12.url, title: "The life-changing eyeliner hack" },
+    { src: madluvvVideo13.url, title: "How to actually romanticise your life" },
+    { src: madluvvVideo14.url, title: "Which brow shape is your favourite?" },
   ],
 };
+
 
 
 /** Old auto-generated slugs → their current, shorter URL (301). */
