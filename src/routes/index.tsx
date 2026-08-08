@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
+import { LinkedInBadge, getLinkedInUrl } from "@/components/linkedin-badge";
 import { LoopSlider } from "@/components/loop-slider";
 import { AutoVideo } from "@/components/auto-video";
 import { LazySection } from "@/components/lazy-section";
@@ -863,7 +864,12 @@ function Team() {
                 />
               </div>
               <div className="p-4 md:p-5">
-                <h3 className="text-sm font-bold tracking-tight text-foreground sm:text-base">{m.name}</h3>
+                <h3 className="flex items-center gap-1.5 text-sm font-bold tracking-tight text-foreground sm:text-base">
+                  {m.name}
+                  {getLinkedInUrl(m.name) && (
+                    <LinkedInBadge name={m.name} url={getLinkedInUrl(m.name)!} />
+                  )}
+                </h3>
                 <p className="mt-1 text-xs text-muted-foreground">{m.role}</p>
               </div>
             </article>
