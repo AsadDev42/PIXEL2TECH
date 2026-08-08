@@ -290,6 +290,7 @@ function PortfolioDetailPage() {
   const deliverables = getDeliverables(item);
   const copy = getProjectCopy(item);
   const detail = getProjectDetail(item);
+  const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
 
   return (
