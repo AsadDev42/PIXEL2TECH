@@ -70,7 +70,7 @@ export function VideoSpotlight({ videos }: { videos: SpotlightVideo[] }) {
   // Continuous autoplay loop — pauses while a video plays or on hover
   useEffect(() => {
     if (anyPlaying || paused || count < 2) return;
-    const id = window.setInterval(() => go(1), 2200);
+    const id = window.setInterval(() => go(1), 2000);
     return () => window.clearInterval(id);
   }, [anyPlaying, paused, go, count]);
 
