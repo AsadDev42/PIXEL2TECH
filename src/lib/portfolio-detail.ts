@@ -88,6 +88,10 @@ const OVERRIDES: Record<string, ProjectDetail> = {
         title: "Visual Consistency Support",
         body: "I ensured that the visual quality of the product mockups translated seamlessly across both the website and social media, creating a unified brand experience for the digital customer.",
       },
+      {
+        title: "Social Media Strategy & Ad Creative",
+        body: "I developed and designed high-converting social media content and ad creatives for Meta, focusing on aesthetic consistency and engagement-driven visual storytelling.",
+      },
     ],
     technologies: [
       "Adobe Photoshop",

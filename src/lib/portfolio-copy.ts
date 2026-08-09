@@ -77,7 +77,7 @@ const OVERRIDES: Record<string, ProjectCopy> = {
     summary:
       "Creative Direction, Social Media & Product Visuals for a leading textile brand.",
     overview:
-      "I worked alongside Nayyer Carpets' existing team as a creative partner to elevate their digital presence. My role covered both social media creative work and premium product visual presentation. By creating realistic carpet mockups and supporting visual consistency across their website and social channels, I helped the brand present their products in a more polished and professional environment.",
+      "I worked alongside Nayyer Carpets' existing team as a creative partner to elevate their digital presence. My role covered both social media creative work and premium product visual presentation. By creating realistic carpet mockups and supporting visual consistency across their website and social channels, I helped the brand present their products in a more polished and professional environment. This included developing a cohesive social media strategy that leveraged product mockups as high-performing creative content.",
     challenge:
       "Nayyer Carpets needed to present their high-quality products in realistic settings that helped customers visualize them in their own homes. The challenge was to bridge the gap between flat product shots and premium lifestyle visuals, while also maintaining a consistent creative direction across social media and the website.",
     approach:
