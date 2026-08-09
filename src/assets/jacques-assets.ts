@@ -19,6 +19,17 @@ import nayyer7 from "@/assets/nayyer-mockup-7.png.asset.json";
 import nayyer8 from "@/assets/nayyer-mockup-8.png.asset.json";
 import nayyer9 from "@/assets/nayyer-mockup-9.png.asset.json";
 import nayyer10 from "@/assets/nayyer-mockup-10.png.asset.json";
+import nayyerPost1 from "@/assets/nayyer-post-1.png.asset.json";
+
+import nayyerPost2 from "@/assets/nayyer-post-2.png.asset.json";
+import nayyerPost3 from "@/assets/nayyer-post-3.png.asset.json";
+import nayyerPost4 from "@/assets/nayyer-post-4.png.asset.json";
+import nayyerPost5 from "@/assets/nayyer-post-5.png.asset.json";
+import nayyerPost6 from "@/assets/nayyer-post-6.png.asset.json";
+import nayyerPost7 from "@/assets/nayyer-post-7.png.asset.json";
+import nayyerPost8 from "@/assets/nayyer-post-8.png.asset.json";
+import nayyerPost9 from "@/assets/nayyer-post-9.png.asset.json";
+
 
 export const jacquesAssets = {
   cover: jacquesCover.url,
@@ -48,5 +59,14 @@ export const nayyerAssets = {
     nayyer8.url,
     nayyer9.url,
     nayyer10.url,
+    nayyerPost1.url,
+    nayyerPost2.url,
+    nayyerPost3.url,
+    nayyerPost4.url,
+    nayyerPost5.url,
+    nayyerPost6.url,
+    nayyerPost7.url,
+    nayyerPost8.url,
+    nayyerPost9.url,
   ],
 };
