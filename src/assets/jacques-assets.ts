@@ -21,7 +21,6 @@ import nayyer9 from "@/assets/nayyer-mockup-9.png.asset.json";
 import nayyer10 from "@/assets/nayyer-mockup-10.png.asset.json";
 import nayyer11 from "@/assets/nayyer-mockup-11.png.asset.json";
 import nayyer12 from "@/assets/nayyer-mockup-12.png.asset.json";
-import nayyer13 from "@/assets/nayyer-mockup-13.png.asset.json";
 import nayyer14 from "@/assets/nayyer-mockup-14.png.asset.json";
 import nayyer15 from "@/assets/nayyer-mockup-15.png.asset.json";
 import nayyer16 from "@/assets/nayyer-mockup-16.png.asset.json";
@@ -29,6 +28,8 @@ import nayyer17 from "@/assets/nayyer-mockup-17.png.asset.json";
 import nayyer18 from "@/assets/nayyer-mockup-18.png.asset.json";
 import nayyer19 from "@/assets/nayyer-mockup-19.png.asset.json";
 import nayyer20 from "@/assets/nayyer-mockup-20.png.asset.json";
+import nayyer21 from "@/assets/nayyer-mockup-21.png.asset.json";
+import nayyer22 from "@/assets/nayyer-mockup-22.png.asset.json";
 import nayyerPost1 from "@/assets/nayyer-post-1.png.asset.json";
 import nayyerPost2 from "@/assets/nayyer-post-2.png.asset.json";
 import nayyerPost3 from "@/assets/nayyer-post-3.png.asset.json";
@@ -63,7 +64,8 @@ export const nayyerAssets = {
     nayyer6.url,
     nayyer11.url,
     nayyer12.url,
-    nayyer13.url,
+    nayyer21.url,
+    nayyer22.url,
     nayyer14.url,
     nayyer15.url,
     nayyer16.url,
