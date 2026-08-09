@@ -314,7 +314,9 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
 
 function PortfolioDetailPage() {
   const { item } = Route.useLoaderData();
-  const gallery = getSubcategoryGallery(item, item.images?.length ?? 6);
+  const gallery = isNayyer 
+    ? item.images?.filter(img => img.includes('nayyer-mockup')) ?? []
+    : getSubcategoryGallery(item, item.images?.length ?? 6);
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
