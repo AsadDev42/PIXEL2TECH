@@ -323,6 +323,8 @@ function PortfolioDetailPage() {
   const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
 
+  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
+
   return (
     <PageShell>
       <section className="mx-auto max-w-6xl px-5 pt-16 md:px-10 md:pt-24 lg:pt-32">
