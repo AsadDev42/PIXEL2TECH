@@ -390,6 +390,8 @@ function PortfolioDetailPage() {
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">What we designed for {brand}</h2>
             </div>
           </div>
+        </FadeIn>
+        
         <FadeIn>
           <CategoryShowcase item={item} images={gallery} />
         </FadeIn>
