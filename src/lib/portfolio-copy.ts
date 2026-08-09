@@ -70,24 +70,24 @@ const OVERRIDES: Record<string, ProjectCopy> = {
       { label: "Creative angles", value: "Accidents, negligence, claims, wrongful death" },
     ],
   },
-  "social-media-and-digital-marketing-campaigns": {
-    metaTitle: "Social Media & Digital Marketing Campaigns Case Study | Pixel2Tech",
+  "nayyer-carpets-creative-direction-mockups": {
+    metaTitle: "Nayyer Carpets — Creative Direction & Product Visuals Case Study | Pixel2Tech",
     metaDescription:
-      "A professional creative and digital marketing case study showcasing social media management, email marketing, and performance creatives for a consumer brand.",
+      "A creative direction and design support case study for Nayyer Carpets, featuring social media creatives and high-end product/carpet mockups.",
     summary:
-      "Social Media, Email Marketing & Performance Creative support for a modern consumer brand.",
+      "Creative Direction, Social Media & Product Visuals for a leading textile brand.",
     overview:
-      "I worked on the brand's digital presence across social media, email marketing, and paid advertising channels. The work focused on creating engaging visual content, promotional campaigns, email newsletters, affiliate banners, and advertising creatives designed to support brand awareness, engagement, and customer acquisition.",
+      "I worked alongside Nayyer Carpets' existing team as a creative partner to elevate their digital presence. My role covered both social media creative work and premium product visual presentation. By creating realistic carpet mockups and supporting visual consistency across their website and social channels, I helped the brand present their products in a more polished and professional environment.",
     challenge:
-      "The brand needed to maintain a high volume of quality creative assets across multiple channels while keeping a consistent brand voice. The challenge was to produce diverse creatives—from sales-focused Black Friday banners to lifestyle-oriented lookbooks—that felt unified and performed well in both organic and paid environments.",
+      "Nayyer Carpets needed to present their high-quality products in realistic settings that helped customers visualize them in their own homes. The challenge was to bridge the gap between flat product shots and premium lifestyle visuals, while also maintaining a consistent creative direction across social media and the website.",
     approach:
-      "We implemented a multi-channel creative strategy. For social media, we focused on high-aesthetic lifestyle imagery and trend-relevant designs. For email, we designed conversion-optimized newsletters and promotional flows. For paid media, we supported Meta and Google Ads with clean, punchy creatives that highlighted key value propositions like 'Start Small, Save Big' and exclusive collection drops. Every asset was designed to balance brand aesthetic with performance-driven design principles.",
+      "We developed custom product mockups that placed carpet designs in premium, well-lit interior environments. These mockups were then repurposed across the brand's website and social media channels to ensure visual unity. Simultaneously, I provided creative direction and design support for their social media campaigns, focusing on improving visual storytelling and overall brand perception.",
     outcome:
-      "The project resulted in a comprehensive library of digital assets that unified the brand's voice across every touchpoint. By providing creative support for paid ads alongside social and email management, we helped create a seamless journey for the customer from first impression to purchase, resulting in a significantly more professional and cohesive digital presence.",
+      "The project provided Nayyer Carpets with a robust library of high-end visual assets that improved engagement on social media and trust on their website. By focusing on realistic product visualization, we helped the brand communicate quality and luxury more effectively to their digital audience.",
     results: [
-      { label: "Channels Managed", value: "Social, Email, Paid Ad Creative" },
-      { label: "Creative Scope", value: "Meta Ads, Google Ads, Newsletters, Banners" },
-      { label: "Campaign Focus", value: "Awareness, Engagement & Acquisition" },
+      { label: "My Contribution", value: "Creative Direction & Design Support" },
+      { label: "Key Assets", value: "Carpet Mockups & Social Creatives" },
+      { label: "Digital Impact", value: "Unified Website & Social Visuals" },
     ],
   },
 };

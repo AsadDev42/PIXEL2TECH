@@ -323,6 +323,8 @@ function PortfolioDetailPage() {
   const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
 
+  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
+
   return (
     <PageShell>
       <section className="mx-auto max-w-6xl px-5 pt-16 md:px-10 md:pt-24 lg:pt-32">
@@ -389,7 +391,40 @@ function PortfolioDetailPage() {
             </div>
           </div>
         </FadeIn>
-        <CategoryShowcase item={item} images={gallery} />
+        
+        <FadeIn>
+          <CategoryShowcase item={item} images={gallery} />
+        </FadeIn>
+
+        {isNayyer && (
+          <div className="mt-20 md:mt-32">
+            <FadeIn>
+              <div className="mb-12">
+                <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Specialized Work</div>
+                <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Product Mockups & Visual Presentation</h2>
+                <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
+                  I created realistic carpet mockups to help Nayyer Carpets present their products in a more polished and visually engaging way. 
+                  These mockups were then used across the brand's digital channels, including their website and social media, to maintain premium visual consistency.
+                </p>
+              </div>
+            </FadeIn>
+            
+            <div className="grid gap-8 sm:grid-cols-2">
+              {gallery.map((src, i) => (
+                <FadeIn key={`nayyer-mockup-${i}`} delay={0.05 * i}>
+                  <div className="group overflow-hidden rounded-2xl border border-border bg-background shadow-lg transition-all hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03]">
+                    <img 
+                      src={src} 
+                      alt={`Nayyer Carpets Product Mockup ${i + 1}`} 
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                      loading="lazy"
+                    />
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        )}
 
         {videos.length > 0 && (
           <div className="mt-16 md:mt-24">
