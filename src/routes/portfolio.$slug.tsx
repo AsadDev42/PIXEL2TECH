@@ -314,7 +314,12 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
 
 function PortfolioDetailPage() {
   const { item } = Route.useLoaderData();
-  const gallery = getSubcategoryGallery(item, item.images?.length ?? 6);
+  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
+  
+  const gallery = isNayyer 
+    ? (item.images?.filter((img: string) => img.includes('nayyer-mockup')) ?? [])
+    : getSubcategoryGallery(item, item.images?.length ?? 6);
+    
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
@@ -322,8 +327,6 @@ function PortfolioDetailPage() {
   const detail = getProjectDetail(item);
   const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
-
-  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
 
   return (
     <PageShell>
@@ -410,7 +413,7 @@ function PortfolioDetailPage() {
             </FadeIn>
             
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {gallery.map((src, i) => (
+              {gallery.map((src: string, i: number) => (
                 <FadeIn key={`nayyer-mockup-${i}`} delay={0.05 * i}>
                   <div className="group overflow-hidden rounded-2xl border border-border bg-background shadow-lg transition-all hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03]">
                     <img 
