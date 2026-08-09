@@ -9,6 +9,8 @@ export type PortfolioItem = {
   video?: string;
   /** Optional extra images belonging to this same project (shown in its gallery). */
   images?: string[];
+  /** Dedicated images for a 3D slider or special showcase. */
+  slider?: string[];
 };
 
 
@@ -24,7 +26,7 @@ export const SUBS: Record<Category, string[]> = {
 
 type RawWork = Record<
   Category,
-  Record<string, { title: string; img: string; video?: string; images?: string[]; slug?: string }[]>
+  Record<string, { title: string; img: string; video?: string; images?: string[]; slider?: string[]; slug?: string }[]>
 >;
 
 const RAW: RawWork = {
@@ -75,6 +77,7 @@ const RAW: RawWork = {
         title: "Nayyer Carpets — Creative Direction & Product Visuals",
         img: nayyerAssets.cover,
         images: nayyerAssets.images,
+        slider: nayyerAssets.slider,
       },
       { title: "Instagram grid design", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75" },

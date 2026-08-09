@@ -284,13 +284,14 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
     );
   }
 
-  // Social Media → 3D coverflow slider of the posts
-  if (sub === "Social Media") {
+  // Social Media / Creative direction → 3D coverflow slider of the posts
+  if (sub === "Social Media" || (item.slug === "nayyer-carpets-creative-direction-mockups" && item.slider?.length)) {
+    const sliderImages = item.slider && item.slider.length > 0 ? item.slider : all.slice(0, 12);
     return (
       <FadeIn>
         <Coverflow3D
-          images={all.slice(0, 12)}
-          alt={(i) => `${item.title} post ${i + 1}`}
+          images={sliderImages}
+          alt={(i) => `${item.title} visual ${i + 1}`}
           aspect="4 / 5"
         />
       </FadeIn>
