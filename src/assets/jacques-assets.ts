@@ -86,8 +86,6 @@ export const nayyerAssets = {
     nayyerPost2.url,
     nayyerPost3.url,
     nayyerPost4.url,
-    nayyerPost5.url,
-    nayyerPost6.url,
     nayyerPost7.url,
     nayyerPost8.url,
     nayyerPost9.url,
