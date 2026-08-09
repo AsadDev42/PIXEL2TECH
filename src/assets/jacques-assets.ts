@@ -60,11 +60,6 @@ export const jacquesAssets = {
 export const nayyerAssets = {
   cover: nayyer1.url,
   images: [
-    nayyer1.url,
-    nayyer2.url,
-    nayyer3.url,
-    nayyer4.url,
-    nayyer5.url,
     nayyer6.url,
     nayyer7.url,
     nayyer8.url,
