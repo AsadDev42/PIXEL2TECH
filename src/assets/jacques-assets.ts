@@ -38,6 +38,9 @@ import nayyerPost6 from "@/assets/nayyer-post-6.png.asset.json";
 import nayyerPost7 from "@/assets/nayyer-post-7.png.asset.json";
 import nayyerPost8 from "@/assets/nayyer-post-8.png.asset.json";
 import nayyerPost9 from "@/assets/nayyer-post-9.png.asset.json";
+import nayyerSocial1 from "@/assets/nayyer-social-1.png.asset.json";
+import nayyerSocial2 from "@/assets/nayyer-social-2.png.asset.json";
+import nayyerSocial3 from "@/assets/nayyer-social-3.png.asset.json";
 
 export const jacquesAssets = {
   cover: jacquesCover.url,
@@ -57,6 +60,9 @@ export const jacquesAssets = {
 export const nayyerAssets = {
   cover: nayyer1.url,
   images: [
+    nayyerSocial1.url,
+    nayyerSocial2.url,
+    nayyerSocial3.url,
     nayyer1.url,
     nayyer2.url,
     nayyer3.url,
