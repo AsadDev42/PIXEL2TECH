@@ -18,7 +18,9 @@ import nayyer6 from "@/assets/nayyer-mockup-6.png.asset.json";
 import nayyer7 from "@/assets/nayyer-mockup-7.png.asset.json";
 import nayyer8 from "@/assets/nayyer-mockup-8.png.asset.json";
 import nayyer9 from "@/assets/nayyer-mockup-9.png.asset.json";
+import nayyer10 from "@/assets/nayyer-mockup-10.png.asset.json";
 import nayyerPost1 from "@/assets/nayyer-post-1.png.asset.json";
+
 import nayyerPost2 from "@/assets/nayyer-post-2.png.asset.json";
 import nayyerPost3 from "@/assets/nayyer-post-3.png.asset.json";
 import nayyerPost4 from "@/assets/nayyer-post-4.png.asset.json";
