@@ -61,10 +61,6 @@ export const nayyerAssets = {
   cover: nayyer1.url,
   images: [
     nayyer6.url,
-    nayyer7.url,
-    nayyer8.url,
-    nayyer9.url,
-    nayyer10.url,
     nayyer11.url,
     nayyer12.url,
     nayyer13.url,
