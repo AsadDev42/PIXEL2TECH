@@ -70,7 +70,6 @@ export const nayyerAssets = {
     nayyer20.url,
     nayyerPost1.url,
     nayyerPost2.url,
-    nayyerPost3.url,
     nayyerPost4.url,
     nayyerPost7.url,
     nayyerPost8.url,
