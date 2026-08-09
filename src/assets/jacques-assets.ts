@@ -30,6 +30,7 @@ import nayyer19 from "@/assets/nayyer-mockup-19.png.asset.json";
 import nayyer20 from "@/assets/nayyer-mockup-20.png.asset.json";
 import nayyer21 from "@/assets/nayyer-mockup-21.png.asset.json";
 import nayyer22 from "@/assets/nayyer-mockup-22.png.asset.json";
+
 import nayyerSlider1 from "@/assets/nayyer-slider-1.png.asset.json";
 import nayyerSlider2 from "@/assets/nayyer-slider-2.png.asset.json";
 import nayyerSlider3 from "@/assets/nayyer-slider-3.png.asset.json";
@@ -40,6 +41,16 @@ import nayyerSlider7 from "@/assets/nayyer-slider-7.png.asset.json";
 import nayyerSlider8 from "@/assets/nayyer-slider-8.png.asset.json";
 import nayyerSlider9 from "@/assets/nayyer-slider-9.png.asset.json";
 import nayyerSlider10 from "@/assets/nayyer-slider-10.png.asset.json";
+import nayyerSlider11 from "@/assets/nayyer-slider-11.png.asset.json";
+import nayyerSlider12 from "@/assets/nayyer-slider-12.png.asset.json";
+import nayyerSlider13 from "@/assets/nayyer-slider-13.png.asset.json";
+import nayyerSlider14 from "@/assets/nayyer-slider-14.png.asset.json";
+import nayyerSlider15 from "@/assets/nayyer-slider-15.png.asset.json";
+import nayyerSlider16 from "@/assets/nayyer-slider-16.png.asset.json";
+import nayyerSlider17 from "@/assets/nayyer-slider-17.png.asset.json";
+import nayyerSlider18 from "@/assets/nayyer-slider-18.png.asset.json";
+import nayyerSlider19 from "@/assets/nayyer-slider-19.png.asset.json";
+import nayyerSlider20 from "@/assets/nayyer-slider-20.png.asset.json";
 
 export const jacquesAssets = {
   cover: jacquesCover.url,
@@ -83,5 +94,15 @@ export const nayyerAssets = {
     nayyerSlider8.url,
     nayyerSlider9.url,
     nayyerSlider10.url,
+    nayyerSlider11.url,
+    nayyerSlider12.url,
+    nayyerSlider13.url,
+    nayyerSlider14.url,
+    nayyerSlider15.url,
+    nayyerSlider16.url,
+    nayyerSlider17.url,
+    nayyerSlider18.url,
+    nayyerSlider19.url,
+    nayyerSlider20.url,
   ],
 };
