@@ -413,7 +413,7 @@ function PortfolioDetailPage() {
             </FadeIn>
             
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {gallery.map((src, i) => (
+              {gallery.map((src: string, i: number) => (
                 <FadeIn key={`nayyer-mockup-${i}`} delay={0.05 * i}>
                   <div className="group overflow-hidden rounded-2xl border border-border bg-background shadow-lg transition-all hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03]">
                     <img 
