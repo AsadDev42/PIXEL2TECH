@@ -60,8 +60,6 @@ export const jacquesAssets = {
 export const nayyerAssets = {
   cover: nayyer1.url,
   images: [
-    nayyerSocial1.url,
-    nayyerSocial3.url,
     nayyer1.url,
     nayyer2.url,
     nayyer3.url,
@@ -86,8 +84,6 @@ export const nayyerAssets = {
     nayyerPost2.url,
     nayyerPost3.url,
     nayyerPost4.url,
-    nayyerPost5.url,
-    nayyerPost6.url,
     nayyerPost7.url,
     nayyerPost8.url,
     nayyerPost9.url,
