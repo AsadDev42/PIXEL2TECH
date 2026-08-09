@@ -409,20 +409,14 @@ function PortfolioDetailPage() {
               </div>
             </FadeIn>
             
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {gallery.map((src, i) => (
-                <FadeIn key={`nayyer-mockup-${i}`} delay={0.05 * i}>
-                  <div className="group overflow-hidden rounded-2xl border border-border bg-background shadow-lg transition-all hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03]">
-                    <img 
-                      src={src} 
-                      alt={`Nayyer Carpets Product Mockup ${i + 1}`} 
-                      className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                      loading="lazy"
-                    />
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+            <FadeIn>
+              <Coverflow3D
+                images={gallery}
+                alt={(i) => `Nayyer Carpets Product Mockup ${i + 1}`}
+                aspect="1 / 1"
+              />
+            </FadeIn>
+
 
           </div>
         )}
