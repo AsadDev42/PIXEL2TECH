@@ -314,9 +314,12 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
 
 function PortfolioDetailPage() {
   const { item } = Route.useLoaderData();
+  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
+  
   const gallery = isNayyer 
-    ? item.images?.filter(img => img.includes('nayyer-mockup')) ?? []
+    ? (item.images?.filter((img: string) => img.includes('nayyer-mockup')) ?? [])
     : getSubcategoryGallery(item, item.images?.length ?? 6);
+    
   const related = getRelated(item);
   const brand = getBrandName(item);
   const deliverables = getDeliverables(item);
@@ -324,8 +327,6 @@ function PortfolioDetailPage() {
   const detail = getProjectDetail(item);
   const videos = PROJECT_VIDEOS[item.slug] ?? [];
 
-
-  const isNayyer = item.slug === "nayyer-carpets-creative-direction-mockups";
 
   return (
     <PageShell>
