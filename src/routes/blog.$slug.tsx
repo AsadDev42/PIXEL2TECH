@@ -11,6 +11,7 @@ import {
   SITE_LINKS,
   type BlogSection,
 } from "@/lib/blog-posts";
+import { buildBlogSeo } from "@/lib/blog-seo";
 import { BlogCta } from "@/components/blog-cta";
 import { NewsletterForm } from "@/components/newsletter-form";
 import {
