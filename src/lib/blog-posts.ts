@@ -11,6 +11,7 @@ import { leadingCreativeAgencies2026Post } from "@/lib/posts/leading-creative-ag
 import { betterSystemsPost } from "@/lib/posts/better-systems";
 import { techMistakes2026Post } from "@/lib/posts/tech-mistakes-2026";
 import { digitalProductSystemPost } from "@/lib/posts/digital-product-system";
+import { startWithBusinessPost } from "@/lib/posts/start-with-business";
 
 /**
  * Blog cover photography.
@@ -86,6 +87,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  startWithBusinessPost,
   digitalProductSystemPost,
   techMistakes2026Post,
   betterSystemsPost,
