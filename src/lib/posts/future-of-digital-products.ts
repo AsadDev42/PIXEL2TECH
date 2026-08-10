@@ -19,7 +19,7 @@ export const futureOfDigitalProductsPost: BlogPost = {
   h1: "The Future of Digital Products: Why Startups Need Better Technology Systems",
   excerpt:
     "Building a startup that can scale requires moving beyond individual tools toward connected technology systems. Explore the future of digital product strategy.",
-  img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=70",
+  img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1600&q=70",
   imgAlt: "Conceptual view of connected digital systems and technology infrastructure",
   metaTitle: "The Future of Digital Products for Startups | Pixel2Tech",
   metaDescription:
