@@ -11,6 +11,7 @@ import {
   SITE_LINKS,
   type BlogSection,
 } from "@/lib/blog-posts";
+import { buildBlogSeo } from "@/lib/blog-seo";
 import { BlogCta } from "@/components/blog-cta";
 import { NewsletterForm } from "@/components/newsletter-form";
 import {
@@ -41,99 +42,38 @@ export const Route = createFileRoute("/blog/$slug")({
       return { meta: [{ title: "Not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
     }
     const { post } = loaderData;
-    const url = `https://pixel2tech.com/blog/${post.slug}`;
-    const image = post.img.startsWith("http") ? post.img : `https://pixel2tech.com${post.img}`;
-    const title = post.metaTitle ?? `${post.title} — Pixel2Tech`;
-    const description = post.metaDescription ?? post.excerpt;
+    // SEO title, meta description, keywords and schema are auto-generated from
+    // the post content whenever the article does not author them explicitly.
+    const seo = buildBlogSeo(post);
     return {
       meta: [
-        { title },
-        { name: "description", content: description },
-        ...(post.keywords?.length ? [{ name: "keywords", content: post.keywords.join(", ") }] : []),
-        { property: "og:title", content: post.ogTitle ?? post.title },
-        { property: "og:description", content: post.ogDescription ?? description },
+        { title: seo.title },
+        { name: "description", content: seo.description },
+        { name: "keywords", content: seo.keywords.join(", ") },
+        { name: "author", content: post.author },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+        { property: "og:site_name", content: "Pixel2Tech" },
+        { property: "og:title", content: seo.ogTitle },
+        { property: "og:description", content: seo.ogDescription },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: url },
-        { property: "og:image", content: image },
+        { property: "og:url", content: seo.url },
+        { property: "og:image", content: seo.image },
+        { property: "og:image:alt", content: post.imgAlt ?? post.title },
         { property: "article:author", content: post.author },
         { property: "article:published_time", content: post.date },
         { property: "article:modified_time", content: post.updated ?? post.date },
         { property: "article:section", content: post.tag },
+        ...seo.keywords.slice(0, 6).map((k) => ({ property: "article:tag", content: k })),
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: image },
-        { name: "twitter:title", content: post.ogTitle ?? post.title },
-        { name: "twitter:description", content: post.ogDescription ?? description },
+        { name: "twitter:image", content: seo.image },
+        { name: "twitter:title", content: seo.ogTitle },
+        { name: "twitter:description", content: seo.ogDescription },
       ],
-      links: [{ rel: "canonical", href: url }],
-
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            image,
-            wordCount: post.content.reduce((n, s) => n + s.body.join(" ").split(/\s+/).length, 0),
-            keywords: post.keywords?.join(", "),
-            datePublished: post.date,
-            dateModified: post.updated ?? post.date,
-            author:
-              post.author === "Pixel2Tech Team"
-                ? {
-                    "@type": "Organization",
-                    "@id": "https://pixel2tech.com/#organization",
-                    name: "Pixel2Tech",
-                    url: "https://pixel2tech.com",
-                  }
-                : {
-                    "@type": "Person",
-                    name: post.author,
-                    jobTitle: post.authorRole,
-                    worksFor: { "@type": "Organization", "@id": "https://pixel2tech.com/#organization", name: "Pixel2Tech" },
-                    url: "https://pixel2tech.com/about",
-                  },
-            publisher: {
-              "@type": "Organization",
-              name: "Pixel2Tech",
-              url: "https://pixel2tech.com",
-              logo: { "@type": "ImageObject", url: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png" },
-            },
-            mainEntityOfPage: { "@type": "WebPage", "@id": url },
-            articleSection: post.tag,
-          }),
-        },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-              { "@type": "ListItem", position: 2, name: "Blog", item: "https://pixel2tech.com/blog" },
-              { "@type": "ListItem", position: 3, name: post.title, item: url },
-            ],
-          }),
-        },
-        ...(post.faqs?.length
-          ? [
-              {
-                type: "application/ld+json",
-                children: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "FAQPage",
-                  mainEntity: post.faqs.map((f) => ({
-                    "@type": "Question",
-                    name: f.q,
-                    acceptedAnswer: { "@type": "Answer", text: f.a },
-                  })),
-                }),
-              },
-            ]
-          : []),
-      ],
-
+      links: [{ rel: "canonical", href: seo.url }],
+      scripts: seo.schemas.map((schema) => ({
+        type: "application/ld+json",
+        children: JSON.stringify(schema),
+      })),
     };
   },
   component: BlogPostPage,
