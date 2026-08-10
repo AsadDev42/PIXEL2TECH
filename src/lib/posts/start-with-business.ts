@@ -19,7 +19,7 @@ export const startWithBusinessPost: BlogPost = {
   h1: "Building a Digital Product? Start With the Business, Not the Technology",
   excerpt:
     "Most founders don't start with a technology problem—they start with a business problem. Learn why successful products are built around outcomes rather than features.",
-  img: "https://images.unsplash.com/photo-1553484771-047a44eee27b?auto=format&fit=crop&w=1600&q=70",
+  img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=70",
   imgAlt: "Team collaborating on product strategy and business goals",
   metaTitle: "Building Digital Products: Business-First Technology Strategy | Pixel2Tech",
   metaDescription:
