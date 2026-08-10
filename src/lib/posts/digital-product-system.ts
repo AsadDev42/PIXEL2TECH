@@ -19,7 +19,7 @@ export const digitalProductSystemPost: BlogPost = {
   h1: "Your Digital Product Is More Than Software. It’s a Business System.",
   excerpt:
     "For many founders, building a product starts with 'We need an app.' But technology should never be the starting point. Real value is created when technology solves a business problem and reduces friction.",
-  img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=70",
+  img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=70",
   imgAlt: "Modern workspace with digital devices representing product strategy",
   metaTitle: "Digital Product Strategy: Beyond Software to Business Systems | Pixel2Tech",
   metaDescription:
