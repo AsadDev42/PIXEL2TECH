@@ -13,6 +13,8 @@ import { techMistakes2026Post } from "@/lib/posts/tech-mistakes-2026";
 import { digitalProductSystemPost } from "@/lib/posts/digital-product-system";
 import { startWithBusinessPost } from "@/lib/posts/start-with-business";
 import { futureOfDigitalProductsPost } from "@/lib/posts/future-of-digital-products";
+import { googlePakistanOfficePost } from "@/lib/posts/google-pakistan-office";
+
 
 /**
  * Blog cover photography.
@@ -42,6 +44,10 @@ export type BlogSection = {
   callout?: { title?: string; body: string };
   /** H3 blocks under this section. */
   subsections?: { heading: string; body: string[]; bullets?: string[] }[];
+  /** Inline image with optional caption. */
+  image?: { src: string; alt: string; caption?: string };
+  /** Embedded video (currently YouTube). */
+  video?: { type: "youtube"; id: string; title?: string };
 };
 
 export type BlogPost = {
@@ -88,6 +94,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  googlePakistanOfficePost,
   futureOfDigitalProductsPost,
   startWithBusinessPost,
   digitalProductSystemPost,
@@ -100,6 +107,7 @@ export const posts: BlogPost[] = [
 
   contextualAdvertisingPost,
   mobileAppDesignProcessPost,
+
 
   {
     "slug": "ai-meeting-assistants-business-guide",

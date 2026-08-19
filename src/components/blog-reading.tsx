@@ -190,6 +190,40 @@ export function ArticleSection({ section }: { section: BlogSection }) {
         ))}
       </div>
 
+      {section.image ? (
+        <figure className="mt-6">
+          <div className="aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-muted">
+            <img
+              src={section.image.src}
+              alt={section.image.alt}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          {section.image.caption ? (
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">{section.image.caption}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
+      {section.video ? (
+        <figure className="mt-6">
+          <div className="aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube.com/embed/${section.video.id}`}
+              title={section.video.title ?? "Embedded video"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+          {section.video.title ? (
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">{section.video.title}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
       {section.bullets?.length ? (
         <ul className="mt-5 space-y-2.5">
           {section.bullets.map((b) => (
