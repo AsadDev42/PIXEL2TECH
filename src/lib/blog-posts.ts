@@ -42,6 +42,10 @@ export type BlogSection = {
   callout?: { title?: string; body: string };
   /** H3 blocks under this section. */
   subsections?: { heading: string; body: string[]; bullets?: string[] }[];
+  /** Inline image with optional caption. */
+  image?: { src: string; alt: string; caption?: string };
+  /** Embedded video (currently YouTube). */
+  video?: { type: "youtube"; id: string; title?: string };
 };
 
 export type BlogPost = {
