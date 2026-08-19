@@ -13,6 +13,8 @@ import { techMistakes2026Post } from "@/lib/posts/tech-mistakes-2026";
 import { digitalProductSystemPost } from "@/lib/posts/digital-product-system";
 import { startWithBusinessPost } from "@/lib/posts/start-with-business";
 import { futureOfDigitalProductsPost } from "@/lib/posts/future-of-digital-products";
+import { googlePakistanOfficePost } from "@/lib/posts/google-pakistan-office";
+
 
 /**
  * Blog cover photography.
