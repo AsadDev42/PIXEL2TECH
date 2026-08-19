@@ -94,6 +94,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  googlePakistanOfficePost,
   futureOfDigitalProductsPost,
   startWithBusinessPost,
   digitalProductSystemPost,
@@ -106,6 +107,7 @@ export const posts: BlogPost[] = [
 
   contextualAdvertisingPost,
   mobileAppDesignProcessPost,
+
 
   {
     "slug": "ai-meeting-assistants-business-guide",
