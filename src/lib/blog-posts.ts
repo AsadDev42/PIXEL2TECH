@@ -14,6 +14,7 @@ import { digitalProductSystemPost } from "@/lib/posts/digital-product-system";
 import { startWithBusinessPost } from "@/lib/posts/start-with-business";
 import { futureOfDigitalProductsPost } from "@/lib/posts/future-of-digital-products";
 import { googlePakistanOfficePost } from "@/lib/posts/google-pakistan-office";
+import { aiAutomationBusinessOperationsPost } from "@/lib/posts/ai-automation-business-operations";
 
 
 /**
@@ -94,6 +95,7 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  aiAutomationBusinessOperationsPost,
   googlePakistanOfficePost,
   futureOfDigitalProductsPost,
   startWithBusinessPost,
