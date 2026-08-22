@@ -78,7 +78,10 @@ export type BlogPost = {
   keyTakeaways?: string[];
   faqs?: { q: string; a: string }[];
   related?: string[];
+  /** Scannable verdict rendered near the top. */
+  quickVerdict?: { title: string; body: string; winner?: string };
   /** Pixel2Tech pages this article should link to. */
+
   internalLinks?: { label: string; to: string }[];
   /** Credible external references (Google, Ahrefs, Shopify, HubSpot…). */
   sources?: { label: string; href: string }[];
