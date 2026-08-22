@@ -168,6 +168,42 @@ function BlogPostPage() {
                     <KeyTakeaways items={post.keyTakeaways} />
                   </div>
                 ) : null}
+                
+                {post.quickVerdict ? (
+                  <div 
+                    className="relative overflow-hidden rounded-3xl border border-border bg-background/50 p-6 backdrop-blur-sm sm:p-10"
+                  >
+                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#1E90FF]/5 blur-3xl" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1E90FF] text-white shadow-lg shadow-[#1E90FF]/20">
+                          <ChevronRight className="h-7 w-7" />
+                        </div>
+                        <div>
+                          <h2 className="text-2xl font-bold tracking-tight text-foreground">{post.quickVerdict.title}</h2>
+                          <p className="text-sm font-medium text-[#1E90FF]">Premium Strategic Audit</p>
+                        </div>
+                      </div>
+                      <div className="mt-6 text-[16px] leading-relaxed text-muted-foreground sm:text-lg">
+                        {post.quickVerdict.body}
+                      </div>
+                      {post.quickVerdict.winner ? (
+                        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                          <div className="flex items-center gap-3 rounded-2xl border border-[#1E90FF]/20 bg-[#1E90FF]/10 px-5 py-3">
+                            <span className="text-xs font-bold uppercase tracking-widest text-[#1E90FF]">Top Pick 2026</span>
+                            <span className="text-[15px] font-bold text-foreground">{post.quickVerdict.winner}</span>
+                          </div>
+                          <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-[#1E90FF] hover:underline">
+                            Request your own tech audit
+                            <ChevronRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : null}
+
+
 
                 <div>
                   <div className="lg:hidden">
