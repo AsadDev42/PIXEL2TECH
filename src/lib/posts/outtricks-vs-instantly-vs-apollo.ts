@@ -9,7 +9,7 @@ export const outtricksVsInstantlyVsApolloPost: BlogPost = {
   author: "Pixel2Tech Team",
   authorRole: "Growth & Automation, Pixel2Tech",
   authorBio: "Pixel2Tech helps B2B companies scale their outreach through intelligent systems, custom automation, and high-performance sales technology.",
-  title: "Outtricks vs Instantly vs Apollo: Which Cold Outreach Tool Is Best in 2026?",
+  title: "Outtricks vs Instantly vs Apollo: Which Outbound Sales Platform Is Best in 2026?",
   h1: "Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison",
   excerpt: "Comparing the three heavyweights of B2B outreach: Outtricks, Instantly, and Apollo. We break down features, pricing, deliverability, and which one fits your growth stage.",
   img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
