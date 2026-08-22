@@ -168,6 +168,27 @@ function BlogPostPage() {
                     <KeyTakeaways items={post.keyTakeaways} />
                   </div>
                 ) : null}
+                
+                {post.quickVerdict ? (
+                  <div className="rounded-2xl border border-foreground/10 bg-muted/50 p-6 sm:p-8">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E90FF] text-white">
+                        <ChevronRight className="h-6 w-6" />
+                      </div>
+                      <h2 className="text-xl font-bold tracking-tight text-foreground">{post.quickVerdict.title}</h2>
+                    </div>
+                    <div className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                      {post.quickVerdict.body}
+                    </div>
+                    {post.quickVerdict.winner ? (
+                      <div className="mt-6 flex items-center gap-3 rounded-xl border border-[#1E90FF]/20 bg-[#1E90FF]/5 p-4">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#1E90FF]">Top Pick 2026:</span>
+                        <span className="text-sm font-semibold text-foreground">{post.quickVerdict.winner}</span>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+
 
                 <div>
                   <div className="lg:hidden">
