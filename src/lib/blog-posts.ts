@@ -20,6 +20,7 @@ import { outtricksVsInstantlyVsApolloPost } from "@/lib/posts/outtricks-vs-insta
 import { aiDesignSystemsPost } from "@/lib/posts/ai-design-systems-future";
 import { topSeoAgenciesPakistanPost } from "@/lib/posts/top-seo-agencies-pakistan";
 import { topMarketingAgenciesPakistanPost } from "@/lib/posts/top-marketing-agencies-pakistan";
+import { shopifyIssuesFixPost } from "@/lib/posts/shopify-issues-fix";
 
 export { stock, headingId } from "./blog-types";
 export type { BlogPost, BlogSection, BlogTable } from "./blog-types";
