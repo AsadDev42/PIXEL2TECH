@@ -1,5 +1,5 @@
 import { BlogPost } from "../blog-types";
-import heroAsset from "@/assets/top-7-seo-agencies-pakistan.jpg.asset.json";
+import heroAsset from "@/assets/top-7-seo-agencies-pakistan-v2.jpg.asset.json";
 
 export const topSeoAgenciesPakistanPost: BlogPost = {
   slug: "top-seo-agencies-in-pakistan",
