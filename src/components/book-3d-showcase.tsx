@@ -98,7 +98,9 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
   return (
     <div className="flex flex-col items-center w-full max-w-5xl mx-auto space-y-8">
       {/* 3D Viewer Container */}
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-neutral-100 dark:bg-neutral-900/50 rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl">
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-neutral-100 dark:bg-neutral-900/50 rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
+        <div className="absolute inset-0 w-full h-full">
+        
         
         
         {/* Navigation Arrows */}
@@ -170,6 +172,8 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
             rotateSpeed={0.5}
           />
         </Canvas>
+        </div>
+        
 
         {/* Loading Indicator */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-data-[loading=true]:opacity-100 transition-opacity">
