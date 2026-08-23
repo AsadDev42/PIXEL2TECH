@@ -196,6 +196,8 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       },
     ],
     technologies: [
+      "Three.js",
+      "React Three Fiber",
       "Adobe Photoshop",
       "Adobe Illustrator",
       "3D Rendering Tools",
@@ -204,30 +206,34 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       "Editorial Design Systems",
     ],
     whyItMatters:
-      "A book cover is the single most important marketing asset for a publication. In a digital-first marketplace, the cover must work as a tiny thumbnail and a full-size physical object. By combining high-impact design with realistic presentation, we ensure the author's work is perceived with the professional respect it deserves.",
+      "A book cover is the single most important marketing asset for a publication. In a digital-first marketplace, the cover must work as a tiny thumbnail and a full-size physical object. By combining high-impact design with an interactive 3D showcase, we ensure the author's work is perceived with the professional respect it deserves, allowing readers to explore the physical form of the work before it even hits the shelves.",
     faqs: [
       {
+        q: "How does the interactive 3D showcase work?",
+        a: "We use WebGL and Three.js to render a realistic 3D book model in your browser. You can click and drag to rotate the book, viewing the front cover, spine, and back to inspect the design from every angle.",
+      },
+      {
         q: "Do you design the interior pages as well?",
-        a: "While this specific showcase focuses on cover art and external mockups, we can provide full interior typesetting and layout design as an additional service.",
+        a: "While this specific showcase focuses on cover art and interactive 3D mockups, we can provide full interior typesetting and layout design as an additional service to ensure a premium reading experience.",
       },
       {
         q: "What files do you provide for the cover?",
-        a: "We provide print-ready PDFs with correct bleed and spine widths, plus high-resolution JPEG and PNG files for e-book platforms like Amazon Kindle and Apple Books.",
+        a: "We provide print-ready PDFs with correct bleed and spine widths, plus high-resolution JPEG and PNG files for e-book platforms like Amazon Kindle and Apple Books, and interactive digital mockups for your marketing site.",
       },
       {
         q: "Can you handle multiple titles in a series?",
-        a: "Yes, we specialize in creating cohesive visual systems that link multiple books together as a recognizable series while giving each title its own distinct identity.",
+        a: "Yes, we specialize in creating cohesive visual systems that link multiple books together as a recognizable series while giving each title its own distinct identity through shared typography and layout systems.",
       },
     ],
     relatedReading: CREATIVE_READING,
     relatedServices: [
       "Editorial Design",
-      "Mockup Creation",
+      "3D Interactive Mockups",
       "Brand Identity",
       "Product Visualization",
     ],
   },
-};
+},
 
 const BANKS: Record<string, DetailBank> = {
   "Social Media": {
