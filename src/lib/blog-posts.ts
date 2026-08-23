@@ -18,6 +18,8 @@ import { aiAutomationBusinessOperationsPost } from "@/lib/posts/ai-automation-bu
 import { outtricksVsInstantlyVsApolloPost } from "@/lib/posts/outtricks-vs-instantly-vs-apollo";
 import { aiDesignSystemsPost } from "@/lib/posts/ai-design-systems-future";
 import { topSeoAgenciesPakistanPost } from "@/lib/posts/top-seo-agencies-pakistan";
+import { topMarketingAgenciesPakistanPost } from "@/lib/posts/top-marketing-agencies-pakistan";
+
 
 
 
@@ -106,8 +108,10 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  topMarketingAgenciesPakistanPost,
   topSeoAgenciesPakistanPost,
   aiDesignSystemsPost,
+
   outtricksVsInstantlyVsApolloPost,
 
   aiAutomationBusinessOperationsPost,
