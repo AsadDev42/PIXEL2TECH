@@ -110,7 +110,7 @@ function HomeContact() {
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm whitespace-pre-wrap text-muted-foreground sm:text-base">
-              {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Book Cover 3D Viewer Size & Layout Fix`}
+              {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            please update imgae for this blog 10 Common Shopify Issues and How to Fix Them`}
             </p>
 
 

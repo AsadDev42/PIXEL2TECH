@@ -1,5 +1,5 @@
 import { BlogPost } from "../blog-types";
-import heroAsset from "@/assets/shopify-issues-fix-hero.jpg.asset.json";
+import heroAsset from "@/assets/shopify-issues-blog-hero.jpg.asset.json";
 
 export const shopifyIssuesFixPost: BlogPost = {
   slug: "shopify-issues-and-how-to-fix-them",
