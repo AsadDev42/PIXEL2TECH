@@ -10,7 +10,14 @@ interface BookCarouselProps {
 export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeResizeListener?.('resize', handleResize) || window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % covers.length);
@@ -39,7 +46,8 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
 
   const getVisibleIndices = () => {
     const indices = [];
-    for (let i = -2; i <= 2; i++) {
+    const count = windowWidth < 768 ? 1 : 2;
+    for (let i = -count; i <= count; i++) {
       let index = (activeIndex + i) % covers.length;
       if (index < 0) index += covers.length;
       indices.push({ index, position: i });
@@ -54,39 +62,43 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
       <div className="relative mx-auto flex items-center justify-center h-[400px] md:h-[500px] lg:h-[600px] w-full max-w-7xl">
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} mode="popLayout">
           {getVisibleIndices().map(({ index, position }) => {
             const isCenter = position === 0;
             const isSide = Math.abs(position) === 1;
             const isFarSide = Math.abs(position) === 2;
 
+            const xOffset = windowWidth < 768 ? 200 : windowWidth < 1024 ? 240 : 340;
+
             return (
               <motion.div
                 key={`${covers[index]}-${index}`}
-                initial={false}
+                initial={{ opacity: 0, scale: 0.5, x: position * xOffset }}
                 animate={{
-                  x: position * (window.innerWidth < 768 ? 120 : window.innerWidth < 1024 ? 200 : 280),
-                  scale: isCenter ? 1 : isSide ? 0.8 : 0.6,
+                  x: position * xOffset,
+                  scale: isCenter ? 1.1 : 0.85,
                   zIndex: 10 - Math.abs(position),
-                  opacity: isFarSide ? 0.3 : 1,
-                  filter: isCenter ? 'blur(0px)' : 'blur(2px)',
+                  opacity: 1,
+                  filter: isCenter ? 'blur(0px)' : 'blur(1px)',
                 }}
+                exit={{ opacity: 0, scale: 0.5 }}
                 transition={{
                   type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                  mass: 1,
+                  stiffness: 260,
+                  damping: 26,
                 }}
                 className="absolute cursor-pointer"
                 onClick={() => {
-                  setActiveIndex(index);
-                  handleInteraction();
+                  if (!isCenter) {
+                    setActiveIndex(index);
+                    handleInteraction();
+                  }
                 }}
               >
                 <div className={`
-                  relative aspect-[2/3] w-[180px] md:w-[260px] lg:w-[320px] 
-                  rounded-lg overflow-hidden shadow-2xl transition-all duration-500
-                  ${isCenter ? 'ring-1 ring-white/20' : ''}
+                  relative aspect-[2/3] w-[200px] md:w-[280px] lg:w-[360px] 
+                  rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500
+                  ${isCenter ? 'ring-1 ring-white/10' : 'brightness-75'}
                 `}>
                   <img 
                     src={covers[index]} 
@@ -95,7 +107,7 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
                     loading="lazy"
                   />
                   {!isCenter && (
-                    <div className="absolute inset-0 bg-black/20 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-black/10 transition-opacity duration-500" />
                   )}
                 </div>
               </motion.div>
@@ -118,7 +130,7 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
           <ChevronLeft className="w-5 h-5" />
         </button>
         
-        <div className="flex gap-2">
+        <div className="flex gap-2 max-w-[200px] md:max-w-md overflow-x-auto scrollbar-none py-1">
           {covers.map((_, i) => (
             <button
               key={i}
@@ -126,7 +138,7 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
                 setActiveIndex(i);
                 handleInteraction();
               }}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
+              className={`h-1.5 shrink-0 rounded-full transition-all duration-300 ${
                 activeIndex === i ? 'w-8 bg-primary' : 'w-1.5 bg-muted-foreground/30'
               }`}
             />
