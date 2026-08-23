@@ -1,5 +1,6 @@
 import { BlogPost } from "../blog-types";
 import { stock } from "../blog-types";
+import heroAsset from "@/assets/ai-design-systems-hero.jpg.asset.json";
 
 
 export const aiDesignSystemsPost: BlogPost = {
@@ -11,7 +12,7 @@ export const aiDesignSystemsPost: BlogPost = {
   authorRole: "Creative Agency",
   title: "AI Is Changing How Designers Build Products: Why Design Systems Matter More Than Ever",
   excerpt: "AI tools can generate interfaces in seconds, but building a cohesive product requires more than just prompts. Discover why design systems are the essential foundation for AI-powered product development.",
-  img: stock("1558591710146-12c47a8138b5"),
+  img: heroAsset.url,
   imgAlt: "Modern digital design system interface with AI conceptual elements",
   metaTitle: "AI & Design Systems: The Future of Product Development | Pixel2Tech",
   metaDescription: "Learn how AI is reshaping UI/UX design and why robust design systems are becoming the critical bridge between AI generation and professional product experiences.",
