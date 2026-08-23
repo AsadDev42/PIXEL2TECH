@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
+import { BookMockup } from './book-mockup';
 
 interface BookCarouselProps {
   covers: string[];
@@ -73,21 +74,25 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
             return (
               <motion.div
                 key={`${covers[index]}-${index}`}
-                initial={{ opacity: 0, scale: 0.5, x: position * xOffset }}
+                initial={{ opacity: 0, scale: 0.5, x: position * xOffset, rotateY: position * 45, translateZ: -200 }}
                 animate={{
                   x: position * xOffset,
                   scale: isCenter ? 1.1 : 0.85,
                   zIndex: 10 - Math.abs(position),
                   opacity: 1,
+                  rotateY: position * -25, // Angled toward center
+                  translateZ: isCenter ? 100 : -100, // Forward/backward depth
                   filter: isCenter ? 'blur(0px)' : 'blur(1px)',
                 }}
-                exit={{ opacity: 0, scale: 0.5 }}
+                exit={{ opacity: 0, scale: 0.5, x: position * xOffset * 1.5 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 26,
+                  stiffness: 200,
+                  damping: 25,
+                  mass: 1.2
                 }}
                 className="absolute cursor-pointer"
+                style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
                 onClick={() => {
                   if (!isCenter) {
                     setActiveIndex(index);
@@ -96,19 +101,13 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
                 }}
               >
                 <div className={`
-                  relative aspect-[2/3] w-[200px] md:w-[280px] lg:w-[360px] 
-                  rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500
-                  ${isCenter ? 'ring-1 ring-white/10' : 'brightness-75'}
+                  w-[200px] md:w-[280px] lg:w-[360px] transition-all duration-500
+                  ${isCenter ? '' : 'brightness-75'}
                 `}>
-                  <img 
-                    src={covers[index]} 
-                    alt={`Book cover ${index + 1}`} 
-                    className="w-full h-full object-cover"
-                    loading="lazy"
+                  <BookMockup 
+                    coverUrl={covers[index]} 
+                    className="w-full"
                   />
-                  {!isCenter && (
-                    <div className="absolute inset-0 bg-black/10 transition-opacity duration-500" />
-                  )}
                 </div>
               </motion.div>
             );
