@@ -4,6 +4,7 @@ import { FadeIn } from "@/components/motion";
 import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { BookComposition } from "@/components/book-mockup";
 import { InteractiveBookShowcase } from "@/components/book-3d-showcase";
+import { BookCarousel } from "@/components/book-carousel";
 import {
   getItemBySlug,
   getRelated,
@@ -168,16 +169,11 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
             <InteractiveBookShowcase covers={images} />
           </div>
           
-          {/* Static Grid View for full visibility */}
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {images.map((src, i) => (
-              <FadeIn key={src + i} delay={0.05 * i}>
-                <div className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 dark:border-white/10">
-                  <img src={src} alt={`${item.title} cover ${i + 1}`} loading="lazy" decoding="async" className="aspect-[2/3] w-full object-cover transition duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                </div>
-              </FadeIn>
-            ))}
+          {/* Animated 3D Carousel View */}
+          <div className="relative -mx-5 sm:mx-0 overflow-hidden">
+            <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            <BookCarousel covers={images} />
           </div>
         </div>
       </FadeIn>
