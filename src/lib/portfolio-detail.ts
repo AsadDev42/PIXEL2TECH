@@ -125,6 +125,57 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       "Mockup Creation",
     ],
   },
+  "swishtag-social-media-management": {
+    process: [
+      {
+        title: "Content Planning & Strategy",
+        body: "We established a weekly content calendar that aligned with Swishtag's marketing goals, ensuring a consistent posting schedule and a balanced mix of educational and promotional content.",
+      },
+      {
+        title: "Creative Content Production",
+        body: "We designed a library of static social media graphics using the brand's core identity, creating a recognizable and professional aesthetic for the feed.",
+      },
+      {
+        title: "Social Media Video Support",
+        body: "We produced and edited high-impact social media videos, focusing on quick-value hooks and aesthetic storytelling to capture attention mid-scroll.",
+      },
+      {
+        title: "Active Management & Posting",
+        body: "We handled the day-to-day management of the channels, ensuring every post was optimized for the specific platform and community engagement.",
+      },
+    ],
+    technologies: [
+      "Figma",
+      "Adobe Photoshop",
+      "Adobe Premiere Pro",
+      "Adobe After Effects",
+      "Content Management Systems",
+      "Social Analytics Tools",
+    ],
+    whyItMatters:
+      "Consistent, high-quality social media management is the baseline for modern brand trust. For Swishtag, having a feed that reflects their innovation and quality ensures that every new visitor immediately understands the brand's value and professional standing.",
+    faqs: [
+      {
+        q: "Do you handle the actual posting for Swishtag?",
+        a: "Yes, we manage the entire lifecycle from content planning and creative production to the final posting and scheduling on the social platforms.",
+      },
+      {
+        q: "What kind of video content do you produce?",
+        a: "We focus on social-first videos, including short-form reels, product showcases, and creative content designed specifically for high engagement on platforms like Instagram and TikTok.",
+      },
+      {
+        q: "How do you ensure the content stays on-brand?",
+        a: "We developed a specific design system for Swishtag's social channels that dictates typography, color usage, and imagery styles, ensuring every asset feels like part of the same brand family.",
+      },
+    ],
+    relatedReading: COMMERCE_READING,
+    relatedServices: [
+      "Social Media Management",
+      "Creative Content Production",
+      "Video Editing",
+      "Brand Design",
+    ],
+  },
 };
 
 const BANKS: Record<string, DetailBank> = {

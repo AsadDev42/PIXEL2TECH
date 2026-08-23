@@ -90,6 +90,26 @@ const OVERRIDES: Record<string, ProjectCopy> = {
       { label: "Digital Impact", value: "Unified Website & Social Visuals" },
     ],
   },
+  "swishtag-social-media-management": {
+    metaTitle: "Swishtag Social Media Management Case Study | Pixel2Tech",
+    metaDescription:
+      "Social media management, content planning, and creative content production for Swishtag — branding and digital presence for a modern e-commerce platform.",
+    summary:
+      "Managing Swishtag's social media presence through content planning, static graphics, and video production.",
+    overview:
+      "Swishtag is a modern brand that required a consistent and high-impact social media presence. Working closely with their team, we took over the management of their social channels, focusing on content planning, high-quality static graphics, and engaging social media videos. This project represents our core work in maintaining a brand's digital voice and visual identity.",
+    challenge:
+      "Swishtag needed to bridge the gap between their product innovation and how it was perceived on social media. Their presence required more structured content planning and a higher standard of creative output to truly reflect the quality of the brand.",
+    approach:
+      "We implemented a structured content planning cycle combined with a premium design system for all static graphics. By integrating social media videos and creative content that highlighted the brand's unique value propositions, we created a more dynamic and trustworthy feed. We also supported video production and editing to ensure high production value across all formats.",
+    outcome:
+      "Swishtag now maintains a professional, cohesive, and highly engaging social media presence. The brand's digital voice is consistent, and the high-quality creatives have helped build stronger community trust and brand recognition.",
+    results: [
+      { label: "Services Delivered", value: "Full Social Media Management" },
+      { label: "Content Types", value: "Static Graphics, Videos, Creative Content" },
+      { label: "Strategic Impact", value: "Cohesive Digital Brand Identity" },
+    ],
+  },
 };
 
 
