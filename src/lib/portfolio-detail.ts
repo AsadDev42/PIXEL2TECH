@@ -176,6 +176,57 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       "Brand Design",
     ],
   },
+  "book-cover-design-portfolio": {
+    process: [
+      {
+        title: "Audience & Market Research",
+        body: "We analyzed the competitive landscape for each book's specific genre, identifying the visual tropes that signal authority and credibility within the financial and self-improvement publishing sectors.",
+      },
+      {
+        title: "Conceptual Cover Art",
+        body: "We developed unique visual concepts for each title, focusing on 'Tax Sale Secrets', 'Alchemy of Mind', 'Inflation Nation', and 'Infinite Banking'. The artwork was designed to be clear, symbolic, and immediately readable.",
+      },
+      {
+        title: "Typography & Hierarchy",
+        body: "We selected and refined the typography for each title and author name, ensuring a perfect balance between bold readability and sophisticated editorial design.",
+      },
+      {
+        title: "Mockup Composition",
+        body: "Instead of plain flat images, we created premium 3D hardcover and paperback mockups with realistic material textures, shadows, and studio lighting to showcase the artwork in a professional context.",
+      },
+    ],
+    technologies: [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "3D Rendering Tools",
+      "Typography Design",
+      "Mockup Production",
+      "Editorial Design Systems",
+    ],
+    whyItMatters:
+      "A book cover is the single most important marketing asset for a publication. In a digital-first marketplace, the cover must work as a tiny thumbnail and a full-size physical object. By combining high-impact design with realistic presentation, we ensure the author's work is perceived with the professional respect it deserves.",
+    faqs: [
+      {
+        q: "Do you design the interior pages as well?",
+        a: "While this specific showcase focuses on cover art and external mockups, we can provide full interior typesetting and layout design as an additional service.",
+      },
+      {
+        q: "What files do you provide for the cover?",
+        a: "We provide print-ready PDFs with correct bleed and spine widths, plus high-resolution JPEG and PNG files for e-book platforms like Amazon Kindle and Apple Books.",
+      },
+      {
+        q: "Can you handle multiple titles in a series?",
+        a: "Yes, we specialize in creating cohesive visual systems that link multiple books together as a recognizable series while giving each title its own distinct identity.",
+      },
+    ],
+    relatedReading: CREATIVE_READING,
+    relatedServices: [
+      "Editorial Design",
+      "Mockup Creation",
+      "Brand Identity",
+      "Product Visualization",
+    ],
+  },
 };
 
 const BANKS: Record<string, DetailBank> = {

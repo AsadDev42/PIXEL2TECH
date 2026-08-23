@@ -1,5 +1,6 @@
 import { jacquesAssets, nayyerAssets } from "@/assets/jacques-assets";
 import { swishtagAssets } from "@/assets/swishtag-assets";
+import { bookCoverAssets } from "@/assets/book-cover-assets";
 export type PortfolioItem = {
   title: string;
   img: string;
@@ -86,7 +87,13 @@ const RAW: RawWork = {
         img: swishtagAssets.cover,
         images: swishtagAssets.images,
       },
-      { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75" },
+      {
+        slug: "book-cover-design-portfolio",
+        title: "Book Cover Design",
+        img: bookCoverAssets.covers[0],
+        images: bookCoverAssets.covers,
+        category: "Design",
+      },
       { title: "Cafe seasonal creatives", img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Fashion editorial reels", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75" },
     ],
