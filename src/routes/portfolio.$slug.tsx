@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
-import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play } from "lucide-react";
+import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play, BookOpen } from "lucide-react";
+import { BookComposition } from "@/components/book-mockup";
 import {
   getItemBySlug,
   getRelated,
@@ -153,7 +154,31 @@ export const Route = createFileRoute("/portfolio/$slug")({
 
 function CategoryShowcase({ item, images }: { item: PortfolioItem; images: string[] }) {
   const sub = item.subcategory;
+  const slug = item.slug;
   const all = [item.img, ...images];
+
+  // Book Cover Design special showcase
+  if (slug === "book-cover-design-portfolio") {
+    return (
+      <FadeIn>
+        <div className="bg-muted/30 rounded-3xl p-4 sm:p-8">
+          <BookComposition covers={images} className="min-h-[400px] md:min-h-[500px]" />
+          
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {images.map((src, i) => (
+              <FadeIn key={src + i} delay={0.05 * i}>
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-shadow hover:shadow-lg dark:border-white/10">
+                  <img src={src} alt={`${item.title} cover ${i + 1}`} loading="lazy" decoding="async" className="aspect-[2/3] w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/5" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+    );
+  }
+
 
   // Mobile app → phone frames
   if (sub === "Mobile Apps") {
