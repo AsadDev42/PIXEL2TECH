@@ -26,6 +26,7 @@ export { stock, headingId } from "./blog-types";
 export type { BlogPost, BlogSection, BlogTable } from "./blog-types";
 
 export const posts: BlogPost[] = [
+  shopifyIssuesFixPost,
   topMarketingAgenciesPakistanPost,
   topSeoAgenciesPakistanPost,
   aiDesignSystemsPost,

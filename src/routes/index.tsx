@@ -110,7 +110,7 @@ function HomeContact() {
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Top 7 Marketing Agencies in Pakistan in 2026 ya wali image be please update kr do is blog kay lia"}
+              {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            please post this blog ya blog kko natural tine ma likha aur hn is ko na easy word ma krna aplease\n\n10 Common Shopify Issues and How to Fix Them"}
             </p>
 
 
