@@ -164,7 +164,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
       <FadeIn>
         <div className="space-y-16">
           {/* Interactive 3D Showcase */}
-          <div className="bg-muted/30 dark:bg-white/[0.01] rounded-[2rem] p-6 sm:p-12 md:p-20 border border-border/50 dark:border-white/5 shadow-inner">
+          <div className="bg-muted/30 dark:bg-white/[0.01] rounded-[2rem] p-4 sm:p-8 md:p-12 border border-border/50 dark:border-white/5 shadow-inner">
             <InteractiveBookShowcase covers={images} />
           </div>
           
