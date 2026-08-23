@@ -3,7 +3,7 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows, Environment, Float, PerspectiveCamera, Text, useHelper } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2, BookOpen } from 'lucide-react';
 
 interface BookModelProps {
   coverUrl: string;
