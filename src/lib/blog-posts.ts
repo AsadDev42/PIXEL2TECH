@@ -16,6 +16,8 @@ import { futureOfDigitalProductsPost } from "@/lib/posts/future-of-digital-produ
 import { googlePakistanOfficePost } from "@/lib/posts/google-pakistan-office";
 import { aiAutomationBusinessOperationsPost } from "@/lib/posts/ai-automation-business-operations";
 import { outtricksVsInstantlyVsApolloPost } from "@/lib/posts/outtricks-vs-instantly-vs-apollo";
+import { aiDesignSystemsPost } from "@/lib/posts/ai-design-systems-future";
+
 
 
 
@@ -25,8 +27,9 @@ import { outtricksVsInstantlyVsApolloPost } from "@/lib/posts/outtricks-vs-insta
  * literal visual. `stock()` returns a plain Unsplash URL; `getImageSources()`
  * in `blog-images.ts` derives the AVIF/WebP srcsets from it automatically.
  */
-const stock = (id: string) =>
+export const stock = (id: string) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=70`;
+
 
 /** A comparison table rendered inside an article section. */
 export type BlogTable = {
@@ -100,8 +103,10 @@ export function headingId(heading: string) {
 }
 
 export const posts: BlogPost[] = [
+  aiDesignSystemsPost,
   outtricksVsInstantlyVsApolloPost,
   aiAutomationBusinessOperationsPost,
+
 
   googlePakistanOfficePost,
   futureOfDigitalProductsPost,
