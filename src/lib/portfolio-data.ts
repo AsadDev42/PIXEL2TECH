@@ -82,7 +82,7 @@ const RAW: RawWork = {
       {
         slug: "swishtag-social-media-management",
         title: "Swishtag Social Media Management",
-        img: "/__l5e/assets-v1/swishtag-promo-plus.jpg",
+        img: "/__l5e/assets-v1/2560731a-e990-4ba8-9b16-419b4b0e5274/swishtag-main-cover.png",
         images: [
           "/__l5e/assets-v1/swishtag-promo-life.jpg",
           "/__l5e/assets-v1/swishtag-bag.jpg",
