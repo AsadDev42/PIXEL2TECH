@@ -1,5 +1,6 @@
 import type { BlogPost } from "@/lib/blog-posts";
-import cover from "@/assets/ai-automation-operations-cover.jpg";
+import coverAsset from "@/assets/ai-automation-operations-new-cover.jpg.asset.json";
+const cover = coverAsset.url;
 
 /**
  * AI and automation in business operations.
