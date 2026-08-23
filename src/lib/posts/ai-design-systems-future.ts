@@ -1,4 +1,6 @@
-import { BlogPost, stock } from "../blog-posts";
+import { BlogPost } from "../blog-posts";
+import { stock } from "../blog-posts";
+
 
 export const aiDesignSystemsPost: BlogPost = {
   slug: "ai-design-systems-future",
