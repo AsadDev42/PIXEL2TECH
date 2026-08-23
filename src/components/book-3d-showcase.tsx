@@ -1,9 +1,9 @@
-import React, { Suspense, useRef, useState, useMemo } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { OrbitControls, ContactShadows, Environment, Float, PerspectiveCamera, Text } from '@react-three/drei';
+import React, { Suspense, useRef, useState, useMemo, useEffect } from 'react';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { OrbitControls, ContactShadows, Environment, Float, PerspectiveCamera, Text, useHelper } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 
 interface BookModelProps {
   coverUrl: string;
@@ -12,24 +12,29 @@ interface BookModelProps {
 
 function BookModel({ coverUrl, rotation }: BookModelProps) {
   const meshRef = useRef<THREE.Group>(null);
+  
+  // Use a fallback to prevent loader from hanging if image is broken
   const texture = useLoader(THREE.TextureLoader, coverUrl);
+  
+  const { viewport } = useThree();
   
   // Set texture properties for best appearance
   useMemo(() => {
     if (texture) {
       texture.anisotropy = 16;
       texture.minFilter = THREE.LinearFilter;
+      texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+      texture.needsUpdate = true;
     }
   }, [texture]);
 
-  // Dimensions
-  const width = 3;
-  const height = 4.5;
-  const thickness = 0.4;
-  const bevelSize = 0.05;
+  // Dimensions - slightly adjust for better viewport fit
+  const width = 3.2;
+  const height = 4.8;
+  const thickness = 0.5;
 
   return (
-    <group ref={meshRef} rotation={rotation}>
+    <group ref={meshRef} rotation={rotation} scale={viewport.width < 5 ? 0.7 : 1}>
       {/* Front Cover */}
       <mesh position={[0, 0, thickness / 2]}>
         <boxGeometry args={[width, height, 0.02]} />
@@ -93,7 +98,10 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
   return (
     <div className="flex flex-col items-center w-full max-w-5xl mx-auto space-y-8">
       {/* 3D Viewer Container */}
-      <div className="relative w-full aspect-square md:aspect-[16/9] bg-muted/20 dark:bg-white/[0.02] rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5">
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-neutral-100 dark:bg-neutral-900/50 rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
+        <div className="absolute inset-0 w-full h-full">
+        
+        
         
         {/* Navigation Arrows */}
         <div className="absolute inset-y-0 left-4 z-10 flex items-center">
@@ -123,34 +131,34 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
           </p>
         </div>
 
-        <Canvas shadows gl={{ antialias: true, alpha: true }}>
-          <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={45} />
-          
+        <Canvas 
+          shadows 
+          gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
+          camera={{ position: [0, 0, 8], fov: 45 }}
+        >
           <Suspense fallback={null}>
-            <Environment preset="studio" />
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} />
-
+            <Environment preset="city" />
+            <ambientLight intensity={0.8} />
+            <pointLight position={[10, 10, 10]} intensity={1.5} castShadow />
+            <directionalLight position={[-5, 5, 5]} intensity={1} />
+            
             <Float 
-              speed={1.5} 
+              speed={2} 
               rotationIntensity={0.2} 
               floatIntensity={0.5}
             >
-              <group position={[0, 0, 0]}>
-                <BookModel 
-                  key={covers[activeIndex]} 
-                  coverUrl={covers[activeIndex]} 
-                  rotation={[0, 0.2, 0]} 
-                />
-              </group>
+              <BookModel 
+                key={covers[activeIndex]} 
+                coverUrl={covers[activeIndex]} 
+                rotation={[0.1, 0.3, 0]} 
+              />
             </Float>
 
             <ContactShadows 
-              position={[0, -3.5, 0]} 
-              opacity={0.4} 
-              scale={20} 
-              blur={2.5} 
+              position={[0, -3, 0]} 
+              opacity={0.6} 
+              scale={15} 
+              blur={2} 
               far={4.5} 
             />
           </Suspense>
@@ -158,12 +166,19 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
           <OrbitControls 
             enableZoom={false} 
             enablePan={false} 
-            minPolarAngle={Math.PI / 3} 
-            maxPolarAngle={Math.PI / 1.5}
+            minPolarAngle={Math.PI / 4} 
+            maxPolarAngle={Math.PI / 1.2}
             makeDefault
-            rotateSpeed={0.8}
+            rotateSpeed={0.5}
           />
         </Canvas>
+        </div>
+        
+
+        {/* Loading Indicator */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-data-[loading=true]:opacity-100 transition-opacity">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
       </div>
 
       {/* Thumbnail Selector */}

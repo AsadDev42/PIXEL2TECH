@@ -935,7 +935,7 @@ function Insights() {
 '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Create a premium interactive 3D Book Showcase for the 5th portfolio project, replacing the current simple Book Cover Design presentation.
+                                            Fix the 3D book viewer. The current portfolio section shows the uploaded book thumbnails and left/right navigation correctly, but the main 3D book area is completely blank.
 */
 function Studio() {
   return (
