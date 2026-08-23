@@ -1,4 +1,5 @@
 import { jacquesAssets, nayyerAssets } from "@/assets/jacques-assets";
+import { swishtagAssets } from "@/assets/swishtag-assets";
 export type PortfolioItem = {
   title: string;
   img: string;
@@ -82,18 +83,8 @@ const RAW: RawWork = {
       {
         slug: "swishtag-social-media-management",
         title: "Swishtag Social Media Management",
-        img: "/__l5e/assets-v1/2560731a-e990-4ba8-9b16-419b4b0e5274/swishtag-main-cover.png",
-        images: [
-          "/__l5e/assets-v1/swishtag-promo-life.jpg",
-          "/__l5e/assets-v1/swishtag-bag.jpg",
-          "/__l5e/assets-v1/why-shopify.jpg",
-          "/__l5e/assets-v1/innovations.jpg",
-          "/__l5e/assets-v1/meeting-1.jpg",
-          "/__l5e/assets-v1/ask-random.jpg",
-          "/__l5e/assets-v1/meeting-2.jpg",
-          "/__l5e/assets-v1/csr-stars.jpg",
-          "/__l5e/assets-v1/annual-loss.jpg",
-        ],
+        img: swishtagAssets.cover,
+        images: swishtagAssets.images,
       },
       { title: "Skincare content series", img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Cafe seasonal creatives", img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600&auto=format&fit=crop&fm=webp&q=75" },
