@@ -1,4 +1,5 @@
-import { BlogPost, stock } from "../blog-types";
+import { BlogPost } from "../blog-types";
+import heroAsset from "@/assets/shopify-issues-fix-hero.jpg.asset.json";
 
 export const shopifyIssuesFixPost: BlogPost = {
   slug: "shopify-issues-and-how-to-fix-them",
@@ -8,7 +9,7 @@ export const shopifyIssuesFixPost: BlogPost = {
   author: "Pixel2Tech Team",
   title: "10 Common Shopify Issues and How to Fix Them",
   excerpt: "Shopify makes it easy to launch a store, but it's not always perfect. Learn how to identify and fix 10 common Shopify issues affecting sales, SEO, speed, and more.",
-  img: stock("1557824559197-2a916a2ca35b"), // Generic ecommerce/storefront stock
+  img: heroAsset.url,
   metaTitle: "10 Common Shopify Issues and How to Fix Them in 2026",
   metaDescription: "Discover 10 common Shopify issues affecting sales, SEO, speed, payments, inventory, and more, plus practical ways to fix them.",
   keywords: [
