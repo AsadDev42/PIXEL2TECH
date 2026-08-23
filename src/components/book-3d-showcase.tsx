@@ -42,9 +42,9 @@ function BookModel({ coverUrl, rotation }: BookModelProps) {
       </mesh>
 
       {/* Back Cover */}
-      <mesh position={[0, 0, -thickness / 2]}>
+      <mesh position={[0, 0, -thickness / 2]} rotation={[0, Math.PI, 0]}>
         <boxGeometry args={[width, height, 0.02]} />
-        <meshStandardMaterial color="#1a1a1a" roughness={0.9} />
+        <meshStandardMaterial map={texture} roughness={0.8} metalness={0.1} />
       </mesh>
 
       {/* Spine */}
