@@ -120,7 +120,7 @@ const OVERRIDES: Record<string, ProjectCopy> = {
     outcome: "The final designs provided the authors with a cohesive and professional library of book covers. By presenting these through realistic hardcover and paperback mockups, we elevated the presentation from flat artwork to a premium design product that resonates with both publishers and readers.",
     results: [
       { label: "Design Work", value: "Full Cover Art & Typography" },
-      { label: "Titles Covered", value: "Private Bank, Wealth, Inflation Nation, Tax Sale Secrets" },
+      { label: "Titles Covered", value: "Private Bank, Wealth, Inflation Nation, VA Hub, Unshackled, Deceived" },
       { label: "Output Formats", value: "Hardcover, Paperback & E-Book Mockups" },
     ],
   },
