@@ -1,4 +1,5 @@
-import { BlogPost, stock } from "../blog-types";
+import { BlogPost } from "../blog-types";
+import heroAsset from "@/assets/top-7-seo-agencies-pakistan.jpg.asset.json";
 
 export const topSeoAgenciesPakistanPost: BlogPost = {
   slug: "top-seo-agencies-in-pakistan",
@@ -8,7 +9,7 @@ export const topSeoAgenciesPakistanPost: BlogPost = {
   author: "Pixel2Tech Team",
   title: "Top 7 SEO Agencies in Pakistan in 2026",
   excerpt: "Finding the right SEO agency can be difficult. Explore our editorial list of 7 top SEO companies in Pakistan offering SEO, content, and digital growth services.",
-  img: stock("1557838923043-59f8c9356224"),
+  img: heroAsset.url,
   metaTitle: "Top 7 SEO Agencies in Pakistan in 2026 | Pixel2Tech",
   metaDescription: "Looking for the best SEO agencies in Pakistan? Explore 7 SEO companies offering SEO, content, technical SEO, digital marketing, and website optimization services.",
   keywords: [
