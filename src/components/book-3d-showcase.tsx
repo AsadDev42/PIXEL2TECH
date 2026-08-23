@@ -3,7 +3,7 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows, Environment, Float, PerspectiveCamera, Text, useHelper } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2, BookOpen } from 'lucide-react';
 
 interface BookModelProps {
   coverUrl: string;
@@ -96,122 +96,144 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
   const prevBook = () => setActiveIndex((prev) => (prev - 1 + covers.length) % covers.length);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-5xl mx-auto space-y-8">
-      {/* 3D Viewer Container */}
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-neutral-100 dark:bg-neutral-900/50 rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
-        <div className="absolute inset-0 w-full h-full">
-        
-        
-        
-        {/* Navigation Arrows */}
-        <div className="absolute inset-y-0 left-4 z-10 flex items-center">
-          <button 
-            onClick={prevBook}
-            className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
-            aria-label="Previous book"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+    <div className="w-full">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+        {/* Left Side: Thumbnail Selector (approx 30%) */}
+        <div className="w-full lg:w-[30%] order-2 lg:order-1">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-2 gap-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
+            {covers.map((url, i) => (
+              <button
+                key={url}
+                onClick={() => setActiveIndex(i)}
+                className={`
+                  relative flex-shrink-0 w-full aspect-[2/3] rounded-xl overflow-hidden transition-all duration-300 transform
+                  ${activeIndex === i 
+                    ? 'ring-2 ring-primary scale-[0.98] shadow-lg border-2 border-primary/50' 
+                    : 'opacity-50 hover:opacity-100 grayscale-[50%] hover:grayscale-0 border border-border/50'}
+                `}
+              >
+                <img src={url} alt={`Book thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                {activeIndex === i && (
+                  <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
+                    <div className="bg-primary text-white p-1 rounded-full scale-75">
+                      <BookOpen className="w-4 h-4" />
+                    </div>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+          
+          <div className="mt-8 hidden lg:block">
+            <motion.div 
+              key={activeIndex}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-left"
+            >
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary mb-2">Editorial Design</div>
+              <h3 className="text-xl font-bold text-foreground mb-3">Book Cover Showcase</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Click any cover on the left to view it in the interactive 3D mockup. Drag the book on the right to rotate it.
+              </p>
+            </motion.div>
+          </div>
         </div>
 
-        <div className="absolute inset-y-0 right-4 z-10 flex items-center">
-          <button 
-            onClick={nextBook}
-            className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
-            aria-label="Next book"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Info Overlay */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-center">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold bg-background/50 dark:bg-black/30 backdrop-blur-sm px-4 py-1.5 rounded-full inline-block mb-2">
-            Click & Drag to Rotate
-          </p>
-        </div>
-
-        <Canvas 
-          shadows 
-          gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
-          camera={{ position: [0, 0, 8], fov: 45 }}
-        >
-          <Suspense fallback={null}>
-            <Environment preset="city" />
-            <ambientLight intensity={0.8} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} castShadow />
-            <directionalLight position={[-5, 5, 5]} intensity={1} />
+        {/* Right Side: 3D Viewer Container (approx 70%) */}
+        <div className="w-full lg:w-[70%] order-1 lg:order-2">
+          <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-neutral-100 dark:bg-neutral-900/50 rounded-[2rem] overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
+            <div className="absolute inset-0 w-full h-full">
             
-            <Float 
-              speed={2} 
-              rotationIntensity={0.2} 
-              floatIntensity={0.5}
+              {/* Navigation Arrows */}
+              <div className="absolute inset-y-0 left-4 z-10 flex items-center">
+                <button 
+                  onClick={prevBook}
+                  className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
+                  aria-label="Previous book"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="absolute inset-y-0 right-4 z-10 flex items-center">
+                <button 
+                  onClick={nextBook}
+                  className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
+                  aria-label="Next book"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Info Overlay */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-center">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold bg-background/50 dark:bg-black/30 backdrop-blur-sm px-4 py-1.5 rounded-full inline-block">
+                  Click & Drag to Rotate
+                </p>
+              </div>
+
+              <Canvas 
+                shadows 
+                gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
+                camera={{ position: [0, 0, 8], fov: 45 }}
+              >
+                <Suspense fallback={null}>
+                  <Environment preset="city" />
+                  <ambientLight intensity={0.8} />
+                  <pointLight position={[10, 10, 10]} intensity={1.5} castShadow />
+                  <directionalLight position={[-5, 5, 5]} intensity={1} />
+                  
+                  <Float 
+                    speed={2} 
+                    rotationIntensity={0.2} 
+                    floatIntensity={0.5}
+                  >
+                    <BookModel 
+                      key={covers[activeIndex]} 
+                      coverUrl={covers[activeIndex]} 
+                      rotation={[0.1, 0.3, 0]} 
+                    />
+                  </Float>
+
+                  <ContactShadows 
+                    position={[0, -3, 0]} 
+                    opacity={0.6} 
+                    scale={15} 
+                    blur={2} 
+                    far={4.5} 
+                  />
+                </Suspense>
+
+                <OrbitControls 
+                  enableZoom={false} 
+                  enablePan={false} 
+                  minPolarAngle={Math.PI / 4} 
+                  maxPolarAngle={Math.PI / 1.2}
+                  makeDefault
+                  rotateSpeed={0.5}
+                />
+              </Canvas>
+            </div>
+            
+            {/* Loading Indicator */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-data-[loading=true]:opacity-100 transition-opacity">
+              <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+            </div>
+          </div>
+          
+          <div className="mt-6 lg:hidden text-center">
+            <motion.div 
+              key={activeIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
             >
-              <BookModel 
-                key={covers[activeIndex]} 
-                coverUrl={covers[activeIndex]} 
-                rotation={[0.1, 0.3, 0]} 
-              />
-            </Float>
-
-            <ContactShadows 
-              position={[0, -3, 0]} 
-              opacity={0.6} 
-              scale={15} 
-              blur={2} 
-              far={4.5} 
-            />
-          </Suspense>
-
-          <OrbitControls 
-            enableZoom={false} 
-            enablePan={false} 
-            minPolarAngle={Math.PI / 4} 
-            maxPolarAngle={Math.PI / 1.2}
-            makeDefault
-            rotateSpeed={0.5}
-          />
-        </Canvas>
-        </div>
-        
-
-        {/* Loading Indicator */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-data-[loading=true]:opacity-100 transition-opacity">
-          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary mb-1">Editorial Design</div>
+              <h3 className="text-lg font-bold text-foreground">Book Cover Design</h3>
+            </motion.div>
+          </div>
         </div>
       </div>
-
-      {/* Thumbnail Selector */}
-      <div className="w-full">
-        <div className="flex items-center justify-center gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide">
-          {covers.map((url, i) => (
-            <button
-              key={url}
-              onClick={() => setActiveIndex(i)}
-              className={`
-                relative flex-shrink-0 w-16 md:w-24 aspect-[2/3] rounded-md overflow-hidden transition-all duration-300 transform
-                ${activeIndex === i ? 'ring-2 ring-foreground scale-105 shadow-xl' : 'opacity-50 hover:opacity-100 grayscale-[50%] hover:grayscale-0'}
-              `}
-            >
-              <img src={url} alt={`Book thumbnail ${i + 1}`} className="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Book Metadata */}
-      <motion.div 
-        key={activeIndex}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center max-w-xl px-6"
-      >
-        <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-2">Editorial Design</div>
-        <h3 className="text-2xl font-bold text-foreground mb-3">Book Cover Design</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          A collection of professionally designed book covers presented through realistic 3D mockups. Use the arrows or thumbnails to explore the series.
-        </p>
-      </motion.div>
     </div>
   );
 }
