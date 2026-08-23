@@ -1,8 +1,9 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { FadeIn } from "@/components/motion";
-import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play, BookOpen } from "lucide-react";
+import { ArrowLeft, ArrowRight, Target, Wrench, TrendingUp, Check, Play, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { BookComposition } from "@/components/book-mockup";
+import { InteractiveBookShowcase } from "@/components/book-3d-showcase";
 import {
   getItemBySlug,
   getRelated,
@@ -161,15 +162,19 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
   if (slug === "book-cover-design-portfolio") {
     return (
       <FadeIn>
-        <div className="bg-muted/30 rounded-3xl p-4 sm:p-8">
-          <BookComposition covers={images} className="min-h-[400px] md:min-h-[500px]" />
+        <div className="space-y-16">
+          {/* Interactive 3D Showcase */}
+          <div className="bg-muted/30 dark:bg-white/[0.01] rounded-[2rem] p-6 sm:p-12 md:p-20 border border-border/50 dark:border-white/5 shadow-inner">
+            <InteractiveBookShowcase covers={images} />
+          </div>
           
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Static Grid View for full visibility */}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {images.map((src, i) => (
               <FadeIn key={src + i} delay={0.05 * i}>
-                <div className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-shadow hover:shadow-lg dark:border-white/10">
-                  <img src={src} alt={`${item.title} cover ${i + 1}`} loading="lazy" decoding="async" className="aspect-[2/3] w-full object-cover transition duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/5" />
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 dark:border-white/10">
+                  <img src={src} alt={`${item.title} cover ${i + 1}`} loading="lazy" decoding="async" className="aspect-[2/3] w-full object-cover transition duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
               </FadeIn>
             ))}
