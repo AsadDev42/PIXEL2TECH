@@ -110,6 +110,20 @@ const OVERRIDES: Record<string, ProjectCopy> = {
       { label: "Strategic Impact", value: "Cohesive Digital Brand Identity" },
     ],
   },
+  "book-cover-design-portfolio": {
+    metaTitle: "Book Cover Design Portfolio | Pixel2Tech",
+    metaDescription: "A showcase of premium, realistic book cover designs including Tax Sale Secrets, Alchemy of Mind, and Infinite Banking.",
+    summary: "Premium editorial design and realistic book cover mockups for high-impact publishing.",
+    overview: "We designed a series of high-impact book covers for a range of financial and psychological titles, focusing on clear typography, symbolic imagery, and a premium editorial feel. The project involved creating consistent brand visual identities across multiple titles, ensuring each book stands out in a crowded marketplace while maintaining professional credibility.",
+    challenge: "Each book cover needed to communicate complex financial or scientific concepts through a single, immediate visual hook. The designs had to balance professional authority with mainstream appeal, ensuring they looked as good as a small thumbnail on Amazon as they do in physical high-street bookstores.",
+    approach: "We used a combination of bold, high-contrast typography and carefully selected symbolic imagery—from a classical building for 'Tax Sale Secrets' to a detailed neural map for 'Alchemy of Mind.' The visual language was tailored to the specific target audience of each book, using color palettes that evoke trust, curiosity, or stability as required.",
+    outcome: "The final designs provided the authors with a cohesive and professional library of book covers. By presenting these through realistic hardcover and paperback mockups, we elevated the presentation from flat artwork to a premium design product that resonates with both publishers and readers.",
+    results: [
+      { label: "Design Work", value: "Full Cover Art & Typography" },
+      { label: "Titles Covered", value: "Tax Sale Secrets, Alchemy of Mind, Deceived + more" },
+      { label: "Output Formats", value: "Hardcover, Paperback & E-Book Mockups" },
+    ],
+  },
 };
 
 
