@@ -193,10 +193,10 @@ function BlogPostPage() {
                             <span className="text-xs font-bold uppercase tracking-widest text-[#1E90FF]">Top Pick 2026</span>
                             <span className="text-[15px] font-bold text-foreground">{post.quickVerdict.winner}</span>
                           </div>
-                          <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-[#1E90FF] hover:underline">
-                            Request your own tech audit
+                          <a href="https://www.outtricks.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#1E90FF] hover:underline">
+                            Visit Outtricks
                             <ChevronRight className="h-4 w-4" />
-                          </Link>
+                          </a>
                         </div>
                       ) : null}
                     </div>
