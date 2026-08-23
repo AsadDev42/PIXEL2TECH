@@ -110,7 +110,7 @@ function HomeContact() {
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-              {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison  fot this pleasechange the image aagain"}
+              {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison is kay  blog ki image ko thora optimazed kr do please abi qafi heavay hha"}
             </p>
 
 
