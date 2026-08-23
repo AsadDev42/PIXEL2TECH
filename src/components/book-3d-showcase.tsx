@@ -142,7 +142,7 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
 
         {/* Right Side: 3D Viewer Container (approx 70%) */}
         <div className="w-full lg:w-[70%] order-1 lg:order-2">
-          <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-neutral-100 dark:bg-neutral-900/50 rounded-[2rem] overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
+          <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[700px] bg-neutral-100 dark:bg-neutral-900/50 rounded-[2rem] overflow-hidden cursor-grab active:cursor-grabbing border border-border/50 dark:border-white/5 shadow-2xl flex items-center justify-center">
             <div className="absolute inset-0 w-full h-full">
             
               {/* Navigation Arrows */}
@@ -176,7 +176,7 @@ export function InteractiveBookShowcase({ covers }: InteractiveBookShowcaseProps
               <Canvas 
                 shadows 
                 gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
-                camera={{ position: [0, 0, 8], fov: 45 }}
+                camera={{ position: [0, 0, 7], fov: 45 }}
               >
                 <Suspense fallback={null}>
                   <Environment preset="city" />
