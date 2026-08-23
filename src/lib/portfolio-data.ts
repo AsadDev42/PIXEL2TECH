@@ -92,7 +92,6 @@ const RAW: RawWork = {
         title: "Book Cover Design",
         img: bookCoverAssets.covers[0],
         images: bookCoverAssets.covers,
-        category: "Design",
       },
       { title: "Cafe seasonal creatives", img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600&auto=format&fit=crop&fm=webp&q=75" },
       { title: "Fashion editorial reels", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75" },
