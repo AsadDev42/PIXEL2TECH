@@ -16,7 +16,7 @@ export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselPr
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    return () => window.removeResizeListener?.('resize', handleResize) || window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const nextSlide = useCallback(() => {
