@@ -1,23 +1,23 @@
-import bookTaxSale from "@/assets/book-cover-tax-sale-secrets.png.asset.json";
-import bookDeceived from "@/assets/book-cover-deceived.png.asset.json";
-import bookInflation from "@/assets/book-cover-inflation-nation.png.asset.json";
-import bookCashFlow from "@/assets/book-cover-hooked-on-cash-flow.png.asset.json";
-import bookPrivateBank from "@/assets/book-cover-private-bank.png.asset.json";
-import bookAlchemy from "@/assets/book-cover-alchemy-of-mind.png.asset.json";
+import bookPrivateBank from "@/assets/private-bank-cover.jpg.asset.json";
+import bookWealth from "@/assets/wealth-without-wall-street.jpg.asset.json";
+import bookInflation from "@/assets/inflation-nation.jpg.asset.json";
+import bookTaxSaleGears from "@/assets/tax-sale-secrets-gears.jpg.asset.json";
+import bookTaxSaleHouse from "@/assets/tax-sale-secrets-house.jpg.asset.json";
+import bookMultifamily from "@/assets/multifamily-money-machine.jpg.asset.json";
 
 export const bookCoverAssets = {
-  taxSale: bookTaxSale.url,
-  deceived: bookDeceived.url,
-  inflation: bookInflation.url,
-  cashFlow: bookCashFlow.url,
   privateBank: bookPrivateBank.url,
-  alchemy: bookAlchemy.url,
+  wealth: bookWealth.url,
+  inflation: bookInflation.url,
+  taxSaleGears: bookTaxSaleGears.url,
+  taxSaleHouse: bookTaxSaleHouse.url,
+  multifamily: bookMultifamily.url,
   covers: [
-    bookTaxSale.url,
-    bookDeceived.url,
-    bookInflation.url,
-    bookCashFlow.url,
     bookPrivateBank.url,
-    bookAlchemy.url,
+    bookWealth.url,
+    bookInflation.url,
+    bookTaxSaleGears.url,
+    bookTaxSaleHouse.url,
+    bookMultifamily.url,
   ],
 };
