@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 
 export const outtricksVsInstantlyVsApolloPost: BlogPost = {
   slug: "outtricks-vs-instantly-vs-apollo",

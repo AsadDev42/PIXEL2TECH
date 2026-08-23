@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 
 /**
  * The biggest SEO mistakes businesses still make in 2026.

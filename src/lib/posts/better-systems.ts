@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 
 /**
  * Why businesses don't need more software, they need better systems.

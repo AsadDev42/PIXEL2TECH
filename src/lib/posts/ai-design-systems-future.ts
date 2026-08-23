@@ -1,5 +1,5 @@
-import { BlogPost } from "../blog-posts";
-import { stock } from "../blog-posts";
+import { BlogPost } from "../blog-types";
+import { stock } from "../blog-types";
 
 
 export const aiDesignSystemsPost: BlogPost = {
