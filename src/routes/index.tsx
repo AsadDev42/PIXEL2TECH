@@ -935,7 +935,7 @@ function Insights() {
 '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            Swishtag Social Media Management is ki images show ni horahi please fix this
+                                            Create a premium interactive 3D Book Showcase for the 5th portfolio project, replacing the current simple Book Cover Design presentation.
 */
 function Studio() {
   return (
