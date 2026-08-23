@@ -4,7 +4,7 @@ import heroAsset from "@/assets/top-7-seo-agencies-pakistan-v2.jpg.asset.json";
 export const topSeoAgenciesPakistanPost: BlogPost = {
   slug: "top-seo-agencies-in-pakistan",
   tag: "SEO",
-  date: "August 23, 2026",
+  date: "August 20, 2026",
   time: "9:00 am",
   author: "Pixel2Tech Team",
   title: "Top 7 SEO Agencies in Pakistan in 2026",
