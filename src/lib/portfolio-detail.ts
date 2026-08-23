@@ -233,7 +233,7 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       "Product Visualization",
     ],
   },
-},
+};
 
 const BANKS: Record<string, DetailBank> = {
   "Social Media": {
