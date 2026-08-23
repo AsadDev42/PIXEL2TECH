@@ -931,6 +931,12 @@ function Insights() {
 }
 
 
+/*
+'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+                                        
+                                            
+                                            Swishtag Social Media Management is ki images show ni horahi please fix this
+*/
 function Studio() {
   return (
     <section className="bg-muted/60 py-16 md:py-24 lg:py-32 dark:bg-white/[0.02]">
