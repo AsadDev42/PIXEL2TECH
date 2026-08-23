@@ -184,7 +184,7 @@ const OVERRIDES: Record<string, ProjectDetail> = {
       },
       {
         title: "Conceptual Cover Art",
-        body: "We developed unique visual concepts for each title, including 'How to Start Your Own Private Bank', 'Wealth Without Wall Street', 'Inflation Nation', 'Tax Sale Secrets', and 'Multifamily Money Machine'. The artwork was designed to be clear, symbolic, and immediately readable.",
+        body: "We developed unique visual concepts for each title, including 'How to Start Your Own Private Bank', 'Wealth Without Wall Street', 'Inflation Nation', 'Tax Sale Secrets', 'Multifamily Money Machine', 'The VA Hub Pro Client Handbook', 'Unshackled', 'Hooked on Cash Flow', 'The Goal Achiever', and 'Deceived'. The artwork was designed to be clear, symbolic, and immediately readable.",
       },
       {
         title: "Typography & Hierarchy",
