@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 import googlePakistanOffice from "@/assets/google-pakistan-office-inauguration.png.asset.json";
 import googlePakistanHandshake from "@/assets/google-pakistan-pm-handshake.png.asset.json";
 

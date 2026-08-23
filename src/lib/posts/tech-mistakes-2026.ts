@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 
 /**
  * 20 Most Common Technology Mistakes Businesses Make in 2026.

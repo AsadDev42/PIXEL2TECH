@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 import coverAsset from "@/assets/why-agencies-lose-clients-cover.png.asset.json";
 
 const cover = coverAsset.url;

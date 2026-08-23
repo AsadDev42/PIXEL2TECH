@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 import cover from "@/assets/mobile-app-design-process-cover.jpg";
 
 /**

@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 import cover from "@/assets/verified-wholesale-sourcing-cover.jpg";
 
 /**

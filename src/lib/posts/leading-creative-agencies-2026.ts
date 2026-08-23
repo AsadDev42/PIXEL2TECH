@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogPost } from "@/lib/blog-types";
 
 /**
  * Roundup of leading creative agencies for enterprises and brands in 2026.

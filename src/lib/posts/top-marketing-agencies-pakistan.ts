@@ -1,4 +1,4 @@
-import { BlogPost, stock } from "../blog-posts";
+import { BlogPost, stock } from "../blog-types";
 
 export const topMarketingAgenciesPakistanPost: BlogPost = {
   slug: "top-marketing-agencies-in-pakistan",
