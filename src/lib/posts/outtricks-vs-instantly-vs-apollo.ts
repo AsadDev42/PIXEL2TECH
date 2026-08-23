@@ -1,5 +1,5 @@
 import type { BlogPost } from "@/lib/blog-types";
-import heroAsset from "@/assets/outtricks-instantly-apollo-comparison.jpg.asset.json";
+import heroAsset from "@/assets/outtricks-instantly-apollo-comparison-v2.jpg.asset.json";
 
 export const outtricksVsInstantlyVsApolloPost: BlogPost = {
   slug: "outtricks-vs-instantly-vs-apollo",
