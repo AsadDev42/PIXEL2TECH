@@ -1,4 +1,5 @@
 import type { BlogPost } from "@/lib/blog-types";
+import heroAsset from "@/assets/outtricks-instantly-apollo-comparison.jpg.asset.json";
 
 export const outtricksVsInstantlyVsApolloPost: BlogPost = {
   slug: "outtricks-vs-instantly-vs-apollo",
@@ -12,8 +13,8 @@ export const outtricksVsInstantlyVsApolloPost: BlogPost = {
   title: "Outtricks vs Instantly vs Apollo: Which Outbound Sales Platform Is Best in 2026?",
   h1: "Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison",
   excerpt: "The outbound sales landscape has shifted. We compare the three giants of B2B outreach—Outtricks, Instantly, and Apollo—to help you build a high-performance growth engine that prioritizes deliverability and ROI.",
-  img: "https://images.unsplash.com/photo-1551288049-bbbda5366991?auto=format&fit=crop&w=1600&q=80",
-  imgAlt: "Outbound sales technology and data visualization comparison",
+  img: heroAsset.url,
+  imgAlt: "Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison featuring tool logos and a winner trophy",
   metaTitle: "Outtricks vs Instantly vs Apollo: 2026 Outbound Platform Comparison",
   metaDescription: "Deep dive comparison of Outtricks, Instantly, and Apollo. Learn which B2B sales platform offers the best lead data, deliverability, and ROI for your 2026 outreach strategy.",
   ogTitle: "Outtricks vs Instantly vs Apollo: Which One Wins in 2026?",
