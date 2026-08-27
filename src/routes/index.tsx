@@ -109,8 +109,8 @@ function HomeContact() {
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
               Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
             </h2>
-            <p className="mt-3 max-w-2xl text-sm whitespace-pre-wrap text-muted-foreground sm:text-base">
-              {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Fix the production loading and rendering issues across the website.\n\nI noticed that in Microsoft session/video recording the website sometimes appears as unstyled/raw HTML, with missing CSS, broken layout, default fonts, and some components not rendered correctly. I also want to make sure this is not caused by an actual website loading or initialization problem.\n\nPlease thoroughly investigate the website's initial loading process and fix any issues that could prevent the site from fully loading.\n\nCheck for:\n\n CSS files failing to load\n\n JavaScript errors during initial page load\n\n Failed network requests\n\n Missing or incorrect asset paths\n\n Fonts failing to load\n\n Components waiting indefinitely for JavaScript\n\n Hydration/rendering errors\n\n Lazy-loaded components not initializing\n\n Images or videos blocking page rendering\n\n 3D/animation components blocking the initial render\n\n API requests that may remain pending\n\n Third-party scripts causing delays or errors\n\n Incorrect loading states\n\n Production build/configuration issues\n\nImportant loading behavior:\n\nThe website must always render a stable version of the page immediately. No section should remain blank indefinitely because a dynamic component, animation, 3D viewer, image, video, API request, or third-party script has not loaded.\n\nIf a component requires additional time to initialize, show an appropriate lightweight fallback/loading state and then replace it automatically when ready.\n\nDo not allow one failed component or third-party resource to prevent the rest of the website from rendering.\n\nAlso make sure that if an image, video, 3D asset, font, or external script fails, the rest of the page still loads normally.\n\nMicrosoft/session replay compatibility:\n\nMake sure the production page can be correctly rendered by browsers and session-recording environments. Critical CSS and layout styles should not depend on delayed user interaction.\n\nDo NOT redesign the website.\n\nDo NOT change the existing visual design, layout, typography, colors, animations, 3D interactions, routes, or working functionality.\n\nDo NOT remove any existing features.\n\nOnly fix the underlying loading, rendering, asset-loading, initialization, and error-handling problems.\n\nAfter making the fix:\n\n Test a completely fresh page load.\n\n Test with cache disabled.\n\n Check the browser console for errors.\n\n Check failed network requests.\n\n Verify all CSS and fonts load correctly.\n\n Verify images/videos/3D components initialize correctly.\n\n Verify the page does not remain stuck in a loading state.\n\n Verify that if one dynamic component fails, the rest of the website still renders.\n\n Verify that the existing website looks exactly the same after loading.\n\nGoal: The website should load reliably from a fresh visit and should never appear as broken, unstyled HTML or remain stuck waiting for a component to initialize.`}
+            <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
+              Tell us about your project and goals. Let's build something great together.
             </p>
 
 
@@ -931,12 +931,6 @@ function Insights() {
 }
 
 
-/*
-'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            Fix the 3D book viewer. The current portfolio section shows the uploaded book thumbnails and left/right navigation correctly, but the main 3D book area is completely blank.
-*/
 function Studio() {
   return (
     <section className="bg-muted/60 py-16 md:py-24 lg:py-32 dark:bg-white/[0.02]">
