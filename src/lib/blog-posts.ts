@@ -2,7 +2,8 @@
 
 
 
-import { BlogPost, stock } from "./blog-types";
+import type { BlogPost } from "./blog-types";
+import { stock } from "./blog-types";
 import { mobileAppDesignProcessPost } from "@/lib/posts/mobile-app-design-process";
 import { contextualAdvertisingPost } from "@/lib/posts/contextual-advertising-privacy-first";
 import { verifiedWholesaleSourcingPost } from "@/lib/posts/verified-wholesale-sourcing";
