@@ -8,8 +8,9 @@
  * All covers use licensed Unsplash stock photos so each article has a clear,
  * literal visual. `stock()` returns a plain Unsplash URL.
  */
-export const stock = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=70`;
+export function stock(id: string) {
+  return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=70`;
+}
 
 /** A comparison table rendered inside an article section. */
 export type BlogTable = {
