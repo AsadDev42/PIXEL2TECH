@@ -1,10 +1,7 @@
-const LINKEDIN_PROFILES: Record<string, string> = {
-  "Asad Farooq": "https://www.linkedin.com/in/designerasad/",
-  "Usama Farooq": "https://www.linkedin.com/in/osama-farooq-manj/",
-};
+import { TEAM } from "@/lib/team";
 
 export function getLinkedInUrl(name: string): string | undefined {
-  return LINKEDIN_PROFILES[name];
+  return TEAM.find((m) => m.name === name)?.linkedin;
 }
 
 /**

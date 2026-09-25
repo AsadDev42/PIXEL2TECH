@@ -23,7 +23,7 @@ export function BlogCta({
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-to-br from-[#1E90FF] to-[#7C3AED] opacity-25 blur-3xl"
+        className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-to-br from-brand to-brand-strong opacity-25 blur-3xl"
       />
       <div className="relative flex flex-col gap-6">
         <div className="min-w-0">
@@ -36,7 +36,7 @@ export function BlogCta({
         <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
           <Link
             to="/contact"
-            className="inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#1E90FF] to-[#7C3AED] px-5 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
+            className="inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-strong px-5 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
           >
             {primaryLabel}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

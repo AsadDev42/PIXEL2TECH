@@ -90,7 +90,7 @@ function BlogPage() {
 
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:gap-4">
-              <span className="rounded-full bg-[#1E90FF]/10 px-2.5 py-1 font-semibold text-[#1E90FF]">
+              <span className="rounded-full bg-brand/10 px-2.5 py-1 font-semibold text-primary">
                 {featured.tag}
               </span>
               <span>{featured.date}</span>

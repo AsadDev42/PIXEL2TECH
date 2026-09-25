@@ -107,7 +107,7 @@ function HomeContact() {
         <FadeIn>
           <div className="rounded-2xl border border-transparent bg-muted p-6 dark:border-white/10 dark:bg-[#0a0d1f] sm:rounded-3xl sm:p-10 md:p-14">
             <h2 id="home-contact-title" className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-              Ready to <span className="text-[#2b7fff]">Grow Your Brand?</span>
+              Ready to <span className="text-primary">Grow Your Brand?</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
               Tell us about your project and goals. Let's build something great together.
@@ -417,7 +417,7 @@ function Hero() {
         <div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[56px]">
             One Creative Agency.{" "}
-            <span className="text-[#1E90FF]">Not Ten Freelancers.</span>
+            <span className="text-primary">Not Ten Freelancers.</span>
           </h1>
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted-foreground sm:mt-6">
             A full-service creative agency handling everything your brand needs — design, development, social media, and software — so you can focus on growing the business.
@@ -665,18 +665,18 @@ function Services() {
           <div className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 dark:border-white/10 dark:bg-white/[0.03] md:p-12 lg:p-16">
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#1E90FF]/10 blur-3xl md:h-64 md:w-64"
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl md:h-64 md:w-64"
             />
 
             <div className="relative flex flex-col items-center text-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground dark:border-white/10 dark:bg-white/[0.04] sm:text-xs">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                 What We Do
               </span>
 
               <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
                 Everything You Need to{" "}
-                <span className="text-[#1E90FF]">Build, Grow and Scale</span>
+                <span className="text-primary">Build, Grow and Scale</span>
               </h2>
 
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -710,7 +710,7 @@ function Services() {
           {services.map((s) => (
             <StaggerItem key={s.title} className="h-full">
               <div className="group h-full rounded-2xl border border-border bg-background p-5 text-center shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.05] md:p-6 lg:p-8">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1E90FF]/10 text-[#1E90FF] transition group-hover:scale-110 sm:h-16 sm:w-16">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-primary transition group-hover:scale-110 sm:h-16 sm:w-16">
                   <s.Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.75} aria-hidden="true" />
                 </div>
                 <h3 className="mt-5 text-lg font-bold text-foreground">{s.title}</h3>
@@ -735,7 +735,7 @@ function Work() {
         <FadeIn>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
             Work That Helps{" "}
-            <span className="text-[#1E90FF]">Brands Grow</span>
+            <span className="text-primary">Brands Grow</span>
           </h2>
           <p className="mt-2 text-[14px] text-muted-foreground sm:text-[15px]">
             One team. All your creative and digital needs. Drag to explore.
@@ -960,7 +960,7 @@ function Studio() {
             <div>
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Inside the Studio</div>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-                Where the work <span className="text-[hsl(206_100%_50%)]">actually happens</span>
+                Where the work <span className="text-primary">actually happens</span>
               </h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
                 Our studio is where designers, developers, and strategists sit shoulder-to-shoulder — sketching brands, shipping code, and reviewing campaigns in real time. No hand-offs, no silos, just one team building for clients around the world.

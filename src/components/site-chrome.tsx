@@ -1,30 +1,37 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
-import { Suspense } from "react";
+import { SOCIAL_LINKS } from "@/components/social-links";
+import { FadeIn } from "@/components/motion";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
+import { useFocusTrap } from "@/lib/use-focus-trap";
+import { trackEvent } from "@/lib/analytics";
+import { PRIMARY_CTA_LABEL, SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 // Modal code (and its Calendly embed) is only fetched when a user opens it.
 const BookingModal = lazyWithRetry(() =>
   import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
 );
 
-import { SOCIAL_LINKS } from "@/components/social-links";
-import { Menu, X } from "lucide-react";
-import { useFocusTrap } from "@/lib/use-focus-trap";
-import { trackEvent } from "@/lib/analytics";
-
-
 const NAV = [
   { label: "Home", to: "/" },
-  { label: "About Us", to: "/about" },
+  { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ] as const;
+
+/** Inline nav needs ~1000px; below that the menu button takes over. */
+const DESKTOP_NAV_QUERY = "(min-width: 1024px)";
+
+function isActive(pathname: string, to: string) {
+  if (to === "/") return pathname === "/";
+  return pathname === to || pathname.startsWith(`${to}/`);
+}
 
 export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -32,8 +39,12 @@ export function SiteNav() {
   const [bookingOpen, setBookingOpen] = useState(false);
 
   // Close menu on route change
-  useEffect(() => { setOpen(false); }, [pathname]);
-  // Lock body scroll when menu open
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll while the menu is open; close on Escape or when the
+  // viewport grows into the desktop nav breakpoint.
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -41,9 +52,10 @@ export function SiteNav() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
-    // Close the drawer if the viewport grows into the desktop nav breakpoint.
-    const mq = window.matchMedia("(min-width: 768px)");
-    const onChange = () => { if (mq.matches) setOpen(false); };
+    const mq = window.matchMedia(DESKTOP_NAV_QUERY);
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
     mq.addEventListener("change", onChange);
     window.addEventListener("keydown", onKey);
     return () => {
@@ -55,277 +67,323 @@ export function SiteNav() {
 
   const mobileNavRef = useFocusTrap<HTMLDivElement>(open);
 
+  const openBooking = (source: string) => {
+    trackEvent("strategy_call_modal_opened", { source });
+    setBookingOpen(true);
+  };
+
   return (
     <>
-    <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-4 sm:gap-4 sm:py-5 md:px-8 lg:px-10">
-        <Link to="/" aria-label="Pixel2Tech — Home" className="flex shrink-0 items-center">
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/90">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-3 sm:gap-4 sm:py-4 md:px-8 lg:px-10">
+          <Link to="/" aria-label="Pixel2Tech home" className="flex shrink-0 items-center">
+            <img
+              decoding="async"
+              width={411}
+              height={98}
+              src={logoAsset.url}
+              alt="Pixel2Tech"
+              className="block h-9 w-auto sm:h-10 dark:hidden"
+            />
+            <img
+              decoding="async"
+              width={411}
+              height={98}
+              src={logoDarkAsset.url}
+              alt="Pixel2Tech"
+              className="hidden h-9 w-auto sm:h-10 dark:block"
+            />
+          </Link>
 
-          <img fetchPriority="high" decoding="async" width={411} height={98} src={logoAsset.url} alt="Pixel2Tech creative agency logo" className="h-9 w-auto sm:h-11 block dark:hidden" />
-          <img fetchPriority="high" decoding="async" width={411} height={98} src={logoDarkAsset.url} alt="Pixel2Tech creative agency logo" className="h-9 w-auto sm:h-11 hidden dark:block" />
-        </Link>
-        <nav aria-label="Primary" className="hidden min-w-0 items-center justify-center gap-4 text-sm font-medium text-foreground md:flex lg:gap-6 lg:text-[15px] xl:gap-8">
-          {NAV.map((n) => {
-            const active = pathname === n.to;
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-5 text-sm font-medium text-foreground lg:flex xl:gap-8 xl:text-[15px]"
+          >
+            {NAV.map((n) => {
+              const active = isActive(pathname, n.to);
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  aria-current={active ? "page" : undefined}
+                  className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
+                >
+                  <span className={active ? "font-semibold" : ""}>{n.label}</span>
+                  {active && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 left-0 h-[2px] w-full bg-foreground"
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => openBooking("header")}
+              className="hidden min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90 sm:inline-flex"
+            >
+              <span className="xl:hidden">Book a call</span>
+              <span className="hidden xl:inline">{PRIMARY_CTA_LABEL}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            >
+              {open ? (
+                <X className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <Menu className="h-5 w-5" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile drawer — rendered outside the sticky/backdrop-blurred header so the
+          fixed panel animates against the viewport (no jitter/shake). */}
+      <div
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-300 ease-out lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      <div
+        id="mobile-nav"
+        ref={mobileNavRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+        aria-hidden={!open}
+        // A closed drawer must not be reachable with Tab.
+        inert={!open || undefined}
+        tabIndex={-1}
+        style={{
+          transform: open ? "translate3d(0,0,0)" : "translate3d(100%,0,0)",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+        }}
+        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${
+          open ? "" : "pointer-events-none"
+        }`}
+      >
+        <div className="flex items-center justify-between px-6 pb-2 pt-5">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            Menu
+          </span>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition active:scale-95"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+
+        <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
+          {NAV.map((n, i) => {
+            const active = isActive(pathname, n.to);
             return (
               <Link
                 key={n.to}
                 to={n.to}
                 aria-current={active ? "page" : undefined}
-                className="relative py-2"
+                style={{
+                  transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
+                  transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
+                }}
+                className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-lg font-semibold tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  open ? "opacity-100" : "opacity-0"
+                } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
               >
-                <span className={active ? "font-semibold" : ""}>{n.label}</span>
-                {active && (
-                  <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[2px] w-full bg-foreground" />
-                )}
+                <span>{n.label}</span>
+                {active && <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand" />}
               </Link>
             );
           })}
         </nav>
-        <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
-          <ThemeToggle />
-          <button
-            type="button"
-            onClick={() => { trackEvent("strategy_call_modal_opened", { source: "header" }); setBookingOpen(true); }}
-            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background hover:opacity-90 sm:inline-flex md:hidden lg:inline-flex lg:px-6"
-          >
-            Schedule a Strategy Session
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground md:hidden"
-          >
-            {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-          </button>
 
+        <div className="mt-auto space-y-4 px-6 pb-8 pt-8">
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              openBooking("mobile_menu");
+            }}
+            className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {PRIMARY_CTA_LABEL}
+          </button>
+          <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+            <a href={`mailto:${SITE.email}`} className="min-h-11 py-2">
+              {SITE.email}
+            </a>
+            <a href={`tel:${SITE.phoneE164}`} className="min-h-11 py-2">
+              {SITE.phoneDisplay}
+            </a>
+          </div>
         </div>
       </div>
 
-    </header>
-
-    {/* Mobile drawer — rendered outside the sticky/backdrop-blurred header so the
-        fixed panel animates against the viewport (no jitter/shake). */}
-    <div
-      aria-hidden={!open}
-      onClick={() => setOpen(false)}
-      className={`fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-300 ease-out md:hidden ${
-        open ? "opacity-100" : "pointer-events-none opacity-0"
-      }`}
-    />
-    <div
-      id="mobile-nav"
-      ref={mobileNavRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Site navigation"
-      aria-hidden={!open}
-      tabIndex={-1}
-      style={{
-        transform: open ? "translate3d(0,0,0)" : "translate3d(100%,0,0)",
-        willChange: "transform",
-        backfaceVisibility: "hidden",
-      }}
-      className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
-        open ? "" : "pointer-events-none"
-      }`}
-    >
-      <div className="flex items-center justify-between px-6 pb-2 pt-5">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-          Menu
-        </span>
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          aria-label="Close menu"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground transition active:scale-95"
-        >
-          <X className="h-5 w-5" aria-hidden="true" />
-        </button>
-      </div>
-
-      <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
-        {NAV.map((n, i) => {
-          const active = pathname === n.to;
-          return (
-            <Link
-              key={n.to}
-              to={n.to}
-              aria-current={active ? "page" : undefined}
-              style={{
-                transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
-                transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
-              }}
-              className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-[19px] font-semibold tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                open ? "opacity-100" : "opacity-0"
-              } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
-            >
-              <span>{n.label}</span>
-              {active && (
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#1E90FF]" />
-              )}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <div className="mt-auto space-y-4 px-6 pb-8 pt-8">
-        <button
-          type="button"
-          onClick={() => { setOpen(false); trackEvent("strategy_call_modal_opened", { source: "mobile_menu" }); setBookingOpen(true); }}
-          className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          Schedule a Strategy Session
-        </button>
-        <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-          <a href="mailto:sales@pixel2tech.com" className="min-h-11 py-2">sales@pixel2tech.com</a>
-          <a href="tel:+923177475233" className="min-h-11 py-2">+92 317 7475233</a>
-        </div>
-      </div>
-    </div>
-
-    {bookingOpen && (
-      <Suspense fallback={null}>
-        <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
-      </Suspense>
-    )}
-
+      {bookingOpen && (
+        <Suspense fallback={null}>
+          <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+        </Suspense>
+      )}
     </>
   );
 }
 
+const QUICK_LINKS = [
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Portfolio", to: "/portfolio" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
+] as const;
 
-const MARQUEE_WORDS = [
-  "Brand Identity",
-  "Website Design & Development",
-  "UI UX",
-  "Social Media",
-  "AI Solutions",
-  "Motion Design",
-];
-
-function FooterMarquee() {
-  const loop = [...MARQUEE_WORDS, ...MARQUEE_WORDS];
-  return (
-    <div className="marquee-viewport edge-fade-x overflow-hidden bg-muted py-6 sm:py-8">
-      <div className="marquee-track slow items-center gap-8 pr-8 sm:gap-14 sm:pr-14">
-        {loop.map((w, i) => (
-          <div
-            key={`${w}-${i}`}
-            className="flex shrink-0 items-center gap-8 text-[36px] font-black leading-none tracking-tight text-foreground sm:gap-14 sm:text-[64px] lg:text-[96px]"
-          >
-            <span aria-hidden="true" className="text-[#1E90FF]">✳</span>
-            <span>{w}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
+const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest"];
 
 export function SiteFooter() {
-  const quick = [
-    { label: "About", to: "/about" as const },
-    { label: "Services", to: "/services" as const },
-    { label: "Portfolio", to: "/portfolio" as const },
-    { label: "Blog", to: "/blog" as const },
-    { label: "Contact", to: "/contact" as const },
-  ];
-  const svc = [
-    { label: "Branding", to: "/services" as const },
-    { label: "Web Design", to: "/services" as const },
-    { label: "UI UX", to: "/services" as const },
-    { label: "Social Media", to: "/services" as const },
-    { label: "Software & Automation", to: "/services" as const },
-  ];
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-muted">
-      <div className="mx-auto max-w-7xl px-5 pt-16 pb-10 md:px-10">
+      {/* Extra bottom padding on phones keeps the legal links clear of the WhatsApp button. */}
+      <div className="mx-auto max-w-7xl px-5 pb-24 pt-16 md:px-10 md:pb-10">
         <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
-
           <div>
-            <Link to="/" aria-label="Pixel2Tech — Home">
-              <img loading="lazy" decoding="async" width={411} height={98} src={logoAsset.url} alt="Pixel2Tech creative agency logo" className="h-11 w-auto block dark:hidden" />
-              <img loading="lazy" decoding="async" width={411} height={98} src={logoDarkAsset.url} alt="Pixel2Tech creative agency logo" className="h-11 w-auto hidden dark:block" />
+            <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
+              <img
+                loading="lazy"
+                decoding="async"
+                width={411}
+                height={98}
+                src={logoAsset.url}
+                alt="Pixel2Tech"
+                className="block h-10 w-auto dark:hidden"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                width={411}
+                height={98}
+                src={logoDarkAsset.url}
+                alt="Pixel2Tech"
+                className="hidden h-10 w-auto dark:block"
+              />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              A full-service creative agency from Pakistan, serving clients worldwide.
+              {SITE.positioning}.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.filter((s) =>
-                ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest"].includes(s.name)
-              ).map(({ name, href, Icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Pixel2Tech on ${name}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-background"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ))}
+              {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(
+                ({ name, href, Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Pixel2Tech on ${name}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-background"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ),
+              )}
             </div>
-
           </div>
-          <div>
-            <div className="text-lg font-bold text-foreground">Quick Links</div>
+
+          <nav aria-labelledby="footer-quick-links">
+            <h2 id="footer-quick-links" className="text-base font-bold text-foreground">
+              Quick links
+            </h2>
             <ul className="mt-4 space-y-1 text-sm text-foreground/80">
-              {quick.map((q) => (
+              {QUICK_LINKS.map((q) => (
                 <li key={q.to}>
-                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
+                  <Link
+                    to={q.to}
+                    className="inline-flex min-h-10 items-center py-1 hover:text-foreground"
+                  >
                     {q.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <div className="text-lg font-bold text-foreground">Services</div>
-            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
-              {svc.map((q) => (
-                <li key={q.label}>
-                  <Link to={q.to} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
-                    {q.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div className="text-lg font-bold text-foreground">Contact</div>
-            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
-              <li>
-                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "footer" })} className="inline-flex min-h-10 items-center break-all py-1 hover:text-foreground">
-                  sales@pixel2tech.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+923177475233" onClick={() => trackEvent("phone_click", { location: "footer" })} className="inline-flex min-h-10 items-center py-1 hover:text-foreground">
-                  +92 317 7475233
-                </a>
-              </li>
-              <li className="py-1">Pakistan Based, Serving Worldwide</li>
-            </ul>
-          </div>
+          </nav>
 
+          <nav aria-labelledby="footer-services">
+            <h2 id="footer-services" className="text-base font-bold text-foreground">
+              Services
+            </h2>
+            <ul className="mt-4 text-sm text-foreground/80">
+              {SERVICES.map((title) => (
+                <li key={title}>
+                  <Link
+                    to="/services"
+                    hash={serviceAnchor(title)}
+                    className="inline-flex min-h-9 items-center hover:text-foreground"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="text-base font-bold text-foreground">Contact</h2>
+            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
+              <li>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  onClick={() => trackEvent("email_click", { location: "footer" })}
+                  className="inline-flex min-h-10 items-center break-all py-1 hover:text-foreground"
+                >
+                  {SITE.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${SITE.phoneE164}`}
+                  onClick={() => trackEvent("phone_click", { location: "footer" })}
+                  className="inline-flex min-h-10 items-center py-1 hover:text-foreground"
+                >
+                  {SITE.phoneDisplay}
+                </a>
+              </li>
+              <li className="py-1">{SITE.locationLine}</li>
+            </ul>
+          </div>
         </div>
+
         <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12 sm:flex-row sm:justify-between sm:text-left">
-          <span>© 2026 Pixel2Tech. All rights reserved.</span>
+          <span>© {year} Pixel2Tech. All rights reserved.</span>
           <span className="flex items-center gap-2">
-            <Link to="/privacy-policy" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">Terms &amp; Conditions</Link>
+            <Link
+              to="/privacy-policy"
+              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
+            >
+              Privacy policy
+            </Link>
+            <Link
+              to="/terms-and-conditions"
+              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
+            >
+              Terms &amp; conditions
+            </Link>
           </span>
-
         </div>
-
       </div>
-      <FooterMarquee />
     </footer>
   );
 }
@@ -333,46 +391,39 @@ export function SiteFooter() {
 function WhatsAppButton() {
   return (
     <a
-      href="https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0"
+      href={SITE.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
-      className="group fixed bottom-4 right-4 z-50 flex h-14 items-center gap-2 overflow-hidden rounded-full bg-[#25D366] pl-4 pr-4 text-white shadow-xl transition-all duration-300 hover:pr-5 sm:bottom-6 sm:right-6"
+      // z-30 keeps it under the header, the mobile menu and modals.
+      className="group fixed bottom-4 right-4 z-30 flex h-14 items-center gap-2 overflow-hidden rounded-full bg-[#25D366] pl-4 pr-4 text-white shadow-xl transition-all duration-300 hover:pr-5 sm:bottom-6 sm:right-6"
     >
       <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-300 group-hover:max-w-[160px] group-hover:pr-1 group-hover:opacity-100">
         WhatsApp us
       </span>
-      <span className="relative flex h-8 w-8 shrink-0 items-center justify-center">
-        <span aria-hidden="true" className="absolute inline-flex h-full w-full animate-ping rounded-full bg-background/40" />
-        <svg viewBox="0 0 32 32" className="relative h-7 w-7" fill="currentColor" aria-hidden="true">
-          <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.79 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.708.888.858 0 2.42-.516 2.75-1.404.13-.343.187-.744.187-1.117 0-.286-1.877-1.135-2.15-1.246Zm-2.895 7.208a10.086 10.086 0 0 1-5.13-1.404l-3.583.945.96-3.522A10.028 10.028 0 0 1 6.145 14.4 10.079 10.079 0 0 1 16.2 4.348a10.079 10.079 0 0 1 10.055 10.052 10.079 10.079 0 0 1-10.041 10.013Zm0-22.146A12.11 12.11 0 0 0 4.098 14.4c0 2.147.573 4.194 1.65 6.055L3.75 27.75l7.457-1.949a12.121 12.121 0 0 0 5.784 1.476h.014c6.694 0 12.176-5.474 12.176-12.166A12.15 12.15 0 0 0 25.638 5.5a12.005 12.005 0 0 0-9.423-4.233Z"/>
-        </svg>
-      </span>
+      <svg viewBox="0 0 32 32" className="h-7 w-7 shrink-0" fill="currentColor" aria-hidden="true">
+        <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.290-1.460-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.490 0-.143-.73-2.090-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.79 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.708.888.858 0 2.42-.516 2.75-1.404.13-.343.187-.744.187-1.117 0-.286-1.877-1.135-2.15-1.246Zm-2.895 7.208a10.086 10.086 0 0 1-5.13-1.404l-3.583.945.96-3.522A10.028 10.028 0 0 1 6.145 14.4 10.079 10.079 0 0 1 16.2 4.348a10.079 10.079 0 0 1 10.055 10.052 10.079 10.079 0 0 1-10.041 10.013Zm0-22.146A12.11 12.11 0 0 0 4.098 14.4c0 2.147.573 4.194 1.65 6.055L3.75 27.75l7.457-1.949a12.121 12.121 0 0 0 5.784 1.476h.014c6.694 0 12.176-5.474 12.176-12.166A12.15 12.15 0 0 0 25.638 5.5a12.005 12.005 0 0 0-9.423-4.233Z" />
+      </svg>
     </a>
   );
 }
 
-
-
-import { CursorFollower } from "./cursor-follower";
-import { PageTransition, FadeIn } from "./motion";
-import { AnimatePresence } from "framer-motion";
-
-
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh bg-background text-foreground">
-      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <SiteNav />
-      <main id="main-content" tabIndex={-1} className="focus:outline-none">{children}</main>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
+        {children}
+      </main>
       <SiteFooter />
       <WhatsAppButton />
-      <CursorFollower />
     </div>
   );
 }
-
 
 export function PageHeader({
   eyebrow,
@@ -386,22 +437,19 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <section className="bg-background pt-10 pb-8 sm:pt-16 sm:pb-10">
+    <section className="bg-background pb-8 pt-10 sm:pb-10 sm:pt-16">
       <div className="mx-auto max-w-7xl px-5 text-center sm:px-8">
         <FadeIn>
           {eyebrow && (
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               {eyebrow}
             </div>
           )}
           <h1 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
-            {title}{" "}
-            {highlight && (
-              <span className="text-[#1E90FF]">{highlight}</span>
-            )}
+            {title} {highlight && <span className="text-primary">{highlight}</span>}
           </h1>
           {subtitle && (
-            <p className="mx-auto mt-4 max-w-2xl text-[14px] text-muted-foreground sm:text-[15px]">
+            <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-[15px]">
               {subtitle}
             </p>
           )}
@@ -410,4 +458,3 @@ export function PageHeader({
     </section>
   );
 }
-

@@ -46,7 +46,7 @@ export function ReadingProgress() {
       aria-valuemax={100}
     >
       <div
-        className="h-full bg-gradient-to-r from-[#1E90FF] to-[#7C3AED] transition-[width] duration-150"
+        className="h-full bg-gradient-to-r from-brand to-brand-strong transition-[width] duration-150"
         style={{ width: `${progress}%` }}
       />
     </div>
@@ -88,7 +88,7 @@ export function TableOfContents({
             <span className="mt-0.5 w-5 tabular-nums text-muted-foreground/70">{i + 1}.</span>
             <a
               href={`#${item.id}`}
-              className="line-clamp-2 leading-snug text-foreground transition hover:text-[#1E90FF]"
+              className="line-clamp-2 leading-snug text-foreground transition hover:text-primary"
               title={item.label}
             >
               {item.label}
@@ -100,7 +100,7 @@ export function TableOfContents({
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-3 text-xs font-semibold text-[#1E90FF] transition hover:underline"
+          className="mt-3 text-xs font-semibold text-primary transition hover:underline"
           aria-expanded={expanded}
         >
           {expanded ? "Show less" : `Show all ${items.length} sections`}
@@ -119,16 +119,16 @@ export function KeyTakeaways({ items }: { items: string[] }) {
   return (
     <section
       aria-labelledby="key-takeaways"
-      className="rounded-2xl border border-[#1E90FF]/25 bg-[#1E90FF]/5 p-5 sm:p-7"
+      className="rounded-2xl border border-brand/25 bg-brand/5 p-5 sm:p-7"
     >
       <h2 id="key-takeaways" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-        <Lightbulb className="h-5 w-5 text-[#1E90FF]" aria-hidden="true" />
+        <Lightbulb className="h-5 w-5 text-primary" aria-hidden="true" />
         Key takeaways
       </h2>
       <ul className="mt-4 space-y-3">
         {items.map((t) => (
           <li key={t} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-            <Check className="mt-1 h-4 w-4 shrink-0 text-[#1E90FF]" aria-hidden="true" />
+            <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
             <span>{t}</span>
           </li>
         ))}
@@ -159,7 +159,7 @@ export function renderInline(text: string) {
         href={href}
         target="_blank"
         rel="noopener noreferrer nofollow"
-        className="font-medium text-[#1E90FF] underline underline-offset-4 hover:opacity-80"
+        className="font-medium text-primary underline underline-offset-4 hover:opacity-80"
       >
         {m[1]}
       </a>
@@ -177,7 +177,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
       <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{section.heading}</h2>
 
       {section.definition ? (
-        <p className="mt-4 border-l-2 border-[#1E90FF] pl-4 text-[15px] font-medium leading-relaxed text-foreground sm:text-base">
+        <p className="mt-4 border-l-2 border-brand pl-4 text-[15px] font-medium leading-relaxed text-foreground sm:text-base">
           {section.definition}
         </p>
       ) : null}
@@ -228,7 +228,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
         <ul className="mt-5 space-y-2.5">
           {section.bullets.map((b) => (
             <li key={b} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1E90FF]" aria-hidden="true" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
               <span>{renderInline(b)}</span>
             </li>
           ))}
@@ -268,7 +268,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
       {section.callout ? (
         <aside className="mt-6 rounded-2xl border border-border bg-muted/60 p-5 sm:p-6">
           {section.callout.title ? (
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-[#1E90FF]">{section.callout.title}</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-primary">{section.callout.title}</h3>
           ) : null}
           <p className="mt-2 text-[15px] leading-relaxed text-foreground sm:text-base">{renderInline(section.callout.body)}</p>
         </aside>
@@ -290,7 +290,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
                 <ul className="mt-3 space-y-2">
                   {sub.bullets.map((b) => (
                     <li key={b} className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7C3AED]" aria-hidden="true" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-strong" aria-hidden="true" />
                       <span>{renderInline(b)}</span>
                     </li>
                   ))}
@@ -369,7 +369,7 @@ export function AuthorCard({ post }: { post: BlogPost }) {
   return (
     <section aria-label="About the author" className="rounded-2xl border border-border bg-background p-5 sm:p-6">
       <div className="flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1E90FF] to-[#7C3AED] text-sm font-bold text-white">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-strong text-sm font-bold text-white">
           {initials}
         </div>
         <div className="min-w-0">
@@ -381,7 +381,7 @@ export function AuthorCard({ post }: { post: BlogPost }) {
             {post.authorBio ??
               "Pixel2Tech is a full-service creative agency building brands, websites, Shopify stores and AI automation systems for founders and growing companies. Everything we publish comes from client work we have shipped."}
           </p>
-          <Link to="/about" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#1E90FF]">
+          <Link to="/about" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
             More about the team
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
@@ -441,7 +441,7 @@ export function ShareBar({ url, title }: { url: string; title: string }) {
         onClick={copy}
         className="inline-flex h-10 items-center gap-2 rounded-lg border border-border px-3 text-sm font-medium text-foreground transition hover:bg-muted"
       >
-        {copied ? <Check className="h-4 w-4 text-[#1E90FF]" aria-hidden="true" /> : <Link2 className="h-4 w-4" aria-hidden="true" />}
+        {copied ? <Check className="h-4 w-4 text-primary" aria-hidden="true" /> : <Link2 className="h-4 w-4" aria-hidden="true" />}
         {copied ? "Link copied" : "Copy link"}
       </button>
     </div>
@@ -466,7 +466,7 @@ export function PrevNextNav({ previous, next }: { previous?: BlogPost; next?: Bl
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Previous article
           </span>
-          <div className="mt-2 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF] sm:text-base">
+          <div className="mt-2 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary sm:text-base">
             {previous.title}
           </div>
         </Link>
@@ -483,7 +483,7 @@ export function PrevNextNav({ previous, next }: { previous?: BlogPost; next?: Bl
             Next article
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
-          <div className="mt-2 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF] sm:text-base">
+          <div className="mt-2 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary sm:text-base">
             {next.title}
           </div>
         </Link>
@@ -508,7 +508,7 @@ export function InternalLinks({ links }: { links: { label: string; to: string }[
           <Link
             key={`${l.label}-${l.to}`}
             to={l.to}
-            className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition hover:border-[#1E90FF] hover:text-[#1E90FF]"
+            className="rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition hover:border-brand hover:text-primary"
           >
             {l.label}
           </Link>

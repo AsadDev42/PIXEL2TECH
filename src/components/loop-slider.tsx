@@ -28,7 +28,6 @@ type Props<T> = {
   pauseOnHover?: boolean;
 };
 
-
 /**
  * LoopLoop Slider — draggable, momentum-preserving, seamlessly looping slider.
  * Supports horizontal (x) and vertical (y) axes. Users can grab and fling the track;
@@ -74,7 +73,6 @@ function LoopSliderImpl<T>({
   const resolvedDir: DirX | DirY = direction ?? (axis === "x" ? "rtl" : "down");
   const isX = axis === "x";
 
-
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -93,8 +91,9 @@ function LoopSliderImpl<T>({
     const ro = new ResizeObserver(measure);
     ro.observe(track);
 
-    const dir =
-      resolvedDir === "ltr" || resolvedDir === "down" ? 1 : -1;
+    const dir = resolvedDir === "ltr" || resolvedDir === "down" ? 1 : -1;
+    // Respect the OS "reduce motion" setting: no ambient drift, drag still works.
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let last = performance.now();
     let raf = 0;
     let running = false;
@@ -106,7 +105,7 @@ function LoopSliderImpl<T>({
       const s = stateRef.current;
       if (!s.dragging) {
         const drifting =
-          autoplayRef.current && !(pauseOnHoverRef.current && s.hovering);
+          autoplayRef.current && !reducedMotion.matches && !(pauseOnHoverRef.current && s.hovering);
         if (drifting) s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
           s.pos += s.velocity * dt;
@@ -165,7 +164,6 @@ function LoopSliderImpl<T>({
     document.addEventListener("visibilitychange", onVisibility);
     sync();
 
-
     const onDown = (e: PointerEvent) => {
       const s = stateRef.current;
       if (e.button !== undefined && e.button !== 0) return;
@@ -184,7 +182,11 @@ function LoopSliderImpl<T>({
       s.velocity = 0;
       s.moved = 0;
       s.pointerId = e.pointerId;
-      try { track.setPointerCapture(e.pointerId); } catch {}
+      try {
+        track.setPointerCapture(e.pointerId);
+      } catch {
+        // Pointer capture can fail if the pointer is already gone; safe to ignore.
+      }
       track.style.cursor = "grabbing";
     };
     const onMove = (e: PointerEvent) => {
@@ -205,7 +207,11 @@ function LoopSliderImpl<T>({
       if (!s.dragging) return;
       s.dragging = false;
       if (s.pointerId !== null) {
-        try { track.releasePointerCapture(s.pointerId); } catch {}
+        try {
+          track.releasePointerCapture(s.pointerId);
+        } catch {
+          // Pointer capture can fail if the pointer is already gone; safe to ignore.
+        }
       }
       s.pointerId = null;
       track.style.cursor = "grab";
@@ -220,8 +226,12 @@ function LoopSliderImpl<T>({
 
     // Hover pause is opt-in per instance but always wired, so the prop can flip
     // at runtime without tearing down the animation loop.
-    const onEnter = () => { stateRef.current.hovering = true; };
-    const onLeave = () => { stateRef.current.hovering = false; };
+    const onEnter = () => {
+      stateRef.current.hovering = true;
+    };
+    const onLeave = () => {
+      stateRef.current.hovering = false;
+    };
     track.addEventListener("pointerenter", onEnter);
     track.addEventListener("pointerleave", onLeave);
 
@@ -253,29 +263,40 @@ function LoopSliderImpl<T>({
     };
   }, [isX, resolvedDir, speed, draggable]);
 
-
   const fadeClass = isX ? "edge-fade-x" : "edge-fade-y";
   const touchClass = draggable
-    // Vertical sliders must never swallow page scrolling on touch devices:
-    // allow native pan-y on small screens and only capture the gesture from lg up.
-    ? (isX ? "touch-pan-y" : "touch-pan-y lg:touch-none")
+    ? // Vertical sliders must never swallow page scrolling on touch devices:
+      // allow native pan-y on small screens and only capture the gesture from lg up.
+      isX
+      ? "touch-pan-y"
+      : "touch-pan-y lg:touch-none"
     : "touch-auto";
   const trackClass = isX
     ? `flex w-max ${touchClass} select-none ${gapClassName}`
     : `flex flex-col h-max ${touchClass} select-none ${gapClassName}`;
 
   return (
-    <div className={`${fadeClass} overflow-hidden ${className}`} aria-label={ariaLabel}>
-      <div
-        ref={trackRef}
-        className={trackClass}
-        style={{ willChange: "transform" }}
-      >
-        {loop.map((item, i) => (
-          <div key={keyFor(item, i)} className="shrink-0" aria-hidden={i >= items.length ? "true" : undefined}>
-            {renderItem(item, i)}
-          </div>
-        ))}
+    <div
+      className={`${fadeClass} overflow-hidden ${className}`}
+      role={ariaLabel ? "region" : undefined}
+      aria-label={ariaLabel}
+    >
+      <div ref={trackRef} className={trackClass} style={{ willChange: "transform" }}>
+        {loop.map((item, i) => {
+          // The second copy only exists for the seamless wrap: hide it from
+          // assistive tech and take its links out of the tab order.
+          const clone = i >= items.length;
+          return (
+            <div
+              key={keyFor(item, i)}
+              className="shrink-0"
+              aria-hidden={clone ? "true" : undefined}
+              inert={clone || undefined}
+            >
+              {renderItem(item, i)}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

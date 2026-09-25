@@ -6,13 +6,18 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
+import { MotionConfig } from "framer-motion";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isChunkLoadError } from "@/lib/lazy-with-retry";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider, THEME_BOOT_SCRIPT } from "@/components/theme-provider";
+import { PageShell } from "@/components/site-chrome";
+import { SITE, STATS } from "@/lib/site-config";
+import { TEAM, TEAM_SIZE } from "@/lib/team";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { ContentProtection } from "@/components/content-protection";
 
@@ -28,41 +33,48 @@ const NOT_FOUND_LINKS = [
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-5 py-16">
-      <div className="max-w-lg text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Error 404</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          This page doesn&apos;t exist
-        </h1>
-        <p className="mt-4 text-[15px] text-muted-foreground">
-          The page you&apos;re looking for was moved, renamed, or never existed. Try one of the pages below,
-          or head back to the homepage.
-        </p>
-        <div className="mt-8 flex justify-center">
-          <Link
-            to="/"
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90"
-          >
-            Back to homepage
-          </Link>
-        </div>
-        <nav aria-label="Helpful links" className="mt-8 flex flex-wrap justify-center gap-2">
-          {NOT_FOUND_LINKS.map((l) => (
+    <PageShell>
+      {/* React 19 hoists these into <head>. */}
+      <title>Page not found | Pixel2Tech</title>
+      <meta name="robots" content="noindex" />
+      <div className="flex min-h-[70dvh] items-center justify-center bg-background px-5 py-16">
+        <div className="max-w-lg text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+            Error 404
+          </p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            This page doesn&apos;t exist
+          </h1>
+          <p className="mt-4 text-[15px] text-muted-foreground">
+            The page you&apos;re looking for was moved, renamed, or never existed. Try one of the
+            pages below, or head back to the homepage.
+          </p>
+          <div className="mt-8 flex justify-center">
             <Link
-              key={l.to}
-              to={l.to}
-              className="inline-flex min-h-10 items-center rounded-full border border-border px-4 text-sm font-medium text-foreground transition hover:bg-accent"
+              to="/"
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90"
             >
-              {l.label}
+              Back to homepage
             </Link>
-          ))}
-        </nav>
+          </div>
+          <nav aria-label="Helpful links" className="mt-8 flex flex-wrap justify-center gap-2">
+            {NOT_FOUND_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="inline-flex min-h-10 items-center rounded-full border border-border px-4 text-sm font-medium text-foreground transition hover:bg-accent"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
-    </div>
+    </PageShell>
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   const chunkError = isChunkLoadError(error);
@@ -84,7 +96,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     return <div className="min-h-screen bg-background" aria-hidden />;
   }
 
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -100,13 +111,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-border bg-background px-5 text-sm font-semibold text-foreground transition hover:bg-accent"
           >
             Go home
           </a>
@@ -115,7 +126,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     </div>
   );
 }
-
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -129,8 +139,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:locale", content: "en_US" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
     ],
     links: [
       {
@@ -140,25 +148,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preconnect", href: "https://images.unsplash.com", crossOrigin: "anonymous" },
-      { rel: "preconnect", href: "https://cdn.simpleicons.org", crossOrigin: "anonymous" },
-      { rel: "dns-prefetch", href: "https://logo.clearbit.com" },
-      {
-        rel: "preload",
-        as: "style",
-        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap",
-      },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap",
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
       // Clarity + GA4 are loaded on idle from <AnalyticsTracker /> so they never
       // block first paint on mobile.
-
-
-
 
       {
         type: "application/ld+json",
@@ -167,32 +165,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           "@id": "https://pixel2tech.com/#organization",
           name: "Pixel2Tech",
-          description:
-            "A full-service creative agency from Pakistan, serving clients worldwide — branding, web design, UI/UX, social media, and software.",
-          url: "https://pixel2tech.com",
+          description: SITE.shortDescription,
+          url: SITE.url,
           logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
-          email: "sales@pixel2tech.com",
-          telephone: "+923177475233",
-          foundingDate: "2023",
-          numberOfEmployees: 6,
-          founder: [
-            { "@type": "Person", name: "Usama Farooq", jobTitle: "CEO & Founder" },
-            { "@type": "Person", name: "Asad Farooq", jobTitle: "Co-Founder & Creative Director" },
-          ],
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Office 12, Main Boulevard, Gulberg III",
-            addressLocality: "Lahore",
-            addressRegion: "Punjab",
-            postalCode: "54000",
-            addressCountry: "PK",
-          },
+          email: SITE.email,
+          telephone: SITE.phoneE164,
+          foundingDate: STATS.foundingYear,
+          numberOfEmployees: { "@type": "QuantitativeValue", value: TEAM_SIZE },
+          founder: TEAM.filter((m) => m.profile).map((m) => ({
+            "@type": "Person",
+            name: m.name,
+            jobTitle: m.role,
+            url: `${SITE.url}${m.profile}`,
+          })),
+          address: { "@type": "PostalAddress", ...SITE.address },
           contactPoint: [
             {
               "@type": "ContactPoint",
               contactType: "sales",
-              email: "sales@pixel2tech.com",
-              telephone: "+923177475233",
+              email: SITE.email,
+              telephone: SITE.phoneE164,
               areaServed: "Worldwide",
               availableLanguage: ["English", "Urdu"],
             },
@@ -214,7 +206,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           url: "https://pixel2tech.com/",
           inLanguage: "en",
-          publisher: { "@type": "Organization", name: "Pixel2Tech", url: "https://pixel2tech.com/" },
+          publisher: {
+            "@type": "Organization",
+            name: "Pixel2Tech",
+            url: "https://pixel2tech.com/",
+          },
         }),
       },
     ],
@@ -227,10 +223,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    // The inline boot script adds a `p2t-ready` class / theme class to <html>
-    // before hydration, so attribute differences here are expected.
+    // The inline boot script adds the theme class to <html> before hydration,
+    // so attribute differences here are expected.
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
@@ -250,8 +247,11 @@ function RootComponent() {
         <AnalyticsTracker />
         <ContentProtection />
 
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        {/* Honour the OS "reduce motion" setting for every framer-motion animation. */}
+        <MotionConfig reducedMotion="user">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </MotionConfig>
         <Toaster position="top-center" richColors closeButton />
       </ThemeProvider>
     </QueryClientProvider>

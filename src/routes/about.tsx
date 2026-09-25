@@ -171,7 +171,7 @@ function AboutPage() {
             </div>
             <h1 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
               The Creative Agency{" "}
-              <span className="text-[#2b7fff]">Behind the Work.</span>
+              <span className="text-primary">Behind the Work.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -250,7 +250,7 @@ function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute -right-2 -top-2 hidden h-16 w-16 rounded-full bg-[#2b7fff]/10 blur-2xl md:block" aria-hidden="true" />
+              <div className="pointer-events-none absolute -right-2 -top-2 hidden h-16 w-16 rounded-full bg-brand/10 blur-2xl md:block" aria-hidden="true" />
             </div>
           </FadeIn>
         </div>

@@ -288,13 +288,13 @@ function ServicesPage() {
           <FadeIn>
             <div className="flex flex-col items-center text-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground dark:border-white/10 dark:bg-white/[0.04] sm:text-xs">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1E90FF]" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                 What We Do
               </span>
 
               <h1 className="mt-6 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-[52px]">
                 Everything You Need to{" "}
-                <span className="text-[#1E90FF]">Build, Grow and Scale</span>
+                <span className="text-primary">Build, Grow and Scale</span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">

@@ -7,38 +7,39 @@ const ThemeCtx = createContext<Ctx>({ theme: "light", toggle: () => {} });
 
 const STORAGE_KEY = "p2t-theme";
 
-function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
-  const saved = window.localStorage.getItem(STORAGE_KEY);
-  if (saved === "light" || saved === "dark") return saved;
-  // Default is always light, regardless of OS preference
-  return "light";
+/**
+ * Runs in <head> before first paint so a saved dark theme never flashes light.
+ * Default is light, regardless of OS preference.
+ */
+export const THEME_BOOT_SCRIPT = `try{if(localStorage.getItem("${STORAGE_KEY}")==="dark"){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}}catch(e){}`;
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.classList.toggle("dark", theme === "dark");
+  root.style.colorScheme = theme;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Storage can be blocked (private mode); the theme still applies for this visit.
+  }
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
+  // SSR always renders light; the boot script may already have applied dark.
   const [theme, setTheme] = useState<Theme>("light");
 
-  // Apply theme after mount to avoid SSR mismatch
+  // Adopt whatever the boot script applied, without touching the DOM.
   useEffect(() => {
-    const t = getInitialTheme();
-    setTheme(t);
+    if (document.documentElement.classList.contains("dark")) setTheme("dark");
   }, []);
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    root.style.colorScheme = theme;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, theme);
-    } catch {}
-  }, [theme]);
+  const toggle = () => {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    applyTheme(next);
+    setTheme(next);
+  };
 
-
-  return (
-    <ThemeCtx.Provider value={{ theme, toggle: () => setTheme(t => (t === "dark" ? "light" : "dark")) }}>
-      {children}
-    </ThemeCtx.Provider>
-  );
+  return <ThemeCtx.Provider value={{ theme, toggle }}>{children}</ThemeCtx.Provider>;
 }
 
 export function useTheme() {

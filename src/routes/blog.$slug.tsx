@@ -173,15 +173,15 @@ function BlogPostPage() {
                   <div 
                     className="relative overflow-hidden rounded-3xl border border-border bg-background/50 p-6 backdrop-blur-sm sm:p-10"
                   >
-                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#1E90FF]/5 blur-3xl" />
+                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/5 blur-3xl" />
                     <div className="relative z-10">
                       <div className="flex items-center gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1E90FF] text-white shadow-lg shadow-[#1E90FF]/20">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand text-white shadow-lg shadow-brand/20">
                           <ChevronRight className="h-7 w-7" />
                         </div>
                         <div>
                           <h2 className="text-2xl font-bold tracking-tight text-foreground">{post.quickVerdict.title}</h2>
-                          <p className="text-sm font-medium text-[#1E90FF]">Premium Strategic Audit</p>
+                          <p className="text-sm font-medium text-primary">Premium Strategic Audit</p>
                         </div>
                       </div>
                       <div className="mt-6 text-[16px] leading-relaxed text-muted-foreground sm:text-lg">
@@ -189,11 +189,11 @@ function BlogPostPage() {
                       </div>
                       {post.quickVerdict.winner ? (
                         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                          <div className="flex items-center gap-3 rounded-2xl border border-[#1E90FF]/20 bg-[#1E90FF]/10 px-5 py-3">
-                            <span className="text-xs font-bold uppercase tracking-widest text-[#1E90FF]">Top Pick 2026</span>
+                          <div className="flex items-center gap-3 rounded-2xl border border-brand/20 bg-brand/10 px-5 py-3">
+                            <span className="text-xs font-bold uppercase tracking-widest text-primary">Top Pick 2026</span>
                             <span className="text-[15px] font-bold text-foreground">{post.quickVerdict.winner}</span>
                           </div>
-                          <a href="https://www.outtricks.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#1E90FF] hover:underline">
+                          <a href="https://www.outtricks.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">
                             Visit Outtricks
                             <ChevronRight className="h-4 w-4" />
                           </a>
@@ -285,7 +285,7 @@ function BlogPostPage() {
                           </div>
                           <div className="min-w-0">
                             <div className="text-xs text-muted-foreground">{r.tag} · {r.time}</div>
-                            <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF] sm:text-base">
+                            <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary sm:text-base">
                               {r.title}
                             </h3>
                             <p className="mt-1 line-clamp-2 text-xs text-muted-foreground sm:text-sm">{r.excerpt}</p>
@@ -349,7 +349,7 @@ function BlogPostPage() {
                             </div>
                             <div className="min-w-0">
                               <div className="text-xs text-muted-foreground">{r.date}</div>
-                              <div className="line-clamp-2 text-sm font-semibold text-foreground group-hover:text-[#1E90FF]">{r.title}</div>
+                              <div className="line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary">{r.title}</div>
                             </div>
                           </Link>
                         </li>
