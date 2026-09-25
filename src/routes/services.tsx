@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
   Brain,
   Clapperboard,
   Cog,
@@ -266,6 +267,16 @@ function ServicesPage() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-auto pt-6">
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: s.id }}
+                    className="inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  >
+                    Learn more about {s.title}
+                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  </Link>
+                </div>
               </li>
             ))}
           </ul>

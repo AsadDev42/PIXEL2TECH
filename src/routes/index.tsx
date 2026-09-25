@@ -601,7 +601,7 @@ function Insights() {
             // The newest post spans both columns on tablets so the grid has no gap.
             <li key={p.slug} className={i === 0 ? "sm:col-span-2 lg:col-span-1" : undefined}>
               <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-muted">
-                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <div className="relative aspect-[40/21] overflow-hidden bg-muted">
                   <ResponsiveImage
                     src={p.img}
                     alt=""

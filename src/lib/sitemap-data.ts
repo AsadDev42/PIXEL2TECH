@@ -1,7 +1,7 @@
 import { POST_INDEX } from "@/lib/blog-index";
 import { toISODate, type PostMeta } from "@/lib/blog-types";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
-import { SITE } from "@/lib/site-config";
+import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 /** Site origin for every <loc>. Single source of truth: SITE.url. */
 export const BASE_URL = SITE.url;
@@ -31,6 +31,9 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/terms-and-conditions": "2026-09-24",
 };
 
+/** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
+export const SERVICE_PAGES_LASTMOD = "2026-09-24";
+
 type Post = PostMeta;
 
 /** A post's real last change: its `updated` date when set, else its publish date. */
@@ -48,9 +51,8 @@ export function latestLastmod(entries: SitemapEntry[]): string | undefined {
 }
 
 /**
- * Static, indexable pages (no 404 / admin / api / auth routes). /services is a
- * single hub page, so it lives here rather than in a one-URL services sitemap.
- * Give services their own sitemap once individual service pages exist.
+ * Static, indexable pages (no 404 / admin / api / auth routes). The /services
+ * hub and its nine /services/<slug> pages live here, next to the other pages.
  */
 export function pageEntries(): SitemapEntry[] {
   return (
@@ -58,6 +60,12 @@ export function pageEntries(): SitemapEntry[] {
       { path: "/", changefreq: "weekly", priority: "1.0" },
       { path: "/about", changefreq: "monthly", priority: "0.8" },
       { path: "/services", changefreq: "monthly", priority: "0.9" },
+      ...SERVICES.map((title) => ({
+        path: `/services/${serviceAnchor(title)}`,
+        changefreq: "monthly" as const,
+        priority: "0.8",
+        lastmod: SERVICE_PAGES_LASTMOD,
+      })),
       { path: "/asad-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/usama-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/portfolio", changefreq: "weekly", priority: "0.8" },

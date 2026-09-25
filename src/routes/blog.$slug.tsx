@@ -205,7 +205,7 @@ function BlogPostPage() {
                   <ShareBar url={shareUrl} title={post.title} />
                 </div>
 
-                <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
+                <div className="mt-8 aspect-[40/21] overflow-hidden rounded-2xl bg-muted">
                   <ResponsiveImage
                     src={post.img}
                     alt={post.imgAlt ?? ""}

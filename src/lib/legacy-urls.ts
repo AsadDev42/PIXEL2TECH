@@ -16,7 +16,7 @@
  * current sitemaps, and page paths with capital letters 301 to lowercase.
  */
 
-import { SITE } from "@/lib/site-config";
+import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 export type LegacyVerdict = { type: "redirect"; target: string } | { type: "gone" };
 
@@ -220,6 +220,13 @@ const LIVE_EXACT = new Set(["about", "services", "portfolio", "blog", "contact"]
 /** Live sections with dynamic children: /blog/$slug, /portfolio/$slug. */
 const LIVE_PREFIXES = ["blog", "portfolio"];
 
+/**
+ * Live service pages, /services/<serviceAnchor(title)>. Only these exact paths
+ * pass through: any other /services/* URL is a retired WordPress page and
+ * still 301s to the /services hub via REDIRECT_PREFIXES.
+ */
+const LIVE_SERVICE_PATHS = new Set(SERVICES.map((title) => `services/${serviceAnchor(title)}`));
+
 /** Lowercase, strip query/hash and surrounding slashes. */
 export function normalizePath(input: string): string {
   const path = input.split("?")[0]!.split("#")[0]!;
@@ -284,6 +291,7 @@ function classifyNormalized(path: string, first: string): LegacyVerdict | null {
   }
 
   if (LIVE_EXACT.has(path)) return null;
+  if (LIVE_SERVICE_PATHS.has(path)) return null;
   if (LIVE_PREFIXES.includes(first)) return null;
 
   for (const [pattern, target] of REDIRECT_PREFIXES) {

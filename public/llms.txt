@@ -18,6 +18,20 @@ Key facts:
 - [Blog](https://pixel2tech.com/blog): Guides on branding, websites, Shopify, SEO and automation.
 - [Contact](https://pixel2tech.com/contact): Email, WhatsApp, working hours, location and the project brief form.
 
+## Services
+
+Each page covers deliverables, who the service is for, how a project runs, how pricing works (a fixed written quote after a free scoping call; no public price list), related case studies and common questions.
+
+- [Branding & Design](https://pixel2tech.com/services/branding-and-design): Logo, color palette, typography, brand guidelines, templates and UI design for startups and small businesses.
+- [Website Development](https://pixel2tech.com/services/website-development): Mobile-ready websites built in React, Next.js or custom code, from landing pages to full business sites.
+- [WordPress & Shopify](https://pixel2tech.com/services/wordpress-and-shopify): Shopify stores and WordPress sites: theme customization, product pages, apps, payments, speed fixes and migrations.
+- [Custom Platforms & Apps](https://pixel2tech.com/services/custom-platforms-and-apps): Custom web apps, SaaS products, client portals, dashboards and mobile apps, starting from an MVP.
+- [Automation & CRM](https://pixel2tech.com/services/automation-and-crm): Workflow automation in n8n, Make or Zapier, CRM setup, lead routing and integrations.
+- [AI Solutions](https://pixel2tech.com/services/ai-solutions): AI chatbots, voice agents and RAG document search that answer from a business's own content.
+- [SEO & Search Growth](https://pixel2tech.com/services/seo-and-search-growth): Technical SEO audits, on-page fixes, keyword strategy, local SEO and store SEO.
+- [Social Media & Email](https://pixel2tech.com/services/social-media-and-email): Social content, Meta ad creative, email flows and newsletters.
+- [Video Editing & Ads](https://pixel2tech.com/services/video-editing-and-ads): Reels, YouTube edits, brand videos and paid video ad creative, cut for each platform.
+
 ## People
 
 - [Usama Farooq](https://pixel2tech.com/usama-farooq): CEO and founder of Pixel2Tech.

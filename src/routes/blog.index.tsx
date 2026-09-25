@@ -85,7 +85,7 @@ function BlogPage() {
             <article
               className={`group relative grid gap-6 rounded-3xl bg-muted p-4 sm:p-6 md:grid-cols-2 md:gap-8 md:p-8 ${CARD_FOCUS}`}
             >
-              <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-background">
+              <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
                 <ResponsiveImage
                   src={featured.img}
                   alt=""
@@ -140,7 +140,7 @@ function BlogPage() {
                 <article
                   className={`group relative flex h-full flex-col rounded-3xl bg-muted p-3 transition-colors hover:bg-muted/70 sm:p-4 ${CARD_FOCUS}`}
                 >
-                  <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-background">
+                  <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
                     <ResponsiveImage
                       src={p.img}
                       alt=""
