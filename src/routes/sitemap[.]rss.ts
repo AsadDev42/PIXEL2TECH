@@ -1,22 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { legacySitemapRedirect } from "@/lib/legacy-urls";
 
-/**
- * The previous WordPress site advertised /sitemap.rss. Google still requests
- * it, so answer with a permanent redirect to the current XML sitemap instead
- * of a 404. Nothing in this app links to it any more.
- */
+/** Old RSS-format sitemap, 301 to /sitemap.xml. The target lives in LEGACY_SITEMAPS (src/lib/legacy-urls.ts). */
 export const Route = createFileRoute("/sitemap.rss")({
   server: {
     handlers: {
-      GET: async () =>
-        new Response(null, {
-          status: 301,
-          headers: {
-            Location: "https://pixel2tech.com/sitemap.xml",
-            "Cache-Control": "public, max-age=86400",
-          },
-        }),
+      GET: async () => legacySitemapRedirect("sitemap.rss"),
     },
   },
 });

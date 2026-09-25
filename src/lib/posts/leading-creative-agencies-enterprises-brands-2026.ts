@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-types";
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * Roundup of leading creative agencies for enterprises and brands in 2026.
@@ -6,23 +6,8 @@ import type { BlogPost } from "@/lib/blog-types";
  * best creative agencies (720/mo, KD 15), top creative agencies (720/mo, KD 28),
  * digital creative agency (1.3k/mo).
  */
-export const leadingCreativeAgencies2026Post: BlogPost = {
-  slug: "leading-creative-agencies-enterprises-brands-2026",
-  tag: "Agency",
-  date: "August 7, 2026",
-  time: "8:00 pm",
-  updated: "August 7, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "Brand, Web & AI Strategy, Pixel2Tech",
-  authorBio:
-    "Pixel2Tech is a full-service creative agency building brands, websites, search visibility systems and AI automation for founders and growing companies.",
-  title: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
+const post: PostBody = {
   h1: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
-  excerpt:
-    "Creativity now sits alongside technology, customer experience and AI. Here are twelve creative agencies enterprises and growing brands are working with in 2026 — and how to pick the right one.",
-  img: "/__l5e/assets-v1/73321028-4cec-4360-b59e-b09aa4ed5b96/leading-creative-agencies-cover.png",
-  imgAlt:
-    "Creative agency team reviewing campaign reports, analytics dashboards and brand performance charts around a wooden table",
   metaTitle: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
   metaDescription:
     "A practical list of 12 leading creative agencies for enterprises and brands in 2026 — what each is best at, plus how to choose the right creative partner.",
@@ -41,6 +26,8 @@ export const leadingCreativeAgencies2026Post: BlogPost = {
     "digital transformation",
     "ai automation agency",
   ],
+  disclosure:
+    "Disclosure: Pixel2Tech wrote this list and put itself at number 1. Our entry describes our own services; it is not an independent review. Compare every agency on its portfolio, references and pricing before you decide.",
   keyTakeaways: [
     "Modern creative work spans branding, UI/UX, web, AI and digital transformation — not visuals alone.",
     "The strongest partner is the one that matches your objective, not the biggest name on the list.",
@@ -66,12 +53,6 @@ export const leadingCreativeAgencies2026Post: BlogPost = {
     { label: "Rule29", href: "https://rule29.com" },
     { label: "Anchour", href: "https://anchour.com" },
     { label: "Manifesto Agency", href: "https://manifestoagency.com" },
-  ],
-  related: [
-    "why-digital-marketing-agencies-lose-clients",
-    "biggest-seo-mistakes-businesses-make-2026",
-    "how-ai-is-changing-modern-branding",
-    "the-power-of-good-branding",
   ],
   faqs: [
     {
@@ -208,10 +189,26 @@ export const leadingCreativeAgencies2026Post: BlogPost = {
         caption: "Match the agency profile to the outcome you actually need.",
         headers: ["If your priority is…", "Look for", "Warning sign"],
         rows: [
-          ["A new brand identity", "Strategy-led branding, naming and guidelines", "Portfolio full of visuals with no rationale"],
-          ["A high-performing website", "In-house development, SEO and Core Web Vitals experience", "Design handed off to an unnamed build partner"],
-          ["A digital product", "UX research, design systems, product engineering", "Marketing-only case studies"],
-          ["End-to-end transformation", "Brand, build, AI automation and analytics under one roof", "Separate vendors coordinating your project for you"],
+          [
+            "A new brand identity",
+            "Strategy-led branding, naming and guidelines",
+            "Portfolio full of visuals with no rationale",
+          ],
+          [
+            "A high-performing website",
+            "In-house development, SEO and Core Web Vitals experience",
+            "Design handed off to an unnamed build partner",
+          ],
+          [
+            "A digital product",
+            "UX research, design systems, product engineering",
+            "Marketing-only case studies",
+          ],
+          [
+            "End-to-end transformation",
+            "Brand, build, AI automation and analytics under one roof",
+            "Separate vendors coordinating your project for you",
+          ],
         ],
       },
       bullets: [
@@ -243,3 +240,5 @@ export const leadingCreativeAgencies2026Post: BlogPost = {
     },
   ],
 };
+
+export default post;

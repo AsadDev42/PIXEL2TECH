@@ -1,5 +1,4 @@
-import type { BlogPost } from "@/lib/blog-types";
-import cover from "@/assets/verified-wholesale-sourcing-cover.jpg";
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * Verified wholesale sourcing vs auctions and liquidation marketplaces.
@@ -8,23 +7,8 @@ import cover from "@/assets/verified-wholesale-sourcing-cover.jpg";
  * b2b sourcing platform (90/mo, KD 28), wholesale suppliers for amazon
  * sellers (140/mo, KD 9), verified suppliers, closeout inventory.
  */
-export const verifiedWholesaleSourcingPost: BlogPost = {
-  slug: "verified-wholesale-sourcing-vs-auctions-liquidation",
-  tag: "eCommerce",
-  date: "August 4, 2026",
-  time: "11:00 am",
-  updated: "August 4, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "eCommerce & Supply Chain Systems, Pixel2Tech",
-  authorBio:
-    "Pixel2Tech builds eCommerce storefronts, B2B sourcing platforms, and inventory automation for retailers, marketplace sellers, and wholesalers.",
-  title: "Why Verified Wholesale Sourcing Beats Auctions and Liquidation Marketplaces",
+const post: PostBody = {
   h1: "Why Verified Wholesale Sourcing Beats Auctions and Liquidation Marketplaces",
-  excerpt:
-    "Cheap inventory is rarely the cheapest inventory. Here is why verified suppliers, escrow payments, managed logistics, and fixed wholesale pricing protect margins better than auctions and liquidation marketplaces.",
-  img: cover,
-  imgAlt:
-    "Warehouse manager reviewing verified wholesale inventory and shipment details on a tablet beside stacked pallets",
   metaTitle: "Verified Wholesale Sourcing vs Auctions & Liquidation",
   metaDescription:
     "Why verified wholesale sourcing outperforms auctions and liquidation marketplaces: verified suppliers, escrow payments, managed logistics, and fixed wholesale pricing.",
@@ -62,19 +46,22 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
     { label: "Contact Pixel2Tech", to: "/contact" },
   ],
   sources: [
-    { label: "GWS Connect 24 — verified wholesale sourcing network", href: "https://gwsconnect24.com/" },
-    { label: "Amazon Seller Central — sourcing and supplier guidance", href: "https://sell.amazon.com/" },
-    { label: "Shopify — wholesale and B2B commerce", href: "https://www.shopify.com/enterprise/b2b-ecommerce" },
+    {
+      label: "GWS Connect 24 — verified wholesale sourcing network",
+      href: "https://gwsconnect24.com/",
+    },
+    {
+      label: "Amazon Seller Central — sourcing and supplier guidance",
+      href: "https://sell.amazon.com/",
+    },
+    {
+      label: "Shopify — wholesale and B2B commerce",
+      href: "https://www.shopify.com/enterprise/b2b-ecommerce",
+    },
     {
       label: "U.S. Customs and Border Protection — importing basics",
       href: "https://www.cbp.gov/trade/basic-import-export",
     },
-  ],
-  related: [
-    "headless-shopify-commerce-guide",
-    "why-modern-brands-need-an-ai-ops-layer",
-    "why-businesses-need-better-systems",
-    "why-every-business-needs-a-modern-website-in-2026",
   ],
   faqs: [
     {
@@ -99,10 +86,8 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
     },
   ],
   cta: {
-    title: "Building a Sourcing or B2B Platform of Your Own?",
-    body: "Pixel2Tech designs and builds B2B sourcing platforms, wholesale storefronts, supplier portals, and inventory automation — verification workflows, escrow-style payment flows, and logistics tracking included.",
-    primaryLabel: "Plan My B2B Platform",
-    secondaryLabel: "Explore Our eCommerce Services",
+    title: "Building a sourcing or B2B platform of your own?",
+    body: "We design and build B2B storefronts, supplier portals and inventory automation, including verification workflows, escrow-style payments and shipment tracking.",
   },
   content: [
     {
@@ -182,7 +167,11 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
         headers: ["Factor", "Auction / liquidation", "Verified fixed-price sourcing"],
         rows: [
           ["Unit cost", "Unknown until bidding closes", "Published before you commit"],
-          ["Margin calculation", "Estimated, often after purchase", "Calculated on known landed cost"],
+          [
+            "Margin calculation",
+            "Estimated, often after purchase",
+            "Calculated on known landed cost",
+          ],
           ["Inventory condition", "Manifest quality varies", "Verified against supplier record"],
           ["Payment risk", "Usually paid up front", "Escrow released after delivery"],
           ["Restock consistency", "Opportunistic and irregular", "Repeatable from known suppliers"],
@@ -197,7 +186,9 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
       subsections: [
         {
           heading: "Retailers",
-          body: ["Source closeout and overstock inventory for physical stores with far more confidence in condition and count."],
+          body: [
+            "Source closeout and overstock inventory for physical stores with far more confidence in condition and count.",
+          ],
         },
         {
           heading: "Marketplace sellers",
@@ -207,7 +198,9 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
         },
         {
           heading: "Wholesalers and distributors",
-          body: ["Build relationships with verified suppliers who can support volume growth rather than one-off lots."],
+          body: [
+            "Build relationships with verified suppliers who can support volume growth rather than one-off lots.",
+          ],
         },
         {
           heading: "Manufacturers",
@@ -241,3 +234,5 @@ export const verifiedWholesaleSourcingPost: BlogPost = {
     },
   ],
 };
+
+export default post;

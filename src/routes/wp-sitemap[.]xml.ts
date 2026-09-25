@@ -1,21 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { legacySitemapRedirect } from "@/lib/legacy-urls";
 
-/**
- * WordPress core sitemap path left over from the previous site.
- * Permanent redirect to the live sitemap so crawlers stop logging 404s.
- */
+/** WordPress core sitemap index, 301 to /sitemap.xml. The target lives in LEGACY_SITEMAPS (src/lib/legacy-urls.ts). */
 export const Route = createFileRoute("/wp-sitemap.xml")({
   server: {
     handlers: {
-      GET: async () =>
-        new Response(null, {
-          status: 301,
-          headers: {
-            Location: "https://pixel2tech.com/sitemap_index.xml",
-            "Cache-Control": "public, max-age=86400",
-          },
-        }),
+      GET: async () => legacySitemapRedirect("wp-sitemap.xml"),
     },
   },
 });

@@ -24,6 +24,15 @@ export const SITE = {
     postalCode: "54000",
     addressCountry: "PK",
   },
+  /** Machine-readable hours (JSON-LD). Keep in sync with `hours` below. */
+  openingHours: [
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    { days: ["Saturday"], opens: "10:00", closes: "16:00" },
+  ],
   hours: [
     { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" },
     { days: "Saturday", time: "10:00 AM – 4:00 PM" },

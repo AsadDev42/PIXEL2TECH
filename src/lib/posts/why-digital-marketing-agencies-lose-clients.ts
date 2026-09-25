@@ -1,7 +1,4 @@
-import type { BlogPost } from "@/lib/blog-types";
-import coverAsset from "@/assets/why-agencies-lose-clients-cover.png.asset.json";
-
-const cover = coverAsset.url;
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * Why digital marketing agencies lose clients — retention playbook for 2026.
@@ -9,23 +6,8 @@ const cover = coverAsset.url;
  * digital marketing services (40.5k/mo), marketing agency (40.5k/mo),
  * plus long-tail question intents ("how to choose a digital marketing agency").
  */
-export const whyAgenciesLoseClientsPost: BlogPost = {
-  slug: "why-digital-marketing-agencies-lose-clients",
-  tag: "Marketing",
-  date: "August 4, 2026",
-  time: "2:00 pm",
-  updated: "August 4, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "Growth, SEO & AI Marketing Systems, Pixel2Tech",
-  authorBio:
-    "Pixel2Tech is a full-service creative agency building brands, websites, performance marketing systems and AI automation for founders and growing companies.",
-  title: "Why Digital Marketing Agencies Lose Clients (And 12 Proven Ways to Keep Them in 2026)",
+const post: PostBody = {
   h1: "Why Digital Marketing Agencies Lose Clients (And 12 Proven Ways to Keep Them in 2026)",
-  excerpt:
-    "Client churn is the most expensive problem in agency life. Here are the twelve reasons a digital marketing agency loses accounts in 2026 — and the retention fixes that actually work.",
-  img: cover,
-  imgAlt:
-    "Two colleagues at a desk with laptops reviewing hand-drawn website wireframes and marketing plans",
   metaTitle: "Why Digital Marketing Agencies Lose Clients in 2026",
   metaDescription:
     "Twelve reasons a digital marketing agency loses clients — vanity metrics, ignoring AI search, weak reporting — plus proven client retention fixes for 2026.",
@@ -68,14 +50,14 @@ export const whyAgenciesLoseClientsPost: BlogPost = {
       href: "https://developers.google.com/search/docs/appearance/ai-features",
     },
     { label: "Google — Core Web Vitals", href: "https://web.dev/articles/vitals" },
-    { label: "Harvard Business Review — the value of keeping the right customers", href: "https://hbr.org/2014/10/the-value-of-keeping-the-right-customers" },
-    { label: "Google Analytics 4 — measurement and reporting", href: "https://support.google.com/analytics/answer/10089681" },
-  ],
-  related: [
-    "replace-digital-marketing-agency",
-    "ai-seo-mistakes",
-    "why-businesses-need-better-systems",
-    "why-modern-brands-need-an-ai-ops-layer",
+    {
+      label: "Harvard Business Review — the value of keeping the right customers",
+      href: "https://hbr.org/2014/10/the-value-of-keeping-the-right-customers",
+    },
+    {
+      label: "Google Analytics 4 — measurement and reporting",
+      href: "https://support.google.com/analytics/answer/10089681",
+    },
   ],
   faqs: [
     {
@@ -112,10 +94,8 @@ export const whyAgenciesLoseClientsPost: BlogPost = {
     },
   ],
   cta: {
-    title: "Want Marketing That Reports Revenue, Not Rankings?",
-    body: "Pixel2Tech combines SEO, GEO, performance marketing, branding, web development and AI automation into one accountable growth system — with live dashboards you can check any day of the month.",
-    primaryLabel: "Get a Growth Plan",
-    secondaryLabel: "Explore Our Services",
+    title: "Want marketing that reports revenue, not rankings?",
+    body: "We combine SEO, paid ads, branding, web development and automation into one plan, with live dashboards you can check any day of the month.",
   },
   content: [
     {
@@ -267,3 +247,5 @@ export const whyAgenciesLoseClientsPost: BlogPost = {
     },
   ],
 };
+
+export default post;

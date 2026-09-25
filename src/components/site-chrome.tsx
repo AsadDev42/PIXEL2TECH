@@ -92,6 +92,8 @@ export function SiteNav() {
               height={98}
               src={logoDarkAsset.url}
               alt="Pixel2Tech"
+              // Lazy: a display:none image never loads, so light-mode visitors skip it.
+              loading="lazy"
               className="hidden h-9 w-auto sm:h-10 dark:block"
             />
           </Link>

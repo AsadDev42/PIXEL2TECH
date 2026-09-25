@@ -11,11 +11,14 @@
  *     instead of re-crawling them as soft 404s for months.
  *  3. `null` — not a legacy URL at all; the request continues to the router
  *     and an unknown path ends on the normal 404 page.
+ *
+ * It also owns two URL-hygiene rules: retired sitemap addresses 301 to the
+ * current sitemaps, and page paths with capital letters 301 to lowercase.
  */
 
-export type LegacyVerdict =
-  | { type: "redirect"; target: string }
-  | { type: "gone" };
+import { SITE } from "@/lib/site-config";
+
+export type LegacyVerdict = { type: "redirect"; target: string } | { type: "gone" };
 
 /** Paths that must never be treated as legacy content. */
 const RESERVED_PREFIXES = [
@@ -32,20 +35,12 @@ const RESERVED_PREFIXES = [
 /** Real files served from /public or by a dedicated route. */
 const RESERVED_EXACT = new Set([
   "robots.txt",
+  "llms.txt",
   "sitemap.xml",
-  "sitemap.rss",
-  "sitemap_index.xml",
   "pages-sitemap.xml",
   "blog-sitemap.xml",
-  "services-sitemap.xml",
   "portfolio-sitemap.xml",
   "images-sitemap.xml",
-  "wp-sitemap.xml",
-  // Legacy Yoast sitemap names that 301 to their current equivalents.
-  "post-sitemap.xml",
-  "page-sitemap.xml",
-
-
   "favicon.ico",
   "favicon.png",
   "manifest.json",
@@ -116,18 +111,41 @@ const GONE_PATTERNS: RegExp[] = [
 ];
 
 /**
+ * Retired sitemap addresses -> the current sitemap that replaced them. Search
+ * Console and old robots.txt copies may still request these, so each one
+ * answers a single-hop 301. /sitemap.xml is the only sitemap index.
+ */
+export const LEGACY_SITEMAPS = {
+  "sitemap_index.xml": "/sitemap.xml", // Yoast-era index
+  "wp-sitemap.xml": "/sitemap.xml", // WordPress core index
+  "sitemap.rss": "/sitemap.xml", // old RSS-format sitemap
+  "page-sitemap.xml": "/pages-sitemap.xml", // Yoast page sitemap
+  "post-sitemap.xml": "/blog-sitemap.xml", // Yoast post sitemap
+  "services-sitemap.xml": "/pages-sitemap.xml", // /services now lives in the pages sitemap
+} as const satisfies Record<string, string>;
+
+/**
  * Old page -> live equivalent. These are the only redirects worth keeping:
  * each one points at a page that genuinely covers the same intent.
  * Keys are normalised paths.
  */
 const REDIRECT_MAP: Record<string, string> = {
+  ...LEGACY_SITEMAPS,
+
   // --- Home / retired theme demo pages ---
   home: "/",
 
   // --- About / team ---
   "about-us": "/about",
   aboutus: "/about",
-  
+
+  // Founder profiles have their own pages; send old team URLs straight there
+  // (these win over the generic /team prefix rule below).
+  "team/usama": "/usama-farooq",
+  "team/usama-farooq": "/usama-farooq",
+  "team/asad": "/asad-farooq",
+  "team/asad-farooq": "/asad-farooq",
+
   team: "/about",
   "team-details": "/about",
   "team-stye-4": "/about",
@@ -177,7 +195,7 @@ const REDIRECT_MAP: Record<string, string> = {
   news: "/blog",
   articles: "/blog",
 
-  // --- Renamed portfolio slugs ---
+  // --- Renamed portfolio slugs (the only place these are defined) ---
   "portfolio/creative-social-media-madluvv-social-and-meta-ads":
     "/portfolio/madluvv-social-media-meta-ads",
   "portfolio/creative-social-media-madluvv-social-meta-ads":
@@ -209,6 +227,20 @@ export function normalizePath(input: string): string {
 }
 
 /**
+ * True when a path has capital letters worth redirecting away from: it is a
+ * page-style path (no file extension in the last segment) and the capitals
+ * are not just percent-encoding hex digits (%C3 and %c3 are the same byte).
+ * Tooling paths (/@vite, /__l5e, /~flock.js, /.well-known) are skipped.
+ */
+function hasUppercasePagePath(rawPath: string): boolean {
+  const path = rawPath.split("?")[0]!.split("#")[0]!.replace(/^\/+/, "");
+  if (!path || /^[@_~.]/.test(path)) return false;
+  const last = path.replace(/\/+$/, "").split("/").pop() ?? "";
+  if (last.includes(".")) return false;
+  return /[A-Z]/.test(path.replace(/%[0-9A-Fa-f]{2}/g, ""));
+}
+
+/**
  * Classify a request path. Returns `null` when the path is not a legacy URL
  * and should be handled by the router as normal.
  *
@@ -219,8 +251,13 @@ export function normalizePath(input: string): string {
  *     redirects so taxonomy archives like /portfolio-category/x are dropped
  *     rather than funnelled into /portfolio;
  *  4. live routes pass through — critical, otherwise /services would match
- *     the /service* prefix rule and redirect to itself forever;
+ *     the /service* prefix rule and redirect to itself forever. A live path
+ *     typed with capitals (/About, /Blog/Some-Post) 301s to its lowercase
+ *     form so only one URL is ever served;
  *  5. remaining legacy prefixes redirect.
+ *
+ * Every rule matches the lowercased path, so a capitalised legacy URL
+ * redirects straight to its final target in one hop.
  */
 export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
   const path = normalizePath(rawPath);
@@ -230,6 +267,13 @@ export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
   if (RESERVED_PREFIXES.includes(first)) return null;
   if (RESERVED_EXACT.has(path)) return null;
 
+  const verdict = classifyNormalized(path, first);
+  if (verdict) return verdict;
+  if (hasUppercasePagePath(rawPath)) return { type: "redirect", target: `/${path}` };
+  return null;
+}
+
+function classifyNormalized(path: string, first: string): LegacyVerdict | null {
   const mapped = REDIRECT_MAP[path];
   if (mapped) return { type: "redirect", target: mapped };
 
@@ -249,6 +293,22 @@ export function classifyLegacyPath(rawPath: string): LegacyVerdict | null {
   return null;
 }
 
+/** The 301 response for a redirect verdict. Shared by the middleware and route handlers. */
+export function permanentRedirect(target: string, search = ""): Response {
+  return new Response(null, {
+    status: 301,
+    headers: { location: target + search, "cache-control": "public, max-age=86400" },
+  });
+}
+
+/**
+ * Handler for a retired sitemap route file. The request middleware normally
+ * answers these first; this keeps the route itself correct if it is ever
+ * reached directly. The target always comes from LEGACY_SITEMAPS.
+ */
+export function legacySitemapRedirect(path: keyof typeof LEGACY_SITEMAPS): Response {
+  return permanentRedirect(LEGACY_SITEMAPS[path]);
+}
 
 /** Minimal, self-contained 410 page. Marked noindex so it is never surfaced. */
 export function renderGonePage(path: string): string {
@@ -259,7 +319,7 @@ export function renderGonePage(path: string): string {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>410 — Page permanently removed | Pixel2Tech</title>
+<title>410 — Page permanently removed | ${SITE.name}</title>
 <style>
 :root{color-scheme:light dark}
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;

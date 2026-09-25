@@ -1,55 +1,47 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { BookCallButton } from "@/components/book-call-button";
+import { PRIMARY_CTA_LABEL } from "@/lib/site-config";
 
 /**
- * Premium, value-driven blog CTA. Intentionally avoids generic
- * "Book a call" / "Contact us" language.
+ * End-of-article call to action. Posts can set the heading and body copy;
+ * the two actions are the same site-wide: book a call, or send a brief.
  */
 export function BlogCta({
-  title = "Want this done properly?",
-  body = "Tell us what you're working on. We'll tell you what we'd fix first.",
-  primaryLabel = "Talk to a strategist",
-  secondaryLabel = "See our work",
+  title = "Working on something like this?",
+  body = "Tell us what you're building. We'll say what we would fix first and what it would take.",
+  source = "blog_cta",
 }: {
   title?: string;
   body?: string;
-  primaryLabel?: string;
-  secondaryLabel?: string;
+  /** Analytics label for the booking button. */
+  source?: string;
 }) {
   return (
-    <section
-      aria-labelledby="blog-cta"
-      className="relative overflow-hidden rounded-3xl border border-border bg-foreground p-6 sm:p-8"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-to-br from-brand to-brand-strong opacity-25 blur-3xl"
-      />
-      <div className="relative flex flex-col gap-6">
-        <div className="min-w-0">
-          <h2 id="blog-cta" className="text-xl font-bold leading-tight tracking-tight text-balance text-background sm:text-2xl">
-            {title}
-          </h2>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-background/70">{body}</p>
-        </div>
+    <section aria-labelledby="blog-cta" className="rounded-3xl bg-foreground p-6 sm:p-8">
+      <h2
+        id="blog-cta"
+        className="text-2xl font-bold leading-tight tracking-tight text-balance text-background"
+      >
+        {title}
+      </h2>
+      <p className="mt-3 max-w-2xl text-base leading-relaxed text-background/75">{body}</p>
 
-        <div className="flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
-          <Link
-            to="/contact"
-            className="inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-strong px-5 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:opacity-90"
-          >
-            {primaryLabel}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-          <Link
-            to="/portfolio"
-            className="inline-flex min-h-11 max-w-full items-center justify-center rounded-full border border-background/30 px-5 py-3 text-center text-sm font-semibold text-background transition hover:bg-background/10"
-          >
-            {secondaryLabel}
-          </Link>
-        </div>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <BookCallButton
+          source={source}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          {PRIMARY_CTA_LABEL}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </BookCallButton>
+        <Link
+          to="/contact"
+          className="inline-flex min-h-12 items-center justify-center rounded-full border border-background/40 px-6 py-3 text-center text-sm font-semibold text-background transition-colors hover:bg-background/10"
+        >
+          Send a project brief
+        </Link>
       </div>
     </section>
   );
 }
-

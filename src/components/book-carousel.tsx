@@ -1,161 +1,124 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react';
-import { BookMockup } from './book-mockup';
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { BookCover } from "@/assets/book-cover-assets";
+import { BookMockup } from "@/components/book-mockup";
+import { CarouselControls, CarouselShell, loopOffset } from "@/components/coverflow-3d";
 
-interface BookCarouselProps {
-  covers: string[];
-  autoPlayInterval?: number;
-}
+/** Above the 5s WCAG 2.2.2 threshold, and there is a pause button anyway. */
+const AUTO_ADVANCE_MS = 5000;
 
-export function BookCarousel({ covers, autoPlayInterval = 3500 }: BookCarouselProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+/**
+ * Covers fanned out around the active book. Card size and spacing come from
+ * CSS breakpoints (not window.innerWidth), so the server and the browser
+ * render the same layout and phones do not jump after hydration.
+ */
+export function BookCarousel({
+  covers,
+  initialIndex = 0,
+  onActiveChange,
+}: {
+  covers: BookCover[];
+  initialIndex?: number;
+  /** Called with the active index, e.g. to open the 3D viewer on the same book. */
+  onActiveChange?: (index: number) => void;
+}) {
+  const count = covers.length;
+  const [index, setIndex] = useState(initialIndex);
+  // Off until mounted, so the server render and reduced-motion visitors get no auto-advance.
+  const [autoplay, setAutoplay] = useState(false);
+  const [held, setHeld] = useState(false);
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    setAutoplay(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([entry]) => setInView(!!entry?.isIntersecting), {
+      threshold: 0.25,
+    });
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
-  const nextSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % covers.length);
-  }, [covers.length]);
-
-  const prevSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + covers.length) % covers.length);
-  }, [covers.length]);
-
   useEffect(() => {
-    if (isAutoPlaying) {
-      timerRef.current = setInterval(nextSlide, autoPlayInterval);
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isAutoPlaying, nextSlide, autoPlayInterval]);
+    onActiveChange?.(index);
+  }, [index, onActiveChange]);
 
-  const handleInteraction = () => {
-    setIsAutoPlaying(false);
-    if (timerRef.current) clearInterval(timerRef.current);
-    
-    // Resume auto-play after 10 seconds of inactivity
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+  const select = useCallback((next: number) => setIndex(((next % count) + count) % count), [count]);
 
-  const getVisibleIndices = () => {
-    const indices = [];
-    const count = windowWidth < 768 ? 1 : 2;
-    for (let i = -count; i <= count; i++) {
-      let index = (activeIndex + i) % covers.length;
-      if (index < 0) index += covers.length;
-      indices.push({ index, position: i });
-    }
-    return indices;
+  // One timeout per slide, cleared on every change and on unmount.
+  useEffect(() => {
+    if (!autoplay || held || !inView || count < 2) return;
+    const id = window.setTimeout(() => select(index + 1), AUTO_ADVANCE_MS);
+    return () => window.clearTimeout(id);
+  }, [autoplay, held, inView, count, index, select]);
+
+  if (count === 0) return null;
+
+  // Manual navigation stops the slideshow; the play button restarts it.
+  const goTo = (i: number) => {
+    setAutoplay(false);
+    select(i);
   };
+  const active = covers[index]!;
 
   return (
-    <div 
-      className="relative w-full py-20 px-4 overflow-hidden"
-      onMouseEnter={() => setIsAutoPlaying(false)}
-      onMouseLeave={() => setIsAutoPlaying(true)}
-    >
-      <div className="relative mx-auto flex items-center justify-center h-[400px] md:h-[500px] lg:h-[600px] w-full max-w-7xl">
-        <AnimatePresence initial={false} mode="popLayout">
-          {getVisibleIndices().map(({ index, position }) => {
-            const isCenter = position === 0;
-            const isSide = Math.abs(position) === 1;
-            const isFarSide = Math.abs(position) === 2;
-
-            const xOffset = windowWidth < 768 ? 200 : windowWidth < 1024 ? 240 : 340;
-
+    <div ref={rootRef}>
+      <CarouselShell
+        label="Book covers"
+        onStep={(dir) => goTo(index + dir)}
+        announcement={`Book ${index + 1} of ${count}: ${active.title}`}
+        autoAdvancing={autoplay && !held}
+        onHoldChange={setHeld}
+      >
+        <div
+          className="edge-fade-x relative h-[320px] overflow-hidden [--book-step:120px] sm:h-[400px] sm:[--book-step:170px] md:h-[440px] md:[--book-step:200px] lg:h-[560px] lg:[--book-step:270px]"
+          style={{ perspective: "1500px" }}
+        >
+          {covers.map((cover, i) => {
+            const offset = loopOffset(i, index, count);
+            const abs = Math.abs(offset);
+            // The active book and two on each side are mounted; phones show one per side.
+            if (abs > 2) return null;
+            const isActive = offset === 0;
             return (
-              <motion.div
-                key={`${covers[index]}-${index}`}
-                initial={{ opacity: 0, scale: 0.5, x: position * xOffset, rotateY: position * 45, translateZ: -200 }}
-                animate={{
-                  x: position * xOffset,
-                  scale: isCenter ? 1.1 : 0.85,
-                  zIndex: 10 - Math.abs(position),
-                  opacity: 1,
-                  rotateY: position * -25, // Angled toward center
-                  translateZ: isCenter ? 100 : -100, // Forward/backward depth
-                  filter: isCenter ? 'blur(0px)' : 'blur(1px)',
-                }}
-                exit={{ opacity: 0, scale: 0.5, x: position * xOffset * 1.5 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 25,
-                  mass: 1.2
-                }}
-                className="absolute cursor-pointer"
-                style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
-                onClick={() => {
-                  if (!isCenter) {
-                    setActiveIndex(index);
-                    handleInteraction();
-                  }
+              <div
+                key={cover.src}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} of ${count}: ${cover.title}`}
+                aria-hidden={!isActive || undefined}
+                onClick={isActive ? undefined : () => goTo(i)}
+                className={`absolute left-1/2 top-1/2 w-[170px] transition-[transform,opacity,filter] duration-500 ease-out sm:w-[220px] md:w-[240px] lg:w-[320px] ${
+                  isActive ? "" : "cursor-pointer brightness-75"
+                } ${abs === 2 ? "pointer-events-none opacity-0 md:pointer-events-auto md:opacity-100" : ""}`}
+                style={{
+                  zIndex: 10 - abs,
+                  transform: `translate(-50%, -50%) translateX(calc(${offset} * var(--book-step))) rotateY(${offset * -25}deg) scale(${isActive ? 1.05 : 0.85})`,
                 }}
               >
-                <div className={`
-                  w-[200px] md:w-[280px] lg:w-[360px] transition-all duration-500
-                  ${isCenter ? '' : 'brightness-75'}
-                `}>
-                  <BookMockup 
-                    coverUrl={covers[index]} 
-                    className="w-full"
-                  />
-                </div>
-              </motion.div>
+                <BookMockup
+                  src={cover.src}
+                  alt={`Book cover design for ${cover.title}`}
+                  loading={isActive ? "eager" : "lazy"}
+                />
+              </div>
             );
           })}
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation Controls */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            prevSlide();
-            handleInteraction();
-          }}
-          className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
-          aria-label="Previous book"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        
-        <div className="flex gap-2 max-w-[200px] md:max-w-md overflow-x-auto scrollbar-none py-1">
-          {covers.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setActiveIndex(i);
-                handleInteraction();
-              }}
-              className={`h-1.5 shrink-0 rounded-full transition-all duration-300 ${
-                activeIndex === i ? 'w-8 bg-primary' : 'w-1.5 bg-muted-foreground/30'
-              }`}
-            />
-          ))}
         </div>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            nextSlide();
-            handleInteraction();
-          }}
-          className="p-3 rounded-full bg-background/80 dark:bg-black/40 backdrop-blur-md border border-border/50 dark:border-white/10 text-foreground hover:bg-background transition-all shadow-lg"
-          aria-label="Next book"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
+        <CarouselControls
+          className="mt-4"
+          count={count}
+          index={index}
+          onStep={(dir) => goTo(index + dir)}
+          onSelect={goTo}
+          itemLabel={(i) => `Show book ${i + 1} of ${count}: ${covers[i]!.title}`}
+          noun="book"
+          playing={autoplay}
+          onTogglePlay={() => setAutoplay((on) => !on)}
+        />
+      </CarouselShell>
     </div>
   );
 }

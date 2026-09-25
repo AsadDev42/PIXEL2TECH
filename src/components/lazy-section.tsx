@@ -2,11 +2,14 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  /** Reserved space before the section mounts — prevents layout shift. */
+  /** Space reserved before the section mounts, so the page below doesn't jump. */
   minHeight?: number | string;
   /** How early to mount before the section scrolls into view. */
   rootMargin?: string;
-  /** Optional custom placeholder; defaults to a neutral skeleton. */
+  /**
+   * Optional placeholder. The default reserves `minHeight` and draws nothing;
+   * pass one that mirrors the real section's layout to avoid any shift.
+   */
   fallback?: ReactNode;
   className?: string;
 };
@@ -51,17 +54,7 @@ export function LazySection({
 
   return (
     <div ref={ref} className={className}>
-      {show ? (
-        children
-      ) : (
-        fallback ?? (
-          <div
-            aria-hidden="true"
-            className="mx-auto max-w-7xl animate-pulse rounded-3xl bg-muted/60"
-            style={{ minHeight }}
-          />
-        )
-      )}
+      {show ? children : (fallback ?? <div aria-hidden="true" style={{ minHeight }} />)}
     </div>
   );
 }

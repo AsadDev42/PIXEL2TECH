@@ -1,50 +1,53 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Calendar, ChevronRight, Clock, Folder, RefreshCw, User } from "lucide-react";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell } from "@/components/site-chrome";
-import { Calendar, Clock, User, Folder, ChevronRight, RefreshCw } from "lucide-react";
-import {
-  getAdjacentPosts,
-  getPost,
-  getReadingMinutes,
-  getRelatedPosts,
-  posts,
-  SITE_LINKS,
-  type BlogSection,
-} from "@/lib/blog-posts";
-import { buildBlogSeo } from "@/lib/blog-seo";
 import { BlogCta } from "@/components/blog-cta";
+import { Faq } from "@/components/faq";
 import { NewsletterForm } from "@/components/newsletter-form";
 import {
   ArticleSection,
-  
+  AuthorCard,
+  Disclosure,
   InternalLinks,
   KeyTakeaways,
   PrevNextNav,
+  QuickVerdict,
   ReadingProgress,
+  RelatedArticles,
   ShareBar,
   SourceList,
   TableOfContents,
 } from "@/components/blog-reading";
+import {
+  getAdjacentPostSummaries,
+  getRelatedPostSummaries,
+  loadPost,
+  SITE_LINKS,
+} from "@/lib/blog-index";
+import { authorProfile, buildBlogSeo } from "@/lib/blog-seo";
+import { getReadingMinutes, toISODate } from "@/lib/blog-types";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const post = getPost(params.slug);
+  // Only this article's body is downloaded (each post is its own chunk).
+  loader: async ({ params }) => {
+    const post = await loadPost(params.slug);
     // A slug that does not exist is a genuine 404. Redirecting every unknown
     // slug to /blog would be a soft 404, which Google reports as
     // "Crawled - currently not indexed" instead of dropping the URL.
     if (!post) throw notFound();
-
-
     return { post };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Not found — Pixel2Tech" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Article not found | Pixel2Tech" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { post } = loaderData;
-    // SEO title, meta description, keywords and schema are auto-generated from
-    // the post content whenever the article does not author them explicitly.
     const seo = buildBlogSeo(post);
+    const optional = (property: string, content: string | undefined) =>
+      content ? [{ property, content }] : [];
     return {
       meta: [
         { title: seo.title },
@@ -59,9 +62,9 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:url", content: seo.url },
         { property: "og:image", content: seo.image },
         { property: "og:image:alt", content: post.imgAlt ?? post.title },
-        { property: "article:author", content: post.author },
-        { property: "article:published_time", content: post.date },
-        { property: "article:modified_time", content: post.updated ?? post.date },
+        { property: "article:author", content: seo.authorRef },
+        ...optional("article:published_time", seo.published),
+        ...optional("article:modified_time", seo.modified),
         { property: "article:section", content: post.tag },
         ...seo.keywords.slice(0, 6).map((k) => ({ property: "article:tag", content: k })),
         { name: "twitter:card", content: "summary_large_image" },
@@ -80,17 +83,30 @@ export const Route = createFileRoute("/blog/$slug")({
   notFoundComponent: () => (
     <PageShell>
       <div className="mx-auto max-w-3xl px-5 py-24 text-center">
-        <h1 className="text-3xl font-bold text-foreground">Article not found</h1>
-        <p className="mt-3 text-muted-foreground">The post you're looking for doesn't exist.</p>
-        <Link to="/blog" className="mt-6 inline-flex items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background">Back to blog</Link>
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Article not found</h1>
+        <p className="mt-3 text-muted-foreground">
+          This article doesn't exist or has moved. The blog lists everything we've published.
+        </p>
+        <Link
+          to="/blog"
+          className="mt-6 inline-flex min-h-11 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background"
+        >
+          Back to the blog
+        </Link>
       </div>
     </PageShell>
   ),
   errorComponent: () => (
     <PageShell>
       <div className="mx-auto max-w-3xl px-5 py-24 text-center">
-        <h1 className="text-3xl font-bold text-foreground">Something went wrong</h1>
-        <Link to="/blog" className="mt-6 inline-flex items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background">Back to blog</Link>
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">This article didn't load</h1>
+        <p className="mt-3 text-muted-foreground">Please refresh the page or try again shortly.</p>
+        <Link
+          to="/blog"
+          className="mt-6 inline-flex min-h-11 items-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background"
+        >
+          Back to the blog
+        </Link>
       </div>
     </PageShell>
   ),
@@ -98,282 +114,202 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
-  const related = getRelatedPosts(post, 4);
-  const { previous, next } = getAdjacentPosts(post);
+  const related = getRelatedPostSummaries(post.slug, 4);
+  const { previous, next } = getAdjacentPostSummaries(post.slug);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
   const readingMinutes = getReadingMinutes(post);
   const internalLinks = post.internalLinks?.length ? post.internalLinks : SITE_LINKS;
-
+  const profile = authorProfile(post.author);
+  const hasFaqs = Boolean(post.faqs?.length);
+  const wasUpdated = Boolean(post.updated && post.updated !== post.date);
 
   return (
     <PageShell>
       <ReadingProgress />
-      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          {/* Breadcrumb */}
-          <div>
-            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-foreground">Home</Link>
-              <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <Link to="/blog" className="hover:text-foreground">Blog</Link>
-              <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <span className="text-foreground">{post.title}</span>
-            </nav>
-          </div>
+      <div className="bg-muted/40">
+        <div className="mx-auto max-w-7xl px-5 pb-16 pt-8 md:px-10 md:pb-24 md:pt-12">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <li>
+                <Link to="/" className="inline-flex min-h-6 items-center hover:text-foreground">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <ChevronRight className="h-4 w-4" />
+              </li>
+              <li>
+                <Link to="/blog" className="inline-flex min-h-6 items-center hover:text-foreground">
+                  Blog
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <ChevronRight className="h-4 w-4" />
+              </li>
+              <li aria-current="page" className="min-w-0 max-w-full truncate text-foreground">
+                {post.title}
+              </li>
+            </ol>
+          </nav>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
-            {/* Main */}
-            <article className="min-w-0 lg:order-1">
-
-              <div>
-                <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_320px]">
+            <article className="min-w-0">
+              <header>
+                <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                   {post.h1 ?? post.title}
                 </h1>
 
-                <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
                   {post.excerpt}
                 </p>
 
-                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-                  <span className="inline-flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{post.author}</span>
-                  <span className="inline-flex items-center gap-2"><Folder className="h-4 w-4" aria-hidden="true" />{post.tag}</span>
-                  <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" aria-hidden="true" />{post.date}</span>
-                  <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{readingMinutes} min read</span>
-                  <span className="inline-flex items-center gap-2"><RefreshCw className="h-4 w-4" aria-hidden="true" />Updated {post.updated ?? post.date}</span>
-                </div>
+                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                  <li className="inline-flex items-center gap-2">
+                    <User className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only">Written by </span>
+                    {profile ? (
+                      <Link
+                        to={profile.path}
+                        rel="author"
+                        className="font-medium text-foreground underline-offset-4 hover:underline"
+                      >
+                        {post.author}
+                      </Link>
+                    ) : (
+                      post.author
+                    )}
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Folder className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only">Topic: </span>
+                    {post.tag}
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Calendar className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only">Published </span>
+                    <time dateTime={toISODate(post.date)}>{post.date}</time>
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Clock className="h-4 w-4" aria-hidden="true" />
+                    {readingMinutes} min read
+                  </li>
+                  {wasUpdated && post.updated ? (
+                    <li className="inline-flex items-center gap-2">
+                      <RefreshCw className="h-4 w-4" aria-hidden="true" />
+                      Updated <time dateTime={toISODate(post.updated)}>{post.updated}</time>
+                    </li>
+                  ) : null}
+                </ul>
 
                 <div className="mt-6 lg:hidden">
                   <ShareBar url={shareUrl} title={post.title} />
                 </div>
 
-
-
                 <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
                   <ResponsiveImage
                     src={post.img}
-                    alt={post.imgAlt ?? post.title}
+                    alt={post.imgAlt ?? ""}
                     width={1600}
-                    height={900}
-                    sizes="(min-width: 1024px) 66vw, 92vw"
+                    height={1000}
+                    sizes="(min-width: 1280px) 820px, (min-width: 1024px) 66vw, 92vw"
                     className="h-full w-full object-cover"
                     priority
                   />
                 </div>
-
-              </div>
+              </header>
 
               <div className="mt-10 space-y-10">
-                {post.keyTakeaways?.length ? (
-                  <div>
-                    <KeyTakeaways items={post.keyTakeaways} />
-                  </div>
-                ) : null}
-                
-                {post.quickVerdict ? (
-                  <div 
-                    className="relative overflow-hidden rounded-3xl border border-border bg-background/50 p-6 backdrop-blur-sm sm:p-10"
-                  >
-                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/5 blur-3xl" />
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand text-white shadow-lg shadow-brand/20">
-                          <ChevronRight className="h-7 w-7" />
-                        </div>
-                        <div>
-                          <h2 className="text-2xl font-bold tracking-tight text-foreground">{post.quickVerdict.title}</h2>
-                          <p className="text-sm font-medium text-primary">Premium Strategic Audit</p>
-                        </div>
-                      </div>
-                      <div className="mt-6 text-[16px] leading-relaxed text-muted-foreground sm:text-lg">
-                        {post.quickVerdict.body}
-                      </div>
-                      {post.quickVerdict.winner ? (
-                        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                          <div className="flex items-center gap-3 rounded-2xl border border-brand/20 bg-brand/10 px-5 py-3">
-                            <span className="text-xs font-bold uppercase tracking-widest text-primary">Top Pick 2026</span>
-                            <span className="text-[15px] font-bold text-foreground">{post.quickVerdict.winner}</span>
-                          </div>
-                          <a href="https://www.outtricks.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">
-                            Visit Outtricks
-                            <ChevronRight className="h-4 w-4" />
-                          </a>
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-                ) : null}
+                {post.disclosure ? <Disclosure>{post.disclosure}</Disclosure> : null}
 
+                {post.keyTakeaways?.length ? <KeyTakeaways items={post.keyTakeaways} /> : null}
 
+                {post.quickVerdict ? <QuickVerdict verdict={post.quickVerdict} /> : null}
 
-                <div>
-                  <div className="lg:hidden">
-                    <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
-                  </div>
+                <div className="lg:hidden">
+                  <TableOfContents
+                    sections={post.content}
+                    hasFaqs={hasFaqs}
+                    variant="collapsible"
+                  />
                 </div>
 
-                {post.content.map((section: BlogSection, i: number) => (
-                  <div key={section.heading}>
-                    <ArticleSection section={section} />
-                  </div>
+                {post.content.map((section) => (
+                  <ArticleSection key={section.heading} section={section} />
                 ))}
 
-                {post.sources?.length ? (
-                  <div>
-                    <SourceList sources={post.sources} />
-                  </div>
-                ) : null}
+                {post.sources?.length ? <SourceList sources={post.sources} /> : null}
 
                 {post.faqs?.length ? (
-                  <div>
-                    <section id="faqs" className="scroll-mt-28">
-                      <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Frequently Asked Questions</h2>
-                      <div className="mt-6 space-y-4">
-                        {post.faqs.map((f: { q: string; a: string }) => (
-                          <div key={f.q} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
-                            <h3 className="text-base font-semibold text-foreground sm:text-lg">{f.q}</h3>
-                            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground sm:text-base">{f.a}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </section>
-                  </div>
+                  <section id="faqs" aria-labelledby="faqs-heading" className="scroll-mt-28">
+                    <h2
+                      id="faqs-heading"
+                      className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+                    >
+                      Frequently asked questions
+                    </h2>
+                    <Faq items={post.faqs} className="mt-6" />
+                  </section>
                 ) : null}
 
+                <AuthorCard
+                  author={post.author}
+                  role={profile?.role ?? post.authorRole}
+                  bio={post.authorBio}
+                  profilePath={profile?.path}
+                />
 
+                <BlogCta title={post.cta?.title} body={post.cta?.body} source="blog_post" />
 
+                <RelatedArticles posts={related} />
 
-                <div>
-                  <BlogCta {...(post.cta ?? {})} />
-                </div>
+                <InternalLinks links={internalLinks} />
 
-                <div>
-                  <InternalLinks links={internalLinks} />
-                </div>
+                <section
+                  aria-labelledby="newsletter-heading"
+                  className="rounded-2xl border border-border bg-background p-5 sm:p-6"
+                >
+                  <h2
+                    id="newsletter-heading"
+                    className="text-lg font-bold tracking-tight text-foreground"
+                  >
+                    Get new articles by email
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Leave your email and we'll send new posts when they're published.
+                  </p>
+                  <div className="max-w-md">
+                    <NewsletterForm />
+                  </div>
+                </section>
 
-                <div>
-                  <PrevNextNav previous={previous} next={next} />
-                </div>
-
-
-
-
-                <div>
-                  <section aria-labelledby="related-articles">
-                    <h2 id="related-articles" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                      Related Articles
-                    </h2>
-                    <p className="mt-2 text-[15px] text-muted-foreground sm:text-base">
-                      More reading on AI, automation, and building better business systems.
-                    </p>
-                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                      {related.map((r) => (
-                        <Link
-                          key={r.slug}
-                          to="/blog/$slug"
-                          params={{ slug: r.slug }}
-                          className="group flex gap-4 rounded-2xl border border-border bg-background p-4 transition hover:bg-muted"
-                        >
-                          <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-muted">
-                            <ResponsiveImage
-                              src={r.img}
-                              alt={r.title}
-                              width={480}
-                              height={480}
-                              sizes="120px"
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                          <div className="min-w-0">
-                            <div className="text-xs text-muted-foreground">{r.tag} · {r.time}</div>
-                            <h3 className="mt-1 line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary sm:text-base">
-                              {r.title}
-                            </h3>
-                            <p className="mt-1 line-clamp-2 text-xs text-muted-foreground sm:text-sm">{r.excerpt}</p>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </section>
-                </div>
+                <PrevNextNav previous={previous} next={next} />
               </div>
             </article>
 
-
-
-            {/* Sidebar */}
-            <aside className="min-w-0 lg:order-2 lg:sticky lg:top-24 lg:self-start">
-              <div>
-                <div className="hidden lg:block">
-                  <TableOfContents sections={post.content} hasFaqs={Boolean(post.faqs?.length)} />
-                </div>
-                <div className="mt-6 rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-7">
-                  {/* Share */}
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">Share this article</h3>
-                    <div className="mt-4">
-                      <ShareBar url={shareUrl} title={post.title} />
-                    </div>
+            {/* Desktop sidebar: only the outline and share links, kept within
+                the viewport so every item stays reachable on laptop screens. */}
+            <aside className="hidden min-w-0 lg:block" aria-label="Article tools">
+              <div className="sticky top-24 max-h-[calc(100dvh-7rem)] space-y-6 overflow-y-auto overscroll-contain pb-2">
+                <TableOfContents sections={post.content} hasFaqs={hasFaqs} />
+                <section
+                  aria-labelledby="share-heading"
+                  className="rounded-2xl border border-border bg-background p-5"
+                >
+                  <h2
+                    id="share-heading"
+                    className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                  >
+                    Share this article
+                  </h2>
+                  <div className="mt-3">
+                    <ShareBar url={shareUrl} title={post.title} />
                   </div>
-
-
-                  <hr className="my-6 border-border" />
-
-                  {/* Tags */}
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">All Tags</h3>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {Array.from(new Set(posts.map((p) => p.tag))).map((t) => (
-                        <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-foreground">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <hr className="my-6 border-border" />
-
-                  {/* Related */}
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">Related Blogs</h3>
-                    <ul className="mt-4 space-y-4">
-                      {related.slice(0, 3).map((r) => (
-                        <li key={r.slug}>
-                          <Link to="/blog/$slug" params={{ slug: r.slug }} className="group flex gap-3">
-                            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
-                              <ResponsiveImage
-                                src={r.img}
-                                alt={r.title}
-                                width={480}
-                                height={480}
-                                sizes="96px"
-                                className="h-full w-full object-cover"
-                              />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-xs text-muted-foreground">{r.date}</div>
-                              <div className="line-clamp-2 text-sm font-semibold text-foreground group-hover:text-primary">{r.title}</div>
-                            </div>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <hr className="my-6 border-border" />
-
-                  {/* Newsletter */}
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">Join Our Newsletter</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Get expert insights on business strategy, growth frameworks, leadership, and performance delivered to your inbox.
-                    </p>
-                    <NewsletterForm />
-
-                  </div>
-                </div>
+                </section>
               </div>
             </aside>
           </div>
         </div>
-      </section>
+      </div>
     </PageShell>
   );
 }

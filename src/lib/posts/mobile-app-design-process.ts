@@ -1,27 +1,11 @@
-import type { BlogPost } from "@/lib/blog-types";
-import cover from "@/assets/mobile-app-design-process-cover.jpg";
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * Pillar article: the complete mobile app design process.
  * Structured for SEO (featured snippets, PAA) and GEO/AEO — every section
  * opens with a direct answer before expanding into detail.
  */
-export const mobileAppDesignProcessPost: BlogPost = {
-  slug: "mobile-app-design-process",
-  tag: "UI/UX Design",
-  date: "August 3, 2026",
-  time: "9:00 am",
-  updated: "August 3, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "Product Design & Engineering, Pixel2Tech",
-  authorBio:
-    "The Pixel2Tech product team designs and builds mobile applications for startups, SaaS companies, and established businesses — covering research, UI/UX, design systems, development, and post-launch optimisation.",
-  title: "The Complete Mobile App Design Process (2026): From Idea to App Store Launch",
-  excerpt:
-    "A practical, end-to-end guide to the mobile app design process — idea validation, research, wireframing, prototyping, UI, design systems, testing, handoff, and launch — written for founders and product teams.",
-  img: cover,
-  imgAlt:
-    "Designer's desk with a smartphone showing a mobile app interface, paper wireframe sketches, and a laptop displaying a design system",
+const post: PostBody = {
   metaTitle: "The Complete Mobile App Design Process (2026 Guide) | Pixel2Tech",
   metaDescription:
     "A step-by-step mobile app design process for 2026: idea validation, user research, wireframing, prototyping, UI design, testing, handoff, and App Store launch.",
@@ -59,25 +43,31 @@ export const mobileAppDesignProcessPost: BlogPost = {
     { label: "About Pixel2Tech", to: "/about" },
   ],
   sources: [
-    { label: "Nielsen Norman Group — Why you only need to test with 5 users", href: "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/" },
-    { label: "W3C — Web Content Accessibility Guidelines (WCAG) 2.2", href: "https://www.w3.org/TR/WCAG22/" },
-    { label: "Apple — Human Interface Guidelines", href: "https://developer.apple.com/design/human-interface-guidelines" },
+    {
+      label: "Nielsen Norman Group — Why you only need to test with 5 users",
+      href: "https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/",
+    },
+    {
+      label: "W3C — Web Content Accessibility Guidelines (WCAG) 2.2",
+      href: "https://www.w3.org/TR/WCAG22/",
+    },
+    {
+      label: "Apple — Human Interface Guidelines",
+      href: "https://developer.apple.com/design/human-interface-guidelines",
+    },
     { label: "Google — Material Design 3", href: "https://m3.material.io/" },
-    { label: "Apple — App Review Guidelines", href: "https://developer.apple.com/app-store/review/guidelines/" },
-    { label: "Google Play — Developer Program Policy", href: "https://play.google.com/about/developer-content-policy/" },
-  ],
-  related: [
-    "design-systems-for-small-teams",
-    "why-every-business-needs-a-modern-website-in-2026",
-    "headless-shopify-commerce-guide",
-    "why-businesses-need-better-systems",
-    "how-ai-is-changing-modern-branding",
+    {
+      label: "Apple — App Review Guidelines",
+      href: "https://developer.apple.com/app-store/review/guidelines/",
+    },
+    {
+      label: "Google Play — Developer Program Policy",
+      href: "https://play.google.com/about/developer-content-policy/",
+    },
   ],
   cta: {
-    title: "Your App Deserves More Than Great Design. It Deserves Real Business Results.",
-    body: "A successful mobile app is built on strategy, user research, thoughtful design, and continuous improvement. At Pixel2Tech, we help startups and businesses transform ideas into intuitive, high-performing mobile experiences that users enjoy and businesses can scale with.",
-    primaryLabel: "Plan My Mobile App Strategy",
-    secondaryLabel: "Explore Pixel2Tech's App Design Services",
+    title: "Planning a mobile app?",
+    body: "Good apps come from strategy, user research, careful design and steady iteration. We help startups and businesses plan, design and launch theirs.",
   },
   faqs: [
     {
@@ -101,7 +91,6 @@ export const mobileAppDesignProcessPost: BlogPost = {
       a: "Five to eight participants per round of moderated testing catches most serious issues. Several small rounds during the project beat one large round at the end.",
     },
   ],
-
   content: [
     {
       heading: "Quick Answer: What Is the Mobile App Design Process?",
@@ -185,8 +174,7 @@ export const mobileAppDesignProcessPost: BlogPost = {
     },
     {
       heading: "Step 8: Handoff, QA, and Launch",
-      definition:
-        "Handoff and design QA are where good design usually leaks out of a project.",
+      definition: "Handoff and design QA are where good design usually leaks out of a project.",
       body: [
         "Give engineering tokens, components, states, and edge cases — not just screens. Then run a separate design QA pass on the built app to catch spacing, motion, and state drift.",
         "Before submission, check store metadata, demo credentials, privacy disclosures, working support links, and a crash-free build. Most rejections are process failures, not design failures.",
@@ -216,3 +204,4 @@ export const mobileAppDesignProcessPost: BlogPost = {
   ],
 };
 
+export default post;

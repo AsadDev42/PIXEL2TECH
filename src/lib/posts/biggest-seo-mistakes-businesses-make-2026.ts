@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-types";
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * The biggest SEO mistakes businesses still make in 2026.
@@ -6,23 +6,8 @@ import type { BlogPost } from "@/lib/blog-types";
  * content strategy for seo (720/mo, KD 38), search intent optimization (480/mo, KD 50),
  * plus AI-search terms: ai seo (9.9k/mo), generative engine optimization (8.1k/mo).
  */
-export const seoMistakes2026Post: BlogPost = {
-  slug: "biggest-seo-mistakes-businesses-make-2026",
-  tag: "SEO",
-  date: "August 7, 2026",
-  time: "3:00 pm",
-  updated: "August 7, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "SEO, GEO & Content Systems, Pixel2Tech",
-  authorBio:
-    "Pixel2Tech is a full-service creative agency building brands, websites, search visibility systems and AI automation for founders and growing companies.",
-  title: "The Biggest SEO Mistakes Businesses Still Make in 2026 (And Why They Cost More Than Rankings)",
+const post: PostBody = {
   h1: "The Biggest SEO Mistakes Businesses Still Make in 2026",
-  excerpt:
-    "Search has changed. Buyers now ask ChatGPT, Gemini, Perplexity and AI Overviews before they visit your site. Here are the SEO mistakes still costing businesses visibility — and what to do instead.",
-  img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=70",
-  imgAlt:
-    "Marketer reviewing website search analytics and traffic charts on a laptop screen",
   metaTitle: "The Biggest SEO Mistakes Businesses Still Make in 2026",
   metaDescription:
     "Seven SEO mistakes still costing businesses visibility in 2026 — ignoring search intent, AI search, user experience and content upkeep — plus the fixes that work.",
@@ -67,12 +52,6 @@ export const seoMistakes2026Post: BlogPost = {
     },
     { label: "Google — Core Web Vitals", href: "https://web.dev/articles/vitals" },
   ],
-  related: [
-    "ai-seo-mistakes",
-    "why-digital-marketing-agencies-lose-clients",
-    "why-businesses-need-better-systems",
-    "why-modern-brands-need-an-ai-ops-layer",
-  ],
   faqs: [
     {
       q: "What are the most common SEO mistakes in 2026?",
@@ -96,10 +75,8 @@ export const seoMistakes2026Post: BlogPost = {
     },
   ],
   cta: {
-    title: "Want Search Visibility That Survives Every Algorithm Update?",
-    body: "Pixel2Tech builds SEO and GEO systems around real expertise — technical foundations, topic clusters, fast websites and content that AI engines actually cite.",
-    primaryLabel: "Get an SEO Audit",
-    secondaryLabel: "Explore Our Services",
+    title: "Want a second opinion on your SEO?",
+    body: "We work on technical SEO, topic clusters, site speed and content that search and AI answer engines can cite.",
   },
   content: [
     {
@@ -144,9 +121,21 @@ export const seoMistakes2026Post: BlogPost = {
         caption: "Same topic, three intents, three page formats.",
         headers: ["Search", "Intent", "What the page must be"],
         rows: [
-          ["\"What is workflow automation?\"", "Education", "Clear explainer with definitions and examples"],
-          ["\"Best workflow automation software\"", "Comparison", "Comparison table, pros and cons, use cases"],
-          ["\"Workflow automation consultant\"", "Purchase", "Service page with proof, pricing clarity, enquiry form"],
+          [
+            '"What is workflow automation?"',
+            "Education",
+            "Clear explainer with definitions and examples",
+          ],
+          [
+            '"Best workflow automation software"',
+            "Comparison",
+            "Comparison table, pros and cons, use cases",
+          ],
+          [
+            '"Workflow automation consultant"',
+            "Purchase",
+            "Service page with proof, pricing clarity, enquiry form",
+          ],
         ],
       },
     },
@@ -193,7 +182,7 @@ export const seoMistakes2026Post: BlogPost = {
       ],
     },
     {
-      heading: "A Better Question Than \"How Do We Rank Higher?\"",
+      heading: 'A Better Question Than "How Do We Rank Higher?"',
       body: [
         "Replace the ranking question with a harder one: how do we become the best source of knowledge in our industry? That reframing produces better content, better customer education, better systems and better products.",
         "Rankings become a by-product. Trust becomes the competitive advantage — and trust is the one input no algorithm update can devalue.",
@@ -205,3 +194,5 @@ export const seoMistakes2026Post: BlogPost = {
     },
   ],
 };
+
+export default post;

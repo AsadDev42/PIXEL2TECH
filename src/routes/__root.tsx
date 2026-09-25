@@ -9,11 +9,11 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { MotionConfig } from "framer-motion";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { isChunkLoadError } from "@/lib/lazy-with-retry";
+import { isChunkLoadError, reloadForStaleChunk } from "@/lib/lazy-with-retry";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "@/components/theme-provider";
 import { PageShell } from "@/components/site-chrome";
 import { SITE, STATS } from "@/lib/site-config";
@@ -78,21 +78,19 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   const chunkError = isChunkLoadError(error);
+  // A stale tab whose asset hashes no longer exist should silently reload once
+  // (rate-limited); if that isn't allowed, fall through to the error page.
+  const [reloading, setReloading] = useState(chunkError);
 
   useEffect(() => {
-    // A stale tab whose asset hashes no longer exist should silently recover
-    // instead of showing an error page mid-scroll.
-    if (chunkError && typeof window !== "undefined") {
-      if (!sessionStorage.getItem("p2t-chunk-reloaded")) {
-        sessionStorage.setItem("p2t-chunk-reloaded", "1");
-        window.location.reload();
-      }
+    if (chunkError) {
+      if (!reloadForStaleChunk()) setReloading(false);
       return;
     }
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error, chunkError]);
 
-  if (chunkError) {
+  if (reloading) {
     return <div className="min-h-screen bg-background" aria-hidden />;
   }
 
@@ -179,6 +177,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             url: `${SITE.url}${m.profile}`,
           })),
           address: { "@type": "PostalAddress", ...SITE.address },
+          openingHoursSpecification: SITE.openingHours.map((h) => ({
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: h.days,
+            opens: h.opens,
+            closes: h.closes,
+          })),
+          areaServed: ["US", "GB", "AE", "PK", "Worldwide"],
           contactPoint: [
             {
               "@type": "ContactPoint",

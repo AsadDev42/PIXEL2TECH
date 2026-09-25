@@ -1,206 +1,202 @@
-import { useCallback, useEffect, useRef, useState, memo } from "react";
-import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { Pause, Play } from "lucide-react";
+import { CarouselControls, CarouselShell, loopOffset } from "@/components/coverflow-3d";
 
 export type SpotlightVideo = {
   src: string;
   title: string;
 };
 
-/**
- * Premium Video Spotlight — A centered infinite-loop slider.
- * The active video stays in the middle. Clicking side videos or 
- * using arrows rotates the gallery seamlessly.
- */
-export const VideoSpotlight = memo(({ videos }: { videos: SpotlightVideo[] }) => {
-  const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState<Record<string, boolean>>({});
-  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
-  const count = videos.length;
+/** Long enough to read a title; well above the 5s WCAG 2.2.2 threshold. */
+const AUTO_ADVANCE_MS = 6000;
 
-  const pauseAllExcept = useCallback((activeSrc: string) => {
-    Object.entries(videoRefs.current).forEach(([src, v]) => {
-      if (v && src !== activeSrc) v.pause();
+/**
+ * Card width and the distance between card centres. Phones step by one card
+ * plus a 16px gap so the active video sits in the middle with its neighbours
+ * peeking in; from md up the cards sit 300px apart.
+ */
+const stageStyle = {
+  "--vs-card": "min(260px, 68vw)",
+  height: "calc(min(260px, 68vw) * 16 / 9 + 64px)",
+} as CSSProperties;
+
+/**
+ * Vertical video slider for case studies. The active video is always centred,
+ * visitors can swipe, use the buttons or (while focused) the arrow keys, and
+ * the slideshow pauses on hover, focus, touch, playback or when off-screen.
+ */
+export function VideoSpotlight({
+  videos,
+  label = "Video creatives",
+}: {
+  videos: SpotlightVideo[];
+  label?: string;
+}) {
+  const count = videos.length;
+  const [index, setIndex] = useState(0);
+  const [playingSrc, setPlayingSrc] = useState<string | null>(null);
+  // Off until mounted, so the server render and reduced-motion visitors get no auto-advance.
+  const [autoplay, setAutoplay] = useState(false);
+  const [held, setHeld] = useState(false);
+  const [inView, setInView] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef(new Map<string, HTMLVideoElement>());
+
+  useEffect(() => {
+    setAutoplay(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([entry]) => setInView(!!entry?.isIntersecting), {
+      threshold: 0.25,
     });
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
-  const go = useCallback(
-    (dir: number) => {
-      const next = (index + dir + count) % count;
-      setIndex(next);
-      const nextVideo = videos[next];
-      if (nextVideo) pauseAllExcept(nextVideo.src);
+  const select = useCallback(
+    (next: number) => {
+      const i = ((next % count) + count) % count;
+      setIndex(i);
+      const activeSrc = videos[i]?.src;
+      videoRefs.current.forEach((v, src) => {
+        if (src !== activeSrc) v.pause();
+      });
     },
-    [count, index, pauseAllExcept, videos],
+    [count, videos],
   );
 
-  const toggle = useCallback((src: string) => {
-    const v = videoRefs.current[src];
+  // Timer restarts on every slide change, so manual navigation never skips ahead.
+  useEffect(() => {
+    if (!autoplay || held || !inView || playingSrc || count < 2) return;
+    const id = window.setTimeout(() => select(index + 1), AUTO_ADVANCE_MS);
+    return () => window.clearTimeout(id);
+  }, [autoplay, held, inView, playingSrc, count, index, select]);
+
+  if (count === 0) return null;
+
+  // Manual navigation stops the slideshow for good; the play button restarts it.
+  const step = (dir: -1 | 1) => {
+    setAutoplay(false);
+    select(index + dir);
+  };
+
+  const toggleVideo = (src: string) => {
+    const v = videoRefs.current.get(src);
     if (!v) return;
     if (v.paused) {
-      pauseAllExcept(src);
+      setAutoplay(false);
       void v.play();
     } else {
       v.pause();
     }
-  }, [pauseAllExcept]);
+  };
 
-  // Infinite items mapping for the 4 visible slots
-  const visibleIndices = count >= 4
-    ? [
-        (index - 1 + count) % count,
-        index,
-        (index + 1) % count,
-        (index + 2) % count,
-      ]
-    : videos.map((_, i) => i);
-
-  const anyPlaying = Object.values(playing).some(Boolean);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") go(-1);
-      if (e.key === "ArrowRight") go(1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [go]);
-
-  // Continuous autoplay loop — pauses while a video plays or on hover
-  useEffect(() => {
-    if (anyPlaying || paused || count < 2) return;
-    const id = window.setInterval(() => go(1), 2000);
-    return () => window.clearInterval(id);
-  }, [anyPlaying, paused, go, count]);
-
-  if (count === 0) return null;
+  const active = videos[index]!;
 
   return (
-    <div className="relative">
-      {/* Centered Infinite Viewport */}
-      <div
-        className="edge-fade-x relative -mx-5 flex h-[580px] items-center justify-center overflow-hidden px-5 sm:-mx-10 sm:px-10"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+    <div ref={rootRef}>
+      <CarouselShell
+        label={label}
+        onStep={step}
+        announcement={`Video ${index + 1} of ${count}: ${active.title}`}
+        autoAdvancing={autoplay && !held}
+        onHoldChange={setHeld}
       >
-        <AnimatePresence initial={false}>
-          {visibleIndices.map((actualIdx, displayPos) => {
-            const video = videos[actualIdx]!;
-            const isActive = displayPos === 1;
-            const isPlaying = !!playing[video.src];
-
-            // 4-card strip: active is the 2nd card; shift group so it feels centered
-            const position = displayPos - 1;
-            const gap = 300;
-            const groupShift = gap / 2;
-
+        {/* Bleeds to the section edge (the parent uses px-5 md:px-10). */}
+        <div
+          className="edge-fade-x relative -mx-5 overflow-hidden [--vs-step:calc(var(--vs-card)_+_16px)] md:-mx-10 md:[--vs-step:300px]"
+          style={stageStyle}
+        >
+          {videos.map((video, i) => {
+            const offset = loopOffset(i, index, count);
+            const abs = Math.abs(offset);
+            // Only the active video and two on each side are mounted.
+            if (abs > 2) return null;
+            const isActive = offset === 0;
+            const isPlaying = playingSrc === video.src;
             return (
-              <motion.div
+              <div
                 key={video.src}
-                initial={false}
-                animate={{
-                  x: position * gap - groupShift,
-                  scale: isActive ? 1 : 0.92,
-                  opacity: isActive ? 1 : 0.45,
-                  zIndex: isActive ? 10 : 0,
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} of ${count}: ${video.title}`}
+                aria-hidden={!isActive || undefined}
+                onClick={isActive ? undefined : () => step(offset < 0 ? -1 : 1)}
+                className={`absolute left-1/2 top-0 transition-[transform,opacity] duration-500 ease-out ${
+                  isActive ? "z-10" : "cursor-pointer"
+                }`}
+                style={{
+                  width: "var(--vs-card)",
+                  transform: `translateX(calc(-50% + ${offset} * var(--vs-step))) scale(${isActive ? 1 : 0.9})`,
+                  opacity: isActive ? 1 : abs === 1 ? 0.5 : 0.25,
                 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => {
-                  if (!isActive) go(position < 0 ? -1 : 1);
-                }}
-                className="absolute shrink-0 cursor-pointer"
-                style={{ width: "min(260px, 65vw)" }}
               >
-                <div
-                  className="relative overflow-hidden rounded-2xl border border-border bg-black shadow-xl dark:border-white/10"
-                  style={{ aspectRatio: "9 / 16" }}
-                >
+                <div className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-muted shadow-xl">
                   <video
-                    ref={(el) => { videoRefs.current[video.src] = el; }}
-                    src={video.src}
+                    ref={(el) => {
+                      if (el) videoRefs.current.set(video.src, el);
+                      else videoRefs.current.delete(video.src);
+                    }}
+                    // The #t fragment makes iOS Safari paint the first frame as a poster.
+                    src={`${video.src}#t=0.1`}
                     playsInline
                     loop
                     preload="metadata"
-                    aria-label={video.title}
-                    onPlay={() => {
-                      setPlaying((p) => ({ ...p, [video.src]: true }));
-                      setIndex(actualIdx);
-                      pauseAllExcept(video.src);
-                    }}
-                    onPause={() => setPlaying((p) => ({ ...p, [video.src]: false }))}
+                    onPlay={() => setPlayingSrc(video.src)}
+                    onPause={() => setPlayingSrc((s) => (s === video.src ? null : s))}
                     className="h-full w-full object-cover"
                   />
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (!isActive) { go(position < 0 ? -1 : 1); return; }
-                      toggle(video.src);
-                    }}
-                    aria-label={isPlaying ? `Pause ${video.title}` : `Play ${video.title}`}
-                    className="absolute inset-0 flex items-center justify-center transition hover:bg-black/10"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`flex h-14 w-14 items-center justify-center rounded-full bg-background/95 text-foreground shadow-2xl ring-1 ring-border/40 backdrop-blur-md transition ${isPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"}`}
+                  {isActive && (
+                    <button
+                      type="button"
+                      onClick={() => toggleVideo(video.src)}
+                      aria-label={
+                        isPlaying ? `Pause video: ${video.title}` : `Play video: ${video.title}`
+                      }
+                      className="group absolute inset-0 flex items-center justify-center focus-visible:outline-none"
                     >
-                      {isPlaying ? (
-                        <Pause className="h-5 w-5" />
-                      ) : (
-                        <Play className="ml-0.5 h-5 w-5" fill="currentColor" />
-                      )}
-                    </span>
-                  </button>
+                      <span
+                        aria-hidden="true"
+                        className={`flex h-14 w-14 items-center justify-center rounded-full bg-background/95 text-foreground shadow-2xl ring-1 ring-border/40 transition group-focus-visible:opacity-100 group-focus-visible:ring-2 group-focus-visible:ring-ring ${
+                          isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                        }`}
+                      >
+                        {isPlaying ? (
+                          <Pause className="h-5 w-5" />
+                        ) : (
+                          <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
+                        )}
+                      </span>
+                    </button>
+                  )}
                 </div>
-                <p className={`mt-4 text-center text-sm font-medium transition-colors ${isActive ? "text-foreground" : "text-muted-foreground"}`}>
+                <p
+                  className={`mt-3 line-clamp-2 text-center text-sm font-medium ${
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  }`}
+                >
                   {video.title}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
-        </AnimatePresence>
-      </div>
-
-
-      {/* Controls */}
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          onClick={() => go(-1)}
-          aria-label="Previous video"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        <div className="flex items-center gap-2">
-          {videos.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => {
-                setIndex(i);
-                const v = videos[i];
-                if (v) pauseAllExcept(v.src);
-              }}
-              aria-label={`Go to video ${i + 1}`}
-              aria-current={i === index}
-              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/60"}`}
-            />
-          ))}
         </div>
 
-        <button
-          type="button"
-          onClick={() => go(1)}
-          aria-label="Next video"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted dark:border-white/10"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
+        <CarouselControls
+          className="mt-6"
+          count={count}
+          index={index}
+          onStep={step}
+          onSelect={(i) => {
+            setAutoplay(false);
+            select(i);
+          }}
+          itemLabel={(i) => `Show video ${i + 1} of ${count}`}
+          noun="video"
+          playing={autoplay}
+          onTogglePlay={() => setAutoplay((on) => !on)}
+        />
+      </CarouselShell>
     </div>
   );
-});
+}

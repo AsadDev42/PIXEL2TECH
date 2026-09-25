@@ -1,16 +1,47 @@
 # Pixel2Tech
 
-> Pixel2Tech is a full-service creative agency in Lahore, Pakistan — branding, web design, UI/UX, social media, video and custom software for clients worldwide. One agency instead of ten freelancers.
+> Branding, web design, video and automation studio in Lahore, Pakistan. Pixel2Tech is a creative and web studio: we design brands, build websites and apps, produce video and automate busywork for clients worldwide.
+
+Key facts:
+
+- Founded in 2023, based in Lahore, Pakistan, working with clients worldwide.
+- Founders: Usama Farooq (CEO & Founder) and Asad Farooq (Co-Founder & Creative Director).
+- Services: Branding & Design, Website Development, WordPress & Shopify, Custom Platforms & Apps, Automation & CRM, AI Solutions, SEO & Search Growth, Social Media & Email, Video Editing & Ads.
+- Contact: sales@pixel2tech.com, +92 317 7475233 (phone and WhatsApp).
 
 ## Pages
 
-- [Home](https://pixel2tech.com/): Overview of the agency, services, work and client results.
-- [About](https://pixel2tech.com/about): Our story, team, values and frequently asked questions.
-- [Services](https://pixel2tech.com/services): Branding, web design & development, UI/UX, social media, video, and custom software.
-- [Portfolio](https://pixel2tech.com/portfolio): Case studies and creative work across branding, web and video.
-- [Blog](https://pixel2tech.com/blog): Essays and insights on branding, web development, UI/UX and AI.
-- [Contact](https://pixel2tech.com/contact): Email, WhatsApp, working hours, studio location and project enquiry form.
+- [Home](https://pixel2tech.com/): What the studio does, selected work, client feedback and how a project runs.
+- [About](https://pixel2tech.com/about): The studio's story, the in-house team and common questions.
+- [Services](https://pixel2tech.com/services): Every service with what is included and how we work.
+- [Portfolio](https://pixel2tech.com/portfolio): Branding, web, social media and video work.
+- [Blog](https://pixel2tech.com/blog): Guides on branding, websites, Shopify, SEO and automation.
+- [Contact](https://pixel2tech.com/contact): Email, WhatsApp, working hours, location and the project brief form.
+
+## People
+
+- [Usama Farooq](https://pixel2tech.com/usama-farooq): CEO and founder of Pixel2Tech.
+- [Asad Farooq](https://pixel2tech.com/asad-farooq): Co-founder and creative director of Pixel2Tech.
+
+## Selected work
+
+- [MADLUVV social media & Meta ads](https://pixel2tech.com/portfolio/madluvv-social-media-meta-ads): Social content and Meta ad creatives.
+- [Affinity Law social media & ad creatives](https://pixel2tech.com/portfolio/affinity-law-social-media-ad-creatives): Social posts and ad creatives for a law firm.
+- [Nayyer Carpets creative direction](https://pixel2tech.com/portfolio/nayyer-carpets-creative-direction-mockups): Creative direction and product visuals.
+- [Swishtag social media management](https://pixel2tech.com/portfolio/swishtag-social-media-management): Ongoing social media management.
+- [Book cover design](https://pixel2tech.com/portfolio/book-cover-design-portfolio): Book cover design work.
+
+## Articles
+
+- [Rebrand vs. refresh: a founder's decision framework](https://pixel2tech.com/blog/rebrand-vs-refresh-a-founders-decision-framework): Questions to answer before deciding to rebrand.
+- [Why every business needs a modern website in 2026](https://pixel2tech.com/blog/why-every-business-needs-a-modern-website-in-2026): A 10-point audit of whether a website is helping or hurting.
+- [Headless Shopify: a practical guide](https://pixel2tech.com/blog/headless-shopify-commerce-guide): When a headless Shopify build makes sense for a store.
+- [Design systems for small teams](https://pixel2tech.com/blog/design-systems-for-small-teams): How small teams can set up and use a design system.
+- [Why your AI content is not ranking](https://pixel2tech.com/blog/ai-seo-mistakes): Common SEO mistakes with AI-written content and how to fix them.
+- [Why most businesses need better systems, not more software](https://pixel2tech.com/blog/better-systems-not-more-software): Fixing processes before buying more tools.
 
 ## Optional
 
-- [Sitemap](https://pixel2tech.com/sitemap_index.xml): Full list of indexable pages.
+- [Sitemap](https://pixel2tech.com/sitemap.xml): Every indexable page.
+- [Privacy policy](https://pixel2tech.com/privacy-policy): What the site collects, including analytics, and how to opt out.
+- [Terms and conditions](https://pixel2tech.com/terms-and-conditions): Terms for using the site and working with us.

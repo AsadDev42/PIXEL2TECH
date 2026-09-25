@@ -1,20 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { legacySitemapRedirect } from "@/lib/legacy-urls";
 
-/**
- * Legacy WordPress/Yoast post sitemap path — 301s to the current blog sitemap.
- */
+/** Yoast post sitemap, 301 to /blog-sitemap.xml. The target lives in LEGACY_SITEMAPS (src/lib/legacy-urls.ts). */
 export const Route = createFileRoute("/post-sitemap.xml")({
   server: {
     handlers: {
-      GET: async () =>
-        new Response(null, {
-          status: 301,
-          headers: {
-            Location: "https://pixel2tech.com/blog-sitemap.xml",
-            "Cache-Control": "public, max-age=86400",
-          },
-        }),
+      GET: async () => legacySitemapRedirect("post-sitemap.xml"),
     },
   },
 });

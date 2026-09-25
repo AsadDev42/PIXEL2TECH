@@ -6,7 +6,8 @@ import { AGENCY, SERVICES, SITE_URL } from "../catalog";
 export const listServices = defineTool({
   name: "list_services",
   title: "List services",
-  description: "List the services Pixel2Tech offers, with a short description and specialty tags for each.",
+  description:
+    "List the services Pixel2Tech offers, with a short description and specialty tags for each.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
@@ -24,9 +25,21 @@ export const listPortfolioProjects = defineTool({
   description:
     "List Pixel2Tech portfolio projects with title, category, subcategory and public URL. Optionally filter by category or keyword.",
   inputSchema: {
-    category: z.string().optional().describe(`One of: ${CATEGORIES.join(", ")}`),
-    query: z.string().optional().describe("Case-insensitive keyword filter on title or subcategory."),
-    limit: z.number().int().min(1).max(100).optional().describe("Max projects to return. Default 20."),
+    category: z
+      .string()
+      .optional()
+      .describe(`One of: ${CATEGORIES.join(", ")}`),
+    query: z
+      .string()
+      .optional()
+      .describe("Case-insensitive keyword filter on title or subcategory."),
+    limit: z
+      .number()
+      .int()
+      .min(1)
+      .max(100)
+      .optional()
+      .describe("Max projects to return. Default 20."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ category, query, limit }) => {
@@ -51,11 +64,12 @@ export const listPortfolioProjects = defineTool({
 export const getAgencyInfo = defineTool({
   name: "get_agency_info",
   title: "Get agency info",
-  description: "Get Pixel2Tech company details: positioning, contact information, address and delivery process.",
+  description:
+    "Get Pixel2Tech company details: positioning, contact information (email, phone, WhatsApp), address, office hours and delivery process.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
-    const info = { ...AGENCY, process: [...AGENCY.process] };
+    const info = { ...AGENCY, hours: [...AGENCY.hours], process: [...AGENCY.process] };
     return {
       content: [{ type: "text" as const, text: JSON.stringify(info, null, 2) }],
       structuredContent: info,

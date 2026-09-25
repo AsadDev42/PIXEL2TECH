@@ -1,40 +1,60 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
-import { FadeIn } from "@/components/motion";
+import { BookCallButton } from "@/components/book-call-button";
 import { trackEvent } from "@/lib/analytics";
-import { useState } from "react";
-import { ALL_ITEMS, CATEGORIES, SUBS, WORK, type Category } from "@/lib/portfolio-data";
+import {
+  ALL_ITEMS,
+  CATEGORIES,
+  absoluteImageUrl,
+  categoryFromSlug,
+  categorySlug,
+  imageSrcSet,
+  type CategorySlug,
+} from "@/lib/portfolio-data";
+import { SITE, STATS } from "@/lib/site-config";
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const PAGE_URL = `${SITE.url}/portfolio`;
+const OG_IMAGE = `${SITE.url}/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
+const TITLE = "Portfolio and case studies | Pixel2Tech";
+const DESCRIPTION =
+  "Client work from Pixel2Tech: brand identities, websites, social media creative, video and custom platforms, with case studies for each project.";
+
+/** `?category=design` filters the grid; anything else shows every project. */
+type PortfolioSearch = { category?: CategorySlug };
 
 export const Route = createFileRoute("/portfolio/")({
+  validateSearch: (search: Record<string, unknown>): PortfolioSearch => {
+    const category = categoryFromSlug(search.category);
+    return category ? { category: categorySlug(category) } : {};
+  },
   component: PortfolioPage,
   head: () => ({
     meta: [
-      { title: "Portfolio & Case Studies | Pixel2Tech Client Work" },
-      { name: "description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
-      { property: "og:title", content: "Portfolio & Case Studies | Pixel2Tech Client Work" },
-      { property: "og:description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://pixel2tech.com/portfolio" },
+      { property: "og:url", content: PAGE_URL },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Portfolio & Case Studies | Pixel2Tech Client Work" },
-      { name: "twitter:description", content: "Explore real client projects — branding, web design, UI/UX and digital campaigns that helped businesses grow." },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://pixel2tech.com/portfolio" }],
+    // Filtered views show the same projects, so they all point at /portfolio.
+    links: [{ rel: "canonical", href: PAGE_URL }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Pixel2Tech Portfolio & Case Studies",
-          description:
-            "Selected Pixel2Tech work across branding, web design, UI/UX, video and custom platforms.",
-          url: "https://pixel2tech.com/portfolio",
-          isPartOf: { "@type": "WebSite", name: "Pixel2Tech", url: "https://pixel2tech.com" },
+          name: "Pixel2Tech portfolio and case studies",
+          description: DESCRIPTION,
+          url: PAGE_URL,
+          isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
           mainEntity: {
             "@type": "ItemList",
             itemListElement: ALL_ITEMS.map((item, index) => ({
@@ -45,11 +65,12 @@ export const Route = createFileRoute("/portfolio/")({
                 name: item.title,
                 genre: item.subcategory,
                 about: item.category,
-                url: `https://pixel2tech.com/portfolio/${item.slug}`,
+                image: absoluteImageUrl(item.img),
+                url: `${PAGE_URL}/${item.slug}`,
                 creator: {
                   "@type": "Organization",
-                  "@id": "https://pixel2tech.com/#organization",
-                  name: "Pixel2Tech",
+                  "@id": `${SITE.url}/#organization`,
+                  name: SITE.name,
                 },
               },
             })),
@@ -62,8 +83,8 @@ export const Route = createFileRoute("/portfolio/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://pixel2tech.com/portfolio" },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+            { "@type": "ListItem", position: 2, name: "Portfolio", item: PAGE_URL },
           ],
         }),
       },
@@ -71,244 +92,184 @@ export const Route = createFileRoute("/portfolio/")({
   }),
 });
 
-const STATS = [
-  { value: "95%+", label: "Client Satisfaction", body: "We focus on quality work and strong client relationships." },
-  { value: "3", label: "Years growing", body: "Building brands and digital experiences with passion." },
-  { value: "50+", label: "Projects Completed", body: "Branding, websites, and marketing projects delivered." },
-  { value: "15+", label: "Happy Clients", body: "Startups and growing businesses we've partnered with." },
+const FILTERS: { label: string; slug?: CategorySlug; count: number }[] = [
+  { label: "All work", count: ALL_ITEMS.length },
+  ...CATEGORIES.map((c) => ({
+    label: c,
+    slug: categorySlug(c),
+    count: ALL_ITEMS.filter((i) => i.category === c).length,
+  })),
+];
+
+const TRUST_STATS = [
+  { value: STATS.projects, label: "Projects delivered" },
+  { value: STATS.clients, label: "Clients" },
+  { value: STATS.rating, label: "Client rating" },
+  { value: STATS.years, label: `Years in business, since ${STATS.foundingYear}` },
 ];
 
 function PortfolioPage() {
-  const [cat, setCat] = useState<Category>("Creative");
-  const [sub, setSub] = useState<string>(SUBS.Creative[0]);
-
-  const onCat = (c: Category) => {
-    setCat(c);
-    setSub(SUBS[c][0]);
-  };
-
-  const items = WORK[cat][sub] ?? [];
+  const { category } = Route.useSearch();
+  const active = categoryFromSlug(category);
+  const shown = active ? ALL_ITEMS.filter((i) => i.category === active).length : ALL_ITEMS.length;
 
   return (
     <PageShell>
       {/* Header */}
-      <section className="bg-background py-16 md:py-24 lg:py-32">
+      <section className="bg-background pb-8 pt-10 sm:pt-16 lg:pt-20">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
-                Our Work Speaks for Itself
-              </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-muted-foreground sm:text-base">
-                We create brands, websites, and digital experiences that help businesses grow, attract better clients, and increase sales.
-              </p>
-            </div>
-          </FadeIn>
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Portfolio
+            </p>
+            <h1 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Our work
+            </h1>
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              Brand identities, websites, social content, video and custom software we&apos;ve made
+              for clients. Filter by practice, or open a project to read how we did it.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Tabs */}
-      <section className="bg-background pb-16 md:pb-24 lg:pb-32">
+      {/* Filters + grid. Every project is in the server HTML; the filter only hides cards. */}
+      <section aria-labelledby="projects-title" className="bg-background pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="flex justify-center">
-              <div className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-3xl bg-muted p-1.5 sm:rounded-full">
-                {CATEGORIES.map((c) => (
-                  <button
-                    key={c}
-                    type="button"
-                    onClick={() => onCat(c)}
-                    aria-pressed={cat === c}
-                    className={`min-h-11 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                      cat === c ? "bg-foreground text-background shadow" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
+          <h2 id="projects-title" className="sr-only">
+            Projects
+          </h2>
+          <nav aria-label="Filter projects by practice">
+            <ul className="flex flex-wrap gap-2">
+              {FILTERS.map((f) => {
+                const isActive = f.slug === category;
+                return (
+                  <li key={f.label}>
+                    <Link
+                      to="/portfolio"
+                      search={f.slug ? { category: f.slug } : {}}
+                      replace
+                      resetScroll={false}
+                      // Exact search match, so the router's aria-current="page"
+                      // lands on this chip only (not on "All work" as well).
+                      activeOptions={{ exact: true, includeSearch: true }}
+                      onClick={() => trackEvent("portfolio_filter", { category: f.slug ?? "all" })}
+                      className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                        isActive
+                          ? "border-foreground bg-foreground text-background"
+                          : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground"
+                      }`}
+                    >
+                      {f.label}
+                      <span className="text-xs font-medium tabular-nums opacity-70">{f.count}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <p aria-live="polite" className="mt-4 text-sm text-muted-foreground">
+            {active ? `Showing ${shown} ${active} projects` : `Showing all ${shown} projects`}
+          </p>
 
-          <FadeIn delay={0.05}>
-            <div className="mt-4 flex justify-center">
-              <div className="inline-flex max-w-full flex-wrap justify-center gap-1 rounded-3xl bg-muted p-1.5 sm:rounded-full">
-                {SUBS[cat].map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setSub(s)}
-                    aria-pressed={sub === s}
-                    className={`min-h-11 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                      sub === s ? "bg-foreground text-background shadow" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Grid */}
-          <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((w, i) => (
-              <FadeIn key={w.slug} delay={0.03 * i}>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {ALL_ITEMS.map((w, i) => (
+              <li key={w.slug} hidden={active ? w.category !== active : undefined}>
                 <Link
                   to="/portfolio/$slug"
                   params={{ slug: w.slug }}
-                  aria-label={`View case study: ${w.title}`}
                   data-cursor="expand"
-                  onClick={() => trackEvent("portfolio_project_opened", { slug: w.slug, title: w.title })}
-                  className="group block overflow-hidden rounded-2xl bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
+                  onClick={() =>
+                    trackEvent("portfolio_project_opened", { slug: w.slug, title: w.title })
+                  }
+                  className="group block overflow-hidden rounded-2xl bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                 >
                   <div className="relative aspect-[4/5]">
-                    <img loading="lazy" decoding="async" src={w.img} alt={w.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                    <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                    <div aria-hidden="true" className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
+                    <img
+                      src={w.img}
+                      srcSet={imageSrcSet(w.img)}
+                      sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      alt=""
+                      loading={i < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"
+                    />
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-6">
                       <div className="min-w-0">
-                        <div className="text-xs uppercase tracking-widest text-white/90">{sub}</div>
-                        <div className="mt-1 truncate text-base font-semibold sm:text-lg">{w.title}</div>
+                        <p className="text-xs uppercase tracking-widest text-white/85">
+                          {w.subcategory}
+                        </p>
+                        <h3 className="mt-1 line-clamp-2 text-base font-semibold sm:text-lg">
+                          {w.title}
+                        </h3>
                       </div>
                       <span
                         aria-hidden="true"
-                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/90 text-neutral-900 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/90 text-neutral-900 transition group-hover:scale-110"
                       >
-                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                        <ArrowUpRight className="h-4 w-4" />
                       </span>
                     </div>
                   </div>
                 </Link>
-              </FadeIn>
+              </li>
             ))}
-
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/*
-        Full project directory.
-
-        The tabbed grid above only renders the active subcategory, so on the
-        server exactly one tab's projects appear in the HTML. Crawlers never
-        run the tab state, which left every other case study with no inbound
-        internal link at all. This section renders every project as a plain
-        link on the server so the whole portfolio is reachable and indexable.
-      */}
-      <section className="border-t border-border bg-muted/30 py-16 md:py-24">
+      {/* Numbers */}
+      <section
+        aria-labelledby="stats-title"
+        className="border-y border-border bg-muted/60 py-16 md:py-24"
+      >
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:justify-between">
-              <div className="min-w-0">
-                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Browse all projects
-                </h2>
-                <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
-                  Every case study we&apos;ve published, grouped by discipline.
-                </p>
+          <h2 id="stats-title" className="sr-only">
+            Pixel2Tech in numbers
+          </h2>
+          <dl className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {TRUST_STATS.map((s) => (
+              <div
+                key={s.label}
+                className="flex flex-col-reverse rounded-2xl bg-background p-5 text-center shadow-sm sm:p-8"
+              >
+                <dt className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</dt>
+                <dd className="text-3xl font-bold text-foreground sm:text-4xl">{s.value}</dd>
               </div>
-              <span className="shrink-0 rounded-full border border-border bg-background px-4 py-1.5 text-xs font-semibold text-muted-foreground">
-                {ALL_ITEMS.length} projects
-              </span>
-            </div>
-          </FadeIn>
-
-          <div className="mt-10 space-y-12 md:mt-14 md:space-y-16">
-            {CATEGORIES.map((c, ci) => {
-              const count = SUBS[c].reduce((n, s) => n + (WORK[c][s]?.length ?? 0), 0);
-              return (
-                <div key={c}>
-                  <div className="flex items-center gap-4">
-                    <span className="text-xs font-bold tabular-nums text-muted-foreground/60">
-                      {String(ci + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
-                      {c}
-                    </h3>
-                    <span className="h-px flex-1 bg-border" />
-                    <span className="shrink-0 text-xs font-medium text-muted-foreground">
-                      {count}
-                    </span>
-                  </div>
-
-                  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {SUBS[c].map((s) => {
-                      const group = WORK[c][s] ?? [];
-                      if (group.length === 0) return null;
-                      return (
-                        <div
-                          key={`${c}-${s}`}
-                          className="rounded-2xl border border-border bg-background p-5 transition-shadow hover:shadow-md sm:p-6"
-                        >
-                          <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
-                            {s}
-                          </h4>
-                          <ul className="mt-4 space-y-1">
-                            {group.map((w) => (
-                              <li key={w.slug}>
-                                <Link
-                                  to="/portfolio/$slug"
-                                  params={{ slug: w.slug }}
-                                  className="group -mx-2 flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:bg-muted focus-visible:text-foreground focus-visible:outline-none"
-                                >
-                                  <span className="min-w-0 truncate">{w.title}</span>
-                                  <span
-                                    aria-hidden="true"
-                                    className="shrink-0 text-xs opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
-                                  >
-                                    →
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-
-      {/* Stats */}
-
-      <section className="bg-muted/60 py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {STATS.map((s, i) => (
-              <FadeIn key={s.label} delay={0.05 * i}>
-                <div className="rounded-2xl bg-background p-6 text-center shadow-sm sm:p-8">
-                  <div className="text-3xl font-bold text-foreground sm:text-4xl">{s.value}</div>
-                  <div className="mt-2 text-sm font-semibold text-foreground">{s.label}</div>
-                  <p className="mt-3 text-sm text-muted-foreground">{s.body}</p>
-                </div>
-              </FadeIn>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-background py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-5 md:px-10 text-center">
-          <FadeIn>
-            <h2 className="text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
-              Ready to Take Your Brand to the Next Level?
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[15px] text-muted-foreground sm:text-base">
-              Let&apos;s build something that not only looks great but helps your business grow faster and stand out in the market.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <Link to="/contact" className="inline-flex min-h-12 items-center rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background transition hover:opacity-90">
-                Start Your Project
-              </Link>
-            </div>
-          </FadeIn>
+      <section aria-labelledby="portfolio-cta-title" className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5 text-center md:px-10">
+          <h2
+            id="portfolio-cta-title"
+            className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+          >
+            Have a project in mind?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+            Tell us what you&apos;re working on. We&apos;ll come back with a clear plan and a
+            realistic timeline.
+          </p>
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <BookCallButton
+              source="portfolio_index"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            />
+            <Link
+              to="/contact"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              Send a project brief
+            </Link>
+          </div>
         </div>
       </section>
     </PageShell>

@@ -1,158 +1,227 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeader } from "@tanstack/react-start/server";
 import { createClient } from "@supabase/supabase-js";
-import { z } from "zod";
+import type { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
+import { SITE } from "@/lib/site-config";
+import {
+  MIN_FILL_MS,
+  SUBMIT_ERRORS,
+  contactSubmissionSchema,
+  newsletterSubmissionSchema,
+  type ContactSubmission,
+  type NewsletterSubmission,
+} from "@/lib/contact-schema";
 
-// Strip control chars / zero-width, collapse whitespace.
-const sanitize = (s: string) =>
-  s
-    // eslint-disable-next-line no-control-regex -- intentional: strip control + zero-width chars
-    .replace(/[\u0000-\u001F\u007F\u200B-\u200D\uFEFF]/g, "")
-    .replace(/[ \t]+/g, " ")
-    .trim();
+/** Parses with the shared schema; any failure becomes one friendly message. */
+function parseSubmission<S extends z.ZodType>(schema: S, input: unknown): z.output<S> {
+  const result = schema.safeParse(input);
+  if (!result.success) throw new Error(SUBMIT_ERRORS.invalid);
+  return result.data;
+}
 
-const optionalText = (max: number) =>
-  z
-    .string()
-    .max(max)
-    .transform(sanitize)
-    .optional();
+/*
+ * Rate limits.
+ *
+ * Best-effort only. These Maps live inside one Worker isolate, and Cloudflare
+ * runs many isolates and recycles them often, so a determined sender can go
+ * past these numbers. They stop double posts and slow down one noisy client;
+ * they are not real abuse protection (that needs a shared store or a CAPTCHA).
+ */
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_IP = 5;
+const CONFIRMATION_WINDOW_MS = 24 * 60 * 60 * 1000;
+const MAX_CONFIRMATIONS_PER_ADDRESS = 2;
+const MAX_TRACKED_KEYS = 5000;
 
-const submissionSchema = z.object({
-  // Newer forms send firstName/lastName/phone; older sections still send `name`.
-  firstName: optionalText(100),
-  lastName: optionalText(100),
-  name: optionalText(200),
-  phone: optionalText(40),
-  email: z.string().transform((s) => sanitize(s).toLowerCase()).pipe(z.string().email("Invalid email").max(255)),
-  subject: optionalText(200),
-  message: z.string().transform(sanitize).pipe(z.string().min(10, "Message is too short").max(5000)),
-  // Honeypot — real users leave this empty. Bots fill it.
-  website: z.string().max(200).optional(),
-  // Anti-instant-submit — client sends ms elapsed since the form mounted.
-  // Elapsed time (not a wall-clock stamp) so a skewed device clock can't
-  // wrongly reject a real visitor.
-  elapsedMs: z.number().int().nonnegative().optional(),
-});
+const ipHits = new Map<string, number[]>();
+const confirmationHits = new Map<string, number[]>();
 
-export type SubmissionInput = z.input<typeof submissionSchema>;
-
-// In-memory rate limit: max 5 submissions per IP per 10 minutes.
-// Resets on worker restart; sufficient as a lightweight spam brake.
-const RATE_WINDOW_MS = 10 * 60 * 1000;
-const RATE_MAX = 5;
-const rateBuckets = new Map<string, number[]>();
-function rateLimit(ip: string): boolean {
+/** Records a hit for `key`; returns false when it would go over `max` in `windowMs`. */
+function allow(buckets: Map<string, number[]>, key: string, max: number, windowMs: number) {
   const now = Date.now();
-  const arr = (rateBuckets.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  if (arr.length >= RATE_MAX) {
-    rateBuckets.set(ip, arr);
+  if (buckets.size > MAX_TRACKED_KEYS) {
+    for (const [k, hits] of buckets) {
+      if (now - hits[hits.length - 1] >= windowMs) buckets.delete(k);
+    }
+  }
+  const recent = (buckets.get(key) ?? []).filter((t) => now - t < windowMs);
+  if (recent.length >= max) {
+    buckets.set(key, recent);
     return false;
   }
-  arr.push(now);
-  rateBuckets.set(ip, arr);
+  recent.push(now);
+  buckets.set(key, recent);
   return true;
 }
 
-export const submitContactForm = createServerFn({ method: "POST" })
-  .validator((input: SubmissionInput) => submissionSchema.parse(input))
+function clientIp() {
+  // Cloudflare sets cf-connecting-ip on every proxied request and overwrites any
+  // copy the client sends, so in production this is the real address.
+  const cf = getRequestHeader("cf-connecting-ip");
+  if (cf) return cf.trim();
+  // Local dev and non-Cloudflare hosts only. These headers can be spoofed, and
+  // requests without any of them share one bucket.
+  return (
+    getRequestHeader("x-real-ip")?.trim() ||
+    getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "no-ip"
+  );
+}
 
-  .handler(async ({ data }) => {
-    // Honeypot: reject silently-ish if bot filled the field.
-    if (data.website && data.website.length > 0) {
-      return { ok: true as const };
-    }
-    // Speed trap: reject sub-1s submissions (bots).
-    if (typeof data.elapsedMs === "number" && data.elapsedMs < 1000) {
-      throw new Error("Please take a moment to review your message.");
-    }
+type SpamGuard = { website: string; elapsedMs: number };
 
-    // Rate limit per client IP.
-    const ip =
-      (getRequestHeader("cf-connecting-ip") ||
-        getRequestHeader("x-forwarded-for")?.split(",")[0].trim() ||
-        getRequestHeader("x-real-ip") ||
-        "unknown").toString();
-    if (!rateLimit(ip)) {
-      throw new Error("Too many submissions. Please try again in a few minutes.");
-    }
+/**
+ * Runs the honeypot, speed and per-IP checks shared by every public form.
+ * Returns false for a bot that filled the honeypot: the caller should answer
+ * "ok" without saving or emailing anything, so the bot learns nothing.
+ */
+function passesSpamGuards({ website, elapsedMs }: SpamGuard) {
+  if (website.length > 0) return false;
+  if (elapsedMs < MIN_FILL_MS) throw new Error(SUBMIT_ERRORS.tooFast);
+  if (!allow(ipHits, clientIp(), MAX_PER_IP, WINDOW_MS)) throw new Error(SUBMIT_ERRORS.rateLimited);
+  return true;
+}
 
-    // Normalise the name into first/last regardless of which form submitted.
-    const fallback = (data.name ?? "").split(" ").filter(Boolean);
-    const firstName = data.firstName || fallback[0] || "";
-    const lastName = data.lastName || fallback.slice(1).join(" ") || "";
-    if (!firstName) throw new Error("Please enter your name.");
-    const fullName = [firstName, lastName].filter(Boolean).join(" ");
-    const phone = data.phone ?? "";
+type ContactRow = Database["public"]["Tables"]["contacts"]["Insert"];
 
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_PUBLISHABLE_KEY;
-    if (!url || !key) throw new Error("Backend not configured");
+/**
+ * Inserts with the publishable key, so the row-level-security policy on
+ * `contacts` (insert-only, length checks) still applies to this server code.
+ */
+async function saveContact(row: ContactRow) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) {
+    console.error("[contact] SUPABASE_URL or SUPABASE_PUBLISHABLE_KEY is not set");
+    throw new Error(SUBMIT_ERRORS.unavailable);
+  }
 
-
-    const supabase = createClient<Database>(url, key, {
-      auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
-      global: {
-        fetch: (input, init) => {
-          const h = new Headers(init?.headers);
-          if (key.startsWith("sb_") && h.get("Authorization") === `Bearer ${key}`) {
-            h.delete("Authorization");
-          }
-          h.set("apikey", key);
-          return fetch(input, { ...init, headers: h });
-        },
+  // Mirrors createSupabaseFetch in src/integrations/supabase/client.ts (not exported):
+  // new sb_ keys are sent as `apikey`, never as a bearer token.
+  const supabase = createClient<Database>(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
+    global: {
+      fetch: (input, init) => {
+        const headers = new Headers(init?.headers);
+        if (key.startsWith("sb_") && headers.get("Authorization") === `Bearer ${key}`) {
+          headers.delete("Authorization");
+        }
+        headers.set("apikey", key);
+        return fetch(input, { ...init, headers });
       },
-    });
+    },
+  });
 
-    const { error } = await supabase.from("contacts").insert({
-      first_name: firstName,
-      last_name: lastName,
+  const { error } = await supabase.from("contacts").insert(row);
+  if (error) {
+    console.error("[contact] insert failed", error);
+    throw new Error(SUBMIT_ERRORS.unavailable);
+  }
+}
+
+function ownerEmail() {
+  return process.env.CONTACT_OWNER_EMAIL || SITE.email;
+}
+
+function submittedAt() {
+  return new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Karachi",
+    dateStyle: "full",
+    timeStyle: "short",
+  });
+}
+
+/** Loaded lazily so the email renderer never ships in the client bundle. */
+async function loadMailer() {
+  const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+  return sendTemplateEmail;
+}
+
+export const submitContactForm = createServerFn({ method: "POST" })
+  .validator((input: ContactSubmission) => parseSubmission(contactSubmissionSchema, input))
+  .handler(async ({ data }) => {
+    if (!passesSpamGuards(data)) return { ok: true as const };
+
+    await saveContact({
+      first_name: data.firstName,
+      last_name: data.lastName,
       email: data.email,
-      phone,
+      phone: data.phone,
       message: data.message,
     });
 
-    if (error) {
-      console.error("[contact] insert failed", error);
-      throw new Error("Could not save your message. Please try again.");
+    // Emails are best-effort: a delivery problem must not fail a saved submission.
+    const eventId = crypto.randomUUID();
+    const owner = ownerEmail();
+    try {
+      const sendTemplateEmail = await loadMailer();
+      const sends: Promise<unknown>[] = [
+        sendTemplateEmail("contact-notification", owner, {
+          templateData: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            subject: data.subject ?? "",
+            source: data.source ?? "",
+            message: data.message,
+            submittedAt: submittedAt(),
+          },
+          idempotencyKey: `contact-notification-${eventId}`,
+          replyTo: data.email,
+        }),
+      ];
+      // The visitor's copy is a fixed acknowledgement: it never repeats anything
+      // they typed, so the form can't be used to send our email to strangers.
+      if (
+        allow(confirmationHits, data.email, MAX_CONFIRMATIONS_PER_ADDRESS, CONFIRMATION_WINDOW_MS)
+      ) {
+        sends.push(
+          sendTemplateEmail("contact-confirmation", data.email, {
+            idempotencyKey: `contact-confirmation-${eventId}`,
+            replyTo: owner,
+          }),
+        );
+      }
+      const results = await Promise.allSettled(sends);
+      for (const r of results) {
+        if (r.status === "rejected") console.warn("[contact] email failed", r.reason);
+      }
+    } catch (e) {
+      console.warn("[contact] email setup failed", e);
     }
 
-    // Owner notification + visitor confirmation via Lovable's managed email API.
-    // Best-effort: a delivery problem must not fail the submission itself.
-    const ownerEmail = process.env.CONTACT_OWNER_EMAIL || "sales@pixel2tech.com";
-    const eventId = `${data.email}-${Date.now()}`;
-    const submittedAt = new Date().toLocaleString("en-US", {
-      timeZone: "Asia/Karachi",
-      dateStyle: "full",
-      timeStyle: "short",
-    });
+    return { ok: true as const };
+  });
+
+/**
+ * Blog newsletter signup. There is no subscriber list yet, so a signup is saved
+ * as a `contacts` row and the owner is notified. The visitor gets no email:
+ * without double opt-in we can't confirm the address belongs to them.
+ */
+export const subscribeToNewsletter = createServerFn({ method: "POST" })
+  .validator((input: NewsletterSubmission) => parseSubmission(newsletterSubmissionSchema, input))
+  .handler(async ({ data }) => {
+    if (!passesSpamGuards(data)) return { ok: true as const };
+
+    const message = "Newsletter signup from the blog.";
+    await saveContact({ first_name: "Newsletter signup", email: data.email, message });
+
     try {
-      const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
-      await sendTemplateEmail("contact-notification", ownerEmail, {
+      const sendTemplateEmail = await loadMailer();
+      await sendTemplateEmail("contact-notification", ownerEmail(), {
         templateData: {
-          firstName,
-          lastName,
-          name: fullName,
           email: data.email,
-          phone,
-          subject: data.subject ?? "",
-          message: data.message,
-          submittedAt,
+          source: "newsletter",
+          message,
+          submittedAt: submittedAt(),
         },
-        idempotencyKey: `contact-notification-${eventId}`,
+        idempotencyKey: `newsletter-notification-${crypto.randomUUID()}`,
         replyTo: data.email,
       });
-      await sendTemplateEmail("contact-confirmation", data.email, {
-        templateData: {
-          name: firstName,
-          subject: data.subject ?? "",
-          message: data.message,
-        },
-        idempotencyKey: `contact-confirmation-${eventId}`,
-      });
     } catch (e) {
-      console.warn("[contact] email notification failed", e);
+      console.warn("[newsletter] owner notification failed", e);
     }
 
     return { ok: true as const };

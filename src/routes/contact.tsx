@@ -1,94 +1,49 @@
+import type { ComponentType } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
-import { Mail, Loader2, MapPin, Phone, ArrowRight, AlertCircle } from "lucide-react";
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
-import { toast } from "sonner";
-import { z } from "zod";
-import { submitContactForm } from "@/lib/contact.functions";
-import { FadeIn } from "@/components/motion";
+import { BookCallButton } from "@/components/book-call-button";
+import { ContactForm } from "@/components/contact-form";
 import { trackEvent } from "@/lib/analytics";
-import { useFormValidation } from "@/lib/use-form-validation";
+import { SITE } from "@/lib/site-config";
 
+const OG_IMAGE =
+  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const PAGE_URL = `${SITE.url}/contact`;
+const TITLE = "Contact Pixel2Tech | Start a Project or Book a Call";
+const DESCRIPTION =
+  "Tell us about your branding, website, video or automation project. We reply within one business day, or book a free strategy call. Based in Lahore, working worldwide.";
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const MAP_QUERY = encodeURIComponent(SITE.location);
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact Pixel2Tech | Book a Free Strategy Call" },
-      { name: "description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
-      { property: "og:title", content: "Contact Pixel2Tech | Book a Free Strategy Call" },
-      { property: "og:description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://pixel2tech.com/contact" },
+      { property: "og:url", content: PAGE_URL },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "Contact Pixel2Tech | Book a Free Strategy Call" },
-      { name: "twitter:description", content: "Ready to grow your brand? Contact Pixel2Tech for branding, web design and software projects. Based in Lahore, serving worldwide." },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://pixel2tech.com/contact" }],
+    links: [{ rel: "canonical", href: PAGE_URL }],
     scripts: [
       {
+        // The business itself (address, phone, email) is described once, in the root
+        // Organization node; this page only points at it.
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Contact Pixel2Tech",
-          url: "https://pixel2tech.com/contact",
-          mainEntity: {
-            "@type": "Organization",
-            "@id": "https://pixel2tech.com/#organization",
-            name: "Pixel2Tech",
-            url: "https://pixel2tech.com",
-          },
-          contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+923177475233",
-            email: "sales@pixel2tech.com",
-            contactType: "sales",
-            areaServed: "Worldwide",
-            availableLanguage: ["English", "Urdu"],
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Pixel2Tech",
-          description:
-            "Full-service creative agency offering branding, web design, UI/UX, social media, video and custom software.",
-          url: "https://pixel2tech.com/contact",
-          email: "sales@pixel2tech.com",
-          telephone: "+92 317 7475233",
-          image: OG_IMAGE,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Office 12, Main Boulevard, Gulberg III",
-            addressLocality: "Lahore",
-            addressRegion: "Punjab",
-            postalCode: "54000",
-            addressCountry: "PK",
-          },
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "09:00",
-              closes: "18:00",
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Saturday"],
-              opens: "10:00",
-              closes: "16:00",
-            },
-          ],
+          url: PAGE_URL,
+          mainEntity: { "@id": `${SITE.url}/#organization` },
         }),
       },
       {
@@ -97,8 +52,8 @@ export const Route = createFileRoute("/contact")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Contact", item: "https://pixel2tech.com/contact" },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+            { "@type": "ListItem", position: 2, name: "Contact", item: PAGE_URL },
           ],
         }),
       },
@@ -106,349 +61,185 @@ export const Route = createFileRoute("/contact")({
   }),
 });
 
-const clientSchema = z.object({
-  firstName: z.string().trim().min(2, "Please enter your first name").max(100),
-  lastName: z.string().trim().min(1, "Please enter your last name").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Please enter a valid phone number")
-    .max(40)
-    .regex(/^[+]?[\d\s()-]{7,20}$/, "Please enter a valid phone number"),
-  message: z.string().trim().min(10, "Please write at least 10 characters").max(5000),
-});
-
-type FormState = { firstName: string; lastName: string; email: string; phone: string; message: string };
-const initial: FormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
-
-
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} fill="currentColor" aria-hidden="true">
-      <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.79 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.708.888.858 0 2.42-.516 2.75-1.404.13-.343.187-.744.187-1.117 0-.286-1.877-1.135-2.15-1.246Zm-2.895 7.208a10.086 10.086 0 0 1-5.13-1.404l-3.583.945.96-3.522A10.028 10.028 0 0 1 6.145 14.4 10.079 10.079 0 0 1 16.2 4.348a10.079 10.079 0 0 1 10.055 10.052 10.079 10.079 0 0 1-10.041 10.013Zm0-22.146A12.11 12.11 0 0 0 4.098 14.4c0 2.147.573 4.194 1.65 6.055L3.75 27.75l7.457-1.949a12.121 12.121 0 0 0 5.784 1.476h.014c6.694 0 12.176-5.474 12.176-12.166A12.15 12.15 0 0 0 25.638 5.5a12.005 12.005 0 0 0-9.423-4.233Z"/>
+      <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.79 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.708.888.858 0 2.42-.516 2.75-1.404.13-.343.187-.744.187-1.117 0-.286-1.877-1.135-2.15-1.246Zm-2.895 7.208a10.086 10.086 0 0 1-5.13-1.404l-3.583.945.96-3.522A10.028 10.028 0 0 1 6.145 14.4 10.079 10.079 0 0 1 16.2 4.348a10.079 10.079 0 0 1 10.055 10.052 10.079 10.079 0 0 1-10.041 10.013Zm0-22.146A12.11 12.11 0 0 0 4.098 14.4c0 2.147.573 4.194 1.65 6.055L3.75 27.75l7.457-1.949a12.121 12.121 0 0 0 5.784 1.476h.014c6.694 0 12.176-5.474 12.176-12.166A12.15 12.15 0 0 0 25.638 5.5a12.005 12.005 0 0 0-9.423-4.233Z" />
     </svg>
   );
 }
 
+type ContactMethod = {
+  label: string;
+  value: string;
+  href: string;
+  event: string;
+  Icon: ComponentType<{ className?: string }>;
+  external?: boolean;
+};
+
+const CONTACT_METHODS: ContactMethod[] = [
+  {
+    label: "Email",
+    value: SITE.email,
+    href: `mailto:${SITE.email}`,
+    event: "email_click",
+    Icon: Mail,
+  },
+  {
+    label: "Phone",
+    value: SITE.phoneDisplay,
+    href: `tel:${SITE.phoneE164}`,
+    event: "phone_click",
+    Icon: Phone,
+  },
+  {
+    label: "WhatsApp",
+    value: SITE.phoneDisplay,
+    href: SITE.whatsappUrl,
+    event: "whatsapp_click",
+    Icon: WhatsAppIcon,
+    external: true,
+  },
+];
+
+const EYEBROW = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
+const H2 = "text-xl font-bold tracking-tight text-foreground sm:text-2xl";
+const PANEL = "rounded-3xl bg-muted p-6 sm:p-8";
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
 function ContactPage() {
-  const submit = useServerFn(submitContactForm);
-  const [website, setWebsite] = useState(""); // honeypot
-  const [loadedAt] = useState<number>(() => Date.now());
-  const { values: form, errors, submitting: loading, setField, handleBlur, handleSubmit, reset } =
-    useFormValidation(clientSchema, initial);
-
-  const onSubmit = handleSubmit(async (data) => {
-    try {
-      await submit({ data: { ...data, website, elapsedMs: Date.now() - loadedAt } });
-      trackEvent("contact_form_submitted", {});
-      toast.success("Thank you for contacting us. Our team will get back to you soon.");
-      reset();
-    } catch (err) {
-      toast.error("Couldn't send message", {
-        description: err instanceof Error ? err.message : "Please try again in a moment.",
-      });
-    }
-  });
-
-  const fields = [
-    { id: "firstName", label: "First Name", type: "text", autoComplete: "given-name", placeholder: "John", inputMode: "text", enterKeyHint: "next" },
-    { id: "lastName", label: "Last Name", type: "text", autoComplete: "family-name", placeholder: "Doe", inputMode: "text", enterKeyHint: "next" },
-    { id: "email", label: "Email Address", type: "email", autoComplete: "email", placeholder: "john@example.com", inputMode: "email", enterKeyHint: "next" },
-    { id: "phone", label: "Phone Number", type: "tel", autoComplete: "tel", placeholder: "+92 300 1234567", inputMode: "tel", enterKeyHint: "next" },
-  ] as const;
-
-
-
   return (
     <PageShell>
-      {/* Let's work together — matches Services page contact section */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-        <FadeIn>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-              Let&apos;s work together
-            </span>
-            <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px] lg:leading-[1.05]">
-              Ready to transform your <span className="text-primary">brand?</span>
+      <section aria-labelledby="contact-title" className="bg-background py-12 md:py-20">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <header className="max-w-3xl">
+            <p className={EYEBROW}>Contact</p>
+            <h1
+              id="contact-title"
+              className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl xl:text-[56px]"
+            >
+              Tell us about <span className="text-primary">your project</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-              Get in touch with us today, and let&apos;s create something amazing.
+            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              Share a few details about what you need, whether it&apos;s a brand, a website, video
+              or an automation. We reply within one business day.
             </p>
-          </div>
-        </FadeIn>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-16 sm:mt-16">
-          {/* Left: Form */}
-          <FadeIn>
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Send us a message</h2>
-              <form onSubmit={onSubmit} aria-labelledby="contact-form-title" noValidate className="mt-6 space-y-5">
-                <h3 id="contact-form-title" className="sr-only">Contact form</h3>
-                {/* Honeypot: hidden from users & screen readers, visible to bots */}
-                <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
-                  <label htmlFor="website">Website (leave empty)</label>
-                  <input
-                    id="website"
-                    name="website"
-                    type="text"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  />
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-                {fields.map((f) => (
-                  <div key={f.id} className="flex min-w-0 flex-col">
-
-                    <label htmlFor={f.id} className="mb-1.5 text-sm font-medium text-foreground">
-                      {f.label}
-                    </label>
-                    <input
-                      id={f.id}
-                      name={f.id}
-                      type={f.type}
-                      inputMode={f.inputMode}
-                      enterKeyHint={f.enterKeyHint}
-                      autoComplete={f.autoComplete}
-                      placeholder={f.placeholder}
-                      value={String(form[f.id] ?? "")}
-                      onChange={setField(f.id)}
-                      onBlur={handleBlur(f.id)}
-                      disabled={loading}
-                      aria-invalid={!!errors[f.id]}
-                      aria-describedby={errors[f.id] ? `${f.id}-error` : undefined}
-                      className={`min-h-12 w-full touch-manipulation rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors[f.id] ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
-                    />
-                    <p aria-live="polite" className="sr-only">{errors[f.id] ?? ""}</p>
-                    {errors[f.id] ? (
-                      <p
-                        id={`${f.id}-error`}
-                        role="alert"
-                        className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-destructive"
-                      >
-                        <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                        <span className="min-w-0">{errors[f.id]}</span>
-                      </p>
-                    ) : null}
-                  </div>
-                ))}
-                </div>
-
-
-
-                <div className="flex flex-col">
-                  <label htmlFor="message" className="mb-1.5 text-sm font-medium text-foreground">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={form.message}
-                    onChange={setField("message")}
-                    onBlur={handleBlur("message")}
-                    disabled={loading}
-                    placeholder="Tell us about your project"
-                    aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? "message-error" : undefined}
-                    className={`min-h-32 w-full touch-manipulation resize-none rounded-xl border bg-muted px-4 py-3 text-base text-foreground placeholder:text-muted-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60 dark:bg-white/[0.04] dark:placeholder:text-white/70 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-transparent focus-visible:border-foreground/30"}`}
-                  />
-
-                  <p aria-live="polite" className="sr-only">{errors.message ?? ""}</p>
-                  {errors.message ? (
-                    <p
-                      id="message-error"
-                      role="alert"
-                      className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-destructive"
-                    >
-                      <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                      <span className="min-w-0">{errors.message}</span>
-                    </p>
-                  ) : null}
-                </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="mt-1 inline-flex h-14 w-full touch-manipulation items-center justify-center gap-2 rounded-2xl bg-foreground text-base font-semibold text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                  {loading ? "Sending…" : "Send Message"}
-                </button>
-              </form>
-            </div>
-          </FadeIn>
-
-          {/* Right: Get in touch */}
-          <FadeIn delay={0.1}>
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Get in touch</h2>
-              <div className="mt-6 space-y-4">
-                <a href="mailto:sales@pixel2tech.com" onClick={() => trackEvent("email_click", { location: "contact_page" })} className="group flex items-center gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
-                    <Mail className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <div className="text-base font-semibold text-foreground">Email</div>
-                    <div className="text-sm text-muted-foreground group-hover:text-foreground">sales@pixel2tech.com</div>
-                  </div>
-                </a>
-                <a href="https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("whatsapp_click", { location: "contact_page" })} className="group flex items-center gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
-                    <WhatsAppIcon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <div className="text-base font-semibold text-foreground">WhatsApp</div>
-                    <div className="text-sm text-muted-foreground group-hover:text-foreground">+92 317 7475233</div>
-                  </div>
-                </a>
-                <div className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground dark:bg-white/[0.06]">
-                    <MapPin className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <div className="text-base font-semibold text-foreground">Studio</div>
-                    <div className="text-sm text-muted-foreground">Lahore, Pakistan</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 rounded-2xl bg-muted p-6 dark:bg-white/[0.04] sm:p-8">
-                <h3 className="text-xl font-semibold text-foreground">Business Hours</h3>
-                <dl className="mt-5 space-y-3 text-[15px]">
-                  <div className="flex items-center justify-between">
-                    <dt className="text-foreground">Monday – Friday</dt>
-                    <dd className="text-muted-foreground">9:00 AM – 6:00 PM</dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-foreground">Saturday</dt>
-                    <dd className="text-muted-foreground">10:00 AM – 4:00 PM</dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-foreground">Sunday</dt>
-                    <dd className="text-muted-foreground">Closed</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-
-      {/* Get in Touch + Map (unified section) */}
-      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-                Visit or Reach Out
-              </span>
-              <h2 className="mt-3 text-[26px] font-bold leading-[1.12] tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl md:mt-4">
-                Get in Touch <span className="text-primary">with Us</span>
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                If you have any questions or need assistance, don&apos;t hesitate to reach out. Visit our office in Lahore, or contact us directly via phone or email for prompt support.
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <div className="relative mt-10 overflow-hidden rounded-3xl border border-border shadow-lg md:mt-14">
-              <iframe
-                title="Pixel2Tech office location — Lahore, Pakistan"
-                src="https://www.google.com/maps?q=Lahore,Pakistan&output=embed"
-                width="100%"
-                height="450"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block h-[360px] w-full border-0 sm:h-[450px] lg:h-[520px]"
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <p className="text-[15px] font-medium text-foreground">Prefer to talk it through?</p>
+              <BookCallButton
+                source="contact_page"
+                className={`inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
               />
-              <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-background/95 p-4 backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:p-5">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <MapPin className="h-5 w-5" aria-hidden="true" />
+            </div>
+          </header>
+
+          <div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+            <section aria-labelledby="contact-form-title" className="min-w-0">
+              <h2 id="contact-form-title" className={H2}>
+                Send a project brief
+              </h2>
+              <ContactForm source="contact" className="mt-6" />
+            </section>
+
+            <aside aria-label="Other ways to reach us" className="min-w-0 space-y-6">
+              <section aria-labelledby="contact-direct-title" className={PANEL}>
+                <h2 id="contact-direct-title" className={H2}>
+                  Contact details
+                </h2>
+                <ul className="mt-4 space-y-2">
+                  {CONTACT_METHODS.map(({ label, value, href, event, Icon, external }) => (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        onClick={() => trackEvent(event, { location: "contact_page" })}
+                        className={`group -mx-2 flex min-h-12 items-center gap-4 rounded-2xl p-2 transition hover:bg-background ${FOCUS_RING}`}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-background text-primary"
+                        >
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-foreground">
+                            {label}
+                          </span>
+                          <span className="block break-words text-[15px] text-muted-foreground group-hover:text-foreground">
+                            {value}
+                          </span>
+                          {external && <span className="sr-only"> (opens in a new tab)</span>}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section aria-labelledby="contact-hours-title" className={PANEL}>
+                <h2 id="contact-hours-title" className={H2}>
+                  Business hours
+                </h2>
+                <dl className="mt-4 divide-y divide-border text-[15px]">
+                  {SITE.hours.map((h) => (
+                    <div
+                      key={h.days}
+                      className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3"
+                    >
+                      <dt className="text-foreground">{h.days}</dt>
+                      <dd className="text-muted-foreground">{h.time}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Times are Pakistan Standard Time (UTC+5).
+                </p>
+              </section>
+
+              <section
+                aria-labelledby="contact-location-title"
+                className="overflow-hidden rounded-3xl border border-border bg-background"
+              >
+                <div className="flex items-start gap-4 p-6 sm:p-8">
+                  <span
+                    aria-hidden="true"
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"
+                  >
+                    <MapPin className="h-5 w-5" />
                   </span>
-                  <div>
-                    <div className="text-sm font-semibold text-foreground">Pixel2Tech HQ</div>
-                    <div className="text-sm text-muted-foreground">Lahore, Pakistan</div>
+                  <div className="min-w-0">
+                    <h2 id="contact-location-title" className={H2}>
+                      Where we are
+                    </h2>
+                    <p className="mt-1 text-[15px] text-muted-foreground">{SITE.locationLine}.</p>
                   </div>
                 </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Lahore%2CPakistan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pointer-events-auto inline-flex items-center gap-1.5 min-h-11 rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  Open in Maps
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-
-      {/* Our Location */}
-      <section className="bg-muted/40 py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                Our <span className="text-primary">Location</span>
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[15px] text-muted-foreground sm:text-base">
-                Find us at our headquarters, where creativity meets innovation. Our office is designed to inspire collaboration and ideas, making it a perfect hub for client interactions and team efforts.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              { Icon: MapPin, title: "Visit Us", body: "Our office is conveniently located at the heart of Lahore, easily accessible for clients and partners. Come by to discuss your next project or just to say hello!" },
-              { Icon: Phone, title: "Reach Out", body: "Whether you have questions or need assistance, our team is ready to help. Don't hesitate to stop by or contact us through our website." },
-              { Icon: Mail, title: "Write to Us", body: "Drop us an email anytime at sales@pixel2tech.com — we reply within one business day with next steps tailored to your project." },
-            ].map(({ Icon, title, body }, i) => (
-              <FadeIn key={title} delay={0.1 * (i + 1)}>
-                <div className="h-full rounded-2xl border border-border bg-background p-6 transition hover:-translate-y-1 hover:shadow-lg sm:p-8">
-                  <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="mb-2 text-xl font-semibold text-foreground">{title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{body}</p>
+                <iframe
+                  title={`Map of ${SITE.location}`}
+                  src={`https://www.google.com/maps?q=${MAP_QUERY}&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block aspect-[4/3] w-full border-0 bg-muted"
+                />
+                <div className="p-4 sm:px-8">
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${MAP_QUERY}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex min-h-11 items-center gap-2 rounded-full text-sm font-semibold text-primary underline-offset-4 hover:underline ${FOCUS_RING}`}
+                  >
+                    Open in Google Maps
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
                 </div>
-              </FadeIn>
-            ))}
+              </section>
+            </aside>
           </div>
         </div>
       </section>
-
-      {/* Elevate CTA */}
-      <section className="bg-background py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-5xl px-5 md:px-10">
-          <FadeIn>
-            <div className="mx-auto flex w-full flex-col items-center justify-center rounded-3xl bg-foreground px-6 py-16 text-center text-background md:px-12 md:py-20">
-              <h2 className="mx-auto mb-5 max-w-3xl text-balance text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
-                Ready to elevate your <span className="text-primary">brand</span> today?
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-balance text-[15px] leading-relaxed text-background/70 sm:text-base">
-                Your brand deserves to shine. Let our creative expertise help you connect with your audience. We specialize in captivating designs and impactful strategies tailored to your needs. Don&apos;t miss out — let&apos;s create something amazing together.
-              </p>
-              <Link
-                to="/services"
-                className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-foreground active:translate-y-0 active:scale-[0.98]"
-              >
-                Get Started
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
     </PageShell>
   );
 }

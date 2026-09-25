@@ -1,27 +1,11 @@
-import type { BlogPost } from "@/lib/blog-types";
-import coverAsset from "@/assets/ai-automation-operations-new-cover.jpg.asset.json";
-const cover = coverAsset.url;
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * AI and automation in business operations.
  * Primary keyword: "AI and automation in business operations".
  */
-export const aiAutomationBusinessOperationsPost: BlogPost = {
-  slug: "ai-automation-business-operations",
-  tag: "AI & Automation",
-  date: "August 20, 2026",
-  time: "10:00 am",
-  updated: "August 20, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "AI & Automation, Pixel2Tech",
-  authorBio:
-    "Pixel2Tech helps businesses design smart digital systems that improve workflows, productivity, and long-term growth.",
-  title: "How AI and Automation Are Reshaping Business Operations",
+const post: PostBody = {
   h1: "How AI and Automation Are Reshaping Business Operations",
-  excerpt:
-    "How intelligent automation is helping businesses reduce repetitive work, improve decision-making, streamline workflows, and build more scalable operations.",
-  img: cover,
-  imgAlt: "AI and automation transforming modern business operations",
   metaTitle: "How AI and Automation Are Reshaping Business Operations | Pixel2Tech",
   metaDescription:
     "Discover how AI and automation are transforming business operations, improving efficiency, reducing repetitive work, streamlining workflows, and helping companies scale.",
@@ -53,10 +37,8 @@ export const aiAutomationBusinessOperationsPost: BlogPost = {
     { label: "Contact Us", to: "/contact" },
   ],
   cta: {
-    title: "Ready to Automate Your Business?",
-    body: "Start with the processes creating the most friction. Pixel2Tech helps businesses identify opportunities for AI, automation, systems, and smarter digital workflows.",
-    primaryLabel: "Talk to Pixel2Tech",
-    secondaryLabel: "Explore AI & Automation Solutions",
+    title: "Not sure what to automate first?",
+    body: "Start with the processes that cause the most friction. We can help you find where automation and AI will actually save time.",
   },
   faqs: [
     {
@@ -240,7 +222,10 @@ export const aiAutomationBusinessOperationsPost: BlogPost = {
     },
     {
       heading: "Security and Responsible AI Adoption",
-      body: ["AI systems can interact with customer information, internal documents, financial data, and business information.", "Businesses should therefore prioritize:"],
+      body: [
+        "AI systems can interact with customer information, internal documents, financial data, and business information.",
+        "Businesses should therefore prioritize:",
+      ],
       bullets: [
         "Security",
         "Access controls",
@@ -270,3 +255,5 @@ export const aiAutomationBusinessOperationsPost: BlogPost = {
     },
   ],
 };
+
+export default post;

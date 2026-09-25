@@ -1,65 +1,81 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeader } from "@/components/site-chrome";
-import { LegalBody, type LegalSection } from "@/components/legal-page";
+import {
+  CONTACT_SENTENCE,
+  LegalBody,
+  POSTAL_ADDRESS,
+  legalPageHead,
+  type LegalSection,
+} from "@/components/legal-page";
+import { SITE } from "@/lib/site-config";
 
-const TITLE = "Privacy Policy | Pixel2Tech";
-const DESCRIPTION =
-  "How Pixel2Tech collects, uses, stores and protects personal information submitted through pixel2tech.com, and how you can request access or deletion.";
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const UPDATED = "August 2, 2026";
+const DESCRIPTION = `How ${SITE.name} collects, uses and protects personal information on pixel2tech.com, which analytics tools we use, and how to opt out or ask for your data to be deleted.`;
+const UPDATED = "September 24, 2026";
+const UPDATED_ISO = "2026-09-24";
 
 const SECTIONS: LegalSection[] = [
   {
     heading: "Who we are",
     body: [
-      "Pixel2Tech is a full-service creative agency offering branding, web design, UI/UX, social media, video and custom software. Our office is at Office 12, Main Boulevard, Gulberg III, Lahore, Punjab 54000, Pakistan.",
-      "This policy explains how we handle personal information on pixel2tech.com. It is maintained by Pixel2Tech and describes our own practices; it is not a certification or an independent audit.",
+      `${SITE.shortDescription} Our office is at ${POSTAL_ADDRESS}.`,
+      "This policy explains how we handle personal information on pixel2tech.com.",
     ],
   },
   {
     heading: "Information we collect",
     body: [
-      "Information you give us: when you submit our contact form or book a call, we collect your first name, last name, email address, phone number and the message you write.",
-      "Information collected automatically: like most websites, our analytics records anonymous usage data such as pages viewed, referring page, approximate region, device type and browser. We do not use this data to identify you personally.",
-      "We do not ask for and do not want sensitive information such as payment card numbers, government identifiers or health data through this website.",
+      "Information you give us: when you send a project brief through our contact form, we collect your first name, last name, email address, phone number and the message you write. When you book a call, the details you enter in the booking form go to Calendly (see below).",
+      "Information collected automatically: when you browse the site, the analytics tools described below record how the site is used, such as pages viewed, the page that referred you, approximate location based on your IP address, device type, browser and how you interact with pages.",
+      "We do not ask for, and do not want, sensitive information such as payment card numbers, government identifiers or health data through this website.",
     ],
   },
   {
     heading: "How we use your information",
     body: [
-      "We use the details you submit to reply to your enquiry, prepare proposals, schedule meetings and deliver the services you ask for.",
-      "We use aggregated analytics to understand which pages are useful and to improve the site's content and performance.",
+      "We use the details you send us to reply to your inquiry, prepare proposals, schedule meetings and deliver the services you ask for.",
+      "We use analytics to understand which pages are useful, find parts of the site that are confusing or broken, and improve content and performance. We use it to study how the site is used, not to identify individual visitors.",
       "We do not sell your personal information, and we do not share it for third-party advertising.",
     ],
   },
   {
-    heading: "Service providers we rely on",
+    heading: "Analytics tools we use",
     body: [
-      "Our website and its database are hosted on Lovable Cloud infrastructure, which stores contact form submissions and serves the site.",
-      "We use Google Analytics for website analytics, Calendly for meeting scheduling, and an email delivery provider to send notifications about your enquiry from notify.pixel2tech.com.",
-      "These providers process data only to deliver their service to us. If you would like the current list of providers in writing, email sales@pixel2tech.com.",
+      "Google Analytics (Google). Measures visits: pages viewed, referring sites, approximate location, device and browser, and events such as button clicks. It sets cookies such as _ga to tell visits apart. You can opt out with Google's Analytics opt-out browser add-on (tools.google.com/dlpage/gaoptout) or by blocking cookies for this site.",
+      "Microsoft Clarity (Microsoft). Records how visitors interact with pages, including clicks, scrolling and mouse movement, and uses this to produce session recordings and heatmaps. By default, Clarity masks text typed into form fields. It sets cookies such as _clck and _clsk. You can opt out by blocking cookies for this site or by using your browser's tracking protection or a content blocker. Microsoft describes its handling of this data in the Microsoft Privacy Statement.",
+      "Hosting analytics (Lovable). Our hosting platform, Lovable, runs its own analytics script and keeps standard request logs to serve the site and report visit statistics. This can include the page requested, your IP address, browser and referring page. A content blocker can stop the analytics script; request logs are part of serving the site and cannot be switched off.",
+      "Blocking any of these tools does not affect your ability to browse the site or contact us.",
     ],
   },
   {
-    heading: "Cookies and analytics",
+    heading: "Other service providers",
     body: [
-      "We use a small number of cookies and similar storage: one to remember your light or dark theme preference, and analytics cookies that measure site usage.",
-      "You can block or delete cookies in your browser settings. Blocking analytics cookies does not affect your ability to browse the site or contact us.",
+      "Our website and its database run on Lovable Cloud infrastructure, which stores contact form submissions and serves the site.",
+      "We use Calendly to schedule calls. When you book through the booking window, Calendly receives the details you enter under its own privacy policy.",
+      "We use an email delivery provider to send notifications about your inquiry from notify.pixel2tech.com.",
+      `These providers process data to deliver their service to us. For the current list of providers in writing, email ${SITE.email}.`,
+    ],
+  },
+  {
+    heading: "Cookies and browser storage",
+    body: [
+      "We store your light or dark theme choice in your browser's local storage so the site remembers it. The analytics tools above set their own cookies.",
+      "You can block or delete cookies and site data in your browser settings at any time. The site keeps working without them.",
     ],
   },
   {
     heading: "How long we keep information",
     body: [
-      "Contact enquiries are kept while we are in conversation with you and for a reasonable period afterwards so we can pick up the thread if you come back to us.",
-      "Project records for active clients are kept for the duration of the engagement and afterwards where we need them for accounting or contractual reasons.",
-      "You can ask us to delete your enquiry sooner at any time.",
+      "Contact inquiries are kept while we are in conversation with you and for a reasonable period afterward, so we can pick up the thread if you come back to us.",
+      "Project records for active clients are kept for the length of the engagement, and afterward where we need them for accounting or contractual reasons.",
+      "Analytics data is kept according to each provider's retention settings.",
+      "You can ask us to delete your inquiry sooner at any time.",
     ],
   },
   {
     heading: "Security",
     body: [
-      "Access to our website database and email accounts is restricted to Pixel2Tech team members who need it, and traffic to pixel2tech.com is served over HTTPS.",
-      "No website or company can promise absolute security. If you believe your information has been exposed, contact us immediately at sales@pixel2tech.com so we can investigate.",
+      `Access to our website database and email accounts is limited to ${SITE.name} team members who need it, and pixel2tech.com is served over HTTPS.`,
+      `No website or company can promise absolute security. If you believe your information has been exposed, contact us right away at ${SITE.email} so we can investigate.`,
     ],
   },
   {
@@ -67,7 +83,7 @@ const SECTIONS: LegalSection[] = [
     body: [
       "You can ask us for a copy of the personal information we hold about you, ask us to correct it, or ask us to delete it.",
       "You can also unsubscribe from any marketing message we send, or ask us to stop contacting you altogether.",
-      "Send requests to sales@pixel2tech.com and we will respond as quickly as we reasonably can. We may ask you to confirm your identity before acting on a request.",
+      `Send requests to ${SITE.email} and we will respond as quickly as we reasonably can. We may ask you to confirm your identity before acting on a request.`,
     ],
   },
   {
@@ -79,82 +95,40 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "Links to other sites",
     body: [
-      "Our site links to third-party sites such as social profiles and scheduling tools. Those sites have their own privacy policies and we are not responsible for their practices.",
+      "Our site links to third-party sites such as social profiles and scheduling tools. Those sites have their own privacy policies, and we are not responsible for their practices.",
     ],
   },
   {
     heading: "Changes to this policy",
     body: [
-      "We may update this policy as our services or providers change. The date at the top of this page always reflects the current version.",
+      "We may update this policy when our services or providers change. The date at the top of this page always shows the current version.",
     ],
   },
   {
     heading: "Contact us",
-    body: [
-      "Questions about privacy? Email sales@pixel2tech.com, call +92 317 7475233, or write to Pixel2Tech, Office 12, Main Boulevard, Gulberg III, Lahore, Punjab 54000, Pakistan.",
-    ],
+    body: [`Questions about privacy? ${CONTACT_SENTENCE}`],
   },
 ];
 
 export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPolicyPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://pixel2tech.com/privacy-policy" },
-      { property: "og:image", content: OG_IMAGE },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-    ],
-    links: [{ rel: "canonical", href: "https://pixel2tech.com/privacy-policy" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Privacy Policy",
-          url: "https://pixel2tech.com/privacy-policy",
-          description: DESCRIPTION,
-          dateModified: "2026-08-02",
-          isPartOf: { "@type": "WebSite", name: "Pixel2Tech", url: "https://pixel2tech.com" },
-          publisher: {
-            "@type": "Organization",
-            "@id": "https://pixel2tech.com/#organization",
-            name: "Pixel2Tech",
-            url: "https://pixel2tech.com",
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://pixel2tech.com/privacy-policy" },
-          ],
-        }),
-      },
-    ],
-  }),
+  head: () =>
+    legalPageHead({
+      path: "/privacy-policy",
+      name: "Privacy policy",
+      description: DESCRIPTION,
+      dateModified: UPDATED_ISO,
+    }),
 });
 
 function PrivacyPolicyPage() {
   return (
     <PageShell>
       <PageHeader
-        eyebrow="LEGAL"
+        eyebrow="Legal"
         title="Privacy"
-        highlight="Policy"
-        subtitle="How Pixel2Tech collects, uses and protects the information you share with us."
+        highlight="policy"
+        subtitle={`How ${SITE.name} collects, uses and protects the information you share with us.`}
       />
       <LegalBody updated={UPDATED} sections={SECTIONS} />
     </PageShell>

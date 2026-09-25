@@ -4,7 +4,6 @@ import { renderErrorPage } from "./lib/error-page";
 import { classifyLegacyPath, renderGonePage } from "./lib/legacy-urls";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 
-
 const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
   if (new URL(request.url).pathname.startsWith("/lovable/")) {
     return next();
@@ -61,11 +60,13 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   }
   // Trailing slashes: the router would answer with a 307, which Search Console
   // reports as "Page with redirect". Emit a single permanent redirect instead.
+  // The target is rebuilt with exactly one leading slash: a path like
+  // "//evil.com/" must never become the protocol-relative "//evil.com".
   if (!verdict && url.pathname !== "/" && url.pathname.endsWith("/")) {
     return new Response(null, {
       status: 301,
       headers: {
-        location: url.pathname.replace(/\/+$/, "") + url.search,
+        location: `/${url.pathname.replace(/^\/+|\/+$/g, "")}${url.search}`,
         "cache-control": "public, max-age=86400",
       },
     });
@@ -81,13 +82,9 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
     });
   }
 
-
-
   const result = await next();
   const response =
-    result instanceof Response
-      ? result
-      : (result as { response: Response }).response;
+    result instanceof Response ? result : (result as { response: Response }).response;
   const h = response.headers;
   // Content Security Policy — tuned for the current app (Google Fonts, Unsplash,
   // Supabase, Lovable preview assets, Calendly booking modal, YouTube/Vimeo videos).
@@ -134,4 +131,3 @@ export const startInstance = createStart(() => ({
   functionMiddleware: [attachSupabaseAuth],
   requestMiddleware: [securityMiddleware, errorMiddleware, csrfMiddleware],
 }));
-

@@ -1,39 +1,115 @@
+import { Fragment } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, Layers, Sparkles, Target, TrendingUp } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
-
-import { Play, ChevronDown, Mail, Phone, Sparkles, Layers, Target, TrendingUp, ArrowUpRight } from "lucide-react";
-import { FadeIn, Stagger, StaggerItem, HoverLift } from "@/components/motion";
-import { LinkedInBadge, getLinkedInUrl } from "@/components/linkedin-badge";
-import { LoopSlider } from "@/components/loop-slider";
-import { useState } from "react";
-import teamUsama from "@/assets/team-usama.webp.asset.json";
-import teamAsad from "@/assets/team-asad.webp.asset.json";
-import teamSaad from "@/assets/team-saad.webp.asset.json";
-import teamGul from "@/assets/team-gul.webp.asset.json";
-import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
-import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
-import teamRashail from "@/assets/team-rashail.webp.asset.json";
+import { BookCallButton } from "@/components/book-call-button";
+import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
+import { TeamSlider } from "@/components/team-slider";
+import { ValueCards, type ValueCard } from "@/components/value-cards";
+import { SITE, STATS } from "@/lib/site-config";
+import { TEAM, TEAM_SIZE } from "@/lib/team";
 import officeImg from "@/assets/office.webp.asset.json";
 
-const OG_IMAGE = "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE =
+  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const PAGE_URL = `${SITE.url}/about`;
+const ORG_REF = { "@id": `${SITE.url}/#organization` };
+const TITLE = "About Pixel2Tech | Design, Web & Video Team in Lahore";
+const DESCRIPTION = `Meet the ${TEAM_SIZE}-person in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, working with clients in the US, UK, Gulf and Europe.`;
+
+/** People with a profile page are the founders (same rule as the root Organization schema). */
+const FOUNDERS = TEAM.filter((m) => m.profile);
+
+const unsplash = (id: string, w: number) =>
+  `https://images.unsplash.com/${id}?w=${w}&auto=format&fit=crop&fm=webp&q=70`;
+
+type Photo = { id: string; alt: string; aspect: string };
+
+/** Hero collage: two staggered columns of two photos each. */
+const HERO_COLUMNS: Photo[][] = [
+  [
+    {
+      id: "photo-1522071820081-009f0129c71c",
+      alt: "Creative team collaborating",
+      aspect: "aspect-[3/4]",
+    },
+    { id: "photo-1531403009284-440f080d1e12", alt: "Design workspace", aspect: "aspect-square" },
+  ],
+  [
+    { id: "photo-1552664730-d307ca884978", alt: "Strategy session", aspect: "aspect-square" },
+    { id: "photo-1517245386807-bb43f82c33c4", alt: "Developer at work", aspect: "aspect-[3/4]" },
+  ],
+];
+
+const TEAM_PHOTO_ID = "photo-1557804506-669a67965ba0";
+
+const HERO_STATS = [
+  { value: STATS.projects, label: "Projects delivered" },
+  { value: STATS.clients, label: "Clients" },
+  { value: String(TEAM_SIZE), label: "Team members" },
+];
+
+const VALUES: ValueCard[] = [
+  {
+    title: "Every skill in-house",
+    desc: "Brand design, web development, video and automation are done by our own team, so nothing gets lost between vendors.",
+    Icon: Sparkles,
+  },
+  {
+    title: "Design and code together",
+    desc: "The people who design your site and the people who build it work side by side, so what you approve is what gets built.",
+    Icon: Layers,
+  },
+  {
+    title: "Planned around your goals",
+    desc: "We start with what the work needs to achieve, such as more leads, more sales or fewer hours on admin, and plan the project around it.",
+    Icon: Target,
+  },
+  {
+    title: "Built to grow with you",
+    desc: "Sites, stores and systems are set up so you can add pages, products and features later without starting over.",
+    Icon: TrendingUp,
+  },
+];
+
+const ABOUT_FAQS: FaqItem[] = [
+  {
+    q: "Who will work on my project?",
+    a: "People from the team on this page. Brand design, web development, video editing and automation are all done in-house by Pixel2Tech staff.",
+  },
+  {
+    q: "Do you outsource or subcontract work?",
+    a: "No. Design, development, content and deployment all happen in-house, so your project isn't passed between outside vendors.",
+  },
+  {
+    q: "Where is the team based?",
+    a: `In ${SITE.location}. We work with clients abroad over email, WhatsApp and Google Meet.`,
+  },
+  {
+    q: "When was Pixel2Tech founded?",
+    a: `${FOUNDERS.map((m) => m.name).join(" and ")} founded Pixel2Tech in ${STATS.foundingYear}. Since then the team has delivered ${STATS.projects} projects for ${STATS.clients} clients.`,
+  },
+];
+
+const absoluteUrl = (path: string) => (path.startsWith("http") ? path : `${SITE.url}${path}`);
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
-      { name: "description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
-      { property: "og:title", content: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
-      { property: "og:description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://pixel2tech.com/about" },
+      { property: "og:url", content: PAGE_URL },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "About Pixel2Tech | Creative Agency Team in Lahore, Pakistan" },
-      { name: "twitter:description", content: "Meet the in-house team of designers, developers & strategists behind Pixel2Tech. One team serving clients across the US, UK, Gulf & Europe." },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://pixel2tech.com/about" }],
+    links: [{ rel: "canonical", href: PAGE_URL }],
     scripts: [
       {
         type: "application/ld+json",
@@ -41,30 +117,24 @@ export const Route = createFileRoute("/about")({
           "@context": "https://schema.org",
           "@type": "AboutPage",
           name: "About Pixel2Tech",
-          url: "https://pixel2tech.com/about",
-          mainEntity: {
-            "@type": "Organization",
-            "@id": "https://pixel2tech.com/#organization",
-            name: "Pixel2Tech",
-            url: "https://pixel2tech.com",
-          },
+          url: PAGE_URL,
+          mainEntity: ORG_REF,
         }),
       },
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@graph": team.map((m) => ({
+          "@graph": TEAM.map((m) => ({
             "@type": "Person",
+            ...(m.profile
+              ? { "@id": `${SITE.url}${m.profile}#person`, url: `${SITE.url}${m.profile}` }
+              : {}),
             name: m.name,
             jobTitle: m.role,
-            image: m.img.startsWith("http") ? m.img : `https://pixel2tech.com${m.img}`,
-            worksFor: {
-              "@type": "Organization",
-              "@id": "https://pixel2tech.com/#organization",
-              name: "Pixel2Tech",
-              url: "https://pixel2tech.com",
-            },
+            image: absoluteUrl(m.img),
+            ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
+            worksFor: ORG_REF,
           })),
         }),
       },
@@ -74,466 +144,222 @@ export const Route = createFileRoute("/about")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://pixel2tech.com/" },
-            { "@type": "ListItem", position: 2, name: "About", item: "https://pixel2tech.com/about" },
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+            { "@type": "ListItem", position: 2, name: "About", item: PAGE_URL },
           ],
         }),
       },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
+      faqJsonLd(ABOUT_FAQS),
     ],
-
   }),
 });
 
-const team = [
-  { name: "Usama Farooq", role: "CEO & Founder", img: teamUsama.url },
-  { name: "Asad Farooq", role: "Co Founder & Creative Director", img: teamAsad.url },
-  { name: "Saad", role: "Creative Video Editor", img: teamSaad.url },
-  { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
-  { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
-  { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
-  { name: "Muhammad Rashail", role: "Head of Engineering & Automation", img: teamRashail.url },
-];
-
-const reasons = [
-  { title: "One Agency, Every Skill", desc: "Design, content, development, and software handled in-house by one team. No chasing five different freelancers.", icon: "Sparkles" },
-  { title: "Design + Technology", desc: "We combine creative thinking with technical expertise to build impactful digital solutions.", icon: "Layers" },
-  { title: "Business-First Approach", desc: "Every solution is designed around business outcomes, not just deliverables.", icon: "Target" },
-  { title: "Built for Growth", desc: "From startups to growing companies, we create systems that support long-term scalability.", icon: "TrendingUp" },
-];
-
-const faqs = [
-  { q: "What makes Pixel2Tech different?", a: "We combine creativity, technology, AI, and business strategy to solve real business challenges. Our focus is on outcomes, not just deliverables." },
-  { q: "What services does Pixel2Tech provide?", a: "We offer AI solutions, software development, automation, digital experiences, web platforms, branding, and technology consulting tailored to business needs." },
-  { q: "Who do you work with?", a: "We work with startups, founders, SaaS companies, agencies, and growing businesses looking to improve efficiency, customer experience, and scalability." },
-  { q: "How long does a project take?", a: "Project timelines depend on scope and complexity. Most projects start with a discovery phase to define requirements, goals, and delivery timelines." },
-  { q: "Do you provide AI and automation solutions?", a: "Yes. We help businesses automate workflows, reduce manual work, improve efficiency, and implement AI-powered systems that support growth." },
-  { q: "Do you work with international clients?", a: "Yes. We work with businesses across different industries and locations, collaborating through both onsite and remote engagement models." },
-  { q: "Can you handle both design and development?", a: "Yes. Our team combines creative design, software development, AI, and automation expertise to deliver complete digital solutions." },
-];
-
-function Accordion() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <div className="mx-auto max-w-3xl">
-      {faqs.map((item, i) => {
-        const isOpen = open === i;
-        return (
-          <div key={i} className="border-b border-border">
-            <button
-              type="button"
-              onClick={() => setOpen(isOpen ? null : i)}
-              aria-expanded={isOpen}
-              className="flex w-full items-center justify-between py-5 text-left text-base font-semibold text-foreground sm:text-lg"
-            >
-              {item.q}
-              <ChevronDown
-                aria-hidden="true"
-                className={`ml-4 h-5 w-5 shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            <div
-              className={`grid transition-all ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-            >
-              <div className="overflow-hidden">
-                <p className="pb-5 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                  {item.a}
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+const EYEBROW = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
+const H2 =
+  "text-2xl font-bold leading-tight tracking-tight text-balance text-foreground sm:text-3xl lg:text-4xl";
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+const INLINE_LINK =
+  "font-semibold text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary";
 
 function AboutPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
-          <FadeIn>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-              About Us
-            </div>
-            <h1 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[56px]">
-              The Creative Agency{" "}
-              <span className="text-primary">Behind the Work.</span>
+      <section aria-labelledby="about-title" className="bg-background py-12 md:py-20 lg:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2 md:gap-12 md:px-10 lg:gap-16">
+          <div className="min-w-0">
+            <p className={EYEBROW}>About Pixel2Tech</p>
+            <h1
+              id="about-title"
+              className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl xl:text-[56px]"
+            >
+              A small studio for <span className="text-primary">brand, web, video</span> and
+              automation work
             </h1>
-
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              A small, senior team of designers, developers and strategists — building brands, websites and digital products end-to-end under one roof.
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              Designers, developers, video editors and an automation lead, working from Lahore with
+              clients in the US, UK, Gulf and Europe.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
-              >
-                Contact Us
-              </Link>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <BookCallButton
+                source="about_hero"
+                className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
+              />
               <Link
                 to="/portfolio"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-foreground hover:bg-muted"
+                className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
               >
-                See Our Work <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                See our work
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-6">
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">50+</div>
-                <div className="mt-1 text-xs text-muted-foreground">Projects Delivered</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">6</div>
-                <div className="mt-1 text-xs text-muted-foreground">In-House Experts</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">5★</div>
-                <div className="mt-1 text-xs text-muted-foreground">Client Rating</div>
-              </div>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Creative team collaborating"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Design workspace"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-border pt-6 sm:gap-6">
+              {HERO_STATS.map((s) => (
+                <div key={s.label} className="flex min-w-0 flex-col-reverse">
+                  <dt className="mt-1 text-xs text-muted-foreground sm:text-sm">{s.label}</dt>
+                  <dd className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    {s.value}
+                  </dd>
                 </div>
-                <div className="space-y-3 pt-8 sm:space-y-4 sm:pt-12">
-                  <div className="aspect-square overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
+              ))}
+            </dl>
+          </div>
+
+          <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
+            {HERO_COLUMNS.map((column, c) => (
+              <div key={c} className={`space-y-3 sm:space-y-4 ${c === 1 ? "pt-8 sm:pt-12" : ""}`}>
+                {column.map((photo, p) => (
+                  <div
+                    key={photo.id}
+                    className={`${photo.aspect} overflow-hidden rounded-2xl bg-muted sm:rounded-3xl`}
+                  >
+                    {/* Above the fold on desktop: load right away instead of lazily. */}
                     <img
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Strategy session"
+                      fetchPriority={c === 0 && p === 0 ? "high" : "auto"}
+                      src={unsplash(photo.id, 800)}
+                      srcSet={`${unsplash(photo.id, 400)} 400w, ${unsplash(photo.id, 800)} 800w`}
+                      sizes="(min-width: 1280px) 290px, (min-width: 768px) 25vw, 50vw"
+                      alt={photo.alt}
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-                    <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&fm=webp&q=70"
-                      alt="Developer at work"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
+                ))}
               </div>
-              <div className="pointer-events-none absolute -right-2 -top-2 hidden h-16 w-16 rounded-full bg-brand/10 blur-2xl md:block" aria-hidden="true" />
-            </div>
-          </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
-          <FadeIn>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted sm:rounded-3xl">
-              <img
-                loading="lazy"
-                decoding="async"
-                src={officeImg.url}
-                alt="Pixel2Tech team working at the Lahore office"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-                Who We Are
-              </div>
-              <h2 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[36px]">
-                Creativity, Technology & AI Working Together
-              </h2>
-              <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-                We combine creative thinking, modern design, software development, automation, and AI-powered solutions to help businesses create exceptional digital experiences, streamline operations, improve efficiency, and unlock new opportunities for sustainable growth. Our focus is on building solutions that not only look great but also solve real business challenges and deliver measurable results.
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Video Intro */}
-      <section className="bg-muted py-16 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="text-center">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
-                Get to Know Pixel2Tech
-              </div>
-              <h2 className="mx-auto mt-3 max-w-2xl text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[36px]">
-                Watch our short introduction to understand who we are, how we work, and why brands trust us
-              </h2>
-            </div>
-            <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl bg-background sm:rounded-3xl sm:mt-10">
-              <img
-                loading="lazy"
-                decoding="async"
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&auto=format&fit=crop&fm=webp&q=70"
-                alt="Pixel2Tech introduction video thumbnail"
-                className="h-full w-full object-cover opacity-90"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <button
-                  type="button"
-                  aria-label="Play introduction video"
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-foreground shadow-lg transition hover:scale-105 sm:h-20 sm:w-20"
-                >
-                  <Play className="ml-1 h-6 w-6 fill-current sm:h-7 sm:w-7" aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-          </FadeIn>
+      {/* Story */}
+      <section aria-labelledby="about-story-title" className="bg-muted py-16 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-2 md:items-center md:gap-12 md:px-10 lg:gap-16">
+          <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-background sm:rounded-3xl">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={officeImg.url}
+              alt="Pixel2Tech team working at the Lahore office"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="min-w-0">
+            <p className={EYEBROW}>Who we are</p>
+            <h2 id="about-story-title" className={`mt-4 ${H2}`}>
+              Designers, developers and editors in one Lahore studio
+            </h2>
+            <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              {FOUNDERS.map((m, i) => (
+                <Fragment key={m.name}>
+                  {i > 0 && " and "}
+                  {m.profile ? (
+                    <Link to={m.profile} className={INLINE_LINK}>
+                      {m.name}
+                    </Link>
+                  ) : (
+                    m.name
+                  )}
+                </Fragment>
+              ))}{" "}
+              started Pixel2Tech in {STATS.foundingYear}. Today the studio designs brands, builds
+              websites and apps, edits video and automates the busywork behind them.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              You can bring us one job, like a logo, a Shopify store or a set of ad edits. Because
+              design, web, video and automation sit with the same team, the next job doesn&apos;t
+              have to go to someone new.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Team */}
-      <section aria-labelledby="about-team-title" className="bg-muted pb-16 md:pb-24 lg:pb-32">
+      <section aria-labelledby="about-team-title" className="bg-background py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="max-w-2xl">
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Our Creative Team
-              </div>
-              <h2 id="about-team-title" className="mt-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-                Creative Thinking. Technical Excellence.
+          <div className="max-w-2xl">
+            <p className={EYEBROW}>Our team</p>
+            <h2 id="about-team-title" className={`mt-4 ${H2}`}>
+              Meet the people you&apos;ll work with
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+              Everyone is in-house, and each person focuses on one craft, from brand design and web
+              development to video editing and automation.
+            </p>
+          </div>
+        </div>
+        <TeamSlider />
+      </section>
+
+      {/* Values: the only "Why Pixel2Tech" block on the site */}
+      <section aria-labelledby="about-values-title" className="bg-muted py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div className="min-w-0">
+              <p className={EYEBROW}>Why Pixel2Tech</p>
+              <h2 id="about-values-title" className={`mt-4 ${H2}`}>
+                Why work with us
               </h2>
-              <p className="mt-4 max-w-3xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-                Our team combines creativity, technology, and AI to build innovative solutions that help businesses improve customer experiences, streamline operations, overcome complex challenges, and achieve sustainable growth with confidence.
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                The range of an in-house creative team, without the in-house payroll.
               </p>
             </div>
-          </FadeIn>
+            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-background sm:aspect-video sm:rounded-3xl">
+              <img
+                loading="lazy"
+                decoding="async"
+                src={unsplash(TEAM_PHOTO_ID, 1200)}
+                srcSet={`${unsplash(TEAM_PHOTO_ID, 800)} 800w, ${unsplash(TEAM_PHOTO_ID, 1200)} 1200w`}
+                sizes="(min-width: 1280px) 580px, (min-width: 1024px) 45vw, 100vw"
+                alt="A team reviewing sticky notes on a whiteboard during a meeting"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <ValueCards items={VALUES} className="mt-10 sm:mt-12" />
         </div>
-        <div>
-          <LoopSlider
-            items={team}
-            keyFor={(m, i) => `${m.name}-${i}`}
-            direction="ltr"
-            speed={40}
-            autoplay
-            gapClassName="gap-4 md:gap-6"
-            className="mt-10 sm:mt-14"
-            pauseOnHover
-            ariaLabel="Pixel2Tech creative team"
-            renderItem={(m) => (
-              <article
-                className="group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05] sm:w-[320px]"
-              >
-                <div data-cursor="expand" className="relative aspect-[3/4] overflow-hidden bg-muted">
-                {m.name === "Asad Farooq" && (
-                  <Link
-                    to="/asad-farooq"
-                    onClick={(e) => e.stopPropagation()}
-                    draggable={false}
-                    aria-label="View Asad Farooq's profile page"
-                    className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-neutral-900 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)] backdrop-blur-md transition duration-300 hover:scale-[1.06] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:bg-black/80"
-                  >
-                    View Profile
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
-                )}
-                {m.name === "Usama Farooq" && (
-                  <Link
-                    to="/usama-farooq"
-                    onClick={(e) => e.stopPropagation()}
-                    draggable={false}
-                    aria-label="View Usama Farooq's profile page"
-                    className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-neutral-900 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)] backdrop-blur-md transition duration-300 hover:scale-[1.06] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:bg-black/80"
-                  >
-                    View Profile
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
-                )}
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src={m.img}
-                    alt={`Portrait of ${m.name}, ${m.role} at Pixel2Tech`}
-                    draggable={false}
-                    className="pointer-events-none h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="p-4 md:p-5">
-                  <h3 className="flex items-center gap-1.5 text-sm font-bold tracking-tight text-foreground sm:text-base">
-                    {m.name}
-                    {getLinkedInUrl(m.name) && (
-                      <LinkedInBadge name={m.name} url={getLinkedInUrl(m.name)!} />
-                    )}
-                  </h3>
-                  <p className="mt-1 text-xs text-muted-foreground">{m.role}</p>
-                </div>
-              </article>
-            )}
-          />
+      </section>
+
+      {/* FAQ: team and company questions only (buyer questions live on Home, scope on Services) */}
+      <section aria-labelledby="about-faq-title" className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-5 md:px-10">
+          <h2 id="about-faq-title" className={`text-center ${H2}`}>
+            Questions about the team
+          </h2>
+          <Faq items={ABOUT_FAQS} className="mt-8 sm:mt-10" />
         </div>
+      </section>
+
+      {/* Closing CTA */}
+      <section aria-labelledby="about-cta-title" className="bg-background pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-
-
-          <FadeIn delay={0.2}>
-            <div className="mt-10 text-center sm:mt-14">
+          <div className="rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-12 sm:py-16">
+            <h2
+              id="about-cta-title"
+              className="mx-auto max-w-2xl text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            >
+              Want this team on your project?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-balance sm:text-base">
+              Tell us what you&apos;re planning. We reply within one business day, or you can book a
+              call and talk it through.
+            </p>
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <BookCallButton
+                source="about_cta"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-background px-6 text-sm font-semibold text-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              />
               <Link
                 to="/contact"
-                className="inline-flex min-h-11 items-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary-foreground/60 px-6 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               >
-                Contact Us
+                Send a project brief
               </Link>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
-
-      {/* Why Choose */}
-      <section className="relative overflow-hidden bg-muted pb-16 md:pb-24 lg:pb-32">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background:radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_70%)]" />
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <FadeIn>
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Why Pixel2Tech
-              </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-                Built to be your unfair advantage
-              </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-                We act like your in-house creative department — without the high cost.
-              </p>
-            </div>
-          </FadeIn>
-          <Stagger className="mt-10 grid items-stretch gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((r, i) => {
-              const Icon = { Sparkles, Layers, Target, TrendingUp }[r.icon as "Sparkles"];
-              return (
-                <StaggerItem key={r.title} className="h-full">
-                  <HoverLift className="h-full">
-                    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/70 bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_60px_-25px_color-mix(in_oklab,var(--primary)_35%,transparent)] dark:bg-white/[0.03] sm:p-7">
-                      <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-                      <div className="flex items-center justify-between">
-                        <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                          <Icon className="h-5 w-5" aria-hidden />
-                        </div>
-                        <span className="text-xs font-semibold tabular-nums text-muted-foreground">
-                          0{i + 1}
-                        </span>
-                      </div>
-                      <h3 className="mt-5 text-lg font-bold leading-tight text-foreground sm:text-xl">{r.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">{r.desc}</p>
-                      <div className="mt-5 flex items-center gap-1.5 text-xs font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        Learn more <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
-                      </div>
-                    </div>
-                  </HoverLift>
-                </StaggerItem>
-              );
-            })}
-          </Stagger>
-        </div>
-      </section>
-
-
-      {/* FAQ */}
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-        <FadeIn>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[44px]">
-              Frequently Asked Questions
-            </h2>
-          </div>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <div className="mt-8 sm:mt-10">
-            <Accordion />
-          </div>
-        </FadeIn>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl bg-[#0a0d1f] p-8 text-white shadow-[0_30px_80px_-30px_rgba(59,130,246,0.45)] sm:p-12 lg:p-14">
-            <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
-            <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-20 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl" />
-            <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:44px_44px]" />
-
-            <div className="relative grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
-              <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/80 backdrop-blur">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Let's Talk
-                </span>
-                <h2 className="mt-4 text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-5xl">
-                  Ready to Get <span className="text-white">Started?</span>
-                </h2>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">
-                  Contact us today and let's discuss how we can help grow your brand.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 lg:items-end">
-                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
-                  <a
-                    href="mailto:sales@pixel2tech.com"
-                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
-                  >
-                    <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
-                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                    </span>
-                    sales@pixel2tech.com
-                  </a>
-                  <a
-                    href="tel:+923177475233"
-                    className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
-                  >
-                    <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition group-hover:bg-primary/30">
-                      <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-                    </span>
-                    +92 317 7475233
-                  </a>
-                </div>
-                <Link
-                  to="/contact"
-                  className="group inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-full p2t-on-dark bg-white px-7 py-3.5 text-sm font-semibold text-[#0a0d1f] shadow-lg shadow-black/20 transition hover:bg-primary hover:text-white sm:self-auto lg:self-end"
-                >
-                  Contact Us
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
-
     </PageShell>
   );
 }

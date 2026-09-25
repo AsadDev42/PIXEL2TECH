@@ -1,242 +1,226 @@
-import { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Clock,
-  Video,
-  ShieldCheck,
-  Target,
-  X,
-  Lock,
-  CalendarDays,
-  ArrowRight,
-} from "lucide-react";
+import { useEffect, useId, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { CalendarDays, Clock, Loader2, Lock, ShieldCheck, Target, Video, X } from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
+import { PRIMARY_CTA_LABEL } from "@/lib/site-config";
 
-const CAL_URL =
-  "https://calendly.com/pixel2tech/strategy-call?primary_color=1e90ff&hide_gdpr_banner=1&hide_event_type_details=1&background_color=ffffff&text_color=0f172a";
+const CALENDLY_ORIGIN = "https://calendly.com";
+const CALENDLY_EVENT_URL = `${CALENDLY_ORIGIN}/pixel2tech/strategy-call`;
 
-const benefits = [
-  {
-    icon: Clock,
-    label: "30-minute consultation",
-    desc: "A focused call to understand your goals.",
-  },
-  {
-    icon: Video,
-    label: "Google Meet call",
-    desc: "Join instantly from any device.",
-  },
-  {
-    icon: ShieldCheck,
-    label: "No sales pressure",
-    desc: "Honest advice, no aggressive pitches.",
-  },
-  {
-    icon: Target,
-    label: "Actionable recommendations",
-    desc: "Leave with a clear next-step plan.",
-  },
-];
+// Calendly only accepts hex colours. These mirror the --primary, --background
+// and --foreground tokens in src/styles.css for each theme.
+const CALENDLY_COLORS = {
+  light: { primary_color: "0b74e0", background_color: "ffffff", text_color: "0f172a" },
+  dark: { primary_color: "4da3ff", background_color: "020618", text_color: "f8fafc" },
+} as const;
 
+/**
+ * A plain iframe instead of Calendly's widget.js: widget.js only fills the
+ * inline widgets that exist when the script first runs, so the modal came up
+ * empty from the second open on. A fresh iframe on every open always loads.
+ * embed_domain + embed_type keep Calendly's postMessage events working.
+ */
+function calendlyEmbedUrl() {
+  const dark = document.documentElement.classList.contains("dark");
+  const params = new URLSearchParams({
+    embed_domain: window.location.host,
+    embed_type: "Inline",
+    hide_event_type_details: "1",
+    ...(dark ? CALENDLY_COLORS.dark : CALENDLY_COLORS.light),
+  });
+  return `${CALENDLY_EVENT_URL}?${params.toString()}`;
+}
 
-export function BookingModal({
-  open,
-  onClose,
-}: {
-  open: boolean;
-  onClose: () => void;
-}) {
-  // Lock body scroll
+const BENEFITS = [
+  { icon: Clock, label: "30 minutes", desc: "Enough time to talk through your goals." },
+  { icon: Video, label: "On Google Meet", desc: "Join from your laptop or phone." },
+  { icon: ShieldCheck, label: "No hard sell", desc: "Honest advice, no pushy pitch." },
+  { icon: Target, label: "A clear next step", desc: "You leave with a plan you can act on." },
+] as const;
+
+function CalendlyEmbed() {
+  const [src] = useState(calendlyEmbedUrl);
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative min-h-[440px] flex-1 bg-background lg:min-h-0">
+      {loaded ? null : (
+        <div className="absolute inset-0 grid place-items-center p-6">
+          <p className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Loader2
+              className="h-4 w-4 animate-spin motion-reduce:animate-none"
+              aria-hidden="true"
+            />
+            Loading available times…
+          </p>
+        </div>
+      )}
+      <iframe
+        src={src}
+        title="Choose a time for your strategy call"
+        onLoad={() => setLoaded(true)}
+        className="absolute inset-0 h-full w-full border-0"
+      />
+    </div>
+  );
+}
+
+export function BookingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const titleId = useId();
+  const descId = useId();
+  // The modal is portaled into <body>; `isolate` makes the rest of the page
+  // inert while it is open, so Tab (even out of the cross-origin Calendly
+  // iframe) and screen readers stay inside, and focus returns to the trigger.
+  const dialogRef = useFocusTrap<HTMLDivElement>(open, { isolate: true });
+
+  // Lock page scroll without shifting the layout by the scrollbar width.
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
+    const { overflow, paddingRight } = document.body.style;
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = overflow;
+      document.body.style.paddingRight = paddingRight;
     };
   }, [open]);
 
-  // Load Calendly script once
-  useEffect(() => {
-    if (!open) return;
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[src="https://assets.calendly.com/assets/external/widget.js"]',
-    );
-    if (existing) return;
-    const s = document.createElement("script");
-    s.src = "https://assets.calendly.com/assets/external/widget.js";
-    s.async = true;
-    document.body.appendChild(s);
-  }, [open]);
-
-  // ESC to close
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  // Track Calendly booking completion via postMessage
+  // Count completed bookings. Only trust messages that really come from Calendly.
   useEffect(() => {
     if (!open) return;
-    const onMsg = (e: MessageEvent) => {
-      const d = e.data as { event?: string } | undefined;
-      if (d?.event === "calendly.event_scheduled") {
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin !== CALENDLY_ORIGIN) return;
+      const data: unknown = e.data;
+      if (
+        typeof data === "object" &&
+        data !== null &&
+        (data as { event?: unknown }).event === "calendly.event_scheduled"
+      ) {
         trackEvent("booking_completed", {});
       }
     };
-    window.addEventListener("message", onMsg);
-    return () => window.removeEventListener("message", onMsg);
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
   }, [open]);
 
-  const dialogRef = useFocusTrap<HTMLDivElement>(open);
+  if (typeof document === "undefined") return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-4 lg:p-6"
+          className="fixed inset-0 z-[70] flex items-center justify-center sm:p-4 lg:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
-          {/* Backdrop */}
-          <motion.div
-            className="absolute inset-0 bg-foreground/25 backdrop-blur-md"
+          <div
+            className="absolute inset-0 bg-foreground/30 backdrop-blur-sm"
             onClick={onClose}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
             aria-hidden="true"
           />
 
-          {/* Modal */}
           <motion.div
             ref={dialogRef}
-            tabIndex={-1}
             role="dialog"
             aria-modal="true"
-            aria-label="Book a Pixel2Tech Strategy Session"
-            onClick={(e) => e.stopPropagation()}
-            className="relative z-10 flex w-full max-w-5xl max-h-[92vh] flex-col overflow-hidden rounded-3xl bg-background ring-1 ring-border/60 focus:outline-none"
+            aria-labelledby={titleId}
+            aria-describedby={descId}
+            tabIndex={-1}
+            className="relative flex h-dvh w-full flex-col overflow-hidden bg-background focus:outline-none sm:h-[min(90dvh,880px)] sm:max-w-3xl sm:rounded-3xl sm:ring-1 sm:ring-border lg:max-w-5xl"
             style={{ boxShadow: "var(--elev-3)" }}
-            initial={{ opacity: 0, scale: 0.96, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 16 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Close button */}
-            <motion.button
+            <button
               type="button"
               onClick={onClose}
-              aria-label="Close booking modal"
-              className="absolute right-3 top-3 z-50 grid h-8 w-8 place-items-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-[var(--elev-1)] transition-all duration-200 hover:rotate-90 hover:border-brand/30 hover:text-brand hover:shadow-[var(--elev-2)] sm:right-4 sm:top-4 sm:h-9 sm:w-9"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              aria-label="Close booking window"
+              className="absolute right-2 top-2 z-10 grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:right-3 sm:top-3"
             >
-              <X className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-            </motion.button>
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
 
-            <div className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)]">
-              {/* Left: value + trust */}
-              <motion.div
-                className="flex flex-col gap-4 border-b border-border/60 bg-gradient-to-br from-muted/50 to-muted/20 p-5 sm:p-6 lg:gap-5 lg:border-b-0 lg:border-r lg:border-border/60 lg:p-8"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-              >
-                <div className="space-y-2 lg:space-y-3">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-brand">
-                    <CalendarDays className="h-3 w-3" aria-hidden="true" />
-                    Free Strategy Session
-                  </div>
-                  <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-                    Let&apos;s Build Something Great Together
-                  </h2>
-                  <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                    Book a free 30-minute strategy session to discuss your goals
-                    and the right digital solution for your business.
-                  </p>
-                </div>
+            {/* Phones: short header, then the calendar fills the screen.
+                Desktop: details on the left, calendar on the right. */}
+            <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain lg:flex-row lg:overflow-hidden">
+              <div className="shrink-0 border-b border-border bg-muted/50 py-4 pl-5 pr-16 sm:p-6 sm:pr-20 lg:w-2/5 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:p-8">
+                <p className="hidden items-center gap-2 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-primary sm:inline-flex">
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                  Free · 30 minutes
+                </p>
+                <h2
+                  id={titleId}
+                  className="text-xl font-bold tracking-tight text-foreground sm:mt-4 sm:text-2xl lg:text-3xl"
+                >
+                  {PRIMARY_CTA_LABEL}
+                </h2>
+                <p id={descId} className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  A 30-minute Google Meet call about your goals and the best next step. Pick a time
+                  that suits you.
+                </p>
 
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                  {benefits.map((b, i) => (
-                    <motion.div
+                <ul className="mt-6 hidden gap-3 lg:grid">
+                  {BENEFITS.map((b) => (
+                    <li
                       key={b.label}
-                      className="group flex flex-col gap-2.5 rounded-2xl border border-border/60 bg-background p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/20 hover:shadow-[var(--elev-2)] sm:flex-row sm:items-start sm:gap-3 lg:p-3.5"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, delay: 0.2 + i * 0.08 }}
+                      className="flex items-start gap-3 rounded-2xl border border-border bg-background p-3"
                     >
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-primary-foreground sm:h-9 sm:w-9">
-                        <b.icon
-                          className="h-4 w-4 transition-transform duration-300 group-hover:scale-110"
-                          aria-hidden="true"
-                        />
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand/10 text-primary">
+                        <b.icon className="h-4 w-4" aria-hidden="true" />
                       </span>
-                      <div className="min-w-0">
-                        <p className="text-xs font-semibold text-foreground sm:text-[13px]">
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold text-foreground">
                           {b.label}
-                        </p>
-                        <p className="text-[11px] leading-snug text-muted-foreground sm:text-xs">
+                        </span>
+                        <span className="block text-sm leading-snug text-muted-foreground">
                           {b.desc}
-                        </p>
-                      </div>
-                    </motion.div>
+                        </span>
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <div className="mt-auto flex items-start gap-2.5 rounded-xl border border-border/40 bg-background/60 p-3 text-[11px] text-muted-foreground sm:text-xs lg:p-3.5">
+                <p className="mt-6 hidden items-start gap-2 text-sm text-muted-foreground lg:flex">
                   <Lock
-                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand"
+                    className="h-4 w-4 shrink-0 translate-y-0.5 text-primary"
                     aria-hidden="true"
                   />
-                  <span>Your information stays private and is only used to prepare for your session.</span>
-                </div>
-              </motion.div>
+                  We only use your details to prepare for the call.
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground sm:mt-4">
+                  Calendar not loading?{" "}
+                  <a
+                    href={CALENDLY_EVENT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center font-medium text-primary underline underline-offset-4 sm:min-h-0"
+                  >
+                    Open it on Calendly
+                  </a>
+                </p>
+              </div>
 
-              {/* Right: Calendly embed */}
-              <motion.div
-                className="flex min-h-0 flex-col gap-3 p-4 sm:p-5 lg:gap-4 lg:p-7"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.15 }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="space-y-1">
-                    <h3 className="text-base font-semibold tracking-tight text-foreground lg:text-lg">
-                      Pixel2Tech Strategy Session
-                    </h3>
-                    <p className="max-w-md text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                      A focused conversation to understand your business goals
-                      and explore how we can help you Design, Develop, and
-                      Grow.
-                    </p>
-                  </div>
-                  <span className="hidden h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-soft text-brand sm:grid">
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                </div>
-
-                <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[var(--elev-1)]">
-                  <div
-                    key={CAL_URL}
-                    className="calendly-inline-widget h-[300px] sm:h-[360px] lg:h-[420px]"
-                    data-url={CAL_URL}
-                    style={{ minWidth: 280 }}
-                  />
-                </div>
-              </motion.div>
+              <CalendlyEmbed />
             </div>
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

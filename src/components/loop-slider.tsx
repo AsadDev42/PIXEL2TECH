@@ -1,4 +1,5 @@
-import { memo, useEffect, useRef, type ReactNode } from "react";
+import { memo, useEffect, useRef, useState, type ReactNode } from "react";
+import { Pause, Play } from "lucide-react";
 
 type Axis = "x" | "y";
 type DirX = "rtl" | "ltr";
@@ -26,6 +27,12 @@ type Props<T> = {
   autoplay?: boolean;
   /** Pause the drift while the pointer hovers the track. Default false. */
   pauseOnHover?: boolean;
+  /**
+   * Show a Pause/Play button (WCAG 2.2.2: moving content needs a pause control).
+   * Pass the accessible name, e.g. "team carousel". Hidden under reduced motion,
+   * where nothing drifts anyway.
+   */
+  pauseControlLabel?: string;
 };
 
 /**
@@ -48,6 +55,7 @@ function LoopSliderImpl<T>({
   draggable = true,
   autoplay = true,
   pauseOnHover = false,
+  pauseControlLabel,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
@@ -63,7 +71,11 @@ function LoopSliderImpl<T>({
     pointerId: null as number | null,
     moved: 0,
     hovering: false,
+    focused: false,
   });
+  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
   // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
   const autoplayRef = useRef(autoplay);
   autoplayRef.current = autoplay;
@@ -105,7 +117,12 @@ function LoopSliderImpl<T>({
       const s = stateRef.current;
       if (!s.dragging) {
         const drifting =
-          autoplayRef.current && !reducedMotion.matches && !(pauseOnHoverRef.current && s.hovering);
+          autoplayRef.current &&
+          !pausedRef.current &&
+          !reducedMotion.matches &&
+          // Never move content out from under keyboard focus.
+          !s.focused &&
+          !(pauseOnHoverRef.current && s.hovering);
         if (drifting) s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
           s.pos += s.velocity * dt;
@@ -232,8 +249,16 @@ function LoopSliderImpl<T>({
     const onLeave = () => {
       stateRef.current.hovering = false;
     };
+    const onFocusIn = () => {
+      stateRef.current.focused = true;
+    };
+    const onFocusOut = (e: FocusEvent) => {
+      if (!track.contains(e.relatedTarget as Node | null)) stateRef.current.focused = false;
+    };
     track.addEventListener("pointerenter", onEnter);
     track.addEventListener("pointerleave", onLeave);
+    track.addEventListener("focusin", onFocusIn);
+    track.addEventListener("focusout", onFocusOut);
 
     if (draggable) {
       track.addEventListener("pointerdown", onDown);
@@ -252,6 +277,8 @@ function LoopSliderImpl<T>({
       ro.disconnect();
       track.removeEventListener("pointerenter", onEnter);
       track.removeEventListener("pointerleave", onLeave);
+      track.removeEventListener("focusin", onFocusIn);
+      track.removeEventListener("focusout", onFocusOut);
 
       if (draggable) {
         track.removeEventListener("pointerdown", onDown);
@@ -275,30 +302,53 @@ function LoopSliderImpl<T>({
     ? `flex w-max ${touchClass} select-none ${gapClassName}`
     : `flex flex-col h-max ${touchClass} select-none ${gapClassName}`;
 
-  return (
-    <div
-      className={`${fadeClass} overflow-hidden ${className}`}
-      role={ariaLabel ? "region" : undefined}
-      aria-label={ariaLabel}
-    >
-      <div ref={trackRef} className={trackClass} style={{ willChange: "transform" }}>
-        {loop.map((item, i) => {
-          // The second copy only exists for the seamless wrap: hide it from
-          // assistive tech and take its links out of the tab order.
-          const clone = i >= items.length;
-          return (
-            <div
-              key={keyFor(item, i)}
-              className="shrink-0"
-              aria-hidden={clone ? "true" : undefined}
-              inert={clone || undefined}
-            >
-              {renderItem(item, i)}
-            </div>
-          );
-        })}
+  const pauseButton =
+    pauseControlLabel && autoplay ? (
+      <div className="mx-auto mt-4 flex max-w-7xl justify-end px-5 motion-reduce:hidden md:px-10">
+        <button
+          type="button"
+          onClick={() => setPaused((v) => !v)}
+          aria-pressed={paused}
+          aria-label={`${paused ? "Play" : "Pause"} ${pauseControlLabel}`}
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-sm font-semibold text-foreground transition hover:bg-muted"
+        >
+          {paused ? (
+            <Play className="h-4 w-4" aria-hidden="true" />
+          ) : (
+            <Pause className="h-4 w-4" aria-hidden="true" />
+          )}
+          {paused ? "Play" : "Pause"}
+        </button>
       </div>
-    </div>
+    ) : null;
+
+  return (
+    <>
+      <div
+        className={`${fadeClass} overflow-hidden ${className}`}
+        role={ariaLabel ? "region" : undefined}
+        aria-label={ariaLabel}
+      >
+        <div ref={trackRef} className={trackClass} style={{ willChange: "transform" }}>
+          {loop.map((item, i) => {
+            // The second copy only exists for the seamless wrap: hide it from
+            // assistive tech and take its links out of the tab order.
+            const clone = i >= items.length;
+            return (
+              <div
+                key={keyFor(item, i)}
+                className="shrink-0"
+                aria-hidden={clone ? "true" : undefined}
+                inert={clone || undefined}
+              >
+                {renderItem(item, i)}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {pauseButton}
+    </>
   );
 }
 

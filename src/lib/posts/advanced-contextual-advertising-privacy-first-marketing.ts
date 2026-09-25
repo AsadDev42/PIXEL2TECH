@@ -1,27 +1,11 @@
-import type { BlogPost } from "@/lib/blog-types";
-import cover from "@/assets/contextual-advertising-cover-uploaded.jpg.asset.json";
+import type { PostBody } from "@/lib/blog-types";
 
 /**
  * Advanced contextual advertising pillar post.
  * Structured for SEO + GEO: each section opens with a direct answer.
  */
-export const contextualAdvertisingPost: BlogPost = {
-  slug: "advanced-contextual-advertising-privacy-first-marketing",
-  tag: "Digital Marketing",
-  date: "August 4, 2026",
-  time: "9:00 am",
-  updated: "August 4, 2026",
-  author: "Pixel2Tech Team",
-  authorRole: "Digital Marketing & AI Strategy, Pixel2Tech",
-  authorBio:
-    "The Pixel2Tech marketing team plans and runs performance campaigns for brands, SaaS companies, and agencies — covering media strategy, creative, analytics, and privacy-safe targeting.",
-  title: "Advanced Contextual Advertising: The Future of Privacy-First Marketing",
+const post: PostBody = {
   h1: "Advanced Contextual Advertising: How Privacy-First Targeting Actually Works",
-  excerpt:
-    "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about — protecting privacy, brand safety, and performance at the same time.",
-  img: cover.url,
-  imgAlt:
-    "Hands typing on a laptop with a glowing growth chart and shopping cart icons showing data-driven digital advertising performance",
   metaTitle: "Advanced Contextual Advertising: Privacy-First Marketing",
   metaDescription:
     "Learn how advanced contextual advertising uses AI, semantic analysis, and brand safety data to target ads without cookies — and why it now outperforms tracking.",
@@ -63,17 +47,13 @@ export const contextualAdvertisingPost: BlogPost = {
   ],
   sources: [
     { label: "Peer39 — Contextual data and brand safety", href: "https://www.peer39.com/" },
-    { label: "IAB Tech Lab — Content Taxonomy", href: "https://iabtechlab.com/standards/content-taxonomy/" },
+    {
+      label: "IAB Tech Lab — Content Taxonomy",
+      href: "https://iabtechlab.com/standards/content-taxonomy/",
+    },
     { label: "Google — Privacy Sandbox", href: "https://privacysandbox.com/" },
     { label: "GDPR — Official regulation text", href: "https://gdpr-info.eu/" },
     { label: "IAB Tech Lab — ads.txt and Sellers.json", href: "https://iabtechlab.com/ads-txt/" },
-  ],
-  related: [
-    "ai-seo-mistakes",
-    "how-ai-is-changing-modern-branding",
-    "why-modern-brands-need-an-ai-ops-layer",
-    "is-ai-worth-the-investment",
-    "why-every-business-needs-a-modern-website-in-2026",
   ],
   faqs: [
     {
@@ -98,10 +78,8 @@ export const contextualAdvertisingPost: BlogPost = {
     },
   ],
   cta: {
-    title: "Ready to Build Campaigns That Perform Without Tracking People?",
-    body: "Pixel2Tech helps brands and agencies design privacy-first media strategies — contextual targeting, brand safety standards, creative, and measurement that still proves ROI in a cookie-free world.",
-    primaryLabel: "Plan My Privacy-First Campaign",
-    secondaryLabel: "Explore Our Digital Marketing Services",
+    title: "Planning a privacy-first campaign?",
+    body: "We help brands plan contextual targeting, brand-safety rules, creative and measurement that don't depend on tracking people.",
   },
   content: [
     {
@@ -121,7 +99,7 @@ export const contextualAdvertisingPost: BlogPost = {
         "Contextual advertising matches ads to the content surrounding them, using semantic analysis of text, images, audio, and video.",
       body: [
         "Contextual advertising analyses the content of a page or video and serves ads that fit it. A running shoe ad appears in a marathon training guide; a cloud security ad appears in an article about data breaches.",
-        "Early tools worked on keyword lists, which caused well-known failures — a page containing the word \"shot\" could be blocked from a sports brand describing a winning goal.",
+        'Early tools worked on keyword lists, which caused well-known failures — a page containing the word "shot" could be blocked from a sports brand describing a winning goal.',
         "Advanced platforms solved this with natural language processing, evaluating topic, sentiment, tone, imagery, readability, ad clutter, and overall environment quality.",
       ],
       bullets: [
@@ -219,3 +197,4 @@ export const contextualAdvertisingPost: BlogPost = {
   ],
 };
 
+export default post;

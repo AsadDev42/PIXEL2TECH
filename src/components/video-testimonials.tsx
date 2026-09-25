@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
-import { Play, Pause, Quote } from "lucide-react";
-import { LoopSlider } from "@/components/loop-slider";
+import { useEffect, useId, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ResponsiveImage } from "@/components/responsive-image";
 
 type Item = {
   name: string;
@@ -8,6 +8,10 @@ type Item = {
   quote: string;
   video: string;
   poster: string;
+  /** WebVTT captions file. Required once a clip contains speech (WCAG 1.2.2). */
+  captions?: string;
+  /** The clip has spoken audio: it then plays with sound after the visitor presses play. */
+  hasAudio?: boolean;
 };
 
 const items: Item[] = [
@@ -58,102 +62,182 @@ const items: Item[] = [
   },
 ];
 
+/** Card widths, shared by the list items and the poster `sizes` hint. */
+const CARD_WIDTH = "w-[78vw] max-w-[340px] sm:w-[340px] lg:w-[380px] lg:max-w-[380px]";
+const CARD_SIZES = "(min-width: 1024px) 380px, (min-width: 640px) 340px, 78vw";
+
 function VideoCard({ item }: { item: Item }) {
   const ref = useRef<HTMLVideoElement>(null);
+  // The <video> is only created on the first press, so nothing downloads before then.
+  const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    if (started) void ref.current?.play().catch(() => setPlaying(false));
+  }, [started]);
+
   const toggle = () => {
-    const v = ref.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
+    const video = ref.current;
+    if (!started || !video) {
+      setStarted(true);
+      return;
     }
+    if (video.paused) void video.play().catch(() => undefined);
+    else video.pause();
   };
+
   return (
-    <article className="w-[280px] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:w-[340px] sm:rounded-3xl lg:w-[380px]">
-      <div className="relative aspect-[4/5] bg-black">
-        <video
-          ref={ref}
-          src={item.video}
-          poster={item.poster}
-          playsInline
-          loop
-          muted
-          preload="none"
-          aria-label={`Testimonial from ${item.name}`}
-          onPause={() => setPlaying(false)}
-          onPlay={() => setPlaying(true)}
-          className="pointer-events-none h-full w-full object-cover"
+    <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:rounded-3xl">
+      <div className="relative aspect-[4/5] bg-muted">
+        <ResponsiveImage
+          src={item.poster}
+          alt=""
+          sizes={CARD_SIZES}
+          width={800}
+          height={1000}
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        {started ? (
+          <video
+            ref={ref}
+            src={item.video}
+            poster={item.poster}
+            playsInline
+            loop
+            muted={!item.hasAudio}
+            preload="auto"
+            aria-hidden="true"
+            tabIndex={-1}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            {item.captions ? (
+              <track kind="captions" src={item.captions} srcLang="en" label="English" default />
+            ) : null}
+          </video>
+        ) : null}
         <button
-          onClick={toggle}
           type="button"
-          aria-label={playing ? `Pause ${item.name}'s testimonial` : `Play ${item.name}'s testimonial`}
-          className="absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/45 via-transparent to-transparent transition hover:bg-black/10"
+          onClick={toggle}
+          aria-label={`${playing ? "Pause" : "Play"} video from ${item.name}`}
+          className="group absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/40 via-transparent to-transparent"
         >
-          <span aria-hidden="true" className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-foreground text-primary shadow-xl ring-1 ring-border/40 backdrop-blur-md transition-transform duration-300 hover:scale-105 dark:bg-black dark:text-white dark:ring-white/10 sm:h-16 sm:w-16">
-            {playing ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="ml-1 h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" />}
+          <span
+            aria-hidden="true"
+            className="flex h-14 w-14 items-center justify-center rounded-full bg-background text-foreground shadow-lg ring-1 ring-border transition-transform group-hover:scale-105 sm:h-16 sm:w-16"
+          >
+            {playing ? (
+              <Pause className="h-6 w-6" />
+            ) : (
+              <Play className="ml-1 h-6 w-6" fill="currentColor" />
+            )}
           </span>
         </button>
       </div>
-      <div className="p-5 sm:p-6">
-        <Quote className="h-5 w-5 text-muted-foreground/45 sm:h-6 sm:w-6" aria-hidden="true" />
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.quote}</p>
-        <div className="mt-5 flex items-center gap-3 sm:mt-6">
-          <img
-            decoding="async"
-            src={item.poster}
-            alt={`${item.name}, Pixel2Tech client`}
-            loading="lazy"
-            draggable={false}
-            className="h-10 w-10 shrink-0 rounded-full object-cover"
-          />
-          <div className="min-w-0">
-            <div className="truncate text-sm font-bold text-card-foreground">{item.name}</div>
-            <div className="truncate text-xs text-muted-foreground">{item.role}</div>
-          </div>
-        </div>
-      </div>
-    </article>
+      <blockquote className="flex-1 px-5 pt-5 sm:px-6 sm:pt-6">
+        <p className="text-sm leading-relaxed text-muted-foreground">“{item.quote}”</p>
+      </blockquote>
+      <figcaption className="flex items-center gap-3 p-5 sm:p-6">
+        <ResponsiveImage
+          src={item.poster}
+          alt=""
+          sizes="40px"
+          width={40}
+          height={40}
+          className="h-10 w-10 rounded-full object-cover"
+        />
+        <span className="min-w-0">
+          <span className="block truncate text-sm font-semibold text-card-foreground">
+            {item.name}
+          </span>
+          <span className="block truncate text-xs text-muted-foreground">{item.role}</span>
+        </span>
+      </figcaption>
+    </figure>
   );
 }
 
-export function VideoTestimonials() {
+/**
+ * Client video testimonials as a swipeable row: native scroll with snap
+ * points, previous/next buttons, and arrow keys when the row has focus.
+ * Nothing moves on its own.
+ */
+export function VideoTestimonials({ className = "bg-background" }: { className?: string }) {
+  const headingId = useId();
+  const rowId = useId();
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const row = rowRef.current;
+    const card = row?.querySelector("li");
+    const list = row?.firstElementChild;
+    if (!row || !card || !list) return;
+    const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    row.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  };
+
+  const arrowClass =
+    "inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted";
+
   return (
-    <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:gap-6">
-          <div className="min-w-0">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[44px]">
-              What Our Clients Say
+    <section aria-labelledby={headingId} className={`py-16 md:py-24 ${className}`}>
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="min-w-0 max-w-2xl">
+            <h2
+              id={headingId}
+              className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+            >
+              What clients say
             </h2>
-            <p className="mt-2 max-w-xl text-[14px] text-muted-foreground sm:text-[15px]">
-              Real founders, real results. Hear it directly from the teams
-              we've helped grow. Drag to explore.
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              A few words from people we&apos;ve worked with. Press play to watch a clip.
             </p>
           </div>
-          <a
-            href="/contact"
-            className="hidden shrink-0 items-center whitespace-nowrap rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90 sm:inline-flex"
-          >
-            Let's Build Your Success Story
-          </a>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              aria-controls={rowId}
+              aria-label="Previous testimonial"
+              className={arrowClass}
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              aria-controls={rowId}
+              aria-label="Next testimonial"
+              className={arrowClass}
+            >
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={rowRef}
+          id={rowId}
+          role="region"
+          aria-label="Client testimonials"
+          tabIndex={0}
+          className="-mx-5 mt-8 snap-x snap-mandatory scroll-px-5 overflow-x-auto overscroll-x-contain px-5 pb-4 focus-visible:-outline-offset-2 md:-mx-10 md:scroll-px-10 md:px-10"
+        >
+          <ul className="flex w-max gap-4 sm:gap-6">
+            {items.map((item) => (
+              <li key={item.name} className={`${CARD_WIDTH} shrink-0 snap-start`}>
+                <VideoCard item={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-
-      <LoopSlider
-        items={items}
-        keyFor={(t, i) => `${t.name}-${i}`}
-        direction="rtl"
-        speed={40}
-        gapClassName="gap-4 pr-4 sm:gap-6 sm:pr-6"
-        className="mt-10 sm:mt-12"
-        ariaLabel="Client testimonials"
-        renderItem={(t) => <VideoCard item={t} />}
-      />
     </section>
   );
 }
