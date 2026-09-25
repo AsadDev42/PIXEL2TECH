@@ -267,23 +267,25 @@ export function QuickVerdict({ verdict }: { verdict: NonNullable<BlogPost["quick
 /* ------------------------------------------------------------------ */
 
 /**
- * Renders inline markdown links — [label](https://example.com) — inside
- * article prose, bullets and table cells. Plain text passes through as-is.
+ * Renders inline markdown links inside article prose, bullets and table cells.
+ * [label](/blog/slug) is an internal link (same tab, followed);
+ * [label](https://example.com) is an external source (new tab).
+ * Plain text passes through as-is.
  */
 function renderInline(text: string) {
   const parts: React.ReactNode[] = [];
-  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const re = /\[([^\]]+)\]\(((?:https?:\/\/|\/)[^\s)]+)\)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     const href = m[2];
+    const internal = href.startsWith("/");
     parts.push(
       <a
         key={`${href}-${m.index}`}
         href={href}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
+        {...(internal ? {} : { target: "_blank", rel: "noopener noreferrer nofollow" })}
         className="font-medium text-primary underline underline-offset-4 hover:opacity-80"
       >
         {m[1]}

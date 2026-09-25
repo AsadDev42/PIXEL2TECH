@@ -36,7 +36,7 @@ const POSTS = [
     title: "10 Common Shopify Issues and How to Fix Them",
     excerpt:
       "Shopify makes it easy to launch a store, but it's not always perfect. Learn how to identify and fix 10 common Shopify issues affecting sales, SEO, speed, and more.",
-    tag: "Ecommerce",
+    tag: "Shopify",
     date: "August 23, 2026",
     time: "11:00 am",
     author: "Pixel2Tech Team",
@@ -58,7 +58,7 @@ const POSTS = [
     title: "AI Is Changing How Designers Build Products: Why Design Systems Matter More Than Ever",
     excerpt:
       "AI tools can generate interfaces in seconds, but building a cohesive product requires more than just prompts. Discover why design systems are the essential foundation for AI-powered product development.",
-    tag: "Design Strategy",
+    tag: "Design",
     date: "August 23, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
@@ -76,7 +76,7 @@ const POSTS = [
     title: "Outtricks vs Instantly vs Apollo: Which Outbound Sales Platform Is Best in 2026?",
     excerpt:
       "We compare three popular B2B outreach platforms, Outtricks, Instantly and Apollo, on lead data, deliverability and cost, so you can pick the right one for your stage.",
-    tag: "Sales Tech",
+    tag: "Marketing",
     date: "August 22, 2026",
     time: "09:00 am",
     updated: "August 22, 2026",
@@ -90,7 +90,7 @@ const POSTS = [
     title: "How AI and Automation Are Reshaping Business Operations",
     excerpt:
       "How intelligent automation is helping businesses reduce repetitive work, improve decision-making, streamline workflows, and build more scalable operations.",
-    tag: "AI & Automation",
+    tag: "Automation",
     date: "August 20, 2026",
     time: "10:00 am",
     updated: "August 20, 2026",
@@ -114,7 +114,7 @@ const POSTS = [
     title: "Google Pakistan Office: What It Means for Pakistan's $30 Billion IT Future",
     excerpt:
       "Google has opened its first local office in Pakistan. Here is what Google's presence means for Pakistan's digital economy, IT exports, AI ecosystem, and the $30 billion IT export ambition.",
-    tag: "Technology",
+    tag: "Business",
     date: "August 19, 2026",
     time: "11:00 am",
     updated: "August 19, 2026",
@@ -133,7 +133,7 @@ const POSTS = [
     title: "The Future of Digital Products: Why Startups Need Better Technology Systems",
     excerpt:
       "Building a startup that can scale requires moving beyond individual tools toward connected technology systems. Explore the future of digital product strategy.",
-    tag: "Strategy",
+    tag: "Business",
     date: "August 10, 2026",
     time: "2:15 pm",
     updated: "August 10, 2026",
@@ -152,7 +152,7 @@ const POSTS = [
     title: "Building a Digital Product? Start With the Business, Not the Technology",
     excerpt:
       "Most founders don't start with a technology problem—they start with a business problem. Learn why successful products are built around outcomes rather than features.",
-    tag: "Product",
+    tag: "Business",
     date: "August 10, 2026",
     time: "10:30 am",
     updated: "August 10, 2026",
@@ -171,7 +171,7 @@ const POSTS = [
     title: "Your Digital Product Is More Than Software. It’s a Business System.",
     excerpt:
       "For many founders, building a product starts with 'We need an app.' But technology should never be the starting point. Real value is created when technology solves a business problem and reduces friction.",
-    tag: "Strategy",
+    tag: "Business",
     date: "August 10, 2026",
     time: "9:00 am",
     updated: "August 10, 2026",
@@ -190,7 +190,7 @@ const POSTS = [
     title: "20 Most Common Technology Mistakes Businesses Make in 2026",
     excerpt:
       "Technology should make business simpler, but many companies find themselves with more software and more manual work. Here are 20 technology mistakes to avoid in 2026.",
-    tag: "Technology",
+    tag: "Business",
     date: "August 8, 2026",
     time: "2:00 pm",
     updated: "August 8, 2026",
@@ -209,7 +209,7 @@ const POSTS = [
     title: "Your Business Doesn't Need More Software. It Needs Better Systems.",
     excerpt:
       "Most businesses don't have a technology problem—they have a systems problem. Adding another tool rarely fixes friction; sometimes it makes it worse. Here is how to build connected systems that actually scale.",
-    tag: "Systems",
+    tag: "Business",
     date: "August 8, 2026",
     time: "11:00 am",
     updated: "August 8, 2026",
@@ -228,7 +228,7 @@ const POSTS = [
     title: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
     excerpt:
       "Creativity now sits alongside technology, customer experience and AI. Here are twelve creative agencies enterprises and growing brands are working with in 2026 — and how to pick the right one.",
-    tag: "Agency",
+    tag: "Marketing",
     date: "August 7, 2026",
     time: "8:00 pm",
     updated: "August 7, 2026",
@@ -288,7 +288,7 @@ const POSTS = [
     title: "Why Verified Wholesale Sourcing Beats Auctions and Liquidation Marketplaces",
     excerpt:
       "Cheap inventory is rarely the cheapest inventory. Here is why verified suppliers, escrow payments, managed logistics, and fixed wholesale pricing protect margins better than auctions and liquidation marketplaces.",
-    tag: "eCommerce",
+    tag: "E-commerce",
     date: "August 4, 2026",
     time: "11:00 am",
     updated: "August 4, 2026",
@@ -308,7 +308,7 @@ const POSTS = [
     title: "Advanced Contextual Advertising: The Future of Privacy-First Marketing",
     excerpt:
       "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about — protecting privacy, brand safety, and performance at the same time.",
-    tag: "Digital Marketing",
+    tag: "Marketing",
     date: "August 4, 2026",
     time: "9:00 am",
     updated: "August 4, 2026",
@@ -329,7 +329,7 @@ const POSTS = [
     title: "The Complete Mobile App Design Process (2026): From Idea to App Store Launch",
     excerpt:
       "A practical, end-to-end guide to the mobile app design process — idea validation, research, wireframing, prototyping, UI, design systems, testing, handoff, and launch — written for founders and product teams.",
-    tag: "UI/UX Design",
+    tag: "Design",
     date: "August 3, 2026",
     time: "9:00 am",
     updated: "August 3, 2026",
@@ -350,7 +350,7 @@ const POSTS = [
     title: "Headless Shopify: A Practical Guide for Founders and eCommerce Brands",
     excerpt:
       "What headless Shopify actually means, when it is worth the cost, when a well-built theme wins, and how to plan the move without breaking revenue.",
-    tag: "eCommerce",
+    tag: "E-commerce",
     date: "August 2, 2026",
     time: "3:00 pm",
     updated: "August 3, 2026",
@@ -371,7 +371,7 @@ const POSTS = [
     title: "Best LinkedIn Outreach Platforms in 2026",
     excerpt:
       "A practical look at the best LinkedIn outreach platforms in 2026 — what each one is actually good for, how to choose, and the mistakes that quietly kill reply rates.",
-    tag: "Sales Systems",
+    tag: "Marketing",
     date: "August 2, 2026",
     time: "11:00 am",
     author: "Pixel2Tech Team",
@@ -389,7 +389,7 @@ const POSTS = [
     title: "Why Your AI Content Is Not Ranking (And How to Fix It)",
     excerpt:
       "Most businesses are publishing more content than ever and getting less traffic. Here are the AI SEO mistakes behind that, and a simple framework to fix them.",
-    tag: "Technology Strategy",
+    tag: "SEO",
     date: "August 2, 2026",
     time: "09:00 am",
     author: "Pixel2Tech Team",
@@ -406,7 +406,7 @@ const POSTS = [
     title: "AI Meeting Assistants: Are They Worth It for Your Business in 2026?",
     excerpt:
       "Automated notes, transcripts, and action items sound great on paper. Here is an honest look at the benefits, limits, ROI, and how to choose the right AI meeting assistant.",
-    tag: "Artificial Intelligence",
+    tag: "AI",
     date: "August 1, 2026",
     time: "10:00 am",
     author: "Pixel2Tech Team",
@@ -435,7 +435,7 @@ const POSTS = [
     title: "Kling O1 Explained: Features, Use Cases & Business Benefits (2026 Guide)",
     excerpt:
       "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing and content creation.",
-    tag: "AI Video",
+    tag: "AI",
     date: "July 30, 2026",
     time: "10:00 am",
     author: "Pixel2Tech Editorial Team",
@@ -446,7 +446,7 @@ const POSTS = [
     title: "Before You Raise Funding, Make Sure Your Startup Looks Investable",
     excerpt:
       "Investors research your website, product and brand long before they read your deck. Here is how to make your startup look investor-ready before you raise.",
-    tag: "Startups",
+    tag: "Business",
     date: "July 30, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Editorial Team",
@@ -458,7 +458,7 @@ const POSTS = [
       "Bots Have Officially Taken Over the Internet — Here's What It Means for Your Website in 2026",
     excerpt:
       "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
-    tag: "Web Security",
+    tag: "Web Development",
     date: "July 29, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Editorial Team",
@@ -481,7 +481,7 @@ const POSTS = [
     title: "Why Most Freelancers Fail on Upwork (And What Clients Actually Want)",
     excerpt:
       "Most freelancers lose Upwork projects for the same reason: they focus on getting hired while clients focus on getting results.",
-    tag: "Freelancing",
+    tag: "Business",
     date: "July 27, 2026",
     time: "11:00 am",
     author: "Asad Farooq",
@@ -492,7 +492,7 @@ const POSTS = [
     title: "Why Most Businesses Don't Need More Software. They Need Better Systems",
     excerpt:
       "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software — it's the system behind it.",
-    tag: "Systems",
+    tag: "Business",
     date: "July 27, 2026",
     time: "10:00 am",
     author: "Asad Farooq",
@@ -512,7 +512,7 @@ const POSTS = [
     slug: "why-every-business-needs-a-modern-website-in-2026",
     title: "Why Every Business Needs a Modern Website in 2026",
     excerpt: "A 10-point audit to figure out if your website is helping or hurting.",
-    tag: "Web",
+    tag: "Web Development",
     date: "April 5, 2026",
     time: "9:12 am",
     author: "Asad Farooq",
@@ -522,7 +522,7 @@ const POSTS = [
     slug: "rebrand-vs-refresh-a-founders-decision-framework",
     title: "Rebrand vs. Refresh: A Founder's Decision Framework",
     excerpt: "Not sure whether to rebrand? Answer these five questions first.",
-    tag: "Growth",
+    tag: "Branding",
     date: "March 12, 2026",
     time: "2:40 pm",
     author: "Asad Farooq",
@@ -532,7 +532,7 @@ const POSTS = [
     slug: "the-power-of-good-branding-for-business-growth",
     title: "The Power of Good Branding for Business Growth",
     excerpt: "Why a strong brand system compounds every marketing dollar you spend.",
-    tag: "Creative",
+    tag: "Branding",
     date: "February 24, 2026",
     time: "9:36 pm",
     author: "Asad Farooq",
