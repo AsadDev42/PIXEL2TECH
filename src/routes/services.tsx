@@ -1,3 +1,4 @@
+import { ClosingCta } from "@/components/closing-cta";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -332,30 +333,13 @@ function ServicesPage() {
       {/* Closing CTA */}
       <section aria-labelledby="services-cta-title" className="bg-background py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-12 sm:py-16">
-            <h2
-              id="services-cta-title"
-              className="mx-auto max-w-2xl text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
-            >
-              Not sure which service you need?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-balance sm:text-base">
-              Tell us what you&apos;re trying to get done and we&apos;ll suggest where to start. We
-              reply within one business day.
-            </p>
-            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <BookCallButton
-                source="services_cta"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-background px-6 text-sm font-semibold text-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              />
-              <Link
-                to="/contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary-foreground/60 px-6 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Send a project brief
-              </Link>
-            </div>
-          </div>
+          <ClosingCta
+            id="services-cta-title"
+            title="Not sure which service"
+            highlight="you need?"
+            body="Tell us what you're trying to get done and we'll suggest where to start. We reply within one business day."
+            source="services_cta"
+          />
         </div>
       </section>
     </PageShell>

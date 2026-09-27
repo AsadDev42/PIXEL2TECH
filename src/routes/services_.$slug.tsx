@@ -1,3 +1,4 @@
+import { ClosingCta } from "@/components/closing-cta";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -580,30 +581,12 @@ function ServiceLandingPage() {
       {/* Closing CTA + other services */}
       <section aria-labelledby={id("cta")} className={`bg-background ${SECTION}`}>
         <div className={CONTAINER}>
-          <div className="rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-12 sm:py-16">
-            <h2
-              id={id("cta")}
-              className="mx-auto max-w-2xl text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
-            >
-              {page.ctaTitle}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-balance sm:text-base">
-              Tell us what you need and we&apos;ll recommend where to start. We reply within one
-              business day.
-            </p>
-            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <BookCallButton
-                source={`service_${page.slug}_cta`}
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-background px-6 text-sm font-semibold text-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              />
-              <Link
-                to="/contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary-foreground/60 px-6 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Send a project brief
-              </Link>
-            </div>
-          </div>
+          <ClosingCta
+            id={id("cta")}
+            title={page.ctaTitle}
+            body="Tell us what you need and we'll recommend where to start. We reply within one business day."
+            source={`service_${page.slug}_cta`}
+          />
 
           <nav aria-labelledby={id("other")} className="mt-12 sm:mt-16">
             <h2 id={id("other")} className="text-lg font-bold leading-snug text-foreground">

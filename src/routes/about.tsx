@@ -1,3 +1,4 @@
+import { ClosingCta } from "@/components/closing-cta";
 import { Fragment } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Layers, Sparkles, Target, TrendingUp } from "lucide-react";
@@ -334,30 +335,13 @@ function AboutPage() {
       {/* Closing CTA */}
       <section aria-labelledby="about-cta-title" className="bg-background pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="rounded-3xl bg-primary px-6 py-12 text-center text-primary-foreground sm:px-12 sm:py-16">
-            <h2
-              id="about-cta-title"
-              className="mx-auto max-w-2xl text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
-            >
-              Want this team on your project?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-balance sm:text-base">
-              Tell us what you&apos;re planning. We reply within one business day, or you can book a
-              call and talk it through.
-            </p>
-            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <BookCallButton
-                source="about_cta"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-background px-6 text-sm font-semibold text-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              />
-              <Link
-                to="/contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary-foreground/60 px-6 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Send a project brief
-              </Link>
-            </div>
-          </div>
+          <ClosingCta
+            id="about-cta-title"
+            title="Want this team on"
+            highlight="your project?"
+            body="Tell us what you're planning. We reply within one business day, or you can book a call and talk it through."
+            source="about_cta"
+          />
         </div>
       </section>
     </PageShell>
