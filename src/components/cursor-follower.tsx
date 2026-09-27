@@ -107,8 +107,8 @@ export function CursorFollower() {
       }
       overNative = false;
       if (!visible) setVisible(true);
-      const media = !!el.closest(MEDIA_SEL);
-      const hover = !media && !!el.closest(INTERACTIVE_SEL);
+      const media = el ? !!el.closest(MEDIA_SEL) : false;
+      const hover = !media && el ? !!el.closest(INTERACTIVE_SEL) : false;
       const mediaVal = media ? "1" : "0";
       const hoverVal = hover ? "1" : "0";
       if (blob.dataset.media !== mediaVal) blob.dataset.media = mediaVal;
