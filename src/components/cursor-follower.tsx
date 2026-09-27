@@ -128,7 +128,7 @@ export function CursorFollower() {
       setVisible(false);
     };
     const onEnter = () => {
-      setVisible(true);
+      if (!overNative) setVisible(true);
       start();
     };
 
