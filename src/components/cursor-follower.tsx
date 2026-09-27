@@ -56,6 +56,7 @@ export function CursorFollower() {
     };
 
     showRef.current = () => {
+      overNative = false;
       const blob = blobRef.current;
       if (blob) {
         blob.dataset.media = "0";
