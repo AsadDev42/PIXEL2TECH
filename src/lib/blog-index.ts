@@ -1440,6 +1440,137 @@ const POSTS = [
       "headless-shopify-commerce-guide",
     ],
   },
+  {
+    slug: "google-ai-mode-checkout-shopify-opt-out",
+    title: "AI Mode Checkout on Shopify: Keep It On or Opt Out?",
+    excerpt:
+      "Google auto-enabled AI Mode and Gemini checkout for US Shopify stores on Sept 18, 2026. What breaks, which SKUs to opt out and how to fix tracking.",
+    tag: "Shopify",
+    date: "September 27, 2026",
+    time: "12:00 pm",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/google-ai-mode-checkout-shopify-opt-out.jpg?v=2",
+    imgAlt: "Shopper completing a card payment on a smartphone checkout screen",
+    related: [
+      "shopify-additional-scripts-removed-tracking-fix",
+      "shopify-issues-and-how-to-fix-them",
+    ],
+  },
+  {
+    slug: "wordpress-7-1-2-security-update",
+    title: "WordPress 7.1.2 Security Fix: What Business Owners Must Do Now",
+    excerpt:
+      "WordPress 7.1.2 fixes CVE-2026-87902, attacked on release day. A 15-minute owner check, safe update steps and signs your site was hit before you patched.",
+    tag: "Web Development",
+    date: "September 27, 2026",
+    time: "11:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/wordpress-7-1-2-security-update.jpg?v=2",
+    imgAlt:
+      "Business owner checking a WordPress dashboard on a laptop for the 7.1.2 security update",
+    related: [
+      "website-ownership-checklist",
+      "bots-outnumber-humans-online-2026-website-security",
+      "wordpress-vs-webflow-vs-squarespace-service-business",
+    ],
+  },
+  {
+    slug: "google-spam-update-recovery",
+    title: "Hit by Google's September 2026 Spam Update? How to Diagnose It",
+    excerpt:
+      "Google's September 2026 spam update began September 24. Match your drop dates, find what your SEO vendor built, and plan a realistic cleanup.",
+    tag: "SEO",
+    date: "September 27, 2026",
+    time: "10:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/google-spam-update-recovery.jpg?v=2",
+    imgAlt: "Website analytics dashboard showing a sharp decline in organic search traffic",
+    related: [
+      "service-area-pages-for-contractors",
+      "ai-seo-mistakes",
+      "website-traffic-drop-after-redesign",
+    ],
+  },
+  {
+    slug: "google-business-profile-suggested-edits",
+    title: "Google Business Profile Suggested Edits: The New 4-Day Rule",
+    excerpt:
+      "Google gives owners 4 days to reject suggested edits before they may go live. How to route alerts and make your website back up the right hours and phone.",
+    tag: "SEO",
+    date: "September 27, 2026",
+    time: "9:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/google-business-profile-suggested-edits.jpg?v=2",
+    imgAlt:
+      "Smartphone showing a local business listing on a map with a pending edit notification beside a laptop open to the business website",
+    related: ["google-business-profile-practitioner-listings", "website-not-generating-leads"],
+  },
+  {
+    slug: "google-reviews-paused-spam-filter",
+    title: "Google Paused Your Reviews? Ask for Reviews Without Spam Flags",
+    excerpt:
+      "Google now pauses new reviews after a spam spike. Why review blasts trip the filter and how to set up paced, policy-safe review requests in your CRM.",
+    tag: "Automation",
+    date: "September 26, 2026",
+    time: "4:00 pm",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/google-reviews-paused-spam-filter.jpg?v=2",
+    imgAlt: "Customer leaving a star rating review for a local business on a smartphone",
+    related: [
+      "automate-lead-follow-up",
+      "google-business-profile-practitioner-listings",
+      "n8n-automation-cost",
+    ],
+  },
+  {
+    slug: "google-store-ratings-requirements",
+    title: "Google Store Ratings Rules: 100 Reviews, 3.5 Stars, 24 Months",
+    excerpt:
+      "Google now lists its store ratings rules: about 100 reviews, a 3.5-star average for ads, a 24-month window. How Shopify brands keep stars on Shopping ads.",
+    tag: "E-commerce",
+    date: "September 26, 2026",
+    time: "1:00 pm",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/google-store-ratings-requirements.jpg?v=2",
+    imgAlt:
+      "A phone screen showing five-star customer ratings for an online store, next to a delivered shipping box",
+    related: ["klaviyo-flows-not-triggering-shopify", "shopify-issues-and-how-to-fix-them"],
+  },
+  {
+    slug: "gpt-6-vs-claude-opus-5-5-for-business",
+    title: "GPT-6 vs Claude Opus 5.5: Which AI Projects Now Pay Off for SMBs",
+    excerpt:
+      "GPT-6 Sol, Luna and Claude Opus 5.5 all launched September 22, 2026 at lower prices. Cost per task at the new rates, and which SMB AI projects now pay back.",
+    tag: "AI",
+    date: "September 26, 2026",
+    time: "11:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/gpt-6-vs-claude-opus-5-5-for-business.jpg?v=2",
+    imgAlt: "Small-business owner comparing AI model costs on a laptop dashboard",
+    related: [
+      "ai-chatbot-cost-small-business",
+      "is-ai-worth-the-investment",
+      "n8n-automation-cost",
+    ],
+  },
+  {
+    slug: "demand-gen-shorts-image-ads-holiday",
+    title: "Holiday Demand Gen: Shorts Image Ads and One-Tap Landing Pages",
+    excerpt:
+      "Google's Sep 24 Demand Gen drop adds one-tap image ads on Shorts and Gmail. The 9:16 creative, feed and landing page checklist to be live before Black Friday.",
+    tag: "Video & Ads",
+    date: "September 26, 2026",
+    time: "9:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/demand-gen-shorts-image-ads-holiday.jpg?v=2",
+    imgAlt:
+      "Smartphone held upright showing a full-screen vertical product ad in a short-video feed",
+    related: [
+      "ugc-ads-for-shopify-brands",
+      "shopify-product-video-guide",
+      "meta-ads-creative-testing-small-budget",
+    ],
+  },
 ] as const satisfies readonly PostMeta[];
 
 /* ------------------------------------------------------------------ */
