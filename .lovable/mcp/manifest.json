@@ -35,7 +35,7 @@
       {
         "name": "get_agency_info",
         "title": "Get agency info",
-        "description": "Get Pixel2Tech company details: positioning, contact information, address and delivery process.",
+        "description": "Get Pixel2Tech company details: positioning, contact information (email, phone, WhatsApp), address, office hours and delivery process.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -82,7 +82,7 @@
       {
         "name": "list_blog_posts",
         "title": "List blog posts",
-        "description": "List Pixel2Tech blog articles (newest first) with slug, title, excerpt, tag, author, date and URL. Optionally filter by keyword.",
+        "description": "List Pixel2Tech blog articles (newest first) with slug, title, excerpt, tag, author, date, reading time in minutes and URL. Optionally filter by keyword.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,

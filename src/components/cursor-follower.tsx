@@ -28,7 +28,12 @@ export function CursorFollower() {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (window.matchMedia("(max-width: 767px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setEnabled(true);
+    // Scope the cursor:none rule to a class on <html>; it never applies when
+    // the custom cursor is disabled (coarse pointers, reduced motion, mobile).
+    const root = document.documentElement;
+    root.classList.add("p2t-cursor");
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -51,21 +56,28 @@ export function CursorFollower() {
     };
 
     showRef.current = () => {
+      overNative = false;
       const blob = blobRef.current;
       if (blob) {
         blob.dataset.media = "0";
         blob.dataset.hover = "0";
         blob.dataset.down = "0";
+        blob.dataset.native = "0";
       }
       setVisible(true);
     };
 
 
 
+
+    // Tracks whether the pointer is over a native text-entry surface, so
+    // onMove/onEnter don't re-show the blob while the real caret is showing.
+    let overNative = false;
+
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      if (!visible) setVisible(true);
+      if (!visible && !overNative) setVisible(true);
       // Do NOT write styles here: mousemove can fire several times per frame on
       // high-polling-rate mice. The rAF loop commits at display refresh rate.
       start();
@@ -74,14 +86,27 @@ export function CursorFollower() {
     // Single DOM walk per mouseover instead of two, and only commit dataset
     // changes when the state actually differs (dataset writes invalidate the
     // mix-blend-mode layer and force a repaint).
-    const MEDIA_SEL = 'img, picture, video, [data-cursor="expand"]';
-    const INTERACTIVE_SEL =
-      'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]';
+    const MEDIA_SEL = 'a img, a picture, a video, [data-cursor="expand"]';
+    const INTERACTIVE_SEL = 'a, button, [role="button"], label, summary, [data-cursor="hover"]';
+    // Native cursor stays visible over text entry surfaces and embedded docs.
+    const NATIVE_SEL =
+      'input, textarea, select, [contenteditable=""], [contenteditable="true"], iframe';
 
     const onOver = (e: MouseEvent) => {
       const blob = blobRef.current;
       if (!blob) return;
       const el = e.target instanceof Element ? e.target : null;
+      const native = el ? !!el.closest(NATIVE_SEL) : false;
+      const nativeVal = native ? "1" : "0";
+      if (blob.dataset.native !== nativeVal) blob.dataset.native = nativeVal;
+      if (native) {
+        // Hide the custom cursor entirely so the real caret/pointer shows.
+        overNative = true;
+        setVisible(false);
+        return;
+      }
+      overNative = false;
+      if (!visible) setVisible(true);
       const media = el ? !!el.closest(MEDIA_SEL) : false;
       const hover = !media && el ? !!el.closest(INTERACTIVE_SEL) : false;
       const mediaVal = media ? "1" : "0";
@@ -104,7 +129,7 @@ export function CursorFollower() {
       setVisible(false);
     };
     const onEnter = () => {
-      setVisible(true);
+      if (!overNative) setVisible(true);
       start();
     };
 
@@ -165,6 +190,7 @@ export function CursorFollower() {
     return () => {
       if (raf) cancelAnimationFrame(raf);
       running = false;
+      document.documentElement.classList.remove("p2t-cursor");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mousedown", onDown);
@@ -178,7 +204,16 @@ export function CursorFollower() {
   return (
     <>
       <style>{`
-        @media (pointer: fine){*{cursor:none !important}}
+        /* Hide the native cursor only where the custom one replaces it; text
+           fields, selects, contenteditable and iframes keep their real cursor. */
+        @media (pointer: fine){
+          html.p2t-cursor *{cursor:none !important}
+          html.p2t-cursor input,
+          html.p2t-cursor textarea,
+          html.p2t-cursor select,
+          html.p2t-cursor [contenteditable],
+          html.p2t-cursor iframe{cursor:auto !important}
+        }
         .lv-cursor-blob{
           position: fixed; left: 0; top: 0; z-index: 9999;
           height: 36px; width: 36px; border-radius: 9999px;
@@ -239,7 +274,7 @@ export function CursorFollower() {
           filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
         }
       `}</style>
-      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" className="lv-cursor-blob">
+      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" data-native="0" className="lv-cursor-blob">
         <span className="lv-cursor-label">Expand +</span>
       </div>
       <div ref={dotRef} aria-hidden className="lv-cursor-dot">
