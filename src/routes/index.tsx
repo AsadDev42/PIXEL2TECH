@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, Pause, Phone, Play, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Star, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { PageShell } from "@/components/site-chrome";
@@ -208,8 +207,6 @@ function HeroTile({ media, paused }: { media: HeroMedia; paused: boolean }) {
 }
 
 function Hero() {
-  const [motionPaused, setMotionPaused] = useState(false);
-
   return (
     <section aria-labelledby="home-hero-title" className="bg-background">
       <div
@@ -257,7 +254,7 @@ function Hero() {
           ))}
         </div>
 
-        {/* md and up: three slowly looping columns, with a pause control. */}
+        {/* md and up: three slowly looping columns. */}
         <div className="relative hidden w-full md:block">
           <div
             aria-hidden="true"
@@ -270,26 +267,14 @@ function Hero() {
                 className="h-full"
                 direction={ci % 2 === 0 ? "up" : "down"}
                 speed={30}
-                autoplay={!motionPaused}
+                autoplay
                 gapClassName="gap-2 lg:gap-3"
                 items={column}
                 keyFor={(_m, i) => `${ci}-${i}`}
-                renderItem={(media) => <HeroTile media={media} paused={motionPaused} />}
+                renderItem={(media) => <HeroTile media={media} paused={false} />}
               />
             ))}
           </div>
-          <button
-            type="button"
-            onClick={() => setMotionPaused((p) => !p)}
-            className="absolute bottom-3 right-3 z-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted motion-reduce:hidden"
-          >
-            {motionPaused ? (
-              <Play className="h-4 w-4" aria-hidden="true" />
-            ) : (
-              <Pause className="h-4 w-4" aria-hidden="true" />
-            )}
-            {motionPaused ? "Play motion" : "Pause motion"}
-          </button>
         </div>
       </div>
     </section>
