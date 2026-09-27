@@ -574,7 +574,7 @@ const POSTS = [
     date: "September 9, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/website-development-cost-pakistan.jpg",
+    img: "/blog/covers/website-development-cost-pakistan.jpg?v=2",
     imgAlt: "Small business owner planning a website budget with a laptop and calculator",
     related: [
       "website-redesign-cost-small-business",
@@ -591,7 +591,7 @@ const POSTS = [
     date: "September 10, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/compare-website-development-quotes.jpg",
+    img: "/blog/covers/compare-website-development-quotes.jpg?v=2",
     imgAlt:
       "Three website development proposals compared side by side on a weighted scoring matrix",
     related: [
@@ -609,7 +609,7 @@ const POSTS = [
     date: "September 10, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/website-ownership-checklist.jpg",
+    img: "/blog/covers/website-ownership-checklist.jpg?v=2",
     imgAlt:
       "Website ownership checklist covering domain registrar, hosting, analytics accounts and code rights",
     related: [
@@ -627,7 +627,7 @@ const POSTS = [
     date: "September 9, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/custom-web-app-development-cost-pakistan.jpg",
+    img: "/blog/covers/custom-web-app-development-cost-pakistan.jpg?v=2",
     imgAlt: "Team sketching web app screens and user flows on a whiteboard",
     related: [
       "outsource-web-development-to-pakistan",
@@ -644,7 +644,7 @@ const POSTS = [
     date: "September 21, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-web-development-to-pakistan.jpg",
+    img: "/blog/covers/outsource-web-development-to-pakistan.jpg?v=2",
     imgAlt: "Developer at a desk reviewing website code on two monitors",
     related: [
       "website-redesign-cost-small-business",
@@ -661,7 +661,7 @@ const POSTS = [
     date: "September 7, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-store-cost-pakistan.jpg",
+    img: "/blog/covers/shopify-store-cost-pakistan.jpg?v=2",
     imgAlt:
       "Laptop showing a Shopify store dashboard next to a calculator and a notebook with a monthly budget in US dollars and rupees",
     related: [
@@ -679,7 +679,7 @@ const POSTS = [
     date: "September 7, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-payment-gateways-pakistan.jpg",
+    img: "/blog/covers/shopify-payment-gateways-pakistan.jpg?v=2",
     imgAlt:
       "Smartphone showing a checkout screen with wallet and card payment options beside a small QR code stand on a shop counter",
     related: [
@@ -697,7 +697,7 @@ const POSTS = [
     date: "September 15, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-theme-customization-vs-custom-theme.jpg",
+    img: "/blog/covers/shopify-theme-customization-vs-custom-theme.jpg?v=2",
     imgAlt:
       "Shopify theme editor showing custom sections being arranged on a product page template",
     related: [
@@ -715,7 +715,7 @@ const POSTS = [
     date: "September 15, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/custom-shopify-app-vs-public-app.jpg",
+    img: "/blog/covers/custom-shopify-app-vs-public-app.jpg?v=2",
     imgAlt:
       "Flow diagram of a custom Shopify app syncing orders and stock levels between Shopify and an ERP system",
     related: [
@@ -733,7 +733,7 @@ const POSTS = [
     date: "September 16, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-b2b-without-shopify-plus.jpg",
+    img: "/blog/covers/shopify-b2b-without-shopify-plus.jpg?v=2",
     imgAlt:
       "Wholesale buyer's view of a Shopify store with tiered volume pricing and a quick order list",
     related: [
@@ -751,7 +751,7 @@ const POSTS = [
     date: "September 17, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-additional-scripts-removed-tracking-fix.jpg",
+    img: "/blog/covers/shopify-additional-scripts-removed-tracking-fix.jpg?v=2",
     imgAlt:
       "Shopify thank-you page with GA4 and Meta purchase events being checked in a debug view",
     related: [
@@ -769,7 +769,7 @@ const POSTS = [
     date: "September 8, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/sell-internationally-from-pakistan-shopify.jpg",
+    img: "/blog/covers/sell-internationally-from-pakistan-shopify.jpg?v=2",
     imgAlt:
       "Packed parcels with international shipping labels addressed to the UK, US and UAE stacked beside folded embroidered clothing",
     related: [
@@ -787,7 +787,7 @@ const POSTS = [
     date: "September 16, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/white-label-shopify-development-for-agencies.jpg",
+    img: "/blog/covers/white-label-shopify-development-for-agencies.jpg?v=2",
     imgAlt:
       "Agency project manager and offshore developer reviewing a Shopify preview theme together on a video call",
     related: [
@@ -805,7 +805,7 @@ const POSTS = [
     date: "September 8, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/whatsapp-business-api-setup-pakistan.jpg",
+    img: "/blog/covers/whatsapp-business-api-setup-pakistan.jpg?v=2",
     imgAlt:
       "Laptop showing a shared WhatsApp inbox with several customer chats, next to a phone displaying a verified business profile",
     related: ["why-businesses-need-better-systems"],
@@ -819,7 +819,7 @@ const POSTS = [
     date: "September 8, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/reduce-fake-cod-orders-shopify-pakistan.jpg",
+    img: "/blog/covers/reduce-fake-cod-orders-shopify-pakistan.jpg?v=2",
     imgAlt:
       "Phone showing a WhatsApp order confirmation message with Confirm and Cancel buttons next to a stack of courier parcels",
     related: [
@@ -837,7 +837,7 @@ const POSTS = [
     date: "September 12, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/automate-lead-follow-up.jpg",
+    img: "/blog/covers/automate-lead-follow-up.jpg?v=2",
     imgAlt:
       "Flow diagram of new leads from a web form, Meta ad and WhatsApp being routed to sales reps with timed follow-up tasks",
     related: [
@@ -855,7 +855,7 @@ const POSTS = [
     date: "September 12, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/n8n-automation-cost.jpg",
+    img: "/blog/covers/n8n-automation-cost.jpg?v=2",
     imgAlt:
       "n8n-style workflow canvas with connected nodes beside a monthly cost breakdown of platform, server and upkeep",
     related: [
@@ -873,7 +873,7 @@ const POSTS = [
     date: "September 9, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/local-seo-lahore-guide.jpg",
+    img: "/blog/covers/local-seo-lahore-guide.jpg?v=2",
     imgAlt:
       "Phone showing Google Maps local results for businesses in Lahore, held over a street map with pins in Gulberg, DHA and Johar Town",
     related: ["biggest-seo-mistakes-businesses-make-2026"],
@@ -887,7 +887,7 @@ const POSTS = [
     date: "September 20, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-seo-to-pakistan.jpg",
+    img: "/blog/covers/outsource-seo-to-pakistan.jpg?v=2",
     imgAlt: "Search analytics dashboard with organic traffic charts on a laptop",
     related: [
       "website-traffic-drop-after-redesign",
@@ -904,7 +904,7 @@ const POSTS = [
     date: "September 10, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/logo-design-cost-in-pakistan.jpg",
+    img: "/blog/covers/logo-design-cost-in-pakistan.jpg?v=2",
     imgAlt: "Logo sketches and color swatches spread on a designer's desk",
     related: [
       "brand-identity-process-for-startups",
@@ -921,7 +921,7 @@ const POSTS = [
     date: "September 19, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/brand-guidelines-for-small-business.jpg",
+    img: "/blog/covers/brand-guidelines-for-small-business.jpg?v=2",
     imgAlt: "Open brand guidelines booklet showing logo usage rules and a color palette",
     related: [
       "brand-identity-process-for-startups",
@@ -938,7 +938,7 @@ const POSTS = [
     date: "September 20, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-graphic-design-to-pakistan.jpg",
+    img: "/blog/covers/outsource-graphic-design-to-pakistan.jpg?v=2",
     imgAlt: "Graphic designer working on brand layouts on a large monitor",
     related: [
       "brand-identity-process-for-startups",
@@ -955,7 +955,7 @@ const POSTS = [
     date: "September 18, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/ugc-ads-for-shopify-brands.jpg",
+    img: "/blog/covers/ugc-ads-for-shopify-brands.jpg?v=2",
     imgAlt: "Creator filming a product demo on a smartphone mounted on a small tripod",
     related: [
       "meta-ads-creative-testing-small-budget",
@@ -972,7 +972,7 @@ const POSTS = [
     date: "September 18, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/beauty-brand-ad-creative.jpg",
+    img: "/blog/covers/beauty-brand-ad-creative.jpg?v=2",
     imgAlt: "Close-up of a brow product being applied, framed for a vertical social ad",
     related: [
       "meta-ads-creative-testing-small-budget",
@@ -989,7 +989,7 @@ const POSTS = [
     date: "September 19, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-product-video-guide.jpg",
+    img: "/blog/covers/shopify-product-video-guide.jpg?v=2",
     imgAlt: "Product being filmed on a tabletop set with a camera and soft lighting",
     related: [
       "ugc-ads-for-shopify-brands",
@@ -1006,7 +1006,7 @@ const POSTS = [
     date: "September 20, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-video-editing-to-pakistan.jpg",
+    img: "/blog/covers/outsource-video-editing-to-pakistan.jpg?v=2",
     imgAlt: "Video editor cutting footage on a timeline in editing software",
     related: [
       "video-editing-retainer-for-coaches",
@@ -1023,7 +1023,7 @@ const POSTS = [
     date: "September 19, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/white-label-creative-for-agencies.jpg",
+    img: "/blog/covers/white-label-creative-for-agencies.jpg?v=2",
     imgAlt: "Agency team reviewing ad creative drafts on a shared screen",
     related: [
       "meta-ads-creative-testing-small-budget",
@@ -1040,7 +1040,7 @@ const POSTS = [
     date: "September 13, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/ai-chatbot-cost-small-business.jpg",
+    img: "/blog/covers/ai-chatbot-cost-small-business.jpg?v=2",
     imgAlt:
       "Website chat widget answering a customer question, next to a cost worksheet comparing SaaS and custom chatbot options",
     related: [
@@ -1058,7 +1058,7 @@ const POSTS = [
     date: "September 23, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/ada-website-compliance-small-business.jpg",
+    img: "/blog/covers/ada-website-compliance-small-business.jpg?v=2",
     imgAlt:
       "Small business website being tested for accessibility with keyboard navigation and color contrast checks",
     related: [
@@ -1076,7 +1076,7 @@ const POSTS = [
     date: "September 17, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-ada-compliance-checklist.jpg",
+    img: "/blog/covers/shopify-ada-compliance-checklist.jpg?v=2",
     imgAlt:
       "Shopify product page with keyboard focus outlines on the variant picker and cart drawer",
     related: [
@@ -1094,7 +1094,7 @@ const POSTS = [
     date: "September 23, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/website-redesign-cost-small-business.jpg",
+    img: "/blog/covers/website-redesign-cost-small-business.jpg?v=2",
     imgAlt:
       "Website redesign budget worksheet listing line items for discovery, design, development, content and SEO migration",
     related: [
@@ -1112,7 +1112,7 @@ const POSTS = [
     date: "September 11, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/website-traffic-drop-after-redesign.jpg",
+    img: "/blog/covers/website-traffic-drop-after-redesign.jpg?v=2",
     imgAlt:
       "Search Console traffic chart dipping after a website relaunch, with a recovery checklist beside it",
     related: [
@@ -1130,7 +1130,7 @@ const POSTS = [
     date: "September 23, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-developer-rates.jpg",
+    img: "/blog/covers/shopify-developer-rates.jpg?v=2",
     imgAlt:
       "Developer editing Shopify theme code on a laptop next to a spreadsheet comparing hourly quotes",
     related: [
@@ -1148,7 +1148,7 @@ const POSTS = [
     date: "September 15, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/woocommerce-to-shopify-migration.jpg",
+    img: "/blog/covers/woocommerce-to-shopify-migration.jpg?v=2",
     imgAlt:
       "Diagram of WooCommerce product and category URLs redirecting to matching Shopify product and collection pages",
     related: [
@@ -1166,7 +1166,7 @@ const POSTS = [
     date: "September 21, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-inp-core-web-vitals.jpg",
+    img: "/blog/covers/shopify-inp-core-web-vitals.jpg?v=2",
     imgAlt:
       "Shopify storefront on a phone beside a Core Web Vitals gauge showing slow interaction response",
     related: [
@@ -1184,7 +1184,7 @@ const POSTS = [
     date: "September 16, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/remove-leftover-shopify-app-code.jpg",
+    img: "/blog/covers/remove-leftover-shopify-app-code.jpg?v=2",
     imgAlt: "Shopify theme code editor with old app snippet files highlighted for removal",
     related: [
       "shopify-inp-core-web-vitals",
@@ -1201,7 +1201,7 @@ const POSTS = [
     date: "September 17, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/shopify-duplicate-content-collection-urls.jpg",
+    img: "/blog/covers/shopify-duplicate-content-collection-urls.jpg?v=2",
     imgAlt: "Several Shopify collection and product URLs pointing to one canonical product page",
     related: [
       "woocommerce-to-shopify-migration",
@@ -1218,7 +1218,7 @@ const POSTS = [
     date: "September 11, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/wordpress-vs-webflow-vs-squarespace-service-business.jpg",
+    img: "/blog/covers/wordpress-vs-webflow-vs-squarespace-service-business.jpg?v=2",
     imgAlt:
       "WordPress, Webflow and Squarespace website editors shown side by side for a service business site",
     related: [
@@ -1236,7 +1236,7 @@ const POSTS = [
     date: "September 22, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/website-not-generating-leads.jpg",
+    img: "/blog/covers/website-not-generating-leads.jpg?v=2",
     imgAlt:
       "Service business website on a laptop and phone, showing a short contact form and a tap-to-call button",
     related: [
@@ -1254,7 +1254,7 @@ const POSTS = [
     date: "September 11, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/google-ads-landing-page-service-business.jpg",
+    img: "/blog/covers/google-ads-landing-page-service-business.jpg?v=2",
     imgAlt:
       "Phone showing a service landing page with a headline, review rating and call button next to a search ad",
     related: [
@@ -1272,7 +1272,7 @@ const POSTS = [
     date: "September 12, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/offline-conversion-tracking-service-business.jpg",
+    img: "/blog/covers/offline-conversion-tracking-service-business.jpg?v=2",
     imgAlt:
       "CRM pipeline stages from new lead to closed deal, connected by arrows to Google Ads and Meta dashboards",
     related: [
@@ -1290,7 +1290,7 @@ const POSTS = [
     date: "September 22, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/law-firm-explainer-video-cost.jpg",
+    img: "/blog/covers/law-firm-explainer-video-cost.jpg?v=2",
     imgAlt:
       "Editing timeline on a studio monitor showing an animated legal explainer storyboard with an attorney end card",
     related: [
@@ -1308,7 +1308,7 @@ const POSTS = [
     date: "September 13, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/personal-injury-lawyer-video-scripts.jpg",
+    img: "/blog/covers/personal-injury-lawyer-video-scripts.jpg?v=2",
     imgAlt:
       "Printed two-column video script with timing notes beside a microphone and a camera monitor",
     related: [
@@ -1326,7 +1326,7 @@ const POSTS = [
     date: "September 22, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/meta-ads-creative-testing-small-budget.jpg",
+    img: "/blog/covers/meta-ads-creative-testing-small-budget.jpg?v=2",
     imgAlt: "Phone showing a vertical video ad next to a laptop with an ads results dashboard",
     related: [
       "ugc-ads-for-shopify-brands",
@@ -1343,7 +1343,7 @@ const POSTS = [
     date: "September 14, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/video-editing-retainer-for-coaches.jpg",
+    img: "/blog/covers/video-editing-retainer-for-coaches.jpg?v=2",
     imgAlt:
       "Coach's talking-head video on an editing timeline with vertical short-form clips cut from it alongside",
     related: [
@@ -1361,7 +1361,7 @@ const POSTS = [
     date: "September 21, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/brand-identity-process-for-startups.jpg",
+    img: "/blog/covers/brand-identity-process-for-startups.jpg?v=2",
     imgAlt: "Logo sketches, color swatches and type samples laid out on a studio desk",
     related: [
       "brand-guidelines-for-small-business",
@@ -1378,7 +1378,7 @@ const POSTS = [
     date: "September 14, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/google-business-profile-practitioner-listings.jpg",
+    img: "/blog/covers/google-business-profile-practitioner-listings.jpg?v=2",
     imgAlt:
       "Smartphone map showing a law office listing with separate attorney profile pins at the same address",
     related: [
@@ -1396,7 +1396,7 @@ const POSTS = [
     date: "September 14, 2026",
     time: "1:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/service-area-pages-for-contractors.jpg",
+    img: "/blog/covers/service-area-pages-for-contractors.jpg?v=2",
     imgAlt:
       "Contractor reviewing a service area map on a laptop with city pages branching from a central hub",
     related: [
@@ -1414,7 +1414,7 @@ const POSTS = [
     date: "September 13, 2026",
     time: "6:00 pm",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/ai-receptionist-for-law-firms.jpg",
+    img: "/blog/covers/ai-receptionist-for-law-firms.jpg?v=2",
     imgAlt:
       "Law office desk phone and laptop showing an AI intake call transcript next to a consultation calendar",
     related: [
@@ -1432,7 +1432,7 @@ const POSTS = [
     date: "September 18, 2026",
     time: "9:00 am",
     author: "Pixel2Tech Team",
-    img: "/blog/covers/klaviyo-flows-not-triggering-shopify.jpg",
+    img: "/blog/covers/klaviyo-flows-not-triggering-shopify.jpg?v=2",
     imgAlt: "Email automation flow diagram with a blocked trigger step next to a Shopify cart",
     related: [
       "shopify-additional-scripts-removed-tracking-fix",
