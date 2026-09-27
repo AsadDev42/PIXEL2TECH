@@ -61,9 +61,11 @@ export function CursorFollower() {
         blob.dataset.media = "0";
         blob.dataset.hover = "0";
         blob.dataset.down = "0";
+        blob.dataset.native = "0";
       }
       setVisible(true);
     };
+
 
 
 
@@ -79,9 +81,11 @@ export function CursorFollower() {
     // Single DOM walk per mouseover instead of two, and only commit dataset
     // changes when the state actually differs (dataset writes invalidate the
     // mix-blend-mode layer and force a repaint).
-    const MEDIA_SEL = 'img, picture, video, [data-cursor="expand"]';
-    const INTERACTIVE_SEL =
-      'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]';
+    const MEDIA_SEL = 'a img, a picture, a video, [data-cursor="expand"]';
+    const INTERACTIVE_SEL = 'a, button, [role="button"], label, summary, [data-cursor="hover"]';
+    // Native cursor stays visible over text entry surfaces and embedded docs.
+    const NATIVE_SEL =
+      'input, textarea, select, [contenteditable=""], [contenteditable="true"], iframe';
 
     const onOver = (e: MouseEvent) => {
       const blob = blobRef.current;
