@@ -398,7 +398,6 @@ function WhatWeMake() {
         gapClassName="gap-4 sm:gap-5"
         className="mt-8 sm:mt-10"
         ariaLabel="What we make"
-        pauseControlLabel="services slider"
         renderItem={(w) => (
           <Link
             to="/services"

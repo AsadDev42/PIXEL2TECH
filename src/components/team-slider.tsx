@@ -53,7 +53,6 @@ export function TeamSlider({ className = "mt-10 sm:mt-14" }: { className?: strin
       gapClassName="gap-4 md:gap-6"
       className={className}
       ariaLabel="Pixel2Tech team"
-      pauseControlLabel="team carousel"
       renderItem={(m) => <TeamCard member={m} />}
     />
   );
