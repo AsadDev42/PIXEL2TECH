@@ -91,8 +91,17 @@ export function CursorFollower() {
       const blob = blobRef.current;
       if (!blob) return;
       const el = e.target instanceof Element ? e.target : null;
-      const media = el ? !!el.closest(MEDIA_SEL) : false;
-      const hover = !media && el ? !!el.closest(INTERACTIVE_SEL) : false;
+      const native = el ? !!el.closest(NATIVE_SEL) : false;
+      const nativeVal = native ? "1" : "0";
+      if (blob.dataset.native !== nativeVal) blob.dataset.native = nativeVal;
+      if (native) {
+        // Hide the custom cursor entirely so the real caret/pointer shows.
+        setVisible(false);
+        return;
+      }
+      if (!visible) setVisible(true);
+      const media = !!el.closest(MEDIA_SEL);
+      const hover = !media && !!el.closest(INTERACTIVE_SEL);
       const mediaVal = media ? "1" : "0";
       const hoverVal = hover ? "1" : "0";
       if (blob.dataset.media !== mediaVal) blob.dataset.media = mediaVal;
