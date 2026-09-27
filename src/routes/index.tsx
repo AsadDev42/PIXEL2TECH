@@ -394,14 +394,11 @@ function WhatWeMake() {
         keyFor={(w, i) => `${w.title}-${i}`}
         direction="ltr"
         speed={40}
-        pauseOnHover
         gapClassName="gap-4 sm:gap-5"
         className="mt-8 sm:mt-10"
         ariaLabel="What we make"
         renderItem={(w) => (
-          <Link
-            to="/services"
-            draggable={false}
+          <div
             data-cursor="expand"
             className="group relative block aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
@@ -430,7 +427,7 @@ function WhatWeMake() {
             <span className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
               {w.title}
             </span>
-          </Link>
+          </div>
         )}
       />
     </section>

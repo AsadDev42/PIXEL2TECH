@@ -49,7 +49,6 @@ export function TeamSlider({ className = "mt-10 sm:mt-14" }: { className?: strin
       direction="ltr"
       speed={40}
       autoplay
-      pauseOnHover
       gapClassName="gap-4 md:gap-6"
       className={className}
       ariaLabel="Pixel2Tech team"
