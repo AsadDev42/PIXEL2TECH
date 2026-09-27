@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Suspense, useEffect, useState } from "react";
-import { ArrowUp, ArrowUpRight, Clock, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
@@ -268,101 +268,114 @@ export function SiteFooter() {
       (h) =>
         `${h.days.replace("Monday – Friday", "Mon–Fri").replace("Saturday", "Sat")}: ${h.time}`,
     );
-  const contacts = [
+  const contacts: {
+    label: string;
+    value: string;
+    href?: string;
+    track?: string;
+    external?: boolean;
+  }[] = [
+    { label: "Email", value: SITE.email, href: `mailto:${SITE.email}`, track: "email_click" },
     {
-      Icon: Mail,
-      label: "Email",
-      value: SITE.email,
-      href: `mailto:${SITE.email}`,
-      track: "email_click",
-    },
-    {
-      Icon: Phone,
-      label: "Call or WhatsApp",
+      label: "WhatsApp or call",
       value: SITE.phoneDisplay,
-      href: `tel:${SITE.phoneE164}`,
-      track: "phone_click",
+      href: SITE.whatsappUrl,
+      track: "whatsapp_click",
+      external: true,
     },
-    { Icon: MapPin, label: "Studio", value: SITE.location },
-    { Icon: Clock, label: "Hours (PKT)", value: hours.join("\n") },
+    { label: "Studio", value: SITE.location },
+    { label: "Hours (Pakistan time)", value: hours.join("\n") },
   ];
 
   return (
     // The footer always uses the dark palette, whatever the site theme.
     <footer className="dark relative overflow-hidden bg-background text-foreground [color-scheme:dark]">
       <div className="mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-24">
-        {/* Call to action card */}
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0B74E0] via-[#0a3f94] to-[#0A0D1F] p-8 sm:p-12 lg:p-14">
+        {/* Call to action + contact, one card */}
+        <section
+          aria-labelledby="footer-cta-title"
+          className="relative isolate overflow-hidden rounded-[2rem] border border-border bg-card"
+        >
           <div
             aria-hidden="true"
-            className="absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-[#4DA3FF]/40 blur-3xl"
+            className="pointer-events-none absolute -left-24 -top-32 -z-10 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
           />
-          <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-end">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
-                Start a project
+          <div className="grid lg:grid-cols-[1.35fr_1fr]">
+            <div className="p-8 sm:p-12 lg:p-14">
+              <p className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
+                Replies within one business day
               </p>
-              <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Have a project in mind? Let&apos;s make it happen.
-              </h2>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/80">
-                Tell us what you need. We reply within one business day with questions or a quote.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <BookCallButton
-                source="footer"
-                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-sm font-semibold text-[#0A0D1F] transition hover:bg-[#e8f1ff]"
-              />
-              <a
-                href={SITE.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("whatsapp_click", { location: "footer_cta" })}
-                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/30 px-6 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10"
+              <h2
+                id="footer-cta-title"
+                className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               >
-                Chat on WhatsApp
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+                Have a project in mind? <span className="text-primary">Let&apos;s talk.</span>
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                Tell us what you&apos;re building. We&apos;ll come back with questions, a plan and a
+                fixed quote.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <BookCallButton
+                  source="footer"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                />
+                <Link
+                  to="/contact"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-8 text-sm font-semibold text-foreground transition hover:border-foreground/40 hover:bg-foreground/5"
+                >
+                  Send a project brief
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="border-t border-border bg-background/40 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-14">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Get in touch
+              </h3>
+              <ul className="mt-2 divide-y divide-border">
+                {contacts.map(({ label, value, href, track, external }) => {
+                  const body = (
+                    <>
+                      <span className="min-w-0">
+                        <span className="block text-xs text-muted-foreground">{label}</span>
+                        <span className="mt-1 block whitespace-pre-line break-words text-base font-semibold text-foreground sm:text-lg">
+                          {value}
+                        </span>
+                      </span>
+                      {href ? (
+                        <span
+                          aria-hidden="true"
+                          className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-foreground transition group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"
+                        >
+                          <ArrowUpRight className="h-4 w-4" />
+                        </span>
+                      ) : null}
+                    </>
+                  );
+                  return (
+                    <li key={label}>
+                      {href ? (
+                        <a
+                          href={href}
+                          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          onClick={() => track && trackEvent(track, { location: "footer" })}
+                          className="group flex items-center justify-between gap-4 py-5"
+                        >
+                          {body}
+                        </a>
+                      ) : (
+                        <div className="flex items-center justify-between gap-4 py-5">{body}</div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
-        </div>
-
-        {/* Contact tiles */}
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {contacts.map(({ Icon, label, value, href, track }) => {
-            const body = (
-              <>
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-xs text-muted-foreground">{label}</span>
-                  <span className="block whitespace-pre-line break-words text-sm font-semibold text-foreground">
-                    {value}
-                  </span>
-                </span>
-              </>
-            );
-            const tile =
-              "flex h-full items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-colors";
-            return (
-              <li key={label}>
-                {href ? (
-                  <a
-                    href={href}
-                    onClick={() => track && trackEvent(track, { location: "footer" })}
-                    className={`${tile} hover:border-primary/50`}
-                  >
-                    {body}
-                  </a>
-                ) : (
-                  <div className={tile}>{body}</div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        </section>
 
         {/* Link columns */}
         <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
