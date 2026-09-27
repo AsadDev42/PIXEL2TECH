@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { LoopSlider } from "@/components/loop-slider";
+import { Pause, Play } from "lucide-react";
 import { ResponsiveImage } from "@/components/responsive-image";
 
 type Item = {
@@ -66,7 +67,13 @@ const items: Item[] = [
 const CARD_WIDTH = "w-[78vw] max-w-[340px] sm:w-[340px] lg:w-[380px] lg:max-w-[380px]";
 const CARD_SIZES = "(min-width: 1024px) 380px, (min-width: 640px) 340px, 78vw";
 
-function VideoCard({ item }: { item: Item }) {
+function VideoCard({
+  item,
+  onPlayingChange,
+}: {
+  item: Item;
+  onPlayingChange?: (playing: boolean) => void;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   // The <video> is only created on the first press, so nothing downloads before then.
   const [started, setStarted] = useState(false);
@@ -108,8 +115,14 @@ function VideoCard({ item }: { item: Item }) {
             preload="auto"
             aria-hidden="true"
             tabIndex={-1}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
+            onPlay={() => {
+              setPlaying(true);
+              onPlayingChange?.(true);
+            }}
+            onPause={() => {
+              setPlaying(false);
+              onPlayingChange?.(false);
+            }}
             className="absolute inset-0 h-full w-full object-cover"
           >
             {item.captions ? (
@@ -159,85 +172,45 @@ function VideoCard({ item }: { item: Item }) {
 }
 
 /**
- * Client video testimonials as a swipeable row: native scroll with snap
- * points, previous/next buttons, and arrow keys when the row has focus.
- * Nothing moves on its own.
+ * Client video testimonials in a looping row that drifts right to left and can
+ * be dragged. The row holds still while a clip is playing.
  */
 export function VideoTestimonials({ className = "bg-background" }: { className?: string }) {
   const headingId = useId();
-  const rowId = useId();
-  const rowRef = useRef<HTMLDivElement>(null);
-
-  const scrollByCard = (direction: 1 | -1) => {
-    const row = rowRef.current;
-    const card = row?.querySelector("li");
-    const list = row?.firstElementChild;
-    if (!row || !card || !list) return;
-    const gap = parseFloat(getComputedStyle(list).columnGap) || 0;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    row.scrollBy({
-      left: direction * (card.getBoundingClientRect().width + gap),
-      behavior: reduceMotion ? "auto" : "smooth",
-    });
-  };
-
-  const arrowClass =
-    "inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-muted";
+  const [playingCount, setPlayingCount] = useState(0);
+  const onPlayingChange = (playing: boolean) =>
+    setPlayingCount((n) => Math.max(0, n + (playing ? 1 : -1)));
 
   return (
     <section aria-labelledby={headingId} className={`py-16 md:py-24 ${className}`}>
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="min-w-0 max-w-2xl">
-            <h2
-              id={headingId}
-              className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-            >
-              What clients say
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              A few words from people we&apos;ve worked with. Press play to watch a clip.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              aria-controls={rowId}
-              aria-label="Previous testimonial"
-              className={arrowClass}
-            >
-              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              aria-controls={rowId}
-              aria-label="Next testimonial"
-              className={arrowClass}
-            >
-              <ChevronRight className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-
-        <div
-          ref={rowRef}
-          id={rowId}
-          role="region"
-          aria-label="Client testimonials"
-          tabIndex={0}
-          className="-mx-5 mt-8 snap-x snap-mandatory scroll-px-5 overflow-x-auto overscroll-x-contain px-5 pb-4 focus-visible:-outline-offset-2 md:-mx-10 md:scroll-px-10 md:px-10"
-        >
-          <ul className="flex w-max gap-4 sm:gap-6">
-            {items.map((item) => (
-              <li key={item.name} className={`${CARD_WIDTH} shrink-0 snap-start`}>
-                <VideoCard item={item} />
-              </li>
-            ))}
-          </ul>
+        <div className="min-w-0 max-w-2xl">
+          <h2
+            id={headingId}
+            className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+          >
+            What clients say
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            A few words from people we&apos;ve worked with. Press play to watch a clip.
+          </p>
         </div>
       </div>
+      <LoopSlider
+        items={items}
+        keyFor={(item, i) => `${item.name}-${i}`}
+        direction="rtl"
+        speed={35}
+        autoplay={playingCount === 0}
+        gapClassName="gap-4 sm:gap-6"
+        className="mt-8 pb-2"
+        ariaLabel="Client testimonials"
+        renderItem={(item) => (
+          <div className={`${CARD_WIDTH} h-full`}>
+            <VideoCard item={item} onPlayingChange={onPlayingChange} />
+          </div>
+        )}
+      />
     </section>
   );
 }

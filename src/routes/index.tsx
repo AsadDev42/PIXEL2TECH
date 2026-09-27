@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Mail, MapPin, Pause, Phone, Play, Star, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -370,6 +370,7 @@ function Brands() {
 /* ------------------------------------------------------------------------ */
 
 function WhatWeMake() {
+  const navigate = useNavigate();
   return (
     <section aria-labelledby="home-services-title" className={`bg-background ${SECTION_Y}`}>
       <div className={CONTAINER}>
@@ -397,10 +398,13 @@ function WhatWeMake() {
         gapClassName="gap-4 sm:gap-5"
         className="mt-8 sm:mt-10"
         ariaLabel="What we make"
+        onItemClick={(w) =>
+          navigate({ to: "/services/$slug", params: { slug: serviceAnchor(w.title) } })
+        }
         renderItem={(w) => (
           <div
             data-cursor="expand"
-            className="group relative block aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
+            className="group relative block aspect-[3/4] cursor-pointer w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
           >
             {w.video ? (
               <AutoVideo
@@ -424,9 +428,14 @@ function WhatWeMake() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 to-transparent"
             />
-            <span className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
+            <Link
+              to="/services/$slug"
+              params={{ slug: serviceAnchor(w.title) }}
+              draggable={false}
+              className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow hover:underline sm:p-5 sm:text-lg"
+            >
               {w.title}
-            </span>
+            </Link>
           </div>
         )}
       />

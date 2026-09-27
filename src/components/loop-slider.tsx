@@ -33,6 +33,11 @@ type Props<T> = {
    * where nothing drifts anyway.
    */
   pauseControlLabel?: string;
+  /**
+   * Called when an item is clicked or tapped without dragging. Use it to make
+   * whole cards clickable: real links inside cards cannot start a drag.
+   */
+  onItemClick?: (item: T, index: number) => void;
 };
 
 /**
@@ -56,6 +61,7 @@ function LoopSliderImpl<T>({
   autoplay = true,
   pauseOnHover = false,
   pauseControlLabel,
+  onItemClick,
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
@@ -79,6 +85,11 @@ function LoopSliderImpl<T>({
   // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
   const autoplayRef = useRef(autoplay);
   autoplayRef.current = autoplay;
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
+  const onItemClickRef = useRef(onItemClick);
+  onItemClickRef.current = onItemClick;
+  const downIndexRef = useRef<number | null>(null);
   const pauseOnHoverRef = useRef(pauseOnHover);
   pauseOnHoverRef.current = pauseOnHover;
 
@@ -190,6 +201,8 @@ function LoopSliderImpl<T>({
       const target = e.target as Element | null;
       if (target?.closest?.("a,button,[role='button'],input,textarea,select")) return;
       if (e.pointerType === "mouse") e.preventDefault();
+      const cell = target?.closest?.("[data-loop-index]");
+      downIndexRef.current = cell ? Number(cell.getAttribute("data-loop-index")) : null;
 
       s.dragging = true;
       s.start = isX ? e.clientX : e.clientY;
@@ -232,6 +245,13 @@ function LoopSliderImpl<T>({
       }
       s.pointerId = null;
       track.style.cursor = "grab";
+      // A press that barely moved is a click: open the item.
+      const i = downIndexRef.current;
+      downIndexRef.current = null;
+      const list = itemsRef.current;
+      if (s.moved <= 5 && i !== null && list.length && onItemClickRef.current) {
+        onItemClickRef.current(list[i % list.length], i % list.length);
+      }
     };
     const onClickCapture = (e: MouseEvent) => {
       if (stateRef.current.moved > 5) {
@@ -338,8 +358,8 @@ function LoopSliderImpl<T>({
               <div
                 key={keyFor(item, i)}
                 className="shrink-0"
+                data-loop-index={i}
                 aria-hidden={clone ? "true" : undefined}
-                inert={clone || undefined}
               >
                 {renderItem(item, i)}
               </div>

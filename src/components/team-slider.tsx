@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { LoopSlider } from "@/components/loop-slider";
 import { LinkedInBadge } from "@/components/linkedin-badge";
@@ -7,7 +7,9 @@ import { TEAM, type TeamMember } from "@/lib/team";
 /** One team card. Portraits are grayscale only on devices that can hover. */
 export function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <article className="group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:shadow-xl sm:w-[320px] dark:border-white/10 dark:bg-white/[0.03]">
+    <article
+      className={`group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:shadow-xl sm:w-[320px] dark:border-white/10 dark:bg-white/[0.03] ${member.profile ? "cursor-pointer" : ""}`}
+    >
       <div className="relative aspect-[3/4] overflow-hidden bg-muted">
         {member.profile && (
           <Link
@@ -42,6 +44,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
 
 /** Draggable looping row of every team member (Home and About). */
 export function TeamSlider({ className = "mt-10 sm:mt-14" }: { className?: string }) {
+  const navigate = useNavigate();
   return (
     <LoopSlider
       items={TEAM}
@@ -52,6 +55,10 @@ export function TeamSlider({ className = "mt-10 sm:mt-14" }: { className?: strin
       gapClassName="gap-4 md:gap-6"
       className={className}
       ariaLabel="Pixel2Tech team"
+      // Founders' whole cards open their profile pages (links alone cannot start a drag).
+      onItemClick={(m) => {
+        if (m.profile) void navigate({ to: m.profile });
+      }}
       renderItem={(m) => <TeamCard member={m} />}
     />
   );
