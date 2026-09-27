@@ -183,6 +183,7 @@ export function CursorFollower() {
     return () => {
       if (raf) cancelAnimationFrame(raf);
       running = false;
+      document.documentElement.classList.remove("p2t-cursor");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mousedown", onDown);
@@ -196,7 +197,16 @@ export function CursorFollower() {
   return (
     <>
       <style>{`
-        @media (pointer: fine){*{cursor:none !important}}
+        /* Hide the native cursor only where the custom one replaces it; text
+           fields, selects, contenteditable and iframes keep their real cursor. */
+        @media (pointer: fine){
+          html.p2t-cursor *{cursor:none !important}
+          html.p2t-cursor input,
+          html.p2t-cursor textarea,
+          html.p2t-cursor select,
+          html.p2t-cursor [contenteditable],
+          html.p2t-cursor iframe{cursor:auto !important}
+        }
         .lv-cursor-blob{
           position: fixed; left: 0; top: 0; z-index: 9999;
           height: 36px; width: 36px; border-radius: 9999px;
@@ -257,7 +267,7 @@ export function CursorFollower() {
           filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
         }
       `}</style>
-      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" className="lv-cursor-blob">
+      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" data-native="0" className="lv-cursor-blob">
         <span className="lv-cursor-label">Expand +</span>
       </div>
       <div ref={dotRef} aria-hidden className="lv-cursor-dot">
