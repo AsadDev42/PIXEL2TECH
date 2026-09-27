@@ -69,10 +69,14 @@ export function CursorFollower() {
 
 
 
+    // Tracks whether the pointer is over a native text-entry surface, so
+    // onMove/onEnter don't re-show the blob while the real caret is showing.
+    let overNative = false;
+
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      if (!visible) setVisible(true);
+      if (!visible && !overNative) setVisible(true);
       // Do NOT write styles here: mousemove can fire several times per frame on
       // high-polling-rate mice. The rAF loop commits at display refresh rate.
       start();
@@ -96,9 +100,11 @@ export function CursorFollower() {
       if (blob.dataset.native !== nativeVal) blob.dataset.native = nativeVal;
       if (native) {
         // Hide the custom cursor entirely so the real caret/pointer shows.
+        overNative = true;
         setVisible(false);
         return;
       }
+      overNative = false;
       if (!visible) setVisible(true);
       const media = !!el.closest(MEDIA_SEL);
       const hover = !media && !!el.closest(INTERACTIVE_SEL);
