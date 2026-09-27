@@ -9,140 +9,45 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
-import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
-import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
-import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
-import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
-import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
-import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
-import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
-import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
-import { Route as McpRouteImport } from './routes/mcp'
-import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
-import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]xml'
-import { Route as AsadFarooqRouteImport } from './routes/asad-farooq'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
-import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AsadFarooqRouteImport } from './routes/asad-farooq'
+import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]xml'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
+import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
+import { Route as McpRouteImport } from './routes/mcp'
+import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
+import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
+import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
+import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
+import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
+import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
+import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
-import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
-import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
-import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicHooksSubmitSitemapRouteImport } from './routes/api/public/hooks/submit-sitemap'
+import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
-const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
-  id: '/wp-sitemap.xml',
-  path: '/wp-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
-  id: '/usama-farooq',
-  path: '/usama-farooq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
-  id: '/terms-and-conditions',
-  path: '/terms-and-conditions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
-  id: '/sitemap_index.xml',
-  path: '/sitemap_index.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotrssRoute = SitemapDotrssRouteImport.update({
-  id: '/sitemap.rss',
-  path: '/sitemap.rss',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesSitemapDotxmlRoute = ServicesSitemapDotxmlRouteImport.update({
-  id: '/services-sitemap.xml',
-  path: '/services-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
-  id: '/privacy-policy',
-  path: '/privacy-policy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PostSitemapDotxmlRoute = PostSitemapDotxmlRouteImport.update({
-  id: '/post-sitemap.xml',
-  path: '/post-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
-  id: '/portfolio-sitemap.xml',
-  path: '/portfolio-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
-  id: '/pages-sitemap.xml',
-  path: '/pages-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
-  id: '/page-sitemap.xml',
-  path: '/page-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
-  id: '/images-sitemap.xml',
-  path: '/images-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
-  id: '/favicon.ico',
-  path: '/favicon.ico',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
-  id: '/blog-sitemap.xml',
-  path: '/blog-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AsadFarooqRoute = AsadFarooqRouteImport.update({
-  id: '/asad-farooq',
-  path: '/asad-farooq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -150,29 +55,121 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
-  id: '/portfolio/',
-  path: '/portfolio/',
+const AsadFarooqRoute = AsadFarooqRouteImport.update({
+  id: '/asad-farooq',
+  path: '/asad-farooq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
+  id: '/blog-sitemap.xml',
+  path: '/blog-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
+  id: '/favicon.ico',
+  path: '/favicon.ico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
+  id: '/images-sitemap.xml',
+  path: '/images-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
+  id: '/page-sitemap.xml',
+  path: '/page-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
+  id: '/pages-sitemap.xml',
+  path: '/pages-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
+  id: '/portfolio-sitemap.xml',
+  path: '/portfolio-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostSitemapDotxmlRoute = PostSitemapDotxmlRouteImport.update({
+  id: '/post-sitemap.xml',
+  path: '/post-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSitemapDotxmlRoute = ServicesSitemapDotxmlRouteImport.update({
+  id: '/services-sitemap.xml',
+  path: '/services-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotrssRoute = SitemapDotrssRouteImport.update({
+  id: '/sitemap.rss',
+  path: '/sitemap.rss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
+  id: '/sitemap_index.xml',
+  path: '/sitemap_index.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
+  id: '/usama-farooq',
+  path: '/usama-farooq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
+  id: '/wp-sitemap.xml',
+  path: '/wp-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesSlugRoute = ServicesSlugRouteImport.update({
-  id: '/services_/$slug',
-  path: '/services/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
-  id: '/portfolio/$slug',
-  path: '/portfolio/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -180,49 +177,52 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/portfolio/',
+  path: '/portfolio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
+  id: '/portfolio/$slug',
+  path: '/portfolio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services_/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
+const ApiPublicHooksSubmitSitemapRoute =
+  ApiPublicHooksSubmitSitemapRouteImport.update({
+    id: '/api/public/hooks/submit-sitemap',
+    path: '/api/public/hooks/submit-sitemap',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
+  id: '/lovable/email/auth/preview',
+  path: '/lovable/email/auth/preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
+  id: '/lovable/email/auth/webhook',
+  path: '/lovable/email/auth/webhook',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
     path: '/lovable/email/transactional/preview',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
-  id: '/lovable/email/auth/webhook',
-  path: '/lovable/email/auth/webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
-  id: '/lovable/email/auth/preview',
-  path: '/lovable/email/auth/preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiPublicHooksSubmitSitemapRoute =
-  ApiPublicHooksSubmitSitemapRouteImport.update({
-    id: '/api/public/hooks/submit-sitemap',
-    path: '/api/public/hooks/submit-sitemap',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -492,144 +492,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wp-sitemap.xml': {
-      id: '/wp-sitemap.xml'
-      path: '/wp-sitemap.xml'
-      fullPath: '/wp-sitemap.xml'
-      preLoaderRoute: typeof WpSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/usama-farooq': {
-      id: '/usama-farooq'
-      path: '/usama-farooq'
-      fullPath: '/usama-farooq'
-      preLoaderRoute: typeof UsamaFarooqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms-and-conditions': {
-      id: '/terms-and-conditions'
-      path: '/terms-and-conditions'
-      fullPath: '/terms-and-conditions'
-      preLoaderRoute: typeof TermsAndConditionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap_index.xml': {
-      id: '/sitemap_index.xml'
-      path: '/sitemap_index.xml'
-      fullPath: '/sitemap_index.xml'
-      preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.rss': {
-      id: '/sitemap.rss'
-      path: '/sitemap.rss'
-      fullPath: '/sitemap.rss'
-      preLoaderRoute: typeof SitemapDotrssRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services-sitemap.xml': {
-      id: '/services-sitemap.xml'
-      path: '/services-sitemap.xml'
-      fullPath: '/services-sitemap.xml'
-      preLoaderRoute: typeof ServicesSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy-policy': {
-      id: '/privacy-policy'
-      path: '/privacy-policy'
-      fullPath: '/privacy-policy'
-      preLoaderRoute: typeof PrivacyPolicyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/post-sitemap.xml': {
-      id: '/post-sitemap.xml'
-      path: '/post-sitemap.xml'
-      fullPath: '/post-sitemap.xml'
-      preLoaderRoute: typeof PostSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/portfolio-sitemap.xml': {
-      id: '/portfolio-sitemap.xml'
-      path: '/portfolio-sitemap.xml'
-      fullPath: '/portfolio-sitemap.xml'
-      preLoaderRoute: typeof PortfolioSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pages-sitemap.xml': {
-      id: '/pages-sitemap.xml'
-      path: '/pages-sitemap.xml'
-      fullPath: '/pages-sitemap.xml'
-      preLoaderRoute: typeof PagesSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/page-sitemap.xml': {
-      id: '/page-sitemap.xml'
-      path: '/page-sitemap.xml'
-      fullPath: '/page-sitemap.xml'
-      preLoaderRoute: typeof PageSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/images-sitemap.xml': {
-      id: '/images-sitemap.xml'
-      path: '/images-sitemap.xml'
-      fullPath: '/images-sitemap.xml'
-      preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/favicon.ico': {
-      id: '/favicon.ico'
-      path: '/favicon.ico'
-      fullPath: '/favicon.ico'
-      preLoaderRoute: typeof FaviconDoticoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog-sitemap.xml': {
-      id: '/blog-sitemap.xml'
-      path: '/blog-sitemap.xml'
-      fullPath: '/blog-sitemap.xml'
-      preLoaderRoute: typeof BlogSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/asad-farooq': {
-      id: '/asad-farooq'
-      path: '/asad-farooq'
-      fullPath: '/asad-farooq'
-      preLoaderRoute: typeof AsadFarooqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -639,53 +506,144 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portfolio/': {
-      id: '/portfolio/'
-      path: '/portfolio'
-      fullPath: '/portfolio/'
-      preLoaderRoute: typeof PortfolioIndexRouteImport
+    '/asad-farooq': {
+      id: '/asad-farooq'
+      path: '/asad-farooq'
+      fullPath: '/asad-farooq'
+      preLoaderRoute: typeof AsadFarooqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/blog-sitemap.xml': {
+      id: '/blog-sitemap.xml'
+      path: '/blog-sitemap.xml'
+      fullPath: '/blog-sitemap.xml'
+      preLoaderRoute: typeof BlogSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services_/$slug': {
-      id: '/services_/$slug'
-      path: '/services/$slug'
-      fullPath: '/services/$slug'
-      preLoaderRoute: typeof ServicesSlugRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portfolio/$slug': {
-      id: '/portfolio/$slug'
-      path: '/portfolio/$slug'
-      fullPath: '/portfolio/$slug'
-      preLoaderRoute: typeof PortfolioSlugRouteImport
+    '/favicon.ico': {
+      id: '/favicon.ico'
+      path: '/favicon.ico'
+      fullPath: '/favicon.ico'
+      preLoaderRoute: typeof FaviconDoticoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
+    '/images-sitemap.xml': {
+      id: '/images-sitemap.xml'
+      path: '/images-sitemap.xml'
+      fullPath: '/images-sitemap.xml'
+      preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/page-sitemap.xml': {
+      id: '/page-sitemap.xml'
+      path: '/page-sitemap.xml'
+      fullPath: '/page-sitemap.xml'
+      preLoaderRoute: typeof PageSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages-sitemap.xml': {
+      id: '/pages-sitemap.xml'
+      path: '/pages-sitemap.xml'
+      fullPath: '/pages-sitemap.xml'
+      preLoaderRoute: typeof PagesSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio-sitemap.xml': {
+      id: '/portfolio-sitemap.xml'
+      path: '/portfolio-sitemap.xml'
+      fullPath: '/portfolio-sitemap.xml'
+      preLoaderRoute: typeof PortfolioSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/post-sitemap.xml': {
+      id: '/post-sitemap.xml'
+      path: '/post-sitemap.xml'
+      fullPath: '/post-sitemap.xml'
+      preLoaderRoute: typeof PostSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services-sitemap.xml': {
+      id: '/services-sitemap.xml'
+      path: '/services-sitemap.xml'
+      fullPath: '/services-sitemap.xml'
+      preLoaderRoute: typeof ServicesSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.rss': {
+      id: '/sitemap.rss'
+      path: '/sitemap.rss'
+      fullPath: '/sitemap.rss'
+      preLoaderRoute: typeof SitemapDotrssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap_index.xml': {
+      id: '/sitemap_index.xml'
+      path: '/sitemap_index.xml'
+      fullPath: '/sitemap_index.xml'
+      preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/usama-farooq': {
+      id: '/usama-farooq'
+      path: '/usama-farooq'
+      fullPath: '/usama-farooq'
+      preLoaderRoute: typeof UsamaFarooqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wp-sitemap.xml': {
+      id: '/wp-sitemap.xml'
+      path: '/wp-sitemap.xml'
+      fullPath: '/wp-sitemap.xml'
+      preLoaderRoute: typeof WpSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/list-tools': {
@@ -695,11 +653,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/portfolio'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/$slug': {
+      id: '/portfolio/$slug'
+      path: '/portfolio/$slug'
+      fullPath: '/portfolio/$slug'
+      preLoaderRoute: typeof PortfolioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/$slug': {
+      id: '/services_/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.lovable/oauth/consent': {
@@ -709,18 +702,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DotlovableOauthConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/transactional/preview': {
-      id: '/lovable/email/transactional/preview'
-      path: '/lovable/email/transactional/preview'
-      fullPath: '/lovable/email/transactional/preview'
-      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/auth/webhook': {
-      id: '/lovable/email/auth/webhook'
-      path: '/lovable/email/auth/webhook'
-      fullPath: '/lovable/email/auth/webhook'
-      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
+    '/api/public/hooks/submit-sitemap': {
+      id: '/api/public/hooks/submit-sitemap'
+      path: '/api/public/hooks/submit-sitemap'
+      fullPath: '/api/public/hooks/submit-sitemap'
+      preLoaderRoute: typeof ApiPublicHooksSubmitSitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -730,11 +723,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/hooks/submit-sitemap': {
-      id: '/api/public/hooks/submit-sitemap'
-      path: '/api/public/hooks/submit-sitemap'
-      fullPath: '/api/public/hooks/submit-sitemap'
-      preLoaderRoute: typeof ApiPublicHooksSubmitSitemapRouteImport
+    '/lovable/email/auth/webhook': {
+      id: '/lovable/email/auth/webhook'
+      path: '/lovable/email/auth/webhook'
+      fullPath: '/lovable/email/auth/webhook'
+      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
