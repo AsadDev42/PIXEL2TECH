@@ -31,7 +31,12 @@ export const TEAM: TeamMember[] = [
     profile: "/asad-farooq",
     linkedin: "https://www.linkedin.com/in/designerasad/",
   },
-  { name: "Saad", role: "Creative Video Editor", img: teamSaad.url },
+  {
+    name: "Saad",
+    role: "Creative Video Editor",
+    img: teamSaad.url,
+    linkedin: "https://www.linkedin.com/in/designersaadpk/",
+  },
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
