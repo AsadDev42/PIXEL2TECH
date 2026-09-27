@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Suspense, useEffect, useState } from "react";
-import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Clock, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
@@ -261,45 +261,112 @@ const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pin
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const linkCls =
-    "inline-flex min-h-9 items-center text-white/70 transition-colors hover:text-white focus-visible:text-white";
-  return (
-    <footer className="relative overflow-hidden bg-neutral-950 text-white">
-      {/* Soft brand glow; purely decorative */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 h-80 w-[36rem] max-w-full rounded-full bg-brand/20 blur-3xl"
-      />
+    "inline-flex min-h-9 items-center text-muted-foreground transition-colors hover:text-foreground";
+  const hours = SITE.hours
+    .filter((h) => h.time !== "Closed")
+    .map(
+      (h) =>
+        `${h.days.replace("Monday – Friday", "Mon–Fri").replace("Saturday", "Sat")}: ${h.time}`,
+    );
+  const contacts = [
+    {
+      Icon: Mail,
+      label: "Email",
+      value: SITE.email,
+      href: `mailto:${SITE.email}`,
+      track: "email_click",
+    },
+    {
+      Icon: Phone,
+      label: "Call or WhatsApp",
+      value: SITE.phoneDisplay,
+      href: `tel:${SITE.phoneE164}`,
+      track: "phone_click",
+    },
+    { Icon: MapPin, label: "Studio", value: SITE.location },
+    { Icon: Clock, label: "Hours (PKT)", value: hours.join("\n") },
+  ];
 
-      <div className="relative mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-20">
-        {/* Call to action */}
-        <div className="flex flex-col gap-8 border-b border-white/10 pb-12 md:flex-row md:items-end md:justify-between md:pb-16">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#4DA3FF]">
-              Start a project
-            </p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              Have something in mind? <span className="text-white/50">Let&apos;s talk.</span>
-            </h2>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <BookCallButton
-              source="footer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-neutral-950 transition hover:bg-[#4DA3FF] hover:text-white"
-            />
-            <a
-              href={`mailto:${SITE.email}`}
-              onClick={() => trackEvent("email_click", { location: "footer_cta" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/5"
-            >
-              {SITE.email}
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+  return (
+    // The footer always uses the dark palette, whatever the site theme.
+    <footer className="dark relative overflow-hidden bg-background text-foreground [color-scheme:dark]">
+      <div className="mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-24">
+        {/* Call to action card */}
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0B74E0] via-[#0a3f94] to-[#0A0D1F] p-8 sm:p-12 lg:p-14">
+          <div
+            aria-hidden="true"
+            className="absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-[#4DA3FF]/40 blur-3xl"
+          />
+          <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                Start a project
+              </p>
+              <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Have a project in mind? Let&apos;s make it happen.
+              </h2>
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/80">
+                Tell us what you need. We reply within one business day with questions or a quote.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <BookCallButton
+                source="footer"
+                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-sm font-semibold text-[#0A0D1F] transition hover:bg-[#e8f1ff]"
+              />
+              <a
+                href={SITE.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "footer_cta" })}
+                className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/30 px-6 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/10"
+              >
+                Chat on WhatsApp
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Columns */}
-        <div className="grid gap-10 py-12 sm:grid-cols-2 md:py-16 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
+        {/* Contact tiles */}
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {contacts.map(({ Icon, label, value, href, track }) => {
+            const body = (
+              <>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs text-muted-foreground">{label}</span>
+                  <span className="block whitespace-pre-line break-words text-sm font-semibold text-foreground">
+                    {value}
+                  </span>
+                </span>
+              </>
+            );
+            const tile =
+              "flex h-full items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-colors";
+            return (
+              <li key={label}>
+                {href ? (
+                  <a
+                    href={href}
+                    onClick={() => track && trackEvent(track, { location: "footer" })}
+                    className={`${tile} hover:border-primary/50`}
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <div className={tile}>{body}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Link columns */}
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="sm:col-span-2 lg:col-span-5">
             <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
               <img
                 loading="lazy"
@@ -311,7 +378,7 @@ export function SiteFooter() {
                 className="h-10 w-auto"
               />
             </Link>
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {SITE.positioning}, working with clients worldwide.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -323,7 +390,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Pixel2Tech on ${name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[#4DA3FF] hover:bg-[#4DA3FF] hover:text-white"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </a>
@@ -335,7 +402,7 @@ export function SiteFooter() {
           <nav aria-labelledby="footer-quick-links" className="lg:col-span-2">
             <h2
               id="footer-quick-links"
-              className="text-xs font-semibold uppercase tracking-widest text-white/40"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground"
             >
               Company
             </h2>
@@ -350,86 +417,83 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-services" className="lg:col-span-3">
+          <nav aria-labelledby="footer-services" className="lg:col-span-5">
             <h2
               id="footer-services"
-              className="text-xs font-semibold uppercase tracking-widest text-white/40"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground"
             >
               Services
             </h2>
-            <ul className="mt-4 text-sm">
+            <ul className="mt-4 grid gap-x-6 text-sm sm:grid-cols-2">
               {SERVICES.map((title) => (
                 <li key={title}>
                   <Link
                     to="/services/$slug"
                     params={{ slug: serviceAnchor(title) }}
-                    className={linkCls}
+                    className={`${linkCls} group gap-1`}
                   >
                     {title}
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                      aria-hidden="true"
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-
-          <div className="lg:col-span-3">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
-              Contact
-            </h2>
-            <ul className="mt-4 space-y-1 text-sm">
-              <li>
-                <a
-                  href={`mailto:${SITE.email}`}
-                  onClick={() => trackEvent("email_click", { location: "footer" })}
-                  className={`${linkCls} break-all`}
-                >
-                  {SITE.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${SITE.phoneE164}`}
-                  onClick={() => trackEvent("phone_click", { location: "footer" })}
-                  className={linkCls}
-                >
-                  {SITE.phoneDisplay}
-                </a>
-              </li>
-              <li className="pt-1 text-white/60">{SITE.location}</li>
-            </ul>
-            <dl className="mt-5 space-y-1 text-sm">
-              {SITE.hours.map((h) => (
-                <div key={h.days} className="flex justify-between gap-4 text-white/60">
-                  <dt>{h.days}</dt>
-                  <dd className="text-white/80">{h.time}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
         </div>
 
+        {/* Wordmark: an SVG sized to the container, so it always fits and never crops */}
+        <svg
+          viewBox="0 0 1000 132"
+          aria-hidden="true"
+          className="block w-full select-none text-foreground"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <linearGradient id="footer-wordmark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="currentColor" stopOpacity="0.16" />
+              <stop offset="1" stopColor="currentColor" stopOpacity="0.02" />
+            </linearGradient>
+          </defs>
+          <text
+            x="500"
+            y="118"
+            textAnchor="middle"
+            textLength="990"
+            lengthAdjust="spacingAndGlyphs"
+            fontFamily="Sora, sans-serif"
+            fontWeight="800"
+            fontSize="150"
+            fill="url(#footer-wordmark)"
+          >
+            PIXEL2TECH
+          </text>
+        </svg>
+
         {/* Bottom bar; extra padding on phones keeps it clear of the WhatsApp button */}
-        <div className="flex flex-col items-center gap-3 border-t border-white/10 py-6 pb-24 text-center text-xs text-white/50 sm:flex-row sm:justify-between sm:text-left md:pb-6">
+        <div className="flex flex-col items-center gap-3 border-t border-border py-6 pb-24 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-left md:pb-6 md:pr-20">
           <span>© {year} Pixel2Tech. All rights reserved.</span>
-          <span className="flex flex-wrap items-center justify-center gap-x-2">
+          <span className="flex flex-wrap items-center justify-center gap-x-1">
             <Link
               to="/privacy-policy"
-              className="inline-flex min-h-11 items-center px-2 hover:text-white"
+              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
             >
               Privacy policy
             </Link>
             <Link
               to="/terms-and-conditions"
-              className="inline-flex min-h-11 items-center px-2 hover:text-white"
+              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
             >
               Terms &amp; conditions
             </Link>
             <a
               href="#main-content"
-              className="inline-flex min-h-11 items-center gap-1 px-2 hover:text-white"
+              aria-label="Back to top"
+              className="ml-2 grid h-11 w-11 place-items-center rounded-full border border-border text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
             >
-              Back to top
-              <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+              <ArrowUp className="h-4 w-4" aria-hidden="true" />
             </a>
           </span>
         </div>
