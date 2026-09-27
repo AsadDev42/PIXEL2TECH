@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, Pause, Phone, Play, Star } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Pause, Phone, Play, Star, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { PageShell } from "@/components/site-chrome";
 import { LoopSlider } from "@/components/loop-slider";
@@ -17,9 +18,8 @@ import {
   heroColumns,
   heroLcpImage,
   heroMobileTiles,
-  serviceImages,
+  workItems,
   type HeroMedia,
-  type ServiceName,
 } from "@/lib/home-media";
 import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { TEAM, TEAM_SIZE } from "@/lib/team";
@@ -316,41 +316,51 @@ const BRANDS: { name: string; src: string; darkSrc?: string }[] = [
 ];
 
 function Brands() {
-  const logo = "max-h-8 w-auto max-w-full object-contain opacity-80";
   return (
-    <section
-      aria-labelledby="home-brands-title"
-      className="border-y border-border bg-background py-10 md:py-12"
-    >
-      <div className={CONTAINER}>
-        <h2 id="home-brands-title" className={`${EYEBROW} text-center`}>
+    <section aria-labelledby="home-brands-title" className="bg-background py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-5 text-center md:px-10">
+        <h2
+          id="home-brands-title"
+          className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+        >
           Brands we&apos;ve worked with
         </h2>
-        <ul className="mt-8 grid grid-cols-3 items-center gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-6 lg:gap-x-10">
-          {BRANDS.map((b) => (
-            <li key={b.name} className="flex h-10 items-center justify-center">
+        <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-[15px]">
+          From startups to established businesses in e-commerce, beauty, fashion and professional
+          services.
+        </p>
+      </div>
+      <LoopSlider
+        items={BRANDS}
+        keyFor={(b, i) => `${b.name}-${i}`}
+        direction="rtl"
+        speed={40}
+        gapClassName="gap-14 sm:gap-20"
+        className="mt-10 sm:mt-12"
+        ariaLabel="Brands we've worked with"
+        renderItem={(b) => (
+          <div className="flex h-6 w-20 shrink-0 items-center justify-center sm:h-8 sm:w-28">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={b.src}
+              alt={b.name}
+              draggable={false}
+              className={`pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:h-8 ${b.darkSrc ? "dark:hidden" : "dark:invert"}`}
+            />
+            {b.darkSrc ? (
               <img
-                src={b.src}
-                alt={b.name}
                 loading="lazy"
                 decoding="async"
+                src={b.darkSrc}
+                alt={b.name}
                 draggable={false}
-                className={`${logo} ${b.darkSrc ? "dark:hidden" : "dark:invert"}`}
+                className="pointer-events-none hidden h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:h-8 dark:block"
               />
-              {b.darkSrc ? (
-                <img
-                  src={b.darkSrc}
-                  alt={b.name}
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
-                  className={`${logo} hidden dark:block`}
-                />
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </div>
+            ) : null}
+          </div>
+        )}
+      />
     </section>
   );
 }
@@ -359,30 +369,18 @@ function Brands() {
 /* What we make (the nine canonical services)                                */
 /* ------------------------------------------------------------------------ */
 
-const SERVICE_BLURBS: Record<ServiceName, string> = {
-  "Branding & Design": "Logos, color palettes, type and brand guidelines.",
-  "Website Development": "Fast, mobile-ready sites, from landing pages to full business sites.",
-  "WordPress & Shopify": "WordPress sites and Shopify stores with products and payments set up.",
-  "Custom Platforms & Apps": "Mobile apps, SaaS products, client portals and dashboards.",
-  "Automation & CRM": "Workflows, CRM setups and integrations in n8n, Make or Zapier.",
-  "AI Solutions": "Chatbots, voice agents and RAG systems that answer customer questions.",
-  "SEO & Search Growth": "On-page fixes, technical audits and keyword plans for Google.",
-  "Social Media & Email": "Content, ad campaigns, email sequences and newsletters.",
-  "Video Editing & Ads": "Reels, brand videos, YouTube edits and paid ad creatives.",
-};
-
 function WhatWeMake() {
   return (
-    <section aria-labelledby="home-services-title" className={`bg-muted ${SECTION_Y}`}>
+    <section aria-labelledby="home-services-title" className={`bg-background ${SECTION_Y}`}>
       <div className={CONTAINER}>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <h2 id="home-services-title" className={H2}>
-              What we make
+              What we <span className="text-primary">make</span>
             </h2>
             <p className={LEAD}>
-              Branding, websites and stores, apps, automation, search, social and video. Hire us for
-              one or combine several; all of it is done in-house.
+              Branding, websites and stores, apps, automation, search, social and video, all done
+              in-house. Drag to explore.
             </p>
           </div>
           <Link to="/services" className={`${BTN_SECONDARY} shrink-0 self-start sm:self-auto`}>
@@ -390,103 +388,155 @@ function WhatWeMake() {
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
-
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {SERVICES.map((title) => (
-            <li key={title}>
-              <article className="relative flex h-full items-center gap-4 rounded-2xl border border-border bg-background p-3 transition-shadow hover:shadow-md sm:flex-col sm:items-stretch sm:gap-0 sm:overflow-hidden sm:p-0">
-                <div className="relative aspect-square w-20 shrink-0 overflow-hidden rounded-xl bg-muted sm:aspect-[4/3] sm:w-full sm:rounded-none">
-                  <ResponsiveImage
-                    src={serviceImages[title]}
-                    alt=""
-                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 80px"
-                    width={640}
-                    height={480}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-                <div className="min-w-0 sm:p-5">
-                  <h3 className="text-base font-semibold text-foreground sm:text-lg">
-                    <Link
-                      to="/services"
-                      hash={serviceAnchor(title)}
-                      className="after:absolute after:inset-0 after:rounded-2xl"
-                    >
-                      {title}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {SERVICE_BLURBS[title]}
-                  </p>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
       </div>
+      <LoopSlider
+        items={workItems}
+        keyFor={(w, i) => `${w.title}-${i}`}
+        direction="ltr"
+        speed={40}
+        pauseOnHover
+        gapClassName="gap-4 sm:gap-5"
+        className="mt-8 sm:mt-10"
+        ariaLabel="What we make"
+        pauseControlLabel="services slider"
+        renderItem={(w) => (
+          <Link
+            to="/services"
+            draggable={false}
+            data-cursor="expand"
+            className="group relative block aspect-[3/4] w-[240px] shrink-0 overflow-hidden rounded-2xl bg-neutral-900 sm:w-[280px] sm:rounded-3xl lg:w-[320px]"
+          >
+            {w.video ? (
+              <AutoVideo
+                src={w.img}
+                poster={w.poster}
+                className="pointer-events-none h-full w-full opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            ) : (
+              <img
+                loading="lazy"
+                decoding="async"
+                src={w.img}
+                width={640}
+                height={853}
+                alt=""
+                draggable={false}
+                className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
+              />
+            )}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 to-transparent"
+            />
+            <span className="absolute inset-x-0 top-0 p-4 text-center text-base font-semibold text-white drop-shadow sm:p-5 sm:text-lg">
+              {w.title}
+            </span>
+          </Link>
+        )}
+      />
     </section>
   );
 }
 
 /* ------------------------------------------------------------------------ */
-/* Approach (founder portrait + the one rating badge)                        */
+/* Approach (dark band, founder portrait with floating badges)               */
 /* ------------------------------------------------------------------------ */
 
 const portraitPerson = TEAM.find((m) => m.profile === "/asad-farooq");
 
+function FloatingBadge({
+  className,
+  delay = 0,
+  children,
+}: {
+  className: string;
+  delay?: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      initial={{ y: 0 }}
+      animate={{ y: [0, 8, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay }}
+      className={`absolute z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-xl shadow-black/20 sm:px-5 ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 function Approach() {
   return (
-    <section aria-labelledby="home-approach-title" className={`bg-background ${SECTION_Y}`}>
-      <div className={`${CONTAINER} grid items-center gap-10 md:grid-cols-2 lg:gap-16`}>
+    <section
+      aria-labelledby="home-approach-title"
+      className="bg-neutral-950 text-white dark:bg-background dark:text-foreground"
+    >
+      <div
+        className={`${CONTAINER} grid items-center gap-12 py-16 md:grid-cols-2 md:py-24 lg:py-32`}
+      >
         <div className="min-w-0">
-          <h2 id="home-approach-title" className={H2}>
-            Brand, website and video from the same studio
+          <h2
+            id="home-approach-title"
+            className="text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl"
+          >
+            Brand, website and video from <span className="text-[#4DA3FF]">one studio</span>
           </h2>
-          <p className={LEAD}>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-white/80 dark:text-muted-foreground">
             Most businesses hire a designer for the logo, a developer for the site and someone else
             for reels, then spend weeks getting them to agree. We do all three in-house, so the
             colors, type and tone carry through from the first sketch to launch day and the
             campaigns after it.
           </p>
-          <div className="mt-8 inline-flex items-center gap-4 rounded-2xl border border-border bg-muted px-5 py-4">
-            <Star className="h-6 w-6 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-            <p className="text-sm text-muted-foreground">
-              <span className="block text-base font-semibold text-foreground">
-                {STATS.rating} client rating
-              </span>
-              {STATS.clients} clients so far
+          {portraitPerson ? (
+            <p className="mt-8 text-sm text-white/70 dark:text-muted-foreground">
+              <Link
+                to="/asad-farooq"
+                className="font-semibold text-white underline underline-offset-4 hover:text-[#4DA3FF] dark:text-foreground"
+              >
+                {portraitPerson.name}
+              </Link>
+              , {portraitPerson.role}
             </p>
-          </div>
+          ) : null}
         </div>
 
-        <figure className="mx-auto w-full max-w-sm md:max-w-md">
-          <img
-            src={founderPortrait.url}
-            srcSet={`${founderPortrait.url} 540w, ${founderPortrait1080.url} 1080w`}
-            sizes="(min-width: 768px) 448px, 384px"
-            width={540}
-            height={707}
-            alt={portraitPerson ? `Portrait of ${portraitPerson.name}` : ""}
-            loading="lazy"
-            decoding="async"
-            className="h-auto w-full"
-          />
-          {portraitPerson ? (
-            <figcaption className="mt-4 text-center text-sm text-muted-foreground">
-              {portraitPerson.profile ? (
-                <Link
-                  to={portraitPerson.profile}
-                  className="font-semibold text-foreground underline underline-offset-4 hover:text-primary"
-                >
-                  {portraitPerson.name}
-                </Link>
-              ) : (
-                <span className="font-semibold text-foreground">{portraitPerson.name}</span>
-              )}
-              , {portraitPerson.role}
-            </figcaption>
-          ) : null}
-        </figure>
+        <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px]">
+          <FloatingBadge className="left-0 top-[34%] sm:-left-4 lg:-left-8" delay={0.6}>
+            <Star className="h-5 w-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+            <div className="text-left">
+              <div className="text-sm font-bold text-card-foreground">
+                {STATS.rating} client rating
+              </div>
+              <div className="text-xs text-muted-foreground">{STATS.clients} happy clients</div>
+            </div>
+          </FloatingBadge>
+          <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
+            <img
+              loading="lazy"
+              decoding="async"
+              src={founderPortrait.url}
+              srcSet={`${founderPortrait.url} 540w, ${founderPortrait1080.url} 1080w`}
+              sizes="(max-width: 640px) 90vw, 520px"
+              width={540}
+              height={707}
+              alt={portraitPerson ? `Portrait of ${portraitPerson.name}` : ""}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <FloatingBadge className="right-0 top-[68%] sm:-right-4 lg:-right-8">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
+              <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
+            </span>
+            <div className="text-left">
+              <div className="text-sm font-bold text-card-foreground">
+                {STATS.projects} projects shipped
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Since {STATS.foundingYear}, {TEAM_SIZE} people in-house
+              </div>
+            </div>
+          </FloatingBadge>
+        </div>
       </div>
     </section>
   );

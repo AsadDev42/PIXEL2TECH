@@ -28,6 +28,14 @@ import heroLima576 from "@/assets/opt-hero-lima-576.webp.asset.json";
 import heroArmpearl384 from "@/assets/opt-hero-armpearl-384.webp.asset.json";
 import heroArmpearl576 from "@/assets/opt-hero-armpearl-576.webp.asset.json";
 
+import workWeb from "@/assets/opt-work-web-640.mp4.asset.json";
+import workUiux from "@/assets/opt-work-uiux-640.mp4.asset.json";
+import workLogo from "@/assets/opt-work-logo-640.mp4.asset.json";
+import workConcept from "@/assets/opt-work-concept-640.mp4.asset.json";
+import workWp from "@/assets/opt-work-wordpress-shopify-640.mp4.asset.json";
+import workAutomation from "@/assets/opt-work-automation-640.mp4.asset.json";
+import workAi from "@/assets/opt-work-ai-solutions-640.mp4.asset.json";
+import workSocial from "@/assets/opt-work-social-new-640.mp4.asset.json";
 import workWebPoster from "@/assets/opt-work-web-poster.webp.asset.json";
 import workUiuxPoster from "@/assets/opt-work-uiux-poster.webp.asset.json";
 import workLogoPoster from "@/assets/opt-work-logo-poster.webp.asset.json";
@@ -115,3 +123,31 @@ export const serviceImages: Record<ServiceName, string> = {
   "Social Media & Email": workSocialPoster.url,
   "Video Editing & Ads": workConceptPoster.url,
 };
+
+/* Draggable "What we make" slider on Home: one card per service, video where we have one. */
+export type WorkItem = { title: string; img: string; video?: boolean; poster?: string };
+
+export const workItems: WorkItem[] = [
+  { title: "Web design and development", img: workWeb.url, poster: workWebPoster.url, video: true },
+  { title: "UI/UX design", img: workUiux.url, poster: workUiuxPoster.url, video: true },
+  { title: "Logo and branding", img: workLogo.url, poster: workLogoPoster.url, video: true },
+  { title: "Concept creation", img: workConcept.url, poster: workConceptPoster.url, video: true },
+  { title: "WordPress & Shopify", img: workWp.url, poster: workWpPoster.url, video: true },
+  {
+    title: "Custom platforms & apps",
+    img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=640&auto=format&fit=crop&fm=webp&q=65",
+  },
+  {
+    title: "Automation & CRM",
+    img: workAutomation.url,
+    poster: workAutomationPoster.url,
+    video: true,
+  },
+  { title: "AI solutions", img: workAi.url, poster: workAiPoster.url, video: true },
+  { title: "SEO & search growth", img: seoCard.url },
+  { title: "Social media & email", img: workSocial.url, poster: workSocialPoster.url, video: true },
+  {
+    title: "Video editing & ads",
+    img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=640&auto=format&fit=crop&fm=webp&q=65",
+  },
+];

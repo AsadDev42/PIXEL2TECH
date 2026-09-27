@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Suspense, useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
+import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
 import { ThemeToggle } from "@/components/theme-provider";
@@ -259,22 +260,47 @@ const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pin
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const linkCls =
+    "inline-flex min-h-9 items-center text-white/70 transition-colors hover:text-white focus-visible:text-white";
   return (
-    <footer className="bg-muted">
-      {/* Extra bottom padding on phones keeps the legal links clear of the WhatsApp button. */}
-      <div className="mx-auto max-w-7xl px-5 pb-24 pt-16 md:px-10 md:pb-10">
-        <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
-          <div>
+    <footer className="relative overflow-hidden bg-neutral-950 text-white">
+      {/* Soft brand glow; purely decorative */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-0 h-80 w-[36rem] max-w-full rounded-full bg-brand/20 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-20">
+        {/* Call to action */}
+        <div className="flex flex-col gap-8 border-b border-white/10 pb-12 md:flex-row md:items-end md:justify-between md:pb-16">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#4DA3FF]">
+              Start a project
+            </p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              Have something in mind? <span className="text-white/50">Let&apos;s talk.</span>
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <BookCallButton
+              source="footer"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-neutral-950 transition hover:bg-[#4DA3FF] hover:text-white"
+            />
+            <a
+              href={`mailto:${SITE.email}`}
+              onClick={() => trackEvent("email_click", { location: "footer_cta" })}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/5"
+            >
+              {SITE.email}
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+
+        {/* Columns */}
+        <div className="grid gap-10 py-12 sm:grid-cols-2 md:py-16 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
             <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
-              <img
-                loading="lazy"
-                decoding="async"
-                width={411}
-                height={98}
-                src={logoAsset.url}
-                alt="Pixel2Tech"
-                className="block h-10 w-auto dark:hidden"
-              />
               <img
                 loading="lazy"
                 decoding="async"
@@ -282,13 +308,13 @@ export function SiteFooter() {
                 height={98}
                 src={logoDarkAsset.url}
                 alt="Pixel2Tech"
-                className="hidden h-10 w-auto dark:block"
+                className="h-10 w-auto"
               />
             </Link>
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              {SITE.positioning}.
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
+              {SITE.positioning}, working with clients worldwide.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2">
               {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(
                 ({ name, href, Icon }) => (
                   <a
@@ -297,7 +323,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Pixel2Tech on ${name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-background"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[#4DA3FF] hover:bg-[#4DA3FF] hover:text-white"
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </a>
@@ -306,17 +332,17 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <nav aria-labelledby="footer-quick-links">
-            <h2 id="footer-quick-links" className="text-base font-bold text-foreground">
-              Quick links
+          <nav aria-labelledby="footer-quick-links" className="lg:col-span-2">
+            <h2
+              id="footer-quick-links"
+              className="text-xs font-semibold uppercase tracking-widest text-white/40"
+            >
+              Company
             </h2>
-            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
+            <ul className="mt-4 text-sm">
               {QUICK_LINKS.map((q) => (
                 <li key={q.to}>
-                  <Link
-                    to={q.to}
-                    className="inline-flex min-h-10 items-center py-1 hover:text-foreground"
-                  >
+                  <Link to={q.to} className={linkCls}>
                     {q.label}
                   </Link>
                 </li>
@@ -324,17 +350,20 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-services">
-            <h2 id="footer-services" className="text-base font-bold text-foreground">
+          <nav aria-labelledby="footer-services" className="lg:col-span-3">
+            <h2
+              id="footer-services"
+              className="text-xs font-semibold uppercase tracking-widest text-white/40"
+            >
               Services
             </h2>
-            <ul className="mt-4 text-sm text-foreground/80">
+            <ul className="mt-4 text-sm">
               {SERVICES.map((title) => (
                 <li key={title}>
                   <Link
-                    to="/services"
-                    hash={serviceAnchor(title)}
-                    className="inline-flex min-h-9 items-center hover:text-foreground"
+                    to="/services/$slug"
+                    params={{ slug: serviceAnchor(title) }}
+                    className={linkCls}
                   >
                     {title}
                   </Link>
@@ -343,14 +372,16 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <div>
-            <h2 className="text-base font-bold text-foreground">Contact</h2>
-            <ul className="mt-4 space-y-1 text-sm text-foreground/80">
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
+              Contact
+            </h2>
+            <ul className="mt-4 space-y-1 text-sm">
               <li>
                 <a
                   href={`mailto:${SITE.email}`}
                   onClick={() => trackEvent("email_click", { location: "footer" })}
-                  className="inline-flex min-h-10 items-center break-all py-1 hover:text-foreground"
+                  className={`${linkCls} break-all`}
                 >
                   {SITE.email}
                 </a>
@@ -359,31 +390,47 @@ export function SiteFooter() {
                 <a
                   href={`tel:${SITE.phoneE164}`}
                   onClick={() => trackEvent("phone_click", { location: "footer" })}
-                  className="inline-flex min-h-10 items-center py-1 hover:text-foreground"
+                  className={linkCls}
                 >
                   {SITE.phoneDisplay}
                 </a>
               </li>
-              <li className="py-1">{SITE.locationLine}</li>
+              <li className="pt-1 text-white/60">{SITE.location}</li>
             </ul>
+            <dl className="mt-5 space-y-1 text-sm">
+              {SITE.hours.map((h) => (
+                <div key={h.days} className="flex justify-between gap-4 text-white/60">
+                  <dt>{h.days}</dt>
+                  <dd className="text-white/80">{h.time}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-6 text-center text-xs text-muted-foreground sm:mt-12 sm:flex-row sm:justify-between sm:text-left">
+        {/* Bottom bar; extra padding on phones keeps it clear of the WhatsApp button */}
+        <div className="flex flex-col items-center gap-3 border-t border-white/10 py-6 pb-24 text-center text-xs text-white/50 sm:flex-row sm:justify-between sm:text-left md:pb-6">
           <span>© {year} Pixel2Tech. All rights reserved.</span>
-          <span className="flex items-center gap-2">
+          <span className="flex flex-wrap items-center justify-center gap-x-2">
             <Link
               to="/privacy-policy"
-              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
+              className="inline-flex min-h-11 items-center px-2 hover:text-white"
             >
               Privacy policy
             </Link>
             <Link
               to="/terms-and-conditions"
-              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
+              className="inline-flex min-h-11 items-center px-2 hover:text-white"
             >
               Terms &amp; conditions
             </Link>
+            <a
+              href="#main-content"
+              className="inline-flex min-h-11 items-center gap-1 px-2 hover:text-white"
+            >
+              Back to top
+              <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </span>
         </div>
       </div>
