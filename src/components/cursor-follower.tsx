@@ -28,7 +28,12 @@ export function CursorFollower() {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (window.matchMedia("(max-width: 767px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setEnabled(true);
+    // Scope the cursor:none rule to a class on <html>; it never applies when
+    // the custom cursor is disabled (coarse pointers, reduced motion, mobile).
+    const root = document.documentElement;
+    root.classList.add("p2t-cursor");
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
