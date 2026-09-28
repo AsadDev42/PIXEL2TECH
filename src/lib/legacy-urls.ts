@@ -203,6 +203,7 @@ const REDIRECT_MAP: Record<string, string> = {
   articles: "/blog",
 
   // Retired WordPress portfolio items reported as 404 in Search Console (Sep 2026).
+  "portfolio/modaro-fashion-branding-studio": "/portfolio",
   "portfolio/blockchain-development": "/portfolio",
   "portfolio/crafting-stories-that-stick": "/portfolio",
   "portfolio/creative-pulse-rising": "/portfolio",
@@ -222,6 +223,8 @@ const REDIRECT_MAP: Record<string, string> = {
   "portfolio/web3-crypto": "/portfolio",
 
   // Retired theme service/landing pages reported as 404 in Search Console (Sep 2026).
+  "from-concept-development-to-multi-channel-execution-we-bring-your-brand-stories-to-life":
+    "/services",
   "business-and-finance-services-play-a-crucial": "/services",
   "from-brand-strategy-to-immersive-digital-experiences": "/services",
   "from-business-objectives-to-user-first-design-we-build-systems-that-grow-with-your-vision":
