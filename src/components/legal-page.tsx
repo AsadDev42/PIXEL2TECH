@@ -1,7 +1,21 @@
+import type { ReactNode } from "react";
 import { FadeIn } from "@/components/motion";
 import { SITE } from "@/lib/site-config";
 
-export type LegalSection = { heading: string; body: string[] };
+/**
+ * One block inside a legal section:
+ * - a string is a paragraph,
+ * - `{ subheading }` is a small heading inside the section,
+ * - `{ list }` is a bulleted list.
+ * Paragraphs and list items may use **bold** for a short lead-in. URLs and email
+ * addresses in the text become links automatically.
+ */
+export type LegalBlock = string | { subheading: string } | { list: readonly string[] };
+
+export type LegalSection = { heading: string; body: LegalBlock[] };
+
+/** Short, non-binding overview shown above the table of contents. */
+export type LegalSummary = { points: readonly string[]; note: string };
 
 /** Postal address on one line, built from SITE so it never drifts. */
 export const POSTAL_ADDRESS = `${SITE.name}, ${SITE.address.streetAddress}, ${SITE.address.addressLocality}, ${SITE.address.addressRegion} ${SITE.address.postalCode}, Pakistan`;
@@ -85,8 +99,99 @@ function sectionId(heading: string) {
     .replace(/^-|-$/g, "");
 }
 
+const LINK_CLASS =
+  "break-words font-medium text-primary underline underline-offset-4 hover:opacity-80 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary";
+
+/** URLs (without trailing punctuation) and email addresses. */
+const LINK_PATTERN =
+  /(https?:\/\/[^\s]*[^\s.,;:)]|[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,})/g;
+
+function linkify(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(LINK_PATTERN).map((part, i) => {
+    if (i % 2 === 0) return part;
+    const key = `${keyPrefix}-l${i}`;
+    if (!part.startsWith("http")) {
+      return (
+        <a key={key} href={`mailto:${part}`} className={LINK_CLASS}>
+          {part}
+        </a>
+      );
+    }
+    const internal = part.startsWith(SITE.url);
+    return (
+      <a
+        key={key}
+        href={internal ? part.slice(SITE.url.length) || "/" : part}
+        className={LINK_CLASS}
+        {...(internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+      >
+        {part.replace(/^https?:\/\//, "")}
+      </a>
+    );
+  });
+}
+
+/** Renders **bold** lead-ins and auto-links URLs and email addresses. */
+function RichText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+        i % 2 === 1 ? (
+          <strong key={i} className="font-semibold text-foreground">
+            {linkify(part, `b${i}`)}
+          </strong>
+        ) : (
+          linkify(part, `t${i}`)
+        ),
+      )}
+    </>
+  );
+}
+
+const TEXT_CLASS = "break-words text-sm leading-relaxed text-muted-foreground sm:text-base";
+
+function Block({ block }: { block: LegalBlock }) {
+  if (typeof block === "string") {
+    return (
+      <p className={TEXT_CLASS}>
+        <RichText text={block} />
+      </p>
+    );
+  }
+  if ("subheading" in block) {
+    return (
+      <h3 className="pt-2 text-base font-semibold tracking-tight text-foreground sm:text-lg">
+        {block.subheading}
+      </h3>
+    );
+  }
+  return (
+    <ul className="list-disc space-y-2 pl-5 marker:text-primary">
+      {block.list.map((item, i) => (
+        <li key={i} className={TEXT_CLASS}>
+          <RichText text={item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Shared reading layout for legal / policy pages. */
-export function LegalBody({ updated, sections }: { updated: string; sections: LegalSection[] }) {
+export function LegalBody({
+  updated,
+  sections,
+  summary,
+  numbered = false,
+}: {
+  updated: string;
+  sections: LegalSection[];
+  /** Optional non-binding overview shown before the table of contents. */
+  summary?: LegalSummary;
+  /** Prefix headings and contents entries with 1., 2., 3. … */
+  numbered?: boolean;
+}) {
+  const label = (s: LegalSection, i: number) => (numbered ? `${i + 1}. ${s.heading}` : s.heading);
+
   return (
     <section className="bg-background">
       <div className="mx-auto max-w-3xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
@@ -94,22 +199,39 @@ export function LegalBody({ updated, sections }: { updated: string; sections: Le
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             Last updated {updated}
           </p>
-          <p className="mt-4 rounded-2xl bg-muted p-5 text-sm leading-relaxed text-muted-foreground">
-            {SITE.name} maintains this page to explain how we handle your information and how we
-            work. It describes our own practices. It is not legal advice or an independent
-            certification.
-          </p>
+
+          {summary ? (
+            <aside
+              aria-label="Summary"
+              className="mt-4 rounded-2xl bg-muted p-5 text-sm leading-relaxed text-muted-foreground sm:p-6"
+            >
+              <p className="text-base font-semibold text-foreground">Summary</p>
+              <ul className="mt-3 list-disc space-y-2 pl-5 marker:text-primary">
+                {summary.points.map((point, i) => (
+                  <li key={i} className="break-words">
+                    <RichText text={point} />
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs italic">{summary.note}</p>
+            </aside>
+          ) : (
+            <p className="mt-4 rounded-2xl bg-muted p-5 text-sm leading-relaxed text-muted-foreground">
+              {SITE.name} maintains this page to explain how we handle your information and how we
+              work.
+            </p>
+          )}
 
           <nav aria-label="On this page" className="mt-8 border-l-2 border-border pl-4">
             <p className="text-sm font-semibold text-foreground">On this page</p>
             <ul className="mt-2 grid gap-1 sm:grid-cols-2 sm:gap-x-6">
-              {sections.map((s) => (
+              {sections.map((s, i) => (
                 <li key={s.heading}>
                   <a
                     href={`#${sectionId(s.heading)}`}
                     className="inline-flex min-h-10 items-center break-words text-sm text-muted-foreground underline-offset-4 hover:text-primary hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
-                    {s.heading}
+                    {label(s, i)}
                   </a>
                 </li>
               ))}
@@ -117,19 +239,14 @@ export function LegalBody({ updated, sections }: { updated: string; sections: Le
           </nav>
 
           <div className="mt-10 space-y-10">
-            {sections.map((s) => (
+            {sections.map((s, i) => (
               <div key={s.heading} id={sectionId(s.heading)} className="scroll-mt-24">
                 <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-                  {s.heading}
+                  {label(s, i)}
                 </h2>
                 <div className="mt-3 space-y-3">
-                  {s.body.map((p) => (
-                    <p
-                      key={p}
-                      className="break-words text-sm leading-relaxed text-muted-foreground sm:text-base"
-                    >
-                      {p}
-                    </p>
+                  {s.body.map((block, j) => (
+                    <Block key={j} block={block} />
                   ))}
                 </div>
               </div>
