@@ -16,6 +16,17 @@ export const GA_ID: string = (import.meta.env.VITE_GA_ID as string | undefined) 
 export const CLARITY_ID = "xwm4fwtyip";
 
 /**
+ * Tags only run on the public domain. Lovable preview URLs and localhost would
+ * otherwise send owner/test sessions to GA and Clarity, and Clarity cannot load
+ * the preview's stylesheets on replay, so those recordings show unstyled pages.
+ */
+const PRODUCTION_HOSTS = new Set(["pixel2tech.com", "www.pixel2tech.com"]);
+
+function isProductionHost() {
+  return typeof window !== "undefined" && PRODUCTION_HOSTS.has(window.location.hostname);
+}
+
+/**
  * Creates the gtag command queue without any network request. Page views and
  * events sent before gtag.js arrives wait in `dataLayer` and are sent when it
  * loads, so nothing is lost by loading the script late.
@@ -24,7 +35,7 @@ export const CLARITY_ID = "xwm4fwtyip";
  * (including the first), so GA's automatic one would double-count.
  */
 export function initAnalytics() {
-  if (typeof window === "undefined" || !GA_ID || window.gtag) return;
+  if (!isProductionHost() || !GA_ID || window.gtag) return;
   window.dataLayer = window.dataLayer || [];
   // gtag.js only understands the `arguments` object, not a rest-param array.
   window.gtag = function gtag() {
@@ -44,7 +55,7 @@ function appendScript(src: string) {
 
 /** Fetches gtag.js and Microsoft Clarity, once per page load. */
 export function loadAnalyticsScripts() {
-  if (typeof window === "undefined" || window.__p2tTagsLoaded) return;
+  if (!isProductionHost() || window.__p2tTagsLoaded) return;
   window.__p2tTagsLoaded = true;
 
   if (GA_ID) {
