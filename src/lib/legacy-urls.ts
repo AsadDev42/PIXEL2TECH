@@ -202,6 +202,44 @@ const REDIRECT_MAP: Record<string, string> = {
   news: "/blog",
   articles: "/blog",
 
+  // Retired WordPress portfolio items reported as 404 in Search Console (Sep 2026).
+  "portfolio/blockchain-development": "/portfolio",
+  "portfolio/crafting-stories-that-stick": "/portfolio",
+  "portfolio/creative-pulse-rising": "/portfolio",
+  "portfolio/elegant-branding-flow": "/portfolio",
+  "portfolio/elevate-your-brand-with-creative-precision": "/portfolio",
+  "portfolio/future-focused-studio": "/portfolio",
+  "portfolio/game-design": "/portfolio",
+  "portfolio/klayn-fashion-brand-identity": "/portfolio",
+  "portfolio/loop-agency-creative-branding": "/portfolio",
+  "portfolio/search-engine-optimization": "/portfolio",
+  "portfolio/seo-marketing": "/portfolio",
+  "portfolio/smart-contract-development": "/portfolio",
+  "portfolio/sophisticated-token-line": "/portfolio",
+  "portfolio/superpower-branding": "/portfolio",
+  "portfolio/vanta-visual-identity-system": "/portfolio",
+  "portfolio/vision-driven-refresh": "/portfolio",
+  "portfolio/web3-crypto": "/portfolio",
+
+  // Retired theme service/landing pages reported as 404 in Search Console (Sep 2026).
+  "business-and-finance-services-play-a-crucial": "/services",
+  "from-brand-strategy-to-immersive-digital-experiences": "/services",
+  "from-business-objectives-to-user-first-design-we-build-systems-that-grow-with-your-vision":
+    "/services",
+  "from-creative-thinking-to-seamless-production-we-deliver-compelling-results-that-drive-impact":
+    "/services",
+  "from-data-driven-insights-to-bold-creative-we-shape-strategies-that-connect-and-convert":
+    "/services",
+  "from-insightful-research-to-striking-design-we-craft-experiences-that-elevate-your-brand-identity":
+    "/services",
+  "from-ux-strategy-to-content-creation-we-engineer-digital-solutions-that-resonate-and-perform":
+    "/services",
+  "from-visual-storytelling-to-digital-innovation-we-create-meaningful-brand-interactions":
+    "/services",
+  "immersive-digital-experiences-we-offer-end-to-end": "/services",
+  "the-digital-experiences-we-offer-end-to-end": "/services",
+  "your-brand-for-impact-with-deep-market-insights": "/services",
+
   // --- Renamed portfolio slugs (the only place these are defined) ---
   "portfolio/creative-social-media-madluvv-social-and-meta-ads":
     "/portfolio/madluvv-social-media-meta-ads",
