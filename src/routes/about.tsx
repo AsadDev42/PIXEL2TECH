@@ -19,7 +19,7 @@ const TITLE = "About Pixel2Tech | Design, Web & Video Team in Lahore";
 const DESCRIPTION = `Meet the ${TEAM_SIZE}-person in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, working with clients in the US, UK, Gulf and Europe.`;
 
 /** People with a profile page are the founders (same rule as the root Organization schema). */
-const FOUNDERS = TEAM.filter((m) => m.profile);
+const FOUNDERS = TEAM.filter((m) => m.founder);
 
 const unsplash = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?w=${w}&auto=format&fit=crop&fm=webp&q=70`;

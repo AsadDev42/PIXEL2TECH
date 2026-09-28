@@ -170,7 +170,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           telephone: SITE.phoneE164,
           foundingDate: STATS.foundingYear,
           numberOfEmployees: { "@type": "QuantitativeValue", value: TEAM_SIZE },
-          founder: TEAM.filter((m) => m.profile).map((m) => ({
+          founder: TEAM.filter((m) => m.founder).map((m) => ({
             "@type": "Person",
             name: m.name,
             jobTitle: m.role,

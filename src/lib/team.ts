@@ -11,8 +11,10 @@ export type TeamMember = {
   role: string;
   img: string;
   /** Internal profile page, when the person has one. */
-  profile?: "/usama-farooq" | "/asad-farooq";
+  profile?: "/usama-farooq" | "/asad-farooq" | "/saad";
   linkedin?: string;
+  /** Co-founders (listed as founders in structured data and on About). */
+  founder?: boolean;
 };
 
 /** The in-house team. Shown on Home and About; its length is the team size. */
@@ -22,6 +24,7 @@ export const TEAM: TeamMember[] = [
     role: "CEO & Founder",
     img: teamUsama.url,
     profile: "/usama-farooq",
+    founder: true,
     linkedin: "https://www.linkedin.com/in/osama-farooq-manj/",
   },
   {
@@ -29,12 +32,14 @@ export const TEAM: TeamMember[] = [
     role: "Co-Founder & Creative Director",
     img: teamAsad.url,
     profile: "/asad-farooq",
+    founder: true,
     linkedin: "https://www.linkedin.com/in/designerasad/",
   },
   {
     name: "Saad",
     role: "Creative Video Editor",
     img: teamSaad.url,
+    profile: "/saad",
     linkedin: "https://www.linkedin.com/in/designersaadpk/",
   },
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },

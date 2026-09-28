@@ -23,6 +23,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/": "2026-08-02",
   "/about": "2026-08-02",
   "/asad-farooq": "2026-08-08",
+  "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
   "/services": "2026-08-01",
   "/portfolio": "2026-08-01",
@@ -67,6 +68,7 @@ export function pageEntries(): SitemapEntry[] {
         lastmod: SERVICE_PAGES_LASTMOD,
       })),
       { path: "/asad-farooq", changefreq: "monthly", priority: "0.7" },
+      { path: "/saad", changefreq: "monthly", priority: "0.5" },
       { path: "/usama-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/portfolio", changefreq: "weekly", priority: "0.8" },
       {

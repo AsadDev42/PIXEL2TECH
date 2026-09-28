@@ -23,6 +23,7 @@ import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
 import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SaadRouteImport } from './routes/saad'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
@@ -113,6 +114,11 @@ const PostSitemapDotxmlRoute = PostSitemapDotxmlRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaadRoute = SaadRouteImport.update({
+  id: '/saad',
+  path: '/saad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
@@ -278,6 +285,7 @@ export interface FileRoutesByTo {
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
@@ -316,6 +324,7 @@ export interface FileRoutesById {
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
@@ -355,6 +364,7 @@ export interface FileRouteTypes {
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/privacy-policy'
+    | '/saad'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
@@ -392,6 +402,7 @@ export interface FileRouteTypes {
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/privacy-policy'
+    | '/saad'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
@@ -429,6 +440,7 @@ export interface FileRouteTypes {
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/privacy-policy'
+    | '/saad'
     | '/services'
     | '/services-sitemap.xml'
     | '/sitemap.rss'
@@ -467,6 +479,7 @@ export interface RootRouteChildren {
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
   PostSitemapDotxmlRoute: typeof PostSitemapDotxmlRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SaadRoute: typeof SaadRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
@@ -588,6 +601,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saad': {
+      id: '/saad'
+      path: '/saad'
+      fullPath: '/saad'
+      preLoaderRoute: typeof SaadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -755,6 +775,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
   PostSitemapDotxmlRoute: PostSitemapDotxmlRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SaadRoute: SaadRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
