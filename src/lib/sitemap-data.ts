@@ -28,8 +28,8 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/services": "2026-08-01",
   "/portfolio": "2026-08-01",
   "/contact": "2026-08-01",
-  "/privacy-policy": "2026-09-24",
-  "/terms-and-conditions": "2026-09-24",
+  "/privacy-policy": "2026-09-27",
+  "/terms-and-conditions": "2026-09-27",
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
