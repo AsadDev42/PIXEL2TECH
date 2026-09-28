@@ -448,10 +448,40 @@ function FloatingBadge({
       initial={{ y: 0 }}
       animate={{ y: [0, 8, 0] }}
       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay }}
-      className={`absolute z-10 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-xl shadow-black/20 sm:px-5 ${className}`}
+      className={`z-10 items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-xl shadow-black/20 sm:px-5 ${className}`}
     >
       {children}
     </motion.div>
+  );
+}
+
+function RatingBadgeContent() {
+  return (
+    <>
+      <Star className="h-5 w-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+      <div className="text-left">
+        <div className="text-sm font-bold text-card-foreground">{STATS.rating} client rating</div>
+        <div className="text-xs text-muted-foreground">{STATS.clients} happy clients</div>
+      </div>
+    </>
+  );
+}
+
+function ProjectsBadgeContent() {
+  return (
+    <>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
+        <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
+      </span>
+      <div className="text-left">
+        <div className="text-sm font-bold text-card-foreground">
+          {STATS.projects} projects shipped
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Since {STATS.foundingYear}, {TEAM_SIZE} people in-house
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -491,16 +521,11 @@ function Approach() {
         </div>
 
         <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px]">
-          <FloatingBadge className="left-0 top-[34%] sm:-left-4 lg:-left-8" delay={0.6}>
-            <Star className="h-5 w-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-            <div className="text-left">
-              <div className="text-sm font-bold text-card-foreground">
-                {STATS.rating} client rating
-              </div>
-              <div className="text-xs text-muted-foreground">{STATS.clients} happy clients</div>
-            </div>
+          {/* Floating over the portrait from lg up; on phones they sit below it so the face stays clear. */}
+          <FloatingBadge className="absolute -left-8 top-[34%] hidden lg:flex" delay={0.6}>
+            <RatingBadgeContent />
           </FloatingBadge>
-          <div className="mt-10 aspect-square w-full overflow-hidden rounded-full">
+          <div className="aspect-square w-full overflow-hidden rounded-full lg:mt-10">
             <img
               loading="lazy"
               decoding="async"
@@ -513,19 +538,17 @@ function Approach() {
               className="h-full w-full object-contain"
             />
           </div>
-          <FloatingBadge className="right-0 top-[68%] sm:-right-4 lg:-right-8">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary">
-              <TrendingUp className="h-4 w-4 text-primary-foreground" aria-hidden="true" />
-            </span>
-            <div className="text-left">
-              <div className="text-sm font-bold text-card-foreground">
-                {STATS.projects} projects shipped
-              </div>
-              <div className="text-xs text-muted-foreground">
-                Since {STATS.foundingYear}, {TEAM_SIZE} people in-house
-              </div>
-            </div>
+          <FloatingBadge className="absolute -right-8 top-[68%] hidden lg:flex">
+            <ProjectsBadgeContent />
           </FloatingBadge>
+          <div className="relative z-10 -mt-8 flex flex-wrap justify-center gap-3 lg:hidden">
+            <FloatingBadge className="flex" delay={0.6}>
+              <RatingBadgeContent />
+            </FloatingBadge>
+            <FloatingBadge className="flex">
+              <ProjectsBadgeContent />
+            </FloatingBadge>
+          </div>
         </div>
       </div>
     </section>
