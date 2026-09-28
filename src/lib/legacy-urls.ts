@@ -147,6 +147,8 @@ const REDIRECT_MAP: Record<string, string> = {
   "team/asad-farooq": "/asad-farooq",
 
   team: "/about",
+  "our-team": "/about",
+  "meet-the-team": "/about",
   "team-details": "/about",
   "team-stye-4": "/about",
   "team-style-4": "/about",
@@ -166,16 +168,16 @@ const REDIRECT_MAP: Record<string, string> = {
   "our-services": "/services",
   "services-2": "/services",
   "services-v3": "/services",
-  "app-design": "/services",
-  "apps-development": "/services",
-  "branding-design": "/services",
-  "brand-development": "/services",
+  "app-design": "/services/custom-platforms-and-apps",
+  "apps-development": "/services/custom-platforms-and-apps",
+  "branding-design": "/services/branding-and-design",
+  "brand-development": "/services/branding-and-design",
   "digital-agency": "/services",
-  "digital-marketing": "/services",
+  "digital-marketing": "/services/social-media-and-email",
   "market-research": "/services",
-  "website-development": "/services",
-  "web-development": "/services",
-  "animation-video-editing": "/services",
+  "website-development": "/services/website-development",
+  "web-development": "/services/website-development",
+  "animation-video-editing": "/services/video-editing-and-ads",
   "business-marketing": "/services",
 
   // --- Portfolio ---
@@ -188,6 +190,11 @@ const REDIRECT_MAP: Record<string, string> = {
   "photographer-portfolio": "/portfolio",
   "reveal-portfolio": "/portfolio",
   "project-details": "/portfolio",
+  // Old WordPress portfolio categories and retired items.
+  "portfolio/branding": "/portfolio",
+  "portfolio/web-design": "/portfolio",
+  "portfolio/video": "/portfolio",
+  "portfolio/creative-social-media-product-launch-campaign": "/portfolio",
 
   // --- Blog ---
   blogs: "/blog",
