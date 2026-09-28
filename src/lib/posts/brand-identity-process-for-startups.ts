@@ -14,7 +14,7 @@ const post: PostBody = {
     "how much should a startup spend on branding",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the branding services discussed here.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the branding services discussed here.",
   keyTakeaways: [
     "A brand identity project runs in five phases: discovery, strategy and positioning, verbal identity, visual identity, and guidelines with launch assets. Skipping the first two is a common reason logos get redone soon after launch.",
     "Check the name before designing around it. The USPTO recommends searching federal registrations and pending applications and the internet for common-law use; the SBA notes that entity names, trademarks, DBAs and domains are legally separate registrations.",
@@ -99,6 +99,12 @@ const post: PostBody = {
           heading: "Filing a federal trademark",
           body: [
             "Filing is a separate decision from searching. The USPTO's page on [why to register a trademark](https://www.uspto.gov/trademarks/basics/why-register-your-trademark) says federal registration is optional, but it gives nationwide rights, a legal presumption of ownership and the right to use the ® symbol, while unregistered common-law rights may only be enforceable where you actually use the mark. As of September 2026, the USPTO's [fee overview](https://www.uspto.gov/trademarks/basics/how-much-does-it-cost) lists a base application fee of $350 per class of goods or services, and its [registration timeline page](https://www.uspto.gov/trademarks/basics/how-long-does-it-take-register) says the process usually takes 12 to 18 months. This is general information, not legal advice.",
+          ],
+        },
+        {
+          heading: "Launching in the UK or EU",
+          body: [
+            "If you'll sell in the UK or Europe, US registration doesn't cover those markets. As of September 2026, GOV.UK says [registering a UK trade mark](https://www.gov.uk/how-to-register-a-trade-mark/apply) costs at least £205 and usually takes around 3 to 4 months if there are no problems. The EUIPO's [fee table](https://www.euipo.europa.eu/en/trade-marks/before-applying/fees-payable-direct-to-the-euipo) lists €850 for an electronic EU trade mark application in one class, covering every EU member state. Search both registers before you commit to a name.",
           ],
         },
       ],
@@ -186,7 +192,7 @@ const post: PostBody = {
       body: [
         "Brand identity is priced on time, so the honest answer starts with hours. Strategy depth, the number of concept rounds, the number of applications designed and how many stakeholders need to agree all add hours.",
         "For context, the Bureau of Labor Statistics reports a May 2025 median wage of $62,960 a year, or $30.27 an hour, for US [graphic designers](https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm). That's what an employed designer earns, not what a studio bills. As an illustrative calculation, 80 hours at that median is about $2,420 in wages alone, before benefits, software, strategy time, project management and profit.",
-        "That arithmetic explains why very cheap logo packages rarely include discovery or strategy: there are no hours in the price for them. If you're comparing offshore quotes, our separate guide to logo design cost in Pakistan covers local pricing in PKR.",
+        "That arithmetic explains why very cheap logo packages rarely include discovery or strategy: there are no hours in the price for them. When you compare quotes from freelancers, studios or offshore teams, ask each one for the hours behind the price, and see our guide to [logo design cost](/blog/logo-design-cost) for how that pricing breaks down.",
       ],
       table: {
         caption:
@@ -299,6 +305,14 @@ const post: PostBody = {
       label: "BLS Occupational Outlook Handbook: Graphic designers",
       href: "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
     },
+    {
+      label: "GOV.UK: Register a trade mark",
+      href: "https://www.gov.uk/how-to-register-a-trade-mark/apply",
+    },
+    {
+      label: "EUIPO: Fees payable direct to the EUIPO",
+      href: "https://www.euipo.europa.eu/en/trade-marks/before-applying/fees-payable-direct-to-the-euipo",
+    },
   ],
   internalLinks: [
     {
@@ -309,7 +323,7 @@ const post: PostBody = {
       label: "Rebrand vs refresh: a founder's decision framework",
       to: "/blog/rebrand-vs-refresh-a-founders-decision-framework",
     },
-    { label: "Logo design cost in Pakistan", to: "/blog/logo-design-cost-in-pakistan" },
+    { label: "Logo design cost", to: "/blog/logo-design-cost" },
     { label: "Design systems for small teams", to: "/blog/design-systems-for-small-teams" },
     { label: "Branding and design", to: "/services/branding-and-design" },
   ],

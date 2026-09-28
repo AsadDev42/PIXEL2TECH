@@ -14,7 +14,7 @@ const post: PostBody = {
     "video editing for course creators",
   ],
   disclosure:
-    "Pixel2Tech is a design and video studio in Lahore, Pakistan, and offers the video editing services discussed here.",
+    "Pixel2Tech is a design and video studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the video editing services discussed here.",
   keyTakeaways: [
     "A retainer fits coaches who publish on a schedule, such as a weekly long-form video plus shorts. One-off launches and course builds are usually better priced as projects.",
     "Vendor-published 2026 ranges run from about $1,500 a month for part-time access to one editor to $8,000 or more for a full-time dedicated team. Compare scope, not the headline number.",

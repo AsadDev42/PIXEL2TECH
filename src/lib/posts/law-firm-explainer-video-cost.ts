@@ -14,7 +14,7 @@ const post: PostBody = {
     "personal injury explainer video",
   ],
   disclosure:
-    "Pixel2Tech is a design and video studio in Lahore, Pakistan, and produces the kind of legal explainer videos discussed here.",
+    "Pixel2Tech is a design and video studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and produces the kind of legal explainer videos discussed here.",
   keyTakeaways: [
     "Published vendor ranges are wide: a 2022 guide put a 60-second animated law firm explainer at $2,000 to $4,500, and a June 2026 guide lists live-action practice-area explainers at $5,000 to $15,000.",
     "Script, format, length, voiceover, revision rounds and deliverables move the price more than the camera. Attorney review time is the cost most quotes leave out.",
@@ -220,7 +220,7 @@ const post: PostBody = {
       body: [
         "We have produced explainer videos for Affinity Law, a US personal injury firm, and the process below is how we run legal video work in general. The order matters more than the software.",
         "Script first, in two columns: voiceover on the left, visuals and on-screen text on the right. The attorney approves the words before any design starts. Then style frames, then animation, then captions and every cutdown in one export pass. For the writing side, see our [personal injury video script templates](/blog/personal-injury-lawyer-video-scripts).",
-        "Our team works from Lahore, so US firms can review a draft in their morning while the next round happens during their night. If you are weighing an offshore editor, our guide to [outsourcing video editing to Pakistan](/blog/outsource-video-editing-to-pakistan) covers the tradeoffs, including the ones that don't favor us.",
+        "Our studio is in Pakistan (UTC+5), so US firms can review a draft in their morning while the next round happens during their night, and UK firms share most of their working morning with us. If you are weighing an offshore editor, our guide to [outsourcing video editing to Pakistan](/blog/outsource-video-editing-to-pakistan) covers the tradeoffs, including the ones that don't favor us.",
       ],
       callout: {
         title: "From the studio",

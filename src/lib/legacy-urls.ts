@@ -202,6 +202,17 @@ const REDIRECT_MAP: Record<string, string> = {
   news: "/blog",
   articles: "/blog",
 
+  // Posts retargeted from Pakistan-local buyers to US, UK and EU buyers (Sep 2026).
+  "blog/website-development-cost-pakistan": "/blog/website-development-cost",
+  "blog/custom-web-app-development-cost-pakistan": "/blog/custom-web-app-development-cost",
+  "blog/shopify-store-cost-pakistan": "/blog/shopify-store-cost",
+  "blog/shopify-payment-gateways-pakistan": "/blog/shopify-payment-gateways-us-uk-eu",
+  "blog/sell-internationally-from-pakistan-shopify": "/blog/sell-internationally-on-shopify",
+  "blog/whatsapp-business-api-setup-pakistan": "/blog/whatsapp-business-api-setup-guide",
+  "blog/reduce-fake-cod-orders-shopify-pakistan": "/blog/reduce-shopify-chargebacks-and-fraud",
+  "blog/local-seo-lahore-guide": "/blog/local-seo-for-small-business",
+  "blog/logo-design-cost-in-pakistan": "/blog/logo-design-cost",
+
   // Retired WordPress portfolio items reported as 404 in Search Console (Sep 2026).
   "portfolio/modaro-fashion-branding-studio": "/portfolio",
   "portfolio/blockchain-development": "/portfolio",

@@ -13,7 +13,7 @@ const post: PostBody = {
     "brand guidelines example",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the branding services discussed here.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the branding services discussed here.",
   keyTakeaways: [
     "Brand guidelines tell anyone making something for your business how to use the logo, colors, fonts, images and voice. For most small businesses, one or two pages plus editable templates beat a long brand book.",
     "The minimum: logo versions and clear space, color codes (HEX, RGB, CMYK), two fonts with fallbacks, a photo style, three voice rules, and do and don't examples.",
@@ -183,7 +183,7 @@ const post: PostBody = {
       body: [
         "For a US reference point, the Bureau of Labor Statistics reports a May 2025 median wage of $30.27 an hour for [graphic designers](https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm). That's what an employee earns, not what a freelancer, studio or agency bills, since those rates also cover overhead, tools and profit.",
         "The table below shows illustrative hours by scope, based on how long each set of deliverables usually takes to design, write and revise. As an illustrative calculation, 30 hours at the BLS median comes to about $910 in wages alone.",
-        "Freelancers usually cost least per hour but may not include templates or voice guidelines. Studios and agencies cost more per hour and usually bundle strategy, templates and rollout support. For offshore pricing in PKR, see our guide to logo design cost in Pakistan.",
+        "Freelancers usually cost least per hour but may not include templates or voice guidelines. Studios and agencies cost more per hour and usually bundle strategy, templates and rollout support. Offshore studios may quote lower hourly rates for the same hours, so the scope list below matters more than the headline price. Our guide to [logo design cost](/blog/logo-design-cost) covers how identity pricing breaks down.",
         "To compare quotes fairly, ask each provider for the same things in writing: the sections included, how many templates and in which tools, whether accessible color pairs are tested, how many revision rounds are included, and whether you receive the editable source file as well as the PDF.",
       ],
       table: {
@@ -278,7 +278,7 @@ const post: PostBody = {
       label: "Brand identity process for startups",
       to: "/blog/brand-identity-process-for-startups",
     },
-    { label: "Logo design cost in Pakistan", to: "/blog/logo-design-cost-in-pakistan" },
+    { label: "Logo design cost", to: "/blog/logo-design-cost" },
     {
       label: "Rebrand vs refresh: a founder's decision framework",
       to: "/blog/rebrand-vs-refresh-a-founders-decision-framework",

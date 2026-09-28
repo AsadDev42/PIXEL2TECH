@@ -11,9 +11,10 @@ const post: PostBody = {
     "offshore shopify team for agencies",
     "shopify collaborator access",
     "agency development partner nda",
+    "white label shopify developer uk",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers white-label Shopify development and creative to agencies.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with agencies in the US, UK and Europe, and offers white-label Shopify development and creative.",
   keyTakeaways: [
     "White-label Shopify development means a specialist partner builds themes, sections, apps or migrations that your agency delivers under its own brand. You keep the client, the price and the responsibility for quality.",
     "It makes sense when Shopify demand is uneven, when you lack a specific skill such as app development, or when in-house hiring would cost more than the margin you'd keep.",
@@ -162,7 +163,7 @@ const post: PostBody = {
         "Non-solicit: the partner won't pitch or accept work from your clients directly for an agreed period.",
         "IP assignment: code and designs transfer to the agency or client on payment.",
         "SLAs: response times for questions, bug fixes and urgent production issues.",
-        "Data handling: how customer data seen during the work is stored and deleted.",
+        "Data handling: how customer data seen during the work is stored and deleted. If the store has UK or EU customers, the UK ICO's guidance on [when a processor contract is needed](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/when-is-a-contract-needed-and-why-is-it-important/) says a processor using a sub-processor must get the controller's written authorization and pass on the same data protection terms by contract.",
         "Subcontracting: the partner can't pass your work to someone else without consent.",
         "Exit terms: what gets handed over, and when, if either side ends the relationship.",
       ],
@@ -194,8 +195,8 @@ const post: PostBody = {
     {
       heading: "Communication and time-zone rhythms",
       body: [
-        "If your partner is in Pakistan, as we are, time zones shape the working day. Pakistan Standard Time is UTC+5 with no daylight saving, so the gap to your office changes when your clocks do. Lahore is 9 hours ahead of New York during US daylight time and 10 hours ahead in winter, and 4 hours ahead of London during British Summer Time and 5 hours in winter.",
-        "That gap can work for you. A brief sent at the end of a New York day can come back as a preview theme the next morning. It only works with written briefs and one short overlap window for calls. For more on contracts and payments with offshore teams, see our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan).",
+        "If your partner is offshore, time zones shape the working day. We're based in Pakistan, so here's how that looks from US, UK and European offices. Pakistan Standard Time is UTC+5 with no daylight saving, so the gap to your office changes when your clocks do. Pakistan is 9 hours ahead of New York during US daylight time and 10 hours ahead in winter, and 4 hours ahead of London during British Summer Time and 5 hours in winter.",
+        "That gap can work for you. A brief sent at the end of a New York day can come back as a preview theme the next morning, while London, Berlin and Paris teams share most of their morning or working day with ours for live reviews. It only works with written briefs and one short overlap window for calls. For more on contracts and payments with offshore teams, see our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan).",
       ],
       bullets: [
         "A written end-of-day update from the partner: done, in progress, blocked.",
@@ -212,19 +213,19 @@ const post: PostBody = {
             "New York",
             "PKT is 9 hours ahead",
             "PKT is 10 hours ahead",
-            "9 am New York is 6 pm Lahore in summer",
+            "9 am New York is 6 pm in Pakistan in summer",
           ],
           [
             "Los Angeles",
             "PKT is 12 hours ahead",
             "PKT is 13 hours ahead",
-            "Early-morning LA calls reach Lahore's evening",
+            "Early-morning LA calls reach Pakistan's evening",
           ],
           [
             "London",
             "PKT is 4 hours ahead",
             "PKT is 5 hours ahead",
-            "Most of the UK morning overlaps Lahore's afternoon",
+            "Most of the UK morning overlaps Pakistan's afternoon",
           ],
           [
             "Berlin or Paris",
@@ -289,6 +290,10 @@ const post: PostBody = {
     {
       label: "Shopify Help Center — Theme licensing",
       href: "https://help.shopify.com/en/manual/online-store/themes/managing-themes/unlicensed-themes",
+    },
+    {
+      label: "ICO — When is a controller-processor contract needed?",
+      href: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/when-is-a-contract-needed-and-why-is-it-important/",
     },
   ],
   internalLinks: [

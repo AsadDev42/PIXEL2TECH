@@ -264,7 +264,7 @@ const post: PostBody = {
     { label: "Shopify INP and Core Web Vitals", to: "/blog/shopify-inp-core-web-vitals" },
     {
       label: "Custom web app development cost in Pakistan",
-      to: "/blog/custom-web-app-development-cost-pakistan",
+      to: "/blog/custom-web-app-development-cost",
     },
     { label: "Custom platforms and apps", to: "/services/custom-platforms-and-apps" },
   ],

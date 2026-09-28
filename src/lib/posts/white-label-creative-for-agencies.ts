@@ -11,15 +11,16 @@ const post: PostBody = {
     "white label video editing",
     "outsource ad creative production",
     "white label Shopify creative",
+    "white label creative agency UK",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the white label creative services discussed here.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with agencies in the US, UK and Europe, and offers the white label creative services discussed here.",
   keyTakeaways: [
     "White label creative is design and video work made by an outside team and delivered under your agency's name. It suits overflow production, not strategy or client relationships.",
     "Outsource repeatable production (static ads, UGC edits, social posts, email design) and keep the brief, the creative direction and the client conversation in-house.",
     "Put turnaround times, revision rounds and what counts as a new brief in writing before the first job, and run every file through your own QA before the client sees it.",
     "Give access through platform partner tools, such as Meta business portfolio partner access and Shopify collaborator accounts, never shared logins.",
-    "Under US copyright law, commissioned work only counts as work made for hire in nine categories with a signed written agreement, so contracts usually add a written copyright assignment. Have a lawyer review yours.",
+    "Under US copyright law, commissioned work only counts as work made for hire in nine categories with a signed written agreement; under UK law, a partner owns what it makes unless copyright is assigned in signed writing. Either way, get a written assignment and have a lawyer review it.",
   ],
   content: [
     {
@@ -109,7 +110,7 @@ const post: PostBody = {
         "Agree turnaround in business days per asset type, a fixed number of revision rounds, and a clear line between a revision and a new brief, all in writing before the first job.",
       body: [
         "Turnaround depends on the asset, the quality of the brief and how many people have to approve it. The table below is an illustrative starting point to negotiate from, not an industry standard.",
-        "Time zones can work in your favor. Pakistan runs on UTC+5 with no daylight saving, so a US agency that briefs by the end of its day can often review first drafts the next morning. That only works if briefs are complete, because there's nobody awake to answer a question at 2 a.m. your time.",
+        "Time zones can work in your favor if your partner is offshore. Our studio in Pakistan runs on UTC+5 with no daylight saving, so a US agency that briefs by the end of its day can often review first drafts the next morning, while UK and European agencies share several working hours for same-day feedback. The overnight model only works if briefs are complete, because there's nobody awake to answer a question at 2 a.m. your time.",
         "Revision rules prevent most disputes. A revision fixes the work against the original brief. A change of offer, audience, format or concept is a new brief, and should be treated as one.",
       ],
       table: {
@@ -178,7 +179,7 @@ const post: PostBody = {
       body: [
         "Confidentiality and non-solicit terms protect the relationship: the partner doesn't name your clients, doesn't show their work in a public portfolio without permission, and doesn't approach them directly.",
         "IP needs more care than most agencies give it. The US Copyright Office's [circular on works made for hire](https://www.copyright.gov/circs/circ09.pdf) explains that commissioned work from a non-employee only counts as work made for hire if it falls into one of nine categories (a part of an audiovisual work is one), and both parties sign a written agreement saying so. If any requirement fails, it is not a work made for hire.",
-        "Many creative deliverables, such as a static ad, don't obviously fit those categories. That's why agency contracts commonly pair a work-made-for-hire clause with a written assignment of copyright on payment. This is general information, not legal advice; have a lawyer review your agreement.",
+        "Many creative deliverables, such as a static ad, don't obviously fit those categories. That's why agency contracts commonly pair a work-made-for-hire clause with a written assignment of copyright on payment. UK agencies need the assignment too: under the [Copyright, Designs and Patents Act 1988](https://www.legislation.gov.uk/ukpga/1988/48/section/11), the author is the first owner of copyright unless they are an employee, and [section 90](https://www.legislation.gov.uk/ukpga/1988/48/section/90) says an assignment isn't effective unless it is in writing and signed by or on behalf of the assignor. This is general information, not legal advice; have a lawyer review your agreement.",
         "The clauses a white label agreement usually covers:",
       ],
       bullets: [
@@ -238,7 +239,7 @@ const post: PostBody = {
     },
     {
       q: "How fast can a white label team turn around ad creatives?",
-      a: "It depends on the asset and the brief. Resizes from an approved master can come back within a business day; new concepts and video edits usually take a few days, plus revision rounds. Agree turnaround per asset type in writing. Partners in time zones like Pakistan's can often return drafts overnight for US agencies.",
+      a: "It depends on the asset and the brief. Resizes from an approved master can come back within a business day; new concepts and video edits usually take a few days, plus revision rounds. Agree turnaround per asset type in writing. An offshore partner in a time zone like Pakistan's can often return drafts overnight for US agencies and within the working day for UK and European ones.",
     },
     {
       q: "How do I stop clients contacting my white label provider directly?",
@@ -257,6 +258,10 @@ const post: PostBody = {
     {
       label: "U.S. Copyright Office: Circular 9, Works Made for Hire",
       href: "https://www.copyright.gov/circs/circ09.pdf",
+    },
+    {
+      label: "legislation.gov.uk: Copyright, Designs and Patents Act 1988, section 90",
+      href: "https://www.legislation.gov.uk/ukpga/1988/48/section/90",
     },
     {
       label: "Meta Business Help Center: Give a partner access to business assets",

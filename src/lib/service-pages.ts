@@ -455,9 +455,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     work: [],
     articles: [
       {
-        slug: "custom-web-app-development-cost-pakistan",
+        slug: "custom-web-app-development-cost",
         title: "Custom web app development cost",
-        desc: "Cost drivers, MVP scoping and running costs for an offshore build.",
+        desc: "US, UK and EU cost ranges, MVP scoping and running costs.",
       },
       {
         slug: "custom-shopify-app-vs-public-app",

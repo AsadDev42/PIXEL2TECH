@@ -168,9 +168,10 @@ const post: PostBody = {
       ],
     },
     {
-      heading: "Notes for exporters selling wholesale from Pakistan",
+      heading: "Which B2B payment options work in the US, UK and EU?",
       body: [
-        "Pakistani textile and carpet exporters can use the core B2B tools: companies, catalogs, quantity rules, payment terms and manual payment methods such as bank transfer. Two features depend on geography. Vaulted credit cards require Shopify Payments, and Shopify's [list of supported countries](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries) doesn't include Pakistan as of September 2026. ACH payments are for the United States only.",
+        "The core B2B tools don't depend on where you're based: companies, catalogs, quantity rules, payment terms and manual payment methods such as bank transfer. Two payment features do. Vaulted credit cards require Shopify Payments, and as of September 2026 Shopify's [list of supported countries](https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries) includes the United States, the United Kingdom and 26 of the 27 EU member states (Slovakia wasn't listed when we checked). ACH payments are for the United States only.",
+        "In practice, a US wholesaler can offer cards on file, ACH and net terms. A UK or EU wholesaler can offer cards on file and net terms, with buyers paying invoices by bank transfer as a manual payment method. Confirm your own country on the live page before you promise card-on-file ordering to trade buyers.",
         "We've produced product visuals for carpet brands such as Nayyer Carpets, and for a trade buyer browsing online, photos carry texture and color until a sample arrives. If you're setting up B2B on Shopify, our [WordPress and Shopify team](/services/wordpress-and-shopify) can configure catalogs and terms and build the trade-facing pages.",
       ],
     },
@@ -193,8 +194,8 @@ const post: PostBody = {
       a: "No. Shopify supports blended stores, where logged-in B2B buyers see their catalogs and terms while other shoppers see retail prices, and it publishes a setup checklist for them. A separate store costs a second plan and needs inventory syncing, but can suit brands that want a fully gated trade site with a different design.",
     },
     {
-      q: "Can Pakistani merchants use Shopify B2B features?",
-      a: "Yes, the core tools work: companies, catalogs, quantity rules, payment terms and manual payment methods such as bank transfer. Vaulted credit cards require Shopify Payments, which isn't available in Pakistan as of September 2026, and ACH payments are limited to the United States. Check Shopify's supported-countries page before planning card-on-file wholesale payments.",
+      q: "Do Shopify B2B payment features work for UK and EU stores?",
+      a: "Mostly. Companies, catalogs, quantity rules, payment terms and manual methods such as bank transfer work regardless of country. Vaulted credit cards need Shopify Payments, which covers the UK and 26 EU member states as of September 2026. ACH is limited to the United States, so UK and EU trade buyers can settle invoices by bank transfer instead. Check Shopify's supported-countries page for your country first.",
     },
   ],
   sources: [
@@ -221,6 +222,10 @@ const post: PostBody = {
     {
       label: "Shopify — Pricing",
       href: "https://www.shopify.com/pricing",
+    },
+    {
+      label: "Shopify Help Center — Shopify Payments supported countries",
+      href: "https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries",
     },
   ],
   internalLinks: [

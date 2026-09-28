@@ -14,7 +14,7 @@ const post: PostBody = {
     "shopify expert cost",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the Shopify development services discussed here.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the Shopify development services discussed here.",
   keyTakeaways: [
     "There is no single Shopify developer rate. Published numbers mix employee salaries, marketplace freelancer rates and agency rates, so compare like with like.",
     "The US Bureau of Labor Statistics puts the May 2025 median wage for web developers and digital designers at $47.85 an hour. That is what an employee earns, not what a client is billed.",
@@ -85,7 +85,7 @@ const post: PostBody = {
             "Single point of failure; availability during launches; code left undocumented",
           ],
           [
-            "US or UK agency",
+            "US, UK or EU agency",
             "Redesigns, migrations, projects needing design plus development",
             "Higher rates; junior staff doing work sold by seniors",
           ],

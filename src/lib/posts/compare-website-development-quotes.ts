@@ -14,7 +14,7 @@ const post: PostBody = {
     "website design brief template",
   ],
   disclosure:
-    "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the website development services discussed here.",
+    "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the website development services discussed here.",
   keyTakeaways: [
     "Website quotes differ mainly because each agency fills the gaps in your request with its own assumptions. Send every agency the same one-page brief and sitemap.",
     "Compare phase by phase (discovery, design, build, content, SEO migration, accessibility, QA, launch, support) and mark each line as included, excluded or unclear.",
