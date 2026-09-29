@@ -82,6 +82,62 @@ const VIDEO_READING: RelatedLink[] = [
   },
 ];
 
+/** Blog posts linked from the design and video collections. */
+const POST = {
+  metaTesting: {
+    slug: "meta-ads-creative-testing-small-budget",
+    label: "Meta Ads Creative Testing on a Small Budget After Andromeda",
+  },
+  practitionerListings: {
+    slug: "google-business-profile-practitioner-listings",
+    label: "Google Business Profile Practitioner Listings for Law and Dental",
+  },
+  whiteLabelCreative: {
+    slug: "white-label-creative-for-agencies",
+    label: "White Label Ad Creative for Agencies: How to Outsource Safely",
+  },
+  brandGuidelines: {
+    slug: "brand-guidelines-for-small-business",
+    label: "Brand Guidelines for Small Businesses: What to Include",
+  },
+  outsourceDesign: {
+    slug: "outsource-graphic-design-to-pakistan",
+    label: "Outsource Graphic Design to Pakistan: A US, UK and EU Guide",
+  },
+  beautyCreative: {
+    slug: "beauty-brand-ad-creative",
+    label: "Beauty Brand Ad Creative: Formats That Work on Meta and TikTok",
+  },
+  identityProcess: {
+    slug: "brand-identity-process-for-startups",
+    label: "Brand Identity Process for Startups: Timeline, Deliverables, Cost",
+  },
+  rebrandVsRefresh: {
+    slug: "rebrand-vs-refresh-a-founders-decision-framework",
+    label: "Rebrand vs. Refresh: A Founder's Decision Framework",
+  },
+  logoCost: {
+    slug: "logo-design-cost",
+    label: "How Much Does a Logo Cost in 2026? US, UK and Europe Prices",
+  },
+  coachRetainers: {
+    slug: "video-editing-retainer-for-coaches",
+    label: "Video Editing Retainers for Coaches: Scope, Pricing, Turnaround",
+  },
+  outsourceVideo: {
+    slug: "outsource-video-editing-to-pakistan",
+    label: "Outsource Video Editing to Pakistan: A US, UK and EU Guide",
+  },
+  ugcAds: {
+    slug: "ugc-ads-for-shopify-brands",
+    label: "UGC Ads for Shopify Brands: Brief, Film, Edit and Test",
+  },
+  productVideo: {
+    slug: "shopify-product-video-guide",
+    label: "Shopify Product Videos: Types, Specs and Where to Place Them",
+  },
+} satisfies Record<string, RelatedLink>;
+
 const BANKS: Record<string, DetailBank> = {
   "Social Media": {
     process: [
@@ -893,6 +949,359 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
     ],
     relatedReading: CREATIVE_READING,
     relatedServices: ["Branding & Design"],
+  },
+
+  "healthcare-meta-ad-creatives": {
+    process: [
+      {
+        title: "Start from the patient's question",
+        body: "Each ad opens with the condition or the question a patient is already asking, such as whether knee pain can be treated without surgery, so they recognize themselves before reading anything else.",
+      },
+      {
+        title: "One offer, one next step",
+        body: "Every design carries a single message and a single action: call the clinic, book an assessment or visit the website.",
+      },
+      {
+        title: "Calm, factual layout",
+        body: "Clean medical imagery, a strict type hierarchy and each clinic's own colors keep the ads professional rather than alarming, with no promises a clinic can't keep.",
+      },
+      {
+        title: "Sized for the feed",
+        body: "Designs were built in square and 4:5 formats so they fill the screen in Meta, Instagram and Facebook feeds.",
+      },
+    ],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Meta ad specs", "1:1 and 4:5 formats"],
+    whyItMatters:
+      "For a clinic, an ad is often the first contact a patient has with the practice. A clear, factual design that names the problem and the next step earns more trust than a loud one, and it sits more comfortably within Meta's rules for health advertising.",
+    faqs: [
+      {
+        q: "Can you design Meta ads for our clinic or dental practice?",
+        a: "Yes. We design static and video ads for clinics, dental practices, hearing centers and health brands in the US, UK and Europe, sized for Meta, Instagram and Facebook. Send us your services, offer and brand guidelines to start.",
+      },
+      {
+        q: "How do you keep health ads within Meta's rules?",
+        a: "We keep the copy factual: no guaranteed outcomes, no before-and-after promises and no lines that assume something about the viewer's health. Meta makes the final call in its review, so we adjust wording if an ad is rejected.",
+      },
+      {
+        q: "Do you run the campaigns as well?",
+        a: "This work covered the ad design. Targeting, budgets and campaign setup are separate; we can supply creative for your media buyer or help plan creative tests.",
+      },
+    ],
+    relatedReading: [POST.metaTesting, POST.practitionerListings, POST.whiteLabelCreative],
+    relatedServices: ["Social Media & Email", "Video Editing & Ads", "Branding & Design"],
+  },
+  "food-and-drink-social-media-creatives": {
+    process: [
+      {
+        title: "Product first",
+        body: "We pick the strongest product shot for each post and crop it to fill the frame, so the food or drink is the first thing people see.",
+      },
+      {
+        title: "Short copy",
+        body: "Headlines stay to a few words, with one supporting line for the menu item, price or offer.",
+      },
+      {
+        title: "Consistent placement",
+        body: "Logos, names, prices and calls to action sit in the same place across a brand's posts, which makes the feed easier to scan.",
+      },
+      {
+        title: "Feed-ready sizes",
+        body: "Posts are exported in portrait and square sizes for Instagram and Facebook feeds.",
+      },
+    ],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Instagram and Facebook post sizes"],
+    whyItMatters:
+      "For a cafe or restaurant, the Instagram grid works like a second menu. People check it before they visit or order, so posts that show the food clearly and look like one brand give them a reason to come in.",
+    faqs: [
+      {
+        q: "Do you design for cafes and restaurants in the US, UK and Europe?",
+        a: "Yes. We work remotely from your photos, menu and brand guidelines, and deliver posts ready to schedule on Instagram and Facebook.",
+      },
+      {
+        q: "What do you need from us to start?",
+        a: "Your logo and brand colors, product photos, and the items or offers you want to promote. If your photos aren't strong enough yet, we'll tell you what to shoot.",
+      },
+      {
+        q: "Can you make reels as well as static posts?",
+        a: "Yes. Short-form video editing is part of our video work, so static posts and reels can be planned together.",
+      },
+    ],
+    relatedReading: [POST.brandGuidelines, POST.metaTesting, POST.outsourceDesign],
+    relatedServices: ["Social Media & Email", "Branding & Design", "Video Editing & Ads"],
+  },
+  "skin-care-social-media-creatives": {
+    process: [
+      {
+        title: "One job per post",
+        body: "Each post does one thing: launch a product, explain a routine or show one product up close.",
+      },
+      {
+        title: "Product in focus",
+        body: "Product shots sit large and sharp, often in a lifestyle scene, so the packaging is easy to recognize later on a shelf or a product page.",
+      },
+      {
+        title: "Labels, not paragraphs",
+        body: "Routine posts use arrows, numbers and short labels so the steps read at a glance.",
+      },
+      {
+        title: "Brand colors throughout",
+        body: "Colors and type follow each brand, so the posts fit into its existing feed and ads.",
+      },
+    ],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Instagram post sizes", "Meta ad specs"],
+    whyItMatters:
+      "Skin care buyers research before they buy and are wary of hype. Posts that show the product clearly and explain how to use it build the familiarity that makes a later ad or product page easier to trust.",
+    faqs: [
+      {
+        q: "Do you work with skin care and beauty brands outside Pakistan?",
+        a: "Yes. We design social posts and ad creative for beauty and skin care brands in the US, UK and Europe, working from your product photos and brand guidelines.",
+      },
+      {
+        q: "Can the same designs be used as Meta ads?",
+        a: "Most of them, yes. We size posts for feed placements and keep text short, so they can run as ads with light changes to the headline or call to action.",
+      },
+    ],
+    relatedReading: [POST.beautyCreative, POST.metaTesting, POST.brandGuidelines],
+    relatedServices: ["Social Media & Email", "Video Editing & Ads", "Branding & Design"],
+  },
+  "social-media-and-ad-creative-collection": {
+    process: [
+      {
+        title: "Start from the brand",
+        body: "Each piece begins with the brand's existing colors, fonts and tone, so it fits the feed it will sit in.",
+      },
+      {
+        title: "Pick one message",
+        body: "A product, an offer, a customer review or a tip. One message per design keeps it readable in a second.",
+      },
+      {
+        title: "Choose the format",
+        body: "Bold headline over a product shot, review cards, lifestyle scenes or simple educational layouts, whichever carries the message best.",
+      },
+      {
+        title: "Size for the placement",
+        body: "Designs are sized for feed and story placements on Meta, Instagram and TikTok.",
+      },
+    ],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Meta ad specs", "TikTok ad specs"],
+    whyItMatters:
+      "Brands and agencies rarely need one perfect post. They need a steady supply of on-brand designs across products and campaigns. This collection shows the range we can cover for a single brand or for an agency's roster.",
+    faqs: [
+      {
+        q: "Do you work with agencies as a white-label design partner?",
+        a: "Yes. We produce social posts and ad creatives under an agency's name for its clients, in the agency's workflow and approval process.",
+      },
+      {
+        q: "How quickly can you turn around a batch of creatives?",
+        a: "It depends on the number of designs and how complete the brief is. We agree a schedule up front, usually as weekly or monthly batches.",
+      },
+    ],
+    relatedReading: [POST.whiteLabelCreative, POST.beautyCreative, POST.outsourceDesign],
+    relatedServices: ["Social Media & Email", "Branding & Design", "Video Editing & Ads"],
+  },
+  "brand-identity-design-collection": {
+    process: [
+      {
+        title: "Define the system",
+        body: "A primary mark, a small palette, one or two typefaces and a few rules for using them together.",
+      },
+      {
+        title: "Test it on real items",
+        body: "We apply the identity to what the business will actually use: cups, bags, packaging, business cards, apparel, signage and screens.",
+      },
+      {
+        title: "Present it on one board",
+        body: "Mark, palette, type and mockups sit together on a single board, so a founder can judge the whole identity at once.",
+      },
+      {
+        title: "Refine and hand over",
+        body: "After feedback, we refine the chosen direction and prepare the files the business needs to use it.",
+      },
+    ],
+    technologies: [
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "Product and merchandise mockups",
+      "Color and type systems",
+    ],
+    whyItMatters:
+      "An identity is judged where customers meet it: on a cup, a bag or a phone screen, not on a white page. Showing the brand in use before launch helps a founder choose with confidence and avoids expensive changes after printing.",
+    faqs: [
+      {
+        q: "What is included in a brand identity project?",
+        a: "Usually a logo and wordmark, a color palette, typography, and mockups of the identity on the items your business uses. Brand guidelines can be added so your team applies it consistently.",
+      },
+      {
+        q: "Do you work with startups in the US, UK and Europe?",
+        a: "Yes. Most of our identity work is done remotely with founders abroad, with calls at the key decision points.",
+      },
+      {
+        q: "Can you refresh an existing brand instead of starting over?",
+        a: "Yes. If the current identity still has recognition worth keeping, a refresh modernizes it without throwing that away.",
+      },
+    ],
+    relatedReading: [POST.identityProcess, POST.brandGuidelines, POST.rebrandVsRefresh],
+    relatedServices: ["Branding & Design", "Website Development", "Social Media & Email"],
+  },
+  "logo-design-folio": {
+    process: [
+      {
+        title: "Several directions",
+        body: "We sketch a range of ideas before settling on one, so the choice is between real options.",
+      },
+      {
+        title: "Built to work small",
+        body: "The chosen mark is simplified until it reads as a small icon and in a single color.",
+      },
+      {
+        title: "Hand-adjusted letterforms",
+        body: "Spacing and letter shapes are adjusted by hand, so the wordmark feels like one piece rather than typed text.",
+      },
+      {
+        title: "Shown in brand color",
+        body: "Each logo is presented on its brand color, the way customers will first see it.",
+      },
+    ],
+    technologies: ["Adobe Illustrator", "Vector artwork", "Custom lettering"],
+    whyItMatters:
+      "A logo shows up everywhere a business does, from a profile picture to an invoice. A mark that stays clear at small sizes saves redesign costs later and keeps the brand recognizable on every channel.",
+    faqs: [
+      {
+        q: "How much does a logo cost?",
+        a: "It depends on the number of concepts, revisions and files you need. Our guide to logo pricing in the US, UK and Europe breaks down typical ranges.",
+      },
+      {
+        q: "What files do I get?",
+        a: "Vector files for print and signage, plus PNG and SVG versions for web and social, in full color and one color.",
+      },
+    ],
+    relatedReading: [POST.logoCost, POST.identityProcess, POST.brandGuidelines],
+    relatedServices: ["Branding & Design", "Social Media & Email"],
+  },
+  "vip-talking-head-videos": {
+    process: [
+      {
+        title: "Find the hook",
+        body: "We watch the full take and move the strongest line to the opening, so viewers get a reason to stay in the first second.",
+      },
+      {
+        title: "Tighten the take",
+        body: "Pauses, restarts and filler are cut out, leaving a clean, fast delivery.",
+      },
+      {
+        title: "Text and motion",
+        body: "On-screen text and motion graphics carry the key ideas for people watching with the sound off.",
+      },
+      {
+        title: "Keep it moving",
+        body: "Zooms, pacing changes and b-roll give a single-camera video visual variety, then we export in 9:16.",
+      },
+    ],
+    technologies: [
+      "Adobe Premiere Pro",
+      "Adobe After Effects",
+      "Instagram Reels",
+      "TikTok",
+      "YouTube Shorts",
+    ],
+    whyItMatters:
+      "For founders, coaches and personal brands, short talking-head videos are one of the most direct ways to build trust with an audience. Handing off the edit means they can post regularly without spending their evenings in an editing app.",
+    faqs: [
+      {
+        q: "What do I need to send you?",
+        a: "Your raw vertical footage, filmed on a phone or camera, plus your logo, fonts and any examples of edits you like. We handle the cut, text, motion graphics and exports.",
+      },
+      {
+        q: "Can you edit videos for me every week?",
+        a: "Yes. Many founders and coaches work with us on a monthly retainer with a set number of videos, which keeps the style consistent and the turnaround predictable.",
+      },
+      {
+        q: "Do you add captions?",
+        a: "Yes. On-screen text and captions are part of the edit, so the video still works when people watch without sound.",
+      },
+    ],
+    relatedReading: [POST.coachRetainers, POST.outsourceVideo, POST.metaTesting],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
+  },
+  "ugc-video-ads": {
+    process: [
+      {
+        title: "Hook first",
+        body: "Each ad opens on a question, a problem or a surprising visual before any branding appears.",
+      },
+      {
+        title: "Show the product early",
+        body: "Close-ups of the product in use come in the first seconds, not at the end.",
+      },
+      {
+        title: "Text for sound-off viewing",
+        body: "On-screen text states the main benefit, so the ad works for people scrolling with the sound off.",
+      },
+      {
+        title: "One call to action",
+        body: "Each ad ends with a single next step, and is exported in 9:16 for Meta, Instagram and TikTok placements.",
+      },
+    ],
+    technologies: [
+      "Adobe Premiere Pro",
+      "Adobe After Effects",
+      "Meta ad specs",
+      "TikTok ad specs",
+      "9:16 video",
+    ],
+    whyItMatters:
+      "UGC-style ads are a staple for DTC and e-commerce brands because they look like the content people already watch. The edit decides whether that footage becomes an ad that sells one clear idea or just another clip.",
+    faqs: [
+      {
+        q: "Do you supply the creators, or edit footage we already have?",
+        a: "We edit footage you provide, from your creators or your team. We can also write briefs and hook ideas to give to creators before they film.",
+      },
+      {
+        q: "Can you make several versions of one ad for testing?",
+        a: "Yes. We often cut one piece of footage into several versions with different hooks or openings, so you can test them against each other.",
+      },
+    ],
+    relatedReading: [POST.ugcAds, POST.metaTesting, POST.productVideo],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "WordPress & Shopify"],
+  },
+  "cash-cow-youtube-videos": {
+    process: [
+      {
+        title: "Edit to the narration",
+        body: "Each line of the script gets matching footage, a graphic or animated text, so the picture always supports what is being said.",
+      },
+      {
+        title: "Change the view often",
+        body: "With no presenter on screen, new visuals every few seconds keep attention through the whole video.",
+      },
+      {
+        title: "Sound design",
+        body: "Music and sound effects set the pace and mark key moments.",
+      },
+      {
+        title: "Exports for long and short",
+        body: "Main videos are exported in 16:9 for YouTube, with vertical cuts reframed for Shorts.",
+      },
+    ],
+    technologies: ["Adobe Premiere Pro", "Adobe After Effects", "YouTube", "YouTube Shorts"],
+    whyItMatters:
+      "Faceless channels live on publishing consistently. A reliable editor who can turn narration into watchable videos on schedule is what lets a channel owner focus on topics and scripts instead of the timeline.",
+    faqs: [
+      {
+        q: "What is a cash cow or faceless YouTube channel?",
+        a: "A channel where no presenter appears on camera. Videos are built from narration, footage, graphics and text, which makes them easier to produce on a regular schedule.",
+      },
+      {
+        q: "Can you also cut Shorts from the main videos?",
+        a: "Yes. We reframe the strongest moments into 9:16 Shorts alongside the main 16:9 upload.",
+      },
+      {
+        q: "Do you write the scripts?",
+        a: "This work covered the edit. We can work from your script and voiceover, or discuss scripting as a separate service.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.coachRetainers, POST.whiteLabelCreative],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email"],
   },
 };
 

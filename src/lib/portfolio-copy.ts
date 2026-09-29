@@ -1,5 +1,15 @@
 import { bookCoverAssets } from "@/assets/book-cover-assets";
-import { warnOnUnknownSlugs, type PortfolioItem } from "@/lib/portfolio-data";
+import { getItemBySlug, warnOnUnknownSlugs, type PortfolioItem } from "@/lib/portfolio-data";
+
+/**
+ * How many pieces a collection shows, read from its data, so the copy stays
+ * right when a numbered file is removed from the list.
+ */
+function pieces(slug: string, noun: string): string {
+  const item = getItemBySlug(slug);
+  const n = item?.videos?.length ?? item?.images?.length ?? 0;
+  return `${n} ${noun}`;
+}
 
 /**
  * Per-project narrative copy for portfolio detail pages.
@@ -175,6 +185,251 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
       "Title and author typography",
       "Alternate cover versions",
       "Hardcover, paperback and e-book mockups",
+    ],
+  },
+
+  /*
+   * Design and video collections. These are not named case studies: no client
+   * names, no results we can't show. Counts come from the data via pieces().
+   */
+  "healthcare-meta-ad-creatives": {
+    metaTitle: "Healthcare Meta ad creatives for clinics | Pixel2Tech",
+    metaDescription:
+      "Static Meta ad designs for clinics and hospitals: knee, foot and nerve pain, ENT, hearing, heart health, dental and supplements, easy to read on a phone.",
+    summary: "Static Meta ad designs for clinics, hospitals and health brands.",
+    overview:
+      "A set of static ad designs for clinics, hospitals and health brands, made for Meta, Instagram and Facebook. They cover foot and ankle pain, knee pain, nerve pain, ENT, heart health, a hearing day event, dental care and supplements, as both offer ads and patient awareness posts.",
+    challenge:
+      "A patient scrolling past a health ad gives it a second or two. In that time the ad has to name the problem, show who can help and say what to do next, without sounding alarming or promising more than a clinic can deliver. Meta also reviews health ads closely, so every line has to stay factual.",
+    approach:
+      "Each design leads with the condition or the question a patient is already asking, such as whether knee pain can be treated without surgery. Below that sits one short supporting point and one call to action: call, book or visit. We used clean medical imagery, a strict type hierarchy and each clinic's own colors, and kept the text short enough to read on a phone.",
+    outcome:
+      "The set shows how we handle patient-facing creative for regulated categories: clear, calm designs across several treatment areas, each with a single next step.",
+    results: [
+      {
+        label: "In this set",
+        value: pieces("healthcare-meta-ad-creatives", "static ad designs"),
+      },
+      { label: "Treatment areas", value: "Pain, ENT, hearing, heart, dental, supplements" },
+      { label: "Made for", value: "Meta, Instagram and Facebook feeds" },
+    ],
+    deliverables: [
+      "Static Meta ad designs",
+      "Patient awareness posts",
+      "Square and 4:5 feed sizes",
+      "Each clinic's colors and logo applied",
+    ],
+  },
+  "food-and-drink-social-media-creatives": {
+    metaTitle: "Food and drink social media creatives | Pixel2Tech",
+    metaDescription:
+      "Social media posts for cafes, juice bars, coffee brands, bakeries and restaurants: best sellers, menu items and offers, made for Instagram and Facebook.",
+    summary: "Social posts for cafes, juice bars, coffee brands, bakeries and restaurants.",
+    overview:
+      "Social media posts for food and drink businesses: cafes, juice and smoothie brands, coffee brands, bakeries and restaurants. The set covers best sellers, menu items, new products and offers, made for Instagram and Facebook feeds.",
+    challenge:
+      "Food sells on appetite, and every feed is full of it. Each post had to make the product look worth ordering at thumbnail size, carry the brand's own look, and fit a menu or offer message without covering the food.",
+    approach:
+      "We let the product do most of the work: bold crops, warm light and one clear focal point, with type kept to a headline and a short supporting line. Names, prices and calls to action sit in a consistent place, so followers learn where to look. Each brand kept its own palette and fonts.",
+    outcome:
+      "The set shows how we keep food and drink posts on-brand across very different businesses, from a juice bar to a sit-down restaurant.",
+    results: [
+      {
+        label: "In this set",
+        value: pieces("food-and-drink-social-media-creatives", "social media designs"),
+      },
+      { label: "Business types", value: "Cafes, juice, coffee, bakery, restaurants" },
+      { label: "Made for", value: "Instagram and Facebook feeds" },
+    ],
+    deliverables: [
+      "Product and best-seller posts",
+      "Menu and offer posts",
+      "Portrait and square feed sizes",
+      "Each brand's colors and type applied",
+    ],
+  },
+  "skin-care-social-media-creatives": {
+    metaTitle: "Skin care social media creatives | Pixel2Tech",
+    metaDescription:
+      "Social media posts for skin care brands: product launches, step-by-step routine guides and bold product hero shots, made for Instagram and Meta ads.",
+    summary: "Product launch, routine and product hero posts for skin care brands.",
+    overview:
+      "Social media designs for skin care brands, made for Instagram, Facebook and Meta ad placements. The set includes product launch posts, step-by-step routine guides and product hero shots, such as sunscreen shown in a lifestyle scene.",
+    challenge:
+      "Skin care buyers compare products closely and distrust hype. A post has to show the product clearly, explain what it does in plain words, and still stop the scroll in a category where most feeds look the same.",
+    approach:
+      "We gave every post one job: launch a product, explain a routine, or show one product up close. Product shots sit large and sharp, with a short headline and a few labels rather than paragraphs. Routine posts use arrows and callouts so the steps read at a glance. Colors follow each brand, with lifestyle scenes where they help the product feel real.",
+    outcome:
+      "The set shows a range of skin care formats, from bold launch posts to calm routine guides, that a brand can mix into one consistent feed.",
+    results: [
+      {
+        label: "In this set",
+        value: pieces("skin-care-social-media-creatives", "social media designs"),
+      },
+      { label: "Post types", value: "Launches, routines, product heroes" },
+      { label: "Made for", value: "Instagram, Facebook and Meta ads" },
+    ],
+    deliverables: [
+      "Product launch posts",
+      "Routine and how-to guides",
+      "Product hero posts",
+      "Portrait feed sizes",
+    ],
+  },
+  "social-media-and-ad-creative-collection": {
+    metaTitle: "Social media and ad creative collection | Pixel2Tech",
+    metaDescription:
+      "A wide collection of social media posts and ad creatives for beauty, skin care, fashion, apparel and lifestyle brands, made for Meta, Instagram and TikTok.",
+    summary: "Social posts and ad creatives for beauty, fashion and lifestyle brands.",
+    overview:
+      "A broad collection of social media posts and static ad creatives across many industries, including beauty and skin care, fashion and apparel, and fitness and lifestyle brands. The designs were made for Meta, Instagram, Facebook and TikTok.",
+    challenge:
+      "Every industry has its own visual habits, and every brand has its own rules. The work had to fit each brand's identity and each platform's format, while still giving the viewer a reason to stop.",
+    approach:
+      "We start each piece from the brand's existing look and one message: a product, an offer, a review or a tip. From there we choose the format that carries it best, whether a bold headline over a product shot, a review card layout or a simple educational post, and size it for the feed it runs in.",
+    outcome:
+      "The collection gives a quick read on our range: many industries and formats, each one kept to its brand's style.",
+    results: [
+      {
+        label: "In this set",
+        value: pieces("social-media-and-ad-creative-collection", "posts and ad creatives"),
+      },
+      { label: "Industries", value: "Beauty, fashion, fitness, lifestyle" },
+      { label: "Made for", value: "Meta, Instagram, Facebook and TikTok" },
+    ],
+    deliverables: [
+      "Social media posts",
+      "Static ad creatives",
+      "Offer and product layouts",
+      "Portrait, square and story sizes",
+    ],
+  },
+  "brand-identity-design-collection": {
+    metaTitle: "Brand identity design collection | Pixel2Tech",
+    metaDescription:
+      "Brand identity boards for food, coffee, retail, tech and agency brands: logos, color palettes, typography, and merchandise and packaging mockups.",
+    summary: "Logos, palettes, type and mockups for food, coffee, retail, tech and agency brands.",
+    overview:
+      "A collection of brand identity boards for food, coffee, retail, tech and agency brands. Each board presents a logo with its color palette and typefaces, then shows the identity applied to real items: cups, bags, packaging, business cards, apparel and signage.",
+    challenge:
+      "A logo on a white page tells a founder very little. They need to see how the identity behaves on a cup, a box, a shirt and a phone screen before they commit to it, and the system has to stay recognizable on all of them.",
+    approach:
+      "We build each identity as a small system: a primary mark, a simple palette, one or two typefaces and a few rules for using them. Then we test it on the items the business will actually use, from takeaway cups to hard hats, and present the whole set on one board so the decision is easy to make.",
+    outcome:
+      "The collection shows identity systems for many kinds of business, each presented the way a founder needs to see it: the mark, the palette, the type and the brand in use.",
+    results: [
+      {
+        label: "In this set",
+        value: pieces("brand-identity-design-collection", "identity boards"),
+      },
+      { label: "Sectors", value: "Food, coffee, retail, tech, agencies" },
+      { label: "Each board shows", value: "Logo, palette, type and mockups" },
+    ],
+    deliverables: [
+      "Logo and wordmark",
+      "Color palette",
+      "Typography pairing",
+      "Merchandise and packaging mockups",
+    ],
+  },
+  "logo-design-folio": {
+    metaTitle: "Logo design folio | Pixel2Tech",
+    metaDescription:
+      "A folio of logo designs by Pixel2Tech: wordmarks and combination marks for creative agencies, marketing firms and wellness brands, shown on brand colors.",
+    summary: "Wordmarks and combination marks for agencies and wellness brands.",
+    overview:
+      "A short folio of logo designs: wordmarks and combination marks for creative agencies, marketing firms and wellness brands. Each logo is shown on its brand color.",
+    challenge:
+      "A logo has to work at every size, from a favicon to a sign, and in one color as well as full color. It also has to say something about the business without trying to say everything.",
+    approach:
+      "We sketch several directions, then narrow to the one that stays clear when it is small, flat and seen for a second. Letterforms are adjusted by hand, and a small symbol, such as a light bulb or a leaf, carries the idea so the name can stay simple.",
+    outcome:
+      "The folio shows a range of marks, each built to stay legible and recognizable at small sizes.",
+    results: [
+      { label: "In this folio", value: pieces("logo-design-folio", "logo designs") },
+      { label: "Mark types", value: "Wordmarks and combination marks" },
+      { label: "Shown on", value: "Each brand's own color" },
+    ],
+    deliverables: [
+      "Logo concepts",
+      "Final logo and wordmark",
+      "One-color and full-color versions",
+      "Presentation boards",
+    ],
+  },
+  "vip-talking-head-videos": {
+    metaTitle: "Talking-head video editing for founders | Pixel2Tech",
+    metaDescription:
+      "Vertical talking-head videos edited for founders, coaches and personal brands: tight cuts, on-screen text and motion graphics for Reels, TikTok and Shorts.",
+    summary: "Vertical talking-head videos edited for founders, coaches and personal brands.",
+    overview:
+      "Vertical talking-head videos we edited for founders, coaches and personal brands. The speaker films to camera; we turn the raw take into a short video with a strong opening, tight cuts, on-screen text and motion graphics, made for Instagram Reels, TikTok and YouTube Shorts.",
+    challenge:
+      "A founder talking to camera is only as good as the edit. Raw takes have pauses, restarts and slow openings, and on a vertical feed the viewer decides in the first second or two whether to keep watching.",
+    approach:
+      "We cut each take down to the point, remove dead air and restarts, and move the strongest line to the opening. On-screen text and motion graphics carry the key ideas for people watching without sound, and pacing changes, zooms and b-roll keep a single-camera video moving.",
+    outcome:
+      "The result is a set of short, consistent videos that let a founder post regularly without editing themselves, in a style viewers can recognize.",
+    results: [
+      { label: "In this set", value: pieces("vip-talking-head-videos", "vertical videos") },
+      { label: "Format", value: "9:16 talking head" },
+      { label: "Made for", value: "Instagram Reels, TikTok, YouTube Shorts" },
+    ],
+    deliverables: [
+      "Edited vertical videos",
+      "Hook-first structure",
+      "On-screen text and motion graphics",
+      "9:16 exports",
+    ],
+  },
+  "ugc-video-ads": {
+    metaTitle: "UGC video ads for DTC brands | Pixel2Tech",
+    metaDescription:
+      "Vertical UGC-style video ads edited for DTC and e-commerce brands: creator footage, product close-ups and on-screen hooks for Meta, Instagram and TikTok.",
+    summary: "Vertical UGC-style video ads for DTC and e-commerce brands.",
+    overview:
+      "Vertical video ads in the user-generated style, edited for DTC and e-commerce brands. They combine creator footage, product close-ups, on-screen text and motion graphics, and were made for Meta, Instagram and TikTok placements.",
+    challenge:
+      "UGC ads work because they feel native to the feed, not like a commercial. The edit has to keep that natural feel while still landing a clear hook, showing the product properly and ending on one call to action, all inside a few seconds of attention.",
+    approach:
+      "We open on the hook, a question, a problem or a surprising visual, before any branding. The product appears early and up close, on-screen text states the main benefit for sound-off viewers, and cuts follow the creator's delivery rather than a fixed template. Each ad ends with one clear next step.",
+    outcome:
+      "The set shows how we edit UGC-style ads that feel native to the feed while still selling one clear idea.",
+    results: [
+      { label: "In this set", value: pieces("ugc-video-ads", "vertical video ads") },
+      { label: "Format", value: "9:16 UGC-style ads" },
+      { label: "Made for", value: "Meta, Instagram and TikTok" },
+    ],
+    deliverables: [
+      "Edited UGC video ads",
+      "Hooks and on-screen text",
+      "Product close-up sequences",
+      "9:16 exports",
+    ],
+  },
+  "cash-cow-youtube-videos": {
+    metaTitle: "Faceless YouTube video editing | Pixel2Tech",
+    metaDescription:
+      "Faceless YouTube videos edited for cash cow channels: footage, animated text, sound design and pacing for 16:9 uploads, plus vertical cuts for Shorts.",
+    summary: "Faceless YouTube videos edited for cash cow channels, plus vertical cuts.",
+    overview:
+      "Videos edited for faceless YouTube channels, often called cash cow channels, where no presenter appears on screen. Most are 16:9 uploads that pair narration with footage, animated text and sound effects, with a few vertical cuts for Shorts.",
+    challenge:
+      "Without a face on screen, the edit carries the whole video. Every few seconds the viewer needs something new to look at, and the visuals have to match the voiceover closely, or people click away.",
+    approach:
+      "We build the edit on the narration: each line gets matching footage, animated text or a graphic, with sound effects and music to set the pace. Key numbers and phrases appear as bold on-screen text. For vertical cuts, we reframe the strongest moment for Shorts.",
+    outcome:
+      "The set shows the kind of steady, fast-paced edits faceless channels need to publish on a regular schedule.",
+    results: [
+      { label: "In this set", value: pieces("cash-cow-youtube-videos", "videos") },
+      { label: "Formats", value: "16:9 uploads and 9:16 Shorts" },
+      { label: "Made for", value: "YouTube and YouTube Shorts" },
+    ],
+    deliverables: [
+      "Edited faceless videos",
+      "Footage and b-roll selection",
+      "Animated text and sound design",
+      "16:9 and 9:16 exports",
     ],
   },
 };

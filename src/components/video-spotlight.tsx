@@ -1,6 +1,12 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import { Pause, Play } from "lucide-react";
+import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 import { CarouselControls, CarouselShell, loopOffset } from "@/components/coverflow-3d";
+import {
+  PROTECTED_VIDEO_PROPS,
+  claimVideoSound,
+  onVideoSoundClaimed,
+  prefersReducedMotion,
+} from "@/lib/video-sound";
 
 export type SpotlightVideo = {
   src: string;
@@ -23,7 +29,11 @@ const stageStyle = {
 /**
  * Vertical video slider for case studies. The active video is always centred,
  * visitors can swipe, use the buttons or (while focused) the arrow keys, and
- * the slideshow pauses on hover, focus, touch, playback or when off-screen.
+ * the slideshow pauses on hover, focus, touch, sound playback or when off-screen.
+ *
+ * The active slide runs a muted, looping preview while the carousel is on
+ * screen. Its button restarts it from the beginning with sound; pressing it
+ * again returns to the muted preview. Only one video on the page has sound.
  */
 export function VideoSpotlight({
   videos,
@@ -33,44 +43,85 @@ export function VideoSpotlight({
   label?: string;
 }) {
   const count = videos.length;
+  const ownerId = useId();
   const [index, setIndex] = useState(0);
-  const [playingSrc, setPlayingSrc] = useState<string | null>(null);
-  // Off until mounted, so the server render and reduced-motion visitors get no auto-advance.
+  /** The video playing from the start with sound, if any. */
+  const [soundSrc, setSoundSrc] = useState<string | null>(null);
+  // Off until mounted, so the server render and reduced-motion visitors get no
+  // auto-advance and no muted preview.
   const [autoplay, setAutoplay] = useState(false);
+  const [motionOK, setMotionOK] = useState(false);
   const [held, setHeld] = useState(false);
   const [inView, setInView] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
   const rootRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef(new Map<string, HTMLVideoElement>());
 
   useEffect(() => {
-    setAutoplay(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const motion = !prefersReducedMotion();
+    setAutoplay(motion);
+    setMotionOK(motion);
+    const updateVisibility = () => setPageVisible(!document.hidden);
+    updateVisibility();
+    document.addEventListener("visibilitychange", updateVisibility);
     const el = rootRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return () => document.removeEventListener("visibilitychange", updateVisibility);
+    }
     const io = new IntersectionObserver(([entry]) => setInView(!!entry?.isIntersecting), {
       threshold: 0.25,
     });
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", updateVisibility);
+    };
   }, []);
+
+  // Another player on the page took the sound: back to the muted preview.
+  useEffect(
+    () =>
+      onVideoSoundClaimed((owner) => {
+        if (owner !== ownerId) setSoundSrc(null);
+      }),
+    [ownerId],
+  );
+
+  const activeSrc = videos[index]?.src;
+
+  // The active slide runs a muted, looping preview while the carousel is on
+  // screen; every other slide is paused. A video playing with sound is left alone.
+  useEffect(() => {
+    if (soundSrc && (soundSrc !== activeSrc || !inView || !pageVisible)) {
+      setSoundSrc(null);
+      return;
+    }
+    videoRefs.current.forEach((v, src) => {
+      if (src === soundSrc) return;
+      v.muted = true;
+      v.loop = true;
+      if (src === activeSrc && motionOK && inView && pageVisible) {
+        void v.play().catch(() => undefined);
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }, [activeSrc, soundSrc, motionOK, inView, pageVisible]);
 
   const select = useCallback(
     (next: number) => {
-      const i = ((next % count) + count) % count;
-      setIndex(i);
-      const activeSrc = videos[i]?.src;
-      videoRefs.current.forEach((v, src) => {
-        if (src !== activeSrc) v.pause();
-      });
+      setIndex(((next % count) + count) % count);
     },
-    [count, videos],
+    [count],
   );
 
   // Timer restarts on every slide change, so manual navigation never skips ahead.
   useEffect(() => {
-    if (!autoplay || held || !inView || playingSrc || count < 2) return;
+    if (!autoplay || held || !inView || soundSrc || count < 2) return;
     const id = window.setTimeout(() => select(index + 1), AUTO_ADVANCE_MS);
     return () => window.clearTimeout(id);
-  }, [autoplay, held, inView, playingSrc, count, index, select]);
+  }, [autoplay, held, inView, soundSrc, count, index, select]);
 
   if (count === 0) return null;
 
@@ -80,15 +131,32 @@ export function VideoSpotlight({
     select(index + dir);
   };
 
-  const toggleVideo = (src: string) => {
+  const toggleSound = (src: string) => {
     const v = videoRefs.current.get(src);
     if (!v) return;
-    if (v.paused) {
-      setAutoplay(false);
-      void v.play();
-    } else {
-      v.pause();
+    if (soundSrc === src) {
+      // Back to the muted preview (or the still frame with reduced motion).
+      v.muted = true;
+      v.loop = true;
+      if (!motionOK) v.pause();
+      setSoundSrc(null);
+      return;
     }
+    // From the start, with sound. play() must run inside the click for iOS.
+    setAutoplay(false);
+    claimVideoSound(ownerId);
+    v.loop = false;
+    v.muted = false;
+    try {
+      v.currentTime = 0;
+    } catch {
+      // Not seekable yet; it starts from 0 anyway.
+    }
+    setSoundSrc(src);
+    void v.play().catch(() => {
+      v.muted = true;
+      setSoundSrc(null);
+    });
   };
 
   const active = videos[index]!;
@@ -113,7 +181,7 @@ export function VideoSpotlight({
             // Only the active video and two on each side are mounted.
             if (abs > 2) return null;
             const isActive = offset === 0;
-            const isPlaying = playingSrc === video.src;
+            const withSound = soundSrc === video.src;
             return (
               <div
                 key={video.src}
@@ -131,7 +199,12 @@ export function VideoSpotlight({
                   opacity: isActive ? 1 : abs === 1 ? 0.5 : 0.25,
                 }}
               >
-                <div className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-muted shadow-xl">
+                <div
+                  data-protect=""
+                  className={`relative aspect-[9/16] overflow-hidden rounded-2xl border bg-muted shadow-xl ${
+                    withSound ? "border-primary ring-2 ring-primary" : "border-border"
+                  }`}
+                >
                   <video
                     ref={(el) => {
                       if (el) videoRefs.current.set(video.src, el);
@@ -139,33 +212,53 @@ export function VideoSpotlight({
                     }}
                     // The #t fragment makes iOS Safari paint the first frame as a poster.
                     src={`${video.src}#t=0.1`}
+                    muted
                     playsInline
                     loop
                     preload="metadata"
-                    onPlay={() => setPlayingSrc(video.src)}
-                    onPause={() => setPlayingSrc((s) => (s === video.src ? null : s))}
+                    tabIndex={-1}
+                    onEnded={() => {
+                      // Finished with sound: back to the muted preview.
+                      if (soundSrc === video.src) setSoundSrc(null);
+                    }}
+                    {...PROTECTED_VIDEO_PROPS}
                     className="h-full w-full object-cover"
                   />
                   {isActive && (
                     <button
                       type="button"
-                      onClick={() => toggleVideo(video.src)}
+                      onClick={() => toggleSound(video.src)}
                       aria-label={
-                        isPlaying ? `Pause video: ${video.title}` : `Play video: ${video.title}`
+                        withSound ? `Mute: ${video.title}` : `Play with sound: ${video.title}`
                       }
                       className="group absolute inset-0 flex items-center justify-center focus-visible:outline-none"
                     >
                       <span
                         aria-hidden="true"
                         className={`flex h-14 w-14 items-center justify-center rounded-full bg-background/95 text-foreground shadow-2xl ring-1 ring-border/40 transition group-focus-visible:opacity-100 group-focus-visible:ring-2 group-focus-visible:ring-ring ${
-                          isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                          withSound ? "opacity-0 group-hover:opacity-100" : "opacity-100"
                         }`}
                       >
-                        {isPlaying ? (
-                          <Pause className="h-5 w-5" />
+                        {withSound ? (
+                          <VolumeX className="h-5 w-5" />
                         ) : (
                           <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
                         )}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-full px-2 py-1 text-[11px] font-semibold leading-none ${
+                          withSound
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-black/65 text-white"
+                        }`}
+                      >
+                        {withSound ? (
+                          <Volume2 className="h-3.5 w-3.5" />
+                        ) : (
+                          <VolumeX className="h-3.5 w-3.5" />
+                        )}
+                        {withSound ? "Sound on" : "Play with sound"}
                       </span>
                     </button>
                   )}

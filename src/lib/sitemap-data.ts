@@ -26,7 +26,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
   "/services": "2026-08-01",
-  "/portfolio": "2026-08-01",
+  "/portfolio": "2026-09-28",
   "/contact": "2026-08-01",
   "/privacy-policy": "2026-09-27",
   "/terms-and-conditions": "2026-09-27",
@@ -117,12 +117,15 @@ export function imageEntries(): SitemapEntry[] {
     if (img) rows.push({ path: `/blog/${p.slug}`, lastmod: postLastmod(p), images: [img] });
   }
   for (const i of ALL_ITEMS) {
-    const img = absolute(i.img);
-    if (img)
+    // Cover first, then the project's own gallery, without duplicates.
+    const images = [...new Set([i.img, ...(i.images ?? [])].map(absolute))].filter(
+      (src): src is string => Boolean(src),
+    );
+    if (images.length > 0)
       rows.push({
         path: `/portfolio/${i.slug}`,
         lastmod: STATIC_LASTMOD["/portfolio"],
-        images: [img],
+        images,
       });
   }
   return rows;

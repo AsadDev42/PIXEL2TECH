@@ -16,6 +16,7 @@ import { Faq, faqJsonLd } from "@/components/faq";
 import { BookCarousel } from "@/components/book-carousel";
 import { Coverflow3D } from "@/components/coverflow-3d";
 import { VideoSpotlight, type SpotlightVideo } from "@/components/video-spotlight";
+import { VideoWall } from "@/components/video-wall";
 import { bookCoverAssets, type BookCover } from "@/assets/book-cover-assets";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { classifyLegacyPath } from "@/lib/legacy-urls";
@@ -84,6 +85,23 @@ const PROJECT_VIDEOS: Record<string, SpotlightVideo[]> = {
     { src: madluvvVideo13.url, title: "How to actually romanticise your life" },
     { src: madluvvVideo14.url, title: "Which brow shape is your favourite?" },
   ],
+};
+
+/** Heading and intro above the video wall of projects that carry `videos`. */
+const VIDEO_WALL_COPY: Record<string, { heading: string; intro: string }> = {
+  "vip-talking-head-videos": {
+    heading: "Talking-head videos",
+    intro: "Vertical talking-head videos edited for founders, coaches and personal brands.",
+  },
+  "ugc-video-ads": {
+    heading: "UGC video ads",
+    intro: "Vertical ads in the user-generated style, made for Meta, Instagram and TikTok.",
+  },
+  "cash-cow-youtube-videos": {
+    heading: "Faceless YouTube videos",
+    intro:
+      "Videos edited for faceless YouTube channels: mostly 16:9 uploads, plus a few vertical cuts.",
+  },
 };
 
 function categoryLinkSearch(category: string) {
@@ -278,9 +296,37 @@ function BookShowcase({ covers }: { covers: BookCover[] }) {
   );
 }
 
+/**
+ * Every image of a large collection in a lazy-loaded grid. Fixed 4:5 cells
+ * with object-contain on a neutral background: no layout shift while images
+ * load, and portrait (9:16) or square pieces are shown whole, never cropped.
+ */
+function ImageCollection({ item, images }: { item: PortfolioItem; images: string[] }) {
+  return (
+    <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+      {images.map((src, i) => (
+        <li key={src} className="overflow-hidden rounded-2xl border border-border bg-muted">
+          <img
+            src={src}
+            alt={`${item.title}, design ${i + 1} of ${images.length}`}
+            loading={i < 4 ? "eager" : "lazy"}
+            decoding="async"
+            draggable={false}
+            className="aspect-[4/5] h-auto w-full object-contain"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function CategoryShowcase({ item, images }: { item: PortfolioItem; images: string[] }) {
   const sub = item.subcategory;
   const all = [item.img, ...images];
+
+  if (item.showAllImages && item.images?.length) {
+    return <ImageCollection item={item} images={item.images} />;
+  }
 
   if (item.slug === BOOK_COVERS_SLUG) {
     return <BookShowcase covers={bookCoverAssets.items} />;
@@ -500,6 +546,8 @@ function PortfolioDetailPage() {
   const related = getRelated(item);
   const deliverables = copy.deliverables ?? getDeliverables(item);
   const videos = PROJECT_VIDEOS[item.slug] ?? [];
+  const wallVideos = item.videos ?? [];
+  const wallCopy = VIDEO_WALL_COPY[item.slug];
   const isNayyer = item.slug === NAYYER_SLUG;
 
   return (
@@ -564,13 +612,32 @@ function PortfolioDetailPage() {
         {/* The work */}
         <section aria-labelledby="work-title" className="bg-background py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-5 md:px-10">
-            <p className={eyebrow}>The work</p>
-            <h2 id="work-title" className={`mt-2 ${h2Class}`}>
-              {item.client ? `What we made for ${item.client}` : "What we made"}
-            </h2>
-            <div className="mt-8">
-              <CategoryShowcase item={item} images={gallery} />
-            </div>
+            {wallVideos.length > 0 ? (
+              <>
+                <p className={eyebrow}>Video content</p>
+                <h2 id="work-title" className={`mt-2 ${h2Class}`}>
+                  {wallCopy?.heading ?? "What we made"}
+                </h2>
+                <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
+                  {wallCopy?.intro ? `${wallCopy.intro} ` : ""}
+                  Previews play muted. Tap a video to watch it from the start with sound, and tap
+                  again to mute it.
+                </p>
+                <div className="mt-8">
+                  <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
+                </div>
+              </>
+            ) : (
+              <>
+                <p className={eyebrow}>The work</p>
+                <h2 id="work-title" className={`mt-2 ${h2Class}`}>
+                  {item.client ? `What we made for ${item.client}` : "What we made"}
+                </h2>
+                <div className="mt-8">
+                  <CategoryShowcase item={item} images={gallery} />
+                </div>
+              </>
+            )}
 
             {isNayyer && gallery.length > 0 && (
               <div className="mt-16 md:mt-24">
@@ -605,8 +672,8 @@ function PortfolioDetailPage() {
                 <p className={eyebrow}>Video content</p>
                 <h2 className={`mt-2 ${h2Class}`}>Short-form video creatives</h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
-                  Vertical videos made for organic social and paid campaigns. Tap a video to play it
-                  with sound.
+                  Vertical videos made for organic social and paid campaigns. The preview plays
+                  muted; tap the video to watch it from the start with sound.
                 </p>
                 <div className="mt-8">
                   <VideoSpotlight

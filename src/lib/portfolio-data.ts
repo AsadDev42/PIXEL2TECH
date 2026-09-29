@@ -3,6 +3,17 @@ import { swishtagAssets } from "@/assets/swishtag-assets";
 import { bookCoverAssets } from "@/assets/book-cover-assets";
 import { SITE } from "@/lib/site-config";
 
+export type VideoOrientation = "vertical" | "landscape";
+
+/** A self-hosted video with its poster frame, shown in the detail page's video wall. */
+export type PortfolioVideo = {
+  src: string;
+  poster: string;
+  /** Neutral label such as "Talking-head video 3". Never an invented topic. */
+  title: string;
+  orientation: VideoOrientation;
+};
+
 export type PortfolioItem = {
   title: string;
   img: string;
@@ -17,7 +28,111 @@ export type PortfolioItem = {
   images?: string[];
   /** Dedicated images for a 3D slider or special showcase. */
   slider?: string[];
+  /**
+   * Show every image in `images` as a lazy-loaded grid on the detail page,
+   * instead of the subcategory mockup (used for large design collections).
+   */
+  showAllImages?: boolean;
+  /** Self-hosted videos, shown as a video wall on the detail page. */
+  videos?: PortfolioVideo[];
 };
+
+/*
+ * Real collections live in public/portfolio/<slug>/ as numbered files (1.webp,
+ * 2.webp, ... or 1.mp4 + 1.jpg poster). The number lists below are written out
+ * in full on purpose: to hide one piece of work, delete its number.
+ */
+
+/** "/portfolio/<slug>/<n>.<ext>" for each number, in the order given. */
+function numbered(slug: string, numbers: number[], ext: "webp" | "jpg" | "png"): string[] {
+  return numbers.map((n) => `/portfolio/${slug}/${n}.${ext}`);
+}
+
+/**
+ * Numbered <n>.mp4 videos with <n>.jpg posters. The video wall shows each
+ * orientation in its own grid, so labels count 1, 2, 3... per orientation, in
+ * the order shown: removing a number never leaves a gap in the labels.
+ */
+function numberedVideos(
+  slug: string,
+  numbers: number[],
+  labels: Partial<Record<VideoOrientation, string>>,
+  orientation: VideoOrientation,
+  /** File numbers whose orientation differs from the default. */
+  exceptions: Partial<Record<VideoOrientation, number[]>> = {},
+): PortfolioVideo[] {
+  const counts: Record<VideoOrientation, number> = { vertical: 0, landscape: 0 };
+  return numbers.map((n) => {
+    const o: VideoOrientation = exceptions.vertical?.includes(n)
+      ? "vertical"
+      : exceptions.landscape?.includes(n)
+        ? "landscape"
+        : orientation;
+    counts[o] += 1;
+    return {
+      src: `/portfolio/${slug}/${n}.mp4`,
+      poster: `/portfolio/${slug}/${n}.jpg`,
+      title: `${labels[o] ?? labels[orientation] ?? "Video"} ${counts[o]}`,
+      orientation: o,
+    };
+  });
+}
+
+const HEALTHCARE_ADS = numbered(
+  "healthcare-meta-ad-creatives",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+  "webp",
+);
+const FOOD_AND_DRINK_POSTS = numbered(
+  "food-and-drink-social-media-creatives",
+  [1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 14, 15],
+  "webp",
+);
+const SKIN_CARE_POSTS = numbered(
+  "skin-care-social-media-creatives",
+  [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 14],
+  "webp",
+);
+const CREATIVE_COLLECTION = numbered(
+  "social-media-and-ad-creative-collection",
+  [
+    1, 2, 3, 5, 7, 8, 9, 11, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28, 29, 30, 32, 33, 34, 35,
+    36, 37, 38, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55, 56,
+  ],
+  "webp",
+);
+const BRAND_IDENTITY_BOARDS = numbered(
+  "brand-identity-design-collection",
+  [
+    1, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35,
+  ],
+  "webp",
+);
+const LOGO_DESIGNS = numbered("logo-design-folio", [2, 3, 4, 7, 8], "webp");
+
+const TALKING_HEAD_VIDEOS = numberedVideos(
+  "vip-talking-head-videos",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  { vertical: "Talking-head video" },
+  "vertical",
+);
+const UGC_VIDEO_ADS = numberedVideos(
+  "ugc-video-ads",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  { vertical: "UGC video ad" },
+  "vertical",
+);
+const CASH_COW_VIDEOS = numberedVideos(
+  "cash-cow-youtube-videos",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+  { landscape: "YouTube video", vertical: "Vertical YouTube video" },
+  "landscape",
+  { vertical: [2, 3] },
+);
+
+/** Projects pinned to the top of the /portfolio grid, in this order. */
+export const FEATURED_SLUGS: readonly string[] = ["vip-talking-head-videos"];
 
 export const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -99,6 +214,35 @@ const RAW: RawWork = {
         images: bookCoverAssets.covers,
       },
       {
+        slug: "healthcare-meta-ad-creatives",
+        title: "Healthcare Meta ad creatives",
+        // The knee pain ad (8) is portrait, so it fills the 4:5 grid card.
+        img: "/portfolio/healthcare-meta-ad-creatives/8.webp",
+        images: HEALTHCARE_ADS,
+        showAllImages: true,
+      },
+      {
+        slug: "food-and-drink-social-media-creatives",
+        title: "Food and drink social media creatives",
+        img: FOOD_AND_DRINK_POSTS[0]!,
+        images: FOOD_AND_DRINK_POSTS,
+        showAllImages: true,
+      },
+      {
+        slug: "skin-care-social-media-creatives",
+        title: "Skin care social media creatives",
+        img: SKIN_CARE_POSTS[0]!,
+        images: SKIN_CARE_POSTS,
+        showAllImages: true,
+      },
+      {
+        slug: "social-media-and-ad-creative-collection",
+        title: "Social media and ad creative collection",
+        img: CREATIVE_COLLECTION[0]!,
+        images: CREATIVE_COLLECTION,
+        showAllImages: true,
+      },
+      {
         title: "Cafe seasonal creatives",
         img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
@@ -108,6 +252,21 @@ const RAW: RawWork = {
       },
     ],
     Branding: [
+      {
+        slug: "brand-identity-design-collection",
+        title: "Brand identity design collection",
+        img: BRAND_IDENTITY_BOARDS[0]!,
+        images: BRAND_IDENTITY_BOARDS,
+        showAllImages: true,
+      },
+      {
+        slug: "logo-design-folio",
+        title: "Logo design folio",
+        // Portrait board (4), so it fills the 4:5 grid card.
+        img: "/portfolio/logo-design-folio/4.webp",
+        images: LOGO_DESIGNS,
+        showAllImages: true,
+      },
       {
         title: "Coffee house identity",
         img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1600&auto=format&fit=crop&fm=webp&q=75",
@@ -243,6 +402,12 @@ const RAW: RawWork = {
   "Video Editing": {
     "Short Form": [
       {
+        slug: "vip-talking-head-videos",
+        title: "Talking-head videos for founders and personal brands",
+        img: TALKING_HEAD_VIDEOS[0]!.poster,
+        videos: TALKING_HEAD_VIDEOS,
+      },
+      {
         title: "Brand reel series",
         img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&auto=format&fit=crop&fm=webp&q=75",
         video: "https://drive.google.com/file/d/1T0J1ANuSTaboPx3Jinx42P8yP3XEyDAb/preview",
@@ -270,6 +435,12 @@ const RAW: RawWork = {
     ],
     "Long Form": [
       {
+        slug: "cash-cow-youtube-videos",
+        title: "Faceless YouTube videos for cash cow channels",
+        img: CASH_COW_VIDEOS[0]!.poster,
+        videos: CASH_COW_VIDEOS,
+      },
+      {
         title: "Documentary edit",
         img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
@@ -295,6 +466,12 @@ const RAW: RawWork = {
       },
     ],
     Commercial: [
+      {
+        slug: "ugc-video-ads",
+        title: "UGC video ads",
+        img: UGC_VIDEO_ADS[0]!.poster,
+        videos: UGC_VIDEO_ADS,
+      },
       {
         title: "Facebook video ads",
         img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1600&auto=format&fit=crop&fm=webp&q=75",
@@ -428,9 +605,21 @@ export const WORK: Record<Category, Record<string, PortfolioItem[]>> = Object.fr
   ]),
 ) as Record<Category, Record<string, PortfolioItem[]>>;
 
-export const ALL_ITEMS: PortfolioItem[] = (Object.keys(WORK) as Category[]).flatMap((cat) =>
+const CATEGORY_ORDER: PortfolioItem[] = (Object.keys(WORK) as Category[]).flatMap((cat) =>
   Object.keys(WORK[cat]).flatMap((sub) => WORK[cat][sub]),
 );
+
+/**
+ * Every project in display order: FEATURED_SLUGS first, then the rest by
+ * category and subcategory as written in RAW. The /portfolio grid, its
+ * category filters and the ItemList JSON-LD all follow this order.
+ */
+export const ALL_ITEMS: PortfolioItem[] = [
+  ...FEATURED_SLUGS.map((slug) => CATEGORY_ORDER.find((i) => i.slug === slug)).filter(
+    (i): i is PortfolioItem => Boolean(i),
+  ),
+  ...CATEGORY_ORDER.filter((i) => !FEATURED_SLUGS.includes(i.slug)),
+];
 
 export function getItemBySlug(slug: string): PortfolioItem | undefined {
   return ALL_ITEMS.find((i) => i.slug === slug);
