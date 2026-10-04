@@ -2,17 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
 /**
- * Premium custom cursor with a strong hover state:
- *  - Small precise dot that snaps to the pointer
- *  - Soft trailing blob that follows with easing
- *  - On interactive elements: blob expands into a filled pill using
- *    mix-blend-mode: difference so it inverts against any background
- *  - Shrinks on click
- *  - Hidden on touch / coarse pointer devices
+ * Motion-graphics style cursor, like the pointer in explainer videos:
+ *  - Clean white arrow with a dark outline that glides after the pointer and
+ *    tilts a little in the direction of travel
+ *  - Turns into a pointing hand over links and buttons
+ *  - A ripple ring plays on every click
+ *  - A small "View" tag rides along over images and videos
+ *  - Hidden on touch / coarse pointers, small screens and reduced motion, and
+ *    over text fields so the real caret shows
  */
 export function CursorFollower() {
-  const blobRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const ripplesRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
   const showRef = useRef<(() => void) | null>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -22,7 +23,6 @@ export function CursorFollower() {
   useEffect(() => {
     showRef.current?.();
   }, [pathname]);
-
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,134 +37,65 @@ export function CursorFollower() {
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let blobX = mouseX;
-    let blobY = mouseY;
-    // Last values actually committed to the DOM, so we can skip redundant
-    // style writes (each write repaints the blend-mode layer).
-    let lastDotX = Number.NaN;
-    let lastDotY = Number.NaN;
-    let lastBlobX = Number.NaN;
-    let lastBlobY = Number.NaN;
+    let x = mouseX;
+    let y = mouseY;
+    let tilt = 0;
+    let last = "";
     let raf = 0;
     let running = false;
     let visible = false;
+    // Over a native text-entry surface the real caret shows instead.
+    let overNative = false;
 
     const setVisible = (v: boolean) => {
       visible = v;
-      if (blobRef.current) blobRef.current.style.opacity = v ? "1" : "0";
-      if (dotRef.current) dotRef.current.style.opacity = v ? "1" : "0";
+      if (rootRef.current) rootRef.current.style.opacity = v ? "1" : "0";
+    };
+
+    const setState = (key: "hover" | "media" | "down", on: boolean) => {
+      const el = rootRef.current;
+      const val = on ? "1" : "0";
+      if (el && el.dataset[key] !== val) el.dataset[key] = val;
     };
 
     showRef.current = () => {
       overNative = false;
-      const blob = blobRef.current;
-      if (blob) {
-        blob.dataset.media = "0";
-        blob.dataset.hover = "0";
-        blob.dataset.down = "0";
-        blob.dataset.native = "0";
-      }
+      setState("hover", false);
+      setState("media", false);
+      setState("down", false);
       setVisible(true);
     };
 
-
-
-
-    // Tracks whether the pointer is over a native text-entry surface, so
-    // onMove/onEnter don't re-show the blob while the real caret is showing.
-    let overNative = false;
-
-    const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!visible && !overNative) setVisible(true);
-      // Do NOT write styles here: mousemove can fire several times per frame on
-      // high-polling-rate mice. The rAF loop commits at display refresh rate.
-      start();
-    };
-
-    // Single DOM walk per mouseover instead of two, and only commit dataset
-    // changes when the state actually differs (dataset writes invalidate the
-    // mix-blend-mode layer and force a repaint).
     const MEDIA_SEL = 'a img, a picture, a video, [data-cursor="expand"]';
-    const INTERACTIVE_SEL = 'a, button, [role="button"], label, summary, [data-cursor="hover"]';
-    // Native cursor stays visible over text entry surfaces and embedded docs.
-    const NATIVE_SEL =
-      'input, textarea, select, [contenteditable=""], [contenteditable="true"], iframe';
+    const INTERACTIVE_SEL =
+      'a, button, [role="button"], label, summary, select, [data-cursor="hover"]';
+    const NATIVE_SEL = 'input, textarea, [contenteditable=""], [contenteditable="true"], iframe';
 
-    const onOver = (e: MouseEvent) => {
-      const blob = blobRef.current;
-      if (!blob) return;
-      const el = e.target instanceof Element ? e.target : null;
-      const native = el ? !!el.closest(NATIVE_SEL) : false;
-      const nativeVal = native ? "1" : "0";
-      if (blob.dataset.native !== nativeVal) blob.dataset.native = nativeVal;
-      if (native) {
-        // Hide the custom cursor entirely so the real caret/pointer shows.
-        overNative = true;
-        setVisible(false);
-        return;
-      }
-      overNative = false;
-      if (!visible) setVisible(true);
-      const media = el ? !!el.closest(MEDIA_SEL) : false;
-      const hover = !media && el ? !!el.closest(INTERACTIVE_SEL) : false;
-      const mediaVal = media ? "1" : "0";
-      const hoverVal = hover ? "1" : "0";
-      if (blob.dataset.media !== mediaVal) blob.dataset.media = mediaVal;
-      if (blob.dataset.hover !== hoverVal) blob.dataset.hover = hoverVal;
-    };
-    const onDown = () => {
-      const blob = blobRef.current;
-      if (blob && blob.dataset.down !== "1") blob.dataset.down = "1";
-    };
-    const onUp = () => {
-      const blob = blobRef.current;
-      if (blob && blob.dataset.down !== "0") blob.dataset.down = "0";
-    };
-    const onLeave = (e: MouseEvent) => {
-      // Ignore leaves that just move into a child/overlay element; only hide
-      // when the pointer really exits the window.
-      if (e.relatedTarget) return;
-      setVisible(false);
-    };
-    const onEnter = () => {
-      if (!overNative) setVisible(true);
-      start();
-    };
+    const tick = () => {
+      // Ease towards the pointer: quick enough to feel direct, soft enough to
+      // read as animated rather than a raw system cursor.
+      const dx = mouseX - x;
+      const dy = mouseY - y;
+      x += dx * 0.32;
+      y += dy * 0.32;
+      // Lean into horizontal motion, capped, and relax back to upright.
+      tilt += (Math.max(-14, Math.min(14, dx * 0.6)) - tilt) * 0.2;
 
-    const tick = (now: number) => {
-      // Identical easing constant and per-frame math as before, so the trail
-      // feel/speed is unchanged.
-      blobX += (mouseX - blobX) * 0.18;
-      blobY += (mouseY - blobY) * 0.18;
-
-      const dot = dotRef.current;
-      if (dot) {
-        const dx = mouseX - 13;
-        const dy = mouseY - 13;
-        if (dx !== lastDotX || dy !== lastDotY) {
-          dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-          lastDotX = dx;
-          lastDotY = dy;
+      const el = rootRef.current;
+      if (el) {
+        const t = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${tilt.toFixed(2)}deg)`;
+        if (t !== last) {
+          el.style.transform = t;
+          last = t;
         }
       }
 
-      const blob = blobRef.current;
-      if (blob && (blobX !== lastBlobX || blobY !== lastBlobY)) {
-        blob.style.transform = `translate3d(${blobX}px, ${blobY}px, 0) translate(-50%, -50%)`;
-        lastBlobX = blobX;
-        lastBlobY = blobY;
-      }
-
-      // Once the blob has caught up with the pointer (sub-pixel distance),
-      // park the loop. It restarts on the next pointer movement. This frees
-      // the compositor during scrolling and idle time.
-      const settled =
-        Math.abs(mouseX - blobX) < 0.05 && Math.abs(mouseY - blobY) < 0.05;
-      if (settled) {
-        blobX = mouseX;
-        blobY = mouseY;
+      // Park the loop once everything has settled; it restarts on movement.
+      if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1 && Math.abs(tilt) < 0.05) {
+        x = mouseX;
+        y = mouseY;
+        tilt = 0;
+        if (el) el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(0deg)`;
         running = false;
         raf = 0;
         return;
@@ -178,8 +109,51 @@ export function CursorFollower() {
       raf = requestAnimationFrame(tick);
     };
 
-    start();
+    const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!visible && !overNative) setVisible(true);
+      start();
+    };
 
+    const onOver = (e: MouseEvent) => {
+      const el = e.target instanceof Element ? e.target : null;
+      if (el?.closest(NATIVE_SEL)) {
+        overNative = true;
+        setVisible(false);
+        return;
+      }
+      overNative = false;
+      if (!visible) setVisible(true);
+      const media = !!el?.closest(MEDIA_SEL);
+      setState("media", media);
+      setState("hover", !!el?.closest(INTERACTIVE_SEL));
+    };
+
+    const onDown = (e: MouseEvent) => {
+      setState("down", true);
+      const layer = ripplesRef.current;
+      if (!layer || overNative) return;
+      const ring = document.createElement("span");
+      ring.className = "p2t-cursor-ripple";
+      ring.style.left = `${e.clientX}px`;
+      ring.style.top = `${e.clientY}px`;
+      ring.addEventListener("animationend", () => ring.remove(), { once: true });
+      layer.appendChild(ring);
+    };
+    const onUp = () => setState("down", false);
+
+    const onLeave = (e: MouseEvent) => {
+      // Only hide when the pointer really leaves the window.
+      if (e.relatedTarget) return;
+      setVisible(false);
+    };
+    const onEnter = () => {
+      if (!overNative) setVisible(true);
+      start();
+    };
+
+    start();
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver, { passive: true });
     window.addEventListener("mousedown", onDown, { passive: true });
@@ -190,7 +164,7 @@ export function CursorFollower() {
     return () => {
       if (raf) cancelAnimationFrame(raf);
       running = false;
-      document.documentElement.classList.remove("p2t-cursor");
+      root.classList.remove("p2t-cursor");
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mousedown", onDown);
@@ -205,91 +179,96 @@ export function CursorFollower() {
     <>
       <style>{`
         /* Hide the native cursor only where the custom one replaces it; text
-           fields, selects, contenteditable and iframes keep their real cursor. */
+           fields, contenteditable and iframes keep their real cursor. */
         @media (pointer: fine){
           html.p2t-cursor *{cursor:none !important}
           html.p2t-cursor input,
           html.p2t-cursor textarea,
-          html.p2t-cursor select,
           html.p2t-cursor [contenteditable],
           html.p2t-cursor iframe{cursor:auto !important}
         }
-        .lv-cursor-blob{
-          position: fixed; left: 0; top: 0; z-index: 9999;
-          height: 36px; width: 36px; border-radius: 9999px;
-          background: #ffffff;
-          mix-blend-mode: difference;
-          pointer-events: none;
-          opacity: 0;
-          /* Only transform is compositor-animated; hinting width/height/border-radius
-             cannot be composited and only costs extra memory + repaints. */
-          will-change: transform;
-          contain: layout style paint;
-          transition: width .28s cubic-bezier(.2,.8,.2,1), height .28s cubic-bezier(.2,.8,.2,1), border-radius .28s cubic-bezier(.2,.8,.2,1), opacity .2s ease, background-color .2s ease, box-shadow .2s ease;
-        }
-        .lv-cursor-blob[data-hover="1"]{
-          height: 56px; width: 56px;
-          background: transparent;
-          mix-blend-mode: normal;
-          box-shadow: inset 0 0 0 1.5px rgba(7,132,255,.75);
-        }
-        .lv-cursor-blob[data-down="1"]{
-          height: 22px; width: 22px;
-        }
-        .lv-cursor-blob[data-hover="1"][data-down="1"]{
-          height: 44px; width: 44px;
-        }
-
-        .lv-cursor-blob[data-media="1"]{
-          height: 104px; width: 104px;
-          background: rgba(20,20,22,.62);
-          mix-blend-mode: normal;
-          backdrop-filter: blur(2px);
-        }
-        .lv-cursor-blob[data-media="1"][data-down="1"]{
-          height: 92px; width: 92px;
-        }
-        .lv-cursor-label{
-          display: flex; align-items: center; justify-content: center;
-          height: 100%; width: 100%;
-          font-size: 14px; font-weight: 500; letter-spacing: .01em;
-          color: #fff; white-space: nowrap;
-          opacity: 0; transform: scale(.9);
-          transition: opacity .2s ease, transform .28s cubic-bezier(.2,.8,.2,1);
-        }
-        .lv-cursor-blob[data-media="1"] .lv-cursor-label{
-          opacity: 1; transform: scale(1);
-        }
-        .lv-cursor-blob[data-media="1"] ~ .lv-cursor-dot{ opacity: 0 !important; }
-        @media (prefers-reduced-motion: reduce){
-          .lv-cursor-blob, .lv-cursor-label{ transition: opacity .2s ease; }
-        }
-        .lv-cursor-dot{
+        .p2t-cursor-root{
           position: fixed; left: 0; top: 0; z-index: 10000;
-          height: 26px; width: 26px;
+          width: 0; height: 0;
           pointer-events: none;
           opacity: 0;
-          transition: opacity .2s ease;
+          transition: opacity .18s ease;
           will-change: transform;
-          filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
+        }
+        .p2t-cursor-glyph{
+          position: absolute; left: 0; top: 0;
+          transform-origin: 3px 2px;
+          transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .15s ease;
+          filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)) drop-shadow(0 6px 14px rgba(0,0,0,.18));
+        }
+        .p2t-cursor-hand{ opacity: 0; transform: scale(.6); transform-origin: 9px 3px; }
+        .p2t-cursor-root[data-hover="1"] .p2t-cursor-arrow{ opacity: 0; transform: scale(.6); }
+        .p2t-cursor-root[data-hover="1"] .p2t-cursor-hand{ opacity: 1; transform: scale(1); }
+        .p2t-cursor-root[data-down="1"] .p2t-cursor-arrow{ transform: scale(.82); }
+        .p2t-cursor-root[data-down="1"] .p2t-cursor-hand{ transform: scale(.86); }
+        .p2t-cursor-tag{
+          position: absolute; left: 22px; top: 22px;
+          padding: 5px 11px; border-radius: 999px;
+          background: #0A0D1F; color: #fff;
+          font-size: 12px; font-weight: 600; letter-spacing: .02em; white-space: nowrap;
+          box-shadow: 0 6px 18px rgba(0,0,0,.25);
+          opacity: 0; transform: translateY(4px) scale(.9);
+          transition: opacity .18s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+        }
+        .p2t-cursor-root[data-media="1"] .p2t-cursor-tag{ opacity: 1; transform: none; }
+        .p2t-cursor-ripples{ position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
+        .p2t-cursor-ripple{
+          position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+          border-radius: 999px; border: 2px solid #1E90FF;
+          animation: p2t-ripple .5s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+        @keyframes p2t-ripple{
+          from{ transform: scale(.2); opacity: .9; }
+          to{ transform: scale(1.4); opacity: 0; }
         }
       `}</style>
-      <div ref={blobRef} aria-hidden data-hover="0" data-down="0" data-media="0" data-native="0" className="lv-cursor-blob">
-        <span className="lv-cursor-label">Expand +</span>
-      </div>
-      <div ref={dotRef} aria-hidden className="lv-cursor-dot">
-        <svg viewBox="0 0 512 512" width="26" height="26" fill="none" aria-hidden>
-          <defs>
-            <linearGradient id="lv-cursor-arrow" x1="60" y1="50" x2="440" y2="450" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#4da3ff" />
-              <stop offset="1" stopColor="#1b3a8f" />
-            </linearGradient>
-          </defs>
+      <div ref={ripplesRef} aria-hidden className="p2t-cursor-ripples" />
+      <div
+        ref={rootRef}
+        aria-hidden
+        data-hover="0"
+        data-media="0"
+        data-down="0"
+        className="p2t-cursor-root"
+      >
+        <svg
+          className="p2t-cursor-glyph p2t-cursor-arrow"
+          width="24"
+          height="30"
+          viewBox="0 0 24 30"
+          fill="none"
+          style={{ left: -3, top: -2 }}
+        >
           <path
-            d="M63 46c-14-6-28 8-22 22l138 385c6 17 30 17 36 0l50-140a20 20 0 0 1 12-12l140-50c17-6 17-30 0-36L63 46z"
-            fill="url(#lv-cursor-arrow)"
+            d="M3 2.2v22.2c0 .9 1.1 1.3 1.7.6l5.1-5.6 3.7 8.3c.3.6 1 .9 1.6.6l2.6-1.2c.6-.3.9-1 .6-1.6l-3.7-8.2 7.5-.4c.9 0 1.3-1.1.6-1.7L4.7 1.4C4 .8 3 1.3 3 2.2Z"
+            fill="#fff"
+            stroke="#0A0D1F"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
           />
         </svg>
+        <svg
+          className="p2t-cursor-glyph p2t-cursor-hand"
+          width="26"
+          height="30"
+          viewBox="0 0 26 30"
+          fill="none"
+          style={{ left: -9, top: -3 }}
+        >
+          <path
+            d="M9 3.2c0-1.3 1-2.2 2.2-2.2s2.2.9 2.2 2.2v8.3l.4-.1c.3-1.1 1.2-1.8 2.3-1.8 1.2 0 2.1.8 2.2 2l.3-.1c.4-.8 1.2-1.3 2.1-1.3 1.3 0 2.3 1 2.3 2.3v.5c.4-.2.8-.3 1.2-.3 1.1 0 1.9.9 1.9 2v4.6c0 5.6-3.9 9.7-9.3 9.7h-1.2c-3.3 0-5.6-1.4-7.4-4.1l-4.3-6.6c-.6-1-.4-2.2.5-2.9.9-.7 2.2-.6 3 .3L9 18V3.2Z"
+            fill="#fff"
+            stroke="#0A0D1F"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span className="p2t-cursor-tag">View</span>
       </div>
     </>
   );
