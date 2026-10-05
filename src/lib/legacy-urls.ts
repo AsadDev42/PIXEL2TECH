@@ -16,6 +16,7 @@
  * current sitemaps, and page paths with capital letters 301 to lowercase.
  */
 
+import { getPostMeta } from "@/lib/blog-index";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 export type LegacyVerdict = { type: "redirect"; target: string } | { type: "gone" };
@@ -67,6 +68,8 @@ const GONE_EXACT = new Set([
   "coming-soon",
   "maintenance",
 ]);
+
+const DATED_POST = /^\d{4}\/\d{1,2}\/\d{1,2}\/([a-z0-9-]+)$/;
 
 const GONE_PATTERNS: RegExp[] = [
   // --- Core WordPress plumbing -------------------------------------------
@@ -344,6 +347,11 @@ function classifyNormalized(path: string, first: string): LegacyVerdict | null {
   if (mapped) return { type: "redirect", target: mapped };
 
   if (GONE_EXACT.has(path)) return { type: "gone" };
+
+  // Old WordPress dated permalinks (/2026/02/24/<slug>) for posts that still
+  // exist move to the post; every other dated URL falls through to 410 below.
+  const dated = DATED_POST.exec(path);
+  if (dated && getPostMeta(dated[1]!)) return { type: "redirect", target: `/blog/${dated[1]}` };
 
   for (const pattern of GONE_PATTERNS) {
     if (pattern.test(path)) return { type: "gone" };
