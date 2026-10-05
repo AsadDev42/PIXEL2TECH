@@ -4,7 +4,6 @@ import teamSaad from "@/assets/team-saad.webp.asset.json";
 import teamGul from "@/assets/team-gul.webp.asset.json";
 import teamAhsan from "@/assets/team-ahsan.webp.asset.json";
 import teamNoman from "@/assets/opt-team-noman-800.webp.asset.json";
-import teamRashail from "@/assets/team-rashail.webp.asset.json";
 
 export type TeamMember = {
   name: string;
@@ -45,7 +44,6 @@ export const TEAM: TeamMember[] = [
   { name: "Gul E Zahra", role: "Creative Brand Designer", img: teamGul.url },
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
-  { name: "Muhammad Rashail", role: "Head of Engineering & Automation", img: teamRashail.url },
 ];
 
 export const TEAM_SIZE = TEAM.length;

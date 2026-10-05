@@ -234,7 +234,7 @@ const post: PostBody = {
     {
       heading: "Where Pixel2Tech fits",
       body: [
-        "We're a seven-person studio in Lahore that designs and builds Shopify stores, custom sections and store-specific integrations, and we've produced social and ad creative for Shopify brands such as MADLUVV. We work to written briefs, on duplicate themes, with code in repositories our clients own.",
+        "We're a six-person studio in Lahore that designs and builds Shopify stores, custom sections and store-specific integrations, and we've produced social and ad creative for Shopify brands such as MADLUVV. We work to written briefs, on duplicate themes, with code in repositories our clients own.",
         "If you're comparing quotes, the brief checklist above is useful with any provider. If you'd like us to look at yours, see our [WordPress and Shopify services](/services/wordpress-and-shopify).",
       ],
     },

@@ -87,7 +87,7 @@ const post: PostBody = {
     {
       heading: "1. Pixel2Tech",
       body: [
-        "Pixel2Tech is a seven-person design and development studio in Lahore that works with clients in the US, UK and Europe, combining marketing creative, branding, design and technology.",
+        "Pixel2Tech is a six-person design and development studio in Lahore that works with clients in the US, UK and Europe, combining marketing creative, branding, design and technology.",
         "Marketing is not only about getting attention. A business also needs strong branding, good creative, an effective website and a clear customer journey. We have produced social and ad creative for MADLUVV, a Shopify brand, and creative for Swishtag, a Shopify Plus agency.",
         "We quote a fixed price after a scoping call rather than publishing a rate card.",
       ],

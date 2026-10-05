@@ -246,7 +246,7 @@ const post: PostBody = {
     {
       heading: "Where Pixel2Tech fits",
       body: [
-        "We are a seven-person studio that does technical SEO, content and site fixes together, because the same team builds websites. We work with businesses and agencies in the US, UK and Europe, start with a paid pilot that has a written success test, and leave every account in your name. See our [SEO and search growth service](/services/seo-and-search-growth).",
+        "We are a six-person studio that does technical SEO, content and site fixes together, because the same team builds websites. We work with businesses and agencies in the US, UK and Europe, start with a paid pilot that has a written success test, and leave every account in your name. See our [SEO and search growth service](/services/seo-and-search-growth).",
       ],
     },
   ],

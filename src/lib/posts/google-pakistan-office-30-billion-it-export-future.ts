@@ -175,7 +175,7 @@ const post: PostBody = {
     {
       heading: "What this means for Pixel2Tech",
       body: [
-        "We're a seven-person design and development studio in Pakistan working for clients in the US, UK and Europe, including creative for Shopify brands and legal explainer videos for a US law firm. We don't want Pakistan to be known only as the cheap option. We want it known as a place where overseas companies get dependable work.",
+        "We're a six-person design and development studio in Pakistan working for clients in the US, UK and Europe, including creative for Shopify brands and legal explainer videos for a US law firm. We don't want Pakistan to be known only as the cheap option. We want it known as a place where overseas companies get dependable work.",
         "That means selling outcomes rather than hours: a website that converts, creative that tests well, automation that saves real time. The skills push around Google's arrival helps, but the standard is set project by project.",
       ],
       callout: {

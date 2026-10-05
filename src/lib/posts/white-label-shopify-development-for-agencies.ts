@@ -239,7 +239,7 @@ const post: PostBody = {
     {
       heading: "Where Pixel2Tech fits",
       body: [
-        "We're a seven-person studio in Lahore that builds Shopify themes, sections and integrations for agencies under their brand, and we've produced creative for Swishtag, a Shopify Plus agency. If your gap is design or ad creative rather than code, our guide to [white-label creative for agencies](/blog/white-label-creative-for-agencies) covers that side of the arrangement.",
+        "We're a six-person studio in Lahore that builds Shopify themes, sections and integrations for agencies under their brand, and we've produced creative for Swishtag, a Shopify Plus agency. If your gap is design or ad creative rather than code, our guide to [white-label creative for agencies](/blog/white-label-creative-for-agencies) covers that side of the arrangement.",
         "If you'd like to run a pilot task, our [WordPress and Shopify services](/services/wordpress-and-shopify) page explains how we work. The scorecard above is the one we'd expect you to use on us.",
       ],
     },

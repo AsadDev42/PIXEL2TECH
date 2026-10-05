@@ -279,7 +279,7 @@ const post: PostBody = {
     {
       heading: "Where Pixel2Tech fits",
       body: [
-        "We are a seven-person in-house studio in Lahore that handles branding, social and ad creative, packaging and book covers for clients abroad. We quote a fixed price after a short scoping call rather than from a rate card, and we are happy to start with a paid trial like the one above. See our [branding and design service](/services/branding-and-design) for what we cover.",
+        "We are a six-person in-house studio in Lahore that handles branding, social and ad creative, packaging and book covers for clients abroad. We quote a fixed price after a short scoping call rather than from a rate card, and we are happy to start with a paid trial like the one above. See our [branding and design service](/services/branding-and-design) for what we cover.",
       ],
     },
   ],

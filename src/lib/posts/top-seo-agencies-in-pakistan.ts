@@ -83,7 +83,7 @@ const post: PostBody = {
     {
       heading: "1. Pixel2Tech",
       body: [
-        "Pixel2Tech is a seven-person design and development studio in Lahore that works with clients in the US, UK and Europe, and combines SEO with design, content and website development.",
+        "Pixel2Tech is a six-person design and development studio in Lahore that works with clients in the US, UK and Europe, and combines SEO with design, content and website development.",
         "The focus is on helping businesses build a stronger digital presence rather than treating SEO as a separate service. Getting traffic does not always mean getting customers: a site can rank and still convert poorly.",
         "We quote a fixed price after a scoping call rather than publishing a rate card, and we work in shared documents and dashboards our clients own.",
       ],

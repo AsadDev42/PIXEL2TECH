@@ -251,7 +251,7 @@ const post: PostBody = {
     {
       heading: "Where Pixel2Tech fits",
       body: [
-        "We are a seven-person in-house studio that builds marketing sites, Shopify and WordPress stores and custom platforms for clients in the US, UK and Europe. We quote a fixed price after a scoping call, agree overlap hours upfront, and set every account up in your name. See our [website development service](/services/website-development). If you are still comparing vendors, the checklists above work on anyone, including us.",
+        "We are a six-person in-house studio that builds marketing sites, Shopify and WordPress stores and custom platforms for clients in the US, UK and Europe. We quote a fixed price after a scoping call, agree overlap hours upfront, and set every account up in your name. See our [website development service](/services/website-development). If you are still comparing vendors, the checklists above work on anyone, including us.",
       ],
     },
   ],
