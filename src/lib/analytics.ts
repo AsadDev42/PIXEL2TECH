@@ -16,7 +16,7 @@ export const GA_ID: string = (import.meta.env.VITE_GA_ID as string | undefined) 
 export const CLARITY_ID = "xwm4fwtyip";
 
 /**
- * Tags only run on the public domain. Lovable preview URLs and localhost would
+ * Tags only run on the public domain. Preview deployments and localhost would
  * otherwise send owner/test sessions to GA and Clarity, and Clarity cannot load
  * the preview's stylesheets on replay, so those recordings show unstyled pages.
  */

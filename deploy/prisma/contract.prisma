@@ -1,0 +1,21 @@
+// use prisma-8
+//
+// Pixel2Tech data contract. One table, `contacts`, holding contact-form and
+// newsletter submissions. Same columns and defaults as the old Supabase
+// public.contacts table. The old row-level-security length/email checks are
+// enforced in src/server/db/contacts.server.ts before every insert.
+//
+// After editing: npm run emit, then plan a migration (see README in this folder
+// or the commands in data.ts).
+
+model Contact {
+  id        Uuid              @id @default(sql`gen_random_uuid()`)
+  firstName String            @map("first_name")
+  lastName  String            @default("") @map("last_name")
+  email     String
+  phone     String            @default("")
+  message   String
+  createdAt TimestamptzString @default(now()) @map("created_at")
+
+  @@map("contacts")
+}

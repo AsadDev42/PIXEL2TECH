@@ -16,6 +16,14 @@ dist-ssr
 .nitro
 *.local
 
+# Prisma CLI project link (prisma project link) and Composer deploy artifacts
+.prisma/
+.prisma-composer/
+
+# Local env files with secrets (for `prisma project env add --file`)
+.env.production
+.env.*.production
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

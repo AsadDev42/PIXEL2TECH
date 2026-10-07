@@ -6,8 +6,7 @@ import { getPostSummaries, POST_INDEX } from "@/lib/blog-index";
 import { toISODateTime } from "@/lib/blog-types";
 import { SITE } from "@/lib/site-config";
 
-const OG_IMAGE =
-  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const TITLE = "Pixel2Tech blog: branding, web design and automation guides";
 const DESCRIPTION =
   "Practical guides on branding, websites, Shopify, SEO and automation, written by the Pixel2Tech team in Lahore.";

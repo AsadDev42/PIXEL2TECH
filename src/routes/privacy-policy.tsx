@@ -8,11 +8,12 @@ import {
   type LegalSection,
   type LegalSummary,
 } from "@/components/legal-page";
+import { PRIVACY_UPDATED } from "@/lib/legal-dates";
 import { SITE } from "@/lib/site-config";
 
 const DESCRIPTION = `How ${SITE.name} collects, uses, shares and protects personal information, which cookies and analytics tools pixel2tech.com uses, and how to exercise your privacy rights.`;
-const UPDATED = "September 27, 2026";
-const UPDATED_ISO = "2026-09-27";
+const UPDATED = PRIVACY_UPDATED.label;
+const UPDATED_ISO = PRIVACY_UPDATED.iso;
 
 const DOMAIN = SITE.url.replace(/^https?:\/\//, "");
 const TERMS_URL = `${SITE.url}/terms-and-conditions`;
@@ -158,7 +159,8 @@ const SECTIONS: LegalSection[] = [
       "We use service providers who process personal information on our behalf to run our website and business, including:",
       {
         list: [
-          "**Lovable**, which hosts our website and provides the database that stores form submissions (Lovable Cloud, which runs on Supabase) and the service that sends our form notification emails;",
+          "**Prisma** (Prisma Data, Inc.), which hosts our website (Prisma Compute) and provides the database that stores form submissions and newsletter sign-ups (Prisma Postgres);",
+          "**Resend**, our email delivery provider, which sends the notification and confirmation emails for our contact form;",
           "**Google** (Google Analytics, Google Fonts, Google Maps and Google Meet) and **Microsoft** (Microsoft Clarity);",
           "**Calendly**, for scheduling calls; and",
           "providers of business email, file storage, project management, communication, accounting, invoicing and payment services, and freelancers or subcontractors who help us deliver projects.",
@@ -182,7 +184,7 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "International data transfers",
     body: [
-      "We are based in Pakistan, so information you send us is transferred to and processed in Pakistan. Our service providers may process information in the United States, the European Union and other countries. Data protection laws in these countries may differ from the laws where you live.",
+      "We are based in Pakistan, so information you send us is transferred to and processed in Pakistan. Our service providers may process information in the United States, the European Union and other countries. Our website and the database that stores form submissions are hosted in the United States. Data protection laws in these countries may differ from the laws where you live.",
       "Where the law requires a transfer safeguard, we rely on a lawful transfer mechanism, such as the European Commission's standard contractual clauses or the UK equivalent, in our agreements with clients and service providers as appropriate. You can contact us for more information about the safeguards that apply to your information.",
     ],
   },
@@ -205,7 +207,7 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "How we protect information",
     body: [
-      `We use reasonable technical and organizational measures designed to protect personal information. For example, ${DOMAIN} is served over HTTPS, our website database lets the public site add new form submissions but not read them, and access to our email accounts, systems and project files is limited to team members and contractors who need it.`,
+      `We use reasonable technical and organizational measures designed to protect personal information. For example, ${DOMAIN} is served over HTTPS, our website database can only be reached by our website's server, not directly from visitors' browsers, and access to our email accounts, systems and project files is limited to team members and contractors who need it.`,
       "No method of transmitting or storing information is completely secure, and we cannot guarantee the security of information. Please use strong, unique passwords for any accounts you share with us for a project, and change them when the project ends.",
       `If you believe your information has been exposed, contact us right away at ${SITE.email}. If a security incident affects your personal information, we will notify you and the relevant authorities where the law requires us to.`,
     ],
@@ -260,12 +262,6 @@ const SECTIONS: LegalSection[] = [
       "In that case the client is the controller of that information and we act as its processor (or service provider). We process it only to provide the services and in line with the client's documented instructions, keep it confidential, and use subcontractors and platforms only as needed to deliver the work. At the end of the engagement we return or delete it as agreed with the client, unless the law requires us to keep it.",
       `A data processing agreement (DPA) is available on request. Where we have signed a DPA with a client, the DPA governs that processing. If you are a customer or user of one of our clients, please contact that client with any privacy request. If you contact us instead, we will pass your request to the client where appropriate.`,
       "When we use AI tools in client work, we aim to limit the personal information we enter into them to what the task requires and what our agreement with the client permits.",
-    ],
-  },
-  {
-    heading: "Accounts for AI assistant connections",
-    body: [
-      "Our site offers a read-only tools endpoint that AI assistants can connect to in order to read public information about our services, portfolio and blog. If connecting requires you to sign in, our database provider handles the sign-in and stores your email address and basic login records. We use this only to authenticate the connection and keep it secure. You can ask us to delete your login account at any time.",
     ],
   },
   {

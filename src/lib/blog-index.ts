@@ -235,7 +235,7 @@ const POSTS = [
     time: "8:00 pm",
     updated: "August 7, 2026",
     author: "Pixel2Tech Team",
-    img: "/__l5e/assets-v1/73321028-4cec-4360-b59e-b09aa4ed5b96/leading-creative-agencies-cover.png",
+    img: "/media/73321028-4cec-4360-b59e-b09aa4ed5b96/leading-creative-agencies-cover.png",
     imgAlt:
       "Creative agency team reviewing campaign reports, analytics dashboards and brand performance charts around a wooden table",
     related: [

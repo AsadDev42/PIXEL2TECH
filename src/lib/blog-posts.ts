@@ -1,6 +1,6 @@
 /**
  * Full articles (metadata + body) for server-side code such as sitemaps and
- * MCP tools.
+ * feeds.
  *
  * This module eagerly imports EVERY article body. Do not import it from a
  * page or component, or all article text ships in that page's JavaScript.

@@ -24,7 +24,7 @@ export type LegacyVerdict = { type: "redirect"; target: string } | { type: "gone
 /** Paths that must never be treated as legacy content. */
 const RESERVED_PREFIXES = [
   "api",
-  "lovable",
+  "media",
   "assets",
   "_build",
   "_server",
@@ -299,7 +299,7 @@ export function normalizePath(input: string): string {
  * True when a path has capital letters worth redirecting away from: it is a
  * page-style path (no file extension in the last segment) and the capitals
  * are not just percent-encoding hex digits (%C3 and %c3 are the same byte).
- * Tooling paths (/@vite, /__l5e, /~flock.js, /.well-known) are skipped.
+ * Tooling paths (/@vite, /_build, /~flock.js, /.well-known) are skipped.
  */
 function hasUppercasePagePath(rawPath: string): boolean {
   const path = rawPath.split("?")[0]!.split("#")[0]!.replace(/^\/+/, "");
@@ -366,6 +366,23 @@ function classifyNormalized(path: string, first: string): LegacyVerdict | null {
   }
 
   return null;
+}
+
+/**
+ * Old Lovable asset CDN URLs: /__l5e/assets-v1/<uuid>/<file>. The same files
+ * now live at /media/<uuid>/<file> (same folder id, same name). Google Images,
+ * social-card caches and sent emails still point at the old address, so it
+ * gets a permanent redirect. Checked on the raw path: file names are
+ * case-sensitive, so this must run before any lowercasing. Query strings
+ * (the CDN's ?w= resize hints) are dropped.
+ */
+const LOVABLE_ASSET =
+  /^\/__l5e\/assets-v1\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/([^/]+)$/i;
+
+export function legacyAssetTarget(pathname: string): string | null {
+  const m = LOVABLE_ASSET.exec(pathname);
+  if (!m) return null;
+  return `/media/${m[1]!.toLowerCase()}/${m[2]!}`;
 }
 
 /** The 301 response for a redirect verdict. Shared by the middleware and route handlers. */

@@ -1,9 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequestHeader } from "@tanstack/react-start/server";
-import { createClient } from "@supabase/supabase-js";
+import { getRequestHeader, getRequestIP } from "@tanstack/react-start/server";
 import type { z } from "zod";
-import type { Database } from "@/integrations/supabase/types";
 import { SITE } from "@/lib/site-config";
+import type { NewContact } from "@/server/db/contacts.server";
 import {
   MIN_FILL_MS,
   SUBMIT_ERRORS,
@@ -23,19 +22,25 @@ function parseSubmission<S extends z.ZodType>(schema: S, input: unknown): z.outp
 /*
  * Rate limits.
  *
- * Best-effort only. These Maps live inside one Worker isolate, and Cloudflare
- * runs many isolates and recycles them often, so a determined sender can go
- * past these numbers. They stop double posts and slow down one noisy client;
+ * Best-effort only. These Maps live in one server process's memory: they reset
+ * on every restart or deploy and are not shared between instances, so a
+ * determined sender can go past these numbers. They stop double posts and slow down one noisy client;
  * they are not real abuse protection (that needs a shared store or a CAPTCHA).
  */
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_IP = 5;
 const CONFIRMATION_WINDOW_MS = 24 * 60 * 60 * 1000;
 const MAX_CONFIRMATIONS_PER_ADDRESS = 2;
+// Cap on visitor confirmation emails across all addresses, so a script that
+// rotates addresses can't use the form to mail strangers in bulk. The owner
+// notification is not capped: every saved submission still reaches the inbox.
+const CONFIRMATION_GLOBAL_WINDOW_MS = 60 * 60 * 1000;
+const MAX_CONFIRMATIONS_GLOBAL = 20;
 const MAX_TRACKED_KEYS = 5000;
 
 const ipHits = new Map<string, number[]>();
 const confirmationHits = new Map<string, number[]>();
+const globalConfirmationHits = new Map<string, number[]>();
 
 /** Records a hit for `key`; returns false when it would go over `max` in `windowMs`. */
 function allow(buckets: Map<string, number[]>, key: string, max: number, windowMs: number) {
@@ -56,17 +61,17 @@ function allow(buckets: Map<string, number[]>, key: string, max: number, windowM
 }
 
 function clientIp() {
-  // Cloudflare sets cf-connecting-ip on every proxied request and overwrites any
-  // copy the client sends, so in production this is the real address.
-  const cf = getRequestHeader("cf-connecting-ip");
-  if (cf) return cf.trim();
-  // Local dev and non-Cloudflare hosts only. These headers can be spoofed, and
-  // requests without any of them share one bucket.
-  return (
-    getRequestHeader("x-real-ip")?.trim() ||
-    getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() ||
-    "no-ip"
-  );
+  // Cloudflare is DNS only (no proxy), so cf-connecting-ip, x-real-ip and the
+  // first x-forwarded-for entry are whatever the client chose to send and are
+  // never trusted. A proxy appends the address it saw to the END of
+  // x-forwarded-for, so the last entry was written by the hosting edge in
+  // front of the app and is the one value the client can't pick.
+  // Without the header (local dev), use the socket address.
+  const forwarded = getRequestHeader("x-forwarded-for")
+    ?.split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return forwarded?.at(-1) || getRequestIP() || "no-ip";
 }
 
 type SpamGuard = { website: string; elapsedMs: number };
@@ -83,39 +88,22 @@ function passesSpamGuards({ website, elapsedMs }: SpamGuard) {
   return true;
 }
 
-type ContactRow = Database["public"]["Tables"]["contacts"]["Insert"];
-
 /**
- * Inserts with the publishable key, so the row-level-security policy on
- * `contacts` (insert-only, length checks) still applies to this server code.
+ * Saves the submission to the site's Prisma Postgres `contacts` table.
+ *
+ * Fails soft: a missing connection, a slow or unreachable database, or a
+ * rejected row all become the friendly "unavailable" error, never a crash.
+ * The database code is imported lazily so it never ships in the client bundle.
  */
-async function saveContact(row: ContactRow) {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) {
-    console.error("[contact] SUPABASE_URL or SUPABASE_PUBLISHABLE_KEY is not set");
-    throw new Error(SUBMIT_ERRORS.unavailable);
-  }
-
-  // Mirrors createSupabaseFetch in src/integrations/supabase/client.ts (not exported):
-  // new sb_ keys are sent as `apikey`, never as a bearer token.
-  const supabase = createClient<Database>(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
-    global: {
-      fetch: (input, init) => {
-        const headers = new Headers(init?.headers);
-        if (key.startsWith("sb_") && headers.get("Authorization") === `Bearer ${key}`) {
-          headers.delete("Authorization");
-        }
-        headers.set("apikey", key);
-        return fetch(input, { ...init, headers });
-      },
-    },
-  });
-
-  const { error } = await supabase.from("contacts").insert(row);
-  if (error) {
-    console.error("[contact] insert failed", error);
+async function saveContact(row: NewContact) {
+  try {
+    const { insertContact } = await import("@/server/db/contacts.server");
+    await insertContact(row);
+  } catch (error) {
+    // Log only the error's kind: the full ORM error can echo the visitor's
+    // email and message (bound parameter values) into the service logs.
+    const { name, code } = (error ?? {}) as { name?: unknown; code?: unknown };
+    console.error("[contact] insert failed", { name: String(name ?? "Error"), code });
     throw new Error(SUBMIT_ERRORS.unavailable);
   }
 }
@@ -144,8 +132,8 @@ export const submitContactForm = createServerFn({ method: "POST" })
     if (!passesSpamGuards(data)) return { ok: true as const };
 
     await saveContact({
-      first_name: data.firstName,
-      last_name: data.lastName,
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
       phone: data.phone,
       message: data.message,
@@ -175,7 +163,18 @@ export const submitContactForm = createServerFn({ method: "POST" })
       // The visitor's copy is a fixed acknowledgement: it never repeats anything
       // they typed, so the form can't be used to send our email to strangers.
       if (
-        allow(confirmationHits, data.email, MAX_CONFIRMATIONS_PER_ADDRESS, CONFIRMATION_WINDOW_MS)
+        allow(
+          confirmationHits,
+          data.email,
+          MAX_CONFIRMATIONS_PER_ADDRESS,
+          CONFIRMATION_WINDOW_MS,
+        ) &&
+        allow(
+          globalConfirmationHits,
+          "all",
+          MAX_CONFIRMATIONS_GLOBAL,
+          CONFIRMATION_GLOBAL_WINDOW_MS,
+        )
       ) {
         sends.push(
           sendTemplateEmail("contact-confirmation", data.email, {
@@ -206,7 +205,7 @@ export const subscribeToNewsletter = createServerFn({ method: "POST" })
     if (!passesSpamGuards(data)) return { ok: true as const };
 
     const message = "Newsletter signup from the blog.";
-    await saveContact({ first_name: "Newsletter signup", email: data.email, message });
+    await saveContact({ firstName: "Newsletter signup", email: data.email, message });
 
     try {
       const sendTemplateEmail = await loadMailer();

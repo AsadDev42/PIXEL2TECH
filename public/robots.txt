@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /lovable/
 
 Sitemap: https://pixel2tech.com/sitemap.xml

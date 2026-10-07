@@ -46,7 +46,8 @@ import seoCard from "@/assets/seo-search-growth-card.webp.asset.json";
 import workSocialPoster from "@/assets/opt-work-social-new-poster.webp.asset.json";
 
 export type HeroMedia =
-  { kind: "video"; src: string; poster: string } | { kind: "image"; src: string; srcSet: string };
+  | { kind: "video"; src: string; poster: string }
+  | { kind: "image"; src: string; srcSet: string };
 
 type Asset = { url: string };
 

@@ -17,7 +17,6 @@ import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]x
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
@@ -32,19 +31,11 @@ import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
 import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
-import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
-import { Route as ApiPublicHooksSubmitSitemapRouteImport } from './routes/api/public/hooks/submit-sitemap'
-import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
-import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
-import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -84,11 +75,6 @@ const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
 const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
   id: '/images-sitemap.xml',
   path: '/images-sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
@@ -161,18 +147,6 @@ const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
   path: '/wp-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -198,39 +172,6 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ApiPublicHooksSubmitSitemapRoute =
-  ApiPublicHooksSubmitSitemapRouteImport.update({
-    id: '/api/public/hooks/submit-sitemap',
-    path: '/api/public/hooks/submit-sitemap',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
-  id: '/lovable/email/auth/preview',
-  path: '/lovable/email/auth/preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
-  id: '/lovable/email/auth/webhook',
-  path: '/lovable/email/auth/webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LovableEmailTransactionalPreviewRoute =
-  LovableEmailTransactionalPreviewRouteImport.update({
-    id: '/lovable/email/transactional/preview',
-    path: '/lovable/email/transactional/preview',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -241,7 +182,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
-  '/mcp': typeof McpRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -256,19 +196,11 @@ export interface FileRoutesByFullPath {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -279,7 +211,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
-  '/mcp': typeof McpRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -294,19 +225,11 @@ export interface FileRoutesByTo {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog': typeof BlogIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -318,7 +241,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
-  '/mcp': typeof McpRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -333,19 +255,11 @@ export interface FileRoutesById {
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services_/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/hooks/submit-sitemap': typeof ApiPublicHooksSubmitSitemapRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -358,7 +272,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/images-sitemap.xml'
-    | '/mcp'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -373,19 +286,11 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/usama-farooq'
     | '/wp-sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services/$slug'
     | '/blog/'
     | '/portfolio/'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
-    | '/api/public/hooks/submit-sitemap'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
-    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -396,7 +301,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/images-sitemap.xml'
-    | '/mcp'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -411,19 +315,11 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/usama-farooq'
     | '/wp-sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services/$slug'
     | '/blog'
     | '/portfolio'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
-    | '/api/public/hooks/submit-sitemap'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
-    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -434,7 +330,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/images-sitemap.xml'
-    | '/mcp'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -449,19 +344,11 @@ export interface FileRouteTypes {
     | '/terms-and-conditions'
     | '/usama-farooq'
     | '/wp-sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services_/$slug'
     | '/blog/'
     | '/portfolio/'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
-    | '/api/public/hooks/submit-sitemap'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
-    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -473,7 +360,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
-  McpRoute: typeof McpRoute
   PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
@@ -488,19 +374,11 @@ export interface RootRouteChildren {
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UsamaFarooqRoute: typeof UsamaFarooqRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
-  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
-  ApiPublicHooksSubmitSitemapRoute: typeof ApiPublicHooksSubmitSitemapRoute
-  LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
-  LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
-  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -559,13 +437,6 @@ declare module '@tanstack/react-router' {
       path: '/images-sitemap.xml'
       fullPath: '/images-sitemap.xml'
       preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/page-sitemap.xml': {
@@ -666,20 +537,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WpSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -715,48 +572,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.lovable/oauth/consent': {
-      id: '/.lovable/oauth/consent'
-      path: '/.lovable/oauth/consent'
-      fullPath: '/.lovable/oauth/consent'
-      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/hooks/submit-sitemap': {
-      id: '/api/public/hooks/submit-sitemap'
-      path: '/api/public/hooks/submit-sitemap'
-      fullPath: '/api/public/hooks/submit-sitemap'
-      preLoaderRoute: typeof ApiPublicHooksSubmitSitemapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lovable/email/auth/preview': {
-      id: '/lovable/email/auth/preview'
-      path: '/lovable/email/auth/preview'
-      fullPath: '/lovable/email/auth/preview'
-      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lovable/email/auth/webhook': {
-      id: '/lovable/email/auth/webhook'
-      path: '/lovable/email/auth/webhook'
-      fullPath: '/lovable/email/auth/webhook'
-      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lovable/email/transactional/preview': {
-      id: '/lovable/email/transactional/preview'
-      path: '/lovable/email/transactional/preview'
-      fullPath: '/lovable/email/transactional/preview'
-      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -769,7 +584,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
-  McpRoute: McpRoute,
   PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
@@ -784,20 +598,11 @@ const rootRouteChildren: RootRouteChildren = {
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UsamaFarooqRoute: UsamaFarooqRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
-  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
-  ApiPublicHooksSubmitSitemapRoute: ApiPublicHooksSubmitSitemapRoute,
-  LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
-  LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
-  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

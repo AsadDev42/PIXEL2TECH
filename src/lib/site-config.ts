@@ -1,6 +1,6 @@
 /**
  * Single source of truth for business facts shown across the site, JSON-LD,
- * legal pages, emails and the MCP catalog. Change a value here, not in pages.
+ * legal pages and emails. Change a value here, not in pages.
  */
 
 export const SITE = {

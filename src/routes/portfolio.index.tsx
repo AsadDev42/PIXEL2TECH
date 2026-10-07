@@ -15,7 +15,7 @@ import {
 import { SITE, STATS } from "@/lib/site-config";
 
 const PAGE_URL = `${SITE.url}/portfolio`;
-const OG_IMAGE = `${SITE.url}/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
+const OG_IMAGE = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
 const TITLE = "Portfolio and case studies | Pixel2Tech";
 const DESCRIPTION =
   "Client work from Pixel2Tech: brand identities, websites, social media creative, video and custom platforms, with case studies for each project.";

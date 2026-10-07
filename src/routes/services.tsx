@@ -22,8 +22,7 @@ import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
-const OG_IMAGE =
-  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const PAGE_URL = `${SITE.url}/services`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "Pixel2Tech Services | Branding, Websites, Video & Automation";

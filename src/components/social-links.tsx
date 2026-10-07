@@ -33,7 +33,11 @@ function MediumIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export const SOCIAL_LINKS = [
-  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61575635244591", Icon: Facebook },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61575635244591",
+    Icon: Facebook,
+  },
   { name: "Instagram", href: "https://www.instagram.com/pixel_2tech/", Icon: Instagram },
   { name: "X / Twitter", href: "https://x.com/Pixel2tech", Icon: Twitter },
   { name: "LinkedIn", href: "https://www.linkedin.com/company/pixel2tech", Icon: Linkedin },

@@ -46,13 +46,7 @@ export function StaggerItem({
   return <div className={className}>{children}</div>;
 }
 
-export function HoverLift({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function HoverLift({ children, className }: { children: ReactNode; className?: string }) {
   const reduce = useReducedMotion();
   return (
     <motion.div

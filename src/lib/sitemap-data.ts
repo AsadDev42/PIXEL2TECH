@@ -1,4 +1,5 @@
 import { POST_INDEX } from "@/lib/blog-index";
+import { PRIVACY_UPDATED, TERMS_UPDATED } from "@/lib/legal-dates";
 import { toISODate, type PostMeta } from "@/lib/blog-types";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
@@ -28,8 +29,8 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/services": "2026-08-01",
   "/portfolio": "2026-09-28",
   "/contact": "2026-08-01",
-  "/privacy-policy": "2026-09-27",
-  "/terms-and-conditions": "2026-09-27",
+  "/privacy-policy": PRIVACY_UPDATED.iso,
+  "/terms-and-conditions": TERMS_UPDATED.iso,
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */

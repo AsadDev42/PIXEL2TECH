@@ -1,0 +1,110 @@
+# Builds the site as a standalone Node server and deploys it to Prisma Compute.
+# A push to main (the default branch) updates production. Running the workflow
+# by hand on main does the same. See DEPLOY.md for the one-time setup.
+name: prisma-deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: prisma-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  # Lets the deploy action swap this run's GitHub OIDC token for a short-lived
+  # Prisma workspace token (works once the repo is connected to Prisma).
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # "true" only when the secret exists, so an empty token is never passed.
+      HAS_SERVICE_TOKEN: ${{ secrets.PRISMA_SERVICE_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The Prisma deploy runs on Bun (1.3.10 or newer); the root install uses it too.
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install site dependencies (bun.lock)
+        run: bun install --frozen-lockfile
+
+      # The app bundle imports deploy/prisma/service.ts, so Composer, Prisma ORM
+      # and pg must resolve from deploy/prisma/node_modules during the build.
+      - name: Install deploy package (Composer + Prisma ORM)
+        run: npm ci
+        working-directory: deploy/prisma
+
+      - name: Build the site (Node server output in .output)
+        run: npm run build
+        env:
+          NITRO_PRESET: node-server
+
+      # Database migrations: there is no separate step. deploy/prisma/module.ts
+      # provisions the Prisma Postgres database with postgres({ config:
+      # "./prisma.config.ts" }), so `prisma deploy` (run by the action below)
+      # applies deploy/prisma/migrations/ to it before the new build goes live.
+      # If a migration fails, the deploy step fails.
+
+      # Path 1: the repo is connected to the Prisma workspace (GitHub OIDC).
+      - id: deploy-oidc
+        name: Deploy to Prisma Compute (repo connection)
+        if: env.HAS_SERVICE_TOKEN != 'true'
+        uses: prisma/cloud-deploy-action@v1
+        with:
+          working-directory: deploy/prisma
+          build-command: none
+
+      # Path 2: a service token saved as GitHub secrets. The workspace id is only
+      # handed on when that secret exists, so the CLI never sees an empty value.
+      - name: Load the Prisma workspace id (service token path)
+        if: env.HAS_SERVICE_TOKEN == 'true'
+        env:
+          WORKSPACE_ID: ${{ secrets.PRISMA_WORKSPACE_ID }}
+        run: |
+          if [ -n "$WORKSPACE_ID" ]; then
+            echo "PRISMA_WORKSPACE_ID=$WORKSPACE_ID" >> "$GITHUB_ENV"
+          else
+            echo "::warning::PRISMA_WORKSPACE_ID secret is not set; the CLI will try to read it from the token."
+          fi
+
+      - id: deploy-token
+        name: Deploy to Prisma Compute (service token)
+        if: env.HAS_SERVICE_TOKEN == 'true'
+        uses: prisma/cloud-deploy-action@v1
+        with:
+          working-directory: deploy/prisma
+          build-command: none
+        env:
+          PRISMA_SERVICE_TOKEN: ${{ secrets.PRISMA_SERVICE_TOKEN }}
+
+      # The action ends green even when it had no credential and deployed nothing.
+      # Fail loudly instead, so a skipped deploy is never mistaken for a real one.
+      - name: Check the deploy really happened
+        env:
+          OUTCOME: ${{ steps.deploy-oidc.outputs.outcome || steps.deploy-token.outputs.outcome }}
+          URL: ${{ steps.deploy-oidc.outputs.url || steps.deploy-token.outputs.url }}
+        run: |
+          echo "Deploy outcome: $OUTCOME"
+          if [ "$OUTCOME" = "skipped-no-credential" ]; then
+            echo "::error::Nothing was deployed: this repo is not connected to Prisma and no PRISMA_SERVICE_TOKEN secret is set. See DEPLOY.md, step 4."
+            exit 1
+          fi
+          if [ "$OUTCOME" != "succeeded" ]; then
+            echo "::error::Deploy did not succeed (outcome: ${OUTCOME:-unknown})."
+            exit 1
+          fi
+          {
+            echo "### Deployed to Prisma Compute"
+            echo ""
+            echo "Live URL: ${URL:-not reported}"
+          } >> "$GITHUB_STEP_SUMMARY"

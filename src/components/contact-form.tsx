@@ -23,7 +23,9 @@ export const FIELD_VALID_CLASS =
 export const FIELD_INVALID_CLASS = "border-destructive";
 
 export type FormStatusState =
-  { kind: "idle" } | { kind: "success"; message: string } | { kind: "error"; message: string };
+  | { kind: "idle" }
+  | { kind: "success"; message: string }
+  | { kind: "error"; message: string };
 
 /**
  * The form's single polite live region. It is always mounted (so screen readers

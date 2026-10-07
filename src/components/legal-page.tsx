@@ -23,7 +23,7 @@ export const POSTAL_ADDRESS = `${SITE.name}, ${SITE.address.streetAddress}, ${SI
 /** "Email …, call … or write to …" sentence used at the end of each legal page. */
 export const CONTACT_SENTENCE = `Email ${SITE.email}, call ${SITE.phoneDisplay}, or write to ${POSTAL_ADDRESS}.`;
 
-const OG_IMAGE = `${SITE.url}/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
+const OG_IMAGE = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
 
 /** Shared <head> for legal pages: meta, canonical, WebPage + breadcrumb JSON-LD. */
 export function legalPageHead({

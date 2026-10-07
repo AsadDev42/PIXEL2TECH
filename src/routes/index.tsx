@@ -58,10 +58,9 @@ const BTN_SECONDARY = `${BTN} border border-border bg-background text-foreground
 /* Head: title, meta, one hero preload and JSON-LD.                         */
 /* ------------------------------------------------------------------------ */
 
-const OG_IMAGE =
-  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const LOGO_URL =
-  "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
+  "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
 
 const TITLE = "Pixel2Tech | Branding, Web Design & Video Studio in Lahore";
 const DESCRIPTION =

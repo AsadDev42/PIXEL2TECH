@@ -1,0 +1,23 @@
+{
+  "name": "pixel2tech-prisma-deploy",
+  "private": true,
+  "type": "module",
+  "description": "Prisma Compute + Prisma Postgres declaration for the Pixel2Tech site. The app itself is built from the repo root.",
+  "//": "@prisma/orm-postgres is pinned to 8.0.0-rc.14 on purpose: it is the newest published release (there is no rc.20; the prisma rc.20 CLI itself depends on @prisma/orm-toolchain rc.14), and the override makes @prisma/composer-prisma-cloud 0.26.0 (peer rc.13) use the same copy. Bump all three together.",
+  "scripts": {
+    "emit": "prisma contract emit",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@prisma/orm-postgres": "8.0.0-rc.14"
+  },
+  "devDependencies": {
+    "@prisma/composer": "0.26.0",
+    "@prisma/composer-prisma-cloud": "0.26.0",
+    "@prisma/dev": "0.25.2",
+    "prisma": "8.0.0-rc.20"
+  },
+  "overrides": {
+    "@prisma/orm-postgres": "8.0.0-rc.14"
+  }
+}

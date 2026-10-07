@@ -1,14 +1,15 @@
-import type { ComponentType } from 'react'
-import { template as contactNotification } from './contact-notification'
-import { template as contactConfirmation } from './contact-confirmation'
+/* eslint-disable @typescript-eslint/no-explicit-any -- each template has its own props type; the registry stores them side by side, so props and subject data are typed loosely here. */
+import type { ComponentType } from "react";
+import { template as contactNotification } from "./contact-notification";
+import { template as contactConfirmation } from "./contact-confirmation";
 
 export interface TemplateEntry {
-  component: ComponentType<any>
-  subject: string | ((data: Record<string, any>) => string)
-  displayName?: string
-  previewData?: Record<string, any>
+  component: ComponentType<any>;
+  subject: string | ((data: Record<string, any>) => string);
+  displayName?: string;
+  previewData?: Record<string, any>;
   /** Fixed recipient — overrides caller-provided recipientEmail when set. */
-  to?: string
+  to?: string;
 }
 
 /**
@@ -20,7 +21,6 @@ export interface TemplateEntry {
  *   // then add to TEMPLATES: 'welcome': welcomeTemplate
  */
 export const TEMPLATES: Record<string, TemplateEntry> = {
-  'contact-notification': contactNotification,
-  'contact-confirmation': contactConfirmation,
-}
-
+  "contact-notification": contactNotification,
+  "contact-confirmation": contactConfirmation,
+};

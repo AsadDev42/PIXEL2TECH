@@ -145,7 +145,7 @@ export function countWords(post: Pick<PostBody, "content">): number {
   }, 0);
 }
 
-/** The one reading-time estimate: page byline, schema timeRequired and MCP tools. */
+/** The one reading-time estimate: page byline and schema timeRequired. */
 export function getReadingMinutes(post: Pick<PostBody, "content">): number {
   return Math.max(1, Math.round(countWords(post) / WORDS_PER_MINUTE));
 }

@@ -11,8 +11,7 @@ import { SITE, STATS } from "@/lib/site-config";
 import { TEAM, TEAM_SIZE } from "@/lib/team";
 import officeImg from "@/assets/office.webp.asset.json";
 
-const OG_IMAGE =
-  "https://pixel2tech.com/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
+const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const PAGE_URL = `${SITE.url}/about`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "About Pixel2Tech | Design, Web & Video Team in Lahore";

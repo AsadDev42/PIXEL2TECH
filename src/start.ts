@@ -1,13 +1,9 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { classifyLegacyPath, renderGonePage } from "./lib/legacy-urls";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+import { classifyLegacyPath, legacyAssetTarget, renderGonePage } from "./lib/legacy-urls";
 
-const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
-  if (new URL(request.url).pathname.startsWith("/lovable/")) {
-    return next();
-  }
+const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
     return await next();
   } catch (error) {
@@ -25,12 +21,14 @@ const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
 // Canonical host + HTTPS + retired-WordPress-URL policy + hardened headers.
 const securityMiddleware = createMiddleware().server(async ({ request, next }) => {
   const url = new URL(request.url);
-  if (url.pathname.startsWith("/lovable/")) {
-    return next();
-  }
-  const xfProto = request.headers.get("x-forwarded-proto");
   const isLocal = url.hostname === "localhost" || url.hostname === "127.0.0.1";
-  const isHttp = url.protocol === "http:" || xfProto === "http";
+  // TLS ends at the hosting edge, so the Node server itself always sees plain
+  // http and url.protocol says nothing about what the visitor used. Only an
+  // explicit "http" from the edge (first x-forwarded-proto value) means the
+  // visitor really came over http. A missing header is treated as https:
+  // redirecting on it would loop forever if the edge does not send one.
+  const xfProto = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim().toLowerCase();
+  const isHttp = xfProto === "http";
 
   // Canonicalise scheme and host in a single 301: http -> https and
   // www.pixel2tech.com -> pixel2tech.com. Doing both at once avoids the
@@ -48,6 +46,13 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   // The old WordPress site is fully retired. Redirect only what still has a
   // live equivalent; answer everything else with 410 Gone so Google removes
   // it instead of re-crawling soft 404s.
+  const assetTarget = legacyAssetTarget(url.pathname);
+  if (assetTarget) {
+    return new Response(null, {
+      status: 301,
+      headers: { location: assetTarget, "cache-control": "public, max-age=31536000" },
+    });
+  }
   const verdict = classifyLegacyPath(url.pathname);
   if (verdict?.type === "redirect") {
     return new Response(null, {
@@ -87,7 +92,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
     result instanceof Response ? result : (result as { response: Response }).response;
   const h = response.headers;
   // Content Security Policy — tuned for the current app (Google Fonts, Unsplash,
-  // Supabase, Lovable preview assets, Calendly booking modal, YouTube/Vimeo videos).
+  // GA4 + Clarity analytics, Calendly booking modal, YouTube/Vimeo videos).
   h.set(
     "Content-Security-Policy",
     [
@@ -128,6 +133,5 @@ const csrfMiddleware = createCsrfMiddleware({
 });
 
 export const startInstance = createStart(() => ({
-  functionMiddleware: [attachSupabaseAuth],
   requestMiddleware: [securityMiddleware, errorMiddleware, csrfMiddleware],
 }));

@@ -7,11 +7,12 @@ import {
   type LegalSection,
   type LegalSummary,
 } from "@/components/legal-page";
+import { TERMS_UPDATED } from "@/lib/legal-dates";
 import { SERVICES, SITE } from "@/lib/site-config";
 
 const DESCRIPTION = `The terms that apply when you use pixel2tech.com or hire ${SITE.name} for branding, websites, apps, automation, AI, SEO, social media or video work, including payment, ownership and liability.`;
-const UPDATED = "September 27, 2026";
-const UPDATED_ISO = "2026-09-27";
+const UPDATED = TERMS_UPDATED.label;
+const UPDATED_ISO = TERMS_UPDATED.iso;
 
 const PRIVACY_URL = `${SITE.url}/privacy-policy`;
 
@@ -67,7 +68,7 @@ const SECTIONS: LegalSection[] = [
           "introduce viruses or other harmful code, or overload the Site with requests;",
           "send spam, false information or content that is abusive, defamatory or unlawful through our forms;",
           "impersonate another person or misrepresent your connection with anyone;",
-          "copy large parts of the Site with automated tools, except as permitted by our robots.txt file or the public tools we provide for AI assistants; or",
+          "copy large parts of the Site with automated tools, except as permitted by our robots.txt file; or",
           "copy, reproduce or resell our content, designs, code or branding for commercial purposes without our written permission.",
         ],
       },

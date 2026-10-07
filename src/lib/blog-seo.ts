@@ -7,7 +7,7 @@ const BRAND = SITE.name;
 const ORG_ID = `${SITE_URL}/#organization`;
 const TITLE_SUFFIX = ` | ${BRAND}`;
 const LOGO =
-  "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
+  "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
 
 /** Google shows roughly this many characters of a title or description. */
 const TITLE_MAX = 60;

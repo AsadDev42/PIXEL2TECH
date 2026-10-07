@@ -15,7 +15,7 @@ type ResponsiveImageProps = {
 
 /**
  * Image with width-based srcset: AVIF -> WebP -> original for Unsplash and
- * pre-generated assets, and a CDN-resized srcset for /__l5e/ assets.
+ * pre-generated assets. Other self-hosted /media/ images render as a plain <img>.
  * Explicit width/height keep the layout stable (no CLS) while the image loads.
  */
 export function ResponsiveImage({

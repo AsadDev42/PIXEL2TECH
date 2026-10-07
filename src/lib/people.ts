@@ -665,7 +665,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
  * portrait WebP files, which social scrapers crop badly or skip, so the
  * profile pages share this card until dedicated founder cards exist.
  */
-const SHARE_IMAGE = `${SITE.url}/__l5e/assets-v1/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
+const SHARE_IMAGE = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
 
 /** Route `head()` for a founder profile: meta, canonical and JSON-LD. */
 export function personProfileHead(person: PersonProfileData) {

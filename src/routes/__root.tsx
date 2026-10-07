@@ -12,7 +12,6 @@ import { MotionConfig } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { isChunkLoadError, reloadForStaleChunk } from "@/lib/lazy-with-retry";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "@/components/theme-provider";
 import { PageShell } from "@/components/site-chrome";
@@ -83,11 +82,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   const [reloading, setReloading] = useState(chunkError);
 
   useEffect(() => {
-    if (chunkError) {
-      if (!reloadForStaleChunk()) setReloading(false);
-      return;
-    }
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    if (chunkError && !reloadForStaleChunk()) setReloading(false);
   }, [error, chunkError]);
 
   if (reloading) {
@@ -165,7 +160,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           description: SITE.shortDescription,
           url: SITE.url,
-          logo: "https://pixel2tech.com/__l5e/assets-v1/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          logo: "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           email: SITE.email,
           telephone: SITE.phoneE164,
           foundingDate: STATS.foundingYear,

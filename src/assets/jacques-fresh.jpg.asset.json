@@ -1,11 +1,9 @@
 {
   "version": 1,
   "asset_id": "4dd13825-28c2-4b89-8735-b83153edb9ad",
-  "project_id": "e2a5516f-fcc9-4ab8-9f90-891f41244225",
-  "url": "/__l5e/assets-v1/4dd13825-28c2-4b89-8735-b83153edb9ad/jacques-fresh.jpg",
-  "r2_key": "a/v1/e2a5516f-fcc9-4ab8-9f90-891f41244225/4dd13825-28c2-4b89-8735-b83153edb9ad/jacques-fresh.jpg",
+  "url": "/media/4dd13825-28c2-4b89-8735-b83153edb9ad/jacques-fresh.jpg",
   "original_filename": "jacques-fresh.jpg",
-  "size": 1473516,
+  "size": 100073,
   "content_type": "image/png",
   "created_at": "2026-08-08T23:30:12Z"
 }
