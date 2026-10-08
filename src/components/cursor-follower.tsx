@@ -153,7 +153,15 @@ export function CursorFollower() {
       start();
     };
 
+    // Coming back from another tab or from the back/forward cache: the pointer
+    // may not move first, so make the cursor visible again straight away.
+    const onReturn = () => {
+      if (document.visibilityState === "visible") showRef.current?.();
+    };
+
     start();
+    window.addEventListener("pageshow", onReturn);
+    document.addEventListener("visibilitychange", onReturn);
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver, { passive: true });
     window.addEventListener("mousedown", onDown, { passive: true });
@@ -165,6 +173,8 @@ export function CursorFollower() {
       if (raf) cancelAnimationFrame(raf);
       running = false;
       root.classList.remove("p2t-cursor");
+      window.removeEventListener("pageshow", onReturn);
+      document.removeEventListener("visibilitychange", onReturn);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mousedown", onDown);

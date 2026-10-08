@@ -19,6 +19,7 @@ import { SITE, STATS } from "@/lib/site-config";
 import { TEAM, TEAM_SIZE } from "@/lib/team";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { ContentProtection } from "@/components/content-protection";
+import { CursorFollower } from "@/components/cursor-follower";
 
 import { Toaster } from "@/components/ui/sonner";
 
@@ -253,6 +254,9 @@ function RootComponent() {
           <Outlet />
         </MotionConfig>
         <Toaster position="top-center" richColors closeButton />
+        {/* Mounted once here, not per page, so it keeps its position and stays
+            visible across client-side navigation. */}
+        <CursorFollower />
       </ThemeProvider>
     </QueryClientProvider>
   );

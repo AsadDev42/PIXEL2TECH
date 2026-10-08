@@ -8,7 +8,6 @@ import { ThemeToggle } from "@/components/theme-provider";
 import { SOCIAL_LINKS } from "@/components/social-links";
 import { FadeIn } from "@/components/motion";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
-import { CursorFollower } from "@/components/cursor-follower";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
 import { PRIMARY_CTA_LABEL, SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
@@ -548,7 +547,6 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       </main>
       <SiteFooter />
       <WhatsAppButton />
-      <CursorFollower />
     </div>
   );
 }
