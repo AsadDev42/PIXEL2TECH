@@ -734,6 +734,46 @@ const FALLBACK = BANKS["Websites"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "skin-deep-shopify-store": {
+    process: [
+      {
+        title: "Catalog and navigation",
+        body: "Products are organized two ways: by type (skincare and beauty, hair care, clinical) and by skin concern, so shoppers can start from the problem they want to solve.",
+      },
+      {
+        title: "Bundles and offers",
+        body: "Value kits group products into routines by concern, and a build-your-own-bundle offer gives a discount for choosing several products together.",
+      },
+      {
+        title: "Product pages",
+        body: "Each product page shows the rating, price and size options up front, with tabs for details, how it works, how to use and ingredients.",
+      },
+      {
+        title: "Mobile first",
+        body: "Menus, collection grids and product pages are laid out for phones first, where most beauty shoppers browse and buy.",
+      },
+    ],
+    technologies: [
+      "Shopify",
+      "Dawn theme (Online Store 2.0)",
+      "Shopify collections",
+      "Product reviews",
+    ],
+    whyItMatters:
+      "In skincare, shoppers buy for a concern and come back for a routine. A store that lets them shop by need and buy bundled routines makes the first order easier and the next one more likely.",
+    faqs: [
+      {
+        q: "What platform is the Skin Deep store built on?",
+        a: "It runs on Shopify with the Dawn theme (Online Store 2.0), using Shopify collections for categories, skin concerns and value bundles.",
+      },
+      {
+        q: "Can Pixel2Tech build a similar Shopify store for my brand?",
+        a: "Yes. We design and build Shopify stores, including navigation by need, bundle offers and product page layouts. Tell us about your catalog and we will send a fixed quote after a short call.",
+      },
+    ],
+    relatedReading: COMMERCE_READING,
+    relatedServices: ["WordPress & Shopify", "Website Development", "Branding & Design"],
+  },
   "madluvv-social-media-meta-ads": {
     process: [
       {

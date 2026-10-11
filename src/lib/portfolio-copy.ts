@@ -57,6 +57,32 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "skin-deep-shopify-store": {
+    metaTitle: "Skin Deep Shopify store | Pixel2Tech",
+    metaDescription:
+      "Shopify store for Skin Deep, a natural skincare brand: shop by product or skin concern, a build-your-own bundle offer, value kits and mobile-first pages.",
+    summary: "Shopify store for a natural skincare, haircare and beauty brand.",
+    overview:
+      "Skin Deep sells natural skincare, haircare, lip and body care, with a catalog of close to 70 products and bundles. The store runs on Shopify and is built to make a large range easy to shop on any screen.",
+    challenge:
+      "A skincare range this wide is hard to browse by product name alone. Shoppers usually start from a concern such as acne, dryness or dull skin, and many want a routine rather than a single product.",
+    approach:
+      "Navigation lets shoppers browse by category (skincare and beauty, hair care, clinical) or by skin concern. Value bundles group products into routines by concern, and a build-your-own-bundle offer encourages larger orders. Product pages lead with ratings, price and clear tabs for details, how it works, how to use and ingredients.",
+    outcome:
+      "A Shopify store where shoppers can find products by need, compare routines and buy bundles in a few taps, with the same experience on mobile and desktop.",
+    results: [
+      { label: "Platform", value: "Shopify (Dawn theme)" },
+      { label: "Catalog", value: "Skincare, haircare, lip and body care" },
+      { label: "Shopping", value: "By category, by skin concern, bundles" },
+    ],
+    deliverables: [
+      "Shopify storefront",
+      "Concern-based navigation",
+      "Bundle and value kit pages",
+      "Product page layout",
+      "Mobile layout",
+    ],
+  },
   "madluvv-social-media-meta-ads": {
     metaTitle: "MADLUVV social media, Meta ads and Shopify work | Pixel2Tech",
     metaDescription:

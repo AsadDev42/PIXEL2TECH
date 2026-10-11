@@ -1,4 +1,5 @@
 import { nayyerAssets } from "@/assets/jacques-assets";
+import type { LiveStore } from "@/components/store-showcase";
 import { swishtagAssets } from "@/assets/swishtag-assets";
 import { bookCoverAssets } from "@/assets/book-cover-assets";
 import { SITE } from "@/lib/site-config";
@@ -35,6 +36,8 @@ export type PortfolioItem = {
   showAllImages?: boolean;
   /** Self-hosted videos, shown as a video wall on the detail page. */
   videos?: PortfolioVideo[];
+  /** A live Shopify store: screenshots in browser/phone frames plus a link to it. */
+  store?: LiveStore;
 };
 
 /*
@@ -347,6 +350,25 @@ const RAW: RawWork = {
       },
     ],
     "E-Commerce": [
+      {
+        slug: "skin-deep-shopify-store",
+        title: "Skin Deep — Shopify store",
+        client: "Skin Deep",
+        img: "/portfolio/skin-deep-shopify-store/desktop-home.webp",
+        store: {
+          url: "https://skindeepintl.com",
+          desktop: [
+            "/portfolio/skin-deep-shopify-store/desktop-home.webp",
+            "/portfolio/skin-deep-shopify-store/desktop-collection.webp",
+            "/portfolio/skin-deep-shopify-store/desktop-product.webp",
+          ],
+          fullPage: "/portfolio/skin-deep-shopify-store/desktop-home-full.webp",
+          mobile: [
+            "/portfolio/skin-deep-shopify-store/mobile-home.webp",
+            "/portfolio/skin-deep-shopify-store/mobile-product.webp",
+          ],
+        },
+      },
       {
         title: "Fashion storefront",
         img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75",

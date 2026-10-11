@@ -16,6 +16,7 @@ import { Faq, faqJsonLd } from "@/components/faq";
 import { BookCarousel } from "@/components/book-carousel";
 import { Coverflow3D } from "@/components/coverflow-3d";
 import { VideoSpotlight, type SpotlightVideo } from "@/components/video-spotlight";
+import { StoreShowcase } from "@/components/store-showcase";
 import { VideoWall } from "@/components/video-wall";
 import { bookCoverAssets, type BookCover } from "@/assets/book-cover-assets";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
@@ -604,6 +605,23 @@ function PortfolioDetailPage() {
                   </dt>
                   <dd className="mt-1 font-semibold text-foreground">{item.subcategory}</dd>
                 </div>
+                {item.store && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                      Live store
+                    </dt>
+                    <dd className="mt-1 font-semibold">
+                      <a
+                        href={item.store.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline-offset-4 hover:underline"
+                      >
+                        {new URL(item.store.url).host.replace(/^www\./, "")} ↗
+                      </a>
+                    </dd>
+                  </div>
+                )}
               </dl>
             </div>
           </div>
@@ -634,7 +652,11 @@ function PortfolioDetailPage() {
                   {item.client ? `What we made for ${item.client}` : "What we made"}
                 </h2>
                 <div className="mt-8">
-                  <CategoryShowcase item={item} images={gallery} />
+                  {item.store ? (
+                    <StoreShowcase store={item.store} name={item.client ?? item.title} />
+                  ) : (
+                    <CategoryShowcase item={item} images={gallery} />
+                  )}
                 </div>
               </>
             )}
