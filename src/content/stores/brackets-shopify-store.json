@@ -1,0 +1,43 @@
+{
+  "slug": "brackets-shopify-store",
+  "client": "Brackets",
+  "url": "https://www.brackets.pk/",
+  "platform": "Shopify",
+  "order": 24,
+  "metaTitle": "Brackets Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Brackets, a Pakistani menswear label: shirts, T-shirts, polos and trousers, a short four-link menu and sidebar size and color filters.",
+  "summary": "Shopify store for a Pakistani menswear label selling shirts, T-shirts, polos, trousers and layers.",
+  "overview": "Brackets describes itself as a premium menswear destination in Pakistan, selling casual shirts, T-shirts, polos, trousers, sweatshirts, hoodies, jackets and socks. We built Brackets' Shopify store on the Ella theme with a pared-back layout that keeps the clothing in front.",
+  "challenge": "A menswear catalog like this repeats the same garments in many colors and sizes, from XS to XXL in tops and waist sizes 30 to 40 in trousers. Shoppers need to get to their size and color in a category quickly, and seasonal sales have to stand out without making the store look cluttered.",
+  "approach": "The header keeps to four links: New arrivals, Men, Women and Sale. The homepage opens on a full-width campaign banner, followed by large category tiles. Collection pages add breadcrumbs, a left sidebar with filters for category, color, size and discounts, sorting and a four-column grid of model photos with New badges.",
+  "outcome": "A calm, image-led menswear store where a shopper can reach a category, filter by size and color and see new pieces at a glance, on desktop and on phones.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Ella theme)" },
+    { "label": "Catalog", "value": "Shirts, T-shirts, polos, trousers, layers and socks" },
+    { "label": "Shopping", "value": "Four-link menu, sidebar filters, sale edits" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Minimal header navigation",
+    "Campaign banner and category tiles",
+    "Collection sidebar filters",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Short navigation", "body": "The header carries only New arrivals, Men, Women and Sale, with search and cart on the right, so the brand and product photography carry the page." },
+    { "title": "Campaign homepage", "body": "A full-width banner announces the current campaign, such as an end of season sale, and large category tiles below it lead into T-shirts, shirts and other ranges." },
+    { "title": "Filtered collections", "body": "Collection pages show breadcrumbs and a Refined by sidebar with category, color, size and discount filters, next to a four-column grid of model shots marked with New badges where relevant." },
+    { "title": "Sizes and colors", "body": "Products carry size options from XS to XXL for tops and waist sizes for trousers, with each colorway listed as its own product so the grid shows every color at a glance." }
+  ],
+  "technologies": ["Shopify", "Ella theme", "Shopify collection filters", "Size and color variants"],
+  "whyItMatters": "Menswear shoppers often know their size and want to see what is new in it. A short menu and size and color filters get them there without hunting through every page.",
+  "faqs": [
+    { "q": "What platform is the Brackets store built on?", "a": "It runs on Shopify with the Ella theme, using Shopify collections and filters for categories, sizes, colors and sale items." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for clothing brands, including minimal navigation, campaign homepages and filtered collection pages. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

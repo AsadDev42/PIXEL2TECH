@@ -1,0 +1,44 @@
+{
+  "slug": "bagallery-shopify-store",
+  "client": "Bagallery",
+  "url": "https://bagallery.com/",
+  "platform": "Shopify",
+  "order": 43,
+  "metaTitle": "Bagallery Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Bagallery, a multi-brand beauty and lifestyle retailer in Pakistan: makeup, skincare, haircare and fashion, with brand pages and filters.",
+  "summary": "Shopify store for a multi-brand beauty, skincare and lifestyle retailer in Pakistan.",
+  "overview": "Bagallery is a multi-brand retailer selling makeup, skincare, haircare, fragrance, fashion and lifestyle products from local and international brands, and it states that its products are 100% authentic. We built Bagallery's Shopify store to carry a large catalog from many brands alongside its own Home.Co line.",
+  "challenge": "A multi-brand beauty store has to serve shoppers who arrive looking for a brand, a category or a deal. It also runs frequent sale campaigns with promo codes and payment partner discounts that need to be visible without burying the products.",
+  "approach": "The header pairs a search bar with two menu rows: Beauty, Fashion, Vybe and Track your order, then Makeup, Skincare, Haircare, Lifestyle, Brands and Gen-Z. Collection pages have a product type filter sidebar, sorting and grid view options, with discount badges and a pay-with-Yeylo price on each card. Product pages show SKU, star rating, trust points for authenticity, 7-day returns and cash on delivery, an estimated delivery window and a Yeylo pay-in-3 option under Add to bag.",
+  "outcome": "A Shopify store where shoppers can browse by brand or category, see the current deal on every product and check delivery dates and payment options before they add to bag.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Makeup, skincare, haircare, fragrance, fashion, lifestyle" },
+    { "label": "Shopping", "value": "By brand and category, product type filters, campaign offers" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Brand and category navigation",
+    "Collection filters",
+    "Campaign and promo banners",
+    "Product page with delivery estimate",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Brands and categories", "body": "Two menu rows separate departments such as Beauty and Fashion from categories such as Makeup, Skincare and Haircare, with a Brands entry for shoppers who already know what they want." },
+    { "title": "Collections", "body": "Collection pages list product types in a filter sidebar, with sorting, grid density options, discount badges and a payment partner price strip on each card." },
+    { "title": "Product pages", "body": "Each product shows SKU, rating and review count, trust points for authenticity, returns and cash on delivery, a wish list button and an order-by countdown with estimated delivery dates." },
+    { "title": "Campaigns and mobile", "body": "A top banner explains stacked promo codes, and the mobile home page adds round category shortcuts, offer tiles and bestseller carousels for quick browsing." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Shopify collections and filters", "Product reviews", "Wish list"],
+  "whyItMatters": "Multi-brand beauty shoppers compare brands, prices and delivery before they commit. A store that shows authenticity, returns and delivery dates on every product page answers those questions before checkout.",
+  "faqs": [
+    { "q": "What platform is the Bagallery store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for brands, beauty categories, lifestyle lines and sale campaigns." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for multi-brand retailers, including brand navigation, product filters and campaign banners. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

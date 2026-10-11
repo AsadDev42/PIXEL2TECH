@@ -1,0 +1,37 @@
+{
+  "slug": "skin-deep-shopify-store",
+  "client": "Skin Deep",
+  "url": "https://skindeepintl.com",
+  "platform": "Shopify",
+  "order": 10,
+  "metaTitle": "Skin Deep Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Skin Deep, a natural skincare brand: shop by product or skin concern, a build-your-own bundle offer, value kits and mobile-first pages.",
+  "summary": "Shopify store for a natural skincare, haircare and beauty brand.",
+  "overview": "Skin Deep sells natural skincare, haircare, lip and body care, with a catalog of close to 70 products and bundles. We built the brand's Shopify store to make a large range easy to shop on any screen.",
+  "challenge": "A skincare range this wide is hard to browse by product name alone. Shoppers usually start from a concern such as acne, dryness or dull skin, and many want a routine rather than a single product.",
+  "approach": "Navigation lets shoppers browse by category (skincare and beauty, hair care, clinical) or by skin concern. Value bundles group products into routines by concern, and a build-your-own-bundle offer encourages larger orders. Product pages lead with ratings, price and clear tabs for details, how it works, how to use and ingredients.",
+  "outcome": "A Shopify store where shoppers can find products by need, compare routines and buy bundles in a few taps, with the same experience on mobile and desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Dawn theme)" },
+    { "label": "Catalog", "value": "Skincare, haircare, lip and body care" },
+    { "label": "Shopping", "value": "By category, by skin concern, bundles" }
+  ],
+  "deliverables": ["Shopify storefront", "Concern-based navigation", "Bundle and value kit pages", "Product page layout", "Mobile layout"],
+  "process": [
+    { "title": "Catalog and navigation", "body": "Products are organized two ways: by type (skincare and beauty, hair care, clinical) and by skin concern, so shoppers can start from the problem they want to solve." },
+    { "title": "Bundles and offers", "body": "Value kits group products into routines by concern, and a build-your-own-bundle offer gives a discount for choosing several products together." },
+    { "title": "Product pages", "body": "Each product page shows the rating, price and size options up front, with tabs for details, how it works, how to use and ingredients." },
+    { "title": "Mobile first", "body": "Menus, collection grids and product pages are laid out for phones first, where most beauty shoppers browse and buy." }
+  ],
+  "technologies": ["Shopify", "Dawn theme (Online Store 2.0)", "Shopify collections", "Product reviews"],
+  "whyItMatters": "In skincare, shoppers buy for a concern and come back for a routine. A store that lets them shop by need and buy bundled routines makes the first order easier and the next one more likely.",
+  "faqs": [
+    { "q": "What platform is the Skin Deep store built on?", "a": "It runs on Shopify with the Dawn theme (Online Store 2.0), using Shopify collections for categories, skin concerns and value bundles." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores, including navigation by need, bundle offers and product page layouts. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

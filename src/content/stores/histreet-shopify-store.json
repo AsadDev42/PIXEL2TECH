@@ -1,0 +1,44 @@
+{
+  "slug": "histreet-shopify-store",
+  "client": "Hi Street",
+  "url": "https://histreet.pk/",
+  "platform": "Shopify",
+  "order": 20,
+  "metaTitle": "Hi Street Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Hi Street, a men's shoe brand in Pakistan: shop by shoe style, fixed-price WOW Prices edits, size buttons and a size guide per product.",
+  "summary": "Shopify store for a Pakistani men's footwear brand selling leather shoes, sandals and accessories.",
+  "overview": "Hi Street sells men's footwear in Pakistan: formal and casual shoes, moccasins, loafers, sandals and slippers, plus belts, wallets and shoe care. We built Hi Street's Shopify store on a custom theme so a large catalog of leather shoes can be browsed by style, size and price.",
+  "challenge": "Men shopping for shoes usually know the style they want, a dress shoe for work or a sandal for summer, and need to find their size fast. The range is broad, with several colors per design and regular sale and archive drops, so full-price, sale and fixed-price items had to stay easy to tell apart.",
+  "approach": "The main menu lists each shoe style on its own (sandals, slippers, formals, casuals, moccasins, loafers) next to New arrivals, an Archive sale link and a WOW Prices menu that groups styles at one fixed price. Collection pages add quick tabs by style, a filter panel and a grid toggle. Product pages show the article code, the sale price against the original, color, EU size buttons from 40 to 45, a size guide and pay-in-3 installments.",
+  "outcome": "A footwear store where a shopper can go from style to size to checkout in a few taps, with sale and fixed-price edits one click from the menu and the same layout on phone and desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (custom Hi-Street theme)" },
+    { "label": "Catalog", "value": "Men's shoes, sandals, slippers and accessories" },
+    { "label": "Shopping", "value": "By style, fixed-price edits, size guide" }
+  ],
+  "deliverables": [
+    "Shopify storefront on a custom theme",
+    "Style-based main navigation",
+    "Sale and fixed-price collections",
+    "Collection tabs and filters",
+    "Product page with sizes and size guide",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation by shoe style", "body": "Each style has its own top-level link, so a shopper looking for loafers or moccasins lands on them directly instead of digging through one long shoes page. Belts, wallets and shoe care sit under an Accessories menu." },
+    { "title": "Sale and price edits", "body": "Archive sale is highlighted in red in the menu, and WOW Prices groups sandals, moccasins, casual and dress shoes at one fixed price each, so price-led shoppers have their own route into the catalog." },
+    { "title": "Collection pages", "body": "Collection pages open with a banner, then style tabs (slippers, formal shoes, moccasins, casual shoes, loafers), a filter panel, a grid toggle and discount badges on each product card." },
+    { "title": "Product pages", "body": "Product pages lead with the article code and price, then color, size buttons and a size guide link, followed by quantity and add to cart. The layout stacks cleanly on phones with the image carousel on top." }
+  ],
+  "technologies": ["Shopify", "Custom Hi-Street theme", "Shopify collections and filters", "Yeylo pay-in-3 installments"],
+  "whyItMatters": "Shoe shoppers buy by style and size, and many wait for a sale. Putting styles, price edits and the size guide in plain sight removes the usual reasons to leave before checkout.",
+  "faqs": [
+    { "q": "What platform is the Hi Street store built on?", "a": "It runs on Shopify with a custom Hi-Street theme, using Shopify collections for shoe styles, sale and fixed-price edits." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for footwear and fashion brands, including style-based menus, sale collections and product pages with size guides. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slug": "onieo-shopify-store",
+  "client": "Onieo",
+  "url": "https://www.onieo.com/",
+  "platform": "Shopify",
+  "order": 34,
+  "metaTitle": "Onieo Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Onieo, a multi-brand fashion and lifestyle store: shop by brand, men, women, kids and home, with custom sizes and a mobile bottom bar.",
+  "summary": "Shopify store for a multi-brand fashion, kids and home store in Pakistan.",
+  "overview": "Onieo is a multi-brand store selling eastern wear, menswear, womenswear, kids' clothing, home essentials, skincare, fragrances and accessories from several labels. We built Onieo's Shopify store on the Gecko theme to carry a large catalog from different brands under one checkout.",
+  "challenge": "Shoppers arrive looking for a brand, a department or a specific item such as hoodies, jeans or bed sheets, so the store has to work in all three directions. Products come from different vendors with their own naming, and the store also invites new brands to sell on the platform.",
+  "approach": "A two-row menu covers Sale, New In, Eastern Wear, Men, Women, Kids, Home Essentials, Skincare, Fragrances, Accessories and By Brands, with department menus listing subcategories and their product counts. The homepage leads with a Shop by Brands row of logos. Collection pages show the brand name under each product, discount badges, a filter and a grid switcher from two to six columns, and product pages show stock status, rewards to be earned, size options including a paid custom size, and a description accordion.",
+  "outcome": "A Shopify store where shoppers can start from a brand, a department or a sale, compare products from several labels in one grid and check out with a free-shipping threshold shown in the announcement bar, with a cart and search bar fixed to the bottom on mobile.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Gecko theme)" },
+    { "label": "Catalog", "value": "Multi-brand fashion, kids, home, skincare" },
+    { "label": "Shopping", "value": "By brand, by department, custom sizes" }
+  ],
+  "deliverables": ["Shopify storefront", "Two-row department menu", "Shop-by-brand collections", "Collection grid with column switcher", "Product page with size and custom-size options", "Mobile bottom bar"],
+  "process": [
+    { "title": "Departments and brands", "body": "The menu covers each department and a By Brands section, and the homepage shows brand logos so shoppers who know a label can go straight to it." },
+    { "title": "Collection pages", "body": "Each product card shows the brand name and any discount, and shoppers can switch the grid from two to six columns and filter the results." },
+    { "title": "Product pages", "body": "Product pages show the sale and original price, stock status, a rewards message and size buttons, including a custom size option with its added cost and delivery time." },
+    { "title": "Vendors and service", "body": "Footer pages include Sell on Onieo and vendor registration for new brands, plus how to order, payment and delivery, returns and customer reviews." }
+  ],
+  "technologies": ["Shopify", "Gecko theme", "Brand collections", "Loyalty rewards"],
+  "whyItMatters": "A multi-brand store has to serve shoppers who think in brands and shoppers who think in categories. Showing the brand on every product card and in the menu keeps both paths short.",
+  "faqs": [
+    { "q": "What platform is the Onieo store built on?", "a": "It runs on Shopify with the Gecko theme, using Shopify collections for each department and each brand, with a loyalty rewards message on product pages." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We build Shopify stores for single brands and multi-brand retailers, including brand and department navigation and flexible collection grids. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

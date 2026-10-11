@@ -1,0 +1,44 @@
+{
+  "slug": "unze-london-shopify-store",
+  "client": "Unze London",
+  "url": "https://unze.com.pk/",
+  "platform": "Shopify",
+  "order": 21,
+  "metaTitle": "Unze London Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Unze London: women, men, boys and girls entry points, deep menus for shoes, bags and clothing, wishlist, image swatches and installments.",
+  "summary": "Shopify store for a shoes, bags and clothing brand selling to women, men and kids in Pakistan.",
+  "overview": "Unze London sells women's shoes and bags alongside clothing for women, men and kids, from bridal and party shoes to jackets, co-ord sets and track suits. We built Unze London's Shopify store to carry that range under one roof, with separate paths for each shopper.",
+  "challenge": "The catalog spans several departments and dozens of sub-categories: courts, moccasins, boots, khussa and comfort shoes, then party, shoulder and tote bags, then clothing. A single menu that tried to show everything at once would bury the product a shopper came for.",
+  "approach": "The homepage opens on a full-screen hero with four clear buttons: Women, Men, Boys and Girls. Inside each department, a horizontal sub-category bar (for example View all, Bridal and party shoes, Courts, Moccasins, Loafers, Boots, Ballerinas) sits above the grid, with filters and a one, two or four-column view. Product pages show the article code, discount, color choices as photo swatches, interest-free installments and accordions for the refund and exchange policy, description, product information and deliveries.",
+  "outcome": "A multi-department fashion store where shoppers pick their department on the first screen and narrow down by category in one more tap, with wishlist, sharing and chat on hand on every page.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Boost theme)" },
+    { "label": "Catalog", "value": "Shoes, bags and clothing for women, men and kids" },
+    { "label": "Shopping", "value": "By department, sub-category bars, wishlist" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Department-first homepage",
+    "Sub-category navigation bars",
+    "Collection filters and grid views",
+    "Product page with swatches and policy accordions",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Departments first", "body": "The homepage hero carries four buttons for Women, Men, Boys and Girls, so each shopper starts in the right part of a large catalog instead of a generic landing page." },
+    { "title": "Sub-category bars", "body": "Each department has a scrolling bar of sub-categories above the grid: shoe types such as courts, loafers and ballerinas, or bag types such as bridal and party, casual, shoulder and cross-body." },
+    { "title": "Collection grids", "body": "Product cards show New and discount badges, the number of colors and the sale price against the original. Shoppers can filter the grid and switch between one, two or four products per row." },
+    { "title": "Product pages", "body": "Product pages lead with the article code and price, then photo swatches for each color, installment pricing, add to cart and accordions for refunds and exchanges, product details and deliveries. Shoe sizes list UK, US and EU in one label." }
+  ],
+  "technologies": ["Shopify", "Boost theme", "Wishlist", "alif shop installments", "Live chat widget"],
+  "whyItMatters": "When one brand sells shoes, bags and clothing to the whole family, the first job of the store is routing. Getting each shopper into the right department on the first screen keeps a large catalog easy to shop.",
+  "faqs": [
+    { "q": "What platform is the Unze London store built on?", "a": "It runs on Shopify with the Boost theme, using Shopify collections for departments and sub-categories across shoes, bags and clothing." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for brands with several departments, including department-first homepages, sub-category menus and product pages with swatches and policy details. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

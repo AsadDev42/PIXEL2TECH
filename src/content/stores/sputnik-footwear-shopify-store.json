@@ -1,0 +1,44 @@
+{
+  "slug": "sputnik-footwear-shopify-store",
+  "client": "Sputnik Footwear",
+  "url": "https://sputnikfootwear.com/",
+  "platform": "Shopify",
+  "order": 22,
+  "metaTitle": "Sputnik Footwear Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Sputnik Footwear: men's and women's shoe ranges, filters for color, size, type and price, size buttons, a size chart and stock alerts.",
+  "summary": "Shopify store for a Pakistani footwear brand with separate men's and women's shoe ranges.",
+  "overview": "Sputnik Footwear, which presents itself as a shoe brand since 1967, sells men's and women's footwear across Pakistan. We built Sputnik's Shopify store on the Tinker theme to present a large catalog of heels, flats, khussa, sandals, casual and formal shoes.",
+  "challenge": "The women's and men's ranges are very different: pumps, medium heels, wedges, flats, comfort shoes, khussa and kolapoori on one side, and sandals, slippers, casuals, formals and peshawari on the other. Each style comes in several colors and numeric sizes, so shoppers need to narrow a long list quickly.",
+  "approach": "The main menu splits New in, Women, Men and Shoes, with links to returns and exchange, FAQs, blogs and a store locator next to them. Collection pages show a large title, an item count and filters for color, size, product type, price and availability, plus color swatches on every card. Product pages list the color, size buttons from 7 to 12, a size chart link and a low-stock note before add to cart and buy it now.",
+  "outcome": "A clean footwear store where men and women each have their own range, any collection can be filtered down to the right color and size, and stock levels are clear before checkout.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Tinker theme)" },
+    { "label": "Catalog", "value": "Men's and women's shoes, sandals and slippers" },
+    { "label": "Shopping", "value": "Filters by color, size, type and price" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Men's and women's navigation",
+    "Filtered collection pages",
+    "Product page with size chart",
+    "Store locator and policy pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two ranges, one menu", "body": "New in, Women and Men each get a top-level link, with the women's styles (flats, comfort, medium heels, pumps, wedges, khussa) and men's styles (sandals, casuals, formals, peshawari) grouped beneath them." },
+    { "title": "Collection filters", "body": "Every collection carries filters for color, size, product type, price and availability, an item count, sorting and a grid density toggle. Cards show sale badges, the article code and color swatches." },
+    { "title": "Product pages", "body": "Product pages show the price with taxes included, a color swatch, size buttons, a size chart link and a low-stock indicator, followed by add to cart, buy it now and a short material description." },
+    { "title": "Trust and support pages", "body": "Return and exchange, FAQs and a store locator sit in the main menu rather than the footer, so shoppers can check policies and find a shop without leaving the page they are on." }
+  ],
+  "technologies": ["Shopify", "Tinker theme", "Shopify collection filters", "Color swatches and size chart"],
+  "whyItMatters": "Footwear returns usually come down to size. Filters by size, a size chart on every product and clear stock levels help shoppers pick the right pair the first time.",
+  "faqs": [
+    { "q": "What platform is the Sputnik Footwear store built on?", "a": "It runs on Shopify with the Tinker theme, using Shopify collections and filters for the men's and women's footwear ranges." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for footwear brands, including filtered collections, size charts and clean product pages. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

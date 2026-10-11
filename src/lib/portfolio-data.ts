@@ -1,5 +1,6 @@
 import { nayyerAssets } from "@/assets/jacques-assets";
 import type { LiveStore } from "@/components/store-showcase";
+import { STORE_PROJECTS, storeCover, storeOf, type StoreProject } from "@/lib/store-projects";
 import { swishtagAssets } from "@/assets/swishtag-assets";
 import { bookCoverAssets } from "@/assets/book-cover-assets";
 import { SITE } from "@/lib/site-config";
@@ -156,6 +157,16 @@ export const SUBS: Record<Category, string[]> = {
 
 type RawItem = Omit<PortfolioItem, "category" | "subcategory" | "slug"> & { slug?: string };
 type RawWork = Record<Category, Record<string, RawItem[]>>;
+
+function storeItem(p: StoreProject): RawItem {
+  return {
+    slug: p.slug,
+    title: `${p.client} — ${p.platform} store`,
+    client: p.client,
+    img: storeCover(p),
+    store: storeOf(p),
+  };
+}
 
 const RAW: RawWork = {
   Creative: {
@@ -410,28 +421,8 @@ const RAW: RawWork = {
     ],
   },
   "WordPress & Shopify": {
-    "Shopify Stores": [
-      {
-        slug: "skin-deep-shopify-store",
-        title: "Skin Deep — Shopify store",
-        client: "Skin Deep",
-        // Portrait phone screenshot suits the tall portfolio card.
-        img: "/portfolio/skin-deep-shopify-store/mobile-home.webp",
-        store: {
-          url: "https://skindeepintl.com",
-          desktop: [
-            "/portfolio/skin-deep-shopify-store/desktop-home.webp",
-            "/portfolio/skin-deep-shopify-store/desktop-collection.webp",
-            "/portfolio/skin-deep-shopify-store/desktop-product.webp",
-          ],
-          fullPage: "/portfolio/skin-deep-shopify-store/desktop-home-full.webp",
-          mobile: [
-            "/portfolio/skin-deep-shopify-store/mobile-home.webp",
-            "/portfolio/skin-deep-shopify-store/mobile-product.webp",
-          ],
-        },
-      },
-    ],
+    "Shopify Stores": STORE_PROJECTS.filter((p) => p.platform === "Shopify").map(storeItem),
+    "WordPress Sites": STORE_PROJECTS.filter((p) => p.platform === "WordPress").map(storeItem),
   },
   "Video Editing": {
     "Short Form": [
@@ -626,15 +617,17 @@ export const WORK: Record<Category, Record<string, PortfolioItem[]>> = Object.fr
   (Object.keys(RAW) as Category[]).map((cat) => [
     cat,
     Object.fromEntries(
-      Object.entries(RAW[cat]).map(([sub, arr]) => [
-        sub,
-        arr.map((w) => ({
-          ...w,
-          category: cat,
-          subcategory: sub,
-          slug: w.slug ?? slugify(`${cat}-${sub}-${w.title}`),
-        })),
-      ]),
+      Object.entries(RAW[cat])
+        .filter(([, arr]) => arr.length > 0)
+        .map(([sub, arr]) => [
+          sub,
+          arr.map((w) => ({
+            ...w,
+            category: cat,
+            subcategory: sub,
+            slug: w.slug ?? slugify(`${cat}-${sub}-${w.title}`),
+          })),
+        ]),
     ),
   ]),
 ) as Record<Category, Record<string, PortfolioItem[]>>;

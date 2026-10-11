@@ -1,0 +1,37 @@
+{
+  "slug": "azure-shopify-store",
+  "client": "Azure",
+  "url": "https://www.azureofficial.pk/",
+  "platform": "Shopify",
+  "order": 33,
+  "metaTitle": "Azure Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Azure, a festive womenswear label with menswear: named collections, unstitched or sized options, size charts, reviews and video shopping.",
+  "summary": "Shopify store for a Pakistani festive womenswear label with a menswear line.",
+  "overview": "Azure sells festive and formal womenswear, including heavily embroidered three-piece suits, luxury lawn, velvet and smart casual pieces, plus a menswear line called Azureman. We built Azure's Shopify store on the Agile theme for a catalog of close to 180 products.",
+  "challenge": "Azure's designs are sold both as unstitched fabric and as stitched outfits in sizes XS to XL, often on the same product. The brand runs several named collections, a designer line and menswear side by side, and wants festive shoppers to see reviews and stock status before they decide.",
+  "approach": "The menu covers New Arrivals, Our Collections (Luxe, Ensembles, Luxury Lawn, Diva, Chic Essentials, Velvet), Azure Vogue by Ahmed Patel, Best Sellers, Sale, Azureman and a blog. A rotating announcement bar carries the current drop, worldwide shipping and the exchange policy. Product pages put star ratings with review counts under the title, then an in-stock indicator, SKU and one size selector that offers Unstitched alongside XS to XL, with a size chart link and fabric and color details.",
+  "outcome": "A Shopify store where festive shoppers can browse by collection, check reviews and stock, and choose unstitched fabric or a stitched size from the same page, with menswear and the brand's blog in the same storefront.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Agile theme)" },
+    { "label": "Catalog", "value": "Festive womenswear, luxury lawn, menswear" },
+    { "label": "Shopping", "value": "By collection, unstitched or sized, reviews" }
+  ],
+  "deliverables": ["Shopify storefront", "Collection mega menu", "Product page with reviews and size chart", "Unstitched and sized variant setup", "Shoppable video section", "Mobile layout"],
+  "process": [
+    { "title": "Collections and lines", "body": "Named collections sit under one menu item with short descriptions such as heavy embroidered 3pcs or shirt and trouser, while the designer line and Azureman menswear get their own entries." },
+    { "title": "Homepage merchandising", "body": "The homepage moves from a campaign hero through latest drops, ready to wear and best sellers to a Watch. Click. Shop video section and store locations." },
+    { "title": "Product pages", "body": "Ratings, price, stock status and SKU come first, followed by a single size row with Unstitched and XS to XL, a size chart link and fabric and color details." },
+    { "title": "Content and service", "body": "A blog covers festive and lawn styling, and footer pages handle shipping, the exchange policy, FAQs, store locations and franchise applications." }
+  ],
+  "technologies": ["Shopify", "Agile theme", "Product reviews", "Size chart", "Shoppable video"],
+  "whyItMatters": "Festive wear is a considered purchase, so ratings, stock status and a clear choice between fabric and a stitched size help shoppers commit. Grouping collections by style makes a seasonal range easier to compare.",
+  "faqs": [
+    { "q": "What platform is the Azure store built on?", "a": "It runs on Shopify with the Agile theme, using Shopify collections for each line, product reviews on product pages and a size chart for stitched sizes." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We build Shopify stores for fashion labels, including collection menus, unstitched and stitched size options and product pages with reviews. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

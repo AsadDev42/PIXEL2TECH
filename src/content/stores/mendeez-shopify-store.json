@@ -1,0 +1,43 @@
+{
+  "slug": "mendeez-shopify-store",
+  "client": "Mendeez",
+  "url": "https://mendeez.com/",
+  "platform": "Shopify",
+  "order": 41,
+  "metaTitle": "Mendeez Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Mendeez, a Pakistani men's essentials brand: tees, underwear, loungewear and footwear, with fit guides and a buy 2 get 1 offer page.",
+  "summary": "Shopify store for a men's everyday essentials brand covering tops, underwear and loungewear.",
+  "overview": "Mendeez sells men's everyday essentials in Pakistan: T-shirts, polos, jogger pants, underwear packs, pajamas, outerwear, footwear and accessories. We built Mendeez's Shopify store around repeat basics, multipacks and clear sizing.",
+  "challenge": "Essentials sell on fit, fabric and price rather than on a single hero product. Shoppers buy boxers in packs of three, come back for the same jogger in another color and compare sizes from S to XXL, so the store has to make reordering and choosing a fit quick.",
+  "approach": "A centered logo header sits over a full-width menu: New in, Best sellers, Tops, Bottoms, Underwear, Loungewear, Outerwear, Activewear, Footwear, Accessories, Buy 2 get 1, Sale and Factory outlet. Collection pages open with large category tiles, then a filter panel, a live product count and date sorting, with Best seller and New badges on cards. Product pages show the star rating and review count, size buttons with Measurements and Find your fit links, a loyalty rewards note and free shipping and exchange terms under Add to cart.",
+  "outcome": "A Shopify store where a shopper can find a best seller, pick a size with a fit guide close by and add an offer bundle to the cart in a few taps on mobile or desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Symmetry theme)" },
+    { "label": "Catalog", "value": "Tops, bottoms, underwear, loungewear, footwear, accessories" },
+    { "label": "Shopping", "value": "Fit guides, best sellers, buy 2 get 1 offers" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category navigation",
+    "Offer and outlet collections",
+    "Product page with fit guides",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation", "body": "Thirteen top-level menu items cover the range by garment type, with separate entries for best sellers, the buy 2 get 1 offer, sale and the factory outlet." },
+    { "title": "Collections", "body": "Collection pages lead with photo tiles for loungewear, underwear, T-shirts and casual pants, then a filter, product count and sorting above the grid." },
+    { "title": "Product pages", "body": "Each product shows the price, rating, color, SKU and size buttons, with Measurements and Find your fit links, a rewards note and shipping and exchange terms under the cart button." },
+    { "title": "Home and mobile", "body": "The home page opens on a full-width campaign photo and a shop by category row, and a rotating announcement bar carries free shipping, the current offer and cash on delivery." }
+  ],
+  "technologies": ["Shopify", "Symmetry theme (Online Store 2.0)", "Shopify collections and filters", "Product reviews", "Loyalty rewards"],
+  "whyItMatters": "Essentials brands grow on repeat orders. When sizing help, reviews and offers sit next to the add to cart button, shoppers reorder with confidence and add a second item.",
+  "faqs": [
+    { "q": "What platform is the Mendeez store built on?", "a": "It runs on Shopify with the Symmetry theme, using Shopify collections for garment categories, best sellers, offers and the factory outlet." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for apparel and essentials brands, including fit guides, offer collections and product page layouts. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

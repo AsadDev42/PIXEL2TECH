@@ -1,0 +1,44 @@
+{
+  "slug": "starlet-shopify-store",
+  "client": "Starlet",
+  "url": "https://starlet.pk/",
+  "platform": "Shopify",
+  "order": 23,
+  "metaTitle": "Starlet Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Starlet Shoes: men's, women's and kids' footwear plus fragrances, picture-led category links, sale badges, a wishlist and order tracking.",
+  "summary": "Shopify store for a Pakistani footwear brand selling men's, women's and kids' shoes and fragrances.",
+  "overview": "Starlet sells footwear for men, women and kids in Pakistan, from formal shoes, loafers and peshawari chappals to heels, flats and school shoes, along with a fragrance line. We built Starlet's Shopify store on the Glozin theme to bring shoes and fragrances together in one storefront.",
+  "challenge": "The catalog is wide in two directions: many men's styles, a separate women's range, a kids' section with school shoes, and fragrances that sit outside footwear entirely. Seasonal sales such as the 10.10 event also needed a prominent place without crowding out the regular range.",
+  "approach": "The header holds New arrival, Men, Women, Kids, Fragrances, the current sale and a Track order link, under a free delivery announcement bar. Collection pages open with round picture links for each style (formal, casual, loafer, sports, peshawari, sandal, slipper, leather specialist), followed by a filter button, grid and list views, sorting and product cards with the discount percentage and the amount saved. On phones, a fixed bottom bar gives quick access to home, shop, wishlist and cart.",
+  "outcome": "A footwear and fragrance store where shoppers move from department to style through pictures, see sale savings on every card and can track an order without contacting support.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Glozin theme)" },
+    { "label": "Catalog", "value": "Men's, women's and kids' footwear, fragrances" },
+    { "label": "Shopping", "value": "Picture category links, sale edits, order tracking" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Department and style menus",
+    "Picture-led category links",
+    "Sale campaign banners and collections",
+    "Mobile bottom navigation bar",
+    "Order tracking link"
+  ],
+  "process": [
+    { "title": "Departments and styles", "body": "Men, Women and Kids each open a menu of styles, from formal shoes, boots and peshawari for men to court shoes, sling backs, mules and sneakers for women, and school and sport shoes for kids." },
+    { "title": "Picture-led collections", "body": "Round photo links at the top of each collection let shoppers jump between styles by sight. Below them, product cards show the discount badge, the rupee amount saved and a select options button." },
+    { "title": "Sale campaigns", "body": "The current sale has its own menu item and a full-width homepage banner, and a free delivery threshold runs in the announcement bar across every page." },
+    { "title": "Mobile shopping", "body": "On phones, a fixed bottom bar with home, shop, wishlist and cart stays in reach while browsing, and shoe sizes are shown with both EU and UK numbers." }
+  ],
+  "technologies": ["Shopify", "Glozin theme", "Wishlist", "Order tracking page"],
+  "whyItMatters": "A brand that sells to the whole family needs each shopper to find their own section quickly. Picture links, visible savings and a simple mobile bar make a wide range feel easy to browse.",
+  "faqs": [
+    { "q": "What platform is the Starlet store built on?", "a": "It runs on Shopify with the Glozin theme, using Shopify collections for men's, women's and kids' footwear, fragrances and sale edits." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for footwear and fashion brands, including department menus, picture-led collections and sale campaigns. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

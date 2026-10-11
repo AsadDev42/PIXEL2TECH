@@ -1,0 +1,37 @@
+{
+  "slug": "kross-kulture-shopify-store",
+  "client": "Kross Kulture",
+  "url": "https://krosskulture.com/",
+  "platform": "Shopify",
+  "order": 30,
+  "metaTitle": "Kross Kulture Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Kross Kulture, a women's pret label: named collection drops, a four-item menu, size guides, discount badges and PKR or other currencies.",
+  "summary": "Shopify store for a Pakistani women's pret and luxury pret label.",
+  "overview": "Kross Kulture sells women's pret and luxury pret, from embroidered one-, two- and three-piece outfits to trousers and girls' sizes, across a catalog of more than 200 products. We built Kross Kulture's Shopify store on the Kalles theme, with a short menu, named collection drops and product pages that spell out exactly what comes in each outfit.",
+  "challenge": "The range is released as named drops such as Ghazal, Mushq and Rozmara, while shoppers also look by type: pret, luxury pret or sale. Much of the catalog carries a markdown at any given time, and the store serves customers both in Pakistan and abroad.",
+  "approach": "The header keeps a large search bar and a four-item menu: Sale, KK Studio, Luxury Pret and Pret. The homepage leads with the current drop and a shop-by-category grid. Collection pages show discount badges with a filter and sort, and product pages show the original and sale price, SKU, an international shipping note, size buttons with a size guide and a full breakdown of shirt, trouser and dupatta fabrics.",
+  "outcome": "A Shopify store where shoppers can go straight from the latest drop to a product, see the discount, pick a size against the guide and check out in PKR or their own currency, on desktop or phone.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Pret, luxury pret, separates, bottoms" },
+    { "label": "Shopping", "value": "Collection drops, sale, size guide" }
+  ],
+  "deliverables": ["Shopify storefront", "Header search and short menu", "Shop-by-category homepage", "Collection pages with discount badges", "Product page with size guide", "Mobile layout"],
+  "process": [
+    { "title": "Menu and search", "body": "A four-item menu (Sale, KK Studio, Luxury Pret, Pret) sits under a wide search bar, so shoppers either browse a line or search a design name directly." },
+    { "title": "Collection drops", "body": "Each named drop gets its own banner and collection page, with a filter, sort options and percentage-off badges on the product cards." },
+    { "title": "Product detail", "body": "Product pages show the sale and original price, SKU, size buttons with a size guide link, and a description listing package contents, fabrics, color and the model's size and height." },
+    { "title": "Local and international", "body": "A currency selector and announcement bar cover both local free-shipping and flat-rate international shipping, so overseas shoppers see the terms before they add to cart." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Multi-currency selector", "Size guide", "On-site chat assistant"],
+  "whyItMatters": "Fashion labels that release in named drops need a store that puts the newest collection first without hiding the rest. Clear fabric details and a size guide on every product page answer the questions that otherwise slow down an order.",
+  "faqs": [
+    { "q": "What platform is the Kross Kulture store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for each drop, a currency selector and a size guide on product pages." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We build Shopify stores for fashion labels, including collection drops, sale merchandising and product pages with size guides. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

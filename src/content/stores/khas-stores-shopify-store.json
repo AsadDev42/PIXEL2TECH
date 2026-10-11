@@ -1,0 +1,37 @@
+{
+  "slug": "khas-stores-shopify-store",
+  "client": "Khas Stores",
+  "url": "https://www.khasstores.com/",
+  "platform": "Shopify",
+  "order": 31,
+  "metaTitle": "Khas Stores Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Khas Stores: seasonal stitched and unstitched suits, menswear, fragrances and home decor, with installment payments and loyalty rewards.",
+  "summary": "Shopify store for a Pakistani fashion, fragrance and home retailer.",
+  "overview": "Khas Stores sells printed and embroidered women's suits in stitched and unstitched form, alongside men's unstitched fabric, fragrances, skincare and home items such as towels, cushions and lamps. We built Khas Stores' Shopify store on the Kalles theme to carry a large catalog organized around seasonal volumes.",
+  "challenge": "Most of the range arrives as seasonal volumes (Winter'26, Summer'26, Pre-Winter), each with printed and embroidered lines and fabrics like lawn, khaddar and cambric. The same suit can be bought unstitched or stitched in a set size, and the store also has to make room for menswear, fragrances and home decor.",
+  "approach": "The main menu runs by season first, then New Arrivals, Women, Fragrances, Home, Men, Skincare and the current sale, with small badges flagging new arrivals, essentials and the sale discount. Collection pages show a product count, filter and sort. Product pages offer unstitched or Small to Large style options with a size guide, show pay-in-three installment options and loyalty rewards, and keep a sticky add-to-cart bar as shoppers scroll.",
+  "outcome": "A Shopify store where shoppers move from a seasonal volume to a suit in the fabric and form they want, see what they would pay in installments and what they earn in points, and check out without losing the cart button.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Women's suits, menswear, fragrance, home" },
+    { "label": "Shopping", "value": "By season, stitched or unstitched, installments" }
+  ],
+  "deliverables": ["Shopify storefront", "Season-first mega menu", "Collection pages with filters", "Product page with style options and size guide", "Installment and loyalty messaging", "Mobile layout"],
+  "process": [
+    { "title": "Season-first navigation", "body": "Winter and Summer volumes lead the menu, each split into printed and embroidered, with separate routes for unstitched, stitched, ready to wear, formal and casual wear." },
+    { "title": "Beyond womenswear", "body": "Fragrances, skincare, home decor and men's unstitched fabric and waistcoats each get their own menu section, so the wider range stays easy to find." },
+    { "title": "Product pages", "body": "Suits offer unstitched or sized options with a size guide, installment widgets and a loyalty points message above the add-to-cart and buy-now buttons." },
+    { "title": "Help and policies", "body": "Footer pages cover a size guide, fabric glossary, product care, payment and delivery, how to pay in installments and wholesale queries." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Installment payment widgets", "Loyalty points", "Size guide"],
+  "whyItMatters": "For unstitched and stitched clothing, shoppers need to know the fabric, the form and the fit before they commit. Showing installment options and rewards on the product page answers the price question at the same moment.",
+  "faqs": [
+    { "q": "What platform is the Khas Stores store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for seasonal volumes and categories, with installment payment and loyalty points features on product pages." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We build Shopify stores for clothing and lifestyle brands, including seasonal navigation, stitched and unstitched options and installment payments. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}
