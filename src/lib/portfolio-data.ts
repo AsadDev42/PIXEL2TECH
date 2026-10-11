@@ -137,12 +137,19 @@ const CASH_COW_VIDEOS = numberedVideos(
 /** Projects pinned to the top of the /portfolio grid, in this order. */
 export const FEATURED_SLUGS: readonly string[] = ["vip-talking-head-videos"];
 
-export const CATEGORIES = ["Creative", "Design", "Video Editing", "Custom Platforms"] as const;
+export const CATEGORIES = [
+  "Creative",
+  "Design",
+  "WordPress & Shopify",
+  "Video Editing",
+  "Custom Platforms",
+] as const;
 export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
   Creative: ["Social Media", "Branding", "Print & Merchandise"],
   Design: ["Websites", "E-Commerce", "Mobile Apps"],
+  "WordPress & Shopify": ["Shopify Stores", "WordPress Sites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
@@ -351,25 +358,6 @@ const RAW: RawWork = {
     ],
     "E-Commerce": [
       {
-        slug: "skin-deep-shopify-store",
-        title: "Skin Deep — Shopify store",
-        client: "Skin Deep",
-        img: "/portfolio/skin-deep-shopify-store/desktop-home.webp",
-        store: {
-          url: "https://skindeepintl.com",
-          desktop: [
-            "/portfolio/skin-deep-shopify-store/desktop-home.webp",
-            "/portfolio/skin-deep-shopify-store/desktop-collection.webp",
-            "/portfolio/skin-deep-shopify-store/desktop-product.webp",
-          ],
-          fullPage: "/portfolio/skin-deep-shopify-store/desktop-home-full.webp",
-          mobile: [
-            "/portfolio/skin-deep-shopify-store/mobile-home.webp",
-            "/portfolio/skin-deep-shopify-store/mobile-product.webp",
-          ],
-        },
-      },
-      {
         title: "Fashion storefront",
         img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
@@ -418,6 +406,30 @@ const RAW: RawWork = {
       {
         title: "Habit tracker",
         img: "https://images.unsplash.com/photo-1522199873717-bc67b1a5e32b?w=1600&auto=format&fit=crop&fm=webp&q=75",
+      },
+    ],
+  },
+  "WordPress & Shopify": {
+    "Shopify Stores": [
+      {
+        slug: "skin-deep-shopify-store",
+        title: "Skin Deep — Shopify store",
+        client: "Skin Deep",
+        // Portrait phone screenshot suits the tall portfolio card.
+        img: "/portfolio/skin-deep-shopify-store/mobile-home.webp",
+        store: {
+          url: "https://skindeepintl.com",
+          desktop: [
+            "/portfolio/skin-deep-shopify-store/desktop-home.webp",
+            "/portfolio/skin-deep-shopify-store/desktop-collection.webp",
+            "/portfolio/skin-deep-shopify-store/desktop-product.webp",
+          ],
+          fullPage: "/portfolio/skin-deep-shopify-store/desktop-home-full.webp",
+          mobile: [
+            "/portfolio/skin-deep-shopify-store/mobile-home.webp",
+            "/portfolio/skin-deep-shopify-store/mobile-product.webp",
+          ],
+        },
       },
     ],
   },
@@ -659,7 +671,12 @@ export function warnOnUnknownSlugs(source: string, slugs: string[]): void {
 }
 
 /** URL-safe value for the /portfolio?category= filter, e.g. "video-editing". */
-export type CategorySlug = "creative" | "design" | "video-editing" | "custom-platforms";
+export type CategorySlug =
+  | "creative"
+  | "design"
+  | "wordpress-and-shopify"
+  | "video-editing"
+  | "custom-platforms";
 
 export function categorySlug(category: Category): CategorySlug {
   return slugify(category) as CategorySlug;

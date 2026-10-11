@@ -753,6 +753,9 @@ const BANKS: Record<string, Bank> = {
 };
 
 const FALLBACK: Bank = BANKS["Websites"]!;
+// Shopify and WordPress store projects reuse the e-commerce and website wording.
+BANKS["Shopify Stores"] = BANKS["E-Commerce"]!;
+BANKS["WordPress Sites"] = BANKS["Websites"]!;
 
 export function getProjectCopy(item: PortfolioItem): ProjectCopy {
   const override = COPY_OVERRIDES[item.slug];

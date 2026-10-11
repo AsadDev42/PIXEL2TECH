@@ -728,6 +728,9 @@ const BANKS: Record<string, DetailBank> = {
 };
 
 const FALLBACK = BANKS["Websites"]!;
+// Shopify and WordPress store projects reuse the e-commerce and website wording.
+BANKS["Shopify Stores"] = BANKS["E-Commerce"]!;
+BANKS["WordPress Sites"] = BANKS["Websites"]!;
 
 /**
  * Hand-written detail for real client projects. Every key must be a live
