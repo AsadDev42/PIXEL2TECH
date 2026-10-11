@@ -87,7 +87,7 @@ export function VideoWall({ videos, label }: { videos: PortfolioVideo[]; label: 
           <ul className={GRID[orientation]}>
             {videos.map((video, index) =>
               video.orientation === orientation ? (
-                <li key={video.src}>
+                <li key={video.poster}>
                   <VideoCard
                     video={video}
                     index={index}
@@ -134,6 +134,7 @@ const VideoCard = memo(function VideoCard({
   const [inView, setInView] = useState(false);
   // Any part visible: keep the sound playing.
   const [onScreen, setOnScreen] = useState(false);
+  const playerOpen = Boolean(video.embed && withSound);
 
   useEffect(() => {
     const el = buttonRef.current;
@@ -168,11 +169,15 @@ const VideoCard = memo(function VideoCard({
       nearObserver.disconnect();
       viewObserver.disconnect();
     };
-  }, []);
+    // The card is swapped for the embedded player and back: observe the new button.
+  }, [playerOpen]);
 
   // Muted preview: plays while in view, pauses off screen or in a hidden tab.
   useEffect(() => {
     const v = videoRef.current;
+    // An embedded player keeps going while the visitor scrolls; only another
+    // video taking the sound closes it.
+    if (withSound && video.embed) return;
     if (!v) return;
     if (withSound) {
       // Scrolled away or switched tabs while listening: back to the preview.
@@ -187,9 +192,14 @@ const VideoCard = memo(function VideoCard({
     } else if (!v.paused) {
       v.pause();
     }
-  }, [withSound, motionOK, near, inView, onScreen, pageVisible, index, onRelease]);
+  }, [withSound, motionOK, near, inView, onScreen, pageVisible, index, onRelease, video.embed]);
 
   const toggle = () => {
+    if (video.embed) {
+      if (withSound) onRelease(index);
+      else onClaim(index);
+      return;
+    }
     const v = videoRef.current;
     if (!v) return;
     if (withSound) {
@@ -216,13 +226,49 @@ const VideoCard = memo(function VideoCard({
 
   const aspect = ASPECT[video.orientation];
 
+  if (playerOpen) {
+    return (
+      <>
+        <div
+          className={`relative w-full overflow-hidden rounded-2xl border border-border bg-black shadow-sm ring-2 ring-primary ring-offset-2 ring-offset-background ${aspect}`}
+        >
+          <iframe
+            src={video.embed}
+            title={video.title}
+            allow="autoplay; encrypted-media; fullscreen"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-presentation"
+            className="absolute inset-0 h-full w-full"
+          />
+          {/* Blocks the provider's pop-out / open-in-new-tab control (top-right) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-auto absolute right-0 top-0 h-16 w-24 bg-transparent"
+          />
+        </div>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <p className="text-sm text-muted-foreground">{video.title}</p>
+          <button
+            type="button"
+            onClick={toggle}
+            className="rounded-full text-sm font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Close player
+          </button>
+        </div>
+      </>
+    );
+  }
+
+  const actionLabel = video.embed ? "Play full video" : "Play with sound";
+
   return (
     <>
       <button
         ref={buttonRef}
         type="button"
         onClick={toggle}
-        aria-label={withSound ? `Mute: ${video.title}` : `Play with sound: ${video.title}`}
+        aria-label={withSound ? `Mute: ${video.title}` : `${actionLabel}: ${video.title}`}
         data-protect=""
         className={`group relative block w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${aspect} ${
           withSound ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""
@@ -236,22 +282,24 @@ const VideoCard = memo(function VideoCard({
           draggable={false}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
-        <video
-          ref={videoRef}
-          src={video.src}
-          poster={near ? video.poster : undefined}
-          muted
-          loop
-          playsInline
-          preload={near ? "metadata" : "none"}
-          aria-hidden="true"
-          tabIndex={-1}
-          onEnded={() => {
-            if (withSound) onRelease(index);
-          }}
-          {...PROTECTED_VIDEO_PROPS}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-        />
+        {video.src && (
+          <video
+            ref={videoRef}
+            src={video.src}
+            poster={near ? video.poster : undefined}
+            muted
+            loop
+            playsInline
+            preload={near ? "metadata" : "none"}
+            aria-hidden="true"
+            tabIndex={-1}
+            onEnded={() => {
+              if (withSound) onRelease(index);
+            }}
+            {...PROTECTED_VIDEO_PROPS}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          />
+        )}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/60 to-transparent"
@@ -279,7 +327,7 @@ const VideoCard = memo(function VideoCard({
           ) : (
             <VolumeX className="h-3.5 w-3.5 shrink-0" />
           )}
-          <span className="truncate">{withSound ? "Sound on" : "Play with sound"}</span>
+          <span className="truncate">{withSound ? "Sound on" : actionLabel}</span>
         </span>
       </button>
       <p aria-hidden="true" className="mt-2 text-sm text-muted-foreground">

@@ -21,6 +21,12 @@ export type PortfolioVideo = {
   /** Neutral label such as "Talking-head video 3". Never an invented topic. */
   title: string;
   orientation: VideoOrientation;
+  /**
+   * Full video streamed from an embeddable player (a Google Drive /preview URL),
+   * for videos too large to host. `src` is then a short muted preview clip, or
+   * empty to show the poster only.
+   */
+  embed?: string;
 };
 
 export type PortfolioItem = {
@@ -143,6 +149,28 @@ const CASH_COW_VIDEOS = numberedVideos(
   "landscape",
   { vertical: [2, 3] },
 );
+
+/**
+ * Long-form edits stay on Google Drive (each is hundreds of MB); the site hosts
+ * only a poster and an 8-second muted preview. Files 1 and 5 are view-only on
+ * Drive, so they show the poster without a preview.
+ */
+const LONG_FORM_VIDEOS: PortfolioVideo[] = (
+  [
+    ["17NkjWcKrg1bn-wrVTz2DmIJEAzsmnZ7y", false],
+    ["14FbZyV07YR5CflCLNKsnw6seH78-GTSo", true],
+    ["19XJB3rMUiI4E5BVJEUIxPGs6dKzQSUxw", true],
+    ["1m-ur7YKYdQ0UiEnuBwWZ_0wqbEnNb2Tb", true],
+    ["1lWEVWrKay4MgVE_t5jHz4uHG3SwN_0Mk", false],
+    ["1g6xqI7Znmr_DL8ZthN7VWmKYhQlaHJ5j", true],
+  ] as [string, boolean][]
+).map(([id, hasPreview], i) => ({
+  src: hasPreview ? `/portfolio/long-form-video-editing/${i + 1}-preview.mp4` : "",
+  poster: `/portfolio/long-form-video-editing/${i + 1}.jpg`,
+  title: `Long-form video ${i + 1}`,
+  orientation: "landscape" as const,
+  embed: `https://drive.google.com/file/d/${id}/preview`,
+}));
 
 /** Projects pinned to the top of the /portfolio grid, in this order. */
 export const FEATURED_SLUGS: readonly string[] = ["vip-talking-head-videos"];
@@ -366,6 +394,12 @@ const RAW: RawWork = {
         title: "Faceless YouTube videos for cash cow channels",
         img: CASH_COW_VIDEOS[0]!.poster,
         videos: CASH_COW_VIDEOS,
+      },
+      {
+        slug: "long-form-video-editing",
+        title: "Long-form video editing",
+        img: LONG_FORM_VIDEOS[1]!.poster,
+        videos: LONG_FORM_VIDEOS,
       },
       {
         title: "Documentary edit",

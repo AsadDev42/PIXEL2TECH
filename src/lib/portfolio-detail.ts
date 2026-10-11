@@ -1323,6 +1323,41 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
     relatedReading: [POST.outsourceVideo, POST.coachRetainers, POST.whiteLabelCreative],
     relatedServices: ["Video Editing & Ads", "Social Media & Email"],
   },
+  "long-form-video-editing": {
+    process: [
+      {
+        title: "Rough cut",
+        body: "The raw footage is cut down to the strongest takes, with pauses, repeats and dead air removed.",
+      },
+      {
+        title: "Show, don't just tell",
+        body: "B-roll, screen captures and graphics go over the points that are easier to understand when the viewer can see them.",
+      },
+      {
+        title: "Text and sound",
+        body: "On-screen text highlights key lines, and music and sound effects carry the pace between sections.",
+      },
+      {
+        title: "Final export",
+        body: "Each video is color-checked, mixed and exported in 16:9 for upload.",
+      },
+    ],
+    technologies: ["Adobe Premiere Pro", "Adobe After Effects", "YouTube"],
+    whyItMatters:
+      "On long videos, watch time decides reach. An edit that keeps changing what the viewer sees, without losing the thread, keeps people watching to the end.",
+    faqs: [
+      {
+        q: "How long can the videos be?",
+        a: "This set runs from about two minutes to about fifteen. We edit longer videos too; tell us the length and how often you publish.",
+      },
+      {
+        q: "Can you also cut Shorts from a long video?",
+        a: "Yes. We can reframe the strongest moments into 9:16 clips for Shorts, Reels and TikTok alongside the main upload.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.coachRetainers, POST.whiteLabelCreative],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email"],
+  },
 };
 
 warnOnUnknownSlugs("portfolio-detail", Object.keys(DETAIL_OVERRIDES));

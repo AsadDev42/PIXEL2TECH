@@ -449,6 +449,32 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
       "16:9 and 9:16 exports",
     ],
   },
+  "long-form-video-editing": {
+    metaTitle: "Long-form video editing | Pixel2Tech",
+    metaDescription:
+      "Long-form 16:9 videos edited for YouTube: talking-head segments cut with b-roll, screen captures, on-screen text and graphics, paced to hold attention.",
+    summary: "Long-form 16:9 videos edited for YouTube and similar channels.",
+    overview:
+      "A set of long-form 16:9 videos, from a couple of minutes to a quarter of an hour. They mix talking-head segments with b-roll, screen captures, highlighted articles and on-screen graphics.",
+    challenge:
+      "A long video has to earn every minute. When the pace drops or the picture stays the same for too long, viewers leave well before the end.",
+    approach:
+      "We cut the talking-head footage tight, then layer b-roll, screen captures and graphics over the points that need showing rather than telling. On-screen text highlights the key lines, and music and sound effects carry the transitions between sections.",
+    outcome:
+      "The set shows the kind of polished long-form edit a channel needs to publish full-length videos on a regular schedule.",
+    results: [
+      { label: "In this set", value: pieces("long-form-video-editing", "videos") },
+      { label: "Format", value: "16:9, up to about 15 minutes" },
+      { label: "Made for", value: "YouTube and other long-form platforms" },
+    ],
+    deliverables: [
+      "Edited long-form videos",
+      "Talking-head cuts with b-roll",
+      "Screen captures and on-screen graphics",
+      "Music and sound design",
+      "16:9 exports",
+    ],
+  },
 };
 
 warnOnUnknownSlugs("portfolio-copy", Object.keys(COPY_OVERRIDES));

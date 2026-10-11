@@ -103,6 +103,10 @@ const VIDEO_WALL_COPY: Record<string, { heading: string; intro: string }> = {
     intro:
       "Videos edited for faceless YouTube channels: mostly 16:9 uploads, plus a few vertical cuts.",
   },
+  "long-form-video-editing": {
+    heading: "Long-form videos",
+    intro: "Full-length 16:9 edits, from about two minutes to about fifteen.",
+  },
 };
 
 function categoryLinkSearch(category: string) {
@@ -646,8 +650,9 @@ function PortfolioDetailPage() {
                 </h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
                   {wallCopy?.intro ? `${wallCopy.intro} ` : ""}
-                  Previews play muted. Tap a video to watch it from the start with sound, and tap
-                  again to mute it.
+                  {wallVideos.some((v) => v.embed)
+                    ? "Previews play muted. Tap a video to open the full player."
+                    : "Previews play muted. Tap a video to watch it from the start with sound, and tap again to mute it."}
                 </p>
                 <div className="mt-8">
                   <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
