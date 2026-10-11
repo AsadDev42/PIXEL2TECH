@@ -11,9 +11,18 @@
   "approach": "Vapi sends an end-of-call webhook to n8n. The workflow pulls out the event data, keeps only finished calls, extracts the call summary and transcript, and appends them to a master call log in Google Sheets. A switch routes each call by business niche (hotel, dental, aesthetic or event), and a Code node scans the transcript for booking intent and picks out the caller's name, phone, email, preferred date and time. When a booking is found, n8n creates a Google Calendar event, adds a row to the confirmed bookings sheet, sends a Gmail confirmation with the calendar link, creates or updates the contact in HubSpot and attaches a note with the call details, then responds to Vapi. Calls without a booking get their own response. A scheduled flow runs every hour, reads the bookings sheet, loops through the rows and emails a reminder for any appointment starting within the next 24 hours that has not had one yet, then marks the row as sent.",
   "outcome": "Every completed call is now logged, and booking calls turn into a calendar event, a sheet row, a HubSpot contact with notes and a confirmation email without anyone retyping details. Reminders go out on their own ahead of each appointment, and the sheet records which ones were sent so nobody gets two.",
   "results": [
-    { "label": "Trigger", "value": "Vapi end-of-call webhook" },
-    { "label": "Stack", "value": "Vapi, n8n, Google Calendar, HubSpot" },
-    { "label": "Handles", "value": "Booking, confirmation and 24-hour reminders" }
+    {
+      "label": "Trigger",
+      "value": "Vapi end-of-call webhook"
+    },
+    {
+      "label": "Stack",
+      "value": "Vapi, n8n, Google Calendar, HubSpot"
+    },
+    {
+      "label": "Handles",
+      "value": "Booking, confirmation and 24-hour reminders"
+    }
   ],
   "deliverables": [
     "Vapi end-of-call webhook and master call log sheet",
@@ -67,5 +76,5 @@
       "caption": "The reminder flow: hourly schedule, bookings sheet, batch loop, 24-hour check, reminder email and a sent flag."
     }
   ],
-  "cover": "1"
+  "cover": "cover"
 }

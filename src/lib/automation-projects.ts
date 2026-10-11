@@ -40,7 +40,7 @@ export type AutomationProject = {
   faqs: { q: string; a: string }[];
   /** Screenshots in display order: file name without extension, and a caption. */
   shots: { file: string; caption: string }[];
-  /** Card image (a file from `shots`); defaults to the first shot. */
+  /** Card image file in the same folder (a designed cover.webp); defaults to the first shot. */
   cover?: string;
   /** Optional demo videos: <file>.mp4 with a <file>.jpg poster in the same folder. */
   videos?: { file: string; title: string; orientation: "landscape" | "vertical" }[];

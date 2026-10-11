@@ -70,5 +70,6 @@
       "file": "2",
       "caption": "Inbox triage: a Groq-powered labeling agent sorts each new email into Promotion, Information, Signup or Others."
     }
-  ]
+  ],
+  "cover": "cover"
 }

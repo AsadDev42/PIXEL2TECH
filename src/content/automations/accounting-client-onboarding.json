@@ -11,9 +11,18 @@
   "approach": "The website form posts to an n8n webhook. A Function node maps the form's fields to a clean record with the client's name, email, phone, company and notes. A config step reads the Financial Cents API settings and onboarding template ID from environment variables instead of hard-coding them. The workflow then calls the Financial Cents API to create the client with its contact details and creates an onboarding project for that client from the practice's template. From there it splits in two: one branch adds an internal note to the client record saying the client came in through the website form, and the other sends the team a Gmail message with the client's details and project ID, asking them to contact the client within 24 hours with a welcome and a document request.",
   "outcome": "Every form submission now becomes a client record and an onboarding project in Financial Cents, with a note explaining where the client came from. The team gets an email that spells out the next step, so new clients hear back quickly and onboarding starts the same way every time.",
   "results": [
-    { "label": "Trigger", "value": "Website intake form" },
-    { "label": "Stack", "value": "n8n, Financial Cents API, Gmail" },
-    { "label": "Handles", "value": "Client record, onboarding project, team alert" }
+    {
+      "label": "Trigger",
+      "value": "Website intake form"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Financial Cents API, Gmail"
+    },
+    {
+      "label": "Handles",
+      "value": "Client record, onboarding project, team alert"
+    }
   ],
   "deliverables": [
     "Webhook for the website intake form",
@@ -63,5 +72,5 @@
       "caption": "Close-up of the main chain from the website intake webhook to the onboarding project created from a template."
     }
   ],
-  "cover": "1"
+  "cover": "cover"
 }

@@ -65,5 +65,6 @@
       "file": "1",
       "caption": "The n8n workflow: an Instagram DM webhook, a shop assistant agent with Groq and memory, and an HTTP request that sends the reply."
     }
-  ]
+  ],
+  "cover": "cover"
 }

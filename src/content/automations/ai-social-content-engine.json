@@ -11,9 +11,18 @@
   "approach": "A daily trigger starts the run, and a config step holds the sheet ID, Buffer profile IDs, default tone and hashtag count. The workflow reads the content calendar sheet, and a Code node finds the row for today's date with its tagline, platform, tone, niche and special instructions. If nothing is scheduled, the run ends quietly. If there is an entry, an AI agent running on a Groq chat model writes the post around the tagline, adjusting the style for Instagram, LinkedIn or both and adding the configured number of hashtags. The post text goes to Runware to generate an image, and a Code node builds a separate payload for each platform. A router sends each one to Buffer for Instagram or LinkedIn. Successful posts are written to a Posted_Content sheet, and failures pass through an error handler into an Error_Log sheet before the run is marked complete.",
   "outcome": "The client now plans content in one sheet and the workflow handles the rest each day: copy, image, posting through Buffer and a record of every post. Failed posts land in their own sheet with the error, so the team can see what needs another try.",
   "results": [
-    { "label": "Trigger", "value": "Daily schedule" },
-    { "label": "Stack", "value": "n8n, Groq, Runware, Buffer" },
-    { "label": "Handles", "value": "Copy, image, posting and logs" }
+    {
+      "label": "Trigger",
+      "value": "Daily schedule"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Groq, Runware, Buffer"
+    },
+    {
+      "label": "Handles",
+      "value": "Copy, image, posting and logs"
+    }
   ],
   "deliverables": [
     "Daily trigger with a central config step",
@@ -67,5 +76,5 @@
       "caption": "The posting half: platform router, Buffer posts for Instagram and LinkedIn, and success and error logs in Google Sheets."
     }
   ],
-  "cover": "1"
+  "cover": "cover"
 }

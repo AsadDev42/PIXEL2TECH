@@ -11,9 +11,18 @@
   "approach": "Stage 1 takes the intake form through a webhook, normalizes the data, finds or creates the contact and a deal in Zoho CRM, creates a Box folder for the client, copies in template documents such as the fact finder and HIPAA form, and saves the folder link on the contact. It then checks whether the prospect booked a meeting: if so, it creates the calendar event; if not, it emails a booking link. Stage 2 starts when a meeting is scheduled, sends a confirmation and waits to send reminders 7 days and 1 day before the meeting. Stage 3 receives the AI notetaker transcript, parses it, saves it to Box, adds the notes to the Zoho deal and asks the client to upload their documents. Stage 4 reacts to deal stage changes, emailing a booking link for the second meeting and following up if nothing is booked. Stage 5 handles medical exams: when the exam vendor confirms, the deal is marked and a calendar event created, with a follow-up email after the exam, and the design adds reminders on day 3 and day 7 while an exam is still outstanding. Stages 6 to 8 cover second-meeting preparation, paperwork and post-sale: a paperwork task, the carrier policy uploaded to Box, the policy marked issued, the deal closed as won, an annual review scheduled, a welcome email and referral request sent, and clients who opt in tagged for marketing.",
   "outcome": "The practice has one map of its client journey in n8n, with each stage tied to an event it already produces: a form, a booking, a transcript, a deal stage or a vendor confirmation. As each stage is connected, clients get reminders on time, documents land in the right Box folder, meeting notes reach the CRM, and post-sale steps like the annual review and referral request happen without anyone having to remember them.",
   "results": [
-    { "label": "Trigger", "value": "Intake form, bookings and deal stages" },
-    { "label": "Stack", "value": "n8n, Zoho CRM, Box, ZeptoMail" },
-    { "label": "Handles", "value": "Eight stages from intake to annual review" }
+    {
+      "label": "Trigger",
+      "value": "Intake form, bookings and deal stages"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Zoho CRM, Box, ZeptoMail"
+    },
+    {
+      "label": "Handles",
+      "value": "Eight stages from intake to annual review"
+    }
   ],
   "deliverables": [
     "Intake to a Zoho CRM contact and deal",
@@ -71,5 +80,5 @@
       "caption": "Later stages: second-meeting booking, exam vendor confirmation with follow-up, and paperwork through policy issue, closed-won, annual review and referral emails."
     }
   ],
-  "cover": "1"
+  "cover": "cover"
 }

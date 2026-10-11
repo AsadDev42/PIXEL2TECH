@@ -79,5 +79,6 @@
       "file": "4",
       "caption": "Follow-up workflow: selects contacts due for a follow-up, matches properties and sends through Apollo."
     }
-  ]
+  ],
+  "cover": "cover"
 }

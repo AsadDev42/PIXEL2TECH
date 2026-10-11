@@ -11,9 +11,18 @@
   "approach": "A Twilio trigger receives each inbound SMS. The workflow extracts the lead's message and number, saves it to a messages table in Supabase and fetches the last 10 messages for context. A prompt with system instructions, examples and that history goes to OpenAI, and the response is parsed into the reply text and qualification metadata. The reply is saved back to Supabase and sent to the lead through Twilio. Qualification logic then checks the lead: if qualified, its status in Lofty is set to Ready for Agent and the agent gets a hot-lead SMS. The agent answers by text to a separate webhook; the workflow finds the lead by the agent's phone number and either confirms the booking with the lead or, if the agent asked for more information, passes the question to the AI and texts the lead a follow-up. The design also includes an end-of-day summary texted to the agent, a check that re-pings leads who have gone quiet, and an optional media add-on that turns summaries into Gemini images and short videos for Facebook.",
   "outcome": "Leads get a text reply that takes the whole conversation into account. Agents only step in for leads the AI has qualified, approve them or ask questions from their phone, and see the status in Lofty. The re-ping and daily summary branches give the team a way to keep quiet leads warm and review the day without opening every thread.",
   "results": [
-    { "label": "Trigger", "value": "Inbound SMS from a lead" },
-    { "label": "Stack", "value": "Twilio, OpenAI, Supabase, Lofty CRM" },
-    { "label": "Handles", "value": "Replies, qualification and agent handoff" }
+    {
+      "label": "Trigger",
+      "value": "Inbound SMS from a lead"
+    },
+    {
+      "label": "Stack",
+      "value": "Twilio, OpenAI, Supabase, Lofty CRM"
+    },
+    {
+      "label": "Handles",
+      "value": "Replies, qualification and agent handoff"
+    }
   ],
   "deliverables": [
     "Twilio SMS trigger and reply path",
@@ -75,5 +84,5 @@
       "caption": "The re-ping branch that checks lead status and sends a follow-up SMS to leads who have not replied."
     }
   ],
-  "cover": "2"
+  "cover": "cover"
 }

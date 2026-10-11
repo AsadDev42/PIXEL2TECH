@@ -74,5 +74,6 @@
       "file": "3",
       "caption": "A Qdrant build: documents are split and embedded into Qdrant, and the chat agent answers through a vector store tool."
     }
-  ]
+  ],
+  "cover": "cover"
 }

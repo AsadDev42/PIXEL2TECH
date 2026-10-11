@@ -75,5 +75,6 @@
       "file": "3",
       "caption": "Cancel and modify flows: the existing event is looked up first, then deleted or updated and the records synced."
     }
-  ]
+  ],
+  "cover": "cover"
 }

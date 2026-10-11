@@ -70,5 +70,6 @@
       "file": "2",
       "caption": "Close-up of the polling loop: the workflow waits, checks the Decart job status and downloads only once the video is ready."
     }
-  ]
+  ],
+  "cover": "cover"
 }

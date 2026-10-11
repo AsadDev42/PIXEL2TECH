@@ -11,9 +11,18 @@
   "approach": "The workflow reads the ad queue from Google Sheets and works through it row by row, only processing rows whose status is Ready. For each row, an AI agent on a Google Gemini chat model writes a structured script split into three segments. Three branches then run side by side: each generates a starting image, starts a video generation job on Replicate, waits 30 seconds, checks the job status and loops until the clip is complete, then downloads the clip and uploads it to Google Drive. A Code node merges the data for the three clips and sends it to Creatomate to stitch into one video. The workflow polls the render until it finishes, downloads the final video, uploads it to Drive, marks the sheet row as complete and loops back for the next row.",
   "outcome": "The brand now queues ad ideas in a sheet and gets stitched videos back in Drive, with each row's status updated when its video is done. Wait and polling loops absorb the slow generation and render steps, so a run works through the whole queue without someone watching it.",
   "results": [
-    { "label": "Trigger", "value": "Ready rows in an ad queue sheet" },
-    { "label": "Stack", "value": "n8n, Gemini, Replicate, Creatomate" },
-    { "label": "Handles", "value": "Script, three clips, stitching and storage" }
+    {
+      "label": "Trigger",
+      "value": "Ready rows in an ad queue sheet"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Gemini, Replicate, Creatomate"
+    },
+    {
+      "label": "Handles",
+      "value": "Script, three clips, stitching and storage"
+    }
   ],
   "deliverables": [
     "Sheet-based ad queue with a status check",
@@ -74,5 +83,5 @@
       "caption": "Right side: clip downloads and Drive uploads, merge, Creatomate stitching, render polling, final upload, sheet update and the loop to the next row."
     }
   ],
-  "cover": "2"
+  "cover": "cover"
 }

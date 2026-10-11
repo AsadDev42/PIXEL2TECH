@@ -70,5 +70,6 @@
       "file": "2",
       "caption": "The Airtable base with a table per feedback type, showing a test complaint (name and email covered)."
     }
-  ]
+  ],
+  "cover": "cover"
 }

@@ -11,9 +11,18 @@
   "approach": "The intake scenario watches a Google Drive folder, downloads each new video, converts it with CloudConvert and transcribes it with Deepgram. OpenAI analyzes the transcript to classify the content, and a router sends the video down one of three category routes. Each route checks a Google Sheet so a video is not logged twice, adds it to that category's sheet, notifies the team on Telegram, moves the file to the right Drive folder and sends a JSON payload to the next scenario. The caption scenario receives that payload, has GPT draft the angle, runs Apify actors to collect hashtag and trend data, and uses OpenAI to write the final caption and hashtags, saving the result to a sheet before passing it on. The posting scenario parses the payload, downloads the video, runs a CloudConvert job with status checks, uploads the final file to Drive and hands it to a platform router. Its routes schedule posts through Metricool for Facebook, YouTube, TikTok and one more channel, while a separate OpenAI caption step prepares the Threads post. Every route writes a crash report row and sends a Telegram fail signal when something breaks, and error handlers let the scenarios carry on past a failed module.",
   "outcome": "The creator now drops a video into Drive and the pipeline takes it from there: transcript, category, log entry, caption, hashtags and a post on each platform. The team sees Telegram messages as videos move through, and any failed upload shows up as a Telegram alert and a row in a crash report sheet.",
   "results": [
-    { "label": "Trigger", "value": "New video in Google Drive" },
-    { "label": "Stack", "value": "Make.com, Deepgram, OpenAI, Metricool" },
-    { "label": "Handles", "value": "Intake, captions and multi-platform posting" }
+    {
+      "label": "Trigger",
+      "value": "New video in Google Drive"
+    },
+    {
+      "label": "Stack",
+      "value": "Make.com, Deepgram, OpenAI, Metricool"
+    },
+    {
+      "label": "Handles",
+      "value": "Intake, captions and multi-platform posting"
+    }
   ],
   "deliverables": [
     "Drive watch, CloudConvert conversion and Deepgram transcription",
@@ -67,5 +76,5 @@
       "caption": "The auto-posting scenario: conversion and Drive steps, then a platform router to Metricool and Threads routes, each with a crash report and fail alert."
     }
   ],
-  "cover": "3"
+  "cover": "cover"
 }

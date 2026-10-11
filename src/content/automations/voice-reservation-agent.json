@@ -82,5 +82,6 @@
       "file": "5",
       "caption": "A test reservation row in Google Sheets with date, time and party size (name covered)."
     }
-  ]
+  ],
+  "cover": "cover"
 }

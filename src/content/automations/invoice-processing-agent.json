@@ -76,5 +76,5 @@
       "caption": "Output: the invoice row is added to the sheet, Gemini drafts an email and Gmail sends it."
     }
   ],
-  "cover": "2"
+  "cover": "cover"
 }

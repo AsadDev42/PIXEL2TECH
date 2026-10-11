@@ -76,5 +76,5 @@
       "caption": "Call tracking close-up: call details are polled until the call ends, then routed to the completed or voicemail log."
     }
   ],
-  "cover": "3"
+  "cover": "cover"
 }

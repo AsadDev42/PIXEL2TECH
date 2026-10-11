@@ -78,5 +78,6 @@
       "file": "4",
       "caption": "Call-ended handler: routes hangups, callbacks, transfers, retries and the overflow queue."
     }
-  ]
+  ],
+  "cover": "cover"
 }
