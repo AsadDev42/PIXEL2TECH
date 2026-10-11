@@ -1,5 +1,6 @@
 /**
- * Client stores (Shopify / WordPress) shown in the "WordPress & Shopify" practice.
+ * Client stores and websites: Shopify stores are listed under "Ecom Stores",
+ * WordPress and custom-built sites under "Websites".
  *
  * Each store is one JSON file in src/content/stores/<slug>.json; its
  * screenshots live in public/portfolio/<slug>/ (captured from the live store).
@@ -14,8 +15,8 @@ export type StoreProject = {
   client: string;
   url: string;
   /**
-   * Shopify stores and WordPress sites go to the "WordPress & Shopify" practice;
-   * sites on any other platform are listed under Design / Websites.
+   * Shopify stores go to "Ecom Stores"; WordPress sites and sites on any other
+   * platform go to "Websites".
    */
   platform: "Shopify" | "WordPress" | "Webflow" | "Next.js" | "Custom";
   /**

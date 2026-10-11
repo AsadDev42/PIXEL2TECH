@@ -150,7 +150,8 @@ export const FEATURED_SLUGS: readonly string[] = ["vip-talking-head-videos"];
 export const CATEGORIES = [
   "Social Media & Ads",
   "Design",
-  "WordPress & Shopify",
+  "Ecom Stores",
+  "Websites",
   "Video Editing",
   "Custom Platforms",
 ] as const;
@@ -159,7 +160,8 @@ export type Category = (typeof CATEGORIES)[number];
 export const SUBS: Record<Category, string[]> = {
   "Social Media & Ads": ["Social Media"],
   Design: ["Branding", "Print & Merchandise", "Websites", "E-Commerce", "Mobile Apps"],
-  "WordPress & Shopify": ["Shopify Stores", "WordPress Sites"],
+  "Ecom Stores": ["Shopify Stores"],
+  Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
@@ -177,10 +179,6 @@ function storeItem(p: StoreProject): RawItem {
     whiteLabel: isWhiteLabel(p) || undefined,
   };
 }
-
-const WEBSITE_PROJECTS = STORE_PROJECTS.filter(
-  (p) => p.platform !== "Shopify" && p.platform !== "WordPress",
-).map(storeItem);
 
 const RAW: RawWork = {
   "Social Media & Ads": {
@@ -299,15 +297,12 @@ const RAW: RawWork = {
         images: bookCoverAssets.covers,
       },
     ],
-    // Real website projects replace the demo once there are any.
-    Websites: WEBSITE_PROJECTS.length
-      ? WEBSITE_PROJECTS
-      : [
-          {
-            title: "SaaS marketing site",
-            img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-          },
-        ],
+    Websites: [
+      {
+        title: "SaaS marketing site",
+        img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
+      },
+    ],
     "E-Commerce": [
       {
         title: "Fashion storefront",
@@ -322,9 +317,14 @@ const RAW: RawWork = {
     ],
   },
 
-  "WordPress & Shopify": {
-    "Shopify Stores": STORE_PROJECTS.filter((p) => p.platform === "Shopify").map(storeItem),
+  "Ecom Stores": {
+    "Shopify Stores": STORE_PROJECTS.filter(isStore).map(storeItem),
+  },
+  Websites: {
     "WordPress Sites": STORE_PROJECTS.filter((p) => p.platform === "WordPress").map(storeItem),
+    "Custom Websites": STORE_PROJECTS.filter((p) => !isStore(p) && p.platform !== "WordPress").map(
+      storeItem,
+    ),
   },
   "Video Editing": {
     "Short Form": [
@@ -509,7 +509,8 @@ export function warnOnUnknownSlugs(source: string, slugs: string[]): void {
 export type CategorySlug =
   | "social-media-and-ads"
   | "design"
-  | "wordpress-and-shopify"
+  | "ecom-stores"
+  | "websites"
   | "video-editing"
   | "custom-platforms";
 
@@ -523,6 +524,8 @@ export function categoryFromSlug(value: unknown): Category | undefined {
   const wanted = slugify(value);
   // The "Creative" practice was renamed; keep old ?category=creative links working.
   if (wanted === "creative") return "Social Media & Ads";
+  // "WordPress & Shopify" was split into "Ecom Stores" and "Websites".
+  if (wanted === "wordpress-and-shopify") return "Ecom Stores";
   return CATEGORIES.find((c) => slugify(c) === wanted);
 }
 
