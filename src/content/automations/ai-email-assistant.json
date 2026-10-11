@@ -1,0 +1,74 @@
+{
+  "slug": "ai-email-assistant",
+  "title": "AI email assistant for inbox triage and drafted replies",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 32,
+  "metaTitle": "AI email assistant with Gmail triage | Pixel2Tech",
+  "metaDescription": "Two n8n workflows for Gmail: a Groq classifier labels each new email, and a Gemini agent drafts replies that wait in Drafts for a person to approve.",
+  "summary": "Two connected n8n workflows for Gmail: one sorts incoming mail into labels with an AI classifier, the other drafts replies with Gemini and leaves them in Drafts for a person to review.",
+  "overview": "We built this assistant for a client whose inbox mixed promotions, sign-up notices and real messages that needed answers. One workflow labels each new email as Promotion, Information, Signup or Others. The other reads incoming messages, has Gemini write a reply, separates the subject from the body and saves it as a Gmail draft so nothing is sent without approval.",
+  "challenge": "A busy inbox buries the messages that matter under newsletters and notifications, and writing replies from scratch takes up a large part of the day. Fully automatic replies are risky, so the client wanted help with both sorting and drafting while keeping a person in control.",
+  "approach": "For triage, a Gmail trigger passes each new message to a labeling AI agent running on a Groq chat model. The agent picks one of four categories, and a matching Gmail node applies the Promotion, Information, Signup or Others label. For replies, a second Gmail trigger sends the message to Google Gemini, which writes a response. An information extractor on Gemini splits that response into subject and body, and a Gmail node creates a draft in the same account for someone to check and send.",
+  "outcome": "The inbox now sorts itself as mail arrives, and replies are waiting in Drafts, ready to be edited and sent. The team spends its time reviewing answers instead of writing each one.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "New email in Gmail"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Gmail, Groq, Google Gemini"
+    },
+    {
+      "label": "Handles",
+      "value": "Four-way labeling and reply drafts"
+    }
+  ],
+  "deliverables": [
+    "Gmail trigger for incoming messages",
+    "Groq-based labeling agent with four categories",
+    "Label actions for Promotion, Information, Signup and Others",
+    "Gemini reply writer with subject and body extraction",
+    "Gmail draft creation for human approval"
+  ],
+  "process": [
+    {
+      "title": "Define the categories",
+      "body": "We agreed on the four labels and what kind of email belongs in each."
+    },
+    {
+      "title": "Build the classifier",
+      "body": "We set up the labeling agent on Groq and routed each category to its Gmail label."
+    },
+    {
+      "title": "Draft replies",
+      "body": "We connected Gemini to write responses and an extractor to split subject and body cleanly."
+    },
+    {
+      "title": "Keep a person in the loop",
+      "body": "Replies are saved as drafts, and we tested both workflows on sample emails."
+    }
+  ],
+  "technologies": ["n8n", "Gmail", "Groq", "Google Gemini"],
+  "whyItMatters": "Sorting and first drafts are the repetitive parts of email; handing those to AI while a person approves every reply keeps the speed without the risk.",
+  "faqs": [
+    {
+      "q": "Can it use my own labels and tone of voice?",
+      "a": "Yes. The categories and the reply instructions are set in the workflow, so we can match your existing labels and the way your team writes."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, for Gmail or Outlook, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "Reply drafting: a Gmail trigger passes each email to Gemini, an extractor splits subject and body, and Gmail saves a draft."
+    },
+    {
+      "file": "2",
+      "caption": "Inbox triage: a Groq-powered labeling agent sorts each new email into Promotion, Information, Signup or Others."
+    }
+  ]
+}

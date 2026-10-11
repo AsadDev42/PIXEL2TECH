@@ -1,0 +1,80 @@
+{
+  "slug": "invoice-processing-agent",
+  "title": "Invoice processing agent with Gemini and Google Sheets",
+  "subcategory": "Content & Operations",
+  "order": 56,
+  "metaTitle": "AI Invoice Processing Workflow with Gemini | Pixel2Tech",
+  "metaDescription": "An n8n workflow that reads new invoice PDFs from Google Drive, extracts the key fields with Gemini, logs them in Google Sheets and sends a Gmail summary.",
+  "summary": "Drop an invoice PDF into a Drive folder and its details land in a spreadsheet, followed by an email written by Gemini.",
+  "overview": "We built this invoice workflow for a small finance and back-office team that receives supplier invoices as PDF files. When a new invoice is saved to a Google Drive folder, n8n reads the PDF text, uses Google Gemini to pull out the fields the team tracks, adds them to a Google Sheet and sends an email about the invoice through Gmail.",
+  "challenge": "Each invoice had to be opened, read and typed into a spreadsheet before anyone could approve or query it. The work was repetitive, easy to fall behind on at month end, and small typing mistakes in amounts or dates were hard to spot later.",
+  "approach": "A Google Drive trigger fires when a new file is created in the invoices folder, and the workflow downloads it. An Extract from File step pulls the text out of the PDF. An Information Extractor node running on a Google Gemini chat model reads that text and returns the invoice details the team needs, such as supplier, invoice number, dates and amounts, in a fixed structure. Those fields are appended as a new row in the Google Sheet that serves as the invoice log. Gemini then drafts an email about the invoice, a second extractor step separates the subject from the body, and Gmail sends it.",
+  "outcome": "Invoices are logged as soon as they are saved to Drive, in the same format every time, and the team gets an email for each one without opening the PDF. Staff review the sheet instead of retyping it.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "New PDF in a Google Drive folder"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Google Gemini, Google Sheets, Gmail"
+    },
+    {
+      "label": "Handles",
+      "value": "Text extraction, field capture, email notice"
+    }
+  ],
+  "deliverables": [
+    "Google Drive folder trigger and file download",
+    "PDF text extraction step",
+    "Gemini information extractor with a fixed field schema",
+    "Google Sheets invoice log",
+    "Gemini-written email split into subject and body",
+    "Gmail send step"
+  ],
+  "process": [
+    {
+      "title": "Agree the fields",
+      "body": "We listed the invoice details the team records and the format each one should take in the sheet."
+    },
+    {
+      "title": "Build extraction",
+      "body": "We set up PDF text extraction and the Gemini extractor, and tested it on invoices laid out in different ways."
+    },
+    {
+      "title": "Log and notify",
+      "body": "We connected Google Sheets for the log and wrote the email prompt so each message reads clearly."
+    },
+    {
+      "title": "Hand over",
+      "body": "We documented the folder, sheet and email setup so the team can adjust the fields as their needs change."
+    }
+  ],
+  "technologies": ["n8n", "Google Gemini", "Google Drive", "Google Sheets", "Gmail"],
+  "whyItMatters": "Invoices are small tasks that pile up quickly. Capturing each one the moment it arrives keeps the payables list current and leaves the team free for the checks that need a person.",
+  "faqs": [
+    {
+      "q": "Will it work with scanned paper invoices?",
+      "a": "This build reads the text layer of digital PDFs. Scanned invoices have no text layer, so for those we add a text recognition step before extraction; the rest of the workflow stays the same."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: Drive trigger, PDF text extraction, Gemini field extraction, Sheets log, AI email and Gmail."
+    },
+    {
+      "file": "2",
+      "caption": "Intake: a new Drive file is downloaded, its PDF text extracted and read by a Gemini information extractor."
+    },
+    {
+      "file": "3",
+      "caption": "Output: the invoice row is added to the sheet, Gemini drafts an email and Gmail sends it."
+    }
+  ],
+  "cover": "2"
+}

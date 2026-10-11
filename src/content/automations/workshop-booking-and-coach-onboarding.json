@@ -1,0 +1,84 @@
+{
+  "slug": "workshop-booking-and-coach-onboarding",
+  "title": "Workshop booking, NDA and coach assignment automation",
+  "subcategory": "Content & Operations",
+  "order": 51,
+  "metaTitle": "Workshop Booking and Coach Onboarding Flow | Pixel2Tech",
+  "metaDescription": "An n8n flow run by GoHighLevel bookings: guest emails, a Drive folder and worksheet per guest, NDA emails, coach assignment, 24-hour and 30-minute steps.",
+  "summary": "An n8n flow that takes a GoHighLevel workshop booking and handles the guest folder, worksheet, registration and NDA emails, coach assignment and reminders.",
+  "overview": "We built this automation for a coaching business that runs booked workshops. When someone books in GoHighLevel, a webhook starts the main n8n flow, which reads the contact and appointment, emails each guest, creates a Google Drive folder with a copy of the pre-work worksheet, sends the registration and NDA emails, and records the booking in a coach assignment sheet. Separate n8n flows handle coach assignment updates and the steps that run 24 hours and 30 minutes before the workshop, while GoHighLevel workflows keep the pipeline and tags in sync.",
+  "challenge": "A workshop booking sets off a list of jobs: emailing guests, setting up a folder and worksheet, sending legal paperwork, finding a coach and reminding everyone before the session. Done by hand, these steps are easy to miss, and nobody can tell at a glance which bookings still have no coach.",
+  "approach": "GoHighLevel sends a webhook when an appointment is booked. The main n8n flow pulls the contact and appointment details through the GoHighLevel API, builds the guest email list in a code step, sets the workshop date on the contact and sends a confirmation to each guest. It then searches Google Drive for an existing folder. Either branch creates the guest's folder, copies the worksheet into it, tags the contact, writes the email body and folder link back to GoHighLevel fields, sends the registration and NDA emails through Gmail, appends a row to the coach sheet and adds the next tag. A second flow listens for a coach being added, emails the coach the session details and tags the contact as coach assigned. A third flow runs 24 hours before the appointment, emails the guests using the sheet data and, if no coach is assigned yet, sends a coach not assigned email and adds a coach pending tag. A fourth runs 30 minutes before the workshop and prepares the session file in the guest's folder. In GoHighLevel, workflows create the contact's opportunity and move it when coach and materials tags change.",
+  "outcome": "Every booking now gets the same setup without anyone touching it: guest emails, a folder and worksheet, registration and NDA emails, a row in the coach sheet and timed reminders. The pipeline shows which workshops have a coach and which are still pending.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "GoHighLevel appointment booked"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, GoHighLevel, Gmail, Google Drive"
+    },
+    {
+      "label": "Handles",
+      "value": "Folders, NDA, coach assignment, reminders"
+    }
+  ],
+  "deliverables": [
+    "Main n8n booking flow driven by a GoHighLevel webhook",
+    "Per-guest Google Drive folder with a worksheet copy",
+    "Registration and NDA emails through Gmail",
+    "Coach assignment sheet and coach notification flow",
+    "24-hour and 30-minute pre-workshop flows",
+    "GoHighLevel workflows for opportunities and tag-based stage moves"
+  ],
+  "process": [
+    {
+      "title": "Trace the booking journey",
+      "body": "We followed a booking from the calendar to the end of the workshop and listed every email, file and handoff."
+    },
+    {
+      "title": "Split the work",
+      "body": "We kept pipeline and tags in GoHighLevel and moved file handling, emails and logic into n8n, connected by webhooks."
+    },
+    {
+      "title": "Build the flows",
+      "body": "We built the main booking flow, the coach flow and the two timed flows, with tags marking each finished step."
+    },
+    {
+      "title": "Test end to end",
+      "body": "We booked test appointments and checked each folder, email, sheet row and tag before handing it over."
+    }
+  ],
+  "technologies": ["n8n", "GoHighLevel", "Gmail", "Google Drive", "Google Sheets"],
+  "whyItMatters": "A workshop business sells an experience, and the setup around each booking is part of it. Automating that setup keeps every guest's first contact consistent and frees the team to focus on the sessions.",
+  "faqs": [
+    {
+      "q": "Why use n8n alongside GoHighLevel?",
+      "a": "GoHighLevel holds the contacts, calendar and pipeline. n8n handles the parts that need file operations, code and multi-step logic, then writes results back to GoHighLevel."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the flows to your booking tool, documents and team. After a short call we send a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n canvas: the booking flow with its two folder branches, the coach flow, and the 24-hour and 30-minute flows."
+    },
+    {
+      "file": "2",
+      "caption": "Close-up of the booking webhook, guest emails and folder check, with the coach and reminder flows below."
+    },
+    {
+      "file": "3",
+      "caption": "The folder branches: worksheet copy, GoHighLevel field updates, registration and NDA emails, coach sheet row and tags."
+    },
+    {
+      "file": "4",
+      "caption": "A GoHighLevel workflow that finds the opportunity and creates it in the next stage when the coach assigned tag is added."
+    }
+  ],
+  "cover": "1"
+}

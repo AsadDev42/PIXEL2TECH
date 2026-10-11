@@ -1,0 +1,88 @@
+{
+  "slug": "inquiry-to-invoice-automation",
+  "title": "Inquiry-to-invoice automation for a creative studio",
+  "subcategory": "Content & Operations",
+  "order": 53,
+  "metaTitle": "Inquiry-to-Invoice Automation for a Studio | Pixel2Tech",
+  "metaDescription": "An n8n workflow for a creative studio that takes a new inquiry through Scoro proposals, approval, Xero invoicing and kickoff, with timed follow-ups.",
+  "summary": "One n8n build covers a studio's sales path: inbox leads, auto-replies, proposals in Scoro, approval, deposit or full invoices in Xero, kickoff emails and follow-ups.",
+  "overview": "We built this for a creative studio that sells project-based work. Every project followed the same path from inquiry email to discovery call, proposal, contract and invoice, but each step was done by hand across email, a pricing sheet, the CRM and the accounting software. An earlier version of the same flow used Airtable as its lead and proposal database.",
+  "challenge": "For a studio, the admin between a first email and a paid deposit is easy to underestimate: replying quickly, booking a call, pricing the job, writing the proposal, chasing a signature, raising the right invoice and starting the project. Each handoff is a chance for a lead to go cold or for an invoice to go out with the wrong terms, and proposals that never get signed tend to be forgotten.",
+  "approach": "The workflow runs in five stages. First, n8n monitors the inquiry inbox, filters for new inquiries, parses the lead's details and checks Scoro for an existing record, then creates or updates the lead. The lead gets an auto-reply with a link to book a discovery call, and the team gets a notification. Second, after the call a form posts to a webhook; n8n pulls rates from a cost calculator sheet, calculates the project cost in code, generates the proposal content, creates the proposal in Scoro, updates the lead status and tells the team it is ready for review. Third, approving the proposal fires a trigger that fetches it, prepares the email, sends it to the client, marks it as sent and records it in an Airtable tracking table. Fourth, when Scoro reports a signed contract, n8n works out the payment terms and creates either a 50% deposit invoice or a full payment invoice in Xero, updates the status, sends the kickoff email and alerts the team when a deposit invoice has gone out. Fifth, a scheduled check every 6 hours finds unsigned proposals and sends 2-day, 7-day and quarterly follow-ups, updating the tracking record after each one.",
+  "outcome": "The studio's sales admin now runs as one connected flow. New inquiries get a reply and a booking link straight away, proposals are priced and drafted from the call details, and signed contracts produce the right Xero invoice and a kickoff email. Unsigned proposals are followed up on a schedule, and the team is told at the points where a person needs to act.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Inquiry email through to signed contract"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Scoro, Xero, Airtable, Gmail"
+    },
+    {
+      "label": "Handles",
+      "value": "Leads, proposals, invoices and follow-ups"
+    }
+  ],
+  "deliverables": [
+    "Inbox monitoring with lead parsing and a duplicate check in Scoro",
+    "Auto-reply with a discovery call booking link",
+    "Cost calculation and proposal creation in Scoro",
+    "Approval trigger that sends the proposal and logs it",
+    "Contract-signed flow with deposit or full invoices in Xero",
+    "Scheduled follow-ups for unsigned proposals"
+  ],
+  "process": [
+    {
+      "title": "Map the sales path",
+      "body": "We documented each step from inquiry to kickoff and marked where a person still needs to approve or decide."
+    },
+    {
+      "title": "Build lead intake",
+      "body": "We connected the inbox, the Scoro lead lookup, the auto-reply and the team notifications."
+    },
+    {
+      "title": "Automate proposals and invoices",
+      "body": "We added the cost calculation, Scoro proposals, the approval flow and Xero invoicing based on the agreed payment terms."
+    },
+    {
+      "title": "Add follow-ups and test",
+      "body": "We set up the 6-hour follow-up check and ran test leads through every branch before handover."
+    }
+  ],
+  "technologies": ["n8n", "Scoro", "Xero", "Airtable", "Gmail", "Google Sheets"],
+  "whyItMatters": "Most of the work between an inquiry and a paid deposit repeats from project to project. Automating it lets a small studio reply fast and invoice correctly without adding admin hours.",
+  "faqs": [
+    {
+      "q": "We use a different CRM. Can this still work?",
+      "a": "Yes. The first version of this flow ran on Airtable and the current one runs on Scoro. Any CRM with an API for leads and proposals can take Scoro's place, and Xero can be swapped for another accounting tool."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We map your own inquiry, proposal and invoicing steps and connect the tools you already pay for. After a short call we send a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n workflow in five rows: lead intake, proposal preparation, approval and send, contract-signed invoicing, and follow-ups."
+    },
+    {
+      "file": "2",
+      "caption": "Lead intake: inbox monitor, new-inquiry filter, lead parsing, Scoro lookup, create or update, then a team notification and an auto-reply."
+    },
+    {
+      "file": "3",
+      "caption": "Contract signed: the payment terms decide between a 50% deposit and a full Xero invoice, then a status update, kickoff email and team alert."
+    },
+    {
+      "file": "4",
+      "caption": "Follow-ups: every 6 hours unsigned proposals are filtered into 2-day, 7-day and quarterly emails, each updating its tracking record."
+    },
+    {
+      "file": "5",
+      "caption": "An earlier version of the flow built on Airtable, with Gmail lead intake, proposal generation, a Xero invoice and a follow-up sequence."
+    }
+  ],
+  "cover": "1"
+}

@@ -17,6 +17,7 @@ import { BookCarousel } from "@/components/book-carousel";
 import { Coverflow3D } from "@/components/coverflow-3d";
 import { VideoSpotlight, type SpotlightVideo } from "@/components/video-spotlight";
 import { StoreShowcase } from "@/components/store-showcase";
+import { AutomationShowcase } from "@/components/automation-showcase";
 import { VideoWall } from "@/components/video-wall";
 import { bookCoverAssets, type BookCover } from "@/assets/book-cover-assets";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
@@ -609,6 +610,14 @@ function PortfolioDetailPage() {
                   </dt>
                   <dd className="mt-1 font-semibold text-foreground">{item.subcategory}</dd>
                 </div>
+                {item.automation && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                      Type
+                    </dt>
+                    <dd className="mt-1 font-semibold text-foreground">Client automation</dd>
+                  </div>
+                )}
                 {item.whiteLabel && (
                   <div>
                     <dt className="text-xs uppercase tracking-widest text-muted-foreground">
@@ -662,14 +671,18 @@ function PortfolioDetailPage() {
               <>
                 <p className={eyebrow}>The work</p>
                 <h2 id="work-title" className={`mt-2 ${h2Class}`}>
-                  {item.whiteLabel
-                    ? `What we built for ${item.client ?? item.title} (white-label)`
-                    : item.client
-                      ? `What we made for ${item.client}`
-                      : "What we made"}
+                  {item.automation
+                    ? "How the automation works"
+                    : item.whiteLabel
+                      ? `What we built for ${item.client ?? item.title} (white-label)`
+                      : item.client
+                        ? `What we made for ${item.client}`
+                        : "What we made"}
                 </h2>
                 <div className="mt-8">
-                  {item.store ? (
+                  {item.automation ? (
+                    <AutomationShowcase data={item.automation} name={item.title} />
+                  ) : item.store ? (
                     <StoreShowcase store={item.store} name={item.client ?? item.title} />
                   ) : (
                     <CategoryShowcase item={item} images={gallery} />

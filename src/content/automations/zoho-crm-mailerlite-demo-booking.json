@@ -1,0 +1,75 @@
+{
+  "slug": "zoho-crm-mailerlite-demo-booking",
+  "title": "Zoho CRM and MailerLite demo booking nurture",
+  "subcategory": "Lead Generation & CRM",
+  "order": 23,
+  "metaTitle": "Zoho CRM to MailerLite Demo Booking Zaps | Pixel2Tech",
+  "metaDescription": "Two Zaps that tag new Zoho CRM leads by demo status, add non-booked leads to each owner's MailerLite group and remove them daily once they book a demo.",
+  "summary": "Two Zapier workflows that put Zoho CRM leads who have not booked a demo into a MailerLite nurture group and take them out again once they book.",
+  "overview": "We built this pair of Zaps for a software company that sells through booked demos. The first Zap runs on every new Zoho CRM lead, checks which forms the lead filled in, sets the lead status to Demo Booked or Demo Not Booked, and adds non-booked leads to a MailerLite group based on the lead owner. The second Zap runs every day, finds leads who have since booked, updates their status and removes them from their MailerLite group.",
+  "challenge": "Leads who do not book a demo need a nurture sequence, and leads who do book need to leave it. When the list is kept by hand, leads are added late or not at all, and people who have already booked keep getting emails asking them to book.",
+  "approach": "Zap one triggers when a new lead is created in Zoho CRM. A Paths step splits on the forms the lead completed. If only one form was filled, the lead status is updated to Demo Not Booked, and a second Paths step checks the lead owner and adds the subscriber to that owner's MailerLite group, which feeds the nurture campaign. If both forms were filled, the status is set to Demo Booked. Zap two runs on a daily schedule, gets leads from Zoho CRM, filters for those who have now booked, updates the module entry and uses the same owner paths to remove the subscriber from the right MailerLite group.",
+  "outcome": "Lead status in Zoho CRM now reflects demo booking without manual updates, each sales owner's MailerLite group holds only leads who still need a demo, and leads stop getting nurture emails within a day of booking.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "New Zoho CRM lead, plus a daily check"
+    },
+    {
+      "label": "Stack",
+      "value": "Zapier, Zoho CRM, MailerLite"
+    },
+    {
+      "label": "Handles",
+      "value": "Lead status, owner groups, daily cleanup"
+    }
+  ],
+  "deliverables": [
+    "New lead Zap with form-based paths",
+    "Automatic Demo Booked and Demo Not Booked status updates",
+    "Owner-based routing to MailerLite groups",
+    "Daily scheduled Zap that removes booked leads",
+    "Filter rules for demo booking status"
+  ],
+  "process": [
+    {
+      "title": "Review the lead data",
+      "body": "We looked at how forms and demo bookings showed up on Zoho CRM leads and which fields we could rely on."
+    },
+    {
+      "title": "Plan two Zaps",
+      "body": "We split the work into an instant Zap for new leads and a daily Zap for cleanup, so late bookings are still caught."
+    },
+    {
+      "title": "Build the paths",
+      "body": "We built the form and lead owner paths so each lead lands in, or leaves, the right MailerLite group."
+    },
+    {
+      "title": "Test with sample leads",
+      "body": "We created test leads in each state and checked the status updates and group changes."
+    }
+  ],
+  "technologies": ["Zapier", "Zoho CRM", "MailerLite"],
+  "whyItMatters": "For a demo-led sales process, the nurture list has to match reality. Keeping CRM status and email groups in sync means the right people get the right emails.",
+  "faqs": [
+    {
+      "q": "Does this work with other email tools?",
+      "a": "Yes. The MailerLite steps can be replaced with Mailchimp, ActiveCampaign, Klaviyo or another tool that Zapier supports, using the same paths and filters."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the triggers, rules and lists to your CRM and email platform. After a short call we send a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The new lead Zap: Zoho CRM trigger, paths by forms filled, status updates, then paths by lead owner into MailerLite groups."
+    },
+    {
+      "file": "2",
+      "caption": "The daily cleanup Zap: schedule, get leads, filter for booked demos, update the entry and remove the subscriber by owner."
+    }
+  ],
+  "cover": "1"
+}

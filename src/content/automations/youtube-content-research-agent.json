@@ -1,0 +1,73 @@
+{
+  "slug": "youtube-content-research-agent",
+  "title": "YouTube content research agent with transcript analysis",
+  "subcategory": "Content & Operations",
+  "order": 61,
+  "metaTitle": "YouTube content research agent in n8n | Pixel2Tech",
+  "metaDescription": "An n8n agent that scrapes YouTube videos and transcripts with Apify, then uses OpenAI to pull key concepts, themes and content angles into Google Sheets.",
+  "summary": "An n8n workflow that collects YouTube videos on a topic, pulls their transcripts and uses AI to extract key concepts, recurring themes and unique angles into a research sheet.",
+  "overview": "We built this agent for a content team that plans videos by studying what already performs on YouTube. A team member submits a search through a form. The workflow uses Apify to find videos and fetch their transcripts, then an OpenAI agent with a structured output parser breaks each transcript down into key concepts, recurring themes and unique angles and writes one row per video to Google Sheets.",
+  "challenge": "Researching a topic on YouTube means watching hours of video and taking notes by hand. The notes end up scattered, and it is hard to compare what different creators cover or where the gaps are.",
+  "approach": "An n8n form collects the search input. An HTTP request runs an Apify YouTube scraper to find matching videos, and a second Apify actor extracts each transcript. A code step cleans and combines the data. An AI agent on an OpenAI chat model analyzes each transcript, and a structured output parser makes sure the result always has the same fields. A final code step formats the row, and the workflow appends the title, link, transcript, key concepts, recurring themes, unique angles and view count to Google Sheets.",
+  "outcome": "The team now gets a structured research sheet for any topic in one run, with each video's ideas and angles side by side, ready for planning new content.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Research form submission"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Apify, OpenAI, Google Sheets"
+    },
+    {
+      "label": "Handles",
+      "value": "Concepts, themes and angles per video"
+    }
+  ],
+  "deliverables": [
+    "Form for submitting research topics",
+    "Apify YouTube video and transcript extraction",
+    "OpenAI analysis agent with a structured output parser",
+    "Google Sheets research log with one row per video"
+  ],
+  "process": [
+    {
+      "title": "Define the research output",
+      "body": "We agreed on the fields the team needs, from key concepts to unique angles."
+    },
+    {
+      "title": "Collect videos and transcripts",
+      "body": "We connected two Apify actors to find videos and pull their transcripts."
+    },
+    {
+      "title": "Analyze with structure",
+      "body": "We set up the OpenAI agent with a structured parser so every row has the same format."
+    },
+    {
+      "title": "Write and test",
+      "body": "We mapped the output to Google Sheets and tested with several topics."
+    }
+  ],
+  "technologies": ["n8n", "Apify", "OpenAI", "Google Sheets"],
+  "whyItMatters": "Seeing what other videos cover, and what they miss, is the fastest way to find a fresh angle, and this workflow turns hours of viewing into a sheet you can scan.",
+  "faqs": [
+    {
+      "q": "Can it analyze a specific channel or playlist?",
+      "a": "Yes. The Apify input can target a channel, a playlist or a list of video links instead of a keyword search."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, for YouTube or other video platforms, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: form submission, Apify video and transcript extractors, an OpenAI agent with a structured parser, then Google Sheets."
+    },
+    {
+      "file": "2",
+      "caption": "The output sheet: transcript, key concepts, recurring themes and unique angles per video (links covered)."
+    }
+  ]
+}

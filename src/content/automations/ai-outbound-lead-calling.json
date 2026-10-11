@@ -1,0 +1,80 @@
+{
+  "slug": "ai-outbound-lead-calling",
+  "title": "AI outbound calling for new web leads",
+  "subcategory": "Voice Agents",
+  "order": 11,
+  "metaTitle": "AI Outbound Lead Calling with VAPI and n8n | Pixel2Tech",
+  "metaDescription": "An n8n and VAPI workflow that calls new web leads within seconds, cleans phone numbers first, follows each call to the end and logs the outcome in Sheets.",
+  "summary": "A new web enquiry triggers a qualifying AI phone call within seconds, and the call outcome is written back to the lead's row in Google Sheets.",
+  "overview": "We built this outbound calling workflow for a service business whose enquiries arrive through a web form at all hours. n8n receives each submission, cleans the phone number, logs the lead and asks a VAPI voice agent to call the prospect straight away. The workflow then follows the call until it ends and records what happened.",
+  "challenge": "Enquiries waited in an inbox until someone had time to pick up the phone. Leads that arrived in the evening, at the weekend or during a busy campaign were called back hours later, often after they had already spoken to another provider. Numbers were typed in different formats, so some dial attempts failed without anyone noticing, and there was no single view of which leads had actually been reached.",
+  "approach": "A webhook receives the form submission and an Edit Fields step maps the name, phone number, service interest and notes. A JavaScript step strips spacing and normalizes the number to international format, and an IF node checks whether it is usable. Unusable numbers are appended to a separate cleanup sheet instead of being dialed. Valid leads go to VAPI, which places a qualifying call within seconds, and the workflow saves the call ID. It then waits and polls the call record in a loop until the call has really ended. A Switch node routes the result, so answered and qualified, answered but not a fit, voicemail and no answer each take their own path, and the outcome and qualification details are written back to the lead row in the Google Sheets log.",
+  "outcome": "Every enquiry now gets a call while the prospect is still thinking about the service, day or night, without anyone sitting on a dialer. Bad numbers are caught before they cost a call, and the team opens one sheet to see which leads were reached, which were qualified, which went to voicemail and which did not pick up.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Web form or webhook submission"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, VAPI, Google Sheets"
+    },
+    {
+      "label": "Handles",
+      "value": "Number cleanup, call polling, four outcomes"
+    }
+  ],
+  "deliverables": [
+    "Webhook intake with field mapping",
+    "Phone number normalization and validation step",
+    "Cleanup sheet for unusable numbers",
+    "VAPI outbound call request with call ID tracking",
+    "Polling loop that waits until the call has ended",
+    "Outcome routing with write-back to the lead row"
+  ],
+  "process": [
+    {
+      "title": "Map the lead flow",
+      "body": "We traced how enquiries arrived and what the sales team needed to know after each call."
+    },
+    {
+      "title": "Clean the data",
+      "body": "We added number normalization and a cleanup branch so only dialable numbers reach the voice agent."
+    },
+    {
+      "title": "Tune the agent",
+      "body": "We configured the VAPI agent's script, voice, transcriber and interruption handling so calls sound like a discovery conversation, not a robocall."
+    },
+    {
+      "title": "Close the loop",
+      "body": "We built the polling loop and outcome routing, then tested answered, voicemail and no-answer cases end to end."
+    }
+  ],
+  "technologies": ["n8n", "VAPI", "Google Sheets", "JavaScript", "Webhooks"],
+  "whyItMatters": "Interest fades quickly after someone fills in a form. Calling within seconds, and knowing exactly how each call ended, gives the sales team a fair shot at every lead.",
+  "faqs": [
+    {
+      "q": "Can the agent use our own call script and questions?",
+      "a": "Yes. The VAPI agent's prompt, voice and qualification questions are set up for your offer, and the answers it collects are the ones written back to the lead record. We can log to your CRM instead of Google Sheets if you prefer."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: webhook intake, phone check, VAPI call, polling loop and outcome logging."
+    },
+    {
+      "file": "2",
+      "caption": "Intake close-up: field mapping, number cleanup and the branch that sends bad numbers to a cleanup sheet."
+    },
+    {
+      "file": "3",
+      "caption": "Call tracking close-up: call details are polled until the call ends, then routed to the completed or voicemail log."
+    }
+  ],
+  "cover": "3"
+}

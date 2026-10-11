@@ -1,0 +1,69 @@
+{
+  "slug": "instagram-dm-sales-assistant",
+  "title": "Instagram DM sales assistant for an online shoe store",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 34,
+  "metaTitle": "Instagram DM sales assistant for a store | Pixel2Tech",
+  "metaDescription": "An n8n Instagram DM assistant for an online shoe store that answers price and size questions, reserves a pair and confirms the order in the chat.",
+  "summary": "An AI assistant that replies to Instagram direct messages for an online shoe store, answering price and size questions, reserving a pair and confirming the order in the same conversation.",
+  "overview": "We built this assistant for an online shoe store that sells largely through Instagram. Every incoming DM is passed to n8n by webhook, where a shop assistant agent answers questions about prices, sizes and colors, reserves a pair when asked and walks the customer through confirming the order, then sends the reply back to Instagram.",
+  "challenge": "Shoppers on Instagram expect quick answers in DMs. When a store owner replies hours later to a question about price or size, the customer has often moved on, and every reservation and order confirmation is typed by hand.",
+  "approach": "A webhook receives each new DM. A shop assistant AI agent running on a Groq chat model reads the message, with simple memory so it keeps track of the conversation, such as the size and model the customer has already picked. The agent's instructions cover the store's products, prices, payment options and order steps. An HTTP request then sends the reply back to the customer through Instagram's messaging API.",
+  "outcome": "Customers now get instant replies in Instagram DMs with prices and available sizes, and the assistant can reserve a pair and confirm the order before a person steps in to handle payment and shipping.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Incoming Instagram DM"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Groq, Instagram messaging"
+    },
+    {
+      "label": "Handles",
+      "value": "Prices, sizes, reservations and orders"
+    }
+  ],
+  "deliverables": [
+    "Webhook endpoint for Instagram DMs",
+    "Shop assistant agent with store instructions",
+    "Conversation memory per customer",
+    "Reply step through the Instagram messaging API"
+  ],
+  "process": [
+    {
+      "title": "Gather store details",
+      "body": "We collected the products, prices, sizes and payment options the assistant needs to answer correctly."
+    },
+    {
+      "title": "Connect Instagram",
+      "body": "We set up the webhook for incoming DMs and the HTTP request that sends replies."
+    },
+    {
+      "title": "Build the agent",
+      "body": "We configured the Groq agent with memory and instructions for reservations and order confirmation."
+    },
+    {
+      "title": "Test conversations",
+      "body": "We ran full test chats from first question to confirmed order and tuned the replies."
+    }
+  ],
+  "technologies": ["n8n", "Groq", "Instagram Messaging API", "Webhooks"],
+  "whyItMatters": "In social selling, the store that answers first usually gets the sale, and an assistant that replies in seconds keeps buyers in the conversation.",
+  "faqs": [
+    {
+      "q": "Can it check live stock from my store?",
+      "a": "Yes. We can connect the agent to your product catalog or inventory, for example Shopify or a Google Sheet, so it answers from current stock."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, for Instagram, Facebook Messenger or WhatsApp, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: an Instagram DM webhook, a shop assistant agent with Groq and memory, and an HTTP request that sends the reply."
+    }
+  ]
+}

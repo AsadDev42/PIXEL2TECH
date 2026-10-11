@@ -1,0 +1,82 @@
+{
+  "slug": "ai-calling-agent-with-compliance-checks",
+  "title": "AI calling agent with pre-call compliance checks",
+  "subcategory": "Voice Agents",
+  "order": 13,
+  "metaTitle": "AI Calling Agent with Compliance Checks | Pixel2Tech",
+  "metaDescription": "An n8n, Retell AI and Ytel calling system for a lead-generation call center that checks DNC lists, calling hours and consent before every AI call.",
+  "summary": "Every outbound lead passes a chain of checks before an AI voice agent dials, and every call result flows back into the dialer.",
+  "overview": "We built this voice system for a lead-generation call center that runs outbound and inbound calls with AI agents. Three connected n8n workflows sit between the Ytel dialer and Retell AI: one screens and launches outbound calls, one validates inbound calls, and one handles what happens after each call ends.",
+  "challenge": "Outbound calling comes with rules that vary by state and by number type, and a call to the wrong number at the wrong time is costly. The team relied on manual list scrubbing before campaigns, call results were updated by hand, and callbacks and transfers could slip through on busy days.",
+  "approach": "The outbound workflow starts from a Ytel trigger, extracts and validates the lead fields, then builds a compliance context. The lead runs through a series of checks: excluded states, the national do-not-call list, a state DNC list, a calling-hours window, a per-state frequency check, cell-phone consent and the internal DNC list. Every check reports to a compliance logger, so a blocked lead is recorded with the reason. Leads that pass are added to Ytel, a Retell AI call is created and the call ID is stored. The inbound workflow validates the required fields, responds to the webhook straight away, updates Ytel and starts the Retell AI inbound agent, or returns a validation failure. The call-ended workflow reads why the call finished: hangups and final statuses update Ytel, callback requests are recorded, transfers go ahead when an agent is available, and otherwise a retry counter decides between another call attempt and the overflow queue.",
+  "outcome": "The call center now runs its checks before every call automatically and keeps a log of why any lead was held back. Calls start without manual list work, inbound calls are answered with validated data, and each call result, callback or transfer is written back to the dialer without an agent touching it.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Ytel outbound trigger and Retell AI webhooks"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Retell AI, Ytel"
+    },
+    {
+      "label": "Handles",
+      "value": "Seven pre-call checks, inbound calls, callbacks"
+    }
+  ],
+  "deliverables": [
+    "Outbound workflow with lead extraction and field validation",
+    "Pre-call check chain with a compliance logger",
+    "Ytel lead creation and Retell AI call creation",
+    "Inbound call workflow with validation and an instant webhook response",
+    "Call-ended handler for callbacks, transfers, retries and overflow"
+  ],
+  "process": [
+    {
+      "title": "Map the rules",
+      "body": "We listed the client's calling rules by state and number type, and the dispositions their dialer needs back."
+    },
+    {
+      "title": "Build the checks",
+      "body": "Each rule became its own step in n8n, wired to a shared logger so every decision is recorded."
+    },
+    {
+      "title": "Connect dialer and agent",
+      "body": "We linked Ytel and Retell AI for outbound calls, inbound calls and call-ended events."
+    },
+    {
+      "title": "Test the edge cases",
+      "body": "We ran test leads through each blocking condition and each end-of-call outcome before go-live."
+    }
+  ],
+  "technologies": ["n8n", "Retell AI", "Ytel", "Webhooks"],
+  "whyItMatters": "A fast AI agent only helps a call center if it calls the right people at the right time. Checks before every call, with a record of each decision, keep speed and care in the same system.",
+  "faqs": [
+    {
+      "q": "Does this make our calling legally compliant?",
+      "a": "It applies the rules you give it before every call and logs each decision, which makes reviews much easier. Whether those rules meet your legal obligations should be confirmed with your compliance advisor, and we update the checks when the rules change."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The three n8n workflows: outbound calls with pre-call checks, inbound call handling and the call-ended handler."
+    },
+    {
+      "file": "2",
+      "caption": "Outbound flow: lead validation, the chain of checks reporting to a compliance logger, then Ytel and Retell AI."
+    },
+    {
+      "file": "3",
+      "caption": "Inbound flow: field validation, an immediate webhook response, a Ytel update and the Retell AI inbound agent."
+    },
+    {
+      "file": "4",
+      "caption": "Call-ended handler: routes hangups, callbacks, transfers, retries and the overflow queue."
+    }
+  ]
+}

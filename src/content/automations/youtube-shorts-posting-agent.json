@@ -1,0 +1,74 @@
+{
+  "slug": "youtube-shorts-posting-agent",
+  "title": "AI YouTube Shorts generator with automatic upload",
+  "subcategory": "Content & Operations",
+  "order": 59,
+  "metaTitle": "AI YouTube Shorts posting agent | Pixel2Tech",
+  "metaDescription": "An n8n workflow that researches a topic, generates a short video with Decart, waits for the render, uploads it to YouTube and records it in a sheet.",
+  "summary": "An n8n workflow that takes a topic from a sheet, researches it, generates a short AI video with Decart, waits for the render to finish and uploads the result to YouTube.",
+  "overview": "We built this workflow for a client who publishes short-form video on YouTube and wanted to produce Shorts from a topic list. Each run reads a topic from Google Sheets, researches it with a Gemini agent and Tavily search, sends a generation job to Decart, polls until the video is ready, downloads it, uploads it to YouTube and logs the upload in the sheet.",
+  "challenge": "Short-form video needs a steady output to gain traction, but every Short means scripting, generating footage, waiting on renders and uploading by hand. That routine is hard to keep up alongside other work.",
+  "approach": "The workflow reads the next topic row from Google Sheets. A research agent on Gemini uses Tavily search through an HTTP tool to build the prompt for the video. An HTTP request creates a video job on the Decart API. Because rendering takes time, the workflow waits, checks the job status and loops back through the wait step until an IF node confirms the video is generated. It then downloads the file, uploads it with the YouTube node and writes the result back to the sheet.",
+  "outcome": "The client can queue video ideas in a sheet and let the workflow handle research, generation, render polling and upload, with each finished Short recorded against its topic.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Topic row in Google Sheets"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Gemini, Tavily, Decart, YouTube"
+    },
+    {
+      "label": "Handles",
+      "value": "Research, video job, polling and upload"
+    }
+  ],
+  "deliverables": [
+    "Topic queue in Google Sheets with result logging",
+    "Gemini research agent with Tavily search",
+    "Decart video job creation through the API",
+    "Wait-and-check loop that polls until the render is done",
+    "Download and YouTube upload steps"
+  ],
+  "process": [
+    {
+      "title": "Plan the pipeline",
+      "body": "We mapped the path from a topic row to a published Short and the data each step needs."
+    },
+    {
+      "title": "Research and prompt",
+      "body": "We built the Gemini research agent with Tavily search to shape each video prompt."
+    },
+    {
+      "title": "Handle the render",
+      "body": "We created the Decart job call and a polling loop so the workflow waits for the video instead of failing."
+    },
+    {
+      "title": "Upload and record",
+      "body": "We connected the YouTube upload and sheet update, then ran the full flow on test topics."
+    }
+  ],
+  "technologies": ["n8n", "Google Gemini", "Tavily", "Decart", "YouTube", "Google Sheets"],
+  "whyItMatters": "Video generation is slow and asynchronous, so the polling loop is what makes the pipeline dependable enough to run without someone watching it.",
+  "faqs": [
+    {
+      "q": "Can it post to TikTok or Instagram Reels as well?",
+      "a": "Yes. Once the video file is downloaded, we can add upload steps for other platforms that offer an API, alongside the YouTube upload."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, including the video model you prefer, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: topic row, research agent, Decart video job with a wait-and-check loop, YouTube upload and sheet update."
+    },
+    {
+      "file": "2",
+      "caption": "Close-up of the polling loop: the workflow waits, checks the Decart job status and downloads only once the video is ready."
+    }
+  ]
+}

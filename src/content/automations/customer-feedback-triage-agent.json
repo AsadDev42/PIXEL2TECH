@@ -1,0 +1,74 @@
+{
+  "slug": "customer-feedback-triage-agent",
+  "title": "AI customer feedback triage with Airtable, Slack and Gmail",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 35,
+  "metaTitle": "AI customer feedback triage agent | Pixel2Tech",
+  "metaDescription": "An n8n agent that classifies form feedback as compliment, complaint or feature request, logs it in Airtable and alerts Slack or replies via Gmail.",
+  "summary": "An n8n workflow that reads every feedback form submission, classifies it as a compliment, complaint or feature request, files it in the right Airtable table and notifies the right channel.",
+  "overview": "We built this workflow for a product business that collects customer feedback through a web form. An AI agent on Azure OpenAI reads each submission and decides what kind of feedback it is. The workflow then stores it in a matching Airtable table, posts compliments and feature requests to Slack, and sends complaints an email reply through Gmail.",
+  "challenge": "Feedback forms fill up with a mix of praise, complaints and ideas. Someone has to read each entry, decide who should see it and log it somewhere useful, and unhappy customers can wait days for a response.",
+  "approach": "An n8n form trigger captures the customer's name, email and message. An AI agent running on an Azure OpenAI chat model classifies the feedback. A merge step joins the classification with the original form data, and a Switch node routes it by type. Each branch creates a record in its own Airtable table for compliments, complaints or feature requests. Compliments and feature requests are posted to Slack for the team, while complaints trigger a Gmail message back to the customer.",
+  "outcome": "Every piece of feedback is now sorted and filed as it arrives, the team sees praise and ideas in Slack, and customers with a complaint get an email response straight away.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Feedback form submission"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Azure OpenAI, Airtable, Slack, Gmail"
+    },
+    {
+      "label": "Handles",
+      "value": "Compliments, complaints and feature requests"
+    }
+  ],
+  "deliverables": [
+    "n8n feedback form with name, email and message",
+    "Azure OpenAI classification agent",
+    "Switch routing by feedback type",
+    "Airtable base with a table per feedback type",
+    "Slack alerts and Gmail replies to complaints"
+  ],
+  "process": [
+    {
+      "title": "Define the feedback types",
+      "body": "We agreed on three categories and what should happen to each one."
+    },
+    {
+      "title": "Set up storage",
+      "body": "We built an Airtable base with separate tables for compliments, complaints and feature requests."
+    },
+    {
+      "title": "Classify and route",
+      "body": "We configured the Azure OpenAI agent and a Switch node to send each entry down the right branch."
+    },
+    {
+      "title": "Notify and test",
+      "body": "We connected Slack and Gmail, then tested each branch with sample feedback."
+    }
+  ],
+  "technologies": ["n8n", "Azure OpenAI", "Airtable", "Slack", "Gmail"],
+  "whyItMatters": "Fast replies to complaints and a clean record of feature requests both depend on sorting feedback the moment it arrives.",
+  "faqs": [
+    {
+      "q": "Can it pull feedback from email or reviews instead of a form?",
+      "a": "Yes. The trigger can be swapped for an inbox, a review platform or a helpdesk, and the classification and routing stay the same."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, including your own feedback categories, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: form trigger, Azure OpenAI agent, Switch by feedback type, Airtable records, then Slack or Gmail."
+    },
+    {
+      "file": "2",
+      "caption": "The Airtable base with a table per feedback type, showing a test complaint (name and email covered)."
+    }
+  ]
+}

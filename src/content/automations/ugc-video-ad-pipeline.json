@@ -1,0 +1,78 @@
+{
+  "slug": "ugc-video-ad-pipeline",
+  "title": "UGC-style video ad pipeline from a sheet queue",
+  "subcategory": "Content & Operations",
+  "order": 54,
+  "metaTitle": "UGC Video Ad Pipeline with AI Clips | Pixel2Tech",
+  "metaDescription": "An n8n pipeline for a skincare brand that turns a queue of ad briefs into AI scripts, three generated clips and a stitched UGC-style video saved to Drive.",
+  "summary": "A Google Sheet holds the ad queue; n8n writes each script with Gemini, generates three clips, stitches them in Creatomate, saves the video to Drive and updates the sheet.",
+  "overview": "We built this pipeline for a skincare and e-commerce brand that wanted a steady supply of short UGC-style video ads. The team adds briefs to a Google Sheet, and the workflow picks up each ready row and produces a finished video file. The first test build generated images and video with Gemini and stopped there; the current version generates three clips through Replicate and stitches them into one ad with Creatomate.",
+  "challenge": "Short-form video ads need a constant flow of new creative, and filming or editing every variation by hand is slow. A brand testing different hooks and angles needs a way to go from a written brief to a usable video without a production session for each version.",
+  "approach": "The workflow reads the ad queue from Google Sheets and works through it row by row, only processing rows whose status is Ready. For each row, an AI agent on a Google Gemini chat model writes a structured script split into three segments. Three branches then run side by side: each generates a starting image, starts a video generation job on Replicate, waits 30 seconds, checks the job status and loops until the clip is complete, then downloads the clip and uploads it to Google Drive. A Code node merges the data for the three clips and sends it to Creatomate to stitch into one video. The workflow polls the render until it finishes, downloads the final video, uploads it to Drive, marks the sheet row as complete and loops back for the next row.",
+  "outcome": "The brand now queues ad ideas in a sheet and gets stitched videos back in Drive, with each row's status updated when its video is done. Wait and polling loops absorb the slow generation and render steps, so a run works through the whole queue without someone watching it.",
+  "results": [
+    { "label": "Trigger", "value": "Ready rows in an ad queue sheet" },
+    { "label": "Stack", "value": "n8n, Gemini, Replicate, Creatomate" },
+    { "label": "Handles", "value": "Script, three clips, stitching and storage" }
+  ],
+  "deliverables": [
+    "Sheet-based ad queue with a status check",
+    "Gemini script agent with a three-segment output",
+    "Three parallel image and clip generation branches",
+    "Status polling loops for each clip and the final render",
+    "Creatomate stitching of the three clips",
+    "Drive uploads and sheet status updates"
+  ],
+  "process": [
+    {
+      "title": "Shape the brief",
+      "body": "We set up the sheet columns and the script format so every brief produces three segments the generators can use."
+    },
+    {
+      "title": "Build the generation branches",
+      "body": "We built three parallel branches for images and clips, each with its own wait and status loop."
+    },
+    {
+      "title": "Stitch and store",
+      "body": "We added Creatomate stitching, render polling, the Drive uploads and the sheet update."
+    },
+    {
+      "title": "Extend the first build",
+      "body": "We started with a Gemini-only test build that ended at video generation, then extended it into the full queue-to-final-video pipeline."
+    }
+  ],
+  "technologies": [
+    "n8n",
+    "Google Gemini",
+    "Replicate",
+    "Creatomate",
+    "Google Drive",
+    "Google Sheets"
+  ],
+  "whyItMatters": "Ad creative wears out quickly. A pipeline that turns written briefs into finished videos lets a small team test more ideas without booking more production time.",
+  "faqs": [
+    {
+      "q": "Can we review the videos before they are used?",
+      "a": "Yes. Finished videos land in Google Drive and the sheet row is marked complete, so the team reviews them there before anything is published. An approval step can also be added before the upload."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We tailor the script format, video models and storage to your products and ad style. After a short call we quote a fixed price."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n pipeline: sheet queue loop, Gemini script agent, three clip branches, Creatomate stitching, render polling and Drive upload."
+    },
+    {
+      "file": "2",
+      "caption": "Left side: Google Sheets queue, batch loop, ready check and the script agent feeding three image and clip branches with status loops."
+    },
+    {
+      "file": "3",
+      "caption": "Right side: clip downloads and Drive uploads, merge, Creatomate stitching, render polling, final upload, sheet update and the loop to the next row."
+    }
+  ],
+  "cover": "2"
+}

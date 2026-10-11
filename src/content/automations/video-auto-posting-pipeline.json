@@ -1,0 +1,71 @@
+{
+  "slug": "video-auto-posting-pipeline",
+  "title": "Video intake, captioning and auto-posting pipeline",
+  "subcategory": "Content & Operations",
+  "order": 55,
+  "metaTitle": "Video Auto-Posting Pipeline in Make.com | Pixel2Tech",
+  "metaDescription": "Three Make.com scenarios we built for a content creator: classify new videos with Deepgram and GPT, write captions and hashtags, then post them everywhere.",
+  "summary": "Videos dropped into Google Drive are transcribed, classified and logged, given captions and hashtags, then posted to Facebook, YouTube, TikTok and Threads with failure alerts.",
+  "overview": "We built this pipeline in Make.com for a content creator and media brand that publishes the same videos across several platforms. It runs as three linked scenarios: one takes in and classifies new videos, one writes captions and hashtags, and one handles conversion and posting. Each scenario hands its output to the next through a webhook.",
+  "challenge": "Posting one video to several platforms means watching for new files, converting formats, writing a caption and hashtags for each platform, uploading everywhere and keeping track of what went out. Done by hand, this eats time on every upload, and a failed post on one platform can easily go unnoticed.",
+  "approach": "The intake scenario watches a Google Drive folder, downloads each new video, converts it with CloudConvert and transcribes it with Deepgram. OpenAI analyzes the transcript to classify the content, and a router sends the video down one of three category routes. Each route checks a Google Sheet so a video is not logged twice, adds it to that category's sheet, notifies the team on Telegram, moves the file to the right Drive folder and sends a JSON payload to the next scenario. The caption scenario receives that payload, has GPT draft the angle, runs Apify actors to collect hashtag and trend data, and uses OpenAI to write the final caption and hashtags, saving the result to a sheet before passing it on. The posting scenario parses the payload, downloads the video, runs a CloudConvert job with status checks, uploads the final file to Drive and hands it to a platform router. Its routes schedule posts through Metricool for Facebook, YouTube, TikTok and one more channel, while a separate OpenAI caption step prepares the Threads post. Every route writes a crash report row and sends a Telegram fail signal when something breaks, and error handlers let the scenarios carry on past a failed module.",
+  "outcome": "The creator now drops a video into Drive and the pipeline takes it from there: transcript, category, log entry, caption, hashtags and a post on each platform. The team sees Telegram messages as videos move through, and any failed upload shows up as a Telegram alert and a row in a crash report sheet.",
+  "results": [
+    { "label": "Trigger", "value": "New video in Google Drive" },
+    { "label": "Stack", "value": "Make.com, Deepgram, OpenAI, Metricool" },
+    { "label": "Handles", "value": "Intake, captions and multi-platform posting" }
+  ],
+  "deliverables": [
+    "Drive watch, CloudConvert conversion and Deepgram transcription",
+    "OpenAI content classification with a three-route category router",
+    "Category logging in Google Sheets with duplicate checks",
+    "Caption and hashtag scenario using Apify and OpenAI",
+    "Platform router posting through Metricool",
+    "Crash report sheets and Telegram fail alerts"
+  ],
+  "process": [
+    {
+      "title": "Split the pipeline",
+      "body": "We divided the work into intake, captioning and posting scenarios linked by webhooks, so each one can be fixed or rerun on its own."
+    },
+    {
+      "title": "Build intake and classification",
+      "body": "We connected Drive, CloudConvert, Deepgram and OpenAI, then set up the category routes, sheets and Telegram notices."
+    },
+    {
+      "title": "Add captions and posting",
+      "body": "We built the Apify and OpenAI caption scenario and the platform router with its Metricool posting routes."
+    },
+    {
+      "title": "Plan for failures",
+      "body": "We added error handlers, crash report rows and Telegram fail signals to every route."
+    }
+  ],
+  "technologies": ["Make.com", "Deepgram", "OpenAI", "Apify", "Metricool", "Telegram"],
+  "whyItMatters": "A creator's time should go into making videos, not uploading the same file again and again. Moving the publishing steps into Make.com keeps posting consistent and makes failures easy to spot.",
+  "faqs": [
+    {
+      "q": "Can it post to other platforms?",
+      "a": "Yes. The platform router takes new routes, so another channel Metricool supports, or a direct upload module where one exists, can be added with its own crash report and alert."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We build it around your folders, platforms and posting rules, in Make.com or n8n. A short call is all we need to give you a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The intake and classification scenario in Make.com: Drive watch, CloudConvert, Deepgram, OpenAI analysis and a category router into three logging routes."
+    },
+    {
+      "file": "2",
+      "caption": "The caption and hashtag scenario: webhook in, GPT draft, Apify actors, OpenAI caption, sheet save, Telegram notice and handoff to posting."
+    },
+    {
+      "file": "3",
+      "caption": "The auto-posting scenario: conversion and Drive steps, then a platform router to Metricool and Threads routes, each with a crash report and fail alert."
+    }
+  ],
+  "cover": "3"
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "sms-ai-lead-nurture-real-estate",
+  "title": "SMS-first AI lead nurture with agent handoff",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 30,
+  "metaTitle": "SMS AI Lead Nurture for Real Estate Teams | Pixel2Tech",
+  "metaDescription": "An n8n build for a real estate team: OpenAI answers leads by SMS, qualifies them, hands hot leads to an agent in Lofty CRM and re-pings quiet leads.",
+  "summary": "Leads text in, an AI replies by SMS with the conversation history in hand, and qualified leads are marked Ready for Agent in Lofty while the agent gets a text alert.",
+  "overview": "We built this for a real estate team that manages its leads in Lofty CRM and wanted SMS to be the first point of contact. The AI handles the early back-and-forth over text, decides when a lead is worth an agent's time, and leaves the agent in control of the handoff. The core conversation and handoff paths are built out, while branches such as the daily summary and quiet-lead re-ping were laid out for the team to finish connecting as their accounts were set up.",
+  "challenge": "Real estate leads expect a quick reply, often by text, but agents can't answer every message the moment it arrives. Leads that wait go cold, and agents spend time on people who are not ready to move. The team needed fast, consistent replies with a clear point where a person takes over.",
+  "approach": "A Twilio trigger receives each inbound SMS. The workflow extracts the lead's message and number, saves it to a messages table in Supabase and fetches the last 10 messages for context. A prompt with system instructions, examples and that history goes to OpenAI, and the response is parsed into the reply text and qualification metadata. The reply is saved back to Supabase and sent to the lead through Twilio. Qualification logic then checks the lead: if qualified, its status in Lofty is set to Ready for Agent and the agent gets a hot-lead SMS. The agent answers by text to a separate webhook; the workflow finds the lead by the agent's phone number and either confirms the booking with the lead or, if the agent asked for more information, passes the question to the AI and texts the lead a follow-up. The design also includes an end-of-day summary texted to the agent, a check that re-pings leads who have gone quiet, and an optional media add-on that turns summaries into Gemini images and short videos for Facebook.",
+  "outcome": "Leads get a text reply that takes the whole conversation into account. Agents only step in for leads the AI has qualified, approve them or ask questions from their phone, and see the status in Lofty. The re-ping and daily summary branches give the team a way to keep quiet leads warm and review the day without opening every thread.",
+  "results": [
+    { "label": "Trigger", "value": "Inbound SMS from a lead" },
+    { "label": "Stack", "value": "Twilio, OpenAI, Supabase, Lofty CRM" },
+    { "label": "Handles", "value": "Replies, qualification and agent handoff" }
+  ],
+  "deliverables": [
+    "Twilio SMS trigger and reply path",
+    "Supabase message history with the last 10 messages as context",
+    "OpenAI prompt that returns a reply and qualification data",
+    "Lofty status update to Ready for Agent with an agent SMS alert",
+    "Agent reply webhook with approve and ask-for-more paths",
+    "Daily summary and quiet-lead re-ping branches"
+  ],
+  "process": [
+    {
+      "title": "Define qualification",
+      "body": "We agreed with the team what makes a lead ready for an agent and how the AI should word its replies."
+    },
+    {
+      "title": "Build the conversation loop",
+      "body": "We connected Twilio, the Supabase history and OpenAI so each reply draws on the recent conversation."
+    },
+    {
+      "title": "Add the handoff",
+      "body": "We added the Lofty status update, the agent SMS alert and the agent reply webhook with its two paths."
+    },
+    {
+      "title": "Lay out the follow-up branches",
+      "body": "We mapped the daily summary, quiet-lead re-ping and media add-on for the team to connect as their accounts were ready."
+    }
+  ],
+  "technologies": ["n8n", "Twilio", "OpenAI", "Supabase", "Lofty CRM", "Google Gemini"],
+  "whyItMatters": "Speed matters with inbound leads, and so does an agent's time. This build answers every text quickly and only pulls an agent in when the conversation is ready for one.",
+  "faqs": [
+    {
+      "q": "Does the agent have to approve every handoff?",
+      "a": "The agent is alerted for each qualified lead and replies by text to approve it or ask for more information. A question goes to the lead as a follow-up text, so the agent decides when a lead is handed over."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We set it up with your SMS number, your CRM and your own qualification rules. Book a short call and we will come back with a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n workflow: SMS conversation, agent reply flow, daily summary, media add-on and lead re-ping, each with its own note."
+    },
+    {
+      "file": "2",
+      "caption": "The SMS conversation path: Twilio trigger, Supabase history, OpenAI reply, qualification check, Lofty status update and agent alert."
+    },
+    {
+      "file": "3",
+      "caption": "The agent reply flow: find the lead by the agent's phone, then confirm the booking or send the agent's question to the lead."
+    },
+    {
+      "file": "4",
+      "caption": "The end-of-day branch that pulls the day's leads and chats, prepares a summary and texts it to the agent."
+    },
+    {
+      "file": "5",
+      "caption": "The re-ping branch that checks lead status and sends a follow-up SMS to leads who have not replied."
+    }
+  ],
+  "cover": "2"
+}

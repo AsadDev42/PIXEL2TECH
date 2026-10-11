@@ -1,0 +1,86 @@
+{
+  "slug": "voice-reservation-agent",
+  "title": "AI voice agent for restaurant table reservations",
+  "subcategory": "Voice Agents",
+  "order": 14,
+  "metaTitle": "AI voice reservation agent for a restaurant | Pixel2Tech",
+  "metaDescription": "An ElevenLabs voice agent for a restaurant that collects booking details, logs them in Google Sheets and checks Google Calendar through an n8n agent.",
+  "summary": "An ElevenLabs voice agent that takes table reservations for a restaurant. It collects the guest's name, date, time and party size and passes them to n8n, which logs the booking and checks the calendar.",
+  "overview": "We built this voice agent for a restaurant that wanted reservations handled without staff picking up every request. The ElevenLabs agent talks to the guest and sends the details to an n8n webhook. The first version records each booking in Google Sheets. The advanced version adds a Groq-powered agent that checks availability and creates events in Google Calendar, and answers questions from a Pinecone knowledge base.",
+  "challenge": "Reservation requests arrive while staff are busy serving guests. Missed calls mean lost bookings, and details taken by hand during service are easy to get wrong.",
+  "approach": "In ElevenLabs, the voice agent has a webhook tool with a description and body parameters for the guest's name, date, time and number of people, so the model knows what to ask for and when to send it. The tool posts those details to an n8n webhook. In the basic workflow, n8n appends the reservation to a Google Sheet and responds to the webhook so the agent can confirm. In the advanced workflow, the webhook feeds an AI agent on a Groq chat model with tools to check availability and create appointments in Google Calendar, log the booking in Google Sheets, search the web with SerpAPI and look up restaurant information in a Pinecone vector store with Gemini embeddings.",
+  "outcome": "Guests can book a table by talking to the voice agent, and each reservation lands in the restaurant's sheet and calendar with the name, date, time and party size filled in.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Voice agent tool call to a webhook"
+    },
+    {
+      "label": "Stack",
+      "value": "ElevenLabs, n8n, Groq, Google Calendar"
+    },
+    {
+      "label": "Handles",
+      "value": "Name, date, time and party size"
+    }
+  ],
+  "deliverables": [
+    "ElevenLabs voice agent with a reservation webhook tool",
+    "Body parameters for name, date, time and party size",
+    "Basic n8n flow that logs bookings to Google Sheets",
+    "Advanced Groq agent with Google Calendar availability and booking",
+    "Pinecone knowledge base and SerpAPI tools for guest questions"
+  ],
+  "process": [
+    {
+      "title": "Design the conversation",
+      "body": "We set the agent's greeting, persona and the four details it must collect for a booking."
+    },
+    {
+      "title": "Connect the tool",
+      "body": "We configured the ElevenLabs webhook tool and its parameters to post bookings to n8n."
+    },
+    {
+      "title": "Log and confirm",
+      "body": "We built the basic flow that writes the reservation to a sheet and answers the agent."
+    },
+    {
+      "title": "Add calendar and knowledge",
+      "body": "We extended it with a Groq agent, Google Calendar tools and a Pinecone knowledge base."
+    }
+  ],
+  "technologies": ["ElevenLabs", "n8n", "Groq", "Google Calendar", "Google Sheets", "Pinecone"],
+  "whyItMatters": "A voice agent that always answers means reservation requests are not lost during busy hours, and the details arrive in a consistent format.",
+  "faqs": [
+    {
+      "q": "Can it connect to my reservation system?",
+      "a": "Yes. Instead of a sheet and calendar, the n8n side can write bookings to your reservation platform if it offers an API."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, for restaurants, clinics or other appointment-based businesses, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The advanced version: a webhook feeds a Groq agent with Google Calendar, Sheets, SerpAPI and a Pinecone knowledge base."
+    },
+    {
+      "file": "2",
+      "caption": "The basic version: the voice agent's webhook call is appended to a Google Sheet and answered."
+    },
+    {
+      "file": "3",
+      "caption": "The ElevenLabs tool configuration that sends reservation details to the n8n webhook (URL removed)."
+    },
+    {
+      "file": "4",
+      "caption": "Body parameters the voice agent collects during the conversation, such as party size and date."
+    },
+    {
+      "file": "5",
+      "caption": "A test reservation row in Google Sheets with date, time and party size (name covered)."
+    }
+  ]
+}

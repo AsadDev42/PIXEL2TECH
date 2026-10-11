@@ -1,0 +1,84 @@
+{
+  "slug": "email-sms-booking-nurture",
+  "title": "Tag-based email and SMS nurture until a call is booked",
+  "subcategory": "Lead Generation & CRM",
+  "order": 21,
+  "metaTitle": "Email and SMS Nurture Until Booking | Pixel2Tech",
+  "metaDescription": "A GoHighLevel nurture workflow that starts from product tags, sends email and SMS over 1, 4 and 10 day waits, and stops for anyone who books a call.",
+  "summary": "One GoHighLevel workflow that nurtures contacts for three product lines with email and SMS, and stops the moment a contact books an appointment.",
+  "overview": "We built this nurture workflow for a business that sells AI receptionist and telecom services. Contacts enter when they receive one of three product tags. The workflow branches by tag so each product line gets its own messages, then alternates email and SMS with waits of one, four and ten days. At every step it checks whether the contact has booked, and anyone with the appointment booked tag is removed from the workflow.",
+  "challenge": "A business with several services collects contacts interested in different things. Without automation, follow-up tends to be generic or late, contacts who have already booked a call can keep receiving sales emails, and contacts who have not booked go cold.",
+  "approach": "Three tag triggers feed one workflow. A condition reads which tag started it and sends the contact down the matching product branch. Each branch first checks for the appointment booked tag and removes the contact if it is there. Otherwise it sends the first email for that product and waits up to one day for a booking. If the contact books inside the window, they leave the workflow. If the wait times out, they get an SMS and a four day wait, then a second email and a ten day wait, with the same booking check after every step.",
+  "outcome": "Every tagged contact now gets a follow-up sequence written for the product they asked about, across email and SMS, and the sequence ends as soon as they book. One workflow covers all three product lines, so changes to timing or messages happen in one place.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Product tag added to a contact"
+    },
+    {
+      "label": "Stack",
+      "value": "GoHighLevel workflows, email and SMS"
+    },
+    {
+      "label": "Handles",
+      "value": "Three products, 1, 4 and 10 day waits"
+    }
+  ],
+  "deliverables": [
+    "Single workflow with three product tag triggers",
+    "Branch logic per product line",
+    "Booking check and exit at every step",
+    "Email and SMS sequence with 1, 4 and 10 day waits",
+    "Separate first and second emails for each product line"
+  ],
+  "process": [
+    {
+      "title": "Define the entry tags",
+      "body": "We agreed on one tag per product line and the appointment booked tag that ends the sequence."
+    },
+    {
+      "title": "Plan the cadence",
+      "body": "We set the order of emails and SMS and the one, four and ten day waits between them."
+    },
+    {
+      "title": "Build the branches",
+      "body": "We built one branch per product with booking checks and timeouts so nobody is messaged after they book."
+    },
+    {
+      "title": "Test each path",
+      "body": "We ran test contacts through each tag, booked some mid-sequence and confirmed they were removed."
+    }
+  ],
+  "technologies": [
+    "GoHighLevel workflows",
+    "GoHighLevel email",
+    "GoHighLevel SMS",
+    "GoHighLevel tags"
+  ],
+  "whyItMatters": "Most leads need a few touches before they book, and they stop listening when the message is off. Product-specific follow-up that ends at booking keeps outreach relevant.",
+  "faqs": [
+    {
+      "q": "Can we add a fourth product line later?",
+      "a": "Yes. A new product needs a new tag trigger, a branch and its messages. The booking checks and wait structure are copied from the existing branches."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the triggers, timing and channels to your CRM and offers. After a short call we send a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The GoHighLevel nurture workflow: three tag triggers, a branch per product, then email, SMS and waits with a booking check at each step."
+    },
+    {
+      "file": "2",
+      "caption": "The top of the workflow: tag triggers, the product condition, and the appointment booked check before the first email."
+    },
+    {
+      "file": "3",
+      "caption": "Later steps: SMS after one day, second email after four days and a ten day wait, each ending if the contact books."
+    }
+  ],
+  "cover": "1"
+}

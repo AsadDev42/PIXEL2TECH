@@ -1,0 +1,80 @@
+{
+  "slug": "foreclosure-lead-to-crm-pipeline",
+  "title": "Foreclosure lead skip tracing into GoHighLevel",
+  "subcategory": "Lead Generation & CRM",
+  "order": 27,
+  "metaTitle": "Foreclosure Lead Pipeline into GoHighLevel | Pixel2Tech",
+  "metaDescription": "An n8n pipeline for a property investor that skip traces foreclosure leads, scores them Hot, Warm or Cold and adds them to GoHighLevel with a first text.",
+  "summary": "Foreclosure lists go in one end; skip-traced, scored contacts with tags, a pipeline stage and a first text and email come out the other.",
+  "overview": "We built this lead pipeline for a real estate investor who pulls pre-foreclosure lists from PropStream. The n8n workflow takes the list from Google Sheets, sends it to Tracerfy for skip tracing, qualifies the contacts it finds and creates them in GoHighLevel, ready for the acquisitions team.",
+  "challenge": "Raw foreclosure lists have property data but rarely a working phone number or email. Skip tracing by hand meant exporting files, uploading them, waiting for results and re-importing contacts into the CRM one batch at a time. Owners with several properties showed up more than once, and nothing told the team which leads to call first.",
+  "approach": "The workflow reads the PropStream leads from a Google Sheet, limits the batch and builds a CSV file, which it uploads to Tracerfy. It then waits and polls Tracerfy until the skip-trace results are ready, and parses them. Leads with no phone number are marked in the sheet and set aside. Leads with phones are qualified as Hot, Warm or Cold, deduplicated and grouped so several properties sit under one owner, and the best valid email is selected. For each lead, the workflow checks whether the contact already exists in GoHighLevel and creates it if not, then adds tags, places it in the pipeline, sends a first SMS and email and adds a note with the property details. Finally, it builds a summary and marks the leads as processed in the sheet.",
+  "outcome": "The investor's team now drops a list into a sheet and gets back CRM contacts that are traced, scored, tagged and already contacted once. The processed-leads sheet shows what was handled, and the GoHighLevel pipeline is sorted by lead temperature from the start.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "PropStream list in Google Sheets"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Tracerfy, GoHighLevel, Google Sheets"
+    },
+    {
+      "label": "Handles",
+      "value": "Skip tracing, Hot/Warm/Cold scoring, first touch"
+    }
+  ],
+  "deliverables": [
+    "Sheet-to-CSV export and Tracerfy upload",
+    "Polling loop for skip-trace results",
+    "Hot, Warm and Cold qualification logic",
+    "Deduplication and property grouping per owner",
+    "GoHighLevel contact, tags, pipeline, SMS, email and note",
+    "Processed-leads logging back to the sheet"
+  ],
+  "process": [
+    {
+      "title": "Map the list",
+      "body": "We reviewed the PropStream export and agreed which fields decide whether a lead is Hot, Warm or Cold."
+    },
+    {
+      "title": "Automate skip tracing",
+      "body": "We connected Tracerfy so files are uploaded and results collected without anyone watching the job."
+    },
+    {
+      "title": "Build the CRM handoff",
+      "body": "We set up GoHighLevel contact creation with duplicate checks, tags, a pipeline stage and the first messages."
+    },
+    {
+      "title": "Run and review",
+      "body": "We processed test batches and compared the CRM output with the source sheet before handing it over."
+    }
+  ],
+  "technologies": ["n8n", "PropStream", "Tracerfy", "GoHighLevel", "Google Sheets", "JavaScript"],
+  "whyItMatters": "In foreclosure deals, the investor who reaches the owner first usually gets the conversation. Removing the export and import steps means traced leads move into the pipeline without waiting for someone to run each stage.",
+  "faqs": [
+    {
+      "q": "Can it use a different skip-tracing provider?",
+      "a": "Yes. The upload and polling steps are standard API calls, so we can switch Tracerfy for another provider with a batch API and keep the scoring and GoHighLevel steps as they are."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n pipeline, from the PropStream sheet to GoHighLevel and the processed-leads sheet."
+    },
+    {
+      "file": "2",
+      "caption": "First half: CSV build, Tracerfy upload, polling for results, the phone check and lead qualification."
+    },
+    {
+      "file": "3",
+      "caption": "Second half: contact lookup or creation, tags, pipeline, first SMS and email, a contact note and logging."
+    }
+  ],
+  "cover": "3"
+}

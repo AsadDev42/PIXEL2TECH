@@ -1,0 +1,88 @@
+{
+  "slug": "ai-lead-vetting-and-follow-up",
+  "title": "AI SMS lead vetting with scoring and call rounds",
+  "subcategory": "Lead Generation & CRM",
+  "order": 20,
+  "metaTitle": "AI SMS Lead Vetting and Follow-Up System | Pixel2Tech",
+  "metaDescription": "A GoHighLevel build that classifies SMS replies with AI, qualifies sellers, scores each lead and moves it through four call rounds with SMS follow-up.",
+  "summary": "A GoHighLevel system that reads every SMS reply, lets an AI bot ask only the missing questions, scores the seller and drops the lead into the right call round.",
+  "overview": "We built this lead vetting and follow-up system for a cash-offer home buying business that runs SMS campaigns to property owners. Every reply is classified by an AI intent step, interested sellers are qualified by a GPT-4.1 conversation bot, property data is pulled through Zapier, and a code step scores the lead and assigns it a bucket. From there the lead moves through four rounds of calls with matching SMS messages, and then into timed re-engagement waves if the seller still has not answered.",
+  "challenge": "SMS campaigns to property owners produce a steady stream of replies, and most of them are not worth a call. Some are price quotes, some are wrong numbers or stop requests, many are a simple yes. Sorting them by hand is slow, sellers drop off halfway through a text conversation, and without a clear order the acquisitions team calls weak leads while motivated sellers wait.",
+  "approach": "A GoHighLevel workflow starts when a contact replies by SMS. An AI agent step classifies the message as not interested or DNC, wrong number, referral, who is this, price quoted, interested or other, and each branch tags the contact and either ends or continues. Interested and price-quoted leads are handed to a Conversation AI bot running OpenAI GPT-4.1, which confirms ownership, timeline and asking price but skips anything the seller already said. In the background a webhook sends the address to Zapier for a PropStream property lookup. If the seller goes quiet, the workflow waits, sends one nudge, then carries on with the data it has. A custom code step combines price alignment, timeline and purchase date into a total score and returns a bucket of Immediate, Hot, Warm or Cold, plus a flag when value estimates disagree. Each bucket creates an opportunity in its own Round 1 stage of the lead vetting pipeline, and Immediate leads trigger a Slack alert.",
+  "outcome": "The client's team now opens a pipeline that is already sorted by score, with the hottest sellers flagged in Slack. Separate workflows advance unanswered leads from round to round, send a different SMS after each of the four rounds, and move leads who never respond into re-engagement waves, while replies at any point route the contact back to a caller.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Inbound SMS reply to a campaign"
+    },
+    {
+      "label": "Stack",
+      "value": "GoHighLevel, GPT-4.1, Zapier, Slack"
+    },
+    {
+      "label": "Handles",
+      "value": "Intent, scoring, four call rounds, re-engagement"
+    }
+  ],
+  "deliverables": [
+    "Main inbound SMS vetting workflow with AI intent classifier",
+    "Conversation AI qualification bot with adaptive questions",
+    "Code-based lead scoring with Immediate, Hot, Warm and Cold buckets",
+    "Lead vetting pipeline with per-bucket call round stages",
+    "Round advancement and post-round SMS workflows",
+    "Re-engagement waves and Slack alert workflow"
+  ],
+  "process": [
+    {
+      "title": "Map the reply types",
+      "body": "We listed every kind of reply the SMS campaigns produce and decided where each one should go, from stop requests to price quotes."
+    },
+    {
+      "title": "Build the AI layer",
+      "body": "We wrote the intent classifier prompt and the qualification bot goals so the bot only asks for ownership, timeline and price when they are missing."
+    },
+    {
+      "title": "Score and route",
+      "body": "We wrote the scoring code, connected the property lookup through Zapier and created a pipeline stage for each bucket and call round."
+    },
+    {
+      "title": "Follow-up and testing",
+      "body": "We built the round, SMS and re-engagement workflows, then ran test leads through every branch before publishing."
+    }
+  ],
+  "technologies": ["GoHighLevel", "OpenAI GPT-4.1", "Zapier", "PropStream", "Slack"],
+  "whyItMatters": "Speed to lead decides most home buying deals. When the system sorts and scores replies as they arrive, callers spend their time on sellers who are ready to talk.",
+  "faqs": [
+    {
+      "q": "Does the AI bot replace our acquisitions callers?",
+      "a": "No. The bot handles the first short text exchange and collects the basics. Calls are still made by your team, the system just tells them who to call first and keeps the follow-up SMS going between rounds."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your CRM, your lead sources and your sales process. After a short call we send a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The main GoHighLevel vetting workflow: SMS reply trigger, AI intent classifier, then one branch per reply type and score bucket."
+    },
+    {
+      "file": "2",
+      "caption": "The AI agent step that classifies each incoming SMS reply into a single intent category."
+    },
+    {
+      "file": "3",
+      "caption": "The Lead Vetting Bot on OpenAI GPT-4.1, with its personality and the goal of collecting ownership, timeline and asking price."
+    },
+    {
+      "file": "4",
+      "caption": "The scoring code step and its reference output: price, timeline and purchase date scores, total, bucket and divergence flag."
+    },
+    {
+      "file": "5",
+      "caption": "The supporting workflows for Slack alerts, round advancement, post-round SMS and two re-engagement waves."
+    }
+  ],
+  "cover": "1"
+}

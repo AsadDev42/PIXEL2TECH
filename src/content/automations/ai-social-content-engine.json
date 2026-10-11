@@ -1,0 +1,71 @@
+{
+  "slug": "ai-social-content-engine",
+  "title": "AI social content engine for Instagram and LinkedIn",
+  "subcategory": "Content & Operations",
+  "order": 52,
+  "metaTitle": "AI Content Engine for Instagram & LinkedIn | Pixel2Tech",
+  "metaDescription": "A daily n8n workflow that reads a content calendar, writes posts with a Groq-powered agent, creates a Runware image and posts to Instagram and LinkedIn.",
+  "summary": "Each day n8n checks the content calendar, writes that day's post with AI, creates a matching image and sends it to Buffer, logging every post and every failure.",
+  "overview": "We built this content engine for a business that wanted to post on Instagram and LinkedIn regularly without writing and publishing every post by hand. The team plans topics in a Google Sheet, and the workflow does the writing, image creation, posting and record keeping each day.",
+  "challenge": "Keeping a regular posting schedule takes time: someone has to write copy for each platform, find or make an image, upload it and keep track of what went out. When the calendar lives in a spreadsheet and posting is manual, days get missed and nobody has a clear record of what was published or what failed.",
+  "approach": "A daily trigger starts the run, and a config step holds the sheet ID, Buffer profile IDs, default tone and hashtag count. The workflow reads the content calendar sheet, and a Code node finds the row for today's date with its tagline, platform, tone, niche and special instructions. If nothing is scheduled, the run ends quietly. If there is an entry, an AI agent running on a Groq chat model writes the post around the tagline, adjusting the style for Instagram, LinkedIn or both and adding the configured number of hashtags. The post text goes to Runware to generate an image, and a Code node builds a separate payload for each platform. A router sends each one to Buffer for Instagram or LinkedIn. Successful posts are written to a Posted_Content sheet, and failures pass through an error handler into an Error_Log sheet before the run is marked complete.",
+  "outcome": "The client now plans content in one sheet and the workflow handles the rest each day: copy, image, posting through Buffer and a record of every post. Failed posts land in their own sheet with the error, so the team can see what needs another try.",
+  "results": [
+    { "label": "Trigger", "value": "Daily schedule" },
+    { "label": "Stack", "value": "n8n, Groq, Runware, Buffer" },
+    { "label": "Handles", "value": "Copy, image, posting and logs" }
+  ],
+  "deliverables": [
+    "Daily trigger with a central config step",
+    "Content calendar lookup by date",
+    "AI agent prompt with Instagram and LinkedIn styles",
+    "Runware image generation from the post text",
+    "Buffer posting through a platform router",
+    "Posted_Content and Error_Log sheets"
+  ],
+  "process": [
+    {
+      "title": "Set up the calendar",
+      "body": "We defined the sheet columns the workflow reads: date, tagline, platform, tone, niche and special instructions."
+    },
+    {
+      "title": "Write the prompt",
+      "body": "We wrote the agent prompt so each post follows the tagline, tone and platform, with the configured hashtag count."
+    },
+    {
+      "title": "Connect image and posting",
+      "body": "We added Runware for images and Buffer for posting, with a router that handles Instagram, LinkedIn or both."
+    },
+    {
+      "title": "Log and catch errors",
+      "body": "We added a log row for every post and an error path that records failures in a separate sheet."
+    }
+  ],
+  "technologies": ["n8n", "Groq", "Runware", "Buffer", "Google Sheets"],
+  "whyItMatters": "Consistent posting is mostly a scheduling problem. Moving the repetitive steps into a workflow lets the team spend its time on planning topics instead of copying text between tools.",
+  "faqs": [
+    {
+      "q": "Can it post to platforms besides Instagram and LinkedIn?",
+      "a": "Yes. Buffer supports several networks, so another platform can be added as a new branch in the router with its own prompt style and log."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We fit the engine to your content calendar, brand voice and channels. After a short call you get a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The full n8n workflow: daily trigger, content calendar and AI agent, image generation, then posting and logging."
+    },
+    {
+      "file": "2",
+      "caption": "The first half: daily trigger, config, calendar sheet, date check, the AI content agent with its Groq model, and the image step."
+    },
+    {
+      "file": "3",
+      "caption": "The posting half: platform router, Buffer posts for Instagram and LinkedIn, and success and error logs in Google Sheets."
+    }
+  ],
+  "cover": "1"
+}

@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/components/faq";
+import { AUTOMATION_PROJECTS, AUTOMATION_SUBCATEGORIES } from "@/lib/automation-projects";
 import { STORE_PROJECTS, isStore } from "@/lib/store-projects";
 import { pickFromBank, slugHash } from "@/lib/portfolio-copy";
 import { warnOnUnknownSlugs, type PortfolioItem } from "@/lib/portfolio-data";
@@ -733,12 +734,26 @@ const FALLBACK = BANKS["Websites"]!;
 BANKS["Shopify Stores"] = BANKS["E-Commerce"]!;
 BANKS["WordPress Sites"] = BANKS["Websites"]!;
 BANKS["Custom Websites"] = BANKS["Websites"]!;
+for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
 
 /**
  * Hand-written detail for real client projects. Every key must be a live
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  ...Object.fromEntries(
+    AUTOMATION_PROJECTS.map((p) => [
+      p.slug,
+      {
+        process: p.process,
+        technologies: p.technologies,
+        whyItMatters: p.whyItMatters,
+        faqs: p.faqs,
+        relatedReading: SYSTEMS_READING,
+        relatedServices: ["Automation & CRM", "AI Solutions", "Custom Platforms & Apps"],
+      } satisfies ProjectDetail,
+    ]),
+  ),
   ...Object.fromEntries(
     STORE_PROJECTS.map((p) => [
       p.slug,

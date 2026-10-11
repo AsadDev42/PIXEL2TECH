@@ -1,0 +1,71 @@
+{
+  "slug": "ai-voice-receptionist-with-reminders",
+  "title": "AI voice receptionist with booking and reminders",
+  "subcategory": "Voice Agents",
+  "order": 10,
+  "metaTitle": "AI Voice Receptionist with Booking & Reminders | Pixel2Tech",
+  "metaDescription": "An n8n workflow we built that turns AI phone calls into calendar bookings, CRM records and confirmation emails, then sends reminders 24 hours ahead.",
+  "summary": "A Vapi voice agent answers the phone; when a call ends, n8n logs it, books the appointment, updates HubSpot and emails a reminder before the visit.",
+  "overview": "We built this workflow for a business that takes appointments over the phone. An AI voice agent on Vapi handles the call, and when the call ends n8n takes over: it logs the call, works out whether the caller wanted to book, and if so creates the calendar event, records the booking, emails a confirmation and updates the CRM. A second flow checks upcoming appointments every hour and sends reminders.",
+  "challenge": "Phone bookings usually depend on someone picking up, writing the details down and then copying them into a calendar, a spreadsheet and a CRM. Calls outside office hours go to voicemail, details get mistyped, and reminder calls are easy to forget, which leads to missed appointments.",
+  "approach": "Vapi sends an end-of-call webhook to n8n. The workflow pulls out the event data, keeps only finished calls, extracts the call summary and transcript, and appends them to a master call log in Google Sheets. A switch routes each call by business niche (hotel, dental, aesthetic or event), and a Code node scans the transcript for booking intent and picks out the caller's name, phone, email, preferred date and time. When a booking is found, n8n creates a Google Calendar event, adds a row to the confirmed bookings sheet, sends a Gmail confirmation with the calendar link, creates or updates the contact in HubSpot and attaches a note with the call details, then responds to Vapi. Calls without a booking get their own response. A scheduled flow runs every hour, reads the bookings sheet, loops through the rows and emails a reminder for any appointment starting within the next 24 hours that has not had one yet, then marks the row as sent.",
+  "outcome": "Every completed call is now logged, and booking calls turn into a calendar event, a sheet row, a HubSpot contact with notes and a confirmation email without anyone retyping details. Reminders go out on their own ahead of each appointment, and the sheet records which ones were sent so nobody gets two.",
+  "results": [
+    { "label": "Trigger", "value": "Vapi end-of-call webhook" },
+    { "label": "Stack", "value": "Vapi, n8n, Google Calendar, HubSpot" },
+    { "label": "Handles", "value": "Booking, confirmation and 24-hour reminders" }
+  ],
+  "deliverables": [
+    "Vapi end-of-call webhook and master call log sheet",
+    "Niche router for hotel, dental, aesthetic and event calls",
+    "Transcript parser for booking intent and caller details",
+    "Calendar event, bookings sheet row and confirmation email",
+    "HubSpot contact upsert with a call note",
+    "Hourly reminder flow with a sent flag per booking"
+  ],
+  "process": [
+    {
+      "title": "Map the call flow",
+      "body": "We agreed which call events matter, what a booking looks like in a transcript and where each detail should end up."
+    },
+    {
+      "title": "Build the booking path",
+      "body": "We connected the Vapi webhook to the call log, niche router, booking parser, calendar, bookings sheet, Gmail and HubSpot."
+    },
+    {
+      "title": "Add the reminder loop",
+      "body": "We added an hourly schedule that reads the bookings sheet and emails reminders for appointments due within 24 hours."
+    },
+    {
+      "title": "Test with sample calls",
+      "body": "We ran test calls through each branch to check the extracted details, the calendar event and the reminder timing."
+    }
+  ],
+  "technologies": ["n8n", "Vapi", "Google Sheets", "Google Calendar", "Gmail", "HubSpot"],
+  "whyItMatters": "A voice agent only helps if what the caller says reaches the systems the team already uses. This build closes that gap and covers the reminder step that usually gets skipped.",
+  "faqs": [
+    {
+      "q": "Can it book into a CRM other than HubSpot?",
+      "a": "Yes. HubSpot holds contacts and call notes here, but that step can write to any CRM with an API, and the calendar and sheet steps can be swapped the same way."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your phone setup, calendar, CRM and booking rules. After a short call we give you a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: Vapi webhook, call log, niche router and booking path on top, with the hourly reminder loop below."
+    },
+    {
+      "file": "2",
+      "caption": "The booking branch: booking parser and intent check, then Google Calendar, the bookings sheet, a Gmail confirmation and two HubSpot steps."
+    },
+    {
+      "file": "3",
+      "caption": "The reminder flow: hourly schedule, bookings sheet, batch loop, 24-hour check, reminder email and a sent flag."
+    }
+  ],
+  "cover": "1"
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "reddit-market-research-agent",
+  "title": "Reddit market research agent with sentiment routing",
+  "subcategory": "Content & Operations",
+  "order": 60,
+  "metaTitle": "Reddit market research AI agent in n8n | Pixel2Tech",
+  "metaDescription": "An n8n agent that searches Reddit, keeps relevant posts, logs summaries, business ideas and sentiment in Google Sheets and routes them to Slack or Gmail.",
+  "summary": "An n8n workflow that searches Reddit for posts in a chosen niche, keeps the relevant ones, summarizes each problem, suggests a business idea and sorts posts by sentiment for follow-up.",
+  "overview": "We built this agent for a client who looks for real customer problems on Reddit to shape new services. The workflow searches Reddit, uses AI to drop posts that are off topic, then summarizes each remaining post, proposes a solution or business idea, scores the sentiment and writes everything to a Google Sheet. Positive and neutral posts go to Slack, and negative ones become Gmail drafts.",
+  "challenge": "Reddit is full of people describing their problems in detail, but reading threads by hand is slow and most posts are not relevant. Useful signals get lost, and there is no record of what has been reviewed.",
+  "approach": "The workflow searches Reddit posts for the chosen topic, and an IF node drops posts without usable content. A Set node prepares the fields, and an AI agent on Azure OpenAI checks each post for relevance. After a merge and a filter, the kept posts go down three branches: a summarization chain writes a short summary, an OpenAI message step suggests a solution or business idea, and a sentiment analysis node labels the post positive, neutral or negative. The results are merged into one row per post in Google Sheets. Positive and neutral posts are sent to Slack, and negative posts are saved as Gmail drafts for follow-up.",
+  "outcome": "The client gets a growing sheet of relevant Reddit posts, each with a summary and a suggested idea, plus Slack updates and drafts for the posts that need a closer look.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Reddit search run"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Reddit, Azure OpenAI, Sheets, Slack"
+    },
+    {
+      "label": "Handles",
+      "value": "Relevance, summary, idea and sentiment"
+    }
+  ],
+  "deliverables": [
+    "Reddit search with a basic content filter",
+    "Azure OpenAI relevance check for each post",
+    "Summarization and solution-idea branches",
+    "Sentiment analysis with three outcomes",
+    "Google Sheets log with Slack alerts and Gmail drafts"
+  ],
+  "process": [
+    {
+      "title": "Choose the niche",
+      "body": "We agreed which topics to search on Reddit and what counts as a relevant post."
+    },
+    {
+      "title": "Filter the noise",
+      "body": "We combined a simple IF check with an AI relevance step so only useful posts move on."
+    },
+    {
+      "title": "Analyze each post",
+      "body": "We built the summary, business idea and sentiment branches and merged them into one record."
+    },
+    {
+      "title": "Route the results",
+      "body": "We connected Google Sheets, Slack and Gmail and tested with live search results."
+    }
+  ],
+  "technologies": ["n8n", "Reddit", "Azure OpenAI", "Google Sheets", "Slack", "Gmail"],
+  "whyItMatters": "Problems people describe in their own words are some of the best input for new offers, and this agent turns scattered threads into a sorted research list.",
+  "faqs": [
+    {
+      "q": "Can it watch specific subreddits or keywords?",
+      "a": "Yes. The search step can target chosen subreddits and keywords, and the relevance instructions can be tuned to your market."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, for Reddit or other community sites, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: Reddit search, relevance check, summary, idea and sentiment branches, then Sheets, Slack and Gmail."
+    },
+    {
+      "file": "2",
+      "caption": "The output sheet: post date, upvotes, an AI summary of each post and a suggested business idea (links covered)."
+    },
+    {
+      "file": "3",
+      "caption": "A negative-sentiment post saved as a Gmail draft for manual follow-up."
+    }
+  ]
+}

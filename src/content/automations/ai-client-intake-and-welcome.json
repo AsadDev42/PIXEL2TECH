@@ -1,0 +1,75 @@
+{
+  "slug": "ai-client-intake-and-welcome",
+  "title": "AI client intake with a personalized welcome",
+  "subcategory": "Lead Generation & CRM",
+  "order": 26,
+  "metaTitle": "AI Client Intake and Welcome Workflow | Pixel2Tech",
+  "metaDescription": "An n8n onboarding flow for an agency: one intake form feeds two OpenAI agents that write a welcome email and a client record, plus a Slack team alert.",
+  "summary": "One intake form starts the whole onboarding run: a tailored welcome email, a structured client record and a heads-up to the team in Slack.",
+  "overview": "We built this onboarding workflow for an agency that takes on new clients regularly. A new client fills in a single n8n form with their contact details, industry, goals and any notes. From there the workflow splits into three parallel branches, two OpenAI agents and a Slack notification, so nobody has to copy answers between tools.",
+  "challenge": "Client details arrived through emails, calls and shared documents, and someone had to read each submission, write a welcome note and type the information into the client tracker. The back-and-forth slowed the start of each engagement, and records ended up in different formats depending on who entered them.",
+  "approach": "The n8n form trigger collects name, email, company industry, goals for the next few months and any extra notes. The first branch sends the answers to an AI agent on an OpenAI chat model, followed by a message step that writes a welcome email reflecting the client's industry and goals; Gmail sends it to the client. A second AI agent turns the same answers into a consistent client record, and a Google Sheets step appends it as a new row. The third branch posts straight to the team's Slack channel so the account lead knows a new client has arrived.",
+  "outcome": "New clients receive a welcome email that speaks to their goals moments after they submit the form. The operations sheet gains a clean, consistently formatted record for each client, and the team hears about every new signup in Slack without checking an inbox.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Intake form submission"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, OpenAI, Gmail, Slack, Google Sheets"
+    },
+    {
+      "label": "Handles",
+      "value": "Welcome email, client record, team alert"
+    }
+  ],
+  "deliverables": [
+    "n8n intake form with required fields",
+    "AI agent that drafts a welcome email from the answers",
+    "AI agent that structures the client record",
+    "Gmail send step for the welcome email",
+    "Google Sheets client record append",
+    "Slack notification to the team"
+  ],
+  "process": [
+    {
+      "title": "Agree the fields",
+      "body": "We chose the questions the agency needs at the start of every engagement and made the key ones required."
+    },
+    {
+      "title": "Write the AI steps",
+      "body": "We wrote prompts for the welcome email and the client record so both stay consistent from one client to the next."
+    },
+    {
+      "title": "Connect the tools",
+      "body": "We linked Gmail, Google Sheets and Slack and set what each message and row contains."
+    },
+    {
+      "title": "Test the run",
+      "body": "We submitted test clients from different industries and checked the email, the sheet row and the Slack post each time."
+    }
+  ],
+  "technologies": ["n8n", "OpenAI", "Gmail", "Slack", "Google Sheets"],
+  "whyItMatters": "The first days of a client relationship set the tone. A prompt, personal welcome and a tidy record mean the work starts without chasing details.",
+  "faqs": [
+    {
+      "q": "Can the intake form ask different questions?",
+      "a": "Yes. The form fields are set in n8n, so we can add questions such as budget, brand assets or access details, and both AI steps will use the new answers. The record can also go to a CRM or project tool instead of a sheet."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: the form trigger feeds two AI agents, then Gmail and Google Sheets, plus a direct Slack alert."
+    },
+    {
+      "file": "2",
+      "caption": "The intake form from a test run, with the name and email fields cleared."
+    }
+  ]
+}

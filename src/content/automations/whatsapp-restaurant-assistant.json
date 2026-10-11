@@ -1,0 +1,89 @@
+{
+  "slug": "whatsapp-restaurant-assistant",
+  "title": "WhatsApp AI assistant for restaurant menu questions",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 33,
+  "metaTitle": "WhatsApp AI assistant for a restaurant | Pixel2Tech",
+  "metaDescription": "An n8n WhatsApp assistant for a restaurant that answers menu and price questions from text, voice notes and photos, using a Google Docs menu.",
+  "summary": "A WhatsApp assistant that answers guests' questions about the menu, dishes and prices. It understands typed messages, voice notes and photos and replies in the same chat.",
+  "overview": "We built this assistant for a restaurant that receives a steady stream of WhatsApp questions about what is on the menu and what it costs. The workflow reads every incoming message, transcribes voice notes, describes photos and passes the request to an AI agent that looks up the current menu in a Google Doc before replying on WhatsApp.",
+  "challenge": "Guests message restaurants at all hours with the same questions about dishes, ingredients and prices, often as voice notes. Staff answer between services, replies are slow, and the answers are not always consistent with the current menu.",
+  "approach": "A WhatsApp trigger receives each message, and a Switch node routes it by type. Text goes straight to the agent. For voice notes, the workflow fetches the media URL from WhatsApp Business Cloud, downloads the audio and sends it to Deepgram for transcription. For photos, it downloads the image and has OpenAI analyze it. Each branch passes clean text to an AI agent on a Groq chat model with conversation memory and a Google Docs tool that reads the menu. The answer goes back to the guest through the WhatsApp Business Cloud node.",
+  "outcome": "Guests get immediate answers about the menu and prices in WhatsApp, whether they type, speak or send a picture. The restaurant updates one Google Doc and the assistant's answers follow.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Incoming WhatsApp message"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, WhatsApp Cloud API, Groq, Deepgram"
+    },
+    {
+      "label": "Handles",
+      "value": "Text, voice notes and photos"
+    }
+  ],
+  "deliverables": [
+    "WhatsApp Business Cloud trigger and reply steps",
+    "Message router for text, audio and image",
+    "Deepgram voice note transcription",
+    "OpenAI image analysis branch",
+    "Groq AI agent with chat memory and a Google Docs menu tool"
+  ],
+  "process": [
+    {
+      "title": "Collect the menu",
+      "body": "We placed the menu in a Google Doc so the restaurant can edit it without touching the workflow."
+    },
+    {
+      "title": "Route each message type",
+      "body": "We split text, voice notes and photos so each one is converted into text the agent can read."
+    },
+    {
+      "title": "Build the agent",
+      "body": "We set up the Groq agent with memory and the menu tool, and wrote instructions to keep answers on topic."
+    },
+    {
+      "title": "Test in WhatsApp",
+      "body": "We ran test chats covering menu, price and dish questions, plus voice and photo messages."
+    }
+  ],
+  "technologies": [
+    "n8n",
+    "WhatsApp Business Cloud API",
+    "Groq",
+    "Deepgram",
+    "OpenAI",
+    "Google Docs"
+  ],
+  "whyItMatters": "Many guests prefer WhatsApp and voice notes over calling, and answering them instantly from the live menu keeps questions from going unanswered during busy services.",
+  "faqs": [
+    {
+      "q": "Can it take table bookings or orders too?",
+      "a": "Yes. We can give the agent extra tools, such as a booking calendar or an order sheet, so it can take reservations or orders in the same chat."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, whether you run one location or several, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The restaurant workflow: text and voice messages reach an AI agent with Groq, chat memory and the menu from Google Docs."
+    },
+    {
+      "file": "2",
+      "caption": "The extended version adds an image branch: photos are fetched from WhatsApp and analyzed with OpenAI before reaching the agent."
+    },
+    {
+      "file": "3",
+      "caption": "A test chat: the assistant lists the menu and answers a price question (restaurant name covered)."
+    },
+    {
+      "file": "4",
+      "caption": "A follow-up in the same test chat, where the assistant answers a question about how the dish is made."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "slug": "blog-posting-agent",
+  "title": "Scheduled AI blog writer with images and auto-publishing",
+  "subcategory": "Content & Operations",
+  "order": 58,
+  "metaTitle": "Scheduled AI blog posting agent | Pixel2Tech",
+  "metaDescription": "An n8n workflow that writes a blog post with Gemini on a schedule, structures it, creates a cover image and publishes it through the blog's own API.",
+  "summary": "A scheduled n8n workflow that writes a blog article from a topic list, structures it into publishable fields, generates a cover image and posts it straight to the client's blog.",
+  "overview": "We built this workflow for a client who wanted a regular flow of blog articles without a manual writing and upload routine. On a schedule, the workflow takes the next topic from a Google Sheet, has Gemini write the article, pulls out the title and body as structured data, generates a cover image and publishes the post through the blog's API.",
+  "challenge": "A company blog only helps when it is updated regularly, but writing, formatting, sourcing an image and uploading each article is slow work. Posts get delayed, and the blog goes quiet for weeks at a time.",
+  "approach": "A schedule trigger starts each run and reads the next row from Google Sheets. An AI agent on Google Gemini writes the full article. An information extractor, also running on Gemini, splits the output into clean fields such as title and body so the blog receives exactly what it expects. An HTTP request generates a cover image through Hugging Face, and the Base64 response is converted into an image file. A code step assembles the payload, an HTTP request posts the article to the blog's API, and the sheet row is updated with the result.",
+  "outcome": "The blog now receives new articles on a fixed schedule, each with its own cover image, while the sheet shows which topics have been published and which are still waiting.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Schedule plus a topic sheet"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Gemini, Hugging Face, blog API"
+    },
+    {
+      "label": "Handles",
+      "value": "Writing, structuring, image and upload"
+    }
+  ],
+  "deliverables": [
+    "Scheduled trigger reading a Google Sheets topic list",
+    "Gemini writing agent for full articles",
+    "Information extractor that structures title and body",
+    "Hugging Face cover image generation and file conversion",
+    "Publishing step that posts to the blog's API and updates the sheet"
+  ],
+  "process": [
+    {
+      "title": "Agree the post format",
+      "body": "We confirmed which fields the blog's API needs and how topics are listed in the sheet."
+    },
+    {
+      "title": "Write and structure",
+      "body": "We set up the Gemini writer and an extractor so every article arrives in the same clean structure."
+    },
+    {
+      "title": "Generate the cover",
+      "body": "We added image generation on Hugging Face and converted the result into a file the blog accepts."
+    },
+    {
+      "title": "Publish on schedule",
+      "body": "We connected the blog API call and sheet update, then tested scheduled runs."
+    }
+  ],
+  "technologies": ["n8n", "Google Gemini", "Hugging Face", "Google Sheets", "REST API"],
+  "whyItMatters": "A blog that is updated on schedule keeps a site fresh for readers and search engines, and this workflow removes the manual steps that usually cause delays.",
+  "faqs": [
+    {
+      "q": "Does it work with WordPress or another CMS?",
+      "a": "Yes. The publishing step is an API call, so we can point it at WordPress, Webflow, a headless CMS or a custom backend."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to your tools and process, and give you a fixed quote after a short call."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: schedule trigger, topic row, Gemini writer, information extractor, image generation, blog API post and sheet update."
+    },
+    {
+      "file": "2",
+      "caption": "Close-up of the writing agent and the information extractor, each running on a Gemini chat model."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "rag-document-assistant",
+  "title": "RAG assistant for shipping and logistics documents",
+  "subcategory": "AI Agents & Chatbots",
+  "order": 31,
+  "metaTitle": "RAG Document Assistant for Logistics PDFs | Pixel2Tech",
+  "metaDescription": "A retrieval-augmented AI assistant that answers questions from a logistics company's PDF documents, parsing and validating files before they are indexed.",
+  "summary": "Staff ask questions in a chat and get answers drawn from the company's own shipping documents, not from the model's general knowledge.",
+  "overview": "We built this document assistant for a shipping and logistics company that keeps much of its working knowledge in PDF files. New files dropped into Google Drive are split, embedded and stored in a vector database, and an AI chat agent searches that store to answer questions. The pipeline runs in n8n, and we set it up on both Supabase and Qdrant vector stores.",
+  "challenge": "The answers staff needed were buried in PDFs such as shipping documents, and finding them meant opening files one by one. A first version of the retrieval system worked on standard documents but became unreliable when a PDF had an unusual layout. The model was not the problem: the text going into the vector store was not consistently structured, so retrieval returned the wrong passages.",
+  "approach": "A Google Drive trigger watches for new files, downloads each one and passes it through a data loader and text splitter. Each chunk is embedded with OpenAI or Google Gemini embeddings and written to the vector store. On the question side, a chat trigger feeds an AI agent that has a chat model, short-term memory and a vector store tool, so it pulls the most relevant passages before it answers. To fix the unreliable documents, we added a dedicated parsing layer in front of the store: documents are converted to structured JSON, the extracted information is checked before it moves on, and only validated content is indexed. Document processing and retrieval are kept as separate stages, which makes each one easier to test.",
+  "outcome": "Staff ask a question in plain language and get an answer based on the company's own documents, including PDFs that do not follow a standard layout. New files become searchable as soon as they land in the Drive folder.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "New Drive file or a chat message"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Supabase, Qdrant, OpenAI, Gemini"
+    },
+    {
+      "label": "Handles",
+      "value": "Parsing, embedding and document Q&A"
+    }
+  ],
+  "deliverables": [
+    "Google Drive ingestion with automatic download",
+    "Document parsing to structured JSON with validation",
+    "Text splitting and embeddings",
+    "Vector store setup on Supabase and Qdrant",
+    "Chat agent with memory and a vector store search tool"
+  ],
+  "process": [
+    {
+      "title": "Review the documents",
+      "body": "We looked at the PDFs that produced wrong answers and traced the problem to inconsistent structure going into the index."
+    },
+    {
+      "title": "Build ingestion",
+      "body": "We set up the Drive trigger, splitter, embeddings and vector store so new files are indexed automatically."
+    },
+    {
+      "title": "Add structured parsing",
+      "body": "We added a parsing stage that outputs structured JSON and validates it before anything reaches retrieval."
+    },
+    {
+      "title": "Connect the chat agent",
+      "body": "We gave the agent memory and a vector store search tool, then tested it against the questions staff ask day to day."
+    }
+  ],
+  "technologies": ["n8n", "Supabase", "Qdrant", "OpenAI", "Google Gemini", "Google Drive"],
+  "whyItMatters": "Better AI answers usually start before the model sees anything. Cleaning and checking the documents going in did more for accuracy than rewriting the prompt.",
+  "faqs": [
+    {
+      "q": "Will it answer questions that are not covered by our documents?",
+      "a": "The agent searches the vector store first and answers from what it finds. We write its instructions so it says when the documents do not cover a question instead of guessing, and we test that behavior before handover."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n RAG workflow: Google Drive files are embedded into a Supabase vector store, and a chat agent searches it."
+    },
+    {
+      "file": "2",
+      "caption": "A Supabase build with Gemini embeddings, a text splitter and a question-and-answer chain with a vector store retriever."
+    },
+    {
+      "file": "3",
+      "caption": "A Qdrant build: documents are split and embedded into Qdrant, and the chat agent answers through a vector store tool."
+    }
+  ]
+}

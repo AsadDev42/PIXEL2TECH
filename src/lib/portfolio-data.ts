@@ -1,6 +1,13 @@
 import { nayyerAssets } from "@/assets/jacques-assets";
 import type { LiveStore } from "@/components/store-showcase";
 import {
+  AUTOMATION_PROJECTS,
+  AUTOMATION_SUBCATEGORIES,
+  automationCover,
+  automationShowcase,
+  type AutomationShowcaseData,
+} from "@/lib/automation-projects";
+import {
   STORE_PROJECTS,
   isStore,
   isWhiteLabel,
@@ -52,6 +59,8 @@ export type PortfolioItem = {
   videos?: PortfolioVideo[];
   /** A live Shopify store: screenshots in browser/phone frames plus a link to it. */
   store?: LiveStore;
+  /** An AI automation build: captioned workflow screenshots and demo videos. */
+  automation?: AutomationShowcaseData;
   /** Built as white-label development partner for an agency (see StoreProject.engagement). */
   whiteLabel?: boolean;
 };
@@ -181,6 +190,7 @@ export const CATEGORIES = [
   "Ecom Stores",
   "Websites",
   "Video Editing",
+  "AI Automation",
   "Custom Platforms",
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -191,6 +201,7 @@ export const SUBS: Record<Category, string[]> = {
   "Ecom Stores": ["Shopify Stores"],
   Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
+  "AI Automation": [...AUTOMATION_SUBCATEGORIES],
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
@@ -459,6 +470,19 @@ const RAW: RawWork = {
       },
     ],
   },
+  "AI Automation": Object.fromEntries(
+    AUTOMATION_SUBCATEGORIES.map((sub) => [
+      sub,
+      AUTOMATION_PROJECTS.filter((p) => p.subcategory === sub).map(
+        (p): RawItem => ({
+          slug: p.slug,
+          title: p.title,
+          img: automationCover(p),
+          automation: automationShowcase(p),
+        }),
+      ),
+    ]),
+  ),
   "Custom Platforms": {
     "Web Apps": [
       {
@@ -546,6 +570,7 @@ export type CategorySlug =
   | "ecom-stores"
   | "websites"
   | "video-editing"
+  | "ai-automation"
   | "custom-platforms";
 
 export function categorySlug(category: Category): CategorySlug {

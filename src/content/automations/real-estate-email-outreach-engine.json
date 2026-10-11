@@ -1,0 +1,83 @@
+{
+  "slug": "real-estate-email-outreach-engine",
+  "title": "Email outreach engine for international property sales",
+  "subcategory": "Lead Generation & CRM",
+  "order": 28,
+  "metaTitle": "Real Estate Email Outreach Automation | Pixel2Tech",
+  "metaDescription": "Five n8n workflows for a real estate agency: Apollo lead sourcing, a property feed sync, daily outreach, engagement scoring in HubSpot and follow-ups.",
+  "summary": "Five connected workflows find buyers, keep listings current, send daily property emails, score engagement and follow up on schedule.",
+  "overview": "We built this outreach engine for a real estate agency that sells property abroad to international buyers. It runs as five n8n workflows around HubSpot: lead sourcing, a property feed sync, daily outreach, engagement scoring and follow-ups. Apollo handles prospecting and sending, and Google Sheets holds the current list of international property listings.",
+  "challenge": "The agency's listings changed often and its buyer contacts lived in several places. Building a campaign meant pulling contacts by hand, checking which properties were still available and tracking who had already seen which listing. Opens, clicks and replies were not tied back to the CRM, so sales could not tell which buyers were warming up.",
+  "approach": "A scheduled lead workflow searches Apollo for matching people, keeps those with an email, enriches them in groups of ten, normalizes the results, checks the email and upserts each contact into HubSpot. A property sync workflow fetches the agency's XML listings feed, handles HTTP errors, parses and normalizes the properties and upserts them into a Google Sheet. Every day at 9 AM, the outreach workflow pulls eligible HubSpot contacts, reads the property sheet, builds one email per contact featuring a property they have not been sent before, sends it through Apollo, marks the contact as sent and records which properties were used. An engagement webhook validates incoming events and switches on type: opens, clicks and replies each add to the contact's score in HubSpot, and when a contact qualifies and is not already an MQL, it is promoted and the sales team gets a Gmail alert. A separate scheduled workflow selects contacts due for a follow-up, matches them to properties and sends the follow-up through Apollo before updating their status in HubSpot.",
+  "outcome": "The agency now has a steady supply of enriched buyer contacts in HubSpot, a property list that stays in sync with its listings feed, and daily emails that rotate properties so buyers see something new. Engagement updates each contact score automatically, and sales hear about qualified buyers by email as soon as they qualify.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Schedules and an engagement webhook"
+    },
+    {
+      "label": "Stack",
+      "value": "n8n, Apollo, HubSpot, Google Sheets, Gmail"
+    },
+    {
+      "label": "Handles",
+      "value": "Sourcing, listings sync, outreach, scoring"
+    }
+  ],
+  "deliverables": [
+    "Apollo lead search, enrichment and HubSpot upsert",
+    "XML listings feed sync to Google Sheets",
+    "Daily 9 AM outreach with property rotation",
+    "Engagement webhook scoring opens, clicks and replies",
+    "MQL promotion with a Gmail alert to sales",
+    "Scheduled follow-up workflow"
+  ],
+  "process": [
+    {
+      "title": "Define buyers and listings",
+      "body": "We agreed the buyer profile for Apollo searches and the property fields to pull from the agency's listings feed."
+    },
+    {
+      "title": "Connect the data",
+      "body": "We built the lead sourcing and property sync workflows so HubSpot and the property sheet stay current."
+    },
+    {
+      "title": "Build outreach and scoring",
+      "body": "We wrote the daily email builder with property rotation and the webhook that scores opens, clicks and replies."
+    },
+    {
+      "title": "Set the cadence",
+      "body": "We scheduled the follow-ups and the MQL alert, then tested each workflow with sample contacts."
+    }
+  ],
+  "technologies": ["n8n", "Apollo", "HubSpot", "Google Sheets", "Gmail", "Webhooks"],
+  "whyItMatters": "Buyers purchasing abroad take time to decide, and the agency that keeps sending relevant listings is the one they remember. Scoring tells sales when a buyer is ready for a conversation.",
+  "faqs": [
+    {
+      "q": "Can it use our own property feed and CRM?",
+      "a": "Yes. The property sync reads an XML or API feed, so we can point it at your listings portal or website. The CRM steps use HubSpot here, and we can swap them for another CRM with similar contact and lifecycle fields."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The five n8n workflows: lead sourcing, property sync, daily outreach, engagement scoring and follow-ups."
+    },
+    {
+      "file": "2",
+      "caption": "Lead sourcing with Apollo and HubSpot, the XML listings feed sync and the daily 9 AM outreach run."
+    },
+    {
+      "file": "3",
+      "caption": "Engagement scoring: opens, clicks and replies update the HubSpot score and can trigger an MQL alert in Gmail."
+    },
+    {
+      "file": "4",
+      "caption": "Follow-up workflow: selects contacts due for a follow-up, matches properties and sends through Apollo."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "accounting-client-onboarding",
+  "title": "Client onboarding automation for an accounting practice",
+  "subcategory": "Lead Generation & CRM",
+  "order": 24,
+  "metaTitle": "Accounting Client Onboarding Automation | Pixel2Tech",
+  "metaDescription": "An n8n workflow that turns a website intake form into a new client, an onboarding project and a team task in Financial Cents for an accounting practice.",
+  "summary": "When a prospect submits the website intake form, n8n creates the client in Financial Cents, opens an onboarding project from a template, adds a note and emails the team.",
+  "overview": "We built this workflow for an accounting practice that runs its clients and recurring work in Financial Cents. New clients arrived through a form on the practice's website, and each one had to be set up by hand. The workflow now does that setup as soon as the form is submitted.",
+  "challenge": "Onboarding a new accounting client means creating the client record, starting the onboarding checklist and making sure someone follows up to request documents. When that depends on a person noticing a form submission and copying the details into practice management software, new clients wait, details get mistyped and follow-ups slip.",
+  "approach": "The website form posts to an n8n webhook. A Function node maps the form's fields to a clean record with the client's name, email, phone, company and notes. A config step reads the Financial Cents API settings and onboarding template ID from environment variables instead of hard-coding them. The workflow then calls the Financial Cents API to create the client with its contact details and creates an onboarding project for that client from the practice's template. From there it splits in two: one branch adds an internal note to the client record saying the client came in through the website form, and the other sends the team a Gmail message with the client's details and project ID, asking them to contact the client within 24 hours with a welcome and a document request.",
+  "outcome": "Every form submission now becomes a client record and an onboarding project in Financial Cents, with a note explaining where the client came from. The team gets an email that spells out the next step, so new clients hear back quickly and onboarding starts the same way every time.",
+  "results": [
+    { "label": "Trigger", "value": "Website intake form" },
+    { "label": "Stack", "value": "n8n, Financial Cents API, Gmail" },
+    { "label": "Handles", "value": "Client record, onboarding project, team alert" }
+  ],
+  "deliverables": [
+    "Webhook for the website intake form",
+    "Field mapping from form data to a client record",
+    "Client creation in Financial Cents through its API",
+    "Onboarding project created from a template",
+    "Internal note on the client record",
+    "Team email with the next step"
+  ],
+  "process": [
+    {
+      "title": "Review the intake form",
+      "body": "We matched each form field to the client fields Financial Cents expects."
+    },
+    {
+      "title": "Connect the API",
+      "body": "We set up authenticated requests for clients, projects and notes, with the settings kept in environment variables."
+    },
+    {
+      "title": "Add the team handoff",
+      "body": "We wrote the internal note and the team email so the next step is clear: contact the client within 24 hours."
+    },
+    {
+      "title": "Test end to end",
+      "body": "We submitted test forms to confirm the client, project and note were created correctly and the email arrived."
+    }
+  ],
+  "technologies": ["n8n", "Financial Cents", "Gmail"],
+  "whyItMatters": "The first days after a client signs up set the tone for the relationship. Automating the setup means no submission sits unnoticed and every client starts with the same checklist.",
+  "faqs": [
+    {
+      "q": "Does it work with practice management tools other than Financial Cents?",
+      "a": "Yes, as long as the tool has an API for creating clients and projects. We would replace the Financial Cents requests with that tool's API and keep the same form mapping and team email."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We shape the onboarding steps around your intake form and the software you already use. A short call is enough for us to give you a fixed quote."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: intake webhook, payload mapping and config, then the Financial Cents client and onboarding project, a team email and an internal note."
+    },
+    {
+      "file": "2",
+      "caption": "Close-up of the main chain from the website intake webhook to the onboarding project created from a template."
+    }
+  ],
+  "cover": "1"
+}

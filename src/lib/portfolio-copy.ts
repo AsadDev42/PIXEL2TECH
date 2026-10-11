@@ -1,4 +1,5 @@
 import { bookCoverAssets } from "@/assets/book-cover-assets";
+import { AUTOMATION_PROJECTS, AUTOMATION_SUBCATEGORIES } from "@/lib/automation-projects";
 import { STORE_PROJECTS } from "@/lib/store-projects";
 import { getItemBySlug, warnOnUnknownSlugs, type PortfolioItem } from "@/lib/portfolio-data";
 
@@ -58,6 +59,22 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  ...Object.fromEntries(
+    AUTOMATION_PROJECTS.map((p) => [
+      p.slug,
+      {
+        metaTitle: p.metaTitle,
+        metaDescription: p.metaDescription,
+        summary: p.summary,
+        overview: p.overview,
+        challenge: p.challenge,
+        approach: p.approach,
+        outcome: p.outcome,
+        results: p.results,
+        deliverables: p.deliverables,
+      } satisfies ProjectCopy,
+    ]),
+  ),
   ...Object.fromEntries(
     STORE_PROJECTS.map((p) => [
       p.slug,
@@ -774,6 +791,7 @@ const FALLBACK: Bank = BANKS["Websites"]!;
 BANKS["Shopify Stores"] = BANKS["E-Commerce"]!;
 BANKS["WordPress Sites"] = BANKS["Websites"]!;
 BANKS["Custom Websites"] = BANKS["Websites"]!;
+for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
 
 export function getProjectCopy(item: PortfolioItem): ProjectCopy {
   const override = COPY_OVERRIDES[item.slug];

@@ -1,0 +1,79 @@
+{
+  "slug": "ai-clinic-receptionist-live-booking",
+  "title": "AI voice receptionist with live calendar booking",
+  "subcategory": "Voice Agents",
+  "order": 12,
+  "metaTitle": "AI Voice Receptionist for Clinic Booking | Pixel2Tech",
+  "metaDescription": "A Retell AI phone receptionist for a clinic that checks Google Calendar, then books, changes or cancels visits during the call and emails a confirmation.",
+  "summary": "An AI receptionist answers the clinic's phone, checks the calendar and books, moves or cancels appointments while the caller is still on the line.",
+  "overview": "We built this voice receptionist for a clinic that wanted every call answered, including after hours. A Retell AI voice agent handles the conversation and calls four n8n webhooks behind the scenes: check availability, book, cancel and modify. Each one works against Google Calendar, keeps an Airtable record and a Google Sheet in step, and sends a confirmation email through Gmail.",
+  "challenge": "Reception staff spent much of the day on the same scheduling calls, and calls that came in while the line was busy or the clinic was closed often went unanswered. A missed call is often a missed appointment. A voice bot that only answers questions does not fix this: the call has to end with a real entry in the clinic calendar.",
+  "approach": "The Retell AI agent works out what the caller wants and collects their details, including an email address spelled out over the phone. When it needs to act, it calls one of four n8n webhooks. CheckAvailability reads Google Calendar events and tells the agent whether a matching appointment exists. BookCalendar passes the request to an AI agent with Google Calendar tools that checks free slots and creates the event; the workflow then creates an Airtable record, appends a row to the appointments sheet and sends a confirmation email. The cancel and modify webhooks look up the existing event first. If one is found, an AI agent deletes or updates it, the Airtable record and sheet row are updated and the caller gets an email; if not, the webhook responds so the agent can tell the caller. Requests outside what the agent should handle are passed to a member of staff.",
+  "outcome": "The clinic's phone line now books, reschedules and cancels appointments on its own, at any hour. Each change lands in the calendar, the Airtable record and the appointments sheet together, the patient receives a confirmation email, and staff step in only when the agent hands a call over.",
+  "results": [
+    {
+      "label": "Trigger",
+      "value": "Inbound phone call"
+    },
+    {
+      "label": "Stack",
+      "value": "Retell AI, n8n, Google Calendar, Airtable"
+    },
+    {
+      "label": "Handles",
+      "value": "Check, book, change and cancel"
+    }
+  ],
+  "deliverables": [
+    "Retell AI voice agent prompt and call flow",
+    "Availability check webhook against Google Calendar",
+    "Booking webhook with an AI agent and calendar tools",
+    "Cancel and modify webhooks with event lookup",
+    "Airtable, Google Sheets and Gmail updates on every change",
+    "Handoff path to clinic staff"
+  ],
+  "process": [
+    {
+      "title": "Map the calls",
+      "body": "We listed the requests reception handles most and agreed which ones the agent completes and which go to staff."
+    },
+    {
+      "title": "Design the agent",
+      "body": "We wrote the Retell AI prompt and conversation flow, including how to capture and confirm an email address spoken aloud."
+    },
+    {
+      "title": "Build the webhooks",
+      "body": "Each action got its own n8n webhook that checks Google Calendar before changing anything and answers the agent mid-call."
+    },
+    {
+      "title": "Sync and test",
+      "body": "We connected Airtable, Google Sheets and Gmail, then ran test calls for every path, including no-match and handoff cases."
+    }
+  ],
+  "technologies": ["Retell AI", "n8n", "OpenAI", "Google Calendar", "Airtable", "Gmail"],
+  "whyItMatters": "Patients who reach a receptionist that can actually book are less likely to try another clinic. Staff get their time back for the people in the waiting room.",
+  "faqs": [
+    {
+      "q": "Does it work with calendars other than Google Calendar?",
+      "a": "Yes. The booking logic sits in n8n, so the calendar steps can be swapped for another scheduling or practice management system that has an API. The voice agent and the call flow stay the same."
+    },
+    {
+      "q": "Can you build something similar for my business?",
+      "a": "Yes. We adapt the workflow to the tools and process you already use, and we give you a fixed quote after a short call about what you need."
+    }
+  ],
+  "shots": [
+    {
+      "file": "1",
+      "caption": "The n8n workflow: four webhooks for checking, booking, cancelling and modifying appointments."
+    },
+    {
+      "file": "2",
+      "caption": "Booking flow: an AI agent with Google Calendar tools creates the event, then Airtable, Sheets and Gmail are updated."
+    },
+    {
+      "file": "3",
+      "caption": "Cancel and modify flows: the existing event is looked up first, then deleted or updated and the records synced."
+    }
+  ]
+}
