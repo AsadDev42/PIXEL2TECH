@@ -1,0 +1,82 @@
+{
+  "slug": "threads-and-motifs-shopify-store",
+  "client": "Threads & Motifs",
+  "url": "https://www.threadsandmotifs.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 65,
+  "metaTitle": "Threads & Motifs Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Threads & Motifs, a Pakistani formalwear label: luxury formals, bridal, ready to wear and unstitched lawn, with delivery options.",
+  "summary": "Shopify store for a Pakistani formalwear label selling luxury formals, bridal, ready to wear and unstitched fabric.",
+  "overview": "Threads & Motifs is a Pakistani label selling embellished formals, with lehengas, sarees and bridal outfits alongside ready to wear pieces, printed kaftans and unstitched lawn. Pixel2Tech built the brand's Shopify store as white-label development partner for a digital agency, set up to present high-value formal collections and everyday lines in one place, backed by its physical stores.",
+  "challenge": "The range runs from unstitched fabric to bridal outfits at many times the price, and formal pieces are often made to order in standard or customized sizes. Shoppers need to browse by line and occasion, and know how and when a piece will reach them.",
+  "approach": "A clean white header carries the logo, a search bar and a menu for Formals, Ready to Wear Formals, Ready to Wear New Arrivals, Lawn Edit, Unstitched Outfits and Sale, with dropdowns listing named collections such as Desi Pop, RSVP, Signature Lehengas and Bridal. The home page uses large image banners for each new collection, a three-panel best sellers block, a sale banner and a Find Your Store section showing a boutique interior. Collection pages offer filters, a result count, several grid and list views and sorting, and products can carry a delivery choice between standard and express.",
+  "outcome": "A Shopify store where formal, ready to wear and unstitched lines each have a clear path from the menu. Shoppers can choose delivery speed when they order or find a physical store to visit.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Glozin theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Formals, bridal, ready to wear, unstitched lawn"
+    },
+    {
+      "label": "Shopping",
+      "value": "Named collections, delivery options, store locator"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Collection menu for formal and pret lines",
+    "Image-led home page banners",
+    "Collection grid with filters and view options",
+    "Store locator link",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Menu by line",
+      "body": "Formals, ready to wear and unstitched outfits each open into named collections, from Desi Pop and Golden Hour to Cutwork Lawn and Luxe Chikan Essentials."
+    },
+    {
+      "title": "Home page",
+      "body": "Full-width campaign slides lead into banners for formal and ready to wear new arrivals, best sellers by line, a sale banner and a Find Your Store panel."
+    },
+    {
+      "title": "Collections",
+      "body": "Collection pages show breadcrumbs, a filter button, the number of results, grid and list views and sort options above large outfit photos."
+    },
+    {
+      "title": "Ordering",
+      "body": "Products offer size choices including customized sizing on some pieces and a delivery option of standard or express, with cash on delivery and easy returns listed among the brand's advantages."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Glozin theme",
+    "Shopify collections and filters",
+    "Product variants for size and delivery"
+  ],
+  "whyItMatters": "Formalwear is a high-value, occasion-driven purchase. Clear collection paths, sizing and delivery choices, and a link to physical stores give shoppers the confidence to order online.",
+  "faqs": [
+    {
+      "q": "What platform is the Threads & Motifs store built on?",
+      "a": "It runs on Shopify with the Glozin theme, using Shopify collections for formal, ready to wear, unstitched and sale lines, and product options for size and delivery speed."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "charles-tyrwhitt-pakistan-shopify-store",
+  "client": "Charles Tyrwhitt Pakistan",
+  "url": "https://www.charlestyrwhitt.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 73,
+  "metaTitle": "Charles Tyrwhitt Pakistan Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Charles Tyrwhitt Pakistan, the brand's Pakistan online store: shirts by collar size and sleeve length, suits, coats and accessories.",
+  "summary": "Shopify store for Charles Tyrwhitt Pakistan, the Pakistan online store for the British menswear brand.",
+  "overview": "Charles Tyrwhitt Pakistan is the Pakistan online store for Charles Tyrwhitt, the British menswear brand from Jermyn Street, London. It sells formal and casual shirts, polos, suits, pants, knitwear, coats, shoes and accessories such as ties, belts, socks and pocket squares. We built the Pakistan storefront on Shopify around the brand's shirts and tailoring.",
+  "challenge": "Shirts are the heart of the range, and they come in many fits, fabrics and sizes. A shopper needs to pick a collar size and sleeve length, choose between fits such as slim and classic, and compare fabrics like oxford, poplin and twill, all without leaving the page.",
+  "approach": "The header lists Shirts, Polos, Suits, Pants, Sweaters, Blazers and Coats, Shoes, Accessories and Sale. The home page follows its hero with a row of new-arrival shirts, then four large panels for shirts, pants, suits and coats, each with its own sub-category links. Shirt collections add a bar for formal, casual, classic fit, slim fit, oxford, poplin and twill, and product pages ask for collar size and sleeve length and show a buy more, save more table.",
+  "outcome": "A menswear store where shoppers can find a shirt by fit and fabric, choose an exact collar and sleeve size, and build a larger order with tiered discounts.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme, EComposer sections)" },
+    { "label": "Catalog", "value": "Shirts, suits, knitwear, coats, accessories" },
+    { "label": "Shopping", "value": "Fit and fabric filters, collar and sleeve sizes" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category panels with sub-links",
+    "Shirt fit and fabric navigation",
+    "Collar and sleeve size selection",
+    "Tiered quantity discount display",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation", "body": "The main menu covers every part of the wardrobe, and each category opens into sub-types such as business, luxury and travel suits or chinos, smart pants and jeans." },
+    { "title": "Home page", "body": "A hero banner, a new-arrival shirt row, four large category panels with sub-links and an accessories banner for belts, socks and ties lead into a newsletter sign-up." },
+    { "title": "Shirt collections", "body": "Shirt pages open with an intro, then a bar for formal, casual, polos, T-shirts, classic fit, slim fit, oxford, poplin and twill, with filters and sorting below." },
+    { "title": "Product pages", "body": "Product pages show color, collar size and sleeve length selectors, quantity, a buy more, save more discount table and expandable description sections." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "EComposer", "Shopify collections"],
+  "whyItMatters": "Shirt buyers who know their collar and sleeve size want to find the right fit and fabric fast. Navigation built around fit and fabric, and sizing that matches how shirts are actually measured, makes that quick.",
+  "faqs": [
+    { "q": "What platform is the Charles Tyrwhitt Pakistan store built on?", "a": "It runs on Shopify with the Kalles theme and EComposer sections, using Shopify collections for shirts by fit and fabric, suits, coats, knitwear and accessories." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for menswear brands, including country storefronts for international labels, detailed size selection and quantity discounts. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

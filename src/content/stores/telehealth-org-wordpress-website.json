@@ -1,0 +1,44 @@
+{
+  "slug": "telehealth-org-wordpress-website",
+  "client": "Telehealth.org",
+  "url": "https://telehealth.org/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 129,
+  "metaTitle": "Telehealth.org website | Pixel2Tech",
+  "metaDescription": "WordPress website for Telehealth.org, a telehealth education hub for clinicians: on-demand courses and webinars, news by topic, a newsletter and login.",
+  "summary": "WordPress website for a telehealth education, news and training hub for clinicians.",
+  "overview": "Telehealth.org describes itself as a trusted education hub for virtual care, offering courses, webinars, news and resources for healthcare professionals. Pixel2Tech built Telehealth.org's WordPress website as white-label development partner for a digital agency, on the Divi theme with WooCommerce for course sales.",
+  "challenge": "The site serves two jobs at once: a news and resources publication that clinicians read regularly, and a training business that sells courses, bundles and credentials. Both had to sit under one navigation without the courses getting lost among articles.",
+  "approach": "The main menu splits into News, Education, Newsletter and Resources, with a Log In button for learners. News is organized by topic, such as policy and compliance, clinical practice and technology, while Education groups on-demand courses, webinars, bundles and credential programs. A banner above the hero promotes the next webinar, and the home page leads to courses, the newsletter signup and the latest news.",
+  "outcome": "A WordPress site that works as both a telehealth news source and a course catalog, with clear routes to courses, webinars and the newsletter on desktop and mobile. Readers who arrive for the news are always a click away from the course catalog.",
+  "results": [
+    { "label": "Platform", "value": "WordPress + WooCommerce (Divi)" },
+    { "label": "Site type", "value": "Clinician education and news" },
+    { "label": "Key pages", "value": "Courses, webinars, news, newsletter" }
+  ],
+  "deliverables": [
+    "WordPress website on Divi",
+    "Course and webinar catalog",
+    "WooCommerce course checkout",
+    "News section by topic",
+    "Newsletter signup",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Information architecture", "body": "Four menu groups separate news, education, the newsletter and resources such as research, the podcast and free downloads, so readers and learners each find their path." },
+    { "title": "Courses and checkout", "body": "On-demand courses, webinars, bundles and credential programs are sold through WooCommerce, with Edwiser Bridge connecting purchases to the learning platform." },
+    { "title": "News by topic", "body": "Articles are grouped into policy and compliance, clinical practice, technology and innovation, and business and market trends, with recent stories on the home page." },
+    { "title": "Webinars and newsletter", "body": "A banner above the hero promotes the next webinar, and newsletter signup calls to action appear in the hero and lower on the page." }
+  ],
+  "technologies": ["WordPress", "Divi", "WooCommerce", "Edwiser Bridge"],
+  "whyItMatters": "For an education brand, the news keeps clinicians coming back and the courses pay for it. A site that links the two well turns regular readers into learners.",
+  "faqs": [
+    { "q": "What platform is the Telehealth.org website built on?", "a": "It runs on WordPress with the Divi theme, using WooCommerce for course sales and Edwiser Bridge to connect to the learning platform." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "mobile": ["mobile-home"]
+  }
+}

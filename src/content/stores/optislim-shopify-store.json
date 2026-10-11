@@ -1,0 +1,45 @@
+{
+  "slug": "optislim-shopify-store",
+  "client": "Optislim",
+  "url": "https://optislim.com.au/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 106,
+  "metaTitle": "Optislim Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Optislim, an Australian meal-replacement brand: shop by goal, buy 3 get 1 free shake bundles, a flavor picker and VLCD and LCD guides.",
+  "summary": "Shopify store for an Australian brand of meal-replacement shakes, bars, soups and snacks.",
+  "overview": "Optislim sells meal-replacement shakes, bars, soups and low calorie snacks, and describes its range as supporting very low calorie (VLCD) and low calorie (LCD) diet programs. Pixel2Tech built the Optislim Shopify store as white-label development partner for a digital agency, completing the build for the agency's client.",
+  "challenge": "The best sellers are multi-box bundles rather than single boxes, so the store has to let shoppers choose their own mix of flavors within a bundle. Visitors also arrive with different goals, from weight loss to support while on a GLP-1 medication to healthy snacking, and many want to read about the programs before they buy.",
+  "approach": "The home page leads with a large headline and four goal tiles: Lose Weight, GLP-1 Support, Eat Healthy and Snacks, followed by bestsellers, customer stories and the brand's benefits. The menu covers shop categories, Bundle and Save, a page for shoppers on a GLP-1 and a resources menu with before and after stories, blogs and recipes, and FAQs. Bundle product pages list the key points of the program, then a flavor picker where shoppers choose each box in the bundle before adding to cart, and collections use pill buttons to switch between best sellers, VLCD, meal replacements, snacks and accessories.",
+  "outcome": "A Shopify store where a visitor picks a goal and builds a mixed-flavor bundle in one step. The VLCD and LCD program pages are a click away, so shoppers can read up without leaving the site.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Be Yours theme)" },
+    { "label": "Catalog", "value": "Shakes, bars, soups, snacks, accessories" },
+    { "label": "Shopping", "value": "By goal, flavor-pick bundles, program guides" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Goal-based home page",
+    "Bundle product pages with flavor picker",
+    "Collection pages with category pills",
+    "Program and resource pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Start from a goal", "body": "Four goal tiles on the home page link to the matching bundle or product, and a scrolling top bar repeats the store's delivery and bundle offers." },
+    { "title": "Bundles", "body": "Buy 3 get 1 free shake bundles and a bars bundle sit under Bundle and Save, and each bundle page includes a flavor picker that tracks how many boxes have been chosen." },
+    { "title": "Collections", "body": "Collection pages show a store review summary, a short intro, pill buttons for each category, filters and sorting, with bestseller badges and a wish list button on each card." },
+    { "title": "Content and mobile", "body": "VLCD and LCD program pages, before and after stories, recipes and FAQs support the shop, and on phones the goal tiles sit in a two by two grid above a full-width shop button." }
+  ],
+  "technologies": ["Shopify", "Be Yours theme", "REVIEWS.io", "Afterpay", "Klaviyo"],
+  "whyItMatters": "A meal-replacement program means the same products day after day, so flavor choice and bundle value matter from the first order. A bundle flow that lets them pick each flavor, next to clear program guides, lowers the barrier to that first order.",
+  "faqs": [
+    { "q": "What platform is the Optislim store built on?", "a": "It runs on Shopify with the Be Yours theme, using Shopify collections for VLCD, LCD, snacks and bundles, and bundle product pages with a flavor picker." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, and stay in the background. Send over the brief and we will reply with a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

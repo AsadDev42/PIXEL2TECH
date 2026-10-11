@@ -1,0 +1,84 @@
+{
+  "slug": "urban-sole-shopify-store",
+  "client": "Urbansole",
+  "url": "https://www.urbansole.com.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 56,
+  "metaTitle": "Urbansole Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Urbansole, a Pakistani footwear brand: shoes for men, women and kids, shop by discount, size charts and installments on product pages.",
+  "summary": "Shopify store for a footwear brand selling shoes, bags, belts and fragrances for men, women and kids.",
+  "overview": "Urbansole is a Pakistani footwear brand that says it has been crafting footwear since 1998, selling shoes for men, women and kids alongside bags, wallets, belts and fragrances. We built Urbansole's Shopify store for a large catalog and frequent sale events.",
+  "challenge": "Footwear shoppers browse by who it is for, then by type, and many arrive during sales looking for a discount band. Each style comes in several colors and sizes, and sizing questions are a common reason to hesitate.",
+  "approach": "The menu covers sale, new in, men, women, kids, accessories and fragrances, with the sale menu split by discount and by audience. The home page uses a campaign slider, shop-by-category tiles for sneakers, casual, formal and the Xceed sports line, and a best sellers row. Collection pages show style counts, filters and color swatches, and product pages add installment details, color and size pickers, a size chart, a free shipping note and delivery and exchange badges.",
+  "outcome": "A sale-ready Shopify store where shoppers can browse by audience, type or discount and see sizing, installments and delivery terms before they buy. The same pickers and payment details work on mobile, with floating shortcuts for search, cart and menu.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Dawn theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Men's, women's and kids' footwear, bags, accessories"
+    },
+    {
+      "label": "Shopping",
+      "value": "By audience, by type, by discount"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Sale and discount navigation",
+    "Collection pages with swatches",
+    "Product page with size chart",
+    "Installment messaging",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "Men, women and kids menus list every shoe type, from slippers and sliders to formal shoes and peshawari, with sale collections grouped by discount."
+    },
+    {
+      "title": "Home page",
+      "body": "A campaign slider leads into category tiles, best sellers, a sliders feature, the brand's story, service badges and Instagram posts."
+    },
+    {
+      "title": "Product pages",
+      "body": "Color swatches, size buttons with a fit note, a size chart, installment details, a free shipping banner and delivery and exchange badges."
+    },
+    {
+      "title": "Mobile",
+      "body": "Floating search, cart and menu buttons stay in reach at the bottom of the screen while shoppers scroll."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Dawn theme (Online Store 2.0)",
+    "Size charts",
+    "Installment payments"
+  ],
+  "whyItMatters": "Footwear returns usually come down to size. A store that answers sizing, delivery and payment questions on the product page removes the usual reasons to wait.",
+  "faqs": [
+    {
+      "q": "What platform is the Urbansole store built on?",
+      "a": "It runs on Shopify with the Dawn theme (Online Store 2.0), using collections for audiences, types and discount bands, plus size charts and installment messaging."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for footwear and apparel brands, including sale navigation, size charts and installment options. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

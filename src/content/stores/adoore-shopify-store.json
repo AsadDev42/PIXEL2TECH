@@ -1,0 +1,45 @@
+{
+  "slug": "adoore-shopify-store",
+  "client": "Adoore",
+  "url": "https://adoore.se/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 100,
+  "metaTitle": "Adoore Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Adoore, a Swedish dress label: dresses by length, occasion and sleeve, wish lists, a loyalty club and local prices across Europe.",
+  "summary": "Shopify store for a Swedish fashion label known for dresses, knitwear and tops.",
+  "overview": "Adoore describes itself as a Swedish fashion brand creating perfectly fitting dresses, alongside tops, cardigans, blazers, skirts and swimwear. Pixel2Tech built Adoore's Shopify store as white-label development partner for a digital agency, working to the agency's direction for its client.",
+  "challenge": "Dresses are the core of the range, and shoppers look for them in very different ways: by length, by the occasion they are dressing for, or by sleeve style. The store also sells to customers across Europe, the UK, the US and Australia, each expecting prices in their own currency.",
+  "approach": "The Shop menu splits dresses by length (mini, midi, maxi), by occasion (everyday, knitted, festive, wedding, pregnancy, graduation, party) and by sleeve, with named styles such as the Positano and Florence dresses linked directly. A country selector in the header switches market and currency. Collection pages use a full-width product grid with a filter panel, sorting and a wish list heart on every card, and the home page is built from large editorial tiles for the current collection.",
+  "outcome": "A Shopify store where a shopper can go straight from a wedding guest search or a midi length preference to the right dresses. Favorites can be saved to a wish list, and checkout runs in the shopper's own currency.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (custom theme)" },
+    { "label": "Catalog", "value": "Dresses, knitwear, tops, jackets, skirts, swim" },
+    { "label": "Shopping", "value": "By length, occasion and sleeve, multi-currency" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Dress navigation by length, occasion and sleeve",
+    "Market and currency selector",
+    "Collection pages with filters and wish list",
+    "Editorial home page layout",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Dress-first menu", "body": "The Shop menu groups dresses three ways (length, occasion and sleeve) and links named styles directly, next to categories for tops and cardigans, blazers and jackets, skirts, accessories, swimwear and an archive." },
+    { "title": "Markets and currency", "body": "A header selector lets shoppers pick their country, switching prices between kronor, euros, pounds, dollars and other local currencies." },
+    { "title": "Collections and product pages", "body": "Collection pages show a filter panel, sorting and wish list hearts on each card, with color variants named under the product. Product pages keep the gallery on the left and size, add to bag and description on the right." },
+    { "title": "Mobile and loyalty", "body": "On phones a swipeable bar under the header jumps to new collection, back in stock, dresses and wedding, and footer links cover the Adoore loyalty club, bridal fitting, store locations and returns." }
+  ],
+  "technologies": ["Shopify", "Shopify Markets (multi-currency)", "Wish list", "LoyaltyLion loyalty club", "Klaviyo"],
+  "whyItMatters": "A dress shopper usually knows the occasion or the length before the product name. Navigation that starts from those choices, with prices in the shopper's own currency, shortens the path from browsing to checkout.",
+  "faqs": [
+    { "q": "What platform is the Adoore store built on?", "a": "It runs on Shopify with a custom theme, using Shopify collections for dress lengths, occasions and sleeve styles, and Shopify Markets for country and currency selection." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

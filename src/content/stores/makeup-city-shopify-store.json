@@ -1,0 +1,84 @@
+{
+  "slug": "makeup-city-shopify-store",
+  "client": "Makeup City",
+  "url": "https://www.makeupcityshop.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 52,
+  "metaTitle": "Makeup City Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Makeup City, a Pakistani beauty retailer: makeup, skincare, perfume and lingerie, shade pickers, brand filters and pay-later options.",
+  "summary": "Shopify store for a beauty retailer selling makeup, skincare, hair care, perfume and lingerie from many brands.",
+  "overview": "Makeup City sells original makeup, skincare, hair care, fragrance and lingerie from international and local brands, and describes its products as 100% original. We built Makeup City's Shopify store for a large, brand-heavy catalog with frequent sales.",
+  "challenge": "Many makeup products come in a dozen or more shades, and the catalog spans hundreds of brands and product types. Shoppers need to compare shades and prices quickly, and sale periods put heavy promotion on the home page.",
+  "approach": "A dark header carries makeup, skin care, hair care, perfumes, lingerie, beauty tools, shop all brands and sale, each opening a menu of product types. Collection pages show the product count, brand and product-type filters, ratings, savings and a View Shades button on each card. Product pages put the rating, price, savings, pay-later options, trust badges and size or shade choices above the add to cart button.",
+  "outcome": "A campaign-ready Shopify store where shoppers can filter by brand, pick a shade from the grid and see pay-later options before adding to cart. Sale banners and brand carousels give the team room to run campaigns without changing the page structure.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Horizon theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Makeup, skincare, hair care, perfume, lingerie"
+    },
+    {
+      "label": "Shopping",
+      "value": "Brand and type filters, shade pickers, pay later"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category and brand menus",
+    "Collection filters with shade pickers",
+    "Product page layout",
+    "Installment payment messaging",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "Each department opens into product types, such as foundation, primer and concealer under makeup, with a separate shop all brands entry and a sale link."
+    },
+    {
+      "title": "Collection pages",
+      "body": "Brand and product-type filters sit beside a product grid where each card shows shade count, discount, rating, savings and a quick View Shades action."
+    },
+    {
+      "title": "Product pages",
+      "body": "The bestseller tag, rating, price and savings lead, followed by Baadmay and pay-later options, trust badges and size or shade selectors."
+    },
+    {
+      "title": "Mobile",
+      "body": "On phones, round category shortcuts sit under the header, followed by sale banners, brand carousels and new launches."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Horizon theme",
+    "Judge.me reviews",
+    "Baadmay installments",
+    "Wish list"
+  ],
+  "whyItMatters": "Shade and brand choice is where most makeup purchases stall. Showing shades, savings and payment options early keeps shoppers moving toward checkout.",
+  "faqs": [
+    {
+      "q": "What platform is the Makeup City store built on?",
+      "a": "It runs on Shopify with the Horizon theme, using collections for product types and brands, a review app and installment payment messaging."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for beauty retailers, including shade selectors, brand filters and pay-later messaging. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

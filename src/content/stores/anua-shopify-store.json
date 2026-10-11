@@ -1,0 +1,45 @@
+{
+  "slug": "anua-shopify-store",
+  "client": "Anua",
+  "url": "https://anua.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 130,
+  "metaTitle": "Anua Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Anua, a Korean skincare brand: shop by skin concern, category or ingredient, routine sets, free sample tiers and accordion product pages.",
+  "summary": "Shopify store for a Korean skincare brand selling cleansers, toners, serums and routine sets.",
+  "overview": "Anua presents itself as gentle yet effective Korean skincare, with a range of cleansers, toners, serums, moisturizers, sunscreens, masks and spot patches. Pixel2Tech built Anua's US Shopify store as white-label development partner for a digital agency, working to the agency's direction for its client.",
+  "challenge": "Korean skincare shoppers arrive with very different starting points: a concern such as acne or dark spots, a step in their routine, or a single ingredient they have heard about, such as PDRN, heartleaf or retinol. The brand also sells many multi-step sets and runs gift-with-purchase offers that need to be clear before checkout.",
+  "approach": "The Shop All mega menu offers three ways in: by skin concern, by category and by ingredient, next to top-level links for best sellers, the viral PDRN line, value sets and current offers. The home page opens with a free samples offer (pick up to five based on order value), followed by a free gift offers carousel, a video reviews row and collection features such as the retinol range. Product cards carry save badges, star ratings and review counts, and product pages keep details, benefits, testing results, ingredients and how to use in collapsible sections.",
+  "outcome": "A Shopify store where a shopper can start from a concern, a routine step or an ingredient and land on the right products, with routine sets and sample offers visible at every stage.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Prestige theme)" },
+    { "label": "Catalog", "value": "Cleansers, toners, serums, moisturizers, masks, sets" },
+    { "label": "Shopping", "value": "By skin concern, category and ingredient" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Mega menu by concern, category and ingredient",
+    "Routine set and gift offer sections",
+    "Collection grid with sort and filters",
+    "Product page with collapsible details",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Three-way navigation", "body": "The Shop All menu lists skin concerns (acne, clogged pores, dark spots, dullness, dryness, sensitivity, signs of aging, texture), categories from cleanser to peels, and key ingredients such as PDRN, azelaic acid, heartleaf, niacinamide, retinol and rice." },
+    { "title": "Sets and offers", "body": "Value sets and routine sets show the saving on the card, and the home page explains the free sample tiers before shoppers reach the cart, with a free gift offers carousel right below the hero." },
+    { "title": "Collections and product pages", "body": "Collection pages offer grid size toggles, sorting and a filter panel. Product pages show price, rating and a short claim up front, then collapsible sections for details, benefits, testing results, ingredients and how to use, with Shop Pay and other express checkout options." },
+    { "title": "Mobile", "body": "On phones the header shrinks to a menu, logo, search and bag, the hero stacks text above the product image, and product pages put the swipeable gallery first." }
+  ],
+  "technologies": ["Shopify", "Prestige theme", "Okendo reviews", "Klaviyo", "Shop Pay"],
+  "whyItMatters": "Skincare shoppers often know their concern or a hero ingredient before they know a product name. Letting them start from either, and showing set savings and gift tiers early, helps a first order grow into a full routine.",
+  "faqs": [
+    { "q": "What platform is the Anua store built on?", "a": "It runs on Shopify with the Prestige theme, using Shopify collections for skin concerns, categories, ingredients and value sets, with Okendo for product reviews." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

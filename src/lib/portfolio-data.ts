@@ -1,6 +1,13 @@
 import { nayyerAssets } from "@/assets/jacques-assets";
 import type { LiveStore } from "@/components/store-showcase";
-import { STORE_PROJECTS, storeCover, storeOf, type StoreProject } from "@/lib/store-projects";
+import {
+  STORE_PROJECTS,
+  isStore,
+  isWhiteLabel,
+  storeCover,
+  storeOf,
+  type StoreProject,
+} from "@/lib/store-projects";
 import { swishtagAssets } from "@/assets/swishtag-assets";
 import { bookCoverAssets } from "@/assets/book-cover-assets";
 import { SITE } from "@/lib/site-config";
@@ -39,6 +46,8 @@ export type PortfolioItem = {
   videos?: PortfolioVideo[];
   /** A live Shopify store: screenshots in browser/phone frames plus a link to it. */
   store?: LiveStore;
+  /** Built as white-label development partner for an agency (see StoreProject.engagement). */
+  whiteLabel?: boolean;
 };
 
 /*
@@ -161,12 +170,17 @@ type RawWork = Record<Category, Record<string, RawItem[]>>;
 function storeItem(p: StoreProject): RawItem {
   return {
     slug: p.slug,
-    title: `${p.client} — ${p.platform} store`,
+    title: `${p.client} — ${isStore(p) ? `${p.platform} store` : "website"}`,
     client: p.client,
     img: storeCover(p),
     store: storeOf(p),
+    whiteLabel: isWhiteLabel(p) || undefined,
   };
 }
+
+const WEBSITE_PROJECTS = STORE_PROJECTS.filter(
+  (p) => p.platform !== "Shopify" && p.platform !== "WordPress",
+).map(storeItem);
 
 const RAW: RawWork = {
   "Social Media & Ads": {
@@ -285,12 +299,15 @@ const RAW: RawWork = {
         images: bookCoverAssets.covers,
       },
     ],
-    Websites: [
-      {
-        title: "SaaS marketing site",
-        img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
+    // Real website projects replace the demo once there are any.
+    Websites: WEBSITE_PROJECTS.length
+      ? WEBSITE_PROJECTS
+      : [
+          {
+            title: "SaaS marketing site",
+            img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
+          },
+        ],
     "E-Commerce": [
       {
         title: "Fashion storefront",

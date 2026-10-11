@@ -1,0 +1,45 @@
+{
+  "slug": "neom-wellbeing-shopify-store",
+  "client": "NEOM Wellbeing",
+  "url": "https://neomwellbeing.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 104,
+  "metaTitle": "NEOM Wellbeing Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for NEOM Wellbeing, a UK home fragrance brand: shop by sleep, stress, mood or energy, a gift builder, diffusers and a points loyalty scheme.",
+  "summary": "Shopify store for a London wellbeing brand selling candles, diffusers, essential oils and bath and body care.",
+  "overview": "NEOM says it inspires people to live naturally healthier lives through 100% natural fragrances for better sleep, less stress, more energy or a mood boost. Pixel2Tech built the NEOM Wellbeing Shopify store as white-label development partner for a digital agency, supporting the agency on its client's UK store.",
+  "challenge": "NEOM sells the same scents across candles, reed diffusers, electric diffusers, oils, sprays and body care, so a shopper can arrive looking for a product type, a fragrance or a feeling. Gifting is a large part of the range, with seasonal edits, sets and price-based gift ideas that all need a clear home.",
+  "approach": "The header menu covers Christmas, bestsellers, pods and oils, home and candles, bath and body, magnesium, wellbeing concern, gifts, offers, loyalty and science. The wellbeing concern menu sends shoppers to sleep, de-stress, mood and energy ranges, and the gift menu sorts ideas by occasion and price, with a build-a-gift option and a pod starter pack builder. Collections combine quick-link chips with filters for price, product type, fragrance, size and wellbeing need, and product pages show the range, rating, badges such as pregnancy safe, the other formats in the same scent and the loyalty points earned.",
+  "outcome": "A Shopify store where a shopper can start from a mood, a scent or a gift budget and reach the right candle, diffuser or set. Every order also collects loyalty points.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Volt theme)" },
+    { "label": "Catalog", "value": "Candles, diffusers, oils, bath and body, gifts" },
+    { "label": "Shopping", "value": "By wellbeing need, gift builder, loyalty points" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Wellbeing concern navigation",
+    "Gift builder and starter pack pages",
+    "Collection filters by fragrance and need",
+    "Product page with scent range switcher",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Shop by need", "body": "Sleep, stress, mood and energy each get a range page, and the same wellbeing need is available as a filter on collections, alongside price, product type, fragrance and size." },
+    { "title": "Gifting", "body": "The gift menu groups ideas by occasion and by price band, links gift boxes, digital gift cards and corporate gifting, and offers a build-a-gift flow and a diffuser starter pack builder." },
+    { "title": "Product pages", "body": "Each product shows its range name, price, rating and badges, a short description, thumbnails of other formats in the same scent, stock status and the loyalty points it earns." },
+    { "title": "Mobile", "body": "On phones, category chips sit under the logo for one-tap access to Christmas, bestsellers, pods and candles, and the product page keeps price and add to bag fixed at the bottom of the screen." }
+  ],
+  "technologies": ["Shopify", "Volt theme", "Yotpo reviews", "LoyaltyLion points", "Klaviyo"],
+  "whyItMatters": "Home fragrance is bought as much for a feeling as for a scent, and often as a gift. Letting shoppers start from a need, a format or a budget means each of those visitors finds a sensible first product.",
+  "faqs": [
+    { "q": "What platform is the NEOM Wellbeing store built on?", "a": "It runs on Shopify with the Volt theme, using Shopify collections for product types, fragrances, wellbeing needs and gift edits." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the work is presented as the agency's own. Share the scope and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

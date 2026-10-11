@@ -1,0 +1,43 @@
+{
+  "slug": "alkhair-foam-shopify-store",
+  "client": "Alkhair Foam",
+  "url": "https://alkhairfoam.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 77,
+  "metaTitle": "Alkhair Foam Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Alkhair Foam: foam, spring and orthopedic mattresses with size and thickness pickers, warranty claims, home trials and investor pages.",
+  "summary": "Shopify store and corporate site for a Pakistani mattress and foam manufacturer.",
+  "overview": "Alkhair Foam, part of Alkhair Gadoon Ltd., makes foam, spring and orthopedic mattresses alongside pillows, toppers, sofa seats and industrial foam. We built Alkhair Foam's Shopify store to sell mattresses online while also hosting the company's corporate and investor information in the same site.",
+  "challenge": "A mattress comes in many sizes and thicknesses, and each combination has its own price. The same site also had to serve very different visitors: home shoppers, buyers of industrial foam, job seekers and shareholders looking for company filings.",
+  "approach": "The menu puts Foam Mattresses, Spring Mattresses, Orthopedic Mattresses, Sofa Seats and Accessories first, followed by Careers, Industrial Supplies, Investor Relation and Investor Information dropdowns. The homepage shows featured products, a Mattress at Your Doorstep section with a Book An Appointment button, category tiles for shopping online, a warranty claim section and an About Us block. Product pages use dropdowns for size and thickness, a quantity picker and an Order on WhatsApp button next to the cart.",
+  "outcome": "One Shopify site that sells mattresses by size and thickness, takes warranty claims and home trial bookings, and keeps investor and corporate pages within reach of the main menu.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Spotlight theme)" },
+    { "label": "Catalog", "value": "Foam, spring and orthopedic mattresses, pillows, toppers" },
+    { "label": "Site scope", "value": "Store, warranty claims, careers and investor pages" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Size and thickness variant setup",
+    "Warranty claim and appointment sections",
+    "Corporate and investor pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Mattress catalog", "body": "Mattresses are grouped into foam, spring and orthopedic collections, with separate collections for sofa seats and accessories such as pillows, toppers and prayer mats." },
+    { "title": "Size and thickness", "body": "Product pages use dropdowns for bed size and thickness so a shopper can price the exact mattress they need, with an Order on WhatsApp option for those who prefer to talk first." },
+    { "title": "Service sections", "body": "The homepage explains the doorstep trial service with an appointment button and gives a clear path to activate or claim a warranty." },
+    { "title": "Corporate content", "body": "Careers, industrial supplies such as peeled and rebounded PU foam, governance, CSR, certifications, financials and shareholder information all sit in the main menu." }
+  ],
+  "technologies": ["Shopify", "Spotlight theme (Online Store 2.0)", "Shopify collections", "WhatsApp ordering button"],
+  "whyItMatters": "A manufacturer selling direct needs a store that handles complex product options and an after-sales path such as warranty claims. Keeping investor and corporate content on the same site means one place to maintain.",
+  "faqs": [
+    { "q": "What platform is the Alkhair Foam site built on?", "a": "It runs on Shopify with the Spotlight theme (Online Store 2.0), using product variants for mattress size and thickness and Shopify pages for corporate and investor content." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my company?", "a": "Yes. We design and build Shopify stores for manufacturers, including complex product options, service and warranty sections and corporate pages. Tell us what you sell and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

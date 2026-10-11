@@ -1,0 +1,45 @@
+{
+  "slug": "blackbeiger-shopify-store",
+  "client": "BlackBeiger",
+  "url": "https://www.blackbeiger.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 81,
+  "metaTitle": "BlackBeiger Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for BlackBeiger, a women's footwear brand: heels, flats and comforts, shop by heel size, sizes on product cards and order on WhatsApp.",
+  "summary": "Shopify store for a premium women's footwear brand selling heels, flats and comfort shoes.",
+  "overview": "BlackBeiger describes itself as a premium footwear brand, selling women's heels, flats and comfort shoes. We built BlackBeiger's Shopify store to make a large range of styles and sizes quick to browse and easy to buy.",
+  "challenge": "Shoe shoppers filter first by style and fit: heel or flat, how high the heel is, and whether their size is in stock. With a large catalog and frequent new arrivals, that information needed to be visible before a shopper opens a product.",
+  "approach": "The menu covers New Arrivals, View All, All Heels, All Flats, All Comforts, Black Lovers, Celebrity Closet, Shop By Heel Size and FAQs. The homepage runs from an Its Shoe Time banner into featured collections, trending products, new arrivals, heels, flats and comforts rows, and a customer reviews section. Collection cards show the discount, star rating and available sizes, with sold-out sizes crossed out, and product pages add color swatches, a size chart, a pay-in-three installment option, an Order on WhatsApp button and a free shipping progress bar.",
+  "outcome": "A Shopify store where shoppers can find a style, check their size from the grid and order online or on WhatsApp, with the same flow on mobile and desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Women's heels, flats and comfort shoes" },
+    { "label": "Shopping", "value": "By style, by heel size, sizes on cards" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Style and heel-size navigation",
+    "Size-aware collection grid",
+    "Product page layout",
+    "WhatsApp ordering",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation by style", "body": "Shoes are grouped into heels, flats and comforts, with extra collections for black styles, celebrity picks and a shop by heel size page." },
+    { "title": "Size-aware grid", "body": "Collection cards list sizes 36 to 42 under each shoe and cross out sizes that are sold out, alongside the sale price, discount and review count." },
+    { "title": "Product pages", "body": "Product pages show color swatches, size buttons and a size chart, a pay-in-three installment option, an Order on WhatsApp button and a bar showing how close the cart is to free shipping." },
+    { "title": "Reviews and support", "body": "Star ratings appear on cards and product pages, a floating reviews tab opens customer reviews, and a WhatsApp button stays on screen for questions." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Judge.me product reviews", "Baadmay pay-in-three installments", "WhatsApp chat button"],
+  "whyItMatters": "In footwear, a shopper who finds the right style but not their size leaves. Showing sizes in the grid and offering a quick WhatsApp route turns more browsing into orders.",
+  "faqs": [
+    { "q": "What platform is the BlackBeiger store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for heels, flats, comforts and heel sizes, and product variants for size and color." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my footwear brand?", "a": "Yes. We design and build Shopify stores for footwear brands, including style navigation, size-aware product grids and WhatsApp ordering. Tell us about your range and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

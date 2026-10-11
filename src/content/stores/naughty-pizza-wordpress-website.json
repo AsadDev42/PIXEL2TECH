@@ -1,0 +1,44 @@
+{
+  "slug": "naughty-pizza-wordpress-website",
+  "client": "Naughty Pizza",
+  "url": "https://naughty.pizza/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 125,
+  "metaTitle": "Naughty Pizza website | Pixel2Tech",
+  "metaDescription": "WordPress website for Naughty Pizza, a pizzeria in Bedford and Dubai: a location chooser, menu, table booking and click and collect for each restaurant.",
+  "summary": "WordPress website for a contemporary Italian pizzeria with restaurants in Bedford and Dubai.",
+  "overview": "Naughty Pizza is a pizzeria with restaurants in Bedford in the UK and in Dubai, which the brand describes as an authentic, contemporary, gourmet pizza experience inspired by the Amalfi coast. Pixel2Tech built Naughty Pizza's WordPress website as white-label development partner for a digital agency, using Elementor Pro.",
+  "challenge": "The two restaurants are in different countries, with their own phone numbers, opening hours, menus, booking systems and ordering options. Guests needed to reach the right restaurant's details at once, without mixing up the two.",
+  "approach": "The home page is a simple location chooser: guests pick Bedford or Dubai and land on that restaurant's own page. Each location page keeps the same structure, with the story of how the pizza is made, the menu, a gallery, Book A Table and Click & Collect buttons, and local contact details. The Dubai page adds sections for birthdays, events and make-your-own-pizza nights.",
+  "outcome": "A restaurant website where guests choose their location in one tap, then book a table, order for collection or check the menu for that restaurant, on phone or desktop. Both location pages share one template, so another restaurant can be added the same way.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (Elementor Pro)" },
+    { "label": "Site type", "value": "Restaurant website, two locations" },
+    { "label": "Key pages", "value": "Location chooser, menu, booking, contact" }
+  ],
+  "deliverables": [
+    "WordPress website on Elementor Pro",
+    "Location chooser landing page",
+    "Bedford and Dubai location pages",
+    "Table booking and click and collect links",
+    "Menu and gallery sections",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Location first", "body": "A full-screen landing page asks guests to choose Bedford or Dubai before anything else, so every later page shows the right restaurant." },
+    { "title": "Shared page template", "body": "Both location pages follow one Elementor layout: the brand story, a step-by-step look at how the pizza is made, the menu, a gallery and guest reviews." },
+    { "title": "Booking and ordering", "body": "Book A Table and Click & Collect sit in each location's menu bar and link to that restaurant's own reservation and online ordering systems." },
+    { "title": "Local details", "body": "Each page ends with the restaurant's phone number, email, address and opening status, and a WhatsApp chat button gives guests another quick way to get in touch." }
+  ],
+  "technologies": ["WordPress", "Elementor Pro", "Hello Elementor theme", "WhatsApp chat button"],
+  "whyItMatters": "A restaurant site is mostly used to answer one question fast: can I book, order or call? Sending guests to the right location first keeps those answers one tap away.",
+  "faqs": [
+    { "q": "What platform is the Naughty Pizza website built on?", "a": "It runs on WordPress with the Hello Elementor theme and Elementor Pro, with table booking and click and collect linked to each restaurant's own systems." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "mobile": ["mobile-home"]
+  }
+}

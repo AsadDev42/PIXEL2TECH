@@ -605,10 +605,18 @@ function PortfolioDetailPage() {
                   </dt>
                   <dd className="mt-1 font-semibold text-foreground">{item.subcategory}</dd>
                 </div>
+                {item.whiteLabel && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                      Engagement
+                    </dt>
+                    <dd className="mt-1 font-semibold text-foreground">White-label partner</dd>
+                  </div>
+                )}
                 {item.store && (
                   <div>
                     <dt className="text-xs uppercase tracking-widest text-muted-foreground">
-                      Live store
+                      {item.store.kind === "website" ? "Live site" : "Live store"}
                     </dt>
                     <dd className="mt-1 font-semibold">
                       <a
@@ -649,7 +657,11 @@ function PortfolioDetailPage() {
               <>
                 <p className={eyebrow}>The work</p>
                 <h2 id="work-title" className={`mt-2 ${h2Class}`}>
-                  {item.client ? `What we made for ${item.client}` : "What we made"}
+                  {item.whiteLabel
+                    ? `What we built for ${item.client ?? item.title} (white-label)`
+                    : item.client
+                      ? `What we made for ${item.client}`
+                      : "What we made"}
                 </h2>
                 <div className="mt-8">
                   {item.store ? (

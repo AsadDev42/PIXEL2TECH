@@ -1,0 +1,45 @@
+{
+  "slug": "feyenoord-fanshop-shopify-store",
+  "client": "Feyenoord Fanshop",
+  "url": "https://fanshop.feyenoord.nl/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 101,
+  "metaTitle": "Feyenoord Fanshop Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Feyenoord Fanshop, the club's official shop: home, away and third kits, training and matchday wear, shirt printing and two languages.",
+  "summary": "Shopify store for the official fan shop of Rotterdam football club Feyenoord.",
+  "overview": "Feyenoord Fanshop is the online shop of the Rotterdam football club, co-branded with kit partner Castore and selling match kits, training and travel wear, lifestyle clothing, accessories and gifts. Pixel2Tech built the Feyenoord Fanshop Shopify store as white-label development partner for a digital agency, delivering the build for the agency's client.",
+  "challenge": "A club shop runs on the season calendar: each new home, away and third kit needs its own spotlight, in men's, women's and junior sizes. Fans also want shirts printed with a name and number, and the shop serves Dutch speakers first while still welcoming international supporters.",
+  "approach": "The black header pairs the Feyenoord and Castore logos above a menu for kits, training and travel, matchday, lifestyle, accessories, sale and gift cards, with a language switch between Dutch and English. Each kit has its own collection, opened by a short story about the design, then filters for audience (men, women, junior), size and price. Product cards flag shirts that can be personalized, and product pages show size and color pickers, payment badges and a notify me option when a size is sold out.",
+  "outcome": "A Shopify store where a fan can find this season's shirt in the right fit and add printing in a few steps. The flow works the same on a phone as on a desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Castore Teamwear theme)" },
+    { "label": "Catalog", "value": "Match kits, training, matchday, lifestyle, gifts" },
+    { "label": "Shopping", "value": "By kit and audience, shirt printing, NL and EN" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Kit and season collection structure",
+    "Audience, size and price filters",
+    "Shirt personalization flow",
+    "Dutch and English language switch",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Season structure", "body": "Home, away and third kits each get a collection and a hero banner, with matchday ranges split into men, junior and women, and training and travel wear grouped by season." },
+    { "title": "Collections", "body": "Kit collections open with a short description of the design and any running offer, followed by sidebar filters for audience, size and price, grid or list view and sorting." },
+    { "title": "Product pages", "body": "Product pages show breadcrumbs, a thumbnail gallery, size and color buttons, payment method badges, delivery and returns notes and a back in stock alert for sold-out sizes." },
+    { "title": "Mobile", "body": "On phones the logos sit above a full-width search bar and a rotating offer strip, so fans can search for a shirt or gift before they scroll." }
+  ],
+  "technologies": ["Shopify", "Castore Teamwear theme", "Product filters", "Yotpo", "Klarna"],
+  "whyItMatters": "Club merchandise sales peak around kit launches and match days, when fans want the new shirt quickly and in the right size. A store organized around the season, with clear filters and printing built in, keeps those peaks simple to shop.",
+  "faqs": [
+    { "q": "What platform is the Feyenoord Fanshop built on?", "a": "It runs on Shopify with the Castore Teamwear theme, using Shopify collections for each kit and season and filters for audience, size and price." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the agency keeps the client relationship. Share the brief and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

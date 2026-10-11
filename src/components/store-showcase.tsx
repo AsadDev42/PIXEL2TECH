@@ -9,6 +9,8 @@ export type LiveStore = {
   fullPage?: string;
   /** Phone screenshots. */
   mobile: string[];
+  /** "website" for sites that are not online stores (changes a few labels). */
+  kind?: "store" | "website";
 };
 
 function hostOf(url: string) {
@@ -53,15 +55,16 @@ function BrowserFrame({
  */
 export function StoreShowcase({ store, name }: { store: LiveStore; name: string }) {
   const host = hostOf(store.url);
+  const site = store.kind === "website" ? "site" : "store";
   const [hero, ...restDesktop] = store.desktop;
 
   return (
     <div className="space-y-12 md:space-y-16">
       {hero && (
-        <BrowserFrame host={host} label={`${name} store homepage on desktop`}>
+        <BrowserFrame host={host} label={`${name} ${site} homepage on desktop`}>
           <img
             src={hero}
-            alt={`${name} Shopify store homepage on desktop`}
+            alt={`${name} ${site} homepage on desktop`}
             width={1440}
             height={900}
             loading="eager"
@@ -105,7 +108,9 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
           <div>
             <h3 className="text-lg font-bold text-foreground">On mobile</h3>
             <p className="mt-2 text-[15px] text-muted-foreground">
-              Most shoppers arrive on their phones, so the mobile layout matters most.
+              {site === "store"
+                ? "Most shoppers arrive on their phones, so the mobile layout matters most."
+                : "Most visitors arrive on their phones, so the mobile layout matters most."}
             </p>
             <ul className="mt-6 grid grid-cols-2 gap-4 sm:gap-6">
               {store.mobile.map((src, i) => (
@@ -113,7 +118,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
                   <div className="overflow-hidden rounded-[2rem] border-[6px] border-foreground/90 bg-foreground/90 shadow-xl shadow-black/10">
                     <img
                       src={src}
-                      alt={`${name} store on mobile, screen ${i + 1}`}
+                      alt={`${name} ${site} on mobile, screen ${i + 1}`}
                       loading="lazy"
                       decoding="async"
                       draggable={false}
@@ -131,10 +136,10 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
         <ul className="grid gap-8 md:grid-cols-2">
           {restDesktop.map((src, i) => (
             <li key={src}>
-              <BrowserFrame host={host} label={`${name} store page ${i + 2}`}>
+              <BrowserFrame host={host} label={`${name} ${site} page ${i + 2}`}>
                 <img
                   src={src}
-                  alt={`${name} Shopify store, page ${i + 2} on desktop`}
+                  alt={`${name} ${site}, page ${i + 2} on desktop`}
                   width={1440}
                   height={900}
                   loading="lazy"
@@ -154,7 +159,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
         rel="noopener noreferrer"
         className="inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90"
       >
-        Visit the live store
+        Visit the live {site}
         <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
       </a>
     </div>

@@ -1,0 +1,58 @@
+{
+  "slug": "miniso-pakistan-shopify-store",
+  "client": "Miniso Pakistan",
+  "url": "https://miniso.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 62,
+  "metaTitle": "Miniso Pakistan Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Miniso Pakistan: lifestyle goods, toys and licensed merch by category or character, with e-gift vouchers, wish lists and installments.",
+  "summary": "Shopify store for Miniso Pakistan, a retailer of lifestyle products, toys and character merchandise.",
+  "overview": "Miniso Pakistan presents itself as the official Miniso store in Pakistan, selling everyday lifestyle products such as mugs, bottles, bags, beauty items, stationery and toys, along with licensed character collections. We built the Shopify store to hold a large catalog of low-priced items and frequent deals.",
+  "challenge": "Shoppers come in two ways: some want a type of product, such as a water bottle or hair clips, and others want anything from a favorite character line like Harry Potter, Sanrio or One Piece. With many small-ticket items and constant promotions, the store also has to make deals and gift options easy to find.",
+  "approach": "The menu covers Home, Categories, Brands, New Arrivals, Exclusive Discount, a Harry Potter shop and E-Gift Vouchers. The home page opens with a sale banner, then e-gift cards in four values, a round-icon grid of product categories, a second grid of character collections and rows of exclusive deals, new arrivals and character drops. Collection pages add quick links to discount sections, a grid view switch and a sidebar that counts products per character line. Product pages show the was and now price, a free shipping threshold, Baadmay pay-in-3, wish list and compare buttons.",
+  "outcome": "A Shopify store where shoppers can browse by product type or by character and pick up a deal or a gift voucher. On mobile, a fixed bottom bar keeps search, cart, latest arrivals, discounts and account in reach.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Lifestyle goods, beauty, toys, character merch" },
+    { "label": "Shopping", "value": "By category or character, gift vouchers, deals" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category and character collection grids",
+    "E-gift voucher products",
+    "Deal and discount sections",
+    "Wish list, compare and quick view",
+    "Mobile layout with bottom navigation"
+  ],
+  "process": [
+    { "title": "Shop by category", "body": "Round icons on the home page link to categories such as mugs, umbrellas, bottles, writing tools, skin care, earphones, bags, kitchen, toys and storage." },
+    { "title": "Shop by character", "body": "A second grid links to licensed collections such as Pingu, Harry Potter, One Piece, Minions, Lilo and Stitch and BT21, and collection sidebars count products per line." },
+    { "title": "Deals and gifts", "body": "Exclusive deal rows show was and now prices, discount badges link from collection pages, and e-gift vouchers are sold as products in four values." },
+    { "title": "Product pages and mobile", "body": "Product pages list price, discount, free shipping threshold, Baadmay installments, wish list and compare, and the mobile layout adds a fixed bottom bar for search, cart, latest, discounts and account." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Kalles theme",
+    "Wish list and compare",
+    "Baadmay installments",
+    "WhatsApp"
+  ],
+  "whyItMatters": "In a store full of small, giftable items, shoppers buy by character as often as by need. Browsing both ways, plus clear deals and gift vouchers, gives them more reasons to add one more item.",
+  "faqs": [
+    { "q": "What platform is the Miniso Pakistan store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for product categories, licensed character lines, deals and e-gift vouchers." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my retail brand?", "a": "Yes. We design and build Shopify stores for retailers with large catalogs, including category and brand grids, deal sections and mobile bottom navigation. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "bls-uk-shopify-store",
+  "client": "British Lingerie Studio",
+  "url": "https://bls.uk.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 55,
+  "metaTitle": "British Lingerie Studio Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for British Lingerie Studio, a Pakistani lingerie brand: bras by style and fabric, sleepwear, bundles, size guides and a fitting room page.",
+  "summary": "Shopify store for a lingerie brand selling bras, panties, sleepwear and shapewear.",
+  "overview": "British Lingerie Studio (BLS) describes itself as Pakistan's premium lingerie brand, selling lingerie, underwear, sleepwear and loungewear. We built the BLS Shopify store around fit, so shoppers can find the right style, fabric and size online.",
+  "challenge": "Lingerie is hard to buy online without help on fit. Bras come in many styles and fabrics, sizes sell out at different rates, and multi-packs and sets need to be easy to find alongside single items.",
+  "approach": "The menu breaks bras, panties and sleepwear down by style (wired, wireless, push-up, front open, bralette, maternity) and by fabric (cotton, polyamide, lace), with bundles and teens in their own sections. A fitting room link and a Start Sizing banner on the home page point shoppers to sizing help. Product pages show the product code, price, a size guide button, size buttons with sold-out sizes crossed out, add to bag and buy it now, followed by customer reviews.",
+  "outcome": "A fit-focused Shopify store where shoppers can browse by style or fabric, check sizing and buy single items or bundles. Size help, wish lists and order tracking are available on every page, on desktop and mobile.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Belle theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Bras, panties, sleepwear, camis, shapewear, teens"
+    },
+    {
+      "label": "Shopping",
+      "value": "By style, by fabric, bundles, size guides"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Style and fabric navigation",
+    "Size guides and fitting room page",
+    "Bundle collections",
+    "Wish list and quick view",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "Each department has a By Style and a By Fabric column, plus bundles and sets, so shoppers can start from cut or material."
+    },
+    {
+      "title": "Home page",
+      "body": "A hero slider leads into a Just Landed carousel, style shortcuts for daily wear, push-up, t-shirt bra and bralette, a sizing banner and customer reviews."
+    },
+    {
+      "title": "Product pages",
+      "body": "Size guide, size buttons with sold-out states, quantity, add to bag and buy it now, with reviews below."
+    },
+    {
+      "title": "Account and tracking",
+      "body": "Login, wish list, cart and a track your order link sit in the header, with a store locator in the footer."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Belle theme",
+    "Judge.me reviews",
+    "Wish list"
+  ],
+  "whyItMatters": "In lingerie, a wrong size means a return or a lost customer. Putting style, fabric and size help up front makes the first order more likely to fit.",
+  "faqs": [
+    {
+      "q": "What platform is the British Lingerie Studio store built on?",
+      "a": "It runs on Shopify with the Belle theme, using collections for styles, fabrics and bundles, size charts and a review app."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for apparel and lingerie brands, including style and fabric navigation, size guides and bundles. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

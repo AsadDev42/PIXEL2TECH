@@ -1,0 +1,45 @@
+{
+  "slug": "jacques-last-call-shopify-store",
+  "client": "Jacques Last Call",
+  "url": "https://jacqueslastcall.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 134,
+  "metaTitle": "Jacques Last Call Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify outlet store for Jacques Last Call: discounted designer menswear with sale badges, savings on cards, brand menus and pay-later checkout options.",
+  "summary": "Shopify outlet store selling discounted designer menswear from the Boutique Jacques family.",
+  "overview": "Jacques Last Call is the outlet arm of Boutique Jacques, and the main store describes it as luxury and designer menswear starting from 50% off original retail prices. Pixel2Tech built the Last Call Shopify store as white-label development partner for a digital agency, as a separate store from the full-price boutique.",
+  "challenge": "An outlet has to feel like a deal store without losing the premium labels it sells, such as Jack Victor, Stenströms, ETON and PAIGE. Stock is often limited to a few sizes per item, so shoppers need to see the discount and what is left at a glance.",
+  "approach": "The store keeps the Boutique Jacques category, brand and What to Wear menus so returning customers know their way around, but marked-down items carry a sale badge, the original price struck through and a savings percentage. The home page runs a seasonal arrivals banner, a bestsellers block, a step into season row of marked-down pieces, category tiles and a link back to the full-price boutique. A top bar states the outlet promise of designer brands at everyday discounts along with the Sezzle minimum order.",
+  "outcome": "A Shopify outlet where bargain hunters can browse familiar designer labels, see the saving on each sale item and check out with pay-later options, while the full-price boutique stays a separate store.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Molding theme)" },
+    { "label": "Store type", "value": "Outlet for discounted designer menswear" },
+    { "label": "Shopping", "value": "Savings on sale cards, brand and category menus" }
+  ],
+  "deliverables": [
+    "Shopify outlet storefront",
+    "Sale badges and savings display",
+    "Brand and category mega menus",
+    "Collection filters by category, product type and brand",
+    "Product page with stock notice",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Outlet positioning", "body": "The top bar and home page frame the store as an outlet for designer brands at everyday discounts, with a section that sends shoppers who cannot find their size to the main Boutique Jacques store." },
+    { "title": "Discount-first cards", "body": "Product cards and collection grids show a red sale badge, the original price struck through, the sale price and a green savings label, so the deal reads before the product name." },
+    { "title": "Collections and filters", "body": "Collection pages offer filters by category, product type and brand with item counts, grid or list views and best selling sort, which helps shoppers dig through limited sizes quickly." },
+    { "title": "Product pages and checkout", "body": "Product pages show the price in Canadian dollars, a free shipping threshold, the available sizes, a low stock notice and a size chart, with Shop Pay and Sezzle at checkout." }
+  ],
+  "technologies": ["Shopify", "Molding theme", "Boost product filters", "Omnisend", "Sezzle"],
+  "whyItMatters": "An outlet store sells on the size of the saving and the scarcity of stock. Showing both on product cards, while keeping the menus of the parent boutique, makes clearance shopping fast without cheapening the brands.",
+  "faqs": [
+    { "q": "How is the Last Call store different from Boutique Jacques?", "a": "Last Call is a separate Shopify store for discounted designer menswear. It shares the menu structure and theme of the full-price boutique but leads with sale badges, struck-through prices and savings percentages on marked-down products." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "rios-shopify-store",
+  "client": "RIOS",
+  "url": "https://www.rios.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 51,
+  "metaTitle": "RIOS Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for RIOS, a multi-brand beauty and lingerie retailer in Pakistan: category search, deep menus, brand filters, product compare and quick buy.",
+  "summary": "Shopify store for a multi-brand cosmetics, skincare, lingerie and fragrance retailer.",
+  "overview": "RIOS describes itself as a multi-brand online shop for cosmetics, beauty, skincare and women's undergarments. We built the RIOS Shopify store to carry a large catalog from many brands, from Flormar and L'Oreal makeup to the Belleza lingerie line.",
+  "challenge": "A multi-brand beauty store has to serve two kinds of shoppers: those who know the brand they want and those who only know the product type, such as a primer or a hair mask. Makeup, skincare, hair care, personal care, lingerie and electronics all need their own deep menus.",
+  "approach": "A search bar with a category selector sits at the top, above a purple menu bar for sale, new arrivals, makeup, skin care, hair care, personal care, lingerie, fragrances, electronics and brands. The home page mixes promo carousels, a Chosen For You row, featured brands, latest arrivals and a brand strip. Collection pages add price and brand filters, a compare toggle and grid or list views, and product pages keep add to cart and buy it now side by side.",
+  "outcome": "A busy, promotion-led Shopify store where shoppers can search by category, filter by brand and compare products across a wide beauty and lingerie range. The same menus, search and filters carry over to mobile, where the header search stays in view.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Enterprise theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Makeup, skincare, hair care, lingerie, fragrances"
+    },
+    {
+      "label": "Shopping",
+      "value": "Category search, brand filters, product compare"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Multi-level category menus",
+    "Brand pages and brand filters",
+    "Collection filters and compare",
+    "Promo carousels",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "Each department opens a menu of sub-categories, such as face, eyes, lips and nails under makeup, with a separate brands menu for shoppers who start from a label."
+    },
+    {
+      "title": "Search",
+      "body": "A wide search bar with a category dropdown and rotating placeholder suggestions sits in the header on desktop and mobile."
+    },
+    {
+      "title": "Collections",
+      "body": "Collection pages show a price slider, brand checkboxes with counts, sorting, a compare toggle and grid or list layouts."
+    },
+    {
+      "title": "Home page merchandising",
+      "body": "Promo sliders, curated product rows, featured brand banners and themed sections like hair care essentials give the team places to run campaigns."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Enterprise theme",
+    "Judge.me reviews",
+    "Shopify filters"
+  ],
+  "whyItMatters": "In multi-brand beauty retail, shoppers arrive with either a brand or a need in mind. A store that supports both routes keeps them from leaving to search elsewhere.",
+  "faqs": [
+    {
+      "q": "What platform is the RIOS store built on?",
+      "a": "It runs on Shopify with the Enterprise theme, using collections for categories and brands, storefront filters and a review widget."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for multi-brand retailers, including deep category menus, brand filters and campaign-ready home pages. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

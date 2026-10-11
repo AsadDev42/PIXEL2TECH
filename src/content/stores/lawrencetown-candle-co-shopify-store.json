@@ -1,0 +1,44 @@
+{
+  "slug": "lawrencetown-candle-co-shopify-store",
+  "client": "Lawrencetown Candle Co.",
+  "url": "https://www.lawrencetowncandleco.ca/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 103,
+  "metaTitle": "Lawrencetown Candle Co. Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Lawrencetown Candle Co., a Nova Scotia candle maker: soy candles and wax melts by scent family, bundles and wholesale pages.",
+  "summary": "Shopify store for a Nova Scotia maker of soy candles and wax melts.",
+  "overview": "Lawrencetown Candle Co. sells soy wax candles, wax melts, bundles and candle accessories, and says its candles are hand-poured in Nova Scotia. Pixel2Tech built the Lawrencetown Candle Co. Shopify store as white-label development partner for a digital agency, handling the development for the agency's client.",
+  "challenge": "Candles are chosen by scent, which is hard to convey on a screen, and most fragrances come both as a candle and as a wax melt. The shop also changes its line-up with the seasons and serves stores that want to stock the products, not only home shoppers.",
+  "approach": "The menu has a seasonal Hello Fall entry, a Shop menu split into soy candles, wax melts and accessories, and an Our Fragrances menu that groups every scent into families: woodsy and earthy, fruity and floral, and bakery and cafe. A build-your-own bundle offer and a wax melt bundle encourage mixed orders. Product pages lead with a styled scent photo, then size options, quantity, Shop Pay buttons and scent notes, and the About menu links to retailers, events, candle care and a wholesale inquiry page.",
+  "outcome": "A Shopify store where a shopper can pick a scent family, compare candle and wax melt versions and build a bundle. Retailers get a direct route to wholesale from the same menu.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (customized Dawn theme)" },
+    { "label": "Catalog", "value": "Soy candles, wax melts, bundles, accessories" },
+    { "label": "Shopping", "value": "By scent family, bundles, wholesale inquiries" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Scent family navigation",
+    "Bundle offers",
+    "Product page layout",
+    "Wholesale and retailer pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Menus by scent", "body": "Our Fragrances groups each scent into woodsy and earthy, fruity and floral, or bakery and cafe, while Shop splits products into candles, wax melts and accessories, each with best sellers and new arrivals." },
+    { "title": "Seasonal home page", "body": "The home page opens with a seasonal hero slide, then a two wick candle bundle, shop tiles for candles, wax melts and accessories, best sellers, customer testimonials and the scent families." },
+    { "title": "Product pages", "body": "Product pages show a breadcrumb, scent photography, size buttons, quantity, add to cart and Shop Pay, followed by the scent notes and a description of the fragrance." },
+    { "title": "Trade and mobile", "body": "About links cover retailers, upcoming events, candle care, location and a gallery, with a separate wholesale inquiry page, and the mobile layout keeps the logo, cart and search one tap away." }
+  ],
+  "technologies": ["Shopify", "Dawn-based theme", "Judge.me reviews", "Shop Pay", "Bundle offers"],
+  "whyItMatters": "Small candle makers live on repeat orders and on local shops that carry their range. A store that sells by scent, rewards bundles and points stockists to wholesale serves both kinds of buyer.",
+  "faqs": [
+    { "q": "What platform is the Lawrencetown Candle Co. store built on?", "a": "It runs on Shopify on a customized Dawn-based theme, using Shopify collections for candles, wax melts, bundles and each scent family." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, and the agency stays the contact for its client. Send us the brief and we will reply with a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

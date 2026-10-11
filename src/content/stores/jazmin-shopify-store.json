@@ -1,0 +1,84 @@
+{
+  "slug": "jazmin-shopify-store",
+  "client": "Jazmin",
+  "url": "https://jazmin.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 53,
+  "metaTitle": "Jazmin Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Jazmin, a Pakistani women's wear label: velvet formals, unstitched winter and ready to wear, shop-the-look sections and fabric filters.",
+  "summary": "Shopify store for a Pakistani women's fashion label selling formals, unstitched fabric and ready to wear.",
+  "overview": "Jazmin describes itself as a Pakistani brand offering women's casual and formal wear. We built Jazmin's Shopify store to present its seasonal collections, such as velvet formals, unstitched winter and ready to wear, with a quiet, editorial layout.",
+  "challenge": "Each season brings new named collections, and the same design can be sold unstitched or as ready to wear. Shoppers need to browse by collection and fabric, then see exactly what a suit includes before buying.",
+  "approach": "A minimal header with a slide-out menu, search, wish list and cart sits under a scrolling announcement bar. The home page leads with a full-width campaign slider, then collection tiles for velvet, unstitched winter, formals and ready to wear, a weekly top five and a shop-the-look carousel. Collection pages offer filters for availability, price, fabric, size, pieces and product type, and product pages show the article code, number of pieces, type options and tabs for description, product information, shipping and care.",
+  "outcome": "An image-led Shopify store where shoppers can browse by season and fabric, shop complete looks and see piece counts and care details before adding to cart. The same filters and product tabs work on mobile, where the header stays compact.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Prestige theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Formals, unstitched, ready to wear, accessories"
+    },
+    {
+      "label": "Shopping",
+      "value": "Collections, fabric filters, shop the look"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Seasonal collection pages",
+    "Fabric and piece filters",
+    "Shop-the-look section",
+    "Wish list",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Collections",
+      "body": "Named seasonal drops sit alongside evergreen collections for formals, ready to wear, velvet and sale, each reachable from the home page tiles and menu."
+    },
+    {
+      "title": "Home page",
+      "body": "A campaign slider, collection tiles with shop buttons, a newsletter band, a trending top five and a shop-the-look carousel with tagged products."
+    },
+    {
+      "title": "Filtering",
+      "body": "Collection pages filter by availability, price, fabric, categories, size, pieces and product type, with grid density options and sorting."
+    },
+    {
+      "title": "Product pages",
+      "body": "Each product shows the article code, piece count and type, with tabs for description, product information, shipping and care instructions."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Prestige theme",
+    "Shopify filters",
+    "Wish list"
+  ],
+  "whyItMatters": "For unstitched and formal wear, shoppers want to know the fabric and what is included before they buy. Clear filters and product details reduce doubt on high-value orders.",
+  "faqs": [
+    {
+      "q": "What platform is the Jazmin store built on?",
+      "a": "It runs on Shopify with the Prestige theme, using collections for seasonal drops, storefront filters for fabric and pieces, and a wish list."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for fashion labels, including seasonal collection pages, shop-the-look sections and product filters. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "bulir-website",
+  "client": "Bulir",
+  "url": "https://www.bulir.com/",
+  "platform": "Next.js",
+  "engagement": "white-label",
+  "order": 121,
+  "metaTitle": "Bulir website | Pixel2Tech",
+  "metaDescription": "White-label Next.js website for Bulir, an Angolan app that connects clients with verified tradespeople: app downloads, how it works, safe payments, FAQs.",
+  "summary": "Next.js landing website for a mobile app that connects clients in Angola with verified home service professionals.",
+  "overview": "Bulir is a mobile app that connects people in Angola with electricians, plumbers, AC technicians, cleaners and other professionals, which the app calls Bulidores. Pixel2Tech built Bulir's Portuguese-language website as white-label development partner for a digital agency, with one job: explain the app and send visitors to the App Store or Play Store.",
+  "challenge": "The site serves two sides of a marketplace, clients who need a job done and professionals who want work. It also has to build trust for paying a stranger through an app, which means explaining verification and payment protection in plain terms.",
+  "approach": "The header carries How it works, Services, Safety, FAQ and Help Center links plus a Client and Bulidor toggle for the two audiences. A dark hero with phone mockups leads into a four-step how it works section, service categories, sections on verified professionals and price transparency, featured professional cards with ratings and hourly rates, and an FAQ. App Store and Play Store buttons repeat through the page.",
+  "outcome": "A focused landing website that explains how to request a service, compare offers and pay safely, with a download button never far away on desktop or phone. The Client and Bulidor switch gives each side of the marketplace its own route into the app from the same page.",
+  "results": [
+    { "label": "Platform", "value": "Next.js" },
+    { "label": "Site type", "value": "App landing site for a services marketplace" },
+    { "label": "Key sections", "value": "How it works, services, safety, FAQ, help center" }
+  ],
+  "deliverables": [
+    "Next.js landing website",
+    "Client and professional audience toggle",
+    "How it works and service category sections",
+    "Trust and payment sections",
+    "App store download calls to action",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two audiences", "body": "A Client and Bulidor switch in the header lets visitors choose whether they are looking for help or offering their services." },
+    { "title": "How it works", "body": "Four steps walk through downloading the app, posting a request with photos and an address, receiving offers from professionals and paying once the job is accepted." },
+    { "title": "Trust and pricing", "body": "Sections explain identity and document checks, client reviews, upfront quotes, escrow-style payment that is released when the work is done, and payment by Multicaixa Express or reference." },
+    { "title": "Mobile first", "body": "On phones the hero, store buttons and service stats stack in one column, matching the app-first audience the site is written for." }
+  ],
+  "technologies": ["Next.js", "React", "App Store and Play Store links"],
+  "whyItMatters": "A services marketplace only works if both sides trust it. A site that explains verification, pricing and protected payments before the download makes it easier for clients and professionals to sign up.",
+  "faqs": [
+    { "q": "What is the Bulir website built with?", "a": "It is built with Next.js and React as a single landing page in Portuguese, with sections for how it works, services, safety, FAQs and links to the help center and app stores." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "mobile": ["mobile-home"]
+  }
+}

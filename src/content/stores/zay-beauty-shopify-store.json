@@ -1,0 +1,57 @@
+{
+  "slug": "zay-beauty-shopify-store",
+  "client": "Zay Beauty",
+  "url": "https://pk.zaybeauty.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 63,
+  "metaTitle": "Zay Beauty Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Zay Beauty, a Pakistani makeup brand: face, eyes, lips and tools, with shade swatches, shoppable video, routine add-ons and bundle deals.",
+  "summary": "Shopify store for a Pakistani makeup brand selling face, eye and lip products, tools and bundle deals.",
+  "overview": "Zay Beauty is a Pakistani makeup brand with a focused range of face, eye and lip products, from Lip Pashminas and brow powders named after cities to sponges and brushes. We built the brand's Shopify store to show off shades, share how products look in use, and turn single purchases into routines.",
+  "challenge": "Makeup is bought on color and finish, which is hard to judge from a product photo alone. The brand also sells many products in shade families and multi-buy sets, which need clear choices without cluttering the page.",
+  "approach": "The header pairs a short menu of Featured, Face, Eyes, Lip, Tools and Deals with a search bar labeled I'm looking for. The home page moves from a campaign hero into image tiles for eyes, complexion, tools and lips, then featured products, a row of shoppable videos, bestsellers and deals. Collection pages open with a short category intro, a filter button and grid or list views. Product pages show shade swatches, star ratings, Add to cart and Buy it now, Baadmay installments and a Complete Your Routine block with suggested products.",
+  "outcome": "A Shopify store where shoppers can see products on real faces, choose a shade from swatches and add matching items in one step. On mobile, a fixed bar keeps Home, Shop and Cart in reach.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Glozin theme)" },
+    { "label": "Catalog", "value": "Face, eyes, lips, tools and bundle deals" },
+    { "label": "Shopping", "value": "Shade swatches, shoppable video, routine add-ons" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category tiles and menu",
+    "Shoppable video row",
+    "Product page with shade swatches",
+    "Routine add-on block",
+    "Mobile layout with bottom bar"
+  ],
+  "process": [
+    { "title": "Categories", "body": "Face, Eyes and Lip each break down into product types such as blush, foundation, brows, highlighter, eyeshadow, mascara and liner, pigments, cream and liquid lipsticks." },
+    { "title": "Video and bestsellers", "body": "The home page adds a Watch. Click. Own row where each video carries the product name and price, followed by bestsellers and a deals row for sets and bundles." },
+    { "title": "Product pages", "body": "Shade swatches update the selected shade name, with ratings, quantity, Add to cart, Buy it now, Baadmay monthly installments and a Complete Your Routine block with tick-to-add products." },
+    { "title": "Mobile", "body": "On phones, a bottom bar keeps Home, Shop and Cart in reach, and product galleries mix photos with short videos." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Glozin theme",
+    "Judge.me reviews",
+    "Baadmay installments"
+  ],
+  "whyItMatters": "Shade-led products sell better when shoppers can see them in motion and on skin. Swatches, video and routine suggestions on the product page cut down on guesswork.",
+  "faqs": [
+    { "q": "What platform is the Zay Beauty store built on?", "a": "It runs on Shopify with the Glozin theme, using Shopify collections for face, eyes, lips, tools and deals, with Judge.me reviews and shade variants for each product." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my makeup brand?", "a": "Yes. We design and build Shopify stores for beauty brands, including shade swatches, shoppable video rows and routine add-ons. Tell us about your range and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "boutique-jacques-shopify-store",
+  "client": "Boutique Jacques",
+  "url": "https://www.boutiquejacques.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 131,
+  "metaTitle": "Boutique Jacques Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Boutique Jacques, a Montreal menswear boutique: designer brands A to Z, made to measure, fitting bookings and English and French pages.",
+  "summary": "Shopify store for a Montreal menswear boutique selling designer suits, sport jackets, shirts and accessories.",
+  "overview": "Boutique Jacques is a Montreal menswear store that sells high-fashion suits, blazers, shirts, knitwear and accessories from labels such as ETON, Stenströms, Jack Victor, Paul & Shark and Luigi Bianchi Mantova. Pixel2Tech built the boutique's full-price Shopify store as white-label development partner for a digital agency, working to the agency's direction for its client.",
+  "challenge": "The boutique carries a large catalog across dozens of brands and categories, from socks to suits that cost well over a thousand dollars. Its customers shop by label as much as by garment, and many want a fitting or a made-to-measure suit, which has to start online but happen in the Montreal store.",
+  "approach": "The main menu leads with New Arrivals and Made to Measure, then Shop by Category, Shop by Brand with an A to Z index of labels, What to Wear guides for work, weddings, date night and weekends, and a sale section. A top bar invites shoppers to book a fitting. The home page combines a brand logo carousel, new-season sport jacket and knitwear rows, category tiles for dress shirts, casual pants, accessories and footwear, a shop the look strip and articles from the Jacques Journal.",
+  "outcome": "A Shopify store where a shopper can browse by brand or occasion, book a fitting or made-to-measure appointment, and switch between English and French. Shoppers looking for markdowns are sent to the separate Last Call outlet store from the home page.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Molding theme)" },
+    { "label": "Catalog", "value": "Suits, sport jackets, shirts, knitwear, footwear, accessories" },
+    { "label": "Shopping", "value": "By brand, category or occasion, fitting bookings" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Brand A to Z and category mega menus",
+    "Made to measure and appointment entry points",
+    "Collection pages with filters and view options",
+    "Product pages with size chart and stock notice",
+    "English and French store"
+  ],
+  "process": [
+    { "title": "Menus by brand and garment", "body": "Shop by Category splits the range into accessories, footwear, casual wear, knits, loungewear, outerwear, pants, shirts, tailored clothing and technical clothing, while Shop by Brand groups labels alphabetically from AG Jeans to Tramarossa." },
+    { "title": "In-store services online", "body": "Made to Measure has its own menu entry with a book an appointment link, and a top bar keeps the fitting booking in view on every page." },
+    { "title": "Collections and product pages", "body": "Collection pages open with a category banner, then a category filter sidebar, column toggles, a product count and sorting. Product pages show the brand, price in Canadian dollars, a shipping threshold box, a size chart, US and EU sizes and a low stock notice above Add to cart and Shop Pay." },
+    { "title": "Content and languages", "body": "What to Wear guides and the Jacques Journal, with Montreal style guides on suits, coats and ties, give shoppers advice beyond the product grid, and a language switcher serves the store in English and French." }
+  ],
+  "technologies": ["Shopify", "Molding theme", "Boost product filters", "Omnisend", "Sezzle"],
+  "whyItMatters": "Designer menswear customers often buy by label and still want the tailoring service of a physical boutique. A store that combines brand-first browsing with fitting bookings brings both sides of the business online.",
+  "faqs": [
+    { "q": "What platform is the Boutique Jacques store built on?", "a": "It runs on Shopify with the Molding theme, using Shopify collections for categories, brands and occasion guides, Boost for product filters and an English and French language switcher." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

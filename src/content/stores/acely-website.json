@@ -1,0 +1,81 @@
+{
+  "slug": "acely-website",
+  "client": "Acely",
+  "url": "https://acely.com/",
+  "platform": "Next.js",
+  "engagement": "white-label",
+  "order": 120,
+  "metaTitle": "Acely website | Pixel2Tech",
+  "metaDescription": "White-label Next.js website for Acely, an SAT and ACT test prep platform: free trial sign-up, how it works steps, plan pricing, FAQs and exam pages.",
+  "summary": "Next.js marketing website for an online SAT and ACT test prep platform.",
+  "overview": "Acely is a test prep platform that the company describes as a personal study trainer for the SAT and ACT, with personalized study plans, an AI tutor and full-length practice tests. Pixel2Tech built Acely's website as white-label development partner for a digital agency, turning the product's features and plans into a clear path to a free trial.",
+  "challenge": "The site speaks to two audiences at once: students who want to start practicing and parents who compare cost, results and support. It also has to cover several exams, from the SAT and ACT to the PSAT and AP subjects, without crowding the home page.",
+  "approach": "A banner offers a free practice test, and the header keeps How it works, a Test prep menu, Pricing, College admissions, Login and a Try for free button in view. The home page runs from the hero to university logos, a three-step how it works section, a student score ticker, feature cards, reviews, a scrolling question demo, plan pricing and an FAQ. The footer links to exam pages for each test, comparison pages and parent resources.",
+  "outcome": "A marketing website that walks students and parents from the first question to a free trial, with pricing, FAQs and exam-specific pages one click away on desktop and phone. Each section answers one question a family might have, so the page reads as a guided tour of the product rather than a list of features.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Next.js"
+    },
+    {
+      "label": "Site type",
+      "value": "SaaS marketing site for test prep"
+    },
+    {
+      "label": "Key pages",
+      "value": "Home, how it works, test prep, pricing, FAQ"
+    }
+  ],
+  "deliverables": [
+    "Next.js marketing website",
+    "Home page with free trial calls to action",
+    "Pricing plan section",
+    "FAQ section",
+    "Exam and comparison page links",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Structure",
+      "body": "Navigation covers how it works, test prep for the SAT, ACT, PSAT and AP, pricing and college admissions, with Login and Try for free kept in the header."
+    },
+    {
+      "title": "Product story",
+      "body": "The home page explains the product in three steps (diagnostic test, personalized plan, focused sessions), then shows feature cards and an animated stream of practice questions marked correct, incorrect or remix."
+    },
+    {
+      "title": "Pricing and FAQ",
+      "body": "Annual, quarterly and monthly plans sit side by side with selectable cards, followed by an FAQ that answers parent, beginner and free trial questions."
+    },
+    {
+      "title": "Mobile",
+      "body": "On phones the hero stacks headline, call to action and image, and the menu collapses into a single icon so the free trial button stays the main action."
+    }
+  ],
+  "technologies": [
+    "Next.js",
+    "React",
+    "Next.js image optimization",
+    "Vercel"
+  ],
+  "whyItMatters": "Test prep is a decision students and parents make together. A site that answers both groups' questions and keeps the free trial in reach shortens the step from interest to first practice session.",
+  "faqs": [
+    {
+      "q": "What is the Acely website built with?",
+      "a": "It is built with Next.js and React and served from Vercel, with optimized images and separate pages for each exam, pricing and help."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home"
+    ]
+  }
+}

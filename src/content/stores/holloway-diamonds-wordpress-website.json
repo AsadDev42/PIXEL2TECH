@@ -1,0 +1,45 @@
+{
+  "slug": "holloway-diamonds-wordpress-website",
+  "client": "Holloway Diamonds",
+  "url": "https://www.hollowaydiamonds.com.au/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 124,
+  "metaTitle": "Holloway Diamonds website | Pixel2Tech",
+  "metaDescription": "WordPress and WooCommerce site for Holloway Diamonds, a Melbourne jeweler: an online jewelry shop, engagement ring menus and showroom appointment booking.",
+  "summary": "WordPress and WooCommerce website for a Melbourne diamond jeweler with three showrooms.",
+  "overview": "Holloway Diamonds is a Melbourne jeweler with showrooms in Armadale, Brighton and Canterbury, focused on natural diamond engagement rings and fine jewelry. Pixel2Tech built Holloway Diamonds' WordPress website as white-label development partner for a digital agency. The site pairs an online jewelry shop on WooCommerce with appointment booking for the showrooms.",
+  "challenge": "Diamond jewelry is a considered purchase: some customers buy online, while many want to see a ring in person or have one made. The agency's client needed one site that serves both, with a deep catalog that can be browsed by style, shape, color and gemstone, and clear routes to three showrooms.",
+  "approach": "A mega menu breaks engagement rings down by style, shape, color and gemstone, and jewelry by category and curated collection. The header keeps all three showroom phone numbers and a Make an Appointment button on every page, and the hero offers an Ideal Scope appointment next to the main call to action. Services such as custom-made jewelry, remodeling and the diamond upgrade program, plus diamond education pages, have their own menu sections.",
+  "outcome": "A WordPress site where buyers can shop jewelry online, read up on diamonds or book a showroom visit, with the same paths on desktop and mobile. New pieces and collections are added through WooCommerce, so the catalog can grow with the range.",
+  "results": [
+    { "label": "Platform", "value": "WordPress + WooCommerce (Divi)" },
+    { "label": "Site type", "value": "Jewelry shop and showroom appointments" },
+    { "label": "Key pages", "value": "Engagement rings, jewelry, services, education" }
+  ],
+  "deliverables": [
+    "WordPress website on Divi",
+    "WooCommerce shop, cart and wishlist",
+    "Engagement ring and jewelry mega menu",
+    "Appointment calls to action",
+    "Showroom contact pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Catalog structure", "body": "Engagement rings are organized by style, shape, color and gemstone, and jewelry by category, from rings and earrings to tennis jewelry and curated collections, all reachable from one mega menu." },
+    { "title": "Online shop", "body": "WooCommerce runs the product pages, cart and checkout, with live product search and a wishlist so buyers can shortlist pieces before deciding." },
+    { "title": "Showroom booking", "body": "Phone numbers for Armadale, Brighton and Canterbury and a Make an Appointment button stay in the header, so an in-person visit is always one step away." },
+    { "title": "Services and education", "body": "Custom-made jewelry, remodeling, the diamond upgrade program and diamond education content each have their own pages, along with FAQs and a buying guide on the home page." }
+  ],
+  "technologies": ["WordPress", "WooCommerce", "Divi", "WooCommerce product search", "YITH WooCommerce Wishlist"],
+  "whyItMatters": "With high-value jewelry, the website often decides whether a buyer orders online or visits a showroom. Giving both paths equal weight serves buyers at either stage.",
+  "faqs": [
+    { "q": "What platform is the Holloway Diamonds website built on?", "a": "It runs on WordPress with the Divi theme, and WooCommerce powers the online shop, cart, product search and wishlist." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

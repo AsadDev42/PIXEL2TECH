@@ -1,0 +1,80 @@
+{
+  "slug": "bombas-shopify-store",
+  "client": "Bombas",
+  "url": "https://bombas.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 138,
+  "metaTitle": "Bombas Shopify store | Pixel2Tech",
+  "metaDescription": "Headless Shopify store for Bombas, the sock and apparel brand: a Next.js front end, menus by gender, age and sport, sock height filters and pack pricing.",
+  "summary": "Headless Shopify store with a Next.js front end for a sock, underwear, T-shirt and slipper brand built around a one purchased, one donated model.",
+  "overview": "Bombas describes itself as a comfort focused sock and apparel brand with a mission to help those in need, donating an item for every item purchased. Pixel2Tech built Bombas's headless Shopify store as white-label development partner for a digital agency, working on the agency's client's Next.js storefront.",
+  "challenge": "The range covers socks, underwear, bralettes, T-shirts and footwear for women, men and four kids' age groups, plus a full sport line by activity and cushion level. Every product also carries the giving message, and packs, collaborations and gifting have to sit alongside the core range without crowding it.",
+  "approach": "The storefront is a Next.js app on Vercel with content managed in Contentful and Shopify running products and checkout headlessly. Mega menus split Women, Men and Kids by category and style, Kids by baby, toddler, junior and youth, and Sport by run, gym and train, studio, cycle, hike and golf and by cushion weight. Collection pages open with a dark banner of activity tiles, then filters for size with US size ranges and activity, while product pages offer single or pack options, color and size, a size guide and a purchased-equals-donated line under the add to bag button.",
+  "outcome": "A content-driven Shopify storefront where shoppers can browse by who they are buying for, by sport or by sock height, and see the giving model on every product they add to the bag. Packs, collaborations and gifting sit in their own menu sections, so the core range stays easy to browse.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Headless Shopify, Next.js front end"
+    },
+    {
+      "label": "Catalog",
+      "value": "Socks, underwear, T-shirts, slippers and shoes"
+    },
+    {
+      "label": "Shopping",
+      "value": "By gender, kids' age, sport, sock height, packs"
+    }
+  ],
+  "deliverables": [
+    "Headless Shopify storefront",
+    "Mega menus by gender, age and sport",
+    "Collection pages with activity tiles and filters",
+    "Product page with pack and size options",
+    "Contentful-managed home page sections"
+  ],
+  "process": [
+    {
+      "title": "Headless setup",
+      "body": "A Next.js front end hosted on Vercel renders the store, with Shopify handling products and checkout and Contentful supplying the images and editorial content."
+    },
+    {
+      "title": "Navigation",
+      "body": "Mega menus list every category and style for Women, Men and Kids, plus shops for new releases, best sellers, gifts, packs, collaborations and a build-a-pack offer."
+    },
+    {
+      "title": "Collections",
+      "body": "Sport collections lead with activity tiles such as run, studio, compression, hike and golf, and the sidebar filters by size, with the US shoe size range shown next to each size."
+    },
+    {
+      "title": "Home and product pages",
+      "body": "The home page moves from category tiles and a seasonal hero to style tiles, collaboration and new arrival rows with quick view, sock height tiles and the donation story, and product pages pair a single or pack toggle with color, size and add to bag."
+    }
+  ],
+  "technologies": [
+    "Shopify (headless)",
+    "Next.js",
+    "Vercel",
+    "Contentful",
+    "Global-e"
+  ],
+  "whyItMatters": "A brand with this many categories, audiences and campaigns needs a store that can change its content often without slowing down. A headless setup lets the editorial side move quickly while Shopify keeps products and checkout reliable.",
+  "faqs": [
+    {
+      "q": "What platform is the Bombas store built on?",
+      "a": "It is a headless Shopify store. A Next.js front end on Vercel renders the pages, Contentful manages the content and images, and Shopify runs products and checkout."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the work is presented as the agency's own. Share the scope and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "mobile": []
+  }
+}

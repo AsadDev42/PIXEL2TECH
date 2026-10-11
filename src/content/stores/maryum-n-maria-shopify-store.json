@@ -1,0 +1,45 @@
+{
+  "slug": "maryum-n-maria-shopify-store",
+  "client": "Maryum N Maria",
+  "url": "https://maryumnmaria.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 79,
+  "metaTitle": "Maryum N Maria Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Maryum N Maria, a Pakistani womenswear label: shop by season, fit and video, embroidered pret, unstitched lawn and installment payments.",
+  "summary": "Shopify store for a Pakistani womenswear label selling embroidered ready to wear, unstitched and formal outfits.",
+  "overview": "Maryum N Maria presents its range as embroidered outfits including bridal wear, unstitched lawn, luxury pret and ready to wear dresses, released as named collections each season. We built Maryum N Maria's Shopify store to hold a large catalog of these collections and give shoppers several ways into it.",
+  "challenge": "With many named collections live at once, from velvet and winter edits to timeless lawn and wedding pieces, a single menu can quickly become hard to read. Shoppers also browse in different ways: by season, by occasion and fit, or by seeing an outfit in motion before they buy.",
+  "approach": "The menu covers New In, Embroidered, Best Seller, Ready to Wear, MNM Signature, All Seasons, Timeless Lawn and a sale link, with dropdowns that show how many products each collection holds. Below a campaign slider, the homepage offers Shop By Season, Shop By Fit (luxe, basics, formal edit, wedding edit, unstitched, everywear staples), Shop By Video with shoppable clips, New In, Shop By Type and Shop By Collection. Product pages show sizes, a size chart, a pay-in-three installment option, a prepaid discount code and accordions for description, disclaimer and returns.",
+  "outcome": "A Shopify store where shoppers can browse a large collection-driven catalog by season, fit or video, and pay in full or in installments on any screen.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Embroidered pret, unstitched lawn, formal and wedding wear" },
+    { "label": "Shopping", "value": "By season, by fit, by video, by collection" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Collection mega menu",
+    "Shop by season and fit sections",
+    "Shoppable video row",
+    "Product page layout",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Collections and menu", "body": "Seasonal releases such as Sitara Roz, Heirloom, Kaar and the Row Edit sit under clear menu groups, and dropdowns show the product count for each one." },
+    { "title": "Several ways to browse", "body": "Homepage sections let shoppers start from a season, a fit or occasion, a garment type or a named collection, with a video row that adds products to the cart from the clip." },
+    { "title": "Product pages", "body": "Product pages show the outfit code, price, size buttons, size chart, a pay-in-three installment option and a copyable prepaid discount code, with policy details in accordions." },
+    { "title": "Mobile and local touches", "body": "On phones a bottom bar links to Account, Track and WhatsApp, a currency selector supports overseas orders, and the announcement bar notes same-day delivery in Lahore." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Baadmay pay-in-three installments", "Shoppable video", "Wishlist"],
+  "whyItMatters": "Womenswear labels in Pakistan launch many collections a year, and shoppers browse by occasion as much as by name. A store with several entry points and flexible payment keeps a large catalog easy to shop.",
+  "faqs": [
+    { "q": "What platform is the Maryum N Maria store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for seasons, fits and named releases, plus a pay-in-three installment option on product pages." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my clothing brand?", "a": "Yes. We design and build Shopify stores for fashion labels, including collection menus, shop-by sections, shoppable video and product page layouts. Tell us about your collections and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

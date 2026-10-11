@@ -1,0 +1,45 @@
+{
+  "slug": "lean-life-essentials-shopify-store",
+  "client": "Lean Life Essentials",
+  "url": "https://leanlifeessentials.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 135,
+  "metaTitle": "Lean Life Essentials Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Lean Life Essentials, a US supplement brand: six product families, editorial home page sections, wish lists and Shop Pay installments.",
+  "summary": "Shopify store for a private-label supplement brand selling fitness, weight management and wellness products.",
+  "overview": "Lean Life Essentials sells its own line of supplements under the tagline \"Fuel Your Fitness\", from fat burners and amino acid powders to collagen gummies and functional coffee. Pixel2Tech built the brand's Shopify store as white-label development partner for a digital agency, delivering the storefront for the agency's client.",
+  "challenge": "The range is small, at around 30 products by the brand's own count, but it spans capsules, drops, gummies, powders and coffee blends. Each product needs room for a full description, supplement facts and usage warnings, and some items carry shipping restrictions that have to be stated clearly.",
+  "approach": "The catalog is split into six families that run through the menu and the home page: specialty supplements, amino acids and blends, proteins and blends, vitamins and minerals, natural extracts, and food and beverages. The home page alternates large lifestyle banners for each family with product carousels and a featured product block that shows the full product description in place. Product pages pair an image and label gallery with price, a Shop Pay installments note, quantity, add to cart, buy it now and a wish list button, followed by an expandable details panel.",
+  "outcome": "A clean, green-and-white Shopify store where each supplement family has its own entry point and every product page carries the details a supplement buyer looks for before ordering. Wish lists and Shop Pay installments give shoppers ways to save a product or spread the cost of a larger order.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Ecomify theme)" },
+    { "label": "Catalog", "value": "Supplements, amino acids, proteins, vitamins, coffee" },
+    { "label": "Shopping", "value": "Six product families, wish list, Shop Pay installments" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Six-family catalog structure",
+    "Editorial home page with category banners",
+    "Product page with details panel",
+    "Wish list",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Catalog structure", "body": "Products are grouped into six families, from specialty supplements to food and beverages, and each family is reachable from the Shop menu, a home page banner and its own collection page." },
+    { "title": "Home page", "body": "A green hero with product packshots leads into a featured collection carousel, a brand introduction, full-width category banners and an inline featured product with its description and buy buttons." },
+    { "title": "Product pages", "body": "Each product shows the price, a pay-over-time note for larger orders, quantity, add to cart, buy it now and wish list, then a details panel for the description, features and any shipping restrictions." },
+    { "title": "Mobile", "body": "On phones the hero stacks the packshots above the headline and buttons, and product pages keep the image gallery, price and buy buttons in a single column." }
+  ],
+  "technologies": ["Shopify", "Ecomify theme", "Loox reviews", "Wish list", "Shop Pay installments"],
+  "whyItMatters": "Supplement buyers read before they buy. A store that keeps the range in clear families and puts the full product details right under the buy button makes that research easy.",
+  "faqs": [
+    { "q": "What platform is the Lean Life Essentials store built on?", "a": "It runs on Shopify with the Ecomify theme, using Shopify collections for its six product families and a wish list app for saved items." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the work is presented as the agency's own. Share the scope and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

@@ -1,5 +1,5 @@
 import type { FaqItem } from "@/components/faq";
-import { STORE_PROJECTS } from "@/lib/store-projects";
+import { STORE_PROJECTS, isStore } from "@/lib/store-projects";
 import { pickFromBank, slugHash } from "@/lib/portfolio-copy";
 import { warnOnUnknownSlugs, type PortfolioItem } from "@/lib/portfolio-data";
 import type { SERVICES } from "@/lib/site-config";
@@ -746,8 +746,10 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
         technologies: p.technologies,
         whyItMatters: p.whyItMatters,
         faqs: p.faqs,
-        relatedReading: COMMERCE_READING,
-        relatedServices: ["WordPress & Shopify", "Website Development", "Branding & Design"],
+        relatedReading: isStore(p) ? COMMERCE_READING : WEB_READING,
+        relatedServices: isStore(p)
+          ? ["WordPress & Shopify", "Website Development", "Branding & Design"]
+          : ["Website Development", "WordPress & Shopify", "SEO & Search Growth"],
       } satisfies ProjectDetail,
     ]),
   ),

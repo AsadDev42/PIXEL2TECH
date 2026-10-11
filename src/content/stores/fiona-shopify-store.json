@@ -1,0 +1,44 @@
+{
+  "slug": "fiona-shopify-store",
+  "client": "Fiona",
+  "url": "https://shopfiona.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 75,
+  "metaTitle": "Fiona Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Fiona, a Pakistani womenswear label: seasonal lawn and karandi edits, pret and co-ords, fabric and size filters, and a currency switcher.",
+  "summary": "Shopify store for a Pakistani womenswear label selling seasonal lawn, karandi and pret collections.",
+  "overview": "Fiona is a Pakistani womenswear label that releases its clothing as named seasonal edits, from printed lawn and winter karandi to co-ord pret and formals. We built Fiona's Shopify store to present each edit as its own collection and let shoppers in Pakistan and abroad buy in their own currency.",
+  "challenge": "The catalog changes with every season, and each launch has its own name, fabric and story. Shoppers also need to narrow pieces down by fabric, number of pieces and size, and overseas customers expect to see prices in their own currency.",
+  "approach": "The header leads with the current edits, such as Saraye winter karandi, La Mode co-ords pret and Solara luxury lawn, followed by Unstitched, Pret and More. The homepage is built from full-width campaign banners, each followed by a product row for that edit, with a strip for worldwide shipping, 30-day exchange and secure payment. Collection pages have filters for pieces, fabric type, design type, price and size, and product pages use size buttons, a size guide and accordions for outfit details, disclaimer, returns and care.",
+  "outcome": "A Shopify store where each seasonal edit has its own banner and collection, shoppers can filter by fabric and size, and prices can be switched from PKR for international orders.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Fabric theme)" },
+    { "label": "Catalog", "value": "Lawn, karandi, kotail, pret, co-ords and formals" },
+    { "label": "Shopping", "value": "By edit, by fabric, by pieces and size" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Campaign-led homepage",
+    "Collection filters",
+    "Product page layout",
+    "Currency selector",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Edits as collections", "body": "Each seasonal release, such as Saraye, La Mode, Solara and Heirlooms, gets its own menu item, homepage banner and collection page." },
+    { "title": "Filters", "body": "Collection pages filter by 2-piece or 3-piece, fabric type (karandi, kotail, lawn), design type, price range and size, with a grid density toggle and sorting." },
+    { "title": "Product pages", "body": "Product pages show the outfit name and type, sale pricing, size buttons with a size guide, and accordions for outfit details, disclaimer, returns and exchanges, and care." },
+    { "title": "International shoppers", "body": "A currency selector in the header and a worldwide shipping note on the homepage support orders from outside Pakistan." }
+  ],
+  "technologies": ["Shopify", "Fabric theme (Online Store 2.0)", "Shopify currency selector", "Loox reviews"],
+  "whyItMatters": "Fashion labels that launch in seasonal edits need a store that can put each new release front and center without a rebuild. Clear filters and local currency pricing then help shoppers in Pakistan and abroad check out.",
+  "faqs": [
+    { "q": "What platform is the Fiona store built on?", "a": "It runs on Shopify with the Fabric theme (Online Store 2.0), using Shopify collections for each seasonal edit and a currency selector for international shoppers." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my clothing brand?", "a": "Yes. We design and build Shopify stores for fashion labels, including campaign homepages, collection filters and product page layouts. Tell us about your collections and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

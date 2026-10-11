@@ -1,0 +1,80 @@
+{
+  "slug": "zeen-woman-shopify-store",
+  "client": "Zeen",
+  "url": "https://zeenwoman.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 67,
+  "metaTitle": "Zeen Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Zeen, a Pakistani womenswear label: ready to wear and unstitched collections, fabric labels on every card and flexible grid views.",
+  "summary": "Shopify store for a Pakistani womenswear label selling ready to wear and unstitched collections.",
+  "overview": "Zeen is a women's clothing brand from Pakistan, which it says is brought to you by Cambridge. It sells stitched ready to wear, unstitched fabric, western pieces, luxury velvet and seasonal edits. We built Zeen's Shopify store around a run of seasonal collections that change through the year.",
+  "challenge": "Pakistani womenswear moves in seasonal drops, and many pieces look alike at a glance: a stitched 2-piece or 3-piece in different fabrics and finishes. Shoppers need to tell them apart quickly and move between ethnic, western and unstitched ranges without losing their place.",
+  "approach": "The home page leads with a full-screen campaign for the current collection, such as the ethnic ready to wear range, with a clean centered header. Collection pages show the product count, a filter panel, sorting and grid toggles for one, two or four columns. Each product card carries a fabric and finish label, such as dyed embroidered khaddar, above the name and price, with a quick-add button on the image.",
+  "outcome": "A fashion store where each seasonal collection gets its own landing space and shoppers can compare similar pieces by fabric and finish straight from the grid.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Kalles theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Ready to wear, unstitched, western, velvet"
+    },
+    {
+      "label": "Shopping",
+      "value": "Seasonal collections, fabric labels, grid views"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Seasonal collection pages",
+    "Product card with fabric labels",
+    "Collection filters and grid views",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Collections by season",
+      "body": "Collections are organized by season and line, including winter ethnic, casual pret, luxury velvet, western, unstitched and the ZOE range, with new arrivals and sale alongside."
+    },
+    {
+      "title": "Campaign home page",
+      "body": "A full-screen campaign image and a slim announcement bar point shoppers to the latest collection as soon as the page loads."
+    },
+    {
+      "title": "Collection grid",
+      "body": "Grids show a fabric and finish label on every card, with filters, sorting, a product count and a choice of one, two or four columns."
+    },
+    {
+      "title": "Mobile first",
+      "body": "On phones the campaign image fills the screen and the header keeps search and cart in reach, so shoppers can move from a campaign to a collection in one tap."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Kalles theme",
+    "Shopify collections",
+    "WhatsApp chat"
+  ],
+  "whyItMatters": "In seasonal womenswear the first days of a drop matter most. A store that gives each collection a clear home and makes similar pieces easy to compare helps shoppers decide before sizes sell out.",
+  "faqs": [
+    {
+      "q": "What platform is the Zeen store built on?",
+      "a": "It runs on Shopify with the Kalles theme, using Shopify collections for seasonal ranges, ready to wear, unstitched, western and sale."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for fashion labels, including seasonal collection pages, product cards and filters. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection"
+    ],
+    "mobile": [
+      "mobile-home"
+    ]
+  }
+}

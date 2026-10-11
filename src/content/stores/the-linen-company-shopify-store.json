@@ -1,0 +1,84 @@
+{
+  "slug": "the-linen-company-shopify-store",
+  "client": "The Linen Company",
+  "url": "https://pk.thelinen.company/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 57,
+  "metaTitle": "The Linen Company Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for The Linen Company and its loomé label: bedding by thread count, bath, home fragrance and women's wear, with offer timers and size charts.",
+  "summary": "Shopify store for a home textiles brand and its women's wear label, loomé.",
+  "overview": "The Linen Company describes itself as a family textile business making fabric since 1990, selling bedding, bath, blankets and home fragrance under its own name and women's wear under the loomé label. We built the store on Shopify so both lines share one cart while keeping their own sections.",
+  "challenge": "Home textiles and fashion are bought in different ways. Bedding shoppers compare size, thread count and feel, while loomé shoppers browse new drops, ready to wear and unstitched suits, and both need to find their side of the store quickly.",
+  "approach": "The home page splits into two large panels, Home and loomé, followed by category tiles for printed and solid bedding, bath, blankets, aromatherapy, inserts and gifting. Collection pages filter by category, style, size, color, price, thread count and feel. Product pages show ratings, the current offer, size and color options with a size chart, and material and certification details, while a countdown bar shows how long an offer runs.",
+  "outcome": "A Shopify store that runs two product lines side by side, with bedding filters built around thread count and feel and clear offer messaging across the site. Shoppers can buy bedding and loomé pieces in one order, on desktop or mobile.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Prestige theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Bedding, bath, blankets, home fragrance, women's wear"
+    },
+    {
+      "label": "Shopping",
+      "value": "Two brands, thread count and feel filters"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Two-brand home page",
+    "Bedding filters by thread count and feel",
+    "Offer countdown bar",
+    "Product page layout",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Two lines, one store",
+      "body": "Separate new-in, ready to wear and unstitched menus for loomé sit next to bedding, bath, blankets and fragrance for the home line."
+    },
+    {
+      "title": "Home page",
+      "body": "Split hero panels for Home and loomé lead into category tiles, new in and best sellers tabs, Instagram posts and the brand's story."
+    },
+    {
+      "title": "Collections",
+      "body": "Filters for category, style, size, color, price, thread count and feel, with product badges for luxe and sale items."
+    },
+    {
+      "title": "Offers",
+      "body": "An announcement slider and a countdown bar show current offers, and product pages repeat the offer and online payment savings."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Prestige theme",
+    "Judge.me reviews",
+    "Shopify filters"
+  ],
+  "whyItMatters": "Bedding is bought on specs that are hard to judge on screen. Filters for thread count and feel help shoppers buy with confidence.",
+  "faqs": [
+    {
+      "q": "What platform is The Linen Company store built on?",
+      "a": "It runs on Shopify with the Prestige theme, using collections for both product lines, storefront filters for thread count and feel, and a review app."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores, including multi-brand storefronts, spec-based filters and offer timers. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

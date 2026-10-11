@@ -1,0 +1,45 @@
+{
+  "slug": "chenone-shopify-store",
+  "client": "ChenOne",
+  "url": "https://chenone.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 68,
+  "metaTitle": "ChenOne Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for ChenOne, a Pakistani lifestyle brand: apparel, home textiles, furniture and jewelry, with type filters and installment payments.",
+  "summary": "Shopify store for a Pakistani lifestyle brand selling apparel, home textiles, furniture and accessories.",
+  "overview": "ChenOne describes itself as a one stop store in Pakistan for men's and women's apparel, home textiles, furniture and accessories, including its Carat jewelry line. We built ChenOne's Shopify store to bring those very different departments into one shop.",
+  "challenge": "Few stores sell polo shirts, bed sheets and dining tables side by side. Each department has its own sub-lines, such as Studio, Hotel and Exotic for home textiles, and prices run from small accessories to full furniture pieces. Shoppers need to reach the right department fast and narrow a large range without getting lost.",
+  "approach": "A centered header opens a menu for Home Textile, Furniture, Women, Men, Kids and Carat, with each home textile line and furniture type listed beneath. The home page uses image tiles for new arrivals, home textile, furniture, women's wear, men's wear, fillings and Carat, followed by new-in products and a trending section with tabs per department. Collection pages add a category carousel and a row of Shop by Type chips with item counts, and product pages show stock, SKU, BaadMay installments and a free shipping progress bar.",
+  "outcome": "One store for clothing, bedding and furniture, where shoppers can jump to a department from the home page and narrow any collection by product type in a single tap.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Apparel, home textiles, furniture, jewelry" },
+    { "label": "Shopping", "value": "Department tiles, type chips, installments" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Multi-department navigation",
+    "Home page department tiles",
+    "Collection type filters",
+    "Product page with installments",
+    "Mobile bottom toolbar"
+  ],
+  "process": [
+    { "title": "Departments and lines", "body": "Navigation splits the store into home textile lines (Classic, Studio, Luxury, Exotic, Hotel, Alpha), furniture types, men's and women's eastern and western wear, kids and Carat jewelry." },
+    { "title": "Home page", "body": "A campaign slideshow leads into department image tiles, new-in products, limited edition and imported collection banners, and a trending section with tabs for each department." },
+    { "title": "Collections and products", "body": "Collections combine a category carousel, Shop by Type chips with counts, filters and layout options. Product pages show stock status, SKU, size and color, BaadMay pay-in-three and a free shipping progress bar." },
+    { "title": "Mobile and service", "body": "Phones get a bottom toolbar for shop, cart and search. The footer links to order tracking, furniture care instructions, warranty coverage and the brand's editorial blog." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "BaadMay installments", "Shopify collections", "WhatsApp chat"],
+  "whyItMatters": "When one brand sells clothing, bedding and furniture, the store has to make each department feel easy to shop. Clear department entry points and type filters keep a wide catalog from overwhelming the shopper.",
+  "faqs": [
+    { "q": "What platform is the ChenOne store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for apparel, home textiles, furniture and jewelry, with BaadMay for installment payments." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for multi-department brands, including navigation, collection filters and installment payment options. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

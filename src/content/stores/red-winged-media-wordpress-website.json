@@ -1,0 +1,79 @@
+{
+  "slug": "red-winged-media-wordpress-website",
+  "client": "Redwinged Media",
+  "url": "https://redwingedmedia.com/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 143,
+  "metaTitle": "Redwinged Media website | Pixel2Tech",
+  "metaDescription": "White-label WordPress and Bricks website for Redwinged Media, a paid ads agency: one-page layout, comparison table, pricing toggle, FAQ and client login.",
+  "summary": "One-page WordPress website for a paid advertising and ad creative agency.",
+  "overview": "Redwinged Media is an ad agency that describes itself as focused on creative services and paid advertising, with flat-rate pricing. Pixel2Tech built Redwinged Media's WordPress website as white-label development partner for a digital agency. The site tells the agency's story, lays out its plans and sends visitors to schedule a call.",
+  "challenge": "The agency's pitch rests on being different from other agencies, so the site had to make that comparison easy to follow. It also publishes full plan pricing and a long FAQ, which can turn a single page into a wall of text.",
+  "approach": "The site is one long page with anchor links for About, Services, Pricing and FAQ, plus a Login button to the client portal and a red Schedule a Call button. A hero headline cycles its last word over a video, followed by the agency's story, a two-column comparison against other agencies, five service sections, a monthly or quarterly pricing toggle across three plans and an accordion FAQ. GSAP drives the scroll animations.",
+  "outcome": "A single page where a business owner can read who the agency is, how it compares, what each plan includes and how it works, then book a call. The Bricks build keeps sections easy for the agency to edit as plans and copy change.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "WordPress (Bricks Builder)"
+    },
+    {
+      "label": "Site type",
+      "value": "One-page site for a paid ads agency"
+    },
+    {
+      "label": "Key sections",
+      "value": "About, services, pricing, FAQ, schedule a call"
+    }
+  ],
+  "deliverables": [
+    "WordPress website built with Bricks",
+    "One-page layout with anchor navigation",
+    "Agency comparison section",
+    "Pricing plans with billing toggle",
+    "FAQ accordion",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "One-page structure",
+      "body": "Header links jump to the About, Services, Pricing and FAQ sections, while Login opens the client portal and Schedule a Call goes to a separate contact page."
+    },
+    {
+      "title": "Story and comparison",
+      "body": "After a hero headline that rotates its final word, the page tells the agency's origin story, lists its principles and sets other agencies against its own approach point by point."
+    },
+    {
+      "title": "Services and pricing",
+      "body": "Strategy, creative, management, reporting and optimization each get a block, and three plan cards switch between monthly and quarterly billing with a toggle."
+    },
+    {
+      "title": "FAQ and mobile",
+      "body": "Questions about fit, creative, budgets, reporting and contracts sit in an accordion, and on phones the headline and video stack under a compact logo and menu icon."
+    }
+  ],
+  "technologies": [
+    "WordPress",
+    "Bricks Builder",
+    "GSAP animations",
+    "Rank Math SEO"
+  ],
+  "whyItMatters": "Agencies that publish pricing are asking visitors to self-qualify. Putting the comparison, plans and answers on one scrolling page lets a prospect decide quickly whether to book a call.",
+  "faqs": [
+    {
+      "q": "What is the Redwinged Media website built with?",
+      "a": "It runs on WordPress with the Bricks Builder theme, uses GSAP for scroll animations and Rank Math for SEO settings."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home"
+    ],
+    "mobile": [],
+    "cover": "desktop-home"
+  }
+}

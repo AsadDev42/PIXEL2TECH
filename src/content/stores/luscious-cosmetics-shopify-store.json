@@ -1,0 +1,57 @@
+{
+  "slug": "luscious-cosmetics-shopify-store",
+  "client": "Luscious Cosmetics",
+  "url": "https://iloveluscious.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 58,
+  "metaTitle": "Luscious Cosmetics Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Luscious Cosmetics, a Pakistani makeup brand: face, eyes, lips, brushes, lashes and nails, with routine add-ons, reviews and rewards.",
+  "summary": "Shopify store for a Pakistani makeup brand selling face, eye and lip makeup, brushes, lashes and press-on nails.",
+  "overview": "Luscious Cosmetics describes itself as Pakistan's first luxury makeup brand, cruelty-free and halal since 2007. We built the brand's Shopify store to carry its makeup, brushes, lashes, press-on nails and vanity cases, with a free gift on prepaid orders called out across the site.",
+  "challenge": "The catalog mixes shade-based makeup such as lipsticks and brow pencils with tools, lashes and a growing range of press-on nails. Shoppers need to find bestsellers quickly, pick a shade, and see what else completes the look before they check out.",
+  "approach": "A navy header with a pink announcement bar keeps the menu short: Shop All, Bestsellers, New & Trending, Clearance and Our Story, with a mega menu for face, eyes and brows, lips, brushes and tools, lashes and nails. The home page runs carousels for bestsellers, new arrivals and a tabbed World of Beauty Tools row. Product pages show the rating, sale price and campaign badge up front, then a Complete Your Routine block that adds matching products with one tick.",
+  "outcome": "A Shopify store where shoppers can move from a campaign banner to a bestseller, choose a shade and add routine items in the same view. The same layout carries over to phones, with the menu, search and bag kept in a compact header.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Horizon theme)" },
+    { "label": "Catalog", "value": "Makeup, brushes and tools, lashes, press-on nails" },
+    { "label": "Shopping", "value": "Bestsellers, routine add-ons, reviews, rewards" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category mega menu",
+    "Bestseller and new arrival carousels",
+    "Product page with routine add-ons",
+    "Reviews and rewards integration",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Menu and categories", "body": "A short top menu leads to Shop All, Bestsellers, New & Trending and Clearance, while the full range is grouped into face, eyes and brows, lips, brushes and tools, lashes and nails." },
+    { "title": "Home page rows", "body": "Campaign banners sit above carousels for bestsellers and new arrivals, then a World of Beauty Tools row with tabs for tools, bags, brushes, lashes and nails, followed by customer reviews and blog posts." },
+    { "title": "Product pages", "body": "Each product shows its star rating, sale and original price, quantity and add to cart, then a Complete Your Routine box that suggests matching items with shade selectors." },
+    { "title": "Reviews and rewards", "body": "Judge.me reviews appear on product cards and pages, and a loyalty rewards program is built into the store alongside the free gift offer on prepaid orders." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Horizon theme",
+    "Judge.me reviews",
+    "BON Loyalty rewards"
+  ],
+  "whyItMatters": "Makeup shoppers rarely buy one item at a time. Putting matching products and reviews right next to the add to cart button makes it easier to build a full look in one order.",
+  "faqs": [
+    { "q": "What platform is the Luscious Cosmetics store built on?", "a": "It runs on Shopify with the Horizon theme, using Shopify collections for makeup categories, bestsellers and new arrivals, with Judge.me reviews and a loyalty rewards app." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my beauty brand?", "a": "Yes. We design and build Shopify stores for makeup and beauty brands, including shade selection, routine add-ons and review integrations. Tell us about your range and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

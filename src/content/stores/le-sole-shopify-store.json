@@ -1,0 +1,43 @@
+{
+  "slug": "le-sole-shopify-store",
+  "client": "Le Sole",
+  "url": "https://lesoleonline.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 76,
+  "metaTitle": "Le Sole Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Le Sole, a Lahore leather shoe brand: loafers, Peshawari chappals, sandals and slippers, size pickers, wish lists and WhatsApp support.",
+  "summary": "Shopify store for a handmade leather footwear brand from Lahore.",
+  "overview": "Le Sole describes itself as a maker of luxury handmade leather shoes for men and women, selling loafers, casual shoes, Peshawari chappals, sandals, slippers and accessories. We built Le Sole's Shopify store to show the craftsmanship of each pair and make choosing a size simple.",
+  "challenge": "Leather shoes are bought on look, material and fit, so shoppers need clear product photos, material details and every size at a glance. The range also mixes formal shoes with traditional Peshawari chappals and casual sandals, which need their own places in the menu.",
+  "approach": "The header menu covers New Arrivals, Shoes, Flexi, Casual Shoes, Peshawari Chappal, Slippers, Accessories and Sale, with small badges to flag new and discounted ranges. The homepage pairs lifestyle banners such as Premium and Elegant and Heritage Luxury with product rows for new arrivals, shoes and sandals, followed by a strip for free shipping on prepaid orders, genuine leather, the exchange policy and secure payment. Product pages list material and comfort details as bullet points above size buttons from 40 to 45, payment icons and share links.",
+  "outcome": "A Shopify store that presents handmade leather shoes with clear photos and details, lets shoppers pick a size in one tap and keeps WhatsApp support one click away on every page.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Leather shoes, Peshawari chappals, sandals and slippers" },
+    { "label": "Shopping", "value": "By style, new arrivals, sale, wish list" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category menu with badges",
+    "Collection grid layouts",
+    "Product page layout",
+    "Mobile bottom navigation"
+  ],
+  "process": [
+    { "title": "Menu by style", "body": "Products are split by style, from formal shoes and casual shoes to Peshawari chappals, slippers and sandals, with New and sale badges on the relevant menu items." },
+    { "title": "Collection pages", "body": "Collection pages open with a banner and breadcrumb, then a product grid with discount labels, a filter panel, sorting and a choice of grid layouts." },
+    { "title": "Product pages", "body": "Each product page shows the price and discount, bullet points on leather, lining and sole, size buttons, a quantity picker, accepted payment methods and social share links." },
+    { "title": "Mobile and support", "body": "On phones, a bottom bar gives quick access to Shop, Cart, Account and Search, and a WhatsApp chat button stays on screen for questions about fit and orders." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Judge.me product reviews", "WhatsApp chat button"],
+  "whyItMatters": "Handmade leather shoes cost more than mass-market pairs, so shoppers want to see the detail and get the size right. A store that shows both clearly and offers a quick way to ask questions makes that purchase easier.",
+  "faqs": [
+    { "q": "What platform is the Le Sole store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for each shoe style and product variants for sizes and colors." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my footwear brand?", "a": "Yes. We design and build Shopify stores for footwear and accessories brands, including style-based menus, size pickers and product page layouts. Tell us about your range and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

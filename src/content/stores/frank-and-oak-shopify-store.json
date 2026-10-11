@@ -1,0 +1,45 @@
+{
+  "slug": "frank-and-oak-shopify-store",
+  "client": "Frank And Oak",
+  "url": "https://www.frankandoak.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 102,
+  "metaTitle": "Frank And Oak Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Frank And Oak, a Canadian clothing label: men's and women's essentials, size and color filters, fit guidance and product reviews.",
+  "summary": "Shopify store for a Canadian clothing brand selling men's and women's everyday essentials.",
+  "overview": "Frank And Oak sells shirts, tees, knitwear, jackets, pants and denim for men and women, and describes its focus as craftsmanship, natural fibers and dependable essentials. Pixel2Tech built the Frank And Oak Shopify store as white-label development partner for a digital agency, working within the agency's plan for its client.",
+  "challenge": "The range is split between a long-running men's line and a reintroduced women's collection, and both need equal room in the store. Many pieces come in a long list of colors, so shoppers need to compare color, size and fit without opening every product.",
+  "approach": "A clean header carries four entries: New Arrivals, Men, Women and Sale, each opening a menu of featured edits and clothing categories. Collection pages add shortcut buttons for popular categories, a filter sidebar with an out-of-stock toggle, price slider, size and color, plus color swatches on each card. Product pages show the star rating, a full color swatch grid, size buttons and a fit scale from runs small to runs large above the add to cart button.",
+  "outcome": "A Shopify store where men's and women's ranges sit side by side. Shoppers can narrow a large catalog by size and color, then check fit and reviews before they buy.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Symmetry theme)" },
+    { "label": "Catalog", "value": "Shirts, tees, knitwear, jackets, pants, denim" },
+    { "label": "Shopping", "value": "Men and women, swatches, fit scale, reviews" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Men's and women's navigation",
+    "Collection filters and color swatches",
+    "Product page with fit scale",
+    "Campaign home page sections",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two-sided menu", "body": "Men and Women each open featured edits (new arrivals, best sellers) and a full clothing list, while Sale is split into its own category links and highlighted in the header." },
+    { "title": "Collections", "body": "Category shortcuts sit above the grid, and a collapsible sidebar filters by stock, price, category, size and color, with the product count and sorting at the top." },
+    { "title": "Product pages", "body": "Each product shows its review rating, price in Canadian dollars, color swatches, size buttons and a fit indicator, with shipping, Canadian design and returns notes under the cart button." },
+    { "title": "Home page and mobile", "body": "The home page rotates seasonal campaign slides, then a new arrivals carousel and large category tiles, and the same sections stack cleanly on phones." }
+  ],
+  "technologies": ["Shopify", "Symmetry theme", "Yotpo reviews", "Collection filters", "Klaviyo"],
+  "whyItMatters": "Basics are bought on fit and color more than on novelty. Swatches, filters and a clear fit guide answer those questions on the page, which is what lets a shopper buy a shirt online with confidence.",
+  "faqs": [
+    { "q": "What platform is the Frank And Oak store built on?", "a": "It runs on Shopify with the Symmetry theme, using Shopify collections for men's, women's and sale ranges and filters for size, color and price." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand and sign an NDA when needed. Tell us what your client needs and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

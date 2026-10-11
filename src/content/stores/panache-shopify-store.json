@@ -1,0 +1,57 @@
+{
+  "slug": "panache-shopify-store",
+  "client": "Panache Apparel",
+  "url": "https://www.panacheapparels.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 60,
+  "metaTitle": "Panache Apparel Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Panache Apparel, a Pakistani women's pret brand: seasonal edits, western wear and kids, with reviews, video shopping and multi-currency.",
+  "summary": "Shopify store for a Pakistani women's pret brand with seasonal edits, western wear and kids collections.",
+  "overview": "Panache Apparel sells contemporary Pakistani women's pret, from everyday wear and festive edits to a western line, velvet shawls and kids outfits. We built the brand's Shopify store to present each new drop as its own collection and to sell to shoppers in Pakistan and abroad.",
+  "challenge": "New edits arrive often, each with its own name, while older collections move into sale. Many outfits come in several combinations, sizes and colors, and international shoppers need to see prices in their own currency.",
+  "approach": "A centered logo sits over a two-line menu: New In, West, Winter, Most Loved, Signature Pret, Everyday, Kids, Festive, Last Chance and End of Season Sale, with dropdowns listing each named edit. The home page stacks campaign slides, then rows for the latest chapter, the sale, Daily Drop and Signature Pret, plus a Watch and Buy video row and customer reviews. A country and currency selector sits in the top bar, with flat-rate international shipping announced above it. Product pages offer combination, size and color buttons, a size chart, star ratings and a floating video of the outfit.",
+  "outcome": "A Shopify store where each named drop gets its own collection and home page row. Shoppers anywhere can pick the right combination and size and see prices in their own currency.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Impulse theme)" },
+    { "label": "Catalog", "value": "Women's pret, festive, western wear, shawls, kids" },
+    { "label": "Shopping", "value": "Named edits, video shopping, multi-currency" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Collection menu for seasonal edits",
+    "Home page collection rows",
+    "Product page with combination and size options",
+    "Reviews and shoppable video",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Menu by edit", "body": "Dropdowns under New In, West and Winter list each named edit, so a new drop can be added to the menu as soon as it goes live." },
+    { "title": "Home page rows", "body": "Campaign slides lead into product rows for the latest chapter, the end of season sale, Daily Drop and Signature Pret, each with a view all button." },
+    { "title": "Collections", "body": "Collection pages show a title, product count, filter drawer and sort menu above a four-column grid with sale badges." },
+    { "title": "Product pages", "body": "Each outfit page shows the sale price and saving, quantity, Judge.me star ratings, combination, size and color buttons, a size chart and a floating outfit video." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Impulse theme",
+    "Judge.me reviews",
+    "Country and currency selector"
+  ],
+  "whyItMatters": "Pret brands sell through frequent, named drops. A store that can add a new edit to the menu and home page quickly keeps each launch easy to find, at home and overseas.",
+  "faqs": [
+    { "q": "What platform is the Panache Apparel store built on?", "a": "It runs on Shopify with the Impulse theme, using Shopify collections for each named edit and sale, Judge.me for reviews and a country and currency selector for international shoppers." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my fashion brand?", "a": "Yes. We design and build Shopify stores for clothing brands, including collection menus for seasonal drops, outfit variant options and international selling. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

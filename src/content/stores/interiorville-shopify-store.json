@@ -1,0 +1,44 @@
+{
+  "slug": "interiorville-shopify-store",
+  "client": "Interior Ville",
+  "url": "https://interiorville.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 133,
+  "metaTitle": "Interior Ville Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Interior Ville, a home decor shop: wall decor, lighting, textiles, tabletop and plant decor, with shipping options and order tracking.",
+  "summary": "Shopify store for an online home decor shop selling wall art, lighting, textiles and faux plants.",
+  "overview": "Interior Ville describes itself as a premier destination for home decor, with a curated selection of wall art, lamps, cushions, blankets, tabletop pieces and artificial plants. Pixel2Tech built the Interior Ville Shopify store as white-label development partner for a digital agency, working to the agency's direction for its client.",
+  "challenge": "A decor shop sells on mood, so the store has to feel like a styled room rather than a list of products. At the same time, many items come in several colors and sizes and ship to different regions, which has to be clear on the product page.",
+  "approach": "The store uses a warm, neutral palette with a top bar for the free shipping threshold and a simple menu of Home, Shop, Blogs, Support and Track Order. The home page opens with a split interior hero, then a welcome section, a best sellers carousel and editorial blocks for wall decor, textiles, tabletop, lighting and plant decor. Collection pages add a category sidebar, view toggles, items per page and sorting, and product pages offer a ships to choice, color swatches and size buttons.",
+  "outcome": "A Shopify store where shoppers can browse decor by category, pick colors and sizes on one page and track their orders, with the same flow on mobile through a bottom navigation bar.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Ella theme)" },
+    { "label": "Catalog", "value": "Wall decor, lighting, textiles, tabletop, plant decor" },
+    { "label": "Shopping", "value": "Category sidebar, color and size swatches, order tracking" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Editorial home page with category blocks",
+    "Collection pages with sidebar and view options",
+    "Product page with ships to, color and size options",
+    "Order tracking and support pages",
+    "Mobile layout with bottom navigation"
+  ],
+  "process": [
+    { "title": "Styled home page", "body": "Each category gets its own lifestyle block on the home page, from a wall decor feature and a textiles section to an exclusive tabletop row and a plant decor section with artificial flowers and trees." },
+    { "title": "Collections", "body": "Collection pages list the five categories in a sidebar and give shoppers four grid views, an items per page selector and best selling sort." },
+    { "title": "Product options", "body": "Product pages let shoppers choose where the item ships (United States or worldwide), then a color swatch and size, with a back in stock notification for variants that are sold out." },
+    { "title": "Mobile and support", "body": "On phones a fixed bottom bar links Home, Search, Collection, Account and Cart, and the Support menu groups about, contact, refund policy and order tracking." }
+  ],
+  "technologies": ["Shopify", "Ella theme", "Shopify collections", "Klaviyo"],
+  "whyItMatters": "Home decor is an impulse and inspiration purchase. Styled category blocks help shoppers picture a piece in their own room, and clear color, size and shipping options remove the doubts that stop a checkout.",
+  "faqs": [
+    { "q": "What platform is the Interior Ville store built on?", "a": "It runs on Shopify with the Ella theme, using Shopify collections for wall decor, lighting, textiles, tabletop and plant decor, with variant options for shipping region, color and size." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

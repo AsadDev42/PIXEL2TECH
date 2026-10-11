@@ -1,0 +1,45 @@
+{
+  "slug": "gisada-shopify-store",
+  "client": "Gisada",
+  "url": "https://www.gisada.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 132,
+  "metaTitle": "Gisada Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Gisada, a Swiss fragrance and fashion brand: split fragrance and fashion home page, fragrance lines, apparel menus and local currencies.",
+  "summary": "Shopify store for a Swiss luxury brand selling fragrances and contemporary fashion.",
+  "overview": "Gisada describes itself as a Swiss luxury brand combining refined fragrance and contemporary fashion. Pixel2Tech built Gisada's Shopify store as white-label development partner for a digital agency, working to the agency's direction for its client.",
+  "challenge": "The brand runs two businesses under one name: perfume lines, candles and gift sets on one side, and shirts, polos, knitwear, jackets and sneakers on the other. Each needs its own menu and mood, and the store sells internationally, so prices have to show in the shopper's local currency.",
+  "approach": "The home page is a full-screen split: Fragrance on the left and Fashion on the right, each with its own campaign image and a Discover more link, with the Gisada Switzerland logo in the center. The menu follows the same split, with fragrance lines such as Gold, Ambassadora Gold, Prestige Line, Uomo & Donna and Luxury Line, plus men, women, candles, discovery sets and gift sets, and fashion categories from T-shirts and polos to puffers, knitwear, denim and caps. Collection pages use a clean product grid with a filter and sort drawer.",
+  "outcome": "A Shopify store where a shopper chooses fragrance or fashion in one click and browses each in its own menu, with prices shown in local currency and a language switcher in the header.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Avante theme)" },
+    { "label": "Catalog", "value": "Fragrances, candles, gift sets and menswear" },
+    { "label": "Shopping", "value": "Split fragrance and fashion entry, local currencies" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Split fragrance and fashion home page",
+    "Fragrance line and fashion category menus",
+    "Collection grid with filter and sort drawer",
+    "Multi-currency and language selector",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two-sided home page", "body": "The desktop home page splits the screen between Fragrance and Fashion campaign images, and on phones the two panels stack so each still gets a full-width hero." },
+    { "title": "Menus for each side", "body": "The fragrance menu is organized by line (Gold, Ambassadora Gold, Prestige Line, Uomo & Donna, Luxury Line) and by men, women, candles, discovery sets and gift sets, while fashion lists new arrivals and categories such as hoodies, joggers, jackets, puffers and knitwear." },
+    { "title": "Collections", "body": "Collection pages keep the layout minimal: a centered title, a filter and sort drawer, and a four-column grid with uppercase product names and prices." },
+    { "title": "International selling", "body": "A country selector covers a long list of markets with local currency pricing, a Weglot language switcher sits in the header, and the footer lists payment options including Klarna and Shop Pay." }
+  ],
+  "technologies": ["Shopify", "Avante theme", "Shopify Markets (multi-currency)", "Weglot", "Klaviyo"],
+  "whyItMatters": "When one brand sells both perfume and clothing, shoppers usually come for one of the two. Letting them pick a side from the first screen keeps each range focused without splitting the brand into two stores.",
+  "faqs": [
+    { "q": "What platform is the Gisada store built on?", "a": "It runs on Shopify with the Avante theme, using Shopify collections for fragrance lines and fashion categories, Shopify Markets for local currencies and Weglot for translation." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

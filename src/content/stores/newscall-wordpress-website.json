@@ -1,0 +1,45 @@
+{
+  "slug": "newscall-wordpress-website",
+  "client": "Newscall",
+  "url": "https://newscall.co/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 126,
+  "metaTitle": "Newscall website | Pixel2Tech",
+  "metaDescription": "WordPress website for Newscall, a press release distribution service: plans, publishing partners, PR and SEO services, a newsroom and lead forms.",
+  "summary": "WordPress website for a press release distribution and digital PR service.",
+  "overview": "Newscall offers press release distribution, with digital PR, SEO and crypto marketing services alongside it. Pixel2Tech built Newscall's WordPress website as white-label development partner for a digital agency, using Elementor on the Essentials theme. The site is built to turn visitors into quote requests and plan signups.",
+  "challenge": "Press release distribution is hard to judge before buying: prospects want to see where releases get published, what each plan includes and how to start. The agency's client also offers several related services that had to be presented without burying the core offer.",
+  "approach": "The hero leads with two clear actions, View Plans and Schedule a meeting, with Get a quote kept in the header. Below it, a logo strip and a publishing partners section show the outlets in the network, followed by cards for distribution, coverage and analytics. A services grid covers press release distribution, exchange listings, influencer marketing, SEO, ad campaigns and more, and a newsroom section pulls in recent posts.",
+  "outcome": "A lead-focused WordPress site that explains the offer, shows the publishing network and gives prospects several routes to a plan, a quote or a call, on desktop and mobile. The newsroom keeps fresh posts on the site alongside the service pages.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (Elementor, Essentials theme)" },
+    { "label": "Site type", "value": "PR services and lead generation" },
+    { "label": "Key pages", "value": "Services, pricing, newsroom, contact" }
+  ],
+  "deliverables": [
+    "WordPress website on Elementor",
+    "Home page with plan and meeting calls to action",
+    "Publishing partners section",
+    "Services and pricing pages",
+    "Newsroom and blog layout",
+    "Contact forms and live chat"
+  ],
+  "process": [
+    { "title": "Offer and calls to action", "body": "The home page states the service in one line and puts View Plans, Schedule a meeting and Get a quote where visitors see them first." },
+    { "title": "Proof of reach", "body": "A scrolling logo strip and a publishing partners panel group mainstream and crypto media outlets, so prospects can see where releases are placed." },
+    { "title": "Services and plans", "body": "A services grid and pricing pages lay out distribution, SEO, influencer and ad services, with links from each section to plans and quotes." },
+    { "title": "Newsroom and trust pages", "body": "A newsroom feed, client stories, and footer pages for terms, anti-spam, editorial guidelines and cookies round out the site, with a live chat widget for quick questions." }
+  ],
+  "technologies": ["WordPress", "Elementor", "Essentials theme (pixfort)", "Contact Form 7", "LiveChat"],
+  "whyItMatters": "Buyers of PR distribution want to see the network and the price before they talk to anyone. A site that shows both and offers several ways to start makes the first inquiry easier.",
+  "faqs": [
+    { "q": "What platform is the Newscall website built on?", "a": "It runs on WordPress with Elementor and the Essentials theme, using Contact Form 7 for inquiries and a live chat widget." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

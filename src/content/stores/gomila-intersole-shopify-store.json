@@ -1,0 +1,84 @@
+{
+  "slug": "gomila-intersole-shopify-store",
+  "client": "Gomila Intersole",
+  "url": "https://gomilaintersole.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 50,
+  "metaTitle": "Gomila Intersole Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Gomila Intersole, handmade leather shoes from Pakistan: shop by style, ready to wear or made to order, size guides and product add-ons.",
+  "summary": "Shopify store for a Pakistani maker of handmade leather shoes, boots and leather goods.",
+  "overview": "Gomila Intersole describes its range as handmade luxury leather footwear, from oxfords and loafers to Goodyear welted boots, plus bags, wallets and shoe care. We built Gomila's Shopify store so men's, women's and children's lines, ready to wear and made to order, sit in one place.",
+  "challenge": "Each shoe style comes in several constructions and lead times: ready to wear, made to order and Goodyear welted. Shoppers need to find a style, understand which version they are buying and pick the right size before a pre-order.",
+  "approach": "A mega menu splits Men's, Women's and Children's by construction, then by style such as wholecuts, monkstraps, derbys, chelsea and jodhpur boots. The home page opens with a seasonal edit and a shop-by-style row of oxfords, sandals, slippers, drivers and boots. Product pages show PK and EU sizes side by side, a size guide, a note on natural leather color, and optional add-ons such as shoe care and a Goodyear welted guarantee before the pre-order button.",
+  "outcome": "A calm, editorial Shopify store where shoppers can move from a style to a specific made-to-order pair, with sizing, add-ons and installment options on the product page. Ready-to-wear and made-to-order lines stay separate, so shoppers always know which kind of pair they are ordering.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Impact theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Men's, women's and kids' shoes, boots, bags, wallets, shoe care"
+    },
+    {
+      "label": "Ordering",
+      "value": "Ready to wear, made to order and pre-order"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Mega menu by construction and style",
+    "Made-to-order product pages",
+    "Size guide and PK/EU sizing",
+    "Product add-ons",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Catalog structure",
+      "body": "Collections separate ready to wear, made to order and Goodyear welted lines, each broken down by style, with leather works and accessories in their own section."
+    },
+    {
+      "title": "Home page",
+      "body": "A full-width seasonal edit leads into a shop-by-style row, new arrivals and editorial product spotlights with direct shop links."
+    },
+    {
+      "title": "Product pages",
+      "body": "Size buttons show PK and EU sizes and pre-order status, with a size guide, a leather color note and optional shoe care and guarantee add-ons."
+    },
+    {
+      "title": "Mobile and store links",
+      "body": "A compact mobile header with search, account, wish list and cart, and top links to the store locator, boutiques and size guide."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Impact theme",
+    "Baadmay installments",
+    "Wish list"
+  ],
+  "whyItMatters": "Made-to-order shoes ask shoppers to commit before the pair exists. Clear sizing, construction labels and add-ons on one page make that decision easier.",
+  "faqs": [
+    {
+      "q": "What platform is the Gomila Intersole store built on?",
+      "a": "It runs on Shopify with the Impact theme, using collections for each construction and style and product options for PK and EU sizes."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores, including made-to-order and pre-order flows, size guides and product add-ons. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

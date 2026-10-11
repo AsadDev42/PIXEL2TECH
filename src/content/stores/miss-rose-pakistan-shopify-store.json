@@ -1,0 +1,44 @@
+{
+  "slug": "miss-rose-pakistan-shopify-store",
+  "client": "Miss Rose Pakistan",
+  "url": "https://missrosepk.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 74,
+  "metaTitle": "Miss Rose Pakistan Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Miss Rose Pakistan, the makeup brand's local store: face, eye and lip categories, shade pickers, reviews and a scan-to-verify banner.",
+  "summary": "Shopify store for the Pakistan arm of the international makeup brand Miss Rose.",
+  "overview": "Miss Rose is an international cosmetics brand, and missrosepk.com is its official store for Pakistan, selling foundations, powders, eye makeup, lip products and brushes. We built Miss Rose Pakistan's Shopify store to carry a large catalog of shade-based products and make it easy to buy them on a phone.",
+  "challenge": "Most Miss Rose products come in many shades, so a single foundation or lipstick can carry a long list of color options. The brand also wanted shoppers to trust they were buying genuine products, a real concern for imported cosmetics.",
+  "approach": "The menu splits into Shop, New Arrival and a Shop By Category dropdown covering face (foundations, powders, blushes, concealers, primers, setting sprays), eyes (shadows, liners, mascaras, brows, lashes), lips and tools. The homepage opens with a scan-to-verify banner that explains how to check a product's QR code, then a large best-sellers grid with sale prices and star ratings. Product pages show each shade as a selectable button, with unavailable shades crossed out, above the add to cart and buy it now buttons.",
+  "outcome": "A Shopify store where shoppers can browse makeup by category, pick an exact shade, check reviews and confirm their product is genuine, with the same layout on mobile and desktop.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Dawn theme)" },
+    { "label": "Catalog", "value": "Face, eye and lip makeup, brushes and blenders" },
+    { "label": "Shopping", "value": "By category, by shade, best sellers" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category mega menu",
+    "Shade selector on product pages",
+    "Authenticity verification banner",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Category structure", "body": "Products are grouped by face, eyes, lips and tools, with separate collections for items such as foundations, compact and loose powders, mascaras, lip glosses and beauty blenders." },
+    { "title": "Shade selection", "body": "Product pages list every shade as a button and cross out shades that are out of stock, with the price, sale badge and rating shown above them." },
+    { "title": "Trust on the homepage", "body": "A scan-to-verify banner sits at the top of the homepage and explains the three steps for checking a product's QR code, followed by best sellers with ratings and sale prices." },
+    { "title": "Mobile layout", "body": "Announcement bars, the menu, product grids and product galleries are laid out for small screens, where most makeup shoppers browse." }
+  ],
+  "technologies": ["Shopify", "Dawn theme (Online Store 2.0)", "Shopify collections", "Judge.me product reviews"],
+  "whyItMatters": "For an imported makeup brand, shoppers need to find the right shade and trust that the product is genuine. A store that handles both makes it easier to place the first order.",
+  "faqs": [
+    { "q": "What platform is the Miss Rose Pakistan store built on?", "a": "It runs on Shopify with the Dawn theme (Online Store 2.0), using Shopify collections for makeup categories and product variants for shades." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for beauty brands, including category menus, shade selectors and product page layouts. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

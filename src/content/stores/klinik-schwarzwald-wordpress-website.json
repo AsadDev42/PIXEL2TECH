@@ -1,0 +1,62 @@
+{
+  "slug": "klinik-schwarzwald-wordpress-website",
+  "client": "Klinik am Schwarzwald",
+  "url": "https://www.klinik-schwarzwald.com/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 142,
+  "metaTitle": "Klinik am Schwarzwald website | Pixel2Tech",
+  "metaDescription": "White-label WordPress website for Klinik am Schwarzwald, a German plastic surgery clinic: treatment menus, doctors, careers, financing and booking forms.",
+  "summary": "German-language WordPress website for a plastic and aesthetic surgery clinic.",
+  "overview": "Klinik am Schwarzwald is a plastic and aesthetic surgery clinic in Lauchringen, Germany, near the Swiss border, led by Dr. Mario Holdenried. Pixel2Tech built the clinic's German-language WordPress website as white-label development partner for a digital agency. The site organizes a wide treatment list and makes it simple for patients to ask for a consultation.",
+  "challenge": "The clinic offers dozens of surgical and non-surgical treatments across breast, face, body and skin, and each needs its own page. Patients also come with different first questions, such as price, a photo assessment or a video call, so one generic contact form was not enough.",
+  "approach": "A dark green header carries Behandlungen (treatments), Ärzte (doctors), Klinik, Karriere (careers), Finanzierung (financing), an Ästhetik+ magazine, Kontakt, site search and a Beratung vereinbaren (book a consultation) button. The treatments menu opens into breast, face, body and skin columns with featured procedures on top. Slide-out panels hold separate forms for booking an appointment, sending photos, requesting a video consultation and asking for a price, with GDPR consent on each.",
+  "outcome": "A clinic website where patients can find a treatment in a couple of clicks, read about the doctors and team, check financing and send the exact request they have in mind. On phones a fixed Kontakt & Anfrage bar keeps the request forms within reach.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (custom theme)" },
+    { "label": "Site type", "value": "Plastic surgery clinic, German language" },
+    { "label": "Key pages", "value": "Treatments, doctors, clinic, careers, financing" }
+  ],
+  "deliverables": [
+    "WordPress website on a custom theme",
+    "Treatment mega menu by body area",
+    "Treatment page structure",
+    "Booking, photo, video and price request forms",
+    "Cookie consent setup",
+    "Mobile layout with fixed contact bar"
+  ],
+  "process": [
+    {
+      "title": "Treatment structure",
+      "body": "Treatments are grouped into breast, face, body and skin, each with its own URL path, so patients and search engines can follow a clear hierarchy from category to procedure."
+    },
+    {
+      "title": "Clinic and team",
+      "body": "The home page shows the full team photo, a personal message from Dr. Holdenried, the most requested treatments, a short video, patient reviews and a team introduction, with doctors, clinic and careers pages in the main menu."
+    },
+    {
+      "title": "Consultation requests",
+      "body": "Four slide-out forms cover appointment booking, photo requests, video consultations and price requests, the last with a dropdown of treatments grouped by area."
+    },
+    {
+      "title": "Mobile and compliance",
+      "body": "On phones the menu and search sit beside the logo and a fixed bar opens the request forms, while Borlabs Cookie handles consent and the footer links to imprint, privacy and accessibility pages."
+    }
+  ],
+  "technologies": ["WordPress", "Custom theme (block editor)", "Borlabs Cookie", "Yoast SEO"],
+  "whyItMatters": "Patients considering an aesthetic procedure want clear information and a low-pressure way to ask questions first. Separate request paths for price, photos and video calls let them start the conversation the way they feel comfortable.",
+  "faqs": [
+    {
+      "q": "What is the Klinik am Schwarzwald website built with?",
+      "a": "It runs on WordPress with a custom theme and the block editor, using Borlabs Cookie for consent management and Yoast SEO for search settings."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "mobile": ["mobile-home"]
+  }
+}

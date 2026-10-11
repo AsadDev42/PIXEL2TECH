@@ -1,0 +1,45 @@
+{
+  "slug": "ez-junk-removal-wordpress-website",
+  "client": "EZ Junk Removal",
+  "url": "https://ezjunkremoval.ca/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 123,
+  "metaTitle": "EZ Junk Removal website | Pixel2Tech",
+  "metaDescription": "White-label WordPress website for EZ Junk Removal in Halifax: multi-step quote form, junk removal and dumpster rental pages, local area pages and reviews.",
+  "summary": "WordPress lead generation website for a junk removal and dumpster rental company in Halifax, Nova Scotia.",
+  "overview": "EZ Junk Removal offers junk removal, dumpster rentals and residential trash and recycling pickup across Halifax and the surrounding area. Pixel2Tech built EZ Junk Removal's WordPress website as white-label development partner for a digital agency, built around phone calls and quote requests.",
+  "challenge": "Local service customers want a price and a pickup date quickly, and they search by town as much as by service. The agency's client needed a site that captures enough job detail to quote accurately and ranks for each community it serves.",
+  "approach": "A bright yellow header keeps the phone number and a menu for Services, Our Locations, About Us and Contact Us in view. The hero pairs the headline and a Call Us Now button with a multi-step Get Your Estimate form that asks for service type, junk type, estimated volume, access difficulty, rental length, a photo and the address. Below it, service sections for junk removal and dumpster rental show starting prices, followed by a why choose us block, a Google reviews feed and a footer with hours, address and a map.",
+  "outcome": "A WordPress website where homeowners and contractors can call, message or request a detailed quote from the first screen, with separate pages for each service and each community served. Because the form asks about volume, access and photos up front, the team gets what it needs to quote without a long phone call.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (Neve theme, Elementor Pro)" },
+    { "label": "Site type", "value": "Local service lead generation site" },
+    { "label": "Key pages", "value": "Junk removal, dumpster rental, location pages" }
+  ],
+  "deliverables": [
+    "WordPress website",
+    "Multi-step quote form",
+    "Service pages",
+    "Location pages for each community",
+    "Google reviews section",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Quote form", "body": "A multi-step estimate form collects contact details, then branches by service: junk type, volume and access for removals, or job type and rental length for dumpsters, with an optional photo upload." },
+    { "title": "Local pages", "body": "The Our Locations menu has junk removal and dumpster rental pages for Bedford, Sackville, Dartmouth, Tantallon and Cole Harbour, so each community has its own landing page." },
+    { "title": "Services and pricing", "body": "Home page sections explain junk removal and dumpster rental side by side, with rental options and starting prices listed so visitors know what to expect before calling." },
+    { "title": "Calls and trust", "body": "Call Us Now and Message Us buttons repeat through the page, a Google reviews feed sits near the bottom, and on phones the call button stays in the first screen." }
+  ],
+  "technologies": ["WordPress", "Neve theme", "Elementor Pro", "ElementsKit", "Trustindex Google reviews"],
+  "whyItMatters": "Junk removal is booked by people who want the job done soon. Putting the phone number, a detailed quote form and local pages up front turns a search into a booked pickup with less back and forth.",
+  "faqs": [
+    { "q": "What platform is the EZ Junk Removal website built on?", "a": "It runs on WordPress with the Neve theme and Elementor Pro, using ElementsKit widgets, a multi-step quote form and an embedded Google reviews feed." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

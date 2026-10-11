@@ -1,0 +1,45 @@
+{
+  "slug": "dune-london-pakistan-shopify-store",
+  "client": "Dune London Pakistan",
+  "url": "https://www.dunelondon.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 71,
+  "metaTitle": "Dune London Pakistan Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Dune London Pakistan, the brand's Pakistan online store: shoes, sandals and bags for women, men and kids, with filters and size charts.",
+  "summary": "Shopify store for Dune London Pakistan, the Pakistan online store for the UK footwear and accessories brand.",
+  "overview": "Dune London Pakistan is the Pakistan online store for Dune London, the UK footwear and accessories brand. It sells heels, flats, trainers, sandals, handbags and clutches for women, plus shoes for men and sandals for kids. We built the Pakistan storefront on Shopify to present the brand's range with local pricing.",
+  "challenge": "Footwear lives and dies on size availability, and shoppers often browse by occasion: a heel for an event, a sandal for summer, a formal shoe for work. The store needed to carry an international brand's look while making sizes, discounts and stock levels clear for shoppers in Pakistan.",
+  "approach": "A centered logo sits over a short menu of New In, Women, Men, Kids and Sale, each opening into types such as heels, flat sandals, clutches or men's formal shoes. The home page follows a sale banner with a new-season product carousel split into women's and men's new in, then large image tiles for women's shoes, handbags, men's shoes and sandals. Collection pages filter by gender, category, price, color and size, and product pages show was and now prices, a size chart, sold-out sizes and low stock alerts.",
+  "outcome": "A clean, image-led storefront where shoppers can browse by occasion and type, see which sizes are left and buy in a few taps.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Impulse theme, PageFly sections)" },
+    { "label": "Catalog", "value": "Shoes, sandals, bags and accessories" },
+    { "label": "Shopping", "value": "Type menus, size filters, low stock alerts" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Women, men and kids menus",
+    "Collection filters by size and color",
+    "Product page with size chart",
+    "Wishlist",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Menus by type", "body": "Women's shoes, sandals and bags, men's shoes and kids' sandals each open into clear types, from heels and loafers to clutches and smart sandals." },
+    { "title": "Home page", "body": "A sale banner, a new-season carousel with women's and men's tabs, large category tiles and a shoppable social grid lead into a newsletter sign-up." },
+    { "title": "Collections", "body": "Collection pages show an intro line, a product count, sorting and accordion filters for gender, category, price, color and size, with sale badges on each card." },
+    { "title": "Product pages", "body": "Each page shows the style name, original and sale price, a size chart, sizes with sold-out options crossed out, a low stock alert and add to cart or buy it now." }
+  ],
+  "technologies": ["Shopify", "Impulse theme", "PageFly", "Wishlist Hero"],
+  "whyItMatters": "Shoppers abandon footwear orders when they cannot find their size. Showing size availability, stock levels and a size chart up front keeps them moving to checkout.",
+  "faqs": [
+    { "q": "What platform is the Dune London Pakistan store built on?", "a": "It runs on Shopify with the Impulse theme, with PageFly sections on the home page and Shopify collections for women's, men's and kids' ranges." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for footwear and accessories brands, including country storefronts for international labels. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

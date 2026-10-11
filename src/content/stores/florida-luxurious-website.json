@@ -1,0 +1,62 @@
+{
+  "slug": "florida-luxurious-website",
+  "client": "Florida Luxurious Properties",
+  "url": "https://www.floridaluxurious.com/",
+  "platform": "Custom",
+  "engagement": "white-label",
+  "order": 144,
+  "metaTitle": "Florida Luxurious Properties website | Pixel2Tech",
+  "metaDescription": "White-label React website for Florida Luxurious Properties, a Fort Lauderdale brokerage: property search, MLS listings, communities and a marinas guide.",
+  "summary": "Custom React website for a luxury real estate brokerage in Fort Lauderdale.",
+  "overview": "Florida Luxurious Properties is a luxury real estate brokerage based on Las Olas Boulevard in Fort Lauderdale. Pixel2Tech built the brokerage's website as a custom React application, as white-label development partner for a digital agency. The site brings property search, the firm's listings, the wider MLS, community guides and the team together in one place.",
+  "challenge": "A brokerage site has to show the firm's own featured and sold homes, search the wider MLS, and introduce the neighborhoods and agents behind them. In a waterfront market like Fort Lauderdale it also needs to speak to boat owners, who care about marinas and dockage as much as the house.",
+  "approach": "A full-screen aerial video hero carries the line Luxury. Innovation. Excellence. and a property search box with location suggestions. The header links to Our Offerings, Other Offerings, About, For Boat Owners and Contact Us, leading to featured properties, sold properties, MLS listings, communities, market reports, the team and a guide to local marinas. On phones the hero switches to a home photo and the menu folds into a single icon.",
+  "outcome": "A real estate website where buyers can search by location, browse the brokerage's featured and sold properties, look through MLS listings and communities, and contact the team. Boat owners get their own section with local marinas alongside the property pages.",
+  "results": [
+    { "label": "Platform", "value": "Custom (React and Vite)" },
+    { "label": "Site type", "value": "Luxury real estate brokerage" },
+    { "label": "Key pages", "value": "Search, listings, MLS, communities, boat owners" }
+  ],
+  "deliverables": [
+    "Custom React website",
+    "Property search with location suggestions",
+    "Featured, sold and MLS listing pages",
+    "Community and team pages",
+    "Boat owners and marinas guide",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Site structure",
+      "body": "Pages cover featured and sold properties, MLS listings, communities, market reports, the brokerage's story, meet the team, boat owner resources and contact."
+    },
+    {
+      "title": "Search",
+      "body": "The search box sits in the middle of the hero and suggests locations as visitors type, so a buyer can go straight from the home page to matching properties."
+    },
+    {
+      "title": "Waterfront focus",
+      "body": "A For Boat Owners section lists local marinas and yacht facilities around Fort Lauderdale, reflecting how many buyers in the area shop for a home with water access."
+    },
+    {
+      "title": "Mobile",
+      "body": "On phones the aerial video gives way to a home photo with the headline and search box stacked, and the navigation folds into a single menu icon."
+    }
+  ],
+  "technologies": ["React", "Vite", "React Router", "Google Maps"],
+  "whyItMatters": "Luxury buyers judge a brokerage by how its listings look and how easy they are to find. Putting search, listings, communities and marina information on one site gives them fewer reasons to look elsewhere.",
+  "faqs": [
+    {
+      "q": "What is the Florida Luxurious Properties website built with?",
+      "a": "It is a custom single-page application built with React and Vite, using React Router for its pages and Google Maps for property locations."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "mobile": ["mobile-home"]
+  }
+}

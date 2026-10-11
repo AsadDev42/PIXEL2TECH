@@ -3,18 +3,28 @@
   "client": "Habitt",
   "url": "https://habitt.com/",
   "platform": "Shopify",
+  "engagement": "white-label",
   "order": 42,
   "metaTitle": "Habitt Shopify store | Pixel2Tech",
   "metaDescription": "Shopify store for Habitt, a Pakistani home store: furniture by room, decor, bedding, kitchen and serving, with wish lists and installment payments.",
   "summary": "Shopify store for a home retailer selling furniture, decor, bedding and kitchenware.",
-  "overview": "Habitt describes itself as a one stop shop for the home, selling furniture for every room alongside decor, bedding, kitchenware, serving, bath and storage. We built Habitt's Shopify store to hold that large catalog, from a single mug to a full bedroom set.",
+  "overview": "Habitt describes itself as a one stop shop for the home, selling furniture for every room alongside decor, bedding, kitchenware, serving, bath and storage. Pixel2Tech built Habitt's Shopify store as white-label development partner for a digital agency, set up to hold that large catalog, from a single mug to a full bedroom set.",
   "challenge": "The range spans low-cost kitchen items and furniture sets that cost many times more, across dozens of categories. Shoppers furnishing a room need to browse by room, while shoppers buying a dinner set need to compare sizes and prices quickly.",
   "approach": "A dark header with a wide search bar sits over a menu for Sale, Furniture, Decor, Bedding and comfort, Kitchen, Serving, Bath, Storage and organizers and Appliances. Furniture is broken down by room: bedroom, living room, dining room, kids, study, outdoor and office, with furniture and wedding bundles. Collection pages add a sub-category image carousel, a category sidebar, grid view options, items per page and sorting. Product pages show SKU, stock status, product type, size options such as dinner sets for 4, 6 or 8 people, a Baadmay pay-in-3 box, a wish list button and both Add to cart and Buy it now.",
   "outcome": "A Shopify store where shoppers can furnish a room or pick up a kitchen tool from the same menu, save items to a wish list and spread larger purchases over installments.",
   "results": [
-    { "label": "Platform", "value": "Shopify (Ella theme)" },
-    { "label": "Catalog", "value": "Furniture, decor, bedding, kitchen, serving, bath" },
-    { "label": "Shopping", "value": "By room, wish lists, pay in 3 installments" }
+    {
+      "label": "Platform",
+      "value": "Shopify (Ella theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Furniture, decor, bedding, kitchen, serving, bath"
+    },
+    {
+      "label": "Shopping",
+      "value": "By room, wish lists, pay in 3 installments"
+    }
   ],
   "deliverables": [
     "Shopify storefront",
@@ -25,20 +35,51 @@
     "Mobile layout"
   ],
   "process": [
-    { "title": "Menu by room", "body": "Furniture is split into bedroom, living room, dining room, kids, study, outdoor and office, while home categories cover decor, bedding, cookware, bakeware and kitchen storage." },
-    { "title": "Collections", "body": "Collection pages open with an image carousel of sub-categories, then a category sidebar, grid view toggles, items per page and sorting, with sale percentages on product cards." },
-    { "title": "Product pages", "body": "Each product lists SKU, availability and product type, the sale and original price, size options, a Baadmay installment box and a wish list button next to the cart buttons." },
-    { "title": "Mobile and support", "body": "The mobile home page leads with campaign banners and a deal of the month row, and product pages offer an ask an expert button for questions over WhatsApp." }
+    {
+      "title": "Menu by room",
+      "body": "Furniture is split into bedroom, living room, dining room, kids, study, outdoor and office, while home categories cover decor, bedding, cookware, bakeware and kitchen storage."
+    },
+    {
+      "title": "Collections",
+      "body": "Collection pages open with an image carousel of sub-categories, then a category sidebar, grid view toggles, items per page and sorting, with sale percentages on product cards."
+    },
+    {
+      "title": "Product pages",
+      "body": "Each product lists SKU, availability and product type, the sale and original price, size options, a Baadmay installment box and a wish list button next to the cart buttons."
+    },
+    {
+      "title": "Mobile and support",
+      "body": "The mobile home page leads with campaign banners and a deal of the month row, and product pages offer an ask an expert button for questions over WhatsApp."
+    }
   ],
-  "technologies": ["Shopify", "Ella theme", "Shopify collections and filters", "Wish list", "Baadmay installments"],
+  "technologies": [
+    "Shopify",
+    "Ella theme",
+    "Shopify collections and filters",
+    "Wish list",
+    "Baadmay installments"
+  ],
   "whyItMatters": "Home shoppers usually think in rooms, not product types, and big pieces are considered purchases. Room-based menus, wish lists and installment options match how people actually furnish a home.",
   "faqs": [
-    { "q": "What platform is the Habitt store built on?", "a": "It runs on Shopify with the Ella theme, using Shopify collections for room-based furniture, home categories, bundles and sale sections." },
-    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for furniture and home brands, including room-based navigation, large catalogs and installment payment options. Tell us about your catalog and we will send a fixed quote after a short call." }
+    {
+      "q": "What platform is the Habitt store built on?",
+      "a": "It runs on Shopify with the Ella theme, using Shopify collections for room-based furniture, home categories, bundles and sale sections."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
   ],
   "shots": {
-    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
     "fullPage": "desktop-home-full",
-    "mobile": ["mobile-home", "mobile-product"]
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
   }
 }

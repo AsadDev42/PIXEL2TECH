@@ -13,7 +13,16 @@ export type StoreProject = {
   slug: string;
   client: string;
   url: string;
-  platform: "Shopify" | "WordPress";
+  /**
+   * Shopify stores and WordPress sites go to the "WordPress & Shopify" practice;
+   * sites on any other platform are listed under Design / Websites.
+   */
+  platform: "Shopify" | "WordPress" | "Webflow" | "Next.js" | "Custom";
+  /**
+   * "white-label": built as development partner for an agency whose client the
+   * brand is. The page says so instead of implying the brand hired us directly.
+   */
+  engagement?: "direct" | "white-label";
   /** Display order inside the category (lower first). */
   order: number;
   metaTitle: string;
@@ -48,6 +57,15 @@ export const STORE_PROJECTS: StoreProject[] = Object.values(files).sort(
   (a, b) => a.order - b.order || a.client.localeCompare(b.client),
 );
 
+/** Online stores vs. websites, for titles and copy. */
+export function isStore(p: StoreProject): boolean {
+  return p.platform === "Shopify";
+}
+
+export function isWhiteLabel(p: StoreProject): boolean {
+  return p.engagement === "white-label";
+}
+
 const shot = (p: StoreProject, name: string) => `/portfolio/${p.slug}/${name}.webp`;
 
 export function storeOf(p: StoreProject): LiveStore {
@@ -56,6 +74,7 @@ export function storeOf(p: StoreProject): LiveStore {
     desktop: p.shots.desktop.map((n) => shot(p, n)),
     fullPage: p.shots.fullPage ? shot(p, p.shots.fullPage) : undefined,
     mobile: p.shots.mobile.map((n) => shot(p, n)),
+    kind: isStore(p) ? "store" : "website",
   };
 }
 

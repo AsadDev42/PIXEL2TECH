@@ -1,0 +1,84 @@
+{
+  "slug": "negative-apparel-shopify-store",
+  "client": "Negative Apparel",
+  "url": "https://negativeapparel.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 54,
+  "metaTitle": "Negative Apparel Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Negative Apparel, a women's fashion label: dresses, co-ords, lingerie and loungewear, curvy and winter edits, and a mobile bottom bar.",
+  "summary": "Shopify store for a contemporary women's fashion brand selling dresses, co-ords, lingerie and loungewear.",
+  "overview": "Negative Apparel describes itself as contemporary women's fashion with global styles, selling dresses, co-ord sets, tops, bottoms, lingerie, sleepwear, bags and beauty. We built Negative Apparel's Shopify store to carry a fast-changing catalog of new drops.",
+  "challenge": "New styles arrive often and the range covers everything from office suits to lingerie. Shoppers need quick routes into dresses, co-ords or sleepwear, and separate edits for curvy sizes, winter, beauty and accessories.",
+  "approach": "A top row of tabs switches between Women, Winters, Curvy, Beauty and Accessories, while a second menu covers new arrivals, dresses, co-ord sets, tops, bottoms, lingerie, loungewear and kids. The home page leads with a campaign banner and a tabbed new drops grid for tops, pants and dresses, followed by category banners. Product pages show color swatches, size buttons, quantity, add to cart and buy it now, and a currency selector in the header shows prices in PKR.",
+  "outcome": "A product-dense Shopify store where shoppers can switch between edits, browse new drops by type and buy in a few taps, with a fixed bottom bar on mobile. Each edit has its own landing page, so the team can feature curvy, winter or beauty ranges without crowding the main menu.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Ecomus theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Dresses, co-ords, tops, lingerie, loungewear, bags"
+    },
+    {
+      "label": "Shopping",
+      "value": "Edit tabs, tabbed new drops, swatches"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Edit tabs and mega menus",
+    "Tabbed new drops grid",
+    "Product page with swatches",
+    "Mobile bottom navigation",
+    "Store locations page"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "Edit tabs for women, winters, curvy, beauty and accessories sit above a category menu with dropdowns for dresses, co-ords, tops, bottoms, lingerie and loungewear."
+    },
+    {
+      "title": "Home page",
+      "body": "A campaign banner leads into a new drops grid that switches between tops, pants and dresses, then large lingerie and dresses banners."
+    },
+    {
+      "title": "Collections and products",
+      "body": "Collection pages offer filters, sorting and several grid densities. Product pages show image galleries, color swatches, size buttons and two purchase buttons."
+    },
+    {
+      "title": "Mobile",
+      "body": "A fixed bottom bar gives home, menu, search and cart on every page, with the edit tabs kept under the logo."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Ecomus theme",
+    "Multi-currency selector",
+    "Product compare"
+  ],
+  "whyItMatters": "Fashion stores with frequent drops live on repeat visits. Fast routes to what is new, by type, give returning shoppers a reason to check back.",
+  "faqs": [
+    {
+      "q": "What platform is the Negative Apparel store built on?",
+      "a": "It runs on Shopify with the Ecomus theme, using collections for each category and edit, color and size options, and a currency selector."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for fashion brands, including edit tabs, new drop grids and mobile bottom navigation. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

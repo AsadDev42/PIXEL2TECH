@@ -3,18 +3,28 @@
   "client": "KIKO Milano Pakistan",
   "url": "https://kikocosmetics.pk/",
   "platform": "Shopify",
+  "engagement": "white-label",
   "order": 44,
   "metaTitle": "KIKO Milano Pakistan Shopify store | Pixel2Tech",
   "metaDescription": "Shopify store for KIKO Milano in Pakistan: makeup, skincare, fragrance and hair care, with shade swatches, store availability and installment payments.",
   "summary": "Shopify store for the Pakistan storefront of the KIKO Milano cosmetics range.",
-  "overview": "KIKO Milano Pakistan sells the Italian brand's makeup, skincare, sun care, fragrance and hair care to shoppers in Pakistan, both online and through its stores. We built the Shopify store that carries this single-brand cosmetics range for the Pakistan market.",
+  "overview": "KIKO Milano Pakistan sells the Italian brand's makeup, skincare, sun care, fragrance and hair care to shoppers in Pakistan, both online and through its stores. Pixel2Tech built the Shopify store that carries this single-brand cosmetics range for the Pakistan market, as white-label development partner for a digital agency.",
   "challenge": "Cosmetics shoppers choose by shade, and many products come in six or more shades of the same lipstick, gloss or eyeshadow. The store also has to connect online browsing with physical stores, so shoppers can check where a product is in stock.",
   "approach": "A light header with search, account, wish list and bag sits above a menu for Make up, Skin care, Accessories, Sun care, Fragrances, Hair and New, with make up split into face, eyes, lips, hands and palettes. Product pages put the product name and gallery next to a shade picker that shows the selected shade, the total number of shades and which shades are sold out. Below it sit the price, Add to bag, a Baadmay pay-in-3 line and a store availability check, with Description, Results, Advice and Ingredients tabs further down.",
   "outcome": "A Shopify store where shoppers can pick an exact shade, see whether it is in stock online or in a nearby store and pay in installments, on mobile or desktop.",
   "results": [
-    { "label": "Platform", "value": "Shopify (Ella theme)" },
-    { "label": "Catalog", "value": "Makeup, skincare, sun care, fragrance, hair care, accessories" },
-    { "label": "Shopping", "value": "Shade swatches, store availability, pay in 3" }
+    {
+      "label": "Platform",
+      "value": "Shopify (Ella theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Makeup, skincare, sun care, fragrance, hair care, accessories"
+    },
+    {
+      "label": "Shopping",
+      "value": "Shade swatches, store availability, pay in 3"
+    }
   ],
   "deliverables": [
     "Shopify storefront",
@@ -24,20 +34,50 @@
     "Mobile layout"
   ],
   "process": [
-    { "title": "Category menu", "body": "Make up is split into face, eye and lip makeup, hands and palettes, and skin care, accessories, sun care, fragrances and hair care each get their own sub-menus." },
-    { "title": "Shade selection", "body": "Product pages show round color swatches with the selected shade name and an all shades count, and sold-out shades are crossed out so shoppers do not pick them." },
-    { "title": "Stores and payment", "body": "A stores link in the top bar and a store availability box on each product connect the site to physical stores, next to a Baadmay installment option." },
-    { "title": "Home and mobile", "body": "The home page leads with campaign banners and a most loved product row, and the mobile header keeps menu, search, store finder and bag within reach." }
+    {
+      "title": "Category menu",
+      "body": "Make up is split into face, eye and lip makeup, hands and palettes, and skin care, accessories, sun care, fragrances and hair care each get their own sub-menus."
+    },
+    {
+      "title": "Shade selection",
+      "body": "Product pages show round color swatches with the selected shade name and an all shades count, and sold-out shades are crossed out so shoppers do not pick them."
+    },
+    {
+      "title": "Stores and payment",
+      "body": "A stores link in the top bar and a store availability box on each product connect the site to physical stores, next to a Baadmay installment option."
+    },
+    {
+      "title": "Home and mobile",
+      "body": "The home page leads with campaign banners and a most loved product row, and the mobile header keeps menu, search, store finder and bag within reach."
+    }
   ],
-  "technologies": ["Shopify", "Ella theme", "Shopify collections", "Wish list", "Baadmay installments"],
+  "technologies": [
+    "Shopify",
+    "Ella theme",
+    "Shopify collections",
+    "Wish list",
+    "Baadmay installments"
+  ],
   "whyItMatters": "In makeup, the wrong shade means a return or a lost customer. Clear swatches, sold-out states and a store stock check help shoppers buy the right product the first time.",
   "faqs": [
-    { "q": "What platform is the KIKO Milano Pakistan store built on?", "a": "It runs on Shopify with the Ella theme, using Shopify collections for makeup, skincare, fragrance and hair care categories." },
-    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for cosmetics brands, including shade pickers, store availability and product page layouts. Tell us about your range and we will send a fixed quote after a short call." }
+    {
+      "q": "What platform is the KIKO Milano Pakistan store built on?",
+      "a": "It runs on Shopify with the Ella theme, using Shopify collections for makeup, skincare, fragrance and hair care categories."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
   ],
   "shots": {
-    "desktop": ["desktop-home", "desktop-product"],
+    "desktop": [
+      "desktop-home",
+      "desktop-product"
+    ],
     "fullPage": "desktop-home-full",
-    "mobile": ["mobile-home", "mobile-product"]
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
   }
 }

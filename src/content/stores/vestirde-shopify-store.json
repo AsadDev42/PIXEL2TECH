@@ -1,0 +1,44 @@
+{
+  "slug": "vestirde-shopify-store",
+  "client": "Vestir De",
+  "url": "https://vestirde.com.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 80,
+  "metaTitle": "Vestir De Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Vestir De, a Pakistani clothing brand: men's unstitched boski and linen, stitched kurtas, shawls, womenswear and installment payments.",
+  "summary": "Shopify store for a Pakistani clothing brand known for men's unstitched fabrics, kurtas and shawls.",
+  "overview": "Vestir De sells men's unstitched fabrics such as boski, Irish linen and Egyptian cotton, along with stitched kurtas, woolen shawls and stoles, and a women's range. We built Vestir De's Shopify store to sell fabric by quality and finish as clearly as it sells ready-made clothing.",
+  "challenge": "Unstitched fabric is hard to judge online: shoppers compare weight, fiber and sheen rather than cut and size. The store had to explain those differences while also carrying ready-to-wear kurtas and seasonal shawls.",
+  "approach": "A black header with a centered logo holds a menu for Home, Sale, Shawls, Men Unstitched, Men Stitched and Women's. The homepage opens with a full-width video banner, then a Premium Boski grid, a new arrivals lookbook and a Trending Products grid of kurtas, followed by free shipping, support and secure payment notes. Fabric product pages carry a full written description of the material and a Vestir De Guarantee list, alongside a pay-in-three installment option, a wish list button and buy it now.",
+  "outcome": "A Shopify store that lets shoppers compare unstitched fabrics by name, weight and finish, buy ready-made kurtas and shawls, and spread payments over three installments.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme)" },
+    { "label": "Catalog", "value": "Unstitched boski and linen, kurtas, shawls, womenswear" },
+    { "label": "Shopping", "value": "By fabric, stitched or unstitched, sale" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Fabric collection pages",
+    "Video homepage banner",
+    "Product page layout",
+    "Mobile bottom navigation"
+  ],
+  "process": [
+    { "title": "Menu by garment type", "body": "The menu separates men's unstitched fabric, men's stitched clothing, shawls and the women's range, with sub-collections such as boski, Irish linen, Egyptian cotton and winter wear." },
+    { "title": "Fabric presentation", "body": "Fabric products use tall images with the fabric name and weight printed on them, so shoppers can tell grades such as 8, 10 and 12 pound boski apart in the grid." },
+    { "title": "Product pages", "body": "Product pages pair a written description of each fabric with a guarantee list, color options, a pay-in-three installment option, wish list and buy it now buttons." },
+    { "title": "Mobile layout", "body": "On phones a bottom bar gives quick access to the wish list, cart and search, with a chat button for questions about fabric." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "Judge.me product reviews", "Baadmay pay-in-three installments"],
+  "whyItMatters": "Selling fabric online depends on describing material well enough that shoppers can choose without touching it. Clear naming, detailed descriptions and flexible payment remove much of that hesitation.",
+  "faqs": [
+    { "q": "What platform is the Vestir De store built on?", "a": "It runs on Shopify with the Kalles theme, using Shopify collections for unstitched fabrics, stitched clothing, shawls and womenswear." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my clothing brand?", "a": "Yes. We design and build Shopify stores for clothing and fabric brands, including collection structure, product descriptions and installment payment options. Tell us about your range and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-product"]
+  }
+}

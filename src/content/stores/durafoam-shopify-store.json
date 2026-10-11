@@ -1,0 +1,58 @@
+{
+  "slug": "durafoam-shopify-store",
+  "client": "Durafoam",
+  "url": "https://durafoam.com.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 64,
+  "metaTitle": "Durafoam Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Durafoam, a Pakistani mattress brand: foam and spring mattresses, mattress in a box and fold-a-beds, with size and thickness options.",
+  "summary": "Shopify store for a Pakistani mattress brand selling foam and spring mattresses, portable beds and pillows.",
+  "overview": "Durafoam makes foam and spring mattresses in Pakistan, sold under the Durafoam and Dura Spring ranges, along with a mattress in a box, fold-a-bed portable mattresses, pillows and cushions. The brand describes its mattresses as reliable and durable at a market-beating price. We built Durafoam's Shopify store to sell these large, considered purchases online.",
+  "challenge": "A mattress is an expensive item that shoppers cannot try online, and each model comes in several bed sizes and thicknesses. Buyers also want to know about delivery, warranty and payment options before they commit.",
+  "approach": "Under a bright orange header, a blue menu bar covers Shop by Category, Durafoam, Dura Spring, Portable Mattresses, Accessories, Mattress in a Box and Information. The home page opens with campaign slides and a video, then image tiles for each range and a tabbed carousel of best sellers, foam, spring and accessories, followed by a strip for nationwide shipping, product warranty, online support and secure orders. Product pages offer size buttons in inches and thickness buttons, Baadmay pay-in-3, a wish list, an estimated delivery window and collapsible description tabs.",
+  "outcome": "A Shopify store where shoppers can pick a range and choose the exact size and thickness for their bed. Delivery dates and installment amounts are shown before checkout, and warranty activation is a footer link away.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Dawn theme)" },
+    { "label": "Catalog", "value": "Foam and spring mattresses, portable beds, pillows" },
+    { "label": "Shopping", "value": "Size and thickness options, pay in 3 installments" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Range-based navigation",
+    "Home page category tiles and tabbed carousel",
+    "Product page with size and thickness options",
+    "Warranty and order tracking pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Ranges and categories", "body": "The menu and home page tiles separate Durafoam foam mattresses, Dura Spring mattresses, the mattress in a box, Dura Pillow, Fold a Bed and accessories." },
+    { "title": "Variant options", "body": "Mattress pages use size buttons such as 78 by 72 inches and separate thickness buttons, so each combination has its own price." },
+    { "title": "Buying confidence", "body": "Product pages show reviews, Baadmay installments, an estimated delivery window and a wish list, and the home page lists shipping, warranty, support and secure checkout." },
+    { "title": "After the sale", "body": "Footer links cover track order, warranty policy, warranty activation, exchange and return, and a blog." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Dawn theme (Online Store 2.0)",
+    "Shopify variants",
+    "Baadmay installments",
+    "Product reviews"
+  ],
+  "whyItMatters": "A mattress is bought once every few years and costs more than most home items. Clear size options, delivery dates, warranty information and installments help shoppers decide without visiting a showroom.",
+  "faqs": [
+    { "q": "What platform is the Durafoam store built on?", "a": "It runs on Shopify with the Dawn theme (Online Store 2.0), using collections for each mattress range and variants for bed size and thickness." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for home and furniture brands, including multi-option variants, installment payments and warranty pages. Tell us about your products and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

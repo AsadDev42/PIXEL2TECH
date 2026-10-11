@@ -1,0 +1,84 @@
+{
+  "slug": "molty-foam-shopify-store",
+  "client": "Master MoltyFoam",
+  "url": "https://moltyfoam.com.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 69,
+  "metaTitle": "Master MoltyFoam Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Master MoltyFoam, a Pakistani mattress brand: sub-brand menus, a mattress selector, warranty activation and pay-in-three checkout.",
+  "summary": "Shopify store for a Pakistani mattress brand selling mattresses, pillows and sleep accessories.",
+  "overview": "Master MoltyFoam sells foam and spring mattresses, pillows, cushions, toppers and baby and maternity products, and calls itself Pakistan's No.1 sleep specialists. Its range is split across sub-brands such as Celeste, MoltyOrtho, Be by MoltyFoam, MoltyMom and MoltyBaby. We built the brand's Shopify store to sell that range online and support owners after the sale.",
+  "challenge": "A mattress is a considered purchase: shoppers compare firmness, support and price, and often want advice before paying. The store also has to serve existing customers who need to activate a warranty, find a store or book a visit, not just new buyers.",
+  "approach": "An icon menu across the header lists each sub-brand and range, from MoltyFoam and Celeste to pillows, accessories, MoltyMom and MoltyBaby. The home page introduces each sub-brand with a short description tile, then shows best sellers and suggestions with ratings. Product pages keep price, quantity, add to cart and BaadMay pay-in-three in a bar at the top, with buttons to order on WhatsApp, call or email, while utility links cover a mattress selector, warranty activation, store locator and appointment booking.",
+  "outcome": "A store that sells mattresses and accessories online and also handles the questions around them, from choosing a mattress to activating a warranty or booking a consultation.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (Avone OS 2.0 theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Mattresses, pillows, cushions, baby and mom range"
+    },
+    {
+      "label": "Shopping",
+      "value": "Sub-brand menu, mattress selector, installments"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Sub-brand icon navigation",
+    "Product page with sticky buy bar",
+    "Warranty and service links",
+    "Installment payment option",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Sub-brands up front",
+      "body": "Each sub-brand and range gets an icon in the main menu and a description tile on the home page, so shoppers can tell Celeste, MoltyFoam and MoltyOrtho apart before they browse."
+    },
+    {
+      "title": "Choosing a mattress",
+      "body": "A mattress selector, wedding bundles, a MoltyOrtho consultation booking and ratings on product cards help shoppers narrow the range before they buy."
+    },
+    {
+      "title": "Product pages",
+      "body": "Price, quantity, add to cart and BaadMay pay-in-three stay in a bar at the top, with stock status, ratings, a full description and buttons to order on WhatsApp, call or email."
+    },
+    {
+      "title": "After the sale",
+      "body": "Footer and header links cover warranty activation, order tracking, store locator, complaint and feedback forms, dealer sign-up and an at-your-door service."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Avone OS 2.0 theme",
+    "BaadMay installments",
+    "Product reviews",
+    "WhatsApp ordering"
+  ],
+  "whyItMatters": "Mattress buyers rarely decide on price alone, and many want to talk to someone first. A store that answers questions, offers direct contact and supports warranty and service turns a hesitant visit into an order.",
+  "faqs": [
+    {
+      "q": "What platform is the Master MoltyFoam store built on?",
+      "a": "It runs on Shopify with the Avone OS 2.0 theme, using Shopify collections for each sub-brand and range, BaadMay for installments and WhatsApp for direct orders."
+    },
+    {
+      "q": "Can Pixel2Tech build a similar Shopify store for my brand?",
+      "a": "Yes. We design and build Shopify stores for considered purchases, including product selectors, service and warranty pages and installment payments. Tell us about your catalog and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

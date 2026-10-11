@@ -1,0 +1,45 @@
+{
+  "slug": "ak-galleria-shopify-store",
+  "client": "AK Galleria",
+  "url": "https://akgalleria.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 70,
+  "metaTitle": "AK Galleria Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for AK Galleria, a Pakistani multi-brand fashion store: men, women and kids, brand filters, product search and installment checkout.",
+  "summary": "Shopify store for a Pakistani multi-brand fashion retailer covering men, women and kids.",
+  "overview": "AK Galleria sells fashion from many brands for men, women and kids, covering eastern and western clothing, footwear, accessories, beauty and personal care. We built AK Galleria's Shopify store as a multi-brand shop where the brand name matters as much as the category.",
+  "challenge": "A multi-brand store has to work two ways at once: some shoppers come for a brand, others for a category such as jackets or sneakers. With deep menus for men, women and kids and frequent discounts, shoppers need fast search and filters that cut a large catalog down.",
+  "approach": "A dark header pairs Sale, Pre-Winter Fashion, Men, Women, Kids, Brands and New Arrivals with a wide search bar for products, brands and more. Mega menus run from Pakistani contemporary wear to footwear, personal care and accessories. The home page adds a category circle carousel, gender tabs, a brand logo strip and product rows, and collection pages filter by brand, category, discount, gender, color and product type.",
+  "outcome": "A fashion marketplace store where shoppers can start from a brand, a category or a search, and narrow results by brand and discount before opening a product.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Dawn theme, customized)" },
+    { "label": "Catalog", "value": "Multi-brand fashion, footwear, beauty, kids" },
+    { "label": "Shopping", "value": "Brand filters, mega menus, installments" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Mega menus for men, women and kids",
+    "Brand and discount filters",
+    "Header search",
+    "Product page with installments",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation", "body": "Mega menus for men, women and kids break the range into eastern wear, western wear, footwear, personal care and accessories, with a Brands menu and a search bar in the header." },
+    { "title": "Home page", "body": "A campaign slideshow leads into a category circle carousel, new fashion trends, men, women and kids tabs, a brand logo strip and accessories and beauty rows." },
+    { "title": "Collections", "body": "A filter sidebar for gender, color and product type sits beside dropdowns for brand, category and discount, with quick view on every product card." },
+    { "title": "Product pages", "body": "Product pages lead with the brand name, tax-inclusive price, BaadMay and Yeylo pay-in-three, size and color choices, add to bag, buy it now and a wishlist button." }
+  ],
+  "technologies": ["Shopify", "Dawn theme (customized)", "Judge.me reviews", "BaadMay installments", "Wishlist"],
+  "whyItMatters": "Multi-brand shoppers often know the label they want before the item. A store that treats brands as a first-class filter, next to category and discount, gets them to the right product faster.",
+  "faqs": [
+    { "q": "What platform is the AK Galleria store built on?", "a": "It runs on Shopify with a customized Dawn theme, using Shopify collections and filters for brands, categories and discounts, with Judge.me for reviews and BaadMay for installments." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for multi-brand retailers, including mega menus, brand filters and installment payments. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

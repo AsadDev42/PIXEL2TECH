@@ -1,0 +1,57 @@
+{
+  "slug": "mannat-clothing-shopify-store",
+  "client": "Mannat Clothing",
+  "url": "https://mannatclothing.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 61,
+  "metaTitle": "Mannat Clothing Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Mannat Clothing, a Pakistani womenswear label: suits, dresses and shawls by category or occasion, with shoppable video and size charts.",
+  "summary": "Shopify store for a Pakistani women's clothing label selling suits, dresses, formals and shawls.",
+  "overview": "Mannat Clothing sells Pakistani women's clothing: 2-piece and 3-piece suits, frocks and dresses, co-ord sets, dupattas and shawls, with delivery across Pakistan. We built Mannat's Shopify store so shoppers can browse the same range by what it is or by when they will wear it.",
+  "challenge": "A shopper looking for an Eid outfit and one looking for a 3-piece suit may want the same product, so a single category tree is not enough. Each design also comes in different piece counts, styles and sizes that need to be clear before purchase.",
+  "approach": "The menu offers two routes into the catalog: Shop by Category (3-piece suits, 2-piece suits, frocks and dresses, co-ord sets, dupattas and shawls) and Shop by Occasion (daily wear, pret embroidered, festive and Eid, solids, winter), alongside New In, Best Sellers, named collections and Sale. Under the hero slider, a row of shoppable videos shows each outfit with its price and an Add to cart button. Product pages list type, style and size options with a size chart link, followed by Add to cart and an express checkout button.",
+  "outcome": "A Shopify store where the same outfit can be found by category, occasion or collection. Shoppers can buy straight from a video card or from a product page with the size chart one tap away.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Impulse theme)" },
+    { "label": "Catalog", "value": "Suits, dresses, co-ords, dupattas and shawls" },
+    { "label": "Shopping", "value": "By category, by occasion, shoppable video" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Category and occasion menus",
+    "Shoppable video row",
+    "Home page collection rows",
+    "Product page with piece, style and size options",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two ways to browse", "body": "Shop by Category groups outfits by piece count and garment type, while Shop by Occasion groups them by daily wear, embroidered pret, festive and Eid, solids and winter." },
+    { "title": "Shoppable video", "body": "A carousel of short outfit videos sits under the hero, each card showing the product name, price and an Add to cart button." },
+    { "title": "Collection rows", "body": "The home page continues with rows for the latest edit, clearance sale, solids, Dahlia and embroidered pret, each with a view all link." },
+    { "title": "Product pages", "body": "Each product shows price, type such as 2-piece, style such as embroidery, sizes from S to XL, a size chart link and both Add to cart and express checkout." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Impulse theme",
+    "Shopify collections and filters",
+    "Shoppable video"
+  ],
+  "whyItMatters": "Women's clothing is often bought for an occasion rather than a garment type. Letting shoppers browse both ways, and buy from video, shortens the path from inspiration to checkout.",
+  "faqs": [
+    { "q": "What platform is the Mannat Clothing store built on?", "a": "It runs on Shopify with the Impulse theme, using Shopify collections for categories, occasions, named edits and sale, with a shoppable video row on the home page." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my clothing brand?", "a": "Yes. We design and build Shopify stores for fashion labels, including occasion-based menus, shoppable video and outfit variant options. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "slug": "taylor-stitch-shopify-store",
+  "client": "Taylor Stitch",
+  "url": "https://www.taylorstitch.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 108,
+  "metaTitle": "Taylor Stitch Shopify store | Pixel2Tech",
+  "metaDescription": "White-label Shopify build for Taylor Stitch, a men's clothing brand: shop by category and fit, Last Call sale, Dispatch journal, Fit Finder and gift cards.",
+  "summary": "Shopify store for a men's clothing brand selling shirts, sweaters, denim, chinos and outerwear.",
+  "overview": "Taylor Stitch makes men's shirting, outerwear, denim and essentials, and describes its clothing as responsibly built for the long haul. Pixel2Tech built Taylor Stitch's Shopify store as white-label development partner for a digital agency, giving the agency's client a quiet, editorial storefront that puts the clothes and the photography first.",
+  "challenge": "The range is deep in a few categories, with the same shirt offered in many fabrics and pants offered in several fits. Shoppers need to compare fits and fabrics without clutter, while the brand also wants room for seasonal lookbooks, its journal and a standing sale section.",
+  "approach": "A slim header carries New & Featured, Shirts & Sweaters, Bottoms, Outerwear, Accessories and Last Call, with About and Help on the right. Each mega menu pairs category links with featured collections, and Bottoms can be shopped by fit (Slim, Democratic, Straight) with a fit guide. Collection pages open on a full-width banner, then sub-category tabs, Filter by and Sort by controls and a large product grid.",
+  "outcome": "A Shopify store where shoppers move from a seasonal story to a specific shirt, fabric or fit in a few clicks, with help, sizing and gift cards easy to reach on desktop and phone. Lookbooks and Dispatch stories sit alongside the shop, so the brand's editorial content leads straight into products.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (custom Taylor Stitch Retail Web theme)" },
+    { "label": "Catalog", "value": "Shirts, sweaters, bottoms, outerwear, accessories" },
+    { "label": "Shopping", "value": "By category and fit, Last Call, gift cards" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Mega menus with featured collections",
+    "Collection pages with filters and sorting",
+    "Gift card and accessory pages",
+    "Journal and lookbook entry points",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Navigation", "body": "Each top-level menu combines category links with featured collections such as The Jack, The Crawford Collection and The Ojai Jacket, and Bottoms adds shop by fit with a fit guide." },
+    { "title": "Home page", "body": "A full-bleed seasonal video hero leads into a Shop by Category slider, a responsibility story, Newest Arrivals, Timeless Staples and Last Call tiles, lookbook links and the latest Dispatch journal posts." },
+    { "title": "Collections and products", "body": "Collection pages use a banner, sub-category tabs, filters, sorting and a product count over a three-column grid, while the digital gift card page explains that cards work online and in the brand's stores." },
+    { "title": "Help and loyalty", "body": "The footer gathers order status, returns, shipping, care guides, a Fit Finder and chat, text and email support, and introduces The Common Club credit program and the newsletter." }
+  ],
+  "technologies": ["Shopify", "Custom Shopify theme", "Shopify collections and filters", "Klaviyo", "Yotpo"],
+  "whyItMatters": "Menswear shoppers who find a fit they like tend to buy it again in new fabrics. Clear fit options, focused collections and an easy path back to help make that repeat order straightforward.",
+  "faqs": [
+    { "q": "What platform is the Taylor Stitch store built on?", "a": "It runs on Shopify with a custom theme, using Shopify collections and filters for categories, fits, featured collections and the Last Call sale." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

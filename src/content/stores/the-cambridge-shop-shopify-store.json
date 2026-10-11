@@ -1,0 +1,45 @@
+{
+  "slug": "the-cambridge-shop-shopify-store",
+  "client": "Cambridge",
+  "url": "https://thecambridgeshop.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 66,
+  "metaTitle": "Cambridge Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Cambridge, a Pakistani menswear brand: western wear and the Mashriq eastern line, multi-currency pricing and detailed product specs.",
+  "summary": "Shopify store for a Pakistani menswear brand selling western wear and the Mashriq eastern line.",
+  "overview": "Cambridge describes itself as a premium men's clothing brand in Pakistan, selling shirts, polos, knitwear, trousers, blazers, suits and accessories. It also runs Mashriq, an eastern wear line of shalwar kameez, kurtas, waistcoats and unstitched fabric. We built Cambridge's Shopify store to carry both ranges under one menu.",
+  "challenge": "Western wear and eastern wear are bought differently. A shopper looking for a blazer wants fit and fabric details, while a Mashriq shopper may be choosing between ready to wear, a designer suit or fabric to stitch. Seasonal drops also need to stand out without burying the core range.",
+  "approach": "The header puts the current season first, then Shirts, Polos and Tees, Bottoms, Blazers and Suits, Accessories, Mashriq and Sale. Mashriq opens into its own set of categories, from designer and fancy suits to kurta pajama, junior, combo suits and fabric. The home page runs full-width editorial banners for each category, and product pages pair size buttons and a size chart with a specifications table for fabric, composition and lining.",
+  "outcome": "A menswear store where western and eastern ranges sit side by side, with prices shown in PKR or a handful of foreign currencies and product pages that answer fit and fabric questions before checkout.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (custom Cambridge theme)" },
+    { "label": "Catalog", "value": "Western menswear, Mashriq eastern wear, accessories" },
+    { "label": "Shopping", "value": "Season-first menu, multi-currency pricing, spec tables" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Western and Mashriq navigation",
+    "Editorial category banners",
+    "Product page with specifications",
+    "Currency switcher",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Two ranges, one menu", "body": "Western categories and the Mashriq eastern line share the main menu, with Mashriq split into ready to wear, designer, basic and fancy suits, kurtas, waistcoats, junior wear and fabric." },
+    { "title": "Editorial home page", "body": "The home page opens with a seasonal slideshow, then gives each category such as polos, sweaters, tees and casual shirts its own full-width banner." },
+    { "title": "Product detail", "body": "Product pages show SKU, color swatches, size buttons with sold-out sizes crossed out, a size chart, a bullet list of details, care instructions and a specifications table." },
+    { "title": "Mobile and currency", "body": "On phones the add to cart bar stays at the bottom of the screen, and a floating currency switcher lets shoppers view prices in PKR, EUR, USD, GBP, AUD or AED." }
+  ],
+  "technologies": ["Shopify", "Custom Cambridge theme", "Shopify collections", "Multi-currency pricing", "WhatsApp chat"],
+  "whyItMatters": "Menswear shoppers want to know how a piece fits and what it is made of. Putting sizes, fabric and lining on the product page, for both western and eastern ranges, removes the guesswork that stops an order.",
+  "faqs": [
+    { "q": "What platform is the Cambridge store built on?", "a": "It runs on Shopify with a custom theme, using Shopify collections for the western range, the Mashriq eastern line, seasonal drops and sale." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for fashion brands, including multi-range menus, detailed product pages and multi-currency pricing. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

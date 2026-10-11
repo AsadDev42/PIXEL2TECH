@@ -1,0 +1,45 @@
+{
+  "slug": "solar-lighting-designs-wordpress-website",
+  "client": "Solar Lighting Designs",
+  "url": "https://www.solarlightingdesigns.eco/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 128,
+  "metaTitle": "Solar Lighting Designs website | Pixel2Tech",
+  "metaDescription": "WordPress website for Solar Lighting Designs, an Australian solar lighting maker: products by application, project pages, FAQs and a quote request cart.",
+  "summary": "WordPress website for an Australian commercial solar lighting manufacturer and supplier.",
+  "overview": "Solar Lighting Designs describes itself as an Australian-owned commercial solar lighting manufacturer and supplier that designs, manufactures, supplies and installs. Pixel2Tech built Solar Lighting Designs' WordPress website as white-label development partner for a digital agency, using Elementor on the Astra theme with WooCommerce for the product catalog.",
+  "challenge": "Commercial lighting buyers, such as councils, developers and facility managers, compare products by application and want to see real installations before asking for a price. The site had to present a wide product range and a long list of projects, and turn interest into quote requests rather than checkout orders.",
+  "approach": "The header shows About us, Products, Projects and FAQs, with a Request a Quote button that works as a quote basket. Products are grouped by application, such as street, car park, bollard and walkway, flood, security and site lighting. Project pages show each installation with a photo-led layout, and the home page runs through the company's design, manufacture, supply and install offer, its advantages and customer feedback.",
+  "outcome": "A B2B website where buyers can browse solar lighting by use, see completed projects and add products to a quote request, from desktop or phone. New products and project pages are added through WordPress as the range and portfolio grow.",
+  "results": [
+    { "label": "Platform", "value": "WordPress + WooCommerce (Elementor, Astra)" },
+    { "label": "Site type", "value": "B2B product catalog and quote requests" },
+    { "label": "Key pages", "value": "Products, projects, FAQs, request a quote" }
+  ],
+  "deliverables": [
+    "WordPress website on Elementor",
+    "Product catalog by application",
+    "Request a quote basket",
+    "Project case study pages",
+    "FAQ and contact pages",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Catalog by application", "body": "Product categories follow how buyers search, from solar street and car park lighting to bollards, flood lights, road safety products and security lights." },
+    { "title": "Quote instead of checkout", "body": "WooCommerce runs the catalog, and a Request a Quote basket in the header lets buyers collect products and send one inquiry instead of paying online." },
+    { "title": "Project pages", "body": "Each installation has its own page with a full-width photo, a client brief and sharing buttons, linked from a projects grid and a latest projects section on the home page." },
+    { "title": "Trust and contact", "body": "The home page covers the design, manufacture, supply and install process, extended warranties, accreditation logos and customer feedback, and the footer lists offices and contact details." }
+  ],
+  "technologies": ["WordPress", "Elementor", "Astra theme", "WooCommerce", "Essential Addons for Elementor"],
+  "whyItMatters": "Commercial buyers rarely buy lighting with a card; they ask for a quote after seeing proof. A catalog built around applications, projects and a quote basket matches how these sales actually happen.",
+  "faqs": [
+    { "q": "What platform is the Solar Lighting Designs website built on?", "a": "It runs on WordPress with Elementor and the Astra theme, with WooCommerce powering the product catalog and the request a quote basket." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

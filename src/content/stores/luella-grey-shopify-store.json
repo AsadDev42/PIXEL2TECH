@@ -1,0 +1,44 @@
+{
+  "slug": "luella-grey-shopify-store",
+  "client": "Luella Grey Pakistan",
+  "url": "https://luellagrey.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 72,
+  "metaTitle": "Luella Grey Pakistan Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Luella Grey Pakistan, a London handbag brand's Pakistan store: purses, totes and crossbody bags, with brand story and installments.",
+  "summary": "Shopify store for the Pakistan storefront of a London handbag brand.",
+  "overview": "Luella Grey is a London handbag brand, and Luella Grey Pakistan is its store for shoppers in Pakistan. It sells a focused range of purses, crossbody bags, work totes and backpacks. We built the Pakistan store on Shopify to give a small collection the space and story a premium bag brand needs.",
+  "challenge": "With a short product list, every bag has to earn its place on the page. Shoppers paying for a premium bag want to know who designed it, what it is made of and whether it will fit their laptop, and the store has to tell that story without slowing down the path to checkout.",
+  "approach": "The menu is short: Home, Crossbody Bags, Handbags, Work Bags, Purses and Sale. Below the hero, the home page shows four collection tiles, a three-part brand strip on the philosophy, London design and small-batch production, a row of featured bags, a seasonal colors story and longer write-ups for individual styles. Product pages carry a full description, dimensions, composition and stock status, with an Alif pay-in-three option under the price.",
+  "outcome": "A boutique-style store where a small range reads as a curated collection, with enough detail on each bag for shoppers to buy with confidence.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Kalles theme, EComposer sections)" },
+    { "label": "Catalog", "value": "Purses, crossbody bags, work totes, backpacks" },
+    { "label": "Shopping", "value": "Brand story, style write-ups, installments" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Collection tiles by bag type",
+    "Brand story sections",
+    "Product page with dimensions and composition",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Short, clear menu", "body": "Bags are grouped by how they are carried and used, crossbody, handbag, work bag and purse, so shoppers can reach the right style in one click." },
+    { "title": "Brand story", "body": "A three-column strip covers the brand's philosophy, London design and small-batch production, and individual styles such as Elspeth and Sara get their own write-ups." },
+    { "title": "Product detail", "body": "Product pages show the original and sale price, a pay-in-three option, a long description, dimensions, composition, availability and a gallery of angles." },
+    { "title": "Mobile and contact", "body": "On phones the hero and collection tiles stack into a simple scroll, and a WhatsApp chat button stays in reach on every page." }
+  ],
+  "technologies": ["Shopify", "Kalles theme", "EComposer", "Alif installments", "WhatsApp chat"],
+  "whyItMatters": "Premium bag shoppers buy into the design as much as the product. Giving a small range room for story and detail helps it feel considered rather than thin.",
+  "faqs": [
+    { "q": "What platform is the Luella Grey Pakistan store built on?", "a": "It runs on Shopify with the Kalles theme and EComposer sections, using Shopify collections for each bag type and an Alif option for installment payments." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for boutique and premium brands, including brand story sections and detailed product pages. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

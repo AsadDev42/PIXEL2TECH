@@ -1,0 +1,45 @@
+{
+  "slug": "one-creative-wordpress-website",
+  "client": "One Creative",
+  "url": "https://onecreative.io/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 127,
+  "metaTitle": "One Creative website | Pixel2Tech",
+  "metaDescription": "WordPress website for One Creative, a subscription creative team: a video-led home page, how it works, services, packages, FAQs and a call booking.",
+  "summary": "WordPress website for a subscription-based creative content service.",
+  "overview": "One Creative offers design, video editing and other content creation on a monthly subscription, which the brand describes as the only team you need to create content. Pixel2Tech built One Creative's WordPress website as white-label development partner for a digital agency, using the Salient theme and WPBakery Page Builder.",
+  "challenge": "A creative subscription is a new kind of purchase for many brands, so visitors need to understand how requests, delivery and plans work before they book a call. The site also had to show the quality of the work, which is mostly video and visual content.",
+  "approach": "The home page opens with a bold headline, View Pricing and Book a call buttons, and a carousel of recent work, followed by a short brand video. A three-step section and a How it Works sequence explain the request process, and a feature grid covers requests, delivery, pricing and flexibility. Services, subscription packages and an FAQ section answer the usual objections before a final call to action.",
+  "outcome": "A WordPress site that explains a subscription creative service in a few scrolls, shows the work up front and leads visitors to pricing or a call. Existing customers can go straight to the client portal from the menu.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (Salient, WPBakery)" },
+    { "label": "Site type", "value": "Creative subscription service" },
+    { "label": "Key pages", "value": "What we do, how it works, packages, FAQs" }
+  ],
+  "deliverables": [
+    "WordPress website on Salient",
+    "Video-led home page",
+    "How it works and services sections",
+    "Subscription package layout",
+    "FAQ section",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Headline and work", "body": "The first screen pairs a short promise with View Pricing and Book a call buttons, and a carousel of recent creative sits right below it." },
+    { "title": "Explaining the model", "body": "Numbered steps and a How it Works sequence walk visitors from choosing a plan to submitting requests, reviewing work and sharing it." },
+    { "title": "Services and packages", "body": "A services list covers creative direction, ad creative, social media, video and motion graphics, and the packages section lays out the Essential, Pro and Enterprise plans plus paid media marketing." },
+    { "title": "Answers and next step", "body": "An FAQ section covers turnaround, revisions, cancellation and shooting, then the page closes with a final call to action and a link to the client portal." }
+  ],
+  "technologies": ["WordPress", "Salient theme", "WPBakery Page Builder", "WP Rocket"],
+  "whyItMatters": "When the product is a new way of buying creative work, the website has to do the explaining. Showing the work, the process and the plans in one flow helps visitors decide before the first call.",
+  "faqs": [
+    { "q": "What platform is the One Creative website built on?", "a": "It runs on WordPress with the Salient theme and WPBakery Page Builder, with WP Rocket for caching and page speed." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

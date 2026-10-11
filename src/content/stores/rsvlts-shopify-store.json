@@ -1,0 +1,45 @@
+{
+  "slug": "rsvlts-shopify-store",
+  "client": "RSVLTS",
+  "url": "https://www.rsvlts.com/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 107,
+  "metaTitle": "RSVLTS Shopify store | Pixel2Tech",
+  "metaDescription": "White-label Shopify build for RSVLTS, a licensed fandom apparel brand: shop by fandom A to Z, seasonal drops, golf line, rewards, Afterpay and wish lists.",
+  "summary": "Shopify store for a licensed fandom apparel brand known for its KUNUFLEX button-down shirts.",
+  "overview": "RSVLTS sells KUNUFLEX button-down shirts, polos, hoodies, tees and accessories, much of it from official collaborations with Disney, Pixar, Star Wars, Marvel and other franchises. Pixel2Tech built RSVLTS's Shopify store as white-label development partner for a digital agency, with a catalog that runs from men's and women's shirts to kids' sets, golf gear and phone cases.",
+  "challenge": "The agency's client sells the same shirt cuts across dozens of fandoms, seasonal drops and its own golf brand, Breakfast Balls. Fans arrive looking for a franchise, a season or a size range for the whole family, so a single menu by product type would bury most of the range.",
+  "approach": "The mega menu offers several ways in: New, Men, Women, Kids, Fandoms, RSVLTS Originals, Golf, Restocks, a seasonal Spooky shop and Field Notes. The Fandoms menu lists franchises alphabetically in A-B to T-Z groups, and the home page adds a Shop by Fandom logo grid, a tabbed Newest row, Top 10 This Week and themed collection tiles. Product pages pair a size selector with a size guide, Afterpay installments, Shop Pay, a wish list heart and accordions for shipping, specs and care.",
+  "outcome": "A Shopify store where fans can start from a franchise, a season or a family member, then buy in a few taps on desktop or phone, with rewards sign-in and currency selection always in the header. New drops, restocks and seasonal shops slot into the same menus and home page rows without a redesign.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (custom SEED theme)" },
+    { "label": "Catalog", "value": "Licensed fandom shirts, polos, hoodies, golf, kids" },
+    { "label": "Shopping", "value": "By fandom A to Z, seasonal drops, rewards, wish lists" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Fandom mega menu",
+    "Home page drop and collection rows",
+    "Product page layout",
+    "Rewards and wish list entry points",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Menu by fandom", "body": "Franchises from Alice in Wonderland to Zootopia are grouped alphabetically in the Fandoms menu, alongside men's, women's, kids' and golf menus that each carry their own featured, collection and category columns." },
+    { "title": "Drops and seasons", "body": "The home page rotates a hero carousel, a tabbed Newest row by franchise, a seasonal Spooky shop, Top 10 This Week and RSVLTS Classics, so new launches always sit near the top." },
+    { "title": "Product pages", "body": "Each product shows the KUNUFLEX fit name, price, Afterpay installments, size buttons with sold-out sizes crossed out, a size guide, Shop Pay and expandable shipping, specs and care sections." },
+    { "title": "Mobile and accounts", "body": "On phones a search bar sits under the header, product pages keep a sticky size and Add to Cart bar, and the header keeps rewards sign-in, wish list and cart one tap away." }
+  ],
+  "technologies": ["Shopify", "Custom Shopify theme (SEED)", "Shop Pay", "Afterpay", "Wish list and rewards"],
+  "whyItMatters": "Fandom shoppers buy for the franchise first and the garment second. A store organized around fandoms and timed drops lets them find their favorite quickly and come back for the next release.",
+  "faqs": [
+    { "q": "What platform is the RSVLTS store built on?", "a": "It runs on Shopify with a custom theme called SEED, using Shopify collections for fandoms, seasonal shops, golf and kids' ranges, with Shop Pay and Afterpay at checkout." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

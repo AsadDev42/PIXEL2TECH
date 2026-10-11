@@ -1,0 +1,59 @@
+{
+  "slug": "breakout-shopify-store",
+  "client": "Breakout",
+  "url": "https://breakout.com.pk/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 59,
+  "metaTitle": "Breakout Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Breakout, a Pakistani western wear brand: a headless Hydrogen storefront for men, women and kids, with video-led pages and wish lists.",
+  "summary": "Headless Shopify storefront for a western wear brand dressing men, women and kids.",
+  "overview": "Breakout sells western wear for men, women, boys and girls, from tees, denim and knits to jackets, shawls, perfumes and accessories. We built Breakout's Shopify store as a headless Hydrogen storefront, so the brand's seasonal campaigns can lead with full-screen video while the catalog and checkout stay on Shopify.",
+  "challenge": "One store has to serve four audiences and a large catalog that changes every season, with sale and new-in edits running side by side. The brand also wanted pages that feel closer to a lookbook than a standard theme allows.",
+  "approach": "The home page opens on a full-bleed campaign video, then shows tiles for Men, Women, Girls and Boys, each followed by its own campaign image and a product row with quick links for sale, tops, bottoms and accessories. A slide-out menu lists new arrivals, the flat 50% off edit, clothing categories from tees to co-ords, and accessories from shoes to wallets. Collection pages show a product count with a 2, 3 or 4 column grid toggle, quick add buttons and wish list hearts. Product pages put the gallery center stage with a floating panel for price, sale badge, Baadmay pay-in-3, SKU, size guide and size buttons.",
+  "outcome": "A lookbook-style Shopify storefront where each family member has a clear entry point. Sale prices, sizes and installment options are visible before a shopper adds to cart.",
+  "results": [
+    { "label": "Platform", "value": "Shopify Hydrogen (headless)" },
+    { "label": "Catalog", "value": "Men, women and kids western wear, accessories" },
+    { "label": "Shopping", "value": "Grid views, wish lists, pay in 3 installments" }
+  ],
+  "deliverables": [
+    "Headless Hydrogen storefront",
+    "Video-led home page",
+    "Slide-out category menu",
+    "Collection grid with view toggles",
+    "Product page with floating buy panel",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Headless build", "body": "The storefront runs on Shopify Hydrogen, a React framework, with products, collections, cart and checkout coming from Shopify." },
+    { "title": "Home page by audience", "body": "After the campaign video, the page is split into Men, Women, Boy and Girl sections, each with a lifestyle image, a shop now link and a scrolling product row." },
+    { "title": "Collections", "body": "Breadcrumbs, a product count and a 2, 3 or 4 column view sit above the grid, and each card has a quick add button and a wish list heart." },
+    { "title": "Product pages", "body": "A wide image carousel runs behind a floating panel with sale price, discount badge, Baadmay installments, SKU, size guide, size selector, Add to cart and Buy it now." }
+  ],
+  "technologies": [
+    "Shopify",
+    "Shopify Hydrogen",
+    "React",
+    "Wish list",
+    "Baadmay installments"
+  ],
+  "whyItMatters": "Fashion brands sell with imagery, and a headless storefront lets campaign video and photography lead without giving up Shopify's catalog and checkout.",
+  "faqs": [
+    { "q": "What platform is the Breakout store built on?", "a": "It is a headless Shopify store: the front end runs on Shopify Hydrogen (React), while products, inventory, cart and checkout are managed in Shopify." },
+    { "q": "Can Pixel2Tech build a headless Shopify store for my brand?", "a": "Yes. We build both theme-based and headless Hydrogen Shopify stores, including video-led home pages, wish lists and installment payment options. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ],
+    "cover": "mobile-product"
+  }
+}

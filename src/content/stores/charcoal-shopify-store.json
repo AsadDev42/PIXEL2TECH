@@ -3,18 +3,28 @@
   "client": "Charcoal",
   "url": "https://charcoal.com.pk/",
   "platform": "Shopify",
+  "engagement": "white-label",
   "order": 40,
   "metaTitle": "Charcoal Shopify store | Pixel2Tech",
   "metaDescription": "Shopify store for Charcoal, a Pakistani menswear brand: formal, casual and ethnic wear, fragrances and accessories, with size charts and installment pay.",
   "summary": "Shopify store for a men's formal, casual and ethnic wear brand in Pakistan.",
-  "overview": "Charcoal is a Pakistani menswear brand that sells suits, dress shirts, casual wear, shalwar kameez, fragrances and accessories in its stores and online. We built Charcoal's Shopify store to carry that whole wardrobe, from a three-piece suit to a tie pin, in one place.",
+  "overview": "Charcoal is a Pakistani menswear brand that sells suits, dress shirts, casual wear, shalwar kameez, fragrances and accessories in its stores and online. Pixel2Tech built Charcoal's Shopify store as white-label development partner for a digital agency, set up to carry that whole wardrobe, from a three-piece suit to a tie pin, in one place.",
   "challenge": "The catalog runs from tailored suiting with chest sizes 44 to 54 and trousers by waist size, to polos in small to XL, to perfumes and cufflinks that have no size at all. Shoppers need to get to the right category fast and pick the right fit without guessing.",
   "approach": "The main menu splits the range by occasion: New in, Formal, Casual, Ethnic, Bodyworks for fragrance, Accessories and Sale, with each dropdown listing its own sub-categories. Collection pages carry a filter drawer, sorting and New or Save badges on the product photos. Product pages show the SKU, sale price with the saving, a size chart link next to the size buttons, the color and a Baadmay pay-in-3 option above Add to cart and Buy it now.",
   "outcome": "A Shopify store where a shopper can move from a seasonal sale banner to a specific suit, polo or kurta and choose a size with the chart at hand, on a phone or a desktop.",
   "results": [
-    { "label": "Platform", "value": "Shopify (Impact theme)" },
-    { "label": "Catalog", "value": "Formal, casual and ethnic menswear, fragrance, accessories" },
-    { "label": "Shopping", "value": "By occasion, size charts, pay in 3 installments" }
+    {
+      "label": "Platform",
+      "value": "Shopify (Impact theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Formal, casual and ethnic menswear, fragrance, accessories"
+    },
+    {
+      "label": "Shopping",
+      "value": "By occasion, size charts, pay in 3 installments"
+    }
   ],
   "deliverables": [
     "Shopify storefront",
@@ -25,20 +35,51 @@
     "Mobile layout"
   ],
   "process": [
-    { "title": "Menu by occasion", "body": "The range is grouped into Formal, Casual, Ethnic, Bodyworks and Accessories, with sub-menus for suiting, dress shirts, jeans, shalwar kameez, waistcoats, EDP and EDT fragrances, ties and gift boxes." },
-    { "title": "Collections", "body": "Collection pages open with a title banner and breadcrumb, then a filter drawer and sort control above a four-column grid with New and Save badges on each card." },
-    { "title": "Product pages", "body": "Each product shows the SKU, the sale and original price, a rating, size buttons with a size chart link, the color and a Baadmay pay-in-3 line before the cart buttons." },
-    { "title": "Mobile and messaging", "body": "A scrolling announcement bar carries the free shipping threshold, support hours and payment terms, and the mobile header keeps menu, search and cart within reach." }
+    {
+      "title": "Menu by occasion",
+      "body": "The range is grouped into Formal, Casual, Ethnic, Bodyworks and Accessories, with sub-menus for suiting, dress shirts, jeans, shalwar kameez, waistcoats, EDP and EDT fragrances, ties and gift boxes."
+    },
+    {
+      "title": "Collections",
+      "body": "Collection pages open with a title banner and breadcrumb, then a filter drawer and sort control above a four-column grid with New and Save badges on each card."
+    },
+    {
+      "title": "Product pages",
+      "body": "Each product shows the SKU, the sale and original price, a rating, size buttons with a size chart link, the color and a Baadmay pay-in-3 line before the cart buttons."
+    },
+    {
+      "title": "Mobile and messaging",
+      "body": "A scrolling announcement bar carries the free shipping threshold, support hours and payment terms, and the mobile header keeps menu, search and cart within reach."
+    }
   ],
-  "technologies": ["Shopify", "Impact theme (Online Store 2.0)", "Shopify collections and filters", "Product reviews", "Baadmay installments"],
+  "technologies": [
+    "Shopify",
+    "Impact theme (Online Store 2.0)",
+    "Shopify collections and filters",
+    "Product reviews",
+    "Baadmay installments"
+  ],
   "whyItMatters": "Menswear buyers want the right fit and the right occasion before they pay. Clear occasion menus and a size chart on every product page help them order once instead of exchanging twice.",
   "faqs": [
-    { "q": "What platform is the Charcoal store built on?", "a": "It runs on Shopify with the Impact theme, using Shopify collections for formal, casual, ethnic, fragrance and accessory categories." },
-    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We design and build Shopify stores for apparel brands, including occasion-based menus, size charts and installment payment options. Tell us about your range and we will send a fixed quote after a short call." }
+    {
+      "q": "What platform is the Charcoal store built on?",
+      "a": "It runs on Shopify with the Impact theme, using Shopify collections for formal, casual, ethnic, fragrance and accessory categories."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
   ],
   "shots": {
-    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "desktop": [
+      "desktop-home",
+      "desktop-collection",
+      "desktop-product"
+    ],
     "fullPage": "desktop-home-full",
-    "mobile": ["mobile-home", "mobile-product"]
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
   }
 }

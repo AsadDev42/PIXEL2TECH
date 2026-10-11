@@ -3,35 +3,81 @@
   "client": "Cross Stitch",
   "url": "https://www.crossstitch.pk/",
   "platform": "Shopify",
+  "engagement": "white-label",
   "order": 32,
   "metaTitle": "Cross Stitch Shopify store | Pixel2Tech",
   "metaDescription": "Shopify store for Cross Stitch, a women's clothing brand: unstitched, ready-to-wear and accessories menus, collection lookbooks and flexible grid views.",
   "summary": "Shopify store for a Pakistani women's unstitched and ready-to-wear brand.",
-  "overview": "Cross Stitch sells unstitched fabric and ready-to-wear for women, from everyday pret and co-ords to wedding wear, plus men's unstitched suits, footwear, bags, scarves and fragrances. We built Cross Stitch's Shopify store on the Debut theme around a large catalog and a strongly visual homepage.",
+  "overview": "Cross Stitch sells unstitched fabric and ready-to-wear for women, from everyday pret and co-ords to wedding wear, plus men's unstitched suits, footwear, bags, scarves and fragrances. Pixel2Tech built Cross Stitch's Shopify store on the Debut theme as white-label development partner for a digital agency, working around a large catalog and a strongly visual homepage.",
   "challenge": "The catalog splits two ways that matter to shoppers: unstitched fabric versus ready to wear, and daily wear versus luxury and wedding pieces. Each season adds new named lines like Mahiri, Luxe and the Monsoon Edit, and the brand wants every one to have a proper presentation, not only a product grid.",
   "approach": "The header keeps three top links (Unstitched, Ready to Wear, Fragrances) and opens a full menu that breaks each side into lines such as Cotton Satin, Premium Lawn, Chikankari, Exclusive Pret, Co-ords and Wedding Pret, with accessories and sale below. The homepage uses a full-width campaign image under a transparent header, then a New In section. Collection pages offer a filter, sort and a switch between list, single and two-column grid views, and lookbook pages present each line as a campaign.",
   "outcome": "A Shopify store where shoppers choose between unstitched and ready to wear first, then browse a specific line as a grid or a lookbook, with order tracking and store details a click away.",
   "results": [
-    { "label": "Platform", "value": "Shopify (Debut theme)" },
-    { "label": "Catalog", "value": "Unstitched, ready to wear, accessories, fragrance" },
-    { "label": "Shopping", "value": "By line, lookbooks, grid views, filters" }
+    {
+      "label": "Platform",
+      "value": "Shopify (Debut theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Unstitched, ready to wear, accessories, fragrance"
+    },
+    {
+      "label": "Shopping",
+      "value": "By line, lookbooks, grid views, filters"
+    }
   ],
-  "deliverables": ["Shopify storefront", "Unstitched and ready-to-wear menu", "Campaign homepage", "Collection pages with grid views", "Lookbook pages", "Mobile layout"],
+  "deliverables": [
+    "Shopify storefront",
+    "Unstitched and ready-to-wear menu",
+    "Campaign homepage",
+    "Collection pages with grid views",
+    "Lookbook pages",
+    "Mobile layout"
+  ],
   "process": [
-    { "title": "Two-sided navigation", "body": "The menu separates unstitched fabric from ready to wear, then lists each named line, with accessories (bags, footwear, dupattas, scarves, gift boxes) and fragrances as their own sections." },
-    { "title": "Campaign homepage", "body": "A full-width hero carries the season's campaign under a transparent header, followed by New In and sections for each featured line." },
-    { "title": "Collection browsing", "body": "Collection pages offer Filter By, sort options and a layout switch, so shoppers can view large product images one at a time or compare several in a grid." },
-    { "title": "Lookbooks and service pages", "body": "Each line has a lookbook page for its campaign imagery, alongside an order tracker, a store list and a contact page." }
+    {
+      "title": "Two-sided navigation",
+      "body": "The menu separates unstitched fabric from ready to wear, then lists each named line, with accessories (bags, footwear, dupattas, scarves, gift boxes) and fragrances as their own sections."
+    },
+    {
+      "title": "Campaign homepage",
+      "body": "A full-width hero carries the season's campaign under a transparent header, followed by New In and sections for each featured line."
+    },
+    {
+      "title": "Collection browsing",
+      "body": "Collection pages offer Filter By, sort options and a layout switch, so shoppers can view large product images one at a time or compare several in a grid."
+    },
+    {
+      "title": "Lookbooks and service pages",
+      "body": "Each line has a lookbook page for its campaign imagery, alongside an order tracker, a store list and a contact page."
+    }
   ],
-  "technologies": ["Shopify", "Debut theme", "Collection filters", "Lookbook pages", "Order tracking page"],
+  "technologies": [
+    "Shopify",
+    "Debut theme",
+    "Collection filters",
+    "Lookbook pages",
+    "Order tracking page"
+  ],
   "whyItMatters": "Unstitched and ready-to-wear shoppers start from different places, and both want to see a collection before they shop it. A store that separates the two and gives each line a lookbook matches how the brand launches its seasons.",
   "faqs": [
-    { "q": "What platform is the Cross Stitch store built on?", "a": "It runs on Shopify with the Debut theme, using Shopify collections for each line and separate lookbook pages for campaign imagery." },
-    { "q": "Can Pixel2Tech build a similar Shopify store for my brand?", "a": "Yes. We build Shopify stores for clothing brands, including unstitched and ready-to-wear navigation, campaign homepages and lookbook pages. Tell us about your catalog and we will send a fixed quote after a short call." }
+    {
+      "q": "What platform is the Cross Stitch store built on?",
+      "a": "It runs on Shopify with the Debut theme, using Shopify collections for each line and separate lookbook pages for campaign imagery."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, so the agency stays the face to its client, and we sign an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
   ],
   "shots": {
-    "desktop": ["desktop-home", "desktop-collection"],
+    "desktop": [
+      "desktop-home",
+      "desktop-collection"
+    ],
     "fullPage": "desktop-home-full",
-    "mobile": ["mobile-home"]
+    "mobile": [
+      "mobile-home"
+    ]
   }
 }

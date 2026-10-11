@@ -1,0 +1,84 @@
+{
+  "slug": "new-era-uk-shopify-store",
+  "client": "New Era UK",
+  "url": "https://www.neweracap.co.uk/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 105,
+  "metaTitle": "New Era UK Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for New Era UK, the cap maker's UK shop: browse by silhouette, sport and team, with deep filters, size guides and a Collectors Club program.",
+  "summary": "Shopify store for New Era's UK shop, selling official MLB, NFL and NBA caps, clothing and accessories.",
+  "overview": "New Era UK sells official caps, fitted caps, snapbacks and licensed MLB, NFL and NBA merchandise, alongside clothing and accessories, to shoppers across the UK. Pixel2Tech built the New Era UK Shopify store as white-label development partner for a digital agency, delivering the development on the agency's behalf.",
+  "challenge": "The catalog is overwhelmingly caps, and the same team logo comes in many silhouettes, crowns, colors and fits. Shoppers search in different ways: by silhouette such as 59FIFTY or 9FORTY, by sport and team, by material or by color, and fitted caps need precise sizing.",
+  "approach": "Under the main menu, a scrolling row of round silhouette icons (59FIFTY, 9FORTY, trucker, 9TWENTY, A-frame and more) gives one-tap access to each cap style. The headwear menu breaks caps down by silhouette, style, material and color, and a Shop by Sport section covers MLB, NFL, NBA, football, motorsports, cricket, rugby and golf. Collection pages offer filters for category, silhouette type, style, color, size, gender, sport, team, visor style, fit and fabric, and product pages pair color swatches and fitted sizes with a size guide, a wish list button and the Collectors Club points earned.",
+  "outcome": "A Shopify store where a fan can go from a team or a cap style to the exact fit and color in a few clicks. Size guides and loyalty points sit on every cap page.",
+  "results": [
+    {
+      "label": "Platform",
+      "value": "Shopify (custom New Era theme)"
+    },
+    {
+      "label": "Catalog",
+      "value": "Caps, beanies, bucket hats, clothing, accessories"
+    },
+    {
+      "label": "Shopping",
+      "value": "By silhouette, sport and team, deep filters"
+    }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Silhouette icon navigation",
+    "Sport and team collections",
+    "Faceted collection filters",
+    "Product page with size guide and loyalty",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Silhouette first",
+      "body": "A row of cap icons under the header links straight to each silhouette, and the headwear menu repeats them with men's, women's and kids links, crown variants and a size guide per style."
+    },
+    {
+      "title": "Sport and team",
+      "body": "Shop by Sport groups licensed ranges for MLB, NFL, NBA, football, motorsports, cricket, rugby and golf, with team shortcuts and related categories along the top of each collection."
+    },
+    {
+      "title": "Filters",
+      "body": "Collection pages show the product count, a grid density toggle and sorting, plus a long filter sidebar covering silhouette type, team, visor style, fit, fabric, color and size."
+    },
+    {
+      "title": "Product pages",
+      "body": "Each cap shows its silhouette, rating, color variants, fitted sizes with a size guide, a Collectors Club banner with the points earned, add to bag, wish list and accordions for details, team information, delivery and reviews."
+    }
+  ],
+  "technologies": [
+    "Shopify",
+    "Custom Shopify theme",
+    "Swym wish list",
+    "Klaviyo",
+    "Yotpo"
+  ],
+  "whyItMatters": "Cap buyers often know the team and the shape they want, and fitted caps only work in the right size. Navigation by silhouette and team, with size guides on the page, gets them to a cap that fits.",
+  "faqs": [
+    {
+      "q": "What platform is the New Era UK store built on?",
+      "a": "It runs on Shopify with a custom New Era theme, using Shopify collections for silhouettes, sports, teams, materials and colors."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, while the agency manages its client. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": [
+      "desktop-collection",
+      "desktop-product"
+    ],
+    "fullPage": "desktop-home-full",
+    "mobile": [
+      "mobile-home",
+      "mobile-product"
+    ]
+  }
+}

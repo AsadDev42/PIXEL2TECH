@@ -1,0 +1,45 @@
+{
+  "slug": "petpads-shopify-store",
+  "client": "PetsWorld",
+  "url": "https://petpads.net/",
+  "platform": "Shopify",
+  "engagement": "white-label",
+  "order": 137,
+  "metaTitle": "PetsWorld Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for PetsWorld, a US pet pad brand: pads by size and absorbency, per-count pricing, Autoship subscriptions, PetsWorld+ rewards and wholesale.",
+  "summary": "Shopify store for a family-owned US brand selling dog pee pads, male wraps, cat litter pads and pet wipes.",
+  "overview": "PetsWorld sells dog training and potty pads, male dog wraps, litter essentials and pet wipes from petpads.net, and describes itself as a USA family owned business. Pixel2Tech built the PetsWorld Shopify store as white-label development partner for a digital agency, setting up the agency's client's store around repeat buying.",
+  "challenge": "Pet pads are a consumable that customers reorder on a schedule, so the store has to make subscribing easier than buying once. Products also come in many sizes, from extra small to a 4XL pad, and in pack counts from 50 upward, which makes comparing price per pad hard.",
+  "approach": "The header menu splits the range into dog pee pads, male wraps, litter essentials and pet wipes, with sub-menus for washable, disposable, health monitoring and eco-conscious pads and for sizes. Collection pages add a sidebar filter for absorption, pad type, scent and animal, and each card shows the size badge, rating, regular price and Autoship price. Product pages show pack counts with the cost per count, a most loved tag, size options and an Autoship and save box with delivery frequency, a first order discount and PetsWorld+ cash back, above the one-time purchase option.",
+  "outcome": "A Shopify store where a dog owner can find the right pad size, see the price per pad and set up a recurring delivery on the same page, with wholesale and Buy with Prime options for other kinds of buyers. Size badges and Autoship prices on every product card let shoppers compare options before opening a product.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Dawn theme)" },
+    { "label": "Catalog", "value": "Dog pads, male wraps, litter pads, pet wipes" },
+    { "label": "Buying", "value": "Autoship subscriptions, per-count pricing, rewards" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Size and type navigation",
+    "Collection filters by absorption, type, scent and animal",
+    "Product page with pack counts and Autoship",
+    "PetsWorld+ rewards and wholesale entry points",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Range and menus", "body": "Dog pee pads, male wraps, litter essentials and pet wipes each get a menu with sub-categories by pad type and size, plus a shop all link and a PetsWorld+ page." },
+    { "title": "Collections", "body": "A filter sidebar covers absorption level, pad type, scent and animal, and product cards show the pad dimensions, star rating, price and the lower Autoship price." },
+    { "title": "Subscriptions", "body": "Product pages pre-select Autoship and save with a delivery schedule, a discount on the first Autoship order and savings that grow with each order, with one-time purchase as the alternative." },
+    { "title": "Home and mobile", "body": "The home page runs from a 3XL pad hero through top picks, category tiles, wholesale and Buy with Prime links, a scented range and a dog or cat product switcher, and on phones a Start Autoship button stays fixed at the bottom." }
+  ],
+  "technologies": ["Shopify", "Dawn theme", "Recharge subscriptions", "Okendo reviews", "Buy with Prime"],
+  "whyItMatters": "For a product people run out of every few weeks, the second and third orders matter more than the first. Putting the subscription option and the price per pad up front turns a one-off order into a routine delivery.",
+  "faqs": [
+    { "q": "What platform is the PetsWorld store built on?", "a": "It runs on Shopify with the Dawn theme, with Recharge for Autoship subscriptions, Okendo for reviews and a Buy with Prime section for shoppers who prefer to order through Amazon." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the work is presented as the agency's own. Share the scope and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}

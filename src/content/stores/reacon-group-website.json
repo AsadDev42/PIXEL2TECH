@@ -1,0 +1,45 @@
+{
+  "slug": "reacon-group-website",
+  "client": "Reacon Group",
+  "url": "https://www.reacongroup.com/",
+  "platform": "Custom",
+  "engagement": "white-label",
+  "order": 139,
+  "metaTitle": "Reacon Group website | Pixel2Tech",
+  "metaDescription": "Custom website for Reacon Group, a Sydney print, packaging and mailing business: service lines, industry pages, sister company links and an order CTA.",
+  "summary": "Custom-built B2B website for a Sydney print, packaging, mailing and data communications company.",
+  "overview": "Reacon Group presents itself as a global print, packaging and communications partner, producing everything from packaging and retail activations to personalized mail from its Sydney production floor. Pixel2Tech built the Reacon Group website as white-label development partner for a digital agency, delivering a custom site for the agency's client.",
+  "challenge": "Reacon sells three quite different services, print and production, mailing and fulfillment, and data-driven communications, to buyers in regulated sectors such as banking, pharmaceuticals and government. It is also one company in a wider group, so the site has to explain where it fits and point to its sister businesses without losing visitors.",
+  "approach": "A floating pill navigation links About Us, Solutions, Our Industries, Our Works and Blogs, with Start an Order and Contact Us buttons always in view. The home page opens on a dark hero with the brand's positioning and two calls to action, then a client logo strip, a certifications row, an introduction to the group with cards for its four sister companies, and three long service sections that each list capabilities and link to a detail page. An industries section, partner quotes, an FAQ and a closing call to action complete the page.",
+  "outcome": "A B2B website that explains three service lines and six industries from one home page and gives procurement teams a direct route to start an order or contact the team. The four sister companies are one click away, so visitors who need a different service can still find it within the group.",
+  "results": [
+    { "label": "Platform", "value": "Custom build (Tailwind CSS, Alpine.js, GSAP)" },
+    { "label": "Site type", "value": "B2B print, packaging and communications services" },
+    { "label": "Key pages", "value": "Solutions, industries, our works, start an order" }
+  ],
+  "deliverables": [
+    "Custom website build",
+    "Solutions and industry page structure",
+    "Home page with service sections",
+    "Start an order and contact routes",
+    "Scroll animations",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Structure", "body": "Solutions are grouped into print and production, mailing and fulfillment, and data-driven innovation, each with sub-pages such as commercial print, direct mail, warehousing and data unification." },
+    { "title": "Trust signals", "body": "Client logos, a row of the certifications the company holds and partner quotes sit high on the home page, where B2B buyers look for them first." },
+    { "title": "Group and industries", "body": "Cards link out to the four sister companies in the Westman Group, and an industries section covers banking and finance, hospitality, e-commerce, pharmaceuticals, charities and government." },
+    { "title": "Build and mobile", "body": "The site is built with Tailwind CSS, Alpine.js and GSAP scroll animations, and on phones the hero, buttons and service sections stack into one column behind a menu button." }
+  ],
+  "technologies": ["Custom HTML", "Tailwind CSS", "Alpine.js", "GSAP ScrollTrigger", "Microsoft IIS"],
+  "whyItMatters": "B2B buyers comparing print and mailing suppliers want to see capabilities, sector experience and credentials before they make contact. A site that puts all three on one page, with an order route always visible, shortens that research.",
+  "faqs": [
+    { "q": "What is the Reacon Group website built with?", "a": "It is a custom build using Tailwind CSS for styling, Alpine.js for interactive elements and GSAP for scroll animations, served from a Microsoft IIS server." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build Shopify stores and websites under the agency's brand, with an NDA when needed, so the work is presented as the agency's own. Share the scope and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "brentwood-bay-resort-wordpress-website",
+  "client": "Brentwood Bay Resort",
+  "url": "https://brentwoodbayresort.com/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 141,
+  "metaTitle": "Brentwood Bay Resort website | Pixel2Tech",
+  "metaDescription": "White-label WordPress and Elementor website for Brentwood Bay Resort: rooms, dining, spa, marina, weddings and events, with Cloudbeds online booking.",
+  "summary": "WordPress website for an oceanfront boutique resort on Vancouver Island.",
+  "overview": "Brentwood Bay Resort describes itself as a 33 room boutique resort on Vancouver Island's Brentwood Bay, minutes from downtown Victoria. Pixel2Tech built the resort's WordPress website as white-label development partner for a digital agency. The site brings rooms, restaurants, spa, marina and events together under one booking button.",
+  "challenge": "The resort is several businesses in one: a hotel, two restaurants and room service, a spa, a marina with boat tours and rentals, and a wedding and events venue. Each needs its own pages, while the main action for most visitors is still to book a stay.",
+  "approach": "A seasonal announcement bar sits above a header with Resort, Dining, Spa, Marina, Weddings and Events and News and Calendar menus, plus a Book Now button that opens Cloudbeds reservations. The home page uses a full-screen photo hero, a rooms introduction, then alternating split panels for dining, spa and marina, each linking to its sub-pages. A calendar carousel of promotions and events, a community giving section and a newsletter sign-up lead into the footer.",
+  "outcome": "A resort website where guests can explore rooms, dining, spa treatments and boat trips, check upcoming events and book a stay from any page. The Elementor build lets the resort team swap seasonal banners and calendar entries without developer help.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (Elementor)" },
+    { "label": "Site type", "value": "Boutique resort and hospitality site" },
+    { "label": "Key pages", "value": "Rooms, dining, spa, marina, events, booking" }
+  ],
+  "deliverables": [
+    "WordPress website built with Elementor",
+    "Multi-level navigation for resort areas",
+    "Dining, spa and marina panels",
+    "Events and promotions carousel",
+    "Cloudbeds booking links",
+    "Newsletter sign-up and mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Site map",
+      "body": "Menus split the resort into rooms and activities, three dining options, spa treatments and memberships, marina tours and rentals, and weddings, meetings and corporate events."
+    },
+    {
+      "title": "Home page",
+      "body": "A full-screen hero with Book Now leads to a rooms introduction, then dark green panels for dining, spa and marina that alternate with full-height photos."
+    },
+    {
+      "title": "Events and booking",
+      "body": "A carousel lists dated promotions and events with Learn More links, and every Book Now button points to the resort's Cloudbeds reservation page."
+    },
+    {
+      "title": "Mobile",
+      "body": "On phones the announcement bar stays on top, the menu becomes a single icon and the hero keeps the resort name and Book Now button in the first screen."
+    }
+  ],
+  "technologies": ["WordPress", "Elementor", "Hello Elementor theme", "Cloudbeds booking", "Gravity Forms"],
+  "whyItMatters": "Resort guests plan around more than a room: meals, treatments and time on the water. Showing each of those clearly, with booking always one click away, helps a browsing visitor turn into a reservation.",
+  "faqs": [
+    {
+      "q": "What is the Brentwood Bay Resort website built with?",
+      "a": "It runs on WordPress with Elementor on a Hello Elementor child theme, with room reservations handled through Cloudbeds and the newsletter form through Gravity Forms."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

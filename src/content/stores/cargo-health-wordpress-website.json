@@ -1,0 +1,45 @@
+{
+  "slug": "cargo-health-wordpress-website",
+  "client": "carGO Health",
+  "url": "https://www.cargo.health/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 122,
+  "metaTitle": "carGO Health website | Pixel2Tech",
+  "metaDescription": "White-label WordPress website for carGO Health, a medical courier service: service and industry pages, platform tour, demo requests and a 10-question FAQ.",
+  "summary": "WordPress website for a medical courier company serving hospitals, labs and pharmacies.",
+  "overview": "carGO Health is a medical courier service that transports specimens, blood products, pharmaceuticals and medical supplies for hospitals, laboratories and pharmacies. Pixel2Tech built carGO Health's WordPress website as white-label development partner for a digital agency, presenting both the courier service and the ordering and tracking platform behind it.",
+  "challenge": "The agency's client sells to healthcare buyers who care about compliance, chain of custody and reliability, while also recruiting drivers and serving existing customers who need to log in. The site has to cover services, industries, the software platform and recruiting without losing the main goal: demo requests.",
+  "approach": "A top bar carries Contact Us, the phone number and Customer Login, and the main menu covers About Us, Medical Courier Services, Our Platform, Why carGO Health and Our Team, with a Get a Demo button. The home page moves from a hero and client logo strip to a testimonial slider, service and delivery-type grids, a platform section with order tracking screens, a six-step patient care logistics timeline, an industries section and an FAQ. The footer adds service areas, industries served, what the company transports and a driver sign-up link.",
+  "outcome": "A WordPress website that explains what carGO Health moves, how orders are tracked and who it serves, with Get a Demo and Customer Login in reach from every page. Prospects, existing customers and prospective drivers each have a clear route from the header.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (custom theme, SiteOrigin Page Builder)" },
+    { "label": "Site type", "value": "B2B service and lead generation site" },
+    { "label": "Key pages", "value": "Services, platform, industries, team, FAQ" }
+  ],
+  "deliverables": [
+    "WordPress website",
+    "Custom theme",
+    "Service and delivery-type sections",
+    "Platform and order tracking section",
+    "Demo request calls to action",
+    "Mobile layout"
+  ],
+  "process": [
+    { "title": "Structure", "body": "Menus split the site into the company, courier services, patient care logistics, who it serves, the platform and the team, with a separate Drive with carGO page for recruiting." },
+    { "title": "Services", "body": "Cards cover STAT pickups, recurring deliveries, on-demand and scheduled orders and multi-stop routes, next to a list of what the company transports, from specimens to clinical trial materials." },
+    { "title": "Platform", "body": "Screens from the ordering dashboard and order activity timeline sit beside a six-step flow from order placement and dispatch to pick-up, delivery ETA and confirmation." },
+    { "title": "Trust and FAQ", "body": "Client logos, a testimonial slider, HIPAA and OSHA badges and a ten-question FAQ answer the compliance, coverage and pricing questions healthcare buyers ask first." }
+  ],
+  "technologies": ["WordPress", "Custom WordPress theme", "SiteOrigin Page Builder", "WP Rocket"],
+  "whyItMatters": "Healthcare buyers pick a courier on trust, compliance and visibility into each delivery. A site that shows the service, the tracking platform and the compliance story together gives them what they need to book a demo.",
+  "faqs": [
+    { "q": "What platform is the carGO Health website built on?", "a": "It runs on WordPress with a custom theme, using SiteOrigin Page Builder for page layouts and WP Rocket for caching." },
+    { "q": "Do you work white-label for agencies?", "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

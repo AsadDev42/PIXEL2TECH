@@ -1,0 +1,63 @@
+{
+  "slug": "big-voodoo-wordpress-website",
+  "client": "Big Voodoo",
+  "url": "https://www.bigvoodoo.com/",
+  "platform": "WordPress",
+  "engagement": "white-label",
+  "order": 140,
+  "metaTitle": "Big Voodoo website | Pixel2Tech",
+  "metaDescription": "White-label WordPress website for Big Voodoo, a law firm marketing agency: service menus, an AI readiness assessment page, insights and a contact form.",
+  "summary": "WordPress website for a digital marketing agency that works with law firms.",
+  "overview": "Big Voodoo is a digital marketing agency that describes itself as focused entirely on law firms, offering websites, SEO, pay-per-click and social campaigns. Pixel2Tech built Big Voodoo's WordPress website as white-label development partner for a digital agency. The site presents the agency's services to attorneys and turns that interest into calls and contact requests.",
+  "challenge": "The agency offers a long list of services, from website builds and site management to search, paid ads, social and AI search readiness, and each one needs a place without crowding the home page. Law firm partners scanning the site also need a phone number and a way to get in touch from any point on the page.",
+  "approach": "A light header carries Services and Insights dropdowns, Our Team and Let's Talk, while the hero pairs a large red headline with the phone number and a Get Started Today button. The home page moves through the agency's pitch, a dark call-out card linking to a free AI readiness assessment, the agency's own stat circles, four service rows with contact buttons, testimonials, a team section and the latest articles. A Gravity Forms contact form and footer with the office address close every page.",
+  "outcome": "A WordPress website where attorneys can scan the agency's services, try the AI readiness assessment, read its articles and reach the team by phone or form. The block-based layout lets the agency add service and insight pages without new templates.",
+  "results": [
+    { "label": "Platform", "value": "WordPress (custom block theme)" },
+    { "label": "Site type", "value": "Agency site for law firm marketing" },
+    { "label": "Key pages", "value": "Services, team, insights, AI assessment, contact" }
+  ],
+  "deliverables": [
+    "WordPress website on a custom block theme",
+    "Services and insights dropdown menus",
+    "AI readiness assessment call-out",
+    "Service, testimonial and team sections",
+    "Gravity Forms contact form",
+    "Mobile layout"
+  ],
+  "process": [
+    {
+      "title": "Navigation",
+      "body": "The Services menu lists website solutions, digital marketing, custom AI workflows, social campaigns, AI integrations, site management and AI readiness, while Insights groups the blog with GEO and AEO topics."
+    },
+    {
+      "title": "Home page",
+      "body": "Sections run from the red headline hero to the agency's pitch, an assessment card, service rows with bullet lists, client quotes, a team introduction and three recent articles."
+    },
+    {
+      "title": "Lead capture",
+      "body": "The phone number sits in the hero, Get Started Today and Contact Us buttons repeat down the page, and a Gravity Forms form asks for company, name, phone, email and comments."
+    },
+    {
+      "title": "Mobile",
+      "body": "On phones the menu collapses to a single icon and the headline, phone number and Get Started Today button stack in the first screen."
+    }
+  ],
+  "technologies": ["WordPress", "Custom block theme (Gutenberg)", "Gravity Forms", "Responsive layout"],
+  "whyItMatters": "Law firms compare agencies quickly and want to talk to someone fast. A site that keeps the phone number, assessment and contact form close at hand gives a busy attorney an easy next step.",
+  "faqs": [
+    {
+      "q": "What is the Big Voodoo website built with?",
+      "a": "It runs on WordPress with a custom block theme built on the Gutenberg editor, and Gravity Forms handles the contact form."
+    },
+    {
+      "q": "Do you work white-label for agencies?",
+      "a": "Yes. We build websites and Shopify stores under the agency's brand, with an NDA when needed. Tell us about the project and we will send a fixed quote after a short call."
+    }
+  ],
+  "shots": {
+    "desktop": ["desktop-home"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home"]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "shahzeb-saeed-shopify-store",
+  "client": "Shahzeb Saeed",
+  "url": "https://shahzebsaeed.com/",
+  "platform": "Shopify",
+  "engagement": "direct",
+  "order": 82,
+  "metaTitle": "Shahzeb Saeed Shopify store | Pixel2Tech",
+  "metaDescription": "Shopify store for Shahzeb Saeed, a Pakistani menswear brand: formal and casual shirts, polos, eastern wear and suiting, plus shop by price and by discount.",
+  "summary": "Shopify store for a Pakistani menswear brand covering formal, casual and eastern wear.",
+  "overview": "Shahzeb Saeed is a Pakistani menswear brand that describes its range as complete men's clothing: formal and casual shirts, suiting, t-shirts, polos, eastern wear and accessories, plus fragrances. We built Shahzeb Saeed's Shopify store to organize that wide range so men can find a shirt, trouser or suit in a few clicks.",
+  "challenge": "The catalog is broad and deep, with many shirt types, polo styles, trouser fits and seasonal items, and a steady flow of sale offers. Shoppers needed to browse by garment and fit, and deal-seekers needed a direct route to discounted items.",
+  "approach": "A centered header sits over a menu for Fragrance, a special-price sale, Formal, Polos, Casual, Tees, Eastern, Winter, Accessories and Sale, each opening into detailed sub-collections such as Oxford shirts, Korean trousers or zipper polos. The Sale menu adds shop by category, shop by price (under Rs. 1500 to under Rs. 4000) and shop by discount. The homepage mixes a sale banner, product rows, round category tiles for seasonal favorites and clearance, and a fragrance section, while product pages show the style code, savings, a pay-in-three installment option, size buttons with a size chart and a stock indicator.",
+  "outcome": "A Shopify store where men can shop by garment, fit, price or discount, and check size, stock and payment options on one product screen.",
+  "results": [
+    { "label": "Platform", "value": "Shopify (Impulse theme)" },
+    { "label": "Catalog", "value": "Shirts, polos, trousers, suiting, eastern wear, fragrance" },
+    { "label": "Shopping", "value": "By garment, by price, by discount" }
+  ],
+  "deliverables": [
+    "Shopify storefront",
+    "Mega menu with sub-collections",
+    "Shop by price and discount pages",
+    "Category tile sections",
+    "Product page layout"
+  ],
+  "process": [
+    { "title": "Mega menu", "body": "Each menu item opens into specific sub-collections, for example formal shirts by pattern, trousers by fit, polos by fabric and tees by style, so shoppers can go straight to what they want." },
+    { "title": "Sale navigation", "body": "The Sale menu lets shoppers browse discounted items by category, by price band and by discount level." },
+    { "title": "Homepage sections", "body": "A sale banner leads into New Drop and Most Trending rows, round category tiles for seasonal favorites and clearance, more product rows and a fragrance section." },
+    { "title": "Product pages", "body": "Product pages show the style code, original and sale price with the saving, a pay-in-three installment option, size buttons with a size chart and an in-stock indicator." }
+  ],
+  "technologies": ["Shopify", "Impulse theme", "Judge.me product reviews", "Baadmay pay-in-three installments"],
+  "whyItMatters": "A large menswear catalog only sells well if men can get to the right garment and fit quickly. Detailed menus and price-based browsing shorten that path for both regular shoppers and deal-seekers.",
+  "faqs": [
+    { "q": "What platform is the Shahzeb Saeed store built on?", "a": "It runs on Shopify with the Impulse theme, using Shopify collections for garment types, fits, price bands and discount levels." },
+    { "q": "Can Pixel2Tech build a similar Shopify store for my menswear brand?", "a": "Yes. We design and build Shopify stores for clothing brands, including mega menus, sale navigation and product page layouts. Tell us about your catalog and we will send a fixed quote after a short call." }
+  ],
+  "shots": {
+    "desktop": ["desktop-home", "desktop-collection", "desktop-product"],
+    "fullPage": "desktop-home-full",
+    "mobile": ["mobile-home", "mobile-product"]
+  }
+}
