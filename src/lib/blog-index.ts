@@ -32,6 +32,54 @@ import {
  */
 const POSTS = [
   {
+    slug: "shopify-bfcm-2026-checklist",
+    title: "Shopify BFCM 2026 Checklist: Fix the Funnel and Stop Bots First",
+    excerpt:
+      "Black Friday is November 27, 2026. Fix checkout leaks, time recovery emails, warm your list and stop card-testing bots and fake accounts before you scale ads.",
+    tag: "Shopify",
+    date: "October 11, 2026",
+    time: "9:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/shopify-bfcm-2026-checklist.jpg",
+    imgAlt:
+      "Shopper holding a payment card while typing on a laptop to complete an online checkout",
+    related: [
+      "reduce-shopify-chargebacks-and-fraud",
+      "klaviyo-flows-not-triggering-shopify",
+      "shopify-inp-core-web-vitals",
+    ],
+  },
+  {
+    slug: "ai-built-app-launch-checklist",
+    title: "Built Your App With Lovable or Bolt? Check These 9 Things First",
+    excerpt:
+      "Built a portal or site with Lovable or Bolt? Nine checks before launch: Supabase RLS, exposed keys, logins, backups, SEO, accessibility and who owns the code.",
+    tag: "Web Development",
+    date: "October 11, 2026",
+    time: "10:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/ai-built-app-launch-checklist.jpg",
+    imgAlt: "Combination padlock resting on a white computer keyboard",
+    related: [
+      "website-ownership-checklist",
+      "custom-web-app-development-cost",
+      "bots-outnumber-humans-online-2026-website-security",
+    ],
+  },
+  {
+    slug: "automations-failing-silently-audit",
+    title: "Are Your Zapier, Make or n8n Automations Failing Silently?",
+    excerpt:
+      "Most broken automations never send an error. How Zapier, Make, n8n and HighLevel fail silently, how to set alerts, and a year-end audit and handover checklist.",
+    tag: "Automation",
+    date: "October 11, 2026",
+    time: "11:00 am",
+    author: "Pixel2Tech Team",
+    img: "/blog/covers/automations-failing-silently-audit.jpg",
+    imgAlt: "Close-up of a black power plug pulled out of a white wall outlet",
+    related: ["automate-lead-follow-up", "n8n-automation-cost", "website-ownership-checklist"],
+  },
+  {
     slug: "shopify-issues-and-how-to-fix-them",
     title: "10 Common Shopify Issues and How to Fix Them",
     excerpt:
