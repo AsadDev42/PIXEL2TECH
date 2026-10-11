@@ -139,7 +139,7 @@ const CASH_COW_VIDEOS = numberedVideos(
 export const FEATURED_SLUGS: readonly string[] = ["vip-talking-head-videos"];
 
 export const CATEGORIES = [
-  "Creative",
+  "Social Media & Ads",
   "Design",
   "WordPress & Shopify",
   "Video Editing",
@@ -148,8 +148,8 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
-  Creative: ["Social Media", "Branding", "Print & Merchandise"],
-  Design: ["Websites", "E-Commerce", "Mobile Apps"],
+  "Social Media & Ads": ["Social Media"],
+  Design: ["Branding", "Print & Merchandise", "Websites", "E-Commerce", "Mobile Apps"],
   "WordPress & Shopify": ["Shopify Stores", "WordPress Sites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
   "Custom Platforms": ["Web Apps", "Tools", "Automation"],
@@ -169,7 +169,7 @@ function storeItem(p: StoreProject): RawItem {
 }
 
 const RAW: RawWork = {
-  Creative: {
+  "Social Media & Ads": {
     "Social Media": [
       {
         // Real case studies carry an explicit slug, so their titles can be
@@ -195,7 +195,6 @@ const RAW: RawWork = {
           "/media/106746bf-ed5e-434a-b77b-c15943ac2fe5/madluvv-13.jpg",
         ],
       },
-
       {
         slug: "affinity-law-social-media-ad-creatives",
         title: "Affinity Law — social media and ad creatives",
@@ -229,12 +228,6 @@ const RAW: RawWork = {
         images: swishtagAssets.images,
       },
       {
-        slug: "book-cover-design-portfolio",
-        title: "Book cover design",
-        img: bookCoverAssets.covers[0],
-        images: bookCoverAssets.covers,
-      },
-      {
         slug: "healthcare-meta-ad-creatives",
         title: "Healthcare Meta ad creatives",
         // The knee pain ad (8) is portrait, so it fills the 4:5 grid card.
@@ -263,15 +256,10 @@ const RAW: RawWork = {
         images: CREATIVE_COLLECTION,
         showAllImages: true,
       },
-      {
-        title: "Cafe seasonal creatives",
-        img: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Fashion editorial reels",
-        img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
+  },
+
+  Design: {
     Branding: [
       {
         slug: "brand-identity-design-collection",
@@ -288,83 +276,19 @@ const RAW: RawWork = {
         images: LOGO_DESIGNS,
         showAllImages: true,
       },
-      {
-        title: "Coffee house identity",
-        img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Logo & brand system",
-        img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Studio rebrand",
-        img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Restaurant brand guide",
-        img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Startup visual identity",
-        img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Wellness brand mark",
-        img: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     "Print & Merchandise": [
       {
-        title: "Business card set",
-        img: "https://images.unsplash.com/photo-1606115915090-be18fea23ec7?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Packaging mockups",
-        img: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Merchandise tees",
-        img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Brand stationery kit",
-        img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Menu & signage",
-        img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Tote bag prints",
-        img: "https://images.unsplash.com/photo-1544441893-675973e31985?w=1600&auto=format&fit=crop&fm=webp&q=75",
+        slug: "book-cover-design-portfolio",
+        title: "Book cover design",
+        img: bookCoverAssets.covers[0],
+        images: bookCoverAssets.covers,
       },
     ],
-  },
-  Design: {
     Websites: [
       {
         title: "SaaS marketing site",
         img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Agency portfolio",
-        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Landing page series",
-        img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Coaching brand site",
-        img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Studio one-pager",
-        img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Real estate listings",
-        img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
     ],
     "E-Commerce": [
@@ -372,54 +296,15 @@ const RAW: RawWork = {
         title: "Fashion storefront",
         img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
-      {
-        title: "Skincare shop",
-        img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Electronics marketplace",
-        img: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Food delivery store",
-        img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Furniture catalog",
-        img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Jewelry boutique",
-        img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     "Mobile Apps": [
       {
         title: "Fitness tracker app",
         img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
-      {
-        title: "Food delivery app",
-        img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Banking app redesign",
-        img: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Meditation app",
-        img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Travel companion",
-        img: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Habit tracker",
-        img: "https://images.unsplash.com/photo-1522199873717-bc67b1a5e32b?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
   },
+
   "WordPress & Shopify": {
     "Shopify Stores": STORE_PROJECTS.filter((p) => p.platform === "Shopify").map(storeItem),
     "WordPress Sites": STORE_PROJECTS.filter((p) => p.platform === "WordPress").map(storeItem),
@@ -529,77 +414,17 @@ const RAW: RawWork = {
         title: "Client dashboard",
         img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
-      {
-        title: "Booking platform",
-        img: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Analytics portal",
-        img: "https://images.unsplash.com/photo-1551288049-4b39c6b5d9f6?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Membership portal",
-        img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "CRM workspace",
-        img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Design system",
-        img: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     Tools: [
       {
         title: "Internal workflow tool",
         img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
-      {
-        title: "Invoice generator",
-        img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Content calendar",
-        img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Lead tracker",
-        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Report builder",
-        img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Review collector",
-        img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     Automation: [
       {
         title: "Email automation",
         img: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "CRM automation",
-        img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Zapier integrations",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "AI chatbot setup",
-        img: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Webhook pipelines",
-        img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Data sync engine",
-        img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
     ],
   },
@@ -665,7 +490,7 @@ export function warnOnUnknownSlugs(source: string, slugs: string[]): void {
 
 /** URL-safe value for the /portfolio?category= filter, e.g. "video-editing". */
 export type CategorySlug =
-  | "creative"
+  | "social-media-and-ads"
   | "design"
   | "wordpress-and-shopify"
   | "video-editing"
@@ -679,6 +504,8 @@ export function categorySlug(category: Category): CategorySlug {
 export function categoryFromSlug(value: unknown): Category | undefined {
   if (typeof value !== "string" || !value) return undefined;
   const wanted = slugify(value);
+  // The "Creative" practice was renamed; keep old ?category=creative links working.
+  if (wanted === "creative") return "Social Media & Ads";
   return CATEGORIES.find((c) => slugify(c) === wanted);
 }
 
