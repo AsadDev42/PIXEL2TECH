@@ -27,6 +27,16 @@ const items: Item[] = [
     hasAudio: true,
   },
   {
+    name: "Brand owner",
+    role: "Branding, content, ads, website and WhatsApp automation",
+    quote:
+      "They did not just make me a logo. They built my entire brand strategy, a full design system, all my social media creatives, even the videos, and they ran my ads. The website is fully automated: leads come in and WhatsApp follows up automatically.",
+    video: "/testimonials/brand-owner.mp4",
+    poster: "/testimonials/brand-owner.webp",
+    captions: "/testimonials/brand-owner.vtt",
+    hasAudio: true,
+  },
+  {
     name: "Daniel Brooks",
     role: "Founder, LaunchGrid",
     quote:
@@ -52,15 +62,6 @@ const items: Item[] = [
     video: "https://cdn.coverr.co/videos/coverr-a-young-woman-typing-on-a-laptop-9269/1080p.mp4",
     poster:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&fm=webp&q=70",
-  },
-  {
-    name: "Marco Bianchi",
-    role: "CEO, Northline Studio",
-    quote:
-      "From branding to launch, Pixel2Tech delivered on every promise. They feel like a true growth partner, not just a vendor.",
-    video: "https://cdn.coverr.co/videos/coverr-a-man-working-on-a-laptop-2634/1080p.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
 ];
 
