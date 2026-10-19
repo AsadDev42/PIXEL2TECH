@@ -17,6 +17,16 @@ type Item = {
 
 const items: Item[] = [
   {
+    name: "Skincare brand founder",
+    role: "Website, social content and AI DM automation",
+    quote:
+      "They built my website clean, fast, professional. They create my social media content now, and they set up AI automation for my DMs. Every message gets an instant reply, and orders go straight to my website, even while I sleep.",
+    video: "/testimonials/skincare-founder.mp4",
+    poster: "/testimonials/skincare-founder.webp",
+    captions: "/testimonials/skincare-founder.vtt",
+    hasAudio: true,
+  },
+  {
     name: "Daniel Brooks",
     role: "Founder, LaunchGrid",
     quote:
@@ -51,15 +61,6 @@ const items: Item[] = [
     video: "https://cdn.coverr.co/videos/coverr-a-man-working-on-a-laptop-2634/1080p.mp4",
     poster:
       "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&auto=format&fit=crop&fm=webp&q=70",
-  },
-  {
-    name: "Aisha Rahman",
-    role: "Product Lead, Kite",
-    quote:
-      "Their AI workflow automations saved our team days every week. Real, measurable impact from day one.",
-    video: "https://cdn.coverr.co/videos/coverr-a-woman-typing-on-a-laptop-9270/1080p.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&auto=format&fit=crop&fm=webp&q=70",
   },
 ];
 
