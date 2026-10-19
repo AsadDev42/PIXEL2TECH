@@ -64,9 +64,12 @@ const items: Item[] = [
   },
 ];
 
-/** Card widths, shared by the list items and the poster `sizes` hint. */
-const CARD_WIDTH = "w-[78vw] max-w-[340px] sm:w-[340px] lg:w-[380px] lg:max-w-[380px]";
-const CARD_SIZES = "(min-width: 1024px) 380px, (min-width: 640px) 340px, 78vw";
+/**
+ * Card widths, shared by the list items and the poster `sizes` hint. Clips are
+ * vertical reels, so the media box is 9:16 and shows the whole frame.
+ */
+const CARD_WIDTH = "w-[72vw] max-w-[296px] sm:w-[296px] lg:w-[320px] lg:max-w-[320px]";
+const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 296px, 72vw";
 
 function VideoCard({
   item,
@@ -96,13 +99,13 @@ function VideoCard({
 
   return (
     <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:rounded-3xl">
-      <div className="relative aspect-[4/5] bg-muted">
+      <div className="relative aspect-[9/16] bg-muted">
         <ResponsiveImage
           src={item.poster}
           alt=""
           sizes={CARD_SIZES}
-          width={800}
-          height={1000}
+          width={720}
+          height={1280}
           className="absolute inset-0 h-full w-full object-cover"
         />
         {started ? (
