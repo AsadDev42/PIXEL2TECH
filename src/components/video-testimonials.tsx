@@ -23,7 +23,6 @@ const items: Item[] = [
       "They built my website clean, fast, professional. They create my social media content now, and they set up AI automation for my DMs. Every message gets an instant reply, and orders go straight to my website, even while I sleep.",
     video: "/testimonials/skincare-founder.mp4",
     poster: "/testimonials/skincare-founder.webp",
-    captions: "/testimonials/skincare-founder.vtt",
     hasAudio: true,
   },
   {
@@ -33,7 +32,6 @@ const items: Item[] = [
       "They did not just make me a logo. They built my entire brand strategy, a full design system, all my social media creatives, even the videos, and they ran my ads. The website is fully automated: leads come in and WhatsApp follows up automatically.",
     video: "/testimonials/brand-owner.mp4",
     poster: "/testimonials/brand-owner.webp",
-    captions: "/testimonials/brand-owner.vtt",
     hasAudio: true,
   },
   {
@@ -143,7 +141,9 @@ function VideoCard({
         >
           <span
             aria-hidden="true"
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-background text-foreground shadow-lg ring-1 ring-border transition-transform group-hover:scale-105 sm:h-16 sm:w-16"
+            className={`flex h-14 w-14 items-center justify-center rounded-full bg-background text-foreground shadow-lg ring-1 ring-border transition group-hover:scale-105 sm:h-16 sm:w-16 ${
+              playing ? "opacity-0 group-focus-visible:opacity-100" : "opacity-100"
+            }`}
           >
             {playing ? (
               <Pause className="h-6 w-6" />
