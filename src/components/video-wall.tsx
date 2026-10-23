@@ -25,7 +25,15 @@ const GROUP_LABEL: Record<VideoOrientation, string> = {
  * page plays with sound at a time. With reduced motion there are no previews:
  * the poster stays until the visitor presses play.
  */
-export function VideoWall({ videos, label }: { videos: PortfolioVideo[]; label: string }) {
+export function VideoWall({
+  videos,
+  label,
+  layout = "grid",
+}: {
+  videos: PortfolioVideo[];
+  label: string;
+  layout?: "grid" | "slider";
+}) {
   const wallId = useId();
   const [soundIndex, setSoundIndex] = useState<number | null>(null);
   // Off until mounted, so the server render and reduced-motion visitors get no previews.
@@ -84,10 +92,23 @@ export function VideoWall({ videos, label }: { videos: PortfolioVideo[]; label: 
               {GROUP_LABEL[orientation]}
             </h3>
           )}
-          <ul className={GRID[orientation]}>
+          <ul
+            className={
+              layout === "slider"
+                ? "flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 pt-1 motion-reduce:scroll-auto [scrollbar-color:var(--border)_transparent] [scrollbar-width:thin]"
+                : GRID[orientation]
+            }
+          >
             {videos.map((video, index) =>
               video.orientation === orientation ? (
-                <li key={video.poster}>
+                <li
+                  key={video.poster}
+                  className={
+                    layout === "slider"
+                      ? `min-w-0 shrink-0 snap-start ${orientation === "vertical" ? "w-[184px] sm:w-[216px]" : "w-[280px] sm:w-[360px]"}`
+                      : undefined
+                  }
+                >
                   <VideoCard
                     video={video}
                     index={index}
@@ -96,6 +117,7 @@ export function VideoWall({ videos, label }: { videos: PortfolioVideo[]; label: 
                     pageVisible={pageVisible}
                     onClaim={claim}
                     onRelease={release}
+                    showCaption={layout !== "slider"}
                   />
                 </li>
               ) : null,
@@ -115,6 +137,7 @@ type CardProps = {
   pageVisible: boolean;
   onClaim: (index: number) => void;
   onRelease: (index: number) => void;
+  showCaption?: boolean;
 };
 
 const VideoCard = memo(function VideoCard({
@@ -125,6 +148,7 @@ const VideoCard = memo(function VideoCard({
   pageVisible,
   onClaim,
   onRelease,
+  showCaption = true,
 }: CardProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -330,9 +354,11 @@ const VideoCard = memo(function VideoCard({
           <span className="truncate">{withSound ? "Sound on" : actionLabel}</span>
         </span>
       </button>
-      <p aria-hidden="true" className="mt-2 text-sm text-muted-foreground">
-        {video.title}
-      </p>
+      {showCaption && (
+        <p aria-hidden="true" className="mt-2 text-sm text-muted-foreground">
+          {video.title}
+        </p>
+      )}
     </>
   );
 });

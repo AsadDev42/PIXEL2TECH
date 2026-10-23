@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
+import { PortfolioVideoCollections } from "@/components/portfolio-video-collections";
 import { trackEvent } from "@/lib/analytics";
 import {
   ALL_ITEMS,
@@ -133,7 +134,7 @@ function PortfolioPage() {
         </div>
       </section>
 
-      {/* Filters + grid. Every project is in the server HTML; the filter only hides cards. */}
+      {/* Practice filters, selected video collections and the project grid. */}
       <section aria-labelledby="projects-title" className="bg-background pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <h2 id="projects-title" className="sr-only">
@@ -169,11 +170,27 @@ function PortfolioPage() {
             </ul>
           </nav>
           <p aria-live="polite" className="mt-4 text-sm text-muted-foreground">
-            {active ? `Showing ${shown} ${active} projects` : `Showing all ${shown} projects`}
+            {active === "Video Editing"
+              ? `Explore all ${shown} video collections`
+              : active
+                ? `Showing ${shown} ${active} projects`
+                : `Showing all ${shown} projects`}
           </p>
 
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-            {ALL_ITEMS.map((w, i) => (
+          {(!active || active === "Video Editing") && (
+            <PortfolioVideoCollections featuredOnly={!active} />
+          )}
+
+          {!active && (
+            <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              More of our work
+            </h2>
+          )}
+          <ul
+            className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+            hidden={active === "Video Editing"}
+          >
+            {ALL_ITEMS.filter((item) => item.category !== "Video Editing").map((w, i) => (
               <li key={w.slug} hidden={active ? w.category !== active : undefined}>
                 <Link
                   to="/portfolio/$slug"
