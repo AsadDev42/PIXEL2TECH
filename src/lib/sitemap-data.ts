@@ -27,7 +27,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
   "/services": "2026-08-01",
-  "/portfolio": "2026-09-28",
+  "/portfolio": "2026-10-23",
   "/contact": "2026-08-01",
   "/privacy-policy": PRIVACY_UPDATED.iso,
   "/terms-and-conditions": TERMS_UPDATED.iso,

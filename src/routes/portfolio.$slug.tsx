@@ -91,6 +91,23 @@ const PROJECT_VIDEOS: Record<string, SpotlightVideo[]> = {
 
 /** Heading and intro above the video wall of projects that carry `videos`. */
 const VIDEO_WALL_COPY: Record<string, { heading: string; intro: string }> = {
+  "short-form-social-media-videos": {
+    heading: "Short-form social videos",
+    intro: "Ten vertical edits, including interview clips, talking-head videos and social stories.",
+  },
+  "long-form-video-and-podcast-production": {
+    heading: "Long-form and podcast videos",
+    intro: "Nine landscape videos, including interviews, podcast conversations and presentations.",
+  },
+  "animated-explainer-videos": {
+    heading: "Animated explainer videos",
+    intro:
+      "Nine landscape examples of animated explainers, product walkthroughs and motion graphics.",
+  },
+  "performance-marketing-video-ads": {
+    heading: "Performance marketing video ads",
+    intro: "Explore the full collection of ten performance marketing video ads below.",
+  },
   "vip-talking-head-videos": {
     heading: "Talking-head videos",
     intro: "Vertical talking-head videos edited for founders, coaches and personal brands.",

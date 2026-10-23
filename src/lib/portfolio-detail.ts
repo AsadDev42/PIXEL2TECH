@@ -741,6 +741,87 @@ for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "short-form-social-media-videos": {
+    process: [
+      {
+        title: "Explore the collection",
+        body: "A collection of ten short-form vertical videos, including interview highlights, talking-head clips and social stories. Watch the examples to compare on-screen captions, framing and editing styles.",
+      },
+      {
+        title: "Review the edit",
+        body: "The examples combine vertical framing, interview footage, on-screen text and changes in pacing to bring each message into focus.",
+      },
+    ],
+    technologies: ["9:16 vertical", "Video editing"],
+    whyItMatters:
+      "Short social videos need to introduce a clear idea quickly while keeping a conversation or story easy to follow.",
+    faqs: [
+      {
+        q: "What is included in this collection?",
+        a: "Ten vertical edits for social media, from podcast clips to talking-head stories.",
+      },
+      {
+        q: "Can I watch the complete videos?",
+        a: "Yes. Select any video to watch it from the start with sound.",
+      },
+    ],
+    relatedReading: [POST.coachRetainers, POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
+  },
+  "long-form-video-and-podcast-production": {
+    process: [
+      {
+        title: "Explore the collection",
+        body: "A collection of nine landscape videos, including podcast conversations, interviews, presentations and promotional edits. The supplied examples range from about half a minute to over six minutes.",
+      },
+      {
+        title: "Review the edit",
+        body: "Explore the examples to see different approaches to interview framing, supporting visuals, screen recordings and on-screen text.",
+      },
+    ],
+    technologies: ["16:9 landscape", "Video editing"],
+    whyItMatters:
+      "A longer conversation or presentation needs a clear thread and visual continuity so viewers can follow the subject.",
+    faqs: [
+      {
+        q: "What is included in this collection?",
+        a: "Nine landscape video examples, including interviews, conversations and presentations.",
+      },
+      {
+        q: "Can I watch the complete videos?",
+        a: "Yes. Select any video to watch it from the start with sound.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.coachRetainers, POST.whiteLabelCreative],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
+  },
+  "animated-explainer-videos": {
+    process: [
+      {
+        title: "Explore the collection",
+        body: "Nine landscape video examples for SaaS, tech and AI, bringing together interface walkthroughs, animated typography, illustrated scenes and motion graphics.",
+      },
+      {
+        title: "Review the edit",
+        body: "The collection shows interfaces, animated text and illustrated sequences used to introduce products and explain ideas.",
+      },
+    ],
+    technologies: ["16:9 landscape", "Motion graphics"],
+    whyItMatters:
+      "Software features and technical ideas need a clear visual explanation that viewers can follow without extra context.",
+    faqs: [
+      {
+        q: "What is included in this collection?",
+        a: "Nine animated explainer examples with product walkthroughs, typography and motion graphics.",
+      },
+      {
+        q: "Can I watch the complete videos?",
+        a: "Yes. Select any video to watch it from the start with sound.",
+      },
+    ],
+    relatedReading: [POST.productVideo, POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
+  },
   ...Object.fromEntries(
     AUTOMATION_PROJECTS.map((p) => [
       p.slug,
@@ -1256,6 +1337,33 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
       },
     ],
     relatedReading: [POST.coachRetainers, POST.outsourceVideo, POST.metaTesting],
+    relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
+  },
+  "performance-marketing-video-ads": {
+    process: [
+      {
+        title: "Explore the collection",
+        body: "Watch ten complete ad examples and compare how each introduces its message.",
+      },
+      {
+        title: "Watch with sound",
+        body: "Select a video to restart it with sound and review the full edit.",
+      },
+    ],
+    technologies: ["Vertical video", "9:16 format"],
+    whyItMatters:
+      "A collection of complete ads makes it easier to review creative direction, pacing and messaging before planning a new video project.",
+    faqs: [
+      {
+        q: "How many videos are in this collection?",
+        a: "This collection contains ten performance marketing video ads, each available to watch in full.",
+      },
+      {
+        q: "What formats are shown?",
+        a: "All ten ads are vertical videos, including creator-led product demonstrations, app promotions and animated creative.",
+      },
+    ],
+    relatedReading: [POST.metaTesting, POST.ugcAds, POST.whiteLabelCreative],
     relatedServices: ["Video Editing & Ads", "Social Media & Email", "Branding & Design"],
   },
   "ugc-video-ads": {

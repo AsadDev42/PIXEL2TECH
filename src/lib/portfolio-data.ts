@@ -151,6 +151,30 @@ const UGC_VIDEO_ADS = numberedVideos(
   { vertical: "UGC video ad" },
   "vertical",
 );
+const PERFORMANCE_MARKETING_VIDEO_ADS = numberedVideos(
+  "performance-marketing-video-ads",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  { vertical: "Performance marketing video ad", landscape: "Performance marketing video ad" },
+  "vertical",
+);
+const SHORT_FORM_SOCIAL_VIDEOS = numberedVideos(
+  "short-form-social-media-videos",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  { vertical: "Short-form social video" },
+  "vertical",
+);
+const LONG_FORM_AND_PODCAST_VIDEOS = numberedVideos(
+  "long-form-video-and-podcast-production",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  { landscape: "Long-form and podcast video" },
+  "landscape",
+);
+const ANIMATED_EXPLAINER_VIDEOS = numberedVideos(
+  "animated-explainer-videos",
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  { landscape: "Animated explainer video" },
+  "landscape",
+);
 const CASH_COW_VIDEOS = numberedVideos(
   "cash-cow-youtube-videos",
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
@@ -191,18 +215,16 @@ export const CATEGORIES = [
   "Websites",
   "Video Editing",
   "AI Automation",
-  "Custom Platforms",
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
   "Social Media & Ads": ["Social Media"],
-  Design: ["Branding", "Print & Merchandise", "Websites", "E-Commerce", "Mobile Apps"],
+  Design: ["Branding", "Print & Merchandise"],
   "Ecom Stores": ["Shopify Stores"],
   Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
   "AI Automation": [...AUTOMATION_SUBCATEGORIES],
-  "Custom Platforms": ["Web Apps", "Tools", "Automation"],
 };
 
 type RawItem = Omit<PortfolioItem, "category" | "subcategory" | "slug"> & { slug?: string };
@@ -223,9 +245,7 @@ const RAW: RawWork = {
   "Social Media & Ads": {
     "Social Media": [
       {
-        // Real case studies carry an explicit slug, so their titles can be
-        // edited without changing the URL. The placeholder items further down
-        // derive their slug from the title: renaming one changes its URL.
+        // Explicit slugs keep project URLs stable when titles change.
         slug: "madluvv-social-media-meta-ads",
         title: "MADLUVV — social media and Meta ads",
         client: "MADLUVV",
@@ -281,8 +301,8 @@ const RAW: RawWork = {
       {
         slug: "healthcare-meta-ad-creatives",
         title: "Healthcare Meta ad creatives",
-        // The knee pain ad (8) is portrait, so it fills the 4:5 grid card.
-        img: "/portfolio/healthcare-meta-ad-creatives/8.webp",
+        // Original nerve-pain artwork selected by the owner as the cover.
+        img: "/portfolio/healthcare-meta-ad-creatives/6.webp",
         images: HEALTHCARE_ADS,
         showAllImages: true,
       },
@@ -336,24 +356,6 @@ const RAW: RawWork = {
         images: bookCoverAssets.covers,
       },
     ],
-    Websites: [
-      {
-        title: "SaaS marketing site",
-        img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
-    "E-Commerce": [
-      {
-        title: "Fashion storefront",
-        img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
-    "Mobile Apps": [
-      {
-        title: "Fitness tracker app",
-        img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
   },
 
   "Ecom Stores": {
@@ -368,38 +370,25 @@ const RAW: RawWork = {
   "Video Editing": {
     "Short Form": [
       {
+        slug: "short-form-social-media-videos",
+        title: "Short-form video production for social media",
+        img: SHORT_FORM_SOCIAL_VIDEOS[0]!.poster,
+        videos: SHORT_FORM_SOCIAL_VIDEOS,
+      },
+      {
         slug: "vip-talking-head-videos",
         title: "Talking-head videos for founders and personal brands",
         img: TALKING_HEAD_VIDEOS[0]!.poster,
         videos: TALKING_HEAD_VIDEOS,
       },
-      {
-        title: "Brand reel series",
-        img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1600&auto=format&fit=crop&fm=webp&q=75",
-        video: "https://drive.google.com/file/d/1T0J1ANuSTaboPx3Jinx42P8yP3XEyDAb/preview",
-      },
-      {
-        title: "Product teaser shorts",
-        img: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Behind the scenes cuts",
-        img: "https://images.unsplash.com/photo-1493804714600-6edb1cd93080?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Founder story reels",
-        img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Event highlights",
-        img: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Recipe shorts",
-        img: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     "Long Form": [
+      {
+        slug: "long-form-video-and-podcast-production",
+        title: "Long-form video and podcast production",
+        img: LONG_FORM_AND_PODCAST_VIDEOS[6]!.poster,
+        videos: LONG_FORM_AND_PODCAST_VIDEOS,
+      },
       {
         slug: "cash-cow-youtube-videos",
         title: "Faceless YouTube videos for cash cow channels",
@@ -412,61 +401,25 @@ const RAW: RawWork = {
         img: LONG_FORM_VIDEOS[1]!.poster,
         videos: LONG_FORM_VIDEOS,
       },
-      {
-        title: "Documentary edit",
-        img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Podcast video edit",
-        img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Tutorial series",
-        img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Vlog cuts",
-        img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Interview episodes",
-        img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Webinar recordings",
-        img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
     ],
     Commercial: [
+      {
+        slug: "animated-explainer-videos",
+        title: "Animated explainer videos for SaaS, tech and AI",
+        img: ANIMATED_EXPLAINER_VIDEOS[1]!.poster,
+        videos: ANIMATED_EXPLAINER_VIDEOS,
+      },
+      {
+        slug: "performance-marketing-video-ads",
+        title: "Performance marketing video ads",
+        img: PERFORMANCE_MARKETING_VIDEO_ADS[0]!.poster,
+        videos: PERFORMANCE_MARKETING_VIDEO_ADS,
+      },
       {
         slug: "ugc-video-ads",
         title: "UGC video ads",
         img: UGC_VIDEO_ADS[0]!.poster,
         videos: UGC_VIDEO_ADS,
-      },
-      {
-        title: "Facebook video ads",
-        img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "TikTok ad series",
-        img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "YouTube pre-roll",
-        img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Testimonial ad cuts",
-        img: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "App promo videos",
-        img: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-      {
-        title: "Explainer animations",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&fm=webp&q=75",
       },
     ],
   },
@@ -483,26 +436,6 @@ const RAW: RawWork = {
       ),
     ]),
   ),
-  "Custom Platforms": {
-    "Web Apps": [
-      {
-        title: "Client dashboard",
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
-    Tools: [
-      {
-        title: "Internal workflow tool",
-        img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
-    Automation: [
-      {
-        title: "Email automation",
-        img: "https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=1600&auto=format&fit=crop&fm=webp&q=75",
-      },
-    ],
-  },
 };
 
 export function slugify(s: string): string {

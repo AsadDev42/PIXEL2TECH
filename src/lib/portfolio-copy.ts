@@ -59,6 +59,134 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "short-form-social-media-videos": {
+    summary: "Ten vertical edits for social media, from podcast clips to talking-head stories.",
+    overview:
+      "A collection of ten short-form vertical videos, including interview highlights, talking-head clips and social stories. Watch the examples to compare on-screen captions, framing and editing styles.",
+    challenge:
+      "Short social videos need to introduce a clear idea quickly while keeping a conversation or story easy to follow.",
+    approach:
+      "The examples combine vertical framing, interview footage, on-screen text and changes in pacing to bring each message into focus.",
+    outcome:
+      "Ten complete vertical video examples presented together in one social media collection.",
+    deliverables: [
+      "Short-form edits",
+      "Vertical social videos",
+      "Interview and podcast clips",
+      "On-screen captions",
+    ],
+    metaTitle: "Short-form social video production | Pixel2Tech",
+    metaDescription:
+      "Ten vertical edits for social media, from podcast clips to talking-head stories. Watch the full collection in the Pixel2Tech portfolio.",
+    results: [
+      {
+        label: "In this set",
+        value: "10 vertical videos",
+      },
+      {
+        label: "Format",
+        value: "9:16 vertical",
+      },
+      {
+        label: "Collection",
+        value: "Short-form social video production",
+      },
+    ],
+  },
+  "long-form-video-and-podcast-production": {
+    summary:
+      "Nine landscape video examples, including interviews, conversations and presentations.",
+    overview:
+      "A collection of nine landscape videos, including podcast conversations, interviews, presentations and promotional edits. The supplied examples range from about half a minute to over six minutes.",
+    challenge:
+      "A longer conversation or presentation needs a clear thread and visual continuity so viewers can follow the subject.",
+    approach:
+      "Explore the examples to see different approaches to interview framing, supporting visuals, screen recordings and on-screen text.",
+    outcome:
+      "Nine complete examples that show a range of landscape video and podcast editing styles.",
+    deliverables: [
+      "Landscape video edits",
+      "Podcast and interview videos",
+      "Presentation edits",
+      "Supporting visuals",
+    ],
+    metaTitle: "Long-form video and podcast production | Pixel2Tech",
+    metaDescription:
+      "Nine landscape video examples, including interviews, conversations and presentations. Watch the full collection in the Pixel2Tech portfolio.",
+    results: [
+      {
+        label: "In this set",
+        value: "9 landscape videos",
+      },
+      {
+        label: "Format",
+        value: "16:9 landscape",
+      },
+      {
+        label: "Collection",
+        value: "Long-form video and podcast production",
+      },
+    ],
+  },
+  "animated-explainer-videos": {
+    summary:
+      "Nine animated explainer examples with product walkthroughs, typography and motion graphics.",
+    overview:
+      "Nine landscape video examples for SaaS, tech and AI, bringing together interface walkthroughs, animated typography, illustrated scenes and motion graphics.",
+    challenge:
+      "Software features and technical ideas need a clear visual explanation that viewers can follow without extra context.",
+    approach:
+      "The collection shows interfaces, animated text and illustrated sequences used to introduce products and explain ideas.",
+    outcome: "Nine complete animated video examples, collected in a dedicated explainer showcase.",
+    deliverables: [
+      "Animated explainer videos",
+      "Product walkthroughs",
+      "Animated typography",
+      "Motion graphics",
+    ],
+    metaTitle: "Animated explainers for SaaS, tech and AI | Pixel2Tech",
+    metaDescription:
+      "Nine animated explainer examples with product walkthroughs, typography and motion graphics. Watch the full collection in the Pixel2Tech portfolio.",
+    results: [
+      {
+        label: "In this set",
+        value: "9 explainer videos",
+      },
+      {
+        label: "Format",
+        value: "16:9 landscape",
+      },
+      {
+        label: "Collection",
+        value: "Animated explainers for SaaS, tech and AI",
+      },
+    ],
+  },
+  "performance-marketing-video-ads": {
+    metaTitle: "Performance marketing video ads | Pixel2Tech",
+    metaDescription:
+      "Watch Pixel2Tech's collection of ten performance marketing video ads, with full video playback and sound.",
+    summary: "Creator-led product demos, app promotions and animated video ads.",
+    overview:
+      "Ten vertical performance marketing video ads, from creator-led product demonstrations to app promotions and animated creative. Watch each example in full to explore its opening, message and visual style.",
+    challenge:
+      "Video advertising has limited time to communicate an offer and give viewers a reason to keep watching.",
+    approach:
+      "Explore the examples below to compare the openings, pacing, visuals and messaging across the collection.",
+    outcome:
+      "A varied collection of ten complete vertical ads, bringing product demonstrations, app promotions and animated storytelling together in one showcase.",
+    results: [
+      { label: "In this set", value: pieces("performance-marketing-video-ads", "video ads") },
+      { label: "Collection", value: "Performance marketing" },
+      { label: "Format", value: "9:16 vertical video" },
+    ],
+    deliverables: [
+      "Ten vertical video ads",
+      "Product demonstrations",
+      "App promotions",
+      "Animated ad creative",
+    ],
+  },
   ...Object.fromEntries(
     AUTOMATION_PROJECTS.map((p) => [
       p.slug,
