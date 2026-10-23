@@ -18,6 +18,7 @@ import {
 import { swishtagAssets } from "@/assets/swishtag-assets";
 import { bookCoverAssets } from "@/assets/book-cover-assets";
 import { SITE } from "@/lib/site-config";
+import videoHost from "@/lib/portfolio-video-host.json";
 
 export type VideoOrientation = "vertical" | "landscape";
 
@@ -98,7 +99,9 @@ function numberedVideos(
         : orientation;
     counts[o] += 1;
     return {
-      src: `/portfolio/${slug}/${n}.mp4`,
+      src: Object.hasOwn(videoHost.collections, slug)
+        ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
+        : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
       title: `${labels[o] ?? labels[orientation] ?? "Video"} ${counts[o]}`,
       orientation: o,
