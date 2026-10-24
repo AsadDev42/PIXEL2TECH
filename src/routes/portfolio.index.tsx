@@ -184,6 +184,10 @@ function PortfolioPage() {
 
           {(!active || active === "Websites") && <PortfolioWebsites featuredOnly={!active} />}
 
+          {(!active || active === "Ecom Stores") && (
+            <PortfolioWebsites kind="ecom-stores" featuredOnly={!active} />
+          )}
+
           {!active && (
             <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               More of our work
@@ -191,10 +195,13 @@ function PortfolioPage() {
           )}
           <ul
             className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
-            hidden={active === "Video Editing" || active === "Websites"}
+            hidden={active === "Video Editing" || active === "Websites" || active === "Ecom Stores"}
           >
             {ALL_ITEMS.filter(
-              (item) => item.category !== "Video Editing" && item.category !== "Websites",
+              (item) =>
+                item.category !== "Video Editing" &&
+                item.category !== "Websites" &&
+                item.category !== "Ecom Stores",
             ).map((w, i) => (
               <li key={w.slug} hidden={active ? w.category !== active : undefined}>
                 <Link

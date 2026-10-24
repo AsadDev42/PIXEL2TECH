@@ -3,23 +3,28 @@ import { ArrowRight, ArrowUpRight, LockKeyhole } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { STORE_PROJECTS, isStore } from "@/lib/store-projects";
 
-const WEBSITES = STORE_PROJECTS.filter((project) => !isStore(project));
-
-export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boolean }) {
-  const projects = featuredOnly ? WEBSITES.slice(0, 4) : WEBSITES;
+export function PortfolioWebsites({
+  featuredOnly = false,
+  kind = "websites",
+}: {
+  featuredOnly?: boolean;
+  kind?: "websites" | "ecom-stores";
+}) {
+  const stores = kind === "ecom-stores";
+  const collection = STORE_PROJECTS.filter((project) => isStore(project) === stores);
+  const projects = featuredOnly ? collection.slice(0, 4) : collection;
+  const label = stores ? "Ecom Stores" : "Websites";
+  const titleId = `${kind}-work-title`;
 
   return (
-    <section aria-labelledby="website-work-title" className="mt-12 sm:mt-16">
+    <section aria-labelledby={titleId} className="mt-12 sm:mt-16">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Websites / Selected builds
+            {label} / Selected builds
           </p>
-          <h2
-            id="website-work-title"
-            className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
-          >
-            A closer look at our websites
+          <h2 id={titleId} className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
+            A closer look at our {stores ? "online stores" : "websites"}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             Explore the design, pages and development behind each project.
@@ -28,10 +33,11 @@ export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boo
         {featuredOnly && (
           <Link
             to="/portfolio"
-            search={{ category: "websites" }}
+            search={{ category: kind }}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-semibold transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            View all {WEBSITES.length} websites <ArrowRight className="h-4 w-4" />
+            View all {collection.length} {stores ? "stores" : "websites"}{" "}
+            <ArrowRight className="h-4 w-4" />
           </Link>
         )}
       </div>
@@ -46,7 +52,7 @@ export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boo
                 onClick={() =>
                   trackEvent("portfolio_project_opened", {
                     slug: project.slug,
-                    title: `${project.client} — website`,
+                    title: `${project.client} — ${stores ? "Shopify store" : "website"}`,
                   })
                 }
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-300 hover:border-foreground/25 hover:shadow-lg hover:shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:rounded-3xl"
@@ -68,7 +74,7 @@ export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boo
                     <div className="aspect-[16/10] overflow-hidden bg-muted">
                       <img
                         src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
-                        alt={`${project.client} website desktop preview`}
+                        alt={`${project.client} ${stores ? "store" : "website"} desktop preview`}
                         loading={index < 2 ? "eager" : "lazy"}
                         decoding="async"
                         width={1440}
@@ -80,7 +86,9 @@ export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boo
                 </div>
                 <div className="flex flex-1 flex-col border-t border-border p-5 sm:p-6">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-xs font-medium text-muted-foreground">Website development</p>
+                    <p className="text-xs font-medium text-muted-foreground">
+                      {stores ? "Ecommerce development" : "Website development"}
+                    </p>
                     <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
                       {project.platform}
                     </span>
@@ -95,7 +103,9 @@ export function PortfolioWebsites({ featuredOnly = false }: { featuredOnly?: boo
                     <span className="text-xs text-muted-foreground">
                       {project.engagement === "white-label"
                         ? "Agency development partner"
-                        : "Website project"}
+                        : stores
+                          ? "Online store project"
+                          : "Website project"}
                     </span>
                     <span className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full bg-foreground px-4 text-xs font-semibold text-background transition group-hover:opacity-80">
                       View project <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
