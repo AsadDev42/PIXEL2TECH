@@ -26,10 +26,16 @@ const INITIAL = { email: "" };
 export function NewsletterForm({
   idPrefix = "newsletter",
   className,
+  onSubscribed,
+  submitLabel = "Subscribe",
+  location = "blog",
 }: {
   /** Prefix for element ids; set it if a page shows two signup forms. */
   idPrefix?: string;
   className?: string;
+  onSubscribed?: () => void;
+  submitLabel?: string;
+  location?: string;
 }) {
   const subscribe = useServerFn(subscribeToNewsletter);
   const guard = useSpamGuard();
@@ -48,9 +54,10 @@ export function NewsletterForm({
         await subscribe({
           data: { email: data.email, website: guard.website, elapsedMs: guard.elapsedMs() },
         });
-        trackEvent("newsletter_signup", { location: "blog" });
+        trackEvent("newsletter_signup", { location });
         reset();
         setStatus({ kind: "success", message: NEWSLETTER_SUCCESS_MESSAGE });
+        onSubscribed?.();
       } catch (err) {
         setStatus({ kind: "error", message: submitErrorMessage(err) });
       }
@@ -101,7 +108,7 @@ export function NewsletterForm({
         {submitting ? (
           <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
         ) : null}
-        {submitting ? "Subscribing…" : "Subscribe"}
+        {submitting ? "Subscribing…" : submitLabel}
       </button>
       <FormStatus status={status} />
     </form>

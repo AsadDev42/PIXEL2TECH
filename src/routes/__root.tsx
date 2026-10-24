@@ -204,6 +204,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
+          "@id": `${SITE.url}/#website`,
           name: "Pixel2Tech",
           url: "https://pixel2tech.com/",
           inLanguage: "en",

@@ -14,14 +14,19 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AsadFarooqRouteImport } from './routes/asad-farooq'
 import { Route as BlogSitemapDotxmlRouteImport } from './routes/blog-sitemap[.]xml'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
+import { Route as ForAgenciesRouteImport } from './routes/for-agencies'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
 import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
+import { Route as PressRouteImport } from './routes/press'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as SaadRouteImport } from './routes/saad'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
@@ -33,8 +38,11 @@ import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
+import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as ResourcesShopifyStoreChecklistRouteImport } from './routes/resources.shopify-store-checklist'
 import { Route as ServicesSlugRouteImport } from './routes/services_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -62,6 +70,11 @@ const BlogSitemapDotxmlRoute = BlogSitemapDotxmlRouteImport.update({
   path: '/blog-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -72,9 +85,19 @@ const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
   path: '/favicon.ico',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForAgenciesRoute = ForAgenciesRouteImport.update({
+  id: '/for-agencies',
+  path: '/for-agencies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
   id: '/images-sitemap.xml',
   path: '/images-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
@@ -97,9 +120,19 @@ const PostSitemapDotxmlRoute = PostSitemapDotxmlRouteImport.update({
   path: '/post-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PressRoute = PressRouteImport.update({
+  id: '/press',
+  path: '/press',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SaadRoute = SaadRouteImport.update({
@@ -157,6 +190,16 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/industries/',
+  path: '/industries/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/industries/$slug',
+  path: '/industries/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
   id: '/portfolio/',
   path: '/portfolio/',
@@ -167,6 +210,12 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   path: '/portfolio/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesShopifyStoreChecklistRoute =
+  ResourcesShopifyStoreChecklistRouteImport.update({
+    id: '/resources/shopify-store-checklist',
+    path: '/resources/shopify-store-checklist',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services_/$slug',
   path: '/services/$slug',
@@ -179,14 +228,19 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
+  '/press': typeof PressRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/results': typeof ResultsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -197,9 +251,12 @@ export interface FileRoutesByFullPath {
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/resources/shopify-store-checklist': typeof ResourcesShopifyStoreChecklistRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRoutesByTo {
@@ -208,14 +265,19 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
+  '/press': typeof PressRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/results': typeof ResultsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -226,9 +288,12 @@ export interface FileRoutesByTo {
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/resources/shopify-store-checklist': typeof ResourcesShopifyStoreChecklistRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/industries': typeof IndustriesIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
 }
 export interface FileRoutesById {
@@ -238,14 +303,19 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/asad-farooq': typeof AsadFarooqRoute
   '/blog-sitemap.xml': typeof BlogSitemapDotxmlRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
+  '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
+  '/press': typeof PressRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/results': typeof ResultsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -256,9 +326,12 @@ export interface FileRoutesById {
   '/usama-farooq': typeof UsamaFarooqRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/resources/shopify-store-checklist': typeof ResourcesShopifyStoreChecklistRoute
   '/services_/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRouteTypes {
@@ -269,14 +342,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/asad-farooq'
     | '/blog-sitemap.xml'
+    | '/careers'
     | '/contact'
     | '/favicon.ico'
+    | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
+    | '/press'
     | '/privacy-policy'
+    | '/results'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -287,9 +365,12 @@ export interface FileRouteTypes {
     | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
+    | '/industries/$slug'
     | '/portfolio/$slug'
+    | '/resources/shopify-store-checklist'
     | '/services/$slug'
     | '/blog/'
+    | '/industries/'
     | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -298,14 +379,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/asad-farooq'
     | '/blog-sitemap.xml'
+    | '/careers'
     | '/contact'
     | '/favicon.ico'
+    | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
+    | '/press'
     | '/privacy-policy'
+    | '/results'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -316,9 +402,12 @@ export interface FileRouteTypes {
     | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
+    | '/industries/$slug'
     | '/portfolio/$slug'
+    | '/resources/shopify-store-checklist'
     | '/services/$slug'
     | '/blog'
+    | '/industries'
     | '/portfolio'
   id:
     | '__root__'
@@ -327,14 +416,19 @@ export interface FileRouteTypes {
     | '/about'
     | '/asad-farooq'
     | '/blog-sitemap.xml'
+    | '/careers'
     | '/contact'
     | '/favicon.ico'
+    | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
+    | '/press'
     | '/privacy-policy'
+    | '/results'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -345,9 +439,12 @@ export interface FileRouteTypes {
     | '/usama-farooq'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
+    | '/industries/$slug'
     | '/portfolio/$slug'
+    | '/resources/shopify-store-checklist'
     | '/services_/$slug'
     | '/blog/'
+    | '/industries/'
     | '/portfolio/'
   fileRoutesById: FileRoutesById
 }
@@ -357,14 +454,19 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AsadFarooqRoute: typeof AsadFarooqRoute
   BlogSitemapDotxmlRoute: typeof BlogSitemapDotxmlRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
+  ForAgenciesRoute: typeof ForAgenciesRoute
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
   PostSitemapDotxmlRoute: typeof PostSitemapDotxmlRoute
+  PressRoute: typeof PressRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ResultsRoute: typeof ResultsRoute
   SaadRoute: typeof SaadRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
@@ -375,9 +477,12 @@ export interface RootRouteChildren {
   UsamaFarooqRoute: typeof UsamaFarooqRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
+  ResourcesShopifyStoreChecklistRoute: typeof ResourcesShopifyStoreChecklistRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
 
@@ -418,6 +523,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -432,11 +544,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaviconDoticoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/for-agencies': {
+      id: '/for-agencies'
+      path: '/for-agencies'
+      fullPath: '/for-agencies'
+      preLoaderRoute: typeof ForAgenciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/images-sitemap.xml': {
       id: '/images-sitemap.xml'
       path: '/images-sitemap.xml'
       fullPath: '/images-sitemap.xml'
       preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/page-sitemap.xml': {
@@ -467,11 +593,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/press': {
+      id: '/press'
+      path: '/press'
+      fullPath: '/press'
+      preLoaderRoute: typeof PressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/saad': {
@@ -551,6 +691,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industries/': {
+      id: '/industries/'
+      path: '/industries'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/industries/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio/': {
       id: '/portfolio/'
       path: '/portfolio'
@@ -563,6 +717,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio/$slug'
       fullPath: '/portfolio/$slug'
       preLoaderRoute: typeof PortfolioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/shopify-store-checklist': {
+      id: '/resources/shopify-store-checklist'
+      path: '/resources/shopify-store-checklist'
+      fullPath: '/resources/shopify-store-checklist'
+      preLoaderRoute: typeof ResourcesShopifyStoreChecklistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services_/$slug': {
@@ -581,14 +742,19 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AsadFarooqRoute: AsadFarooqRoute,
   BlogSitemapDotxmlRoute: BlogSitemapDotxmlRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
+  ForAgenciesRoute: ForAgenciesRoute,
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
   PostSitemapDotxmlRoute: PostSitemapDotxmlRoute,
+  PressRoute: PressRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ResultsRoute: ResultsRoute,
   SaadRoute: SaadRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
@@ -599,9 +765,12 @@ const rootRouteChildren: RootRouteChildren = {
   UsamaFarooqRoute: UsamaFarooqRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
+  IndustriesSlugRoute: IndustriesSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
+  ResourcesShopifyStoreChecklistRoute: ResourcesShopifyStoreChecklistRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
 }
 export const routeTree = rootRouteImport

@@ -251,6 +251,12 @@ const QUICK_LINKS = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Portfolio", to: "/portfolio" },
+  { label: "Project outcomes", to: "/results" },
+  { label: "For agencies", to: "/for-agencies" },
+  { label: "Industries", to: "/industries" },
+  { label: "Careers", to: "/careers" },
+  { label: "Press", to: "/press" },
+  { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ] as const;
@@ -331,9 +337,9 @@ export function SiteFooter() {
             </div>
 
             <div className="border-t border-border bg-background/40 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-14">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 Get in touch
-              </h3>
+              </p>
               <ul className="mt-2 divide-y divide-border">
                 {contacts.map(({ label, value, href, track, external }) => {
                   const body = (
@@ -412,12 +418,12 @@ export function SiteFooter() {
           </div>
 
           <nav aria-labelledby="footer-quick-links" className="lg:col-span-2">
-            <h2
+            <p
               id="footer-quick-links"
               className="text-xs font-semibold uppercase tracking-widest text-foreground"
             >
               Company
-            </h2>
+            </p>
             <ul className="mt-4 text-sm">
               {QUICK_LINKS.map((q) => (
                 <li key={q.to}>
@@ -430,12 +436,12 @@ export function SiteFooter() {
           </nav>
 
           <nav aria-labelledby="footer-services" className="lg:col-span-5">
-            <h2
+            <p
               id="footer-services"
               className="text-xs font-semibold uppercase tracking-widest text-foreground"
             >
               Services
-            </h2>
+            </p>
             <ul className="mt-4 grid gap-x-6 text-sm sm:grid-cols-2">
               {SERVICES.map((title) => (
                 <li key={title}>

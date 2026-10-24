@@ -32,10 +32,12 @@ export function TeamCard({ member }: { member: TeamMember }) {
         />
       </div>
       <div className="p-4 md:p-5">
-        <h3 className="flex items-center gap-2 text-sm font-bold tracking-tight text-foreground sm:text-base">
-          {member.name}
+        <div className="flex items-center gap-2">
+          <h3 className="text-sm font-bold tracking-tight text-foreground sm:text-base">
+            {member.name}
+          </h3>
           {member.linkedin && <LinkedInBadge name={member.name} url={member.linkedin} />}
-        </h3>
+        </div>
         <p className="mt-1 text-xs text-muted-foreground">{member.role}</p>
       </div>
     </article>

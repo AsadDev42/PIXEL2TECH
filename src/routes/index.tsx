@@ -10,6 +10,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { TeamSlider } from "@/components/team-slider";
+import { StudioCommitments } from "@/components/studio-commitments";
 import { VideoTestimonials } from "@/components/video-testimonials";
 import { trackEvent } from "@/lib/analytics";
 import { getLatestPostSummaries } from "@/lib/blog-index";
@@ -20,6 +21,7 @@ import {
   workItems,
   type HeroMedia,
 } from "@/lib/home-media";
+import { HomeSelectedWork } from "@/components/home-selected-work";
 import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { TEAM, TEAM_SIZE } from "@/lib/team";
 
@@ -30,7 +32,6 @@ import indVahub from "@/assets/ind-vahub.png.asset.json";
 import indSwishtag from "@/assets/ind-swishtag.webp.asset.json";
 import indBiscuits from "@/assets/ind-biscuits.webp.asset.json";
 import indCave from "@/assets/ind-cave.webp.asset.json";
-import indEscada from "@/assets/ind-escada.webp.asset.json";
 import indGallop from "@/assets/ind-gallop.webp.asset.json";
 import indMixmasters from "@/assets/ind-mixmasters.webp.asset.json";
 import indAchhsoft from "@/assets/ind-achhsoft.webp.asset.json";
@@ -66,11 +67,6 @@ const TITLE = "Pixel2Tech | Branding, Web Design & Video Studio in Lahore";
 const DESCRIPTION =
   "Pixel2Tech is a creative and web studio in Lahore, Pakistan: branding, websites, apps, video and automation for clients worldwide. Book a free call.";
 
-/**
- * Rendered width of a hero tile. The first phone tile and the first image of
- * the middle desktop column are the same file, so a single preload with these
- * sizes serves both layouts.
- */
 const HERO_TILE_SIZES = "(max-width: 479px) 30vw, (max-width: 767px) 144px, 170px";
 
 const HOME_FAQS: FaqItem[] = [
@@ -107,7 +103,11 @@ export const Route = createFileRoute("/")({
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      {
+        property: "og:description",
+        content:
+          "Explore real Shopify stores, websites, video and automation from our six-person Lahore studio. Meet the team and plan your next project.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/` },
       { property: "og:image", content: OG_IMAGE },
@@ -130,6 +130,16 @@ export const Route = createFileRoute("/")({
     ],
     scripts: [
       faqJsonLd(HOME_FAQS),
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+          ],
+        }),
+      },
       {
         type: "application/ld+json",
         // Same @id as the Organization in __root, so search engines read one
@@ -216,11 +226,11 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            One studio. <span className="block text-primary">Not ten freelancers.</span>
+            One studio. <span className="block text-primary">From brief to launch.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            A creative and web studio in Lahore, Pakistan. We design brands, build websites and
-            apps, produce video and automate busywork for clients worldwide.
+            Brand, website and video from one in-house team. Work directly with the people making
+            it, with a clear scope and a fixed written quote before we begin.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
@@ -282,14 +292,12 @@ function Hero() {
 
 /* ------------------------------------------------------------------------ */
 /* Brands                                                                    */
-/* ------------------------------------------------------------------------ */
 
 const BRANDS: { name: string; src: string; darkSrc?: string }[] = [
   { name: "VA Hub PRO", src: indVahub.url },
   { name: "Swishtag", src: indSwishtag.url },
   { name: "Biscuit's Backyard", src: indBiscuits.url },
   { name: "Cave Magazine", src: indCave.url },
-  { name: "Escada", src: indEscada.url },
   { name: "Gallop", src: indGallop.url },
   { name: "Mix Masters", src: indMixmasters.url },
   { name: "AchhSoft", src: indAchhsoft.url },
@@ -609,7 +617,7 @@ function Studio() {
 
         <div className="min-w-0">
           <h2 id="home-studio-title" className={H2}>
-            Inside the studio
+            One studio. Six people. 50+ projects.
           </h2>
           <p className={LEAD}>
             Designers, developers and editors work side by side in our Lahore office, sketching
@@ -780,8 +788,10 @@ function HomePage() {
     <PageShell>
       <Hero />
       <Brands />
+      <HomeSelectedWork />
       <WhatWeMake />
       <Approach />
+      <StudioCommitments />
       <VideoTestimonials className="bg-muted" />
       <Team />
       <Studio />

@@ -121,7 +121,7 @@ export function buildBlogSeo(post: BlogPost) {
   const title = pageTitle(post);
   const description = pageDescription(post);
   const ogTitle = post.ogTitle ?? post.title;
-  const ogDescription = post.ogDescription ?? description;
+  const ogDescription = post.ogDescription ?? `${post.title}. ${post.excerpt}`;
   const keywords = post.keywords?.length ? post.keywords : deriveKeywords(post);
   const { published, modified } = postTimestamps(post);
   const profile = authorProfile(post.author);

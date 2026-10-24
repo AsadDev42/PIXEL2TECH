@@ -49,6 +49,14 @@ function addVary(headers: Headers) {
 }
 
 function compress(req: Request, res: Response): Response {
+  // Portfolio media and portfolio HTML share a URL prefix. Keep the long-lived
+  // media rules, but revalidate HTML so a deployment cannot leave old chunk URLs
+  // cached in the browser for a week.
+  if (res.status === 200 && res.headers.get("content-type")?.startsWith("text/html")) {
+    const headers = new Headers(res.headers);
+    headers.set("cache-control", "no-cache");
+    res = new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+  }
   if (!shouldCompress(req, res)) return res;
   const headers = new Headers(res.headers);
   headers.delete("content-length");

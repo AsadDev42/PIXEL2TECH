@@ -1,3 +1,4 @@
+import { INDUSTRIES } from "@/lib/industry-pages";
 import { POST_INDEX } from "@/lib/blog-index";
 import { PRIVACY_UPDATED, TERMS_UPDATED } from "@/lib/legal-dates";
 import { toISODate, type PostMeta } from "@/lib/blog-types";
@@ -21,13 +22,13 @@ export interface SitemapEntry {
  * use "now": a lastmod that changes on every request teaches Google to ignore it.
  */
 export const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-08-02",
+  "/": "2026-10-24",
   "/about": "2026-08-02",
   "/asad-farooq": "2026-08-08",
   "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
   "/services": "2026-08-01",
-  "/portfolio": "2026-10-23",
+  "/portfolio": "2026-10-24",
   "/contact": "2026-08-01",
   "/privacy-policy": PRIVACY_UPDATED.iso,
   "/terms-and-conditions": TERMS_UPDATED.iso,
@@ -78,6 +79,23 @@ export function pageEntries(): SitemapEntry[] {
         priority: "0.7",
         lastmod: latestLastmod(blogEntries()),
       },
+      { path: "/for-agencies", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.8" },
+      { path: "/industries", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.7" },
+      ...INDUSTRIES.map((industry) => ({
+        path: `/industries/${industry.slug}`,
+        lastmod: "2026-10-24",
+        changefreq: "monthly" as const,
+        priority: "0.7",
+      })),
+      { path: "/careers", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.5" },
+      {
+        path: "/resources/shopify-store-checklist",
+        lastmod: "2026-10-24",
+        changefreq: "monthly",
+        priority: "0.6",
+      },
+      { path: "/results", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.8" },
+      { path: "/press", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.5" },
       { path: "/contact", changefreq: "yearly", priority: "0.6" },
       { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
       { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.3" },

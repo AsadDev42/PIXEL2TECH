@@ -1710,9 +1710,16 @@ assertValidIndex(POSTS);
 /* ------------------------------------------------------------------ */
 
 /** Every post's metadata, newest first. */
-export const POST_INDEX: readonly PostMeta[] = [...POSTS].sort(
-  (a, b) => publishedAt(b) - publishedAt(a),
-);
+// Founder attribution approved by the owner. Preserve existing named bylines;
+// the headless guide already carries Asad's authored biography.
+export const POST_INDEX: readonly PostMeta[] = POSTS.map((post) => ({
+  ...post,
+  author: post.author.startsWith("Pixel2Tech")
+    ? post.slug === "headless-shopify-commerce-guide"
+      ? "Asad Farooq"
+      : "Usama Farooq"
+    : post.author,
+})).sort((a, b) => publishedAt(b) - publishedAt(a));
 
 const BY_SLUG = new Map(POST_INDEX.map((p) => [p.slug, p]));
 

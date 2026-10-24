@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, ArrowUpRight, LockKeyhole } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { STORE_PROJECTS, isStore } from "@/lib/store-projects";
@@ -11,8 +12,15 @@ export function PortfolioWebsites({
   kind?: "websites" | "ecom-stores";
 }) {
   const stores = kind === "ecom-stores";
-  const collection = STORE_PROJECTS.filter((project) => isStore(project) === stores);
-  const projects = featuredOnly ? collection.slice(0, 4) : collection;
+  const [relationship, setRelationship] = useState<"all" | "direct" | "white-label">("all");
+  const allProjects = STORE_PROJECTS.filter((project) => isStore(project) === stores);
+  const collection = allProjects.filter(
+    (project) => relationship === "all" || project.engagement === relationship,
+  );
+  const featured = stores
+    ? collection.filter((project) => project.engagement === "direct")
+    : collection;
+  const projects = featuredOnly ? featured.slice(0, 4) : collection;
   const label = stores ? "Ecom Stores" : "Websites";
   const titleId = `${kind}-work-title`;
 
@@ -36,11 +44,51 @@ export function PortfolioWebsites({
             search={{ category: kind }}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-semibold transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            View all {collection.length} {stores ? "stores" : "websites"}{" "}
+            View all {allProjects.length} {stores ? "stores" : "websites"}{" "}
             <ArrowRight className="h-4 w-4" />
           </Link>
         )}
       </div>
+      {!featuredOnly && (
+        <div className="mt-6">
+          <div className="flex flex-wrap gap-2" aria-label="Filter by engagement">
+            {(
+              [
+                { value: "all", label: "All engagements" },
+                { value: "direct", label: "Direct clients" },
+                { value: "white-label", label: "Agency partner work" },
+              ] as const
+            ).map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={relationship === option.value}
+                onClick={() => setRelationship(option.value)}
+                className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${relationship === option.value ? "border-foreground bg-foreground text-background" : "border-border hover:bg-muted"}`}
+              >
+                {option.label}{" "}
+                <span className="text-xs opacity-70">
+                  {
+                    allProjects.filter(
+                      (project) => option.value === "all" || project.engagement === option.value,
+                    ).length
+                  }
+                </span>
+              </button>
+            ))}
+          </div>
+          <p aria-live="polite" className="mt-3 text-xs text-muted-foreground">
+            {projects.length} projects. Agency partner work is built for another agency's client.
+            Unspecified engagements appear only under All engagements.
+          </p>
+        </div>
+      )}
+      {!projects.length && (
+        <p className="mt-8 rounded-2xl border border-border bg-muted/40 p-6 text-sm text-muted-foreground">
+          There are no published projects in this engagement group. Choose All engagements to
+          explore the work.
+        </p>
+      )}
       <ul className="mt-8 grid gap-6 md:grid-cols-2 sm:gap-8">
         {projects.map((project, index) => {
           const host = new URL(project.url).hostname.replace(/^www\./, "");

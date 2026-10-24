@@ -1,4 +1,12 @@
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l7.7-8.9L2 2h6.5l4.4 6.6L18.9 2ZM17.8 20h1.7L7.5 4H5.7l12.1 16Z" />
+    </svg>
+  );
+}
 
 function PinterestIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -39,7 +47,7 @@ export const SOCIAL_LINKS = [
     Icon: Facebook,
   },
   { name: "Instagram", href: "https://www.instagram.com/pixel_2tech/", Icon: Instagram },
-  { name: "X / Twitter", href: "https://x.com/Pixel2tech", Icon: Twitter },
+  { name: "X / Twitter", href: "https://x.com/Pixel2tech", Icon: XIcon },
   { name: "LinkedIn", href: "https://www.linkedin.com/company/pixel2tech", Icon: Linkedin },
   { name: "YouTube", href: "https://www.youtube.com/@Pixel2tech", Icon: Youtube },
   { name: "Pinterest", href: "https://www.pinterest.com/pixel2tech/", Icon: PinterestIcon },

@@ -52,7 +52,6 @@ export const Route = createFileRoute("/blog/$slug")({
       meta: [
         { title: seo.title },
         { name: "description", content: seo.description },
-        { name: "keywords", content: seo.keywords.join(", ") },
         { name: "author", content: post.author },
         { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
         { property: "og:site_name", content: "Pixel2Tech" },

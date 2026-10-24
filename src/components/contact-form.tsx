@@ -256,7 +256,7 @@ export function ContactForm({
                   *
                 </span>
               ) : (
-                <span className="ml-1 font-normal text-muted-foreground">(optional)</span>
+                <span className="font-normal text-muted-foreground">{" (optional)"}</span>
               )}
             </label>
             <input

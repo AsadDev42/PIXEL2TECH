@@ -58,6 +58,7 @@ function CalendlyEmbed() {
       )}
       <iframe
         src={src}
+        loading="lazy"
         title="Choose a time for your strategy call"
         onLoad={() => setLoaded(true)}
         className="absolute inset-0 h-full w-full border-0"

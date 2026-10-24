@@ -323,7 +323,19 @@ const REDIRECT_PREFIXES: [RegExp, string][] = [
 ];
 
 /** Live top-level pages — never classified as legacy (would self-redirect). */
-const LIVE_EXACT = new Set(["about", "services", "portfolio", "blog", "contact"]);
+const LIVE_EXACT = new Set([
+  "about",
+  "services",
+  "portfolio",
+  "blog",
+  "contact",
+  "careers",
+  "for-agencies",
+  "industries",
+  "results",
+  "press",
+  "resources/shopify-store-checklist",
+]);
 
 /** Live sections with dynamic children: /blog/$slug, /portfolio/$slug. */
 const LIVE_PREFIXES = ["blog", "portfolio"];
@@ -399,11 +411,14 @@ function classifyNormalized(path: string, first: string): LegacyVerdict | null {
   const dated = DATED_POST.exec(path);
   if (dated && getPostMeta(dated[1]!)) return { type: "redirect", target: `/blog/${dated[1]}` };
 
+  // A deliberately reintroduced page (such as /careers) takes precedence over
+  // broad retired-theme patterns. Unpublished job-detail URLs still return 410.
+  if (LIVE_EXACT.has(path)) return null;
+
   for (const pattern of GONE_PATTERNS) {
     if (pattern.test(path)) return { type: "gone" };
   }
 
-  if (LIVE_EXACT.has(path)) return null;
   if (LIVE_SERVICE_PATHS.has(path)) return null;
   if (LIVE_PREFIXES.includes(first)) return null;
 

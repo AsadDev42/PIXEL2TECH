@@ -34,33 +34,6 @@ const items: Item[] = [
     poster: "/testimonials/brand-owner.webp",
     hasAudio: true,
   },
-  {
-    name: "Daniel Brooks",
-    role: "Founder, LaunchGrid",
-    quote:
-      "The UI UX work was clean, modern, and focused on conversions. Our product now looks premium and investor ready.",
-    video: "https://cdn.coverr.co/videos/coverr-a-man-in-a-suit-in-the-office-2760/1080p.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&fm=webp&q=70",
-  },
-  {
-    name: "Dora Pelosi",
-    role: "Creative Director, Nimbus",
-    quote:
-      "We hired Pixel2Tech for white label work. Their quality and communication are excellent. It feels like having an in house creative team.",
-    video: "https://cdn.coverr.co/videos/coverr-a-woman-working-on-a-laptop-2633/1080p.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&fm=webp&q=70",
-  },
-  {
-    name: "Choisy Catherine",
-    role: "Head of Growth, Oval",
-    quote:
-      "Our social media engagement improved within weeks. Their strategy is smart and practical, not just random posting.",
-    video: "https://cdn.coverr.co/videos/coverr-a-young-woman-typing-on-a-laptop-9269/1080p.mp4",
-    poster:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&fm=webp&q=70",
-  },
 ];
 
 /**

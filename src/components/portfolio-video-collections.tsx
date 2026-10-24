@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Film } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Film, Play } from "lucide-react";
 import { VideoWall } from "@/components/video-wall";
 import { ALL_ITEMS, type PortfolioItem } from "@/lib/portfolio-data";
 import { trackEvent } from "@/lib/analytics";
@@ -153,32 +153,92 @@ export function PortfolioVideoCollections({ featuredOnly = false }: { featuredOn
     : COLLECTIONS;
   return (
     <section aria-labelledby="video-collections-title" className="mt-10 min-w-0">
-      <div className="mb-8 max-w-2xl">
-        <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-          <Film className="h-4 w-4" aria-hidden="true" /> Video editing
-        </p>
-        <h2
-          id="video-collections-title"
-          className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-        >
-          Made to be watched.
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A few edits from each collection. Swipe through the previews, or view more to explore
-          every video.
-        </p>
-        {featuredOnly && (
-          <Link
-            to="/portfolio"
-            search={{ category: "video-editing" }}
-            className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      <div className="mb-10 grid overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 text-white lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="p-6 sm:p-8 lg:p-10">
+          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+            <span className="grid h-10 w-10 place-items-center rounded-xl border border-blue-400/30 bg-blue-400/10">
+              <Film className="h-5 w-5" aria-hidden="true" />
+            </span>
+            Video editing
+          </p>
+          <h2
+            id="video-collections-title"
+            className="mt-6 text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
           >
-            Explore all {COLLECTIONS.length} video collections{" "}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        )}
+            Good stories.
+            <br />
+            <span className="text-blue-300">Sharper edits.</span>
+          </h2>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-300 sm:text-base">
+            Reels, explainers and ads. Find your format, then watch the work.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2" aria-label="Video formats">
+            {["Short-form", "Long-form", "Motion & ads"].map((format) => (
+              <span
+                key={format}
+                className="rounded-full border border-white/15 px-3 py-1 text-xs text-slate-300"
+              >
+                {format}
+              </span>
+            ))}
+          </div>
+          {featuredOnly ? (
+            <Link
+              to="/portfolio"
+              search={{ category: "video-editing" }}
+              className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-white px-6 text-sm font-semibold text-slate-950 transition hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950"
+            >
+              Explore {COLLECTIONS.length} collections{" "}
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          ) : (
+            <a
+              href="#video-collection-list"
+              className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-white px-6 text-sm font-semibold text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              Browse the edits <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
+        </div>
+        <div className="relative flex items-center overflow-hidden bg-linear-to-br from-blue-500/20 via-slate-900 to-slate-950 p-6 sm:p-8">
+          <div className="grid w-full grid-cols-3 items-center gap-3">
+            {[
+              "vip-talking-head-videos",
+              "performance-marketing-video-ads",
+              "animated-explainer-videos",
+            ].map((slug, index) => {
+              const item = COLLECTIONS.find((item) => item.slug === slug)!;
+              const poster =
+                slug === "animated-explainer-videos"
+                  ? "/portfolio/animated-explainer-videos/9.jpg"
+                  : (item.videos?.[0]?.poster ?? item.img);
+              return (
+                <Link
+                  key={slug}
+                  to="/portfolio/$slug"
+                  params={{ slug }}
+                  aria-label={`Watch ${COLLECTION_COPY[slug]?.title ?? item.title}`}
+                  className={`relative aspect-[9/16] overflow-hidden rounded-2xl border border-white/15 bg-slate-800 shadow-2xl transition hover:border-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${index === 1 ? "-translate-y-4" : "translate-y-4"}`}
+                >
+                  <img
+                    src={poster}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 grid place-items-center bg-black/10">
+                    <span className="grid h-10 w-10 place-items-center rounded-full border border-white/40 bg-black/40 backdrop-blur-sm">
+                      <Play className="h-4 w-4 fill-white" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
-      <div className="space-y-10 sm:space-y-16">
+      <div id="video-collection-list" className="scroll-mt-24 space-y-10 sm:space-y-16">
         {collections.map((item, index) => (
           <CollectionSlider key={item.slug} item={item} index={index} />
         ))}
