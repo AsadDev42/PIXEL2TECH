@@ -154,16 +154,19 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-300">
               <CalendarDays size={16} aria-hidden="true" /> Let's make a plan
             </p>
-            <h2 id={titleId} className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2
+              id={titleId}
+              className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl lg:mt-6 lg:text-4xl"
+            >
               Your next idea.
               <br />
               <span className="text-blue-300">Our first conversation.</span>
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-slate-300">
+            <p className="mt-5 hidden text-sm leading-relaxed text-slate-300 lg:block">
               Tell us where you want to go. We'll talk through your project and work out a useful
               next step.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-200">
+            <div className="mt-4 flex flex-wrap gap-4 text-sm text-slate-200 lg:mt-8">
               <span className="inline-flex items-center gap-2">
                 <Clock size={17} /> 30 minutes
               </span>
@@ -171,7 +174,7 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
                 <Video size={17} /> Google Meet
               </span>
             </div>
-            <p className="mt-8 text-xs leading-relaxed text-slate-400">
+            <p className="mt-8 hidden text-xs leading-relaxed text-slate-400 lg:block">
               Free strategy call. No hard sell.
               <br />
               Questions?{" "}

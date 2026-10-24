@@ -24,7 +24,7 @@ const server = createServer(async (request, response) => {
   const receivedState = url.searchParams.get("state") || "";
   if (
     completed ||
-    receivedState.length !== state.length ||
+    Buffer.byteLength(receivedState) !== Buffer.byteLength(state) ||
     !timingSafeEqual(Buffer.from(receivedState), Buffer.from(state))
   ) {
     response.writeHead(400).end("Invalid OAuth state.");
