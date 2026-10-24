@@ -16,11 +16,10 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
             Social Media & Ads / Creative collections
           </p>
           <h2 id="social-work-title" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
-            Creative, in full view
+            A look inside each collection
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Social posts, ad creatives and product visuals. Open a project to explore the
-            collection.
+            Three creatives from every project. Open a collection to see the complete work.
           </p>
         </div>
         {featuredOnly && (
@@ -33,47 +32,64 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
           </Link>
         )}
       </div>
-      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <li key={project.slug}>
-            <Link
-              to="/portfolio/$slug"
-              params={{ slug: project.slug }}
-              onClick={() =>
-                trackEvent("portfolio_project_opened", { slug: project.slug, title: project.title })
-              }
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-300 hover:border-foreground/25 hover:shadow-lg hover:shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:rounded-3xl"
-            >
-              <div className="bg-muted/60 p-4 sm:p-5">
-                <div className="aspect-[4/5] overflow-hidden rounded-xl">
-                  <img
-                    src={project.img}
-                    srcSet={imageSrcSet(project.img)}
-                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-                    alt={`${project.client ?? project.title} — creative preview`}
-                    loading={index < 3 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="h-full w-full object-contain transition duration-500 motion-safe:group-hover:scale-[1.02]"
-                  />
+      <ul className="mt-8 grid gap-6 md:grid-cols-2 sm:gap-8">
+        {projects.map((project, index) => {
+          const previews = [...new Set([project.img, ...(project.images ?? [])])].slice(0, 3);
+          return (
+            <li key={project.slug}>
+              <Link
+                to="/portfolio/$slug"
+                params={{ slug: project.slug }}
+                onClick={() =>
+                  trackEvent("portfolio_project_opened", {
+                    slug: project.slug,
+                    title: project.title,
+                  })
+                }
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-300 hover:border-foreground/25 hover:shadow-lg hover:shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:rounded-3xl"
+              >
+                <div className="bg-muted/60 p-4 sm:p-5">
+                  <div className="grid aspect-[4/3] grid-cols-[1.6fr_1fr] grid-rows-2 gap-2 sm:gap-3">
+                    {previews.map((src, previewIndex) => (
+                      <div
+                        key={src}
+                        className={`min-h-0 overflow-hidden rounded-xl border border-border/60 bg-background/60 ${previewIndex === 0 ? "row-span-2" : ""}`}
+                      >
+                        <img
+                          src={src}
+                          srcSet={imageSrcSet(src)}
+                          sizes={
+                            previewIndex === 0
+                              ? "(min-width: 1280px) 320px, (min-width: 768px) 28vw, 55vw"
+                              : "(min-width: 1280px) 200px, (min-width: 768px) 18vw, 35vw"
+                          }
+                          alt={`${project.client ?? project.title} — creative ${previewIndex + 1} of 3`}
+                          loading={index < 2 ? "eager" : "lazy"}
+                          decoding="async"
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-1 flex-col border-t border-border p-5 sm:p-6">
-                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  {project.subcategory}
-                </p>
-                <h3 className="mb-6 mt-3 text-lg font-bold leading-snug tracking-tight sm:text-xl">
-                  {project.title}
-                </h3>
-                <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
-                  <span className="text-xs text-muted-foreground">Explore the collection</span>
-                  <span className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full bg-foreground px-4 text-xs font-semibold text-background transition group-hover:opacity-80">
-                    View project <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                  </span>
+                <div className="flex flex-1 flex-col border-t border-border p-5 sm:p-6">
+                  <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                    {project.subcategory}
+                  </p>
+                  <h3 className="mb-6 mt-3 text-lg font-bold leading-snug tracking-tight sm:text-xl">
+                    {project.title}
+                  </h3>
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-4">
+                    <span className="text-xs text-muted-foreground">Explore the collection</span>
+                    <span className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full bg-foreground px-4 text-xs font-semibold text-background transition group-hover:opacity-80">
+                      View project <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </li>
-        ))}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
