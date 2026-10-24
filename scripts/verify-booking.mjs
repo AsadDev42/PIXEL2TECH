@@ -1,6 +1,6 @@
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { candidateSlots, freeSlots } from "../src/lib/booking-slots.ts";
+import { candidateSlots, freeSlots, bookingDateRange } from "../src/lib/booking-slots.ts";
 import { getAvailability, createBooking } from "../src/server/google-calendar.server.ts";
 
 const originalFetch = globalThis.fetch;
@@ -23,11 +23,27 @@ test("office hours, notice, invalid dates and booking horizon", () => {
   assert.deepEqual(candidateSlots("2026-11-01", now), []);
   assert.deepEqual(candidateSlots("2026-02-31", now), []);
   assert.deepEqual(candidateSlots("not-a-date", now), []);
-  assert.deepEqual(candidateSlots("2026-12-01", now), []);
+  assert.equal(candidateSlots("2026-12-01", now).length, 18);
+  assert.equal(candidateSlots("2026-12-26", now).length, 12);
+  assert.deepEqual(candidateSlots("2026-12-28", now), []);
   assert.equal(
     candidateSlots("2026-10-26", Date.parse("2026-10-26T04:00:00Z"))[0],
     "2026-10-26T06:00:00.000Z",
   );
+});
+test("two calendar months include the final day and clamp month ends", () => {
+  assert.deepEqual(bookingDateRange(now), { min: "2026-10-26", max: "2026-12-26" });
+  const yearEnd = Date.parse("2026-12-31T00:00:00Z");
+  assert.deepEqual(bookingDateRange(yearEnd), { min: "2026-12-31", max: "2027-02-28" });
+  const leapYear = Date.parse("2027-12-31T00:00:00Z");
+  assert.equal(bookingDateRange(leapYear).max, "2028-02-29");
+  const lastDay = candidateSlots("2028-02-29", leapYear);
+  assert.equal(lastDay.at(-1), "2028-02-29T12:30:00.000Z");
+  assert.deepEqual(candidateSlots("2028-03-01", leapYear), []);
+  assert.deepEqual(bookingDateRange(Date.parse("2026-10-25T21:00:00Z")), {
+    min: "2026-10-26",
+    max: "2026-12-26",
+  });
 });
 test("busy overlaps excluded while adjacent times remain available", () => {
   const slots = candidateSlots("2026-10-26", now);
