@@ -20,7 +20,7 @@ Saturday 10:00–16:00; Sunday closed. Slot labels use the visitor's local timez
    credentials in ignored `.env.local` and `.env.google.local` files.
 4. Import only `.env.google.local` to production using the pinned CLI, from
    deploy/prisma: `node node_modules/prisma/dist/prisma.js project env add
---file ../../.env.google.local --role production`. Redeploy the app to apply it.
+--project pixel2tech --file ../../.env.google.local --role production`. Redeploy the app to apply it.
 5. Test real availability and one owner-approved booking. Verify the owner's
    event, visitor invitation and Google Meet link before announcing activation.
 
@@ -48,3 +48,11 @@ uses `conferenceDataVersion=1`. A confirmed event with conferencing still pendin
 is described honestly; no Meet URL is fabricated. Notes and email remain in the
 owner's Calendar event, not analytics. Errors exposed to visitors omit credentials
 and upstream event details.
+
+## Connection verified: 24 October 2026
+
+The sales@pixel2tech.com owner authorized the internal Pixel2Tech Bookings app.
+Google credentials were imported into the existing pixel2tech production project
+as server environment variables. A real owner-only test created a 30-minute event
+and a successful Google Meet conference; the temporary event was then removed.
+No credential values are stored in this document or committed source files.

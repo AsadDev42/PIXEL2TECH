@@ -59,7 +59,9 @@ Run HTTP checks against another deployed origin with `VERIFY_BASE_URL`.
 
 - Replaced the scheduling embed with a website-owned date/time and details flow.
 - Google Calendar adapter checks free/busy, creates an invitation and requests Google Meet conferencing. Owner: sales@pixel2tech.com.
-- Google OAuth credentials are not configured yet; the live fallback offers a call request by email and never invents availability or confirmation. Secure local setup: `docs/google-calendar-booking.md`.
+- Google OAuth is approved for sales@pixel2tech.com and credentials are stored in the production project environment. A real owner-only event and successful Google Meet conference were verified, then the temporary test event was removed. Secure setup notes: `docs/google-calendar-booking.md`.
 - Redesigned StudioCommitments with a dark feature panel and four visual cards, immediately below What clients say.
 - Changed the studio heading to One studio. One team. 50+ projects. The original hero collage remains unchanged.
-- Verified eight booking logic/adapter tests, TypeScript, changed-file lint, production build, existing 96-article/132-project checks and a local browser booking with a mocked Google backend. Real Google invitation verification remains pending owner authentication.
+- Verified eight booking logic/adapter tests, TypeScript, changed-file lint, production build, existing 96-article/132-project checks and a local browser booking with a mocked Google backend. The Google owner authorization, real Calendar event and Meet conference were verified. Inbox delivery was not independently checked.
+
+- At the owner's request, Asad Farooq is listed as CEO & Co-Founder across shared team data, his profile, SEO copy and Pixel2Tech timeline. Usama remains CEO & Founder.
