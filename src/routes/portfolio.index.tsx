@@ -4,6 +4,7 @@ import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { PortfolioVideoCollections } from "@/components/portfolio-video-collections";
 import { PortfolioWebsites } from "@/components/portfolio-websites";
+import { PortfolioSocialCreatives } from "@/components/portfolio-social-creatives";
 import { trackEvent } from "@/lib/analytics";
 import {
   ALL_ITEMS,
@@ -188,6 +189,10 @@ function PortfolioPage() {
             <PortfolioWebsites kind="ecom-stores" featuredOnly={!active} />
           )}
 
+          {(!active || active === "Social Media & Ads") && (
+            <PortfolioSocialCreatives featuredOnly={!active} />
+          )}
+
           {!active && (
             <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               More of our work
@@ -195,13 +200,19 @@ function PortfolioPage() {
           )}
           <ul
             className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
-            hidden={active === "Video Editing" || active === "Websites" || active === "Ecom Stores"}
+            hidden={
+              active === "Video Editing" ||
+              active === "Websites" ||
+              active === "Ecom Stores" ||
+              active === "Social Media & Ads"
+            }
           >
             {ALL_ITEMS.filter(
               (item) =>
                 item.category !== "Video Editing" &&
                 item.category !== "Websites" &&
-                item.category !== "Ecom Stores",
+                item.category !== "Ecom Stores" &&
+                item.category !== "Social Media & Ads",
             ).map((w, i) => (
               <li key={w.slug} hidden={active ? w.category !== active : undefined}>
                 <Link
