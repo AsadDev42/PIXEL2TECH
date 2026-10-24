@@ -788,8 +788,8 @@ function HomePage() {
     <PageShell>
       <Hero />
       <Brands />
-      <HomeSelectedWork />
       <WhatWeMake />
+      <HomeSelectedWork />
       <Approach />
       <VideoTestimonials className="bg-muted" />
       <StudioCommitments />
