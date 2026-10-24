@@ -15,7 +15,7 @@ export function BusinessLanding({
   eyebrow: string;
   title: string;
   intro: string;
-  capabilities: readonly string[];
+  capabilities: readonly (string | { title: string; body: string })[];
   projects?: readonly string[];
   children?: React.ReactNode;
 }) {
@@ -37,13 +37,22 @@ export function BusinessLanding({
           <ul className="mt-12 grid gap-4 sm:grid-cols-2">
             {capabilities.map((capability, index) => (
               <li
-                key={capability}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-muted/40 p-6"
+                key={typeof capability === "string" ? capability : capability.title}
+                className="flex items-start gap-4 rounded-2xl border border-border bg-muted/40 p-6"
               >
                 <span aria-hidden="true" className="text-sm font-semibold text-primary">
                   0{index + 1}
                 </span>
-                <span className="text-base font-semibold">{capability}</span>
+                <div>
+                  <h2 className="text-base font-semibold">
+                    {typeof capability === "string" ? capability : capability.title}
+                  </h2>
+                  {typeof capability !== "string" && (
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {capability.body}
+                    </p>
+                  )}
+                </div>
               </li>
             ))}
           </ul>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
+import { ProjectNextStep } from "@/components/content-blocks";
 import { businessHead } from "@/lib/page-seo";
 import { STORE_PROJECTS } from "@/lib/store-projects";
 
@@ -45,8 +46,9 @@ function ResultsPage() {
           See what changed. Inspect the work.
         </h1>
         <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Five named builds, with the challenge, delivery and our role explained. Filter by industry
-          or service to explore the work.
+          Five builds, with the business need, design decisions and delivered result explained.
+          These are observable changes to the customer journey; revenue or conversion lifts are only
+          meaningful with a measured baseline. Filter by industry or service to explore the work.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <label className="text-sm font-semibold">
@@ -94,12 +96,25 @@ function ResultsPage() {
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-xs text-muted-foreground">
                     {industry} · {project.platform} ·{" "}
-                    {project.engagement === "white-label" ? "Agency partner work" : "Direct client"}
+                    {project.engagement === "white-label"
+                      ? "Agency partner work"
+                      : project.engagement === "direct"
+                        ? "Direct client"
+                        : "Delivered project"}
                   </p>
                   <h2 className="mt-3 text-2xl font-bold">{project.client}</h2>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    {project.outcome}
-                  </p>
+                  <dl className="mt-6 space-y-5 text-sm leading-relaxed">
+                    {[
+                      ["The business need", project.challenge],
+                      ["What we changed", project.approach],
+                      ["The delivered outcome", project.outcome],
+                    ].map(([label, body]) => (
+                      <div key={label}>
+                        <dt className="font-semibold">{label}</dt>
+                        <dd className="mt-2 text-muted-foreground">{body}</dd>
+                      </div>
+                    ))}
+                  </dl>
                   <Link
                     to="/portfolio/$slug"
                     params={{ slug: project.slug }}
@@ -118,6 +133,13 @@ function ResultsPage() {
             the selection.
           </p>
         )}
+        <div className="mt-12">
+          <ProjectNextStep
+            title="What should change for your customers?"
+            body="Send your current website, the task customers struggle with and the business goal behind it. We can discuss the right scope, relevant examples and how to check the result after launch."
+            source="project-outcomes"
+          />
+        </div>
       </section>
     </PageShell>
   );

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/resources/shopify-store-checklist")({
     businessHead(
       "/resources/shopify-store-checklist",
       "Free Shopify store review checklist",
-      "A practical Shopify teardown checklist covering product pages, mobile navigation, checkout, performance and measurement. Subscribe to unlock the download.",
+      "Review your Shopify product pages, mobile shopping, checkout and tracking. Read the checks, download the free checklist and see how Pixel2Tech can help.",
     ),
   component: () => (
     <PageShell>

@@ -247,18 +247,20 @@ export function SiteNav() {
   );
 }
 
-const QUICK_LINKS = [
+const COMPANY_LINKS = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Project outcomes", to: "/results" },
-  { label: "For agencies", to: "/for-agencies" },
   { label: "Industries", to: "/industries" },
   { label: "Careers", to: "/careers" },
   { label: "Press", to: "/press" },
-  { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
-  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
+] as const;
+const WORK_LINKS = [
+  { label: "Portfolio", to: "/portfolio" },
+  { label: "Project outcomes", to: "/results" },
+  { label: "For agencies", to: "/for-agencies" },
+  { label: "Blog", to: "/blog" },
+  { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;
 
 const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest"];
@@ -266,7 +268,7 @@ const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pin
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const linkCls =
-    "inline-flex min-h-9 items-center text-muted-foreground transition-colors hover:text-foreground";
+    "inline-flex min-h-11 items-center py-2 text-muted-foreground transition-colors hover:text-foreground";
   const hours = SITE.hours
     .filter((h) => h.time !== "Closed")
     .map(
@@ -383,8 +385,8 @@ export function SiteFooter() {
         </section>
 
         {/* Link columns */}
-        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          <div className="sm:col-span-2 lg:col-span-5">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:gap-x-8 lg:grid-cols-[1.1fr_0.65fr_0.9fr_1.5fr] lg:gap-8">
+          <div className="col-span-2 lg:col-span-1">
             <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
               <img
                 loading="lazy"
@@ -417,7 +419,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <nav aria-labelledby="footer-quick-links" className="lg:col-span-2">
+          <nav aria-labelledby="footer-quick-links" className="min-w-0">
             <p
               id="footer-quick-links"
               className="text-xs font-semibold uppercase tracking-widest text-foreground"
@@ -425,7 +427,7 @@ export function SiteFooter() {
               Company
             </p>
             <ul className="mt-4 text-sm">
-              {QUICK_LINKS.map((q) => (
+              {COMPANY_LINKS.map((q) => (
                 <li key={q.to}>
                   <Link to={q.to} className={linkCls}>
                     {q.label}
@@ -435,14 +437,31 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-services" className="lg:col-span-5">
+          <nav aria-labelledby="footer-work-links" className="min-w-0">
+            <p
+              id="footer-work-links"
+              className="text-xs font-semibold uppercase tracking-widest text-foreground"
+            >
+              Work &amp; resources
+            </p>
+            <ul className="mt-4 text-sm">
+              {WORK_LINKS.map((q) => (
+                <li key={q.to}>
+                  <Link to={q.to} className={linkCls}>
+                    {q.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-labelledby="footer-services" className="col-span-2 min-w-0 lg:col-span-1">
             <p
               id="footer-services"
               className="text-xs font-semibold uppercase tracking-widest text-foreground"
             >
               Services
             </p>
-            <ul className="mt-4 grid gap-x-6 text-sm sm:grid-cols-2">
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 text-sm">
               {SERVICES.map((title) => (
                 <li key={title}>
                   <Link

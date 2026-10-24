@@ -32,6 +32,95 @@ import {
  */
 const POSTS = [
   {
+    slug: "shopify-product-page-redesign-brief",
+    title: "Shopify Product Page Redesign: What to Fix First",
+    excerpt:
+      "Find the buying questions your product pages leave unanswered. A practical brief covering content, variants, mobile layouts and delivery checks.",
+    tag: "Shopify",
+    date: "October 24, 2026",
+    time: "8:00 am",
+    author: "Usama Farooq",
+    img: "/blog/covers/shopify-product-page-redesign-brief.png",
+    imgAlt:
+      "Product page planning diagram showing product media, variant choices and a clear cart action",
+    related: [
+      "shopify-theme-customization-vs-custom-theme",
+      "shopify-product-video-guide",
+      "shopify-inp-core-web-vitals",
+    ],
+  },
+  {
+    slug: "website-project-brief-for-service-business",
+    title: "How to Write a Website Project Brief for a Service Business",
+    excerpt:
+      "Give your agency a clear website brief: customers, service content, enquiry routing, integrations, launch checks and handover responsibilities.",
+    tag: "Web Development",
+    date: "October 24, 2026",
+    time: "7:59 am",
+    author: "Usama Farooq",
+    img: "/blog/covers/website-project-brief-for-service-business.png",
+    imgAlt:
+      "Website brief diagram connecting customer needs, service pages and an enquiry handover",
+    related: [
+      "compare-website-development-quotes",
+      "website-ownership-checklist",
+      "website-not-generating-leads",
+    ],
+  },
+  {
+    slug: "saas-product-demo-video-brief",
+    title: "SaaS Product Demo Video: How to Brief a Production Team",
+    excerpt:
+      "Plan the audience, story, screen recordings, captions and review stages for a demo that helps buyers understand a real product workflow.",
+    tag: "Video Editing",
+    date: "October 24, 2026",
+    time: "7:58 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/saas-product-demo-video-brief.png",
+    imgAlt: "SaaS demo storyboard showing a customer task, product screen and completed workflow",
+    related: [
+      "podcast-to-short-form-video-workflow",
+      "outsource-video-editing-to-pakistan",
+      "brand-identity-process-for-startups",
+    ],
+  },
+  {
+    slug: "podcast-to-short-form-video-workflow",
+    title: "Podcast to Short-Form Video: A Practical Editing Workflow",
+    excerpt:
+      "Select complete ideas, keep the speaker’s meaning intact and organise captions, framing, reviews and handover for useful short podcast clips.",
+    tag: "Video Editing",
+    date: "October 24, 2026",
+    time: "7:57 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/podcast-to-short-form-video-workflow.png",
+    imgAlt:
+      "Editing workflow diagram turning one long podcast timeline into three focused vertical clips",
+    related: [
+      "video-editing-retainer-for-coaches",
+      "outsource-video-editing-to-pakistan",
+      "saas-product-demo-video-brief",
+    ],
+  },
+  {
+    slug: "contact-form-crm-integration-brief",
+    title: "Contact Form to CRM Integration: A Reliable Project Brief",
+    excerpt:
+      "Define field mapping, duplicate handling, receipt messages, failure recovery and acceptance checks before connecting your website form to a CRM.",
+    tag: "Automation",
+    date: "October 24, 2026",
+    time: "7:56 am",
+    author: "Usama Farooq",
+    img: "/blog/covers/contact-form-crm-integration-brief.png",
+    imgAlt:
+      "Contact form integration diagram connecting validation, a CRM record and an assigned team member",
+    related: [
+      "automate-lead-follow-up",
+      "automations-failing-silently-audit",
+      "n8n-automation-cost",
+    ],
+  },
+  {
     slug: "shopify-bfcm-2026-checklist",
     title: "Shopify BFCM 2026 Checklist: Fix the Funnel and Stop Bots First",
     excerpt:
