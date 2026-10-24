@@ -79,7 +79,7 @@ export const SERVICE_PROCESS: { title: string; desc: string }[] = [
   },
   {
     title: "Launch and improve",
-    desc: "We launch, then keep improving it against what matters to you, such as leads, sales or hours saved.",
+    desc: "We check the agreed delivery, launch and hand over the work. Ongoing improvements are planned separately where they are part of your scope.",
   },
 ];
 
@@ -157,16 +157,16 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     ],
     work: [
       {
+        slug: "brand-identity-design-collection",
+        note: "Identity boards showing how logos, colour and type carry into branded applications.",
+      },
+      {
         slug: "nayyer-carpets-creative-direction-mockups",
-        note: "Creative direction, social creatives and realistic carpet mockups, used across the brand's website and social channels.",
+        note: "Creative direction, social designs and product mockups for the carpet collection.",
       },
       {
         slug: "book-cover-design-portfolio",
-        note: "Cover art, typography and hardcover, paperback and e-book mockups for finance, business and self-help titles.",
-      },
-      {
-        slug: "affinity-law-social-media-ad-creatives",
-        note: "Campaign creative built on the firm's existing gold-and-black brand, consistent across organic posts and paid ads.",
+        note: "Cover artwork, typography and book mockups across the published design collection.",
       },
     ],
     articles: [
@@ -262,22 +262,35 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "Whether copywriting and photography are included",
       "Content and URL migration from your current site",
     ],
-    work: [],
+    work: [
+      {
+        slug: "cargo-health-wordpress-website",
+        note: "A medical courier website with clear paths for prospects, existing customers and drivers. Delivered as agency partner work.",
+      },
+      {
+        slug: "acely-website",
+        note: "An education website organising exam information, product explanations and trial entry points. Delivered as agency partner work.",
+      },
+      {
+        slug: "reacon-group-website",
+        note: "A custom B2B website explaining print, packaging, mailing and data communications services. Delivered as agency partner work.",
+      },
+    ],
     articles: [
       {
-        slug: "website-redesign-cost-small-business",
-        title: "Website redesign cost for small businesses",
-        desc: "A line-by-line budget for a redesign, before quotes arrive.",
+        slug: "website-project-brief-for-service-business",
+        title: "Write a clear website project brief",
+        desc: "Plan the audience, content, enquiry journey and launch checks before production.",
       },
       {
         slug: "compare-website-development-quotes",
-        title: "How to compare website development quotes",
-        desc: "Normalize scope, spot hidden costs and score each bid.",
+        title: "Compare website proposals",
+        desc: "Understand the scope, responsibilities and dependencies in each proposal.",
       },
       {
-        slug: "outsource-web-development-to-pakistan",
-        title: "Outsourcing web development to Pakistan",
-        desc: "Engagement models, vetting, contracts and red flags.",
+        slug: "website-ownership-checklist",
+        title: "Website ownership and handover",
+        desc: "Check the accounts, files and ongoing responsibilities your business needs to control.",
       },
     ],
     faqs: [
@@ -356,25 +369,33 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     ],
     work: [
       {
-        slug: "madluvv-social-media-meta-ads",
-        note: "Shopify product page layout, product schema markup and front-end cleanup for faster mobile pages, alongside the brand's ad campaigns.",
+        slug: "histreet-shopify-store",
+        note: "A footwear storefront with style-based navigation, collection filters and size guidance.",
+      },
+      {
+        slug: "unze-london-shopify-store",
+        note: "A Shopify catalogue organised around departments, product categories and variant choices.",
+      },
+      {
+        slug: "cargo-health-wordpress-website",
+        note: "A WordPress service website for healthcare logistics, delivered as agency partner work.",
       },
     ],
     articles: [
       {
-        slug: "shopify-developer-rates",
-        title: "Shopify developer rates in 2026",
-        desc: "What US brands pay for Shopify work, and why rates vary.",
+        slug: "shopify-product-page-redesign-brief",
+        title: "Plan a Shopify product-page redesign",
+        desc: "Scope the content, variant choices and mobile checks around real buying questions.",
       },
       {
         slug: "woocommerce-to-shopify-migration",
-        title: "WooCommerce to Shopify migration",
-        desc: "What breaks during a move, and how to keep your SEO.",
+        title: "Moving from WooCommerce to Shopify",
+        desc: "Plan the content, integration and URL changes involved in a store migration.",
       },
       {
         slug: "wordpress-vs-webflow-vs-squarespace-service-business",
-        title: "WordPress vs. Webflow vs. Squarespace",
-        desc: "Choosing a platform for a service business website.",
+        title: "Choose a platform for a service website",
+        desc: "Compare editing needs, platform constraints and maintenance responsibilities.",
       },
     ],
     faqs: [
@@ -544,22 +565,31 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "A new CRM setup, or cleanup of the one you have",
       "Data migration from spreadsheets or an old CRM",
     ],
-    work: [],
+    work: [
+      {
+        slug: "inquiry-to-invoice-automation",
+        note: "A connected workflow for enquiry intake, proposals, invoice steps and follow-up.",
+      },
+      {
+        slug: "zoho-crm-mailerlite-demo-booking",
+        note: "A workflow connecting CRM records, email communication and demo booking.",
+      },
+    ],
     articles: [
       {
+        slug: "contact-form-crm-integration-brief",
+        title: "Connect a contact form to your CRM",
+        desc: "Define field mapping, duplicate handling, routing and recovery checks.",
+      },
+      {
         slug: "automate-lead-follow-up",
-        title: "How to automate lead follow-up and routing",
-        desc: "Make sure every small business inquiry gets a fast reply.",
+        title: "Plan lead follow-up and routing",
+        desc: "Connect enquiry capture to a clear response owner and next action.",
       },
       {
-        slug: "n8n-automation-cost",
-        title: "n8n automation cost",
-        desc: "Hosting, build and maintenance costs, explained.",
-      },
-      {
-        slug: "offline-conversion-tracking-service-business",
-        title: "Offline conversion tracking for service businesses",
-        desc: "Send closed deals from your CRM back to your ad platforms.",
+        slug: "automations-failing-silently-audit",
+        title: "Review automation failures",
+        desc: "Identify silent failures and make recovery responsibilities clear.",
       },
     ],
     faqs: [
@@ -636,7 +666,20 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "Conversation volume and AI provider usage fees",
       "Review and approval steps for regulated industries",
     ],
-    work: [],
+    work: [
+      {
+        slug: "rag-document-assistant",
+        note: "A document ingestion and retrieval workflow that answers questions using logistics PDFs.",
+      },
+      {
+        slug: "whatsapp-restaurant-assistant",
+        note: "A WhatsApp assistant workflow for restaurant customer conversations.",
+      },
+      {
+        slug: "customer-feedback-triage-agent",
+        note: "A workflow that classifies incoming customer feedback and routes it for the appropriate response.",
+      },
+    ],
     articles: [
       {
         slug: "ai-chatbot-cost-small-business",
@@ -729,12 +772,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "Whether new content needs to be written",
       "Fixes we implement, or a list handed to your developer",
     ],
-    work: [
-      {
-        slug: "madluvv-social-media-meta-ads",
-        note: "Product schema markup and mobile speed work on the brand's Shopify store, to make product pages easier to find in search.",
-      },
-    ],
+    work: [],
     articles: [
       {
         slug: "website-traffic-drop-after-redesign",
@@ -935,33 +973,33 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     ],
     work: [
       {
-        slug: "madluvv-social-media-meta-ads",
-        note: "Creator-style hooks, close-up brow application clips and short product demos for Meta ads.",
+        slug: "vip-talking-head-videos",
+        note: "Talking-head edits from the published founder and personal-brand video collection.",
       },
       {
-        slug: "affinity-law-social-media-ad-creatives",
-        note: "Video content support and ad creatives for Meta, AppLovin and Google Ads for a personal injury firm.",
+        slug: "short-form-social-media-videos",
+        note: "Short-form edits prepared for social content, with examples available inside the collection.",
       },
       {
-        slug: "swishtag-social-media-management",
-        note: "Short social videos that explain what the brand offers, produced and edited in-house.",
+        slug: "animated-explainer-videos",
+        note: "Motion design and animated explainers from the published video collection.",
       },
     ],
     articles: [
       {
-        slug: "video-editing-retainer-for-coaches",
-        title: "Video editing retainers for coaches",
-        desc: "Scope, pricing models and turnaround for ongoing editing.",
+        slug: "saas-product-demo-video-brief",
+        title: "Brief a SaaS demo video",
+        desc: "Define the audience, product workflow, screen captures and delivery formats.",
       },
       {
-        slug: "law-firm-explainer-video-cost",
-        title: "Law firm explainer video cost",
-        desc: "Animated vs. live-action pricing for legal video.",
+        slug: "podcast-to-short-form-video-workflow",
+        title: "Turn a podcast into useful short clips",
+        desc: "Plan clip selection, context, framing, captions and review.",
       },
       {
         slug: "outsource-video-editing-to-pakistan",
-        title: "Hiring a video editor from Pakistan",
-        desc: "Costs, engagement models and how to vet an editor.",
+        title: "Work with an editing partner",
+        desc: "Organise the source material, approval process and final handover.",
       },
     ],
     faqs: [

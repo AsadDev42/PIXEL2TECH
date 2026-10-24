@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Star, TrendingUp } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import { STATS } from "@/lib/site-config";
-import { TEAM, TEAM_SIZE } from "@/lib/team";
+import { TEAM } from "@/lib/team";
 
 /**
  * Closing call to action used at the end of About, Services and each service
@@ -70,7 +70,7 @@ export function ClosingCta({
         </div>
 
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
-          <ul className="flex -space-x-3" aria-label={`The ${TEAM_SIZE}-person team`}>
+          <ul className="flex -space-x-3" aria-label="The Pixel2Tech team">
             {TEAM.map((m) => (
               <li key={m.name}>
                 <img
@@ -86,7 +86,7 @@ export function ClosingCta({
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-lg font-semibold">{TEAM_SIZE} people, all in-house</p>
+          <p className="mt-5 text-lg font-semibold">One team, all in-house</p>
           <p className="mt-1 text-sm text-white/65">
             Design, web development, video and automation under one roof.
           </p>

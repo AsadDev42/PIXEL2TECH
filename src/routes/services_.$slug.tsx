@@ -38,7 +38,9 @@ import {
   type ServicePage,
   type ServiceTitle,
 } from "@/lib/service-pages";
-import { SITE, STATS } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
+import { ServiceVisual } from "@/components/service-visual";
+import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
@@ -268,51 +270,29 @@ function ServiceLandingPage() {
               </div>
             </div>
 
-            <aside aria-labelledby={id("glance")} className={`min-w-0 lg:col-span-5 ${CARD}`}>
-              <h2 id={id("glance")} className="text-lg font-bold leading-snug">
+            <aside aria-labelledby={id("glance")} className="min-w-0 space-y-5 lg:col-span-5">
+              <h2 id={id("glance")} className="sr-only">
                 At a glance
               </h2>
-              <dl className="mt-6 space-y-5 text-[15px]">
-                <div>
-                  <dt className="font-semibold text-foreground">Typical deliverables and tools</dt>
-                  <dd className="mt-2">
-                    <ul className="flex flex-wrap gap-2">
-                      {page.tags.map((t) => (
-                        <li
-                          key={t}
-                          className="rounded-md border border-border bg-muted px-3 py-1 text-xs text-foreground"
-                        >
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-foreground">Pricing</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    Fixed quote in writing after a free scoping call
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-foreground">Who does the work</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    Our in-house team in {SITE.location}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-foreground">Working with US clients</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    Over email, WhatsApp and Google Meet
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-foreground">Studio track record</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    {STATS.projects} projects for {STATS.clients} clients since {STATS.foundingYear}
-                  </dd>
-                </div>
-              </dl>
+              <ServiceVisual title={page.title} priority />
+              <div className="rounded-2xl border border-border bg-muted/30 p-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  A good fit for
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {SERVICE_PRESENTATION[page.title].bestFor}
+                </p>
+                <ul aria-label="Typical tools and formats" className="mt-4 flex flex-wrap gap-2">
+                  {page.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-full border border-border bg-background px-3 py-1 text-xs"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </aside>
           </div>
         </div>
@@ -474,7 +454,7 @@ function ServiceLandingPage() {
             <div className="max-w-2xl">
               <p className={EYEBROW}>Our work</p>
               <h2 id={id("work")} className={`mt-4 ${H2}`}>
-                Related client work
+                Relevant project work
               </h2>
             </div>
             <Link
@@ -487,7 +467,9 @@ function ServiceLandingPage() {
           </div>
 
           {work.length > 0 ? (
-            <ul className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            <ul
+              className={`mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:gap-6 ${work.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}
+            >
               {work.map(({ item, note }) => (
                 <li key={item.slug} className="min-w-0">
                   <Link
@@ -497,17 +479,20 @@ function ServiceLandingPage() {
                   >
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
-                        src={item.img}
-                        srcSet={imageSrcSet(item.img)}
+                        src={item.store?.desktop[0] ?? item.img}
+                        srcSet={imageSrcSet(item.store?.desktop[0] ?? item.img)}
                         sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         alt=""
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                        className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${item.store || item.automation ? "object-contain object-top p-3" : "object-cover"}`}
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
-                      <p className={EYEBROW}>{item.client ?? item.subcategory}</p>
+                      <p className={EYEBROW}>
+                        {item.client ?? item.subcategory}
+                        {item.whiteLabel ? " · Agency partner work" : ""}
+                      </p>
                       <h3 className="mt-2 text-lg font-bold leading-snug">{item.title}</h3>
                       <p className={`mt-2 flex-1 ${BODY}`}>{note}</p>
                       <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
@@ -523,12 +508,48 @@ function ServiceLandingPage() {
               ))}
             </ul>
           ) : (
-            <div className={`mt-8 max-w-3xl sm:mt-10 ${CARD}`}>
-              <p className={BODY}>
-                We haven&apos;t published a case study for this service yet. Our portfolio shows our
-                brand, social media and video work, and you can ask about our experience with this
-                kind of project on the scoping call.
-              </p>
+            <div className="mt-8 grid gap-6 rounded-3xl border border-border bg-background p-6 sm:p-8 md:grid-cols-[1.4fr_1fr]">
+              <div>
+                <p className={EYEBROW}>Shape the first phase</p>
+                <h3 className="mt-3 text-2xl font-semibold">
+                  {page.title === "SEO & Search Growth"
+                    ? "Start with the pages that matter."
+                    : "Start with one complete workflow."}
+                </h3>
+                <p className={`mt-4 ${BODY}`}>
+                  {page.title === "SEO & Search Growth"
+                    ? "Share your website, priority services and any existing Search Console or analytics findings. We can discuss a focused review, a prioritised action list and which fixes belong in the agreed scope."
+                    : "Share who will use the platform, the task they need to complete and the tools or data involved. We can define the first user journey, permissions, prototype and acceptance checks before a broader build."}
+                </p>
+              </div>
+              <div className="rounded-2xl bg-muted/50 p-5">
+                <p className="text-sm font-semibold">Useful inputs for the brief</p>
+                <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+                  {(page.title === "SEO & Search Growth"
+                    ? [
+                        "Website URL and priority pages",
+                        "Audience, services and target markets",
+                        "Existing evidence and previous changes",
+                      ]
+                    : [
+                        "User roles and one important task",
+                        "Current tools, data and handovers",
+                        "Constraints and a clear approval owner",
+                      ]
+                  ).map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <Check size={16} className="mt-1 shrink-0 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  Send your project context <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           )}
         </div>

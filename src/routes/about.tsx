@@ -1,12 +1,12 @@
 import { ClosingCta } from "@/components/closing-cta";
 import { Fragment } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Layers, Sparkles, Target, TrendingUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { TeamSlider } from "@/components/team-slider";
-import { ValueCards, type ValueCard } from "@/components/value-cards";
+import { AboutWhySection } from "@/components/about-why-section";
 import { SITE, STATS } from "@/lib/site-config";
 import { TEAM, TEAM_SIZE } from "@/lib/team";
 import officeImg from "@/assets/office.webp.asset.json";
@@ -41,35 +41,10 @@ const HERO_COLUMNS: Photo[][] = [
   ],
 ];
 
-const TEAM_PHOTO_ID = "photo-1557804506-669a67965ba0";
-
 const HERO_STATS = [
   { value: STATS.projects, label: "Projects delivered" },
   { value: STATS.clients, label: "Clients" },
   { value: String(TEAM_SIZE), label: "Team members" },
-];
-
-const VALUES: ValueCard[] = [
-  {
-    title: "Every skill in-house",
-    desc: "Brand design, web development, video and automation are done by our own team, so nothing gets lost between vendors.",
-    Icon: Sparkles,
-  },
-  {
-    title: "Design and code together",
-    desc: "The people who design your site and the people who build it work side by side, so what you approve is what gets built.",
-    Icon: Layers,
-  },
-  {
-    title: "Planned around your goals",
-    desc: "We start with what the work needs to achieve, such as more leads, more sales or fewer hours on admin, and plan the project around it.",
-    Icon: Target,
-  },
-  {
-    title: "Built to grow with you",
-    desc: "Sites, stores and systems are set up so you can add pages, products and features later without starting over.",
-    Icon: TrendingUp,
-  },
 ];
 
 const ABOUT_FAQS: FaqItem[] = [
@@ -280,7 +255,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="max-w-2xl">
             <p className={EYEBROW}>Our team</p>
-            <h2 id="about-team-title" className={`mt-4 ${H2}`}>
+            <h2 id="about-team-title" className={`mt-4 scroll-mt-28 ${H2}`}>
               Meet the people you&apos;ll work with
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -292,34 +267,7 @@ function AboutPage() {
         <TeamSlider />
       </section>
 
-      {/* Values: the only "Why Pixel2Tech" block on the site */}
-      <section aria-labelledby="about-values-title" className="bg-muted py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <div className="min-w-0">
-              <p className={EYEBROW}>Why Pixel2Tech</p>
-              <h2 id="about-values-title" className={`mt-4 ${H2}`}>
-                Why work with us
-              </h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                The range of an in-house creative team, without the in-house payroll.
-              </p>
-            </div>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-background sm:aspect-video sm:rounded-3xl">
-              <img
-                loading="lazy"
-                decoding="async"
-                src={unsplash(TEAM_PHOTO_ID, 1200)}
-                srcSet={`${unsplash(TEAM_PHOTO_ID, 800)} 800w, ${unsplash(TEAM_PHOTO_ID, 1200)} 1200w`}
-                sizes="(min-width: 1280px) 580px, (min-width: 1024px) 45vw, 100vw"
-                alt="A team reviewing sticky notes on a whiteboard during a meeting"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <ValueCards items={VALUES} className="mt-10 sm:mt-12" />
-        </div>
-      </section>
+      <AboutWhySection />
 
       {/* FAQ: team and company questions only (buyer questions live on Home, scope on Services) */}
       <section aria-labelledby="about-faq-title" className="bg-background py-16 md:py-24">
