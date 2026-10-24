@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { PortfolioVideoCollections } from "@/components/portfolio-video-collections";
+import { PortfolioWebsites } from "@/components/portfolio-websites";
 import { trackEvent } from "@/lib/analytics";
 import {
   ALL_ITEMS,
@@ -181,6 +182,8 @@ function PortfolioPage() {
             <PortfolioVideoCollections featuredOnly={!active} />
           )}
 
+          {(!active || active === "Websites") && <PortfolioWebsites featuredOnly={!active} />}
+
           {!active && (
             <h2 className="mt-16 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               More of our work
@@ -188,9 +191,11 @@ function PortfolioPage() {
           )}
           <ul
             className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
-            hidden={active === "Video Editing"}
+            hidden={active === "Video Editing" || active === "Websites"}
           >
-            {ALL_ITEMS.filter((item) => item.category !== "Video Editing").map((w, i) => (
+            {ALL_ITEMS.filter(
+              (item) => item.category !== "Video Editing" && item.category !== "Websites",
+            ).map((w, i) => (
               <li key={w.slug} hidden={active ? w.category !== active : undefined}>
                 <Link
                   to="/portfolio/$slug"
