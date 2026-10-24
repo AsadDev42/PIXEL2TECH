@@ -34,7 +34,14 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
       </div>
       <ul className="mt-8 grid gap-6 md:grid-cols-2 sm:gap-8">
         {projects.map((project, index) => {
-          const previews = [...new Set([project.img, ...(project.images ?? [])])].slice(0, 3);
+          // Preview the gallery itself; some covers duplicate a gallery image under another URL.
+          // Keep the owner's explicitly selected healthcare cover first.
+          const gallery = project.images?.length ? project.images : [project.img];
+          const previews = [
+            ...new Set(
+              project.slug === "healthcare-meta-ad-creatives" ? [project.img, ...gallery] : gallery,
+            ),
+          ].slice(0, 3);
           return (
             <li key={project.slug}>
               <Link
