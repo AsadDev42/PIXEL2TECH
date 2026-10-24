@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ClosingCta } from "@/components/closing-cta";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -205,39 +206,52 @@ const CARD = "rounded-2xl border border-border bg-card p-6 text-card-foreground 
 
 function ServicesHeroArtwork() {
   const examples = [
-    { title: "WordPress & Shopify", label: "Web & commerce", wide: true },
-    { title: "Branding & Design", label: "Brand identity", wide: false },
-    { title: "Video Editing & Ads", label: "Video & motion", wide: false },
+    {
+      title: "Branding & Design",
+      label: "Make your brand recognisable",
+      category: "01 / Brand & content",
+    },
+    {
+      title: "WordPress & Shopify",
+      label: "Give your business a digital home",
+      category: "02 / Web & commerce",
+    },
+    {
+      title: "Video Editing & Ads",
+      label: "Turn your message into motion",
+      category: "03 / Video & storytelling",
+    },
   ] as const;
   return (
-    <div
-      aria-label="Selected work across our services"
-      className="grid grid-cols-2 gap-3 rounded-[2rem] border border-border bg-muted/50 p-3 sm:p-4"
-    >
-      {examples.map(({ title, label, wide }) => {
+    <div aria-label="Explore selected work" className="mt-12 grid gap-4 sm:grid-cols-3">
+      {examples.map(({ title, label, category }) => {
         const visual = SERVICE_PRESENTATION[title];
         return (
           <Link
             key={title}
             to="/portfolio/$slug"
             params={{ slug: visual.project! }}
-            aria-label={`Explore ${visual.caption}`}
-            className={`group overflow-hidden rounded-2xl border border-border bg-background transition hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${wide ? "col-span-2" : ""}`}
+            className="group min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
           >
-            <div className={`overflow-hidden ${wide ? "aspect-[2.5/1]" : "aspect-[4/3]"}`}>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted">
               <img
                 src={visual.image}
                 alt={visual.alt}
                 width={800}
-                height={wide ? 320 : 600}
-                fetchPriority={wide ? "high" : "auto"}
-                className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${wide ? "object-cover object-top" : "object-cover"}`}
+                height={450}
+                className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] ${title === "WordPress & Shopify" ? "object-top" : title === "Video Editing & Ads" ? "object-[center_35%]" : ""}`}
               />
+              <span
+                aria-hidden="true"
+                className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-white text-slate-950"
+              >
+                <ArrowUpRight size={18} />
+              </span>
             </div>
-            <span className="flex min-h-12 items-center justify-between gap-2 px-4 text-xs font-semibold sm:text-sm">
-              {label}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </span>
+            <p className="mt-4 text-[10px] font-semibold uppercase tracking-widest text-primary">
+              {category}
+            </p>
+            <h2 className="mt-2 text-base font-semibold tracking-tight">{label}</h2>
           </Link>
         );
       })}
@@ -268,59 +282,161 @@ const STARTING_POINTS = [
   },
 ] satisfies { title: string; body: string; services: ServiceTitle[] }[];
 
+function ServiceGoalPicker() {
+  const [selected, setSelected] = useState(0);
+  const point = STARTING_POINTS[selected];
+  const prompts = [
+    "Tell us who you serve, what you offer and when you want to launch.",
+    "Share your store URL, the shopping journey you want to improve and the tools you use.",
+    "Bring your existing brand assets, a sample of your footage and the channels you publish on.",
+    "Walk us through one repetitive task, the tools involved and where the handover breaks down.",
+  ];
+  const previews: ServiceTitle[] = [
+    "Branding & Design",
+    "WordPress & Shopify",
+    "Video Editing & Ads",
+    "Automation & CRM",
+  ];
+  return (
+    <section
+      aria-labelledby="services-start-title"
+      className="border-b border-border bg-background py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+          <div>
+            <p className={EYEBROW}>Find your starting point</p>
+            <h2 id="services-start-title" className={`mt-4 ${H2}`}>
+              What would you like
+              <br />
+              to move forward?
+            </h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+            You do not need to arrive with a list of services. Choose your goal and see how we can
+            help shape the first phase.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="flex flex-col gap-3" aria-label="Choose your project goal">
+            {STARTING_POINTS.map((option, index) => (
+              <button
+                key={option.title}
+                type="button"
+                aria-pressed={selected === index}
+                aria-controls="service-goal-detail"
+                onClick={() => setSelected(index)}
+                className={`flex min-h-20 items-center gap-4 rounded-2xl border px-5 py-5 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${selected === index ? "border-primary bg-primary text-white" : "border-border bg-background hover:bg-muted"}`}
+              >
+                <span
+                  className={`text-xs font-semibold ${selected === index ? "text-white/70" : "text-muted-foreground"}`}
+                >
+                  0{index + 1}
+                </span>
+                <span className="flex-1 text-base font-semibold sm:text-lg">{option.title}</span>
+                <ArrowUpRight size={20} aria-hidden="true" />
+              </button>
+            ))}
+            <Link
+              to="/for-agencies"
+              className="mt-2 inline-flex min-h-11 items-center gap-2 px-2 text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              Bringing an agency brief? <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div
+            id="service-goal-detail"
+            className="overflow-hidden rounded-3xl border border-border bg-muted/40 p-5 sm:p-8"
+          >
+            <div className="grid gap-6 sm:grid-cols-[1fr_0.8fr]">
+              <div aria-live="polite" aria-atomic="true">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  Your first phase
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight">{point.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{point.body}</p>
+              </div>
+              <div className="min-w-0">
+                <ServiceVisual title={previews[selected]} />
+              </div>
+            </div>
+            <div className="mt-6 border-t border-border pt-5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                How we can help
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {point.services.map((title) => (
+                  <Link
+                    key={title}
+                    to="/services/$slug"
+                    params={{ slug: serviceAnchor(title) }}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-xs font-medium hover:border-primary hover:text-primary"
+                  >
+                    {title}
+                    <ArrowUpRight size={13} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 flex flex-col items-start gap-4 border-t border-border pt-5">
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">A useful first brief: </span>
+                {prompts[selected]}
+              </p>
+              <BookCallButton
+                source="services_goal_picker"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ServicesPage() {
   return (
     <PageShell>
       {/* Hero */}
       <section aria-labelledby="services-title" className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-            <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Services / Design. Develop. Grow.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            Pixel2Tech / Our services
+          </p>
+          <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-12">
+            <h1
+              id="services-title"
+              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+            >
+              From first idea.
+              <br />
+              <span className="text-primary">To ready for launch.</span>
+            </h1>
+            <div>
+              <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+                A brand that feels like you. A website built for your customers. Content and systems
+                that keep the business moving.
               </p>
-              <h1
-                id="services-title"
-                className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl xl:text-[56px]"
-              >
-                Brand, web, video.
-                <br />
-                <span className="text-primary">Built to work together.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                A recognisable brand. A website people can use. Content that explains your offer.
-                Systems that connect the work behind it.
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Choose one discipline or bring them together. Our Lahore team plans the scope,
+                creates the work and helps you launch.
               </p>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Our in-house Lahore team brings {SERVICES.length} services together. Bring one
-                focused brief or combine the disciplines your project needs, with the scope and
-                timeline agreed before production.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap items-center gap-4">
                 <BookCallButton
                   source="services_hero"
                   className="inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background"
                 />
                 <a
                   href="#services-list-title"
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-border px-6 text-sm font-semibold hover:bg-muted"
+                  className="inline-flex min-h-12 items-center gap-2 text-sm font-semibold hover:text-primary"
                 >
-                  Explore services <ArrowRight size={17} />
+                  Find your service <ArrowRight size={17} />
                 </a>
               </div>
-              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-xs font-medium text-muted-foreground">
-                {["One focused brief", "Connected disciplines", "Clear review points"].map(
-                  (text) => (
-                    <span key={text} className="inline-flex items-center gap-2">
-                      <Check size={14} className="text-primary" />
-                      {text}
-                    </span>
-                  ),
-                )}
-              </div>
             </div>
-            <ServicesHeroArtwork />
           </div>
+          <ServicesHeroArtwork />
 
           <nav aria-label="Jump to a service" className="mt-12 border-t border-border pt-6">
             <ul className="flex flex-wrap gap-2 sm:gap-3">
@@ -415,69 +531,7 @@ function ServicesPage() {
         </div>
       </section>
 
-      <section aria-labelledby="services-start-title" className="bg-background py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <div className="max-w-3xl">
-            <p className={EYEBROW}>Start with the goal</p>
-            <h2 id="services-start-title" className={`mt-4 ${H2}`}>
-              Start with your goal.
-              <br />
-              Build the right first phase.
-            </h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              These are useful ways the work can connect. Start with the problem you need to solve;
-              we will discuss which parts belong in the first phase.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {STARTING_POINTS.map((point, index) => (
-              <article
-                key={point.title}
-                className="rounded-3xl border border-border bg-muted/30 p-6 sm:p-8"
-              >
-                <span
-                  aria-hidden="true"
-                  className="text-xs font-semibold tracking-widest text-primary"
-                >
-                  0{index + 1}
-                </span>
-                <h3 className="mt-4 text-2xl font-semibold tracking-tight">{point.title}</h3>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                  {point.body}
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {point.services.map((title) => (
-                    <Link
-                      key={title}
-                      to="/services/$slug"
-                      params={{ slug: serviceAnchor(title) }}
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-xs font-medium hover:border-primary hover:text-primary"
-                    >
-                      {title}
-                      <ArrowUpRight size={13} />
-                    </Link>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-5 rounded-2xl bg-slate-950 p-6 text-white sm:p-8">
-            <div>
-              <h3 className="text-xl font-semibold">Bringing an agency brief?</h3>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300">
-                We can deliver a defined part of your project under an agreed review and handover
-                process.
-              </p>
-            </div>
-            <Link
-              to="/for-agencies"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-slate-950"
-            >
-              Agency partnerships <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServiceGoalPicker />
 
       {/* Process */}
       <section aria-labelledby="services-process-title" className="bg-background py-16 md:py-24">

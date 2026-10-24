@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Layers, Sparkles, Target, TrendingUp } from "lucide-react";
 import { TEAM } from "@/lib/team";
-import { SITE } from "@/lib/site-config";
 
 const REASONS = [
   {
@@ -55,78 +54,36 @@ export function AboutWhySection() {
           </p>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.85fr_1.25fr]">
-          <div className="relative flex flex-col overflow-hidden rounded-[2rem] bg-slate-950 p-6 text-white sm:p-8">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border border-blue-300/15"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full border border-blue-300/10"
-            />
-            <p className="relative text-xs font-semibold uppercase tracking-widest text-blue-300">
-              One studio. One team.
-            </p>
-            <h3 className="relative mt-6 max-w-sm text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              Your project.
-              <br />
-              <span className="text-blue-300">Our shared focus.</span>
-            </h3>
-            <p className="relative mt-5 max-w-sm text-sm leading-relaxed text-slate-300">
-              Designers, developers and editors working together in {SITE.location}, with a shared
-              view of what your project needs next.
-            </p>
-            <div
-              className="relative mt-6 grid grid-cols-4 gap-1 rounded-2xl border border-white/15 bg-white/5 p-3"
-              aria-label="From brief to delivery"
-            >
-              {["Brief", "Create", "Review", "Deliver"].map((label, index) => (
-                <span
-                  key={label}
-                  className="flex items-center justify-between gap-1 text-[10px] font-medium text-slate-200 sm:text-xs"
-                >
-                  {label}
-                  {index < 3 && (
-                    <ArrowRight size={12} className="shrink-0 text-blue-300" aria-hidden="true" />
-                  )}
-                </span>
-              ))}
-            </div>
-            <div className="relative mt-8 grid grid-cols-2 gap-3">
-              {TEAM.filter((person) => person.founder).map((person) => (
-                <Link
-                  key={person.name}
-                  to={person.profile!}
-                  className="group overflow-hidden rounded-2xl border border-white/15 bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-                >
-                  <div className="aspect-[4/3] overflow-hidden bg-slate-800">
-                    <img
-                      src={person.img}
-                      alt={person.name}
-                      loading="lazy"
-                      width={400}
-                      height={300}
-                      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-                    />
+          <div
+            className="grid grid-rows-2 gap-5 sm:grid-cols-2 sm:grid-rows-1 lg:grid-cols-1 lg:grid-rows-2"
+            aria-label="Pixel2Tech CEOs"
+          >
+            {TEAM.filter((person) => person.founder).map((person) => (
+              <Link
+                key={person.name}
+                to={person.profile!}
+                className="group relative isolate block min-h-64 overflow-hidden rounded-[2rem] bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+              >
+                <img
+                  src={person.img}
+                  alt={person.name}
+                  width={600}
+                  height={450}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_25%] transition duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">{person.name}</h3>
+                    <p className="mt-2 text-sm text-white/80">{person.role}</p>
                   </div>
-                  <div className="px-3 py-3">
-                    <span className="flex items-center justify-between gap-1 text-xs font-semibold">
-                      {person.name}
-                      <ArrowUpRight size={13} aria-hidden="true" />
-                    </span>
-                    <span className="mt-1 block text-[10px] leading-relaxed text-slate-300">
-                      {person.role}
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <a
-              href="#about-team-title"
-              className="relative mt-5 inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-blue-200 hover:text-white"
-            >
-              Meet the whole team <ArrowRight size={16} />
-            </a>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/30 text-white">
+                    <ArrowUpRight size={18} aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             {REASONS.map(({ title, body, detail, Icon }, index) => (

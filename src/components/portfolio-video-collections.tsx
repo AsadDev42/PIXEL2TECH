@@ -200,7 +200,7 @@ export function PortfolioVideoCollections({ featuredOnly = false }: { featuredOn
             </a>
           )}
         </div>
-        <div className="relative flex items-center overflow-hidden bg-linear-to-br from-blue-500/20 via-slate-900 to-slate-950 p-6 sm:p-8">
+        <div className="relative flex items-center overflow-hidden p-6 sm:p-8">
           <div className="grid w-full grid-cols-3 items-center gap-3">
             {[
               "vip-talking-head-videos",

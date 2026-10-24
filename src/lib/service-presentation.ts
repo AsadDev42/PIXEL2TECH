@@ -7,7 +7,7 @@ type ServicePresentation = {
   alt?: string;
   caption: string;
   project?: string;
-  illustration?: "platform" | "search";
+  illustration?: "platform" | "search" | "automation" | "assistant";
 };
 
 /** Published work is identified explicitly; diagrams are service illustrations, not case studies. */
@@ -65,9 +65,8 @@ export const SERVICE_PRESENTATION: Record<ServiceTitle, ServicePresentation> = {
       "CRM connections and routing rules",
       "Error alerts and recovery guidance",
     ],
-    image: "/portfolio/inquiry-to-invoice-automation/cover.webp",
-    alt: "Inquiry-to-invoice workflow connecting lead intake, proposals and invoicing",
-    caption: "Inquiry-to-invoice automation workflow",
+    illustration: "automation",
+    caption: "Illustration · from enquiry to follow-up",
     project: "inquiry-to-invoice-automation",
   },
   "AI Solutions": {
@@ -77,9 +76,8 @@ export const SERVICE_PRESENTATION: Record<ServiceTitle, ServicePresentation> = {
       "Assistant, retrieval and tool connections",
       "Evaluation cases and human handover",
     ],
-    image: "/portfolio/rag-document-assistant/1.webp",
-    alt: "Document assistant workflow connecting document ingestion, a vector store and chat",
-    caption: "RAG document assistant for logistics",
+    illustration: "assistant",
+    caption: "Illustration · answers grounded in your documents",
     project: "rag-document-assistant",
   },
   "SEO & Search Growth": {
@@ -111,9 +109,9 @@ export const SERVICE_PRESENTATION: Record<ServiceTitle, ServicePresentation> = {
       "Motion, captions and sound treatment",
       "Exports for the agreed placements",
     ],
-    image: "/portfolio/animated-explainer-videos/9.jpg",
-    alt: "Motion-design frame from the animated explainer video collection",
-    caption: "From our animated explainer video collection",
-    project: "animated-explainer-videos",
+    image: "/portfolio/short-form-social-media-videos/1.jpg",
+    alt: "Captioned podcast highlight from our short-form video collection",
+    caption: "Short-form video · podcast highlights",
+    project: "short-form-social-media-videos",
   },
 };
