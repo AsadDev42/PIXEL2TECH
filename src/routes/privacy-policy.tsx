@@ -55,7 +55,7 @@ const SECTIONS: LegalSection[] = [
         list: [
           "**Contact form.** Your first name, last name, email address, phone number (optional) and message, together with the page you sent it from and the date and time.",
           "**Newsletter sign-up.** Your email address.",
-          "**Call bookings.** When you book a call through the booking window, you enter your details (such as your name, email address and any answers to booking questions) directly into Calendly, our scheduling provider. Calendly shares the booking details with us so we can hold the call.",
+          "**Call bookings.** Our booking form collects your name, email address, chosen time, time zone and any project notes you provide. We send these details to Google Calendar to schedule the call and create a Google Meet link. Google sends a calendar invitation to your email address. Please do not include sensitive information in project notes.",
           "**Communications.** Your name, contact details and the content of emails, phone calls, WhatsApp or social media messages and video calls with us, including files you send.",
           "**Client and project information.** If you become a client: your name, job title, company, billing and tax details, payment records, and the content, files, brand materials and account access you give us so we can do the work.",
           "**Job and freelance applications.** Your CV, portfolio, contact details and anything else you choose to send us.",
@@ -74,7 +74,7 @@ const SECTIONS: LegalSection[] = [
       { subheading: "Information from other sources" },
       {
         list: [
-          "Booking details from Calendly when you schedule a call.",
+          "Booking details submitted through our website when you schedule a call.",
           "Details from people who refer you to us.",
           "Business contact details that are publicly available, for example on company websites, LinkedIn or freelance marketplaces, when we contact potential clients or partners.",
         ],
@@ -134,7 +134,6 @@ const SECTIONS: LegalSection[] = [
       {
         list: [
           "fonts from Google Fonts;",
-          "the Calendly booking window, when you open it;",
           "YouTube videos in some blog posts, and Google Drive videos in some portfolio pages;",
           "a Google Maps map on our contact page; and",
           "images and videos served from third-party content networks.",
@@ -162,7 +161,7 @@ const SECTIONS: LegalSection[] = [
           "**Prisma** (Prisma Data, Inc.), which hosts our website (Prisma Compute) and provides the database that stores form submissions and newsletter sign-ups (Prisma Postgres);",
           "**Resend**, our email delivery provider, which sends the notification and confirmation emails for our contact form;",
           "**Google** (Google Analytics, Google Fonts, Google Maps and Google Meet) and **Microsoft** (Microsoft Clarity);",
-          "**Calendly**, for scheduling calls; and",
+          "**Google Calendar and Google Meet**, for scheduling and holding calls; and",
           "providers of business email, file storage, project management, communication, accounting, invoicing and payment services, and freelancers or subcontractors who help us deliver projects.",
         ],
       },
@@ -273,7 +272,7 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "Links and third-party services",
     body: [
-      "Our site links to other websites and services, including WhatsApp, our social media profiles, Calendly and sharing links for social networks. If you click a WhatsApp link, WhatsApp (owned by Meta) processes your information under its own terms and privacy policy. Share buttons are plain links; they do not send information to the social network until you click them.",
+      "Our site links to other websites and services, including WhatsApp, our social media profiles, Google Meet and sharing links for social networks. If you click a WhatsApp link, WhatsApp (owned by Meta) processes your information under its own terms and privacy policy. Share buttons are plain links; they do not send information to the social network until you click them.",
       "We are not responsible for the privacy practices of other websites or services. Please read their privacy policies before giving them your information.",
     ],
   },

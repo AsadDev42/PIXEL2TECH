@@ -25,7 +25,7 @@ type FocusTrapOptions = {
  * the first focusable element inside, and returns focus to the element that
  * had it when the trap ends. Does not handle Escape (owners do).
  *
- * Keydown events inside a cross-origin iframe (e.g. the Calendly embed) never
+ * Keydown events inside a cross-origin iframe (e.g. the booking embed) never
  * reach this document, so Tab can still carry focus out of an embed. A
  * document-level focusin guard pulls it back, and `isolate` removes the page
  * behind from the tab order altogether.

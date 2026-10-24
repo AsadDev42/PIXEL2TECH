@@ -31,7 +31,9 @@ assert(
 );
 assert.equal(homeSchemas.find((item) => item["@type"] === "FAQPage")?.mainEntity.length, 6);
 assert(home.includes('id="home-work-title"'), "Home selected work exists");
-assert(home.includes("One studio. Six people. 50+ projects."));
+assert(home.includes("One studio. One team. 50+ projects."));
+assert(home.indexOf("What clients say") < home.indexOf("One team. Every detail connected."));
+assert(!/calendly/i.test(home));
 assert(!home.includes("cdn.coverr.co"), "Stock testimonial videos are absent");
 assert(!home.includes("Phone(optional)"));
 assert(

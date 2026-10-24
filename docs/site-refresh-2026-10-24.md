@@ -54,3 +54,12 @@
 - Browser checks of the preserved hero collage, Home portfolio, video banner, engagement filters, results filters, mobile overflow and lazy booking flow.
 
 Run HTTP checks against another deployed origin with `VERIFY_BASE_URL`.
+
+## Native booking and team section follow-up
+
+- Replaced the scheduling embed with a website-owned date/time and details flow.
+- Google Calendar adapter checks free/busy, creates an invitation and requests Google Meet conferencing. Owner: sales@pixel2tech.com.
+- Google OAuth credentials are not configured yet; the live fallback offers a call request by email and never invents availability or confirmation. Secure local setup: `docs/google-calendar-booking.md`.
+- Redesigned StudioCommitments with a dark feature panel and four visual cards, immediately below What clients say.
+- Changed the studio heading to One studio. One team. 50+ projects. The original hero collage remains unchanged.
+- Verified eight booking logic/adapter tests, TypeScript, changed-file lint, production build, existing 96-article/132-project checks and a local browser booking with a mocked Google backend. Real Google invitation verification remains pending owner authentication.

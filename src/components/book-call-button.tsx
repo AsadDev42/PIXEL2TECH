@@ -3,7 +3,7 @@ import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { trackEvent } from "@/lib/analytics";
 import { PRIMARY_CTA_LABEL } from "@/lib/site-config";
 
-// Modal code (and its Calendly embed) is only fetched when a user opens it.
+// Modal code (and its booking form) is only fetched when a user opens it.
 const BookingModal = lazyWithRetry(() =>
   import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
 );

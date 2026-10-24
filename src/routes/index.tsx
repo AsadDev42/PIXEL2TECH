@@ -106,7 +106,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Explore real Shopify stores, websites, video and automation from our six-person Lahore studio. Meet the team and plan your next project.",
+          "Explore real Shopify stores, websites, video and automation from our in-house Lahore studio. Meet the team and plan your next project.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/` },
@@ -617,7 +617,7 @@ function Studio() {
 
         <div className="min-w-0">
           <h2 id="home-studio-title" className={H2}>
-            One studio. Six people. 50+ projects.
+            One studio. One team. 50+ projects.
           </h2>
           <p className={LEAD}>
             Designers, developers and editors work side by side in our Lahore office, sketching
@@ -791,8 +791,8 @@ function HomePage() {
       <HomeSelectedWork />
       <WhatWeMake />
       <Approach />
-      <StudioCommitments />
       <VideoTestimonials className="bg-muted" />
+      <StudioCommitments />
       <Team />
       <Studio />
       <Insights />

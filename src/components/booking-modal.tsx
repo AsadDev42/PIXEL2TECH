@@ -1,227 +1,364 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { CalendarDays, Clock, Loader2, Lock, ShieldCheck, Target, Video, X } from "lucide-react";
+import {
+  CalendarDays,
+  Check,
+  Clock,
+  Loader2,
+  ArrowLeft,
+  Video,
+  X,
+  ArrowUpRight,
+} from "lucide-react";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
-import { PRIMARY_CTA_LABEL } from "@/lib/site-config";
+import { bookingAvailability, bookStrategyCall } from "@/lib/booking.functions";
 
-const CALENDLY_ORIGIN = "https://calendly.com";
-const CALENDLY_EVENT_URL = `${CALENDLY_ORIGIN}/pixel2tech/strategy-call`;
-
-// Calendly only accepts hex colours. These mirror the --primary, --background
-// and --foreground tokens in src/styles.css for each theme.
-const CALENDLY_COLORS = {
-  light: { primary_color: "0b74e0", background_color: "ffffff", text_color: "0f172a" },
-  dark: { primary_color: "4da3ff", background_color: "020618", text_color: "f8fafc" },
-} as const;
-
-/**
- * A plain iframe instead of Calendly's widget.js: widget.js only fills the
- * inline widgets that exist when the script first runs, so the modal came up
- * empty from the second open on. A fresh iframe on every open always loads.
- * embed_domain + embed_type keep Calendly's postMessage events working.
- */
-function calendlyEmbedUrl() {
-  const dark = document.documentElement.classList.contains("dark");
-  const params = new URLSearchParams({
-    embed_domain: window.location.host,
-    embed_type: "Inline",
-    hide_event_type_details: "1",
-    ...(dark ? CALENDLY_COLORS.dark : CALENDLY_COLORS.light),
-  });
-  return `${CALENDLY_EVENT_URL}?${params.toString()}`;
-}
-
-const BENEFITS = [
-  { icon: Clock, label: "30 minutes", desc: "Enough time to talk through your goals." },
-  { icon: Video, label: "On Google Meet", desc: "Join from your laptop or phone." },
-  { icon: ShieldCheck, label: "No hard sell", desc: "Honest advice, no pushy pitch." },
-  { icon: Target, label: "A clear next step", desc: "You leave with a plan you can act on." },
-] as const;
-
-function CalendlyEmbed() {
-  const [src] = useState(calendlyEmbedUrl);
-  const [loaded, setLoaded] = useState(false);
-  return (
-    <div className="relative min-h-[440px] flex-1 bg-background lg:min-h-0">
-      {loaded ? null : (
-        <div className="absolute inset-0 grid place-items-center p-6">
-          <p className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Loader2
-              className="h-4 w-4 animate-spin motion-reduce:animate-none"
-              aria-hidden="true"
-            />
-            Loading available times…
-          </p>
-        </div>
-      )}
-      <iframe
-        src={src}
-        loading="lazy"
-        title="Choose a time for your strategy call"
-        onLoad={() => setLoaded(true)}
-        className="absolute inset-0 h-full w-full border-0"
-      />
-    </div>
-  );
+const fieldClass =
+  "mt-2 min-h-12 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
+function hostDate() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Karachi",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
 }
 
 export function BookingModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const titleId = useId();
-  const descId = useId();
-  // The modal is portaled into <body>; `isolate` makes the rest of the page
-  // inert while it is open, so Tab (even out of the cross-origin Calendly
-  // iframe) and screen readers stay inside, and focus returns to the trigger.
   const dialogRef = useFocusTrap<HTMLDivElement>(open, { isolate: true });
-
-  // Lock page scroll without shifting the layout by the scrollbar width.
+  const [timezone] = useState(() => Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC");
+  const [date, setDate] = useState(hostDate);
+  const [slots, setSlots] = useState<string[]>([]);
+  const [selected, setSelected] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [connected, setConnected] = useState(true);
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
+  const [confirmed, setConfirmed] = useState<{ meetUrl: string | null } | null>(null);
+  const [bookingId] = useState(() => crypto.randomUUID());
+  const [openedAt] = useState(Date.now);
+  const maxDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Karachi",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(Date.now() + 29 * 86400000));
+  useEffect(() => {
+    if (!open) return;
+    let current = true;
+    setLoading(true);
+    setError("");
+    setSlots([]);
+    bookingAvailability({ data: { date } })
+      .then((result) => {
+        if (current) {
+          setConnected(result.connected);
+          setSlots(result.slots);
+        }
+      })
+      .catch(() => {
+        if (current)
+          setError("We couldn't load available times. Please try another date or contact us.");
+      })
+      .finally(() => {
+        if (current) setLoading(false);
+      });
+    return () => {
+      current = false;
+    };
+  }, [date, open]);
   useEffect(() => {
     if (!open) return;
     const { overflow, paddingRight } = document.body.style;
     const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
     if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", escape);
     return () => {
       document.body.style.overflow = overflow;
       document.body.style.paddingRight = paddingRight;
+      document.removeEventListener("keydown", escape);
     };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
-
-  // Count completed bookings. Only trust messages that really come from Calendly.
-  useEffect(() => {
-    if (!open) return;
-    const onMessage = (e: MessageEvent) => {
-      if (e.origin !== CALENDLY_ORIGIN) return;
-      const data: unknown = e.data;
-      if (
-        typeof data === "object" &&
-        data !== null &&
-        (data as { event?: unknown }).event === "calendly.event_scheduled"
-      ) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (sending) return;
+    const form = new FormData(event.currentTarget);
+    setSending(true);
+    setError("");
+    try {
+      const result = await bookStrategyCall({
+        data: {
+          start: selected,
+          name: String(form.get("name") || ""),
+          email: String(form.get("email") || ""),
+          message: String(form.get("message") || ""),
+          website: String(form.get("website") || ""),
+          timezone,
+          bookingId,
+          elapsedMs: Date.now() - openedAt,
+        },
+      });
+      if (result.confirmed) {
+        setConfirmed({ meetUrl: result.meetUrl });
         trackEvent("booking_completed", {});
+      } else {
+        setSelected("");
+        setSlots((values) => values.filter((value) => value !== selected));
+        setError("That time is no longer available. Please choose another.");
       }
-    };
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, [open]);
-
-  if (typeof document === "undefined") return null;
-
+    } catch {
+      setError(
+        "We couldn't confirm this booking. Please retry, or email sales@pixel2tech.com for help.",
+      );
+    } finally {
+      setSending(false);
+    }
+  }
+  const dateLabel = (value: string) =>
+    new Intl.DateTimeFormat("en", {
+      timeZone: timezone,
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(new Date(value));
+  if (!open || typeof document === "undefined") return null;
   return createPortal(
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          className="fixed inset-0 z-[70] flex items-center justify-center sm:p-4 lg:p-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/40 backdrop-blur-sm sm:p-5">
+      <div className="absolute inset-0" onClick={onClose} aria-hidden="true" />
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="relative max-h-dvh w-full overflow-y-auto bg-background shadow-2xl outline-none sm:max-h-[90dvh] sm:max-w-4xl sm:rounded-[2rem]"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close booking window"
+          className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
         >
-          <div
-            className="absolute inset-0 bg-foreground/30 backdrop-blur-sm"
-            onClick={onClose}
-            aria-hidden="true"
-          />
-
-          <motion.div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            aria-describedby={descId}
-            tabIndex={-1}
-            className="relative flex h-dvh w-full flex-col overflow-hidden bg-background focus:outline-none sm:h-[min(90dvh,880px)] sm:max-w-3xl sm:rounded-3xl sm:ring-1 sm:ring-border lg:max-w-5xl"
-            style={{ boxShadow: "var(--elev-3)" }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close booking window"
-              className="absolute right-2 top-2 z-10 grid h-11 w-11 place-items-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:right-3 sm:top-3"
-            >
-              <X className="h-5 w-5" aria-hidden="true" />
-            </button>
-
-            {/* Phones: short header, then the calendar fills the screen.
-                Desktop: details on the left, calendar on the right. */}
-            <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain lg:flex-row lg:overflow-hidden">
-              <div className="shrink-0 border-b border-border bg-muted/50 py-4 pl-5 pr-16 sm:p-6 sm:pr-20 lg:w-2/5 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:p-8">
-                <p className="hidden items-center gap-2 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-primary sm:inline-flex">
-                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
-                  Free · 30 minutes
+          <X size={20} />
+        </button>
+        <div className="grid lg:grid-cols-[0.85fr_1.2fr]">
+          <div className="bg-slate-950 p-6 pr-16 text-white sm:p-8">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-300">
+              <CalendarDays size={16} aria-hidden="true" /> Let's make a plan
+            </p>
+            <h2 id={titleId} className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Your next idea.
+              <br />
+              <span className="text-blue-300">Our first conversation.</span>
+            </h2>
+            <p className="mt-5 text-sm leading-relaxed text-slate-300">
+              Tell us where you want to go. We'll talk through your project and work out a useful
+              next step.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-200">
+              <span className="inline-flex items-center gap-2">
+                <Clock size={17} /> 30 minutes
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Video size={17} /> Google Meet
+              </span>
+            </div>
+            <p className="mt-8 text-xs leading-relaxed text-slate-400">
+              Free strategy call. No hard sell.
+              <br />
+              Questions?{" "}
+              <a
+                className="underline underline-offset-4 text-slate-200"
+                href="mailto:sales@pixel2tech.com"
+              >
+                sales@pixel2tech.com
+              </a>
+            </p>
+          </div>
+          <div className="p-6 sm:p-8 lg:pt-16">
+            {confirmed ? (
+              <div role="status">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
+                  <Check />
+                </span>
+                <h3 className="mt-5 text-2xl font-semibold">You're booked.</h3>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {dateLabel(selected)} ({timezone})
                 </p>
-                <h2
-                  id={titleId}
-                  className="text-xl font-bold tracking-tight text-foreground sm:mt-4 sm:text-2xl lg:text-3xl"
-                >
-                  {PRIMARY_CTA_LABEL}
-                </h2>
-                <p id={descId} className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  A 30-minute Google Meet call about your goals and the best next step. Pick a time
-                  that suits you.
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Google Calendar will send your invitation. You can reply to it if your plans
+                  change.
                 </p>
-
-                <ul className="mt-6 hidden gap-3 lg:grid">
-                  {BENEFITS.map((b) => (
-                    <li
-                      key={b.label}
-                      className="flex items-start gap-3 rounded-2xl border border-border bg-background p-3"
-                    >
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand/10 text-primary">
-                        <b.icon className="h-4 w-4" aria-hidden="true" />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-semibold text-foreground">
-                          {b.label}
-                        </span>
-                        <span className="block text-sm leading-snug text-muted-foreground">
-                          {b.desc}
-                        </span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-6 hidden items-start gap-2 text-sm text-muted-foreground lg:flex">
-                  <Lock
-                    className="h-4 w-4 shrink-0 translate-y-0.5 text-primary"
-                    aria-hidden="true"
-                  />
-                  We only use your details to prepare for the call.
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground sm:mt-4">
-                  Calendar not loading?{" "}
+                {confirmed.meetUrl ? (
                   <a
-                    href={CALENDLY_EVENT_URL}
+                    href={confirmed.meetUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center font-medium text-primary underline underline-offset-4 sm:min-h-0"
+                    className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
                   >
-                    Open it on Calendly
+                    Open Google Meet <ArrowUpRight size={16} />
+                  </a>
+                ) : (
+                  <p className="mt-4 text-sm text-muted-foreground">
+                    Your Meet link is being prepared by Google. Check the calendar invitation for
+                    the link, or contact us if it doesn't arrive.
+                  </p>
+                )}
+              </div>
+            ) : selected ? (
+              <form onSubmit={submit}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelected("");
+                    setError("");
+                  }}
+                  className="mb-5 inline-flex min-h-10 items-center gap-2 text-sm text-primary"
+                >
+                  <ArrowLeft size={16} /> Choose another time
+                </button>
+                <h3 className="text-xl font-semibold">A few details, then we're set.</h3>
+                <p className="mt-2 rounded-xl bg-muted p-3 text-sm">
+                  {dateLabel(selected)}
+                  <span className="mt-1 block text-xs text-muted-foreground">{timezone}</span>
+                </p>
+                <label className="mt-5 block text-sm font-medium">
+                  Your name *
+                  <input
+                    name="name"
+                    autoComplete="name"
+                    required
+                    minLength={2}
+                    maxLength={120}
+                    className={fieldClass}
+                  />
+                </label>
+                <label className="mt-4 block text-sm font-medium">
+                  Email *
+                  <input
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    maxLength={254}
+                    className={fieldClass}
+                  />
+                </label>
+                <label className="mt-4 block text-sm font-medium">
+                  What would you like to discuss?
+                  <textarea
+                    name="message"
+                    maxLength={2000}
+                    rows={3}
+                    className={`${fieldClass} py-3`}
+                  />
+                </label>
+                <div className="hidden" aria-hidden="true">
+                  <label>
+                    Website
+                    <input name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+                {error && (
+                  <p role="alert" className="mt-4 text-sm text-destructive">
+                    {error}
+                  </p>
+                )}
+                <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                  Your details go to Pixel2Tech and Google Calendar to arrange the call.{" "}
+                  <a href="/privacy-policy" className="underline">
+                    Privacy policy
                   </a>
                 </p>
+                <button
+                  disabled={sending}
+                  type="submit"
+                  className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground disabled:opacity-60"
+                >
+                  {sending && <Loader2 size={17} className="animate-spin" />}
+                  {sending ? "Confirming..." : "Confirm my call"}
+                </button>
+              </form>
+            ) : (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  01 / Choose your time
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight">
+                  Let's find a good moment.
+                </h3>
+                <label className="mt-6 block text-sm font-medium">
+                  Date in Lahore (GMT+5)
+                  <input
+                    type="date"
+                    value={date}
+                    min={hostDate()}
+                    max={maxDate}
+                    onChange={(event) => {
+                      if (event.target.value) setDate(event.target.value);
+                    }}
+                    className={fieldClass}
+                  />
+                </label>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Times below shown in {timezone}. Mon-Fri 9am-6pm, Sat 10am-4pm in Lahore.
+                </p>
+                <div className="mt-6" aria-live="polite" aria-busy={loading}>
+                  {loading ? (
+                    <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Loader2 size={18} className="animate-spin" /> Checking the calendar...
+                    </p>
+                  ) : error ? (
+                    <p role="alert" className="text-sm text-destructive">
+                      {error}
+                    </p>
+                  ) : !connected ? (
+                    <div className="rounded-2xl border border-border bg-muted/40 p-5">
+                      <p className="font-semibold">Let's arrange your call.</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Online scheduling is being connected. Email your preferred time and a little
+                        about your project. Our team will reply within one business day.
+                      </p>
+                      <a
+                        href="mailto:sales@pixel2tech.com?subject=Strategy%20call%20request"
+                        className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary"
+                      >
+                        Request a call by email <ArrowUpRight size={16} />
+                      </a>
+                    </div>
+                  ) : slots.length ? (
+                    <div className="grid grid-cols-2 gap-2">
+                      {slots.map((slot) => (
+                        <button
+                          key={slot}
+                          type="button"
+                          onClick={() => setSelected(slot)}
+                          className="min-h-12 rounded-xl border border-border px-2 text-sm font-medium transition-colors hover:border-primary hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                          {dateLabel(slot)}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="rounded-xl bg-muted p-4 text-sm text-muted-foreground">
+                      No open times on this date. Please choose another day.
+                    </p>
+                  )}
+                </div>
               </div>
-
-              <CalendlyEmbed />
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
+            )}
+          </div>
+        </div>
+      </div>
+    </div>,
     document.body,
   );
 }

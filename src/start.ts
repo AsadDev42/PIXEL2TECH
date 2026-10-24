@@ -92,7 +92,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
     result instanceof Response ? result : (result as { response: Response }).response;
   const h = response.headers;
   // Content Security Policy — tuned for the current app (Google Fonts, Unsplash,
-  // GA4 + Clarity analytics, Calendly booking modal, YouTube/Vimeo videos).
+  // GA4 + Clarity analytics, native booking modal, YouTube/Vimeo videos).
   h.set(
     "Content-Security-Policy",
     [
@@ -104,10 +104,10 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com",
       "connect-src 'self' https: wss:",
       "media-src 'self' https: blob:",
-      "frame-src 'self' https://calendly.com https://*.calendly.com https://www.youtube.com https://player.vimeo.com https://drive.google.com https://www.google.com https://maps.google.com",
+      "frame-src 'self' https://www.youtube.com https://player.vimeo.com https://drive.google.com https://www.google.com https://maps.google.com",
       "worker-src 'self' blob:",
       "manifest-src 'self'",
       "upgrade-insecure-requests",
