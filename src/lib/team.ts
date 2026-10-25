@@ -28,7 +28,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: "Asad Farooq",
-    role: "CEO & Co-Founder",
+    role: "Co-Founder & CPO",
     img: teamAsad.url,
     profile: "/asad-farooq",
     founder: true,

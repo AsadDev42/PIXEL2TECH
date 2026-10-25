@@ -377,13 +377,13 @@ export const ASAD_FAROOQ: PersonProfileData = {
   familyName: "Farooq",
   role: asad.role,
   seo: {
-    title: "Asad Farooq | CEO & Co-Founder | Pixel2Tech",
+    title: "Asad Farooq | Co-Founder & CPO | Pixel2Tech",
     description:
-      "Asad Farooq is CEO and Co-Founder at Pixel2Tech, leading branding, design systems, video and ad creative for B2B, SaaS and e-commerce brands.",
+      "Asad Farooq is Co-Founder and CPO at Pixel2Tech, leading branding, design systems, video and ad creative for B2B, SaaS and e-commerce brands.",
   },
   portrait: {
     src: teamAsad.url,
-    alt: "Asad Farooq, CEO and Co-Founder at Pixel2Tech",
+    alt: "Asad Farooq, Co-Founder and CPO at Pixel2Tech",
     width: 247,
     height: 317,
   },
@@ -402,7 +402,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
     "Marketing Strategy",
   ],
   intro:
-    "CEO, co-founder, designer and video editor building creative systems that help B2B, SaaS and e-commerce brands grow. 5+ years, 100+ founders, and creative work that is measured by business outcomes, not just how it looks.",
+    "Co-founder, CPO, designer and video editor building creative systems that help B2B, SaaS and e-commerce brands grow. 5+ years, 100+ founders, and creative work that is measured by business outcomes, not just how it looks.",
   reach: "Working globally, remote-first",
   stats: [
     { value: "5+", label: "Years in creative direction" },
@@ -457,7 +457,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
   },
   timeline: [
     {
-      role: "CEO & Co-Founder",
+      role: "Co-Founder & CPO",
       org: "Pixel2Tech",
       period: "Aug 2024 — Present",
       place: "Lahore, Pakistan",
@@ -596,7 +596,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
   leadership: {
     heading: "Building the studio, not just the deliverables",
     paragraphs: [
-      "As CEO and Co-Founder, Asad shapes how Pixel2Tech works: how briefs are written, how creative is reviewed, and how design, video and development stay aligned on a single direction.",
+      "As Co-Founder and CPO, Asad shapes how Pixel2Tech works: how briefs are written, how creative is reviewed, and how design, video and development stay aligned on a single direction.",
       "He runs creative reviews with the design and editing team, mentors junior designers into senior craft, and stays hands-on with the most demanding client work: brand launches, campaign systems and high-stakes ad creative.",
     ],
   },
@@ -635,7 +635,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
   faqs: [
     {
       q: "What does Asad Farooq do at Pixel2Tech?",
-      a: "Asad is CEO and Co-Founder at Pixel2Tech. He owns creative direction across branding, web design, social content, video and ad creative, and sets the quality standards the studio's designers and editors work to.",
+      a: "Asad is Co-Founder and CPO at Pixel2Tech. He owns creative direction across branding, web design, social content, video and ad creative, and sets the quality standards the studio's designers and editors work to.",
     },
     {
       q: "How much experience does Asad Farooq have?",

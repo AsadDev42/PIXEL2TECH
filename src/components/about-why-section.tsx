@@ -54,15 +54,12 @@ export function AboutWhySection() {
           </p>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.85fr_1.25fr]">
-          <div
-            className="grid grid-rows-2 gap-5 sm:grid-cols-2 sm:grid-rows-1 lg:grid-cols-1 lg:grid-rows-2"
-            aria-label="Pixel2Tech CEOs"
-          >
-            {TEAM.filter((person) => person.founder).map((person) => (
+          <div className="grid" aria-label="Pixel2Tech CEO">
+            {TEAM.filter((person) => person.profile === "/usama-farooq").map((person) => (
               <Link
                 key={person.name}
                 to={person.profile!}
-                className="group relative isolate block min-h-64 overflow-hidden rounded-[2rem] bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                className="group relative isolate block aspect-[4/5] min-h-64 overflow-hidden rounded-[2rem] bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 lg:aspect-auto"
               >
                 <img
                   src={person.img}

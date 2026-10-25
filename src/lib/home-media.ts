@@ -42,7 +42,7 @@ import workConceptPoster from "@/assets/opt-work-concept-poster.webp.asset.json"
 import workWpPoster from "@/assets/opt-work-wordpress-shopify-poster.webp.asset.json";
 import workAutomationPoster from "@/assets/opt-work-automation-poster.webp.asset.json";
 import workAiPoster from "@/assets/opt-work-ai-solutions-poster.webp.asset.json";
-import seoCard from "@/assets/seo-search-growth-card.webp.asset.json";
+const seoCard = { url: "/images/services/seo-search-growth-v2.webp" };
 import workSocialPoster from "@/assets/opt-work-social-new-poster.webp.asset.json";
 
 export type HeroMedia =
