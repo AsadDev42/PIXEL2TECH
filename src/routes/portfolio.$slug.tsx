@@ -1,3 +1,4 @@
+import { PortfolioImageGallery } from "@/components/portfolio-image-gallery";
 import { DesignProjectCard } from "@/components/design-project-card";
 import { MediaImage } from "@/components/media-image";
 import { Suspense, useState } from "react";
@@ -357,6 +358,10 @@ function ImageCollection({ item, images }: { item: PortfolioItem; images: string
 function CategoryShowcase({ item, images }: { item: PortfolioItem; images: string[] }) {
   const sub = item.subcategory;
   const all = [item.img, ...images];
+
+  if (item.subcategory === "Thumbnails" && item.images?.length) {
+    return <PortfolioImageGallery images={item.images} title={item.title} />;
+  }
 
   if (item.showAllImages && item.images?.length) {
     return <ImageCollection item={item} images={item.images} />;

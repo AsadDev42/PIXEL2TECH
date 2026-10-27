@@ -59,6 +59,32 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "youtube-thumbnail-designs-2": {
+    metaTitle: "YouTube thumbnail designs - collection 2 | Pixel2Tech",
+    metaDescription:
+      "A second collection of 21 landscape YouTube thumbnails featuring dramatic portraits, bold headlines and cinematic compositions.",
+    summary: "Dramatic portraits, bold headlines and cinematic thumbnail compositions.",
+    overview:
+      "Explore 21 landscape YouTube thumbnail designs in this second collection. The artwork combines dramatic portraits, dark backgrounds, high-contrast lettering and detailed image compositions.",
+    challenge:
+      "Keep the main subject and headline clear when a detailed thumbnail is displayed at a small size.",
+    approach:
+      "The collection uses a strong focal subject, contrasting colors and large headlines to organize each composition.",
+    outcome: "A separate gallery of 21 thumbnail designs, each shown in its full landscape format.",
+    results: [
+      {
+        label: "In this collection",
+        value: pieces("youtube-thumbnail-designs-2", "thumbnail designs"),
+      },
+      { label: "Format", value: "16:9 landscape" },
+      { label: "Visual style", value: "Dramatic imagery and bold typography" },
+    ],
+    deliverables: [
+      "YouTube thumbnail artwork",
+      "Landscape compositions",
+      "Headline and image layouts",
+    ],
+  },
   "youtube-thumbnail-designs": {
     metaTitle: "YouTube thumbnail designs | Pixel2Tech",
     metaDescription:

@@ -741,6 +741,41 @@ for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "youtube-thumbnail-designs-2": {
+    process: [
+      {
+        title: "A clear focal subject",
+        body: "Portraits and detailed images anchor the thumbnail composition.",
+      },
+      {
+        title: "Headline hierarchy",
+        body: "Large, contrasting type makes the main message easy to find.",
+      },
+      {
+        title: "Atmosphere and contrast",
+        body: "Dark backgrounds and selective color create separation between the subject and the setting.",
+      },
+      {
+        title: "Complete landscape artwork",
+        body: "The gallery preserves every design in its original landscape composition.",
+      },
+    ],
+    technologies: ["Typography", "Photo compositing", "YouTube"],
+    whyItMatters:
+      "A thumbnail communicates the visual tone of a video before it is opened. This collection presents a range of dramatic image treatments and headline layouts.",
+    faqs: [
+      {
+        q: "How many designs are in this collection?",
+        a: "This second collection contains 21 YouTube thumbnail designs.",
+      },
+      {
+        q: "Is this separate from the first collection?",
+        a: "Yes. The original thumbnail collection remains available as its own portfolio project.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Branding & Design", "Video Editing & Ads"],
+  },
   "youtube-thumbnail-designs": {
     process: [
       {
