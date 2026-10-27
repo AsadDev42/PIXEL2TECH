@@ -1,0 +1,7 @@
+# SEO service card image
+
+Generated using the built-in image_gen tool.
+
+Final prompt: Create one polished editorial 3D product-style image for the SEO & Search Growth service card on Pixel2Tech, a clean white and blue creative studio website. Portrait composition approximately 3:4. Subject: a beautifully crafted oversized cobalt-blue magnifying glass hovering in front of a tilted white browser search-results panel, with three neatly stacked search result snippets, small link icons and a subtle connected-site diagram behind it. Make search visibility and website optimisation instantly understandable. Sophisticated physically rendered materials, soft studio daylight, crisp edges, gentle shadows, restrained electric blue, white and graphite palette. Main objects fill the middle and lower area; top 20% is calm dark slate-blue negative space so the website's existing white heading can be readable. Background should transition smoothly, no boxed collage. This is a conceptual service illustration, not an analytics screenshot. Only visible text is the large word 'SEO' on a small elegant white tile integrated into the scene. No metrics, growth promises, logos, stock-photo watermark, fake client data, people, rockets or busy floating icons. Premium commercial art direction, clean composition, sharp and visually appealing at a small card size.
+
+Final web asset: public/images/services/seo-search-growth-v2.webp
