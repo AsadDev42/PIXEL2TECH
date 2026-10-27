@@ -32,9 +32,18 @@ export function PortfolioVideoPlayer({
   const [retry, setRetry] = useState(0);
   const [level, setLevel] = useState(100);
   const active = index === null ? undefined : videos[index];
+  const source = useRef(active?.src ?? "");
+  source.current = active?.src ?? "";
   const attachPlayer = useCallback((element: HTMLVideoElement | null) => {
+    const previous = player.current;
+    if (previous && previous !== element) {
+      previous.pause();
+      previous.removeAttribute("src");
+      previous.load();
+    }
     player.current = element;
     if (element) {
+      if (!element.getAttribute("src") && source.current) element.src = source.current;
       element.volume = volume.current.level;
       element.muted = volume.current.muted;
     }
@@ -116,7 +125,7 @@ export function PortfolioVideoPlayer({
                 controls
                 autoPlay
                 playsInline
-                preload="metadata"
+                preload="auto"
                 aria-label={active.title}
                 {...PROTECTED_VIDEO_PROPS}
                 onPlay={() => claimVideoSound(owner)}

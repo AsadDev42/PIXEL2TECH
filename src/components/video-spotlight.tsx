@@ -170,7 +170,7 @@ export function VideoSpotlight({
                       else videoRefs.current.delete(video.src);
                     }}
                     // The #t fragment makes iOS Safari paint the first frame as a poster.
-                    src={`${video.src}#t=0.1`}
+                    src={soundSrc ? undefined : `${video.src}#t=0.1`}
                     muted
                     playsInline
                     loop
