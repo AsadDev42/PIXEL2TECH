@@ -348,6 +348,18 @@ const RAW: RawWork = {
   Design: {
     Thumbnails: [
       {
+        slug: "youtube-thumbnail-designs-2",
+        title: "YouTube thumbnail designs - collection 2",
+        img: "/portfolio/youtube-thumbnail-designs-2/1.webp",
+        images: numbered(
+          "youtube-thumbnail-designs-2",
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+          "webp",
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+      {
         slug: "youtube-thumbnail-designs",
         title: "YouTube thumbnail designs",
         img: "/portfolio/youtube-thumbnail-designs/34.webp",
