@@ -40,9 +40,8 @@ const POSTS = [
     date: "October 27, 2026",
     time: "12:03 am",
     author: "Asad Farooq",
-    img: "/blog/covers/animated-explainer-video-production-process.svg",
-    imgAlt:
-      "Explainer production diagram moving from an approved script to storyboard frames and animation",
+    img: "/blog/covers/animated-explainer-video-production-process.jpg",
+    imgAlt: "Hand-drawn storyboard sketches for an animated explainer video",
     related: [
       "saas-product-demo-video-brief",
       "video-deliverables-aspect-ratio-brief",
@@ -58,9 +57,8 @@ const POSTS = [
     date: "October 27, 2026",
     time: "12:02 am",
     author: "Asad Farooq",
-    img: "/blog/covers/video-editing-handover-checklist.svg",
-    imgAlt:
-      "Video delivery folders organised into approved exports, captions and an editable project archive",
+    img: "/blog/covers/video-editing-handover-checklist.jpg",
+    imgAlt: "Video editing timeline on a monitor in a dark edit suite",
     related: [
       "video-deliverables-aspect-ratio-brief",
       "podcast-to-short-form-video-workflow",
@@ -76,9 +74,8 @@ const POSTS = [
     date: "October 27, 2026",
     time: "12:01 am",
     author: "Asad Farooq",
-    img: "/blog/covers/video-deliverables-aspect-ratio-brief.svg",
-    imgAlt:
-      "Landscape, square and vertical video frames showing different compositions of the same subject",
+    img: "/blog/covers/video-deliverables-aspect-ratio-brief.jpg",
+    imgAlt: "Camera rig with a field monitor and an editing screen",
     related: [
       "video-editing-handover-checklist",
       "saas-product-demo-video-brief",
@@ -94,9 +91,8 @@ const POSTS = [
     date: "October 24, 2026",
     time: "8:00 am",
     author: "Usama Farooq",
-    img: "/blog/covers/shopify-product-page-redesign-brief.png",
-    imgAlt:
-      "Product page planning diagram showing product media, variant choices and a clear cart action",
+    img: "/blog/covers/shopify-product-page-redesign-brief.jpg",
+    imgAlt: "Shopper holding a phone and shopping bags",
     related: [
       "shopify-theme-customization-vs-custom-theme",
       "shopify-product-video-guide",
@@ -112,9 +108,8 @@ const POSTS = [
     date: "October 24, 2026",
     time: "7:59 am",
     author: "Usama Farooq",
-    img: "/blog/covers/website-project-brief-for-service-business.png",
-    imgAlt:
-      "Website brief diagram connecting customer needs, service pages and an enquiry handover",
+    img: "/blog/covers/website-project-brief-for-service-business.jpg",
+    imgAlt: "Hand-drawn website wireframe sketches on paper",
     related: [
       "compare-website-development-quotes",
       "website-ownership-checklist",
@@ -130,8 +125,8 @@ const POSTS = [
     date: "October 24, 2026",
     time: "7:58 am",
     author: "Asad Farooq",
-    img: "/blog/covers/saas-product-demo-video-brief.png",
-    imgAlt: "SaaS demo storyboard showing a customer task, product screen and completed workflow",
+    img: "/blog/covers/saas-product-demo-video-brief.jpg",
+    imgAlt: "Analytics dashboard with charts on a laptop screen",
     related: [
       "podcast-to-short-form-video-workflow",
       "outsource-video-editing-to-pakistan",
@@ -147,9 +142,8 @@ const POSTS = [
     date: "October 24, 2026",
     time: "7:57 am",
     author: "Asad Farooq",
-    img: "/blog/covers/podcast-to-short-form-video-workflow.png",
-    imgAlt:
-      "Editing workflow diagram turning one long podcast timeline into three focused vertical clips",
+    img: "/blog/covers/podcast-to-short-form-video-workflow.jpg",
+    imgAlt: "Studio microphone in a dark podcast studio",
     related: [
       "video-editing-retainer-for-coaches",
       "outsource-video-editing-to-pakistan",
@@ -165,9 +159,8 @@ const POSTS = [
     date: "October 24, 2026",
     time: "7:56 am",
     author: "Usama Farooq",
-    img: "/blog/covers/contact-form-crm-integration-brief.png",
-    imgAlt:
-      "Contact form integration diagram connecting validation, a CRM record and an assigned team member",
+    img: "/blog/covers/contact-form-crm-integration-brief.jpg",
+    imgAlt: "Laptop and phone on a desk by a window",
     related: [
       "automate-lead-follow-up",
       "automations-failing-silently-audit",
