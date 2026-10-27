@@ -59,6 +59,35 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "youtube-thumbnail-designs": {
+    metaTitle: "YouTube thumbnail designs | Pixel2Tech",
+    metaDescription:
+      "Explore 37 YouTube thumbnail designs, including podcasts, interviews, business, gaming, technology and documentary layouts.",
+    summary:
+      "YouTube thumbnails for podcasts, interviews, business, gaming and documentary content.",
+    overview:
+      "A collection of 37 landscape thumbnail designs. Browse bold headline layouts, portrait cutouts, contrasting colors and collage treatments across podcasts, technology, business, gaming and storytelling topics.",
+    challenge:
+      "A thumbnail needs to make its topic easy to recognize while keeping the headline and imagery readable at a small size.",
+    approach:
+      "The designs pair short headlines with a clear focal image, using contrast, color and composition to distinguish each topic.",
+    outcome:
+      "A gallery of 37 thumbnail designs, presented in full so every headline and visual detail remains visible.",
+    results: [
+      {
+        label: "In this collection",
+        value: pieces("youtube-thumbnail-designs", "thumbnail designs"),
+      },
+      { label: "Format", value: "Landscape YouTube thumbnails" },
+      { label: "Content", value: "Podcasts, business, technology and more" },
+    ],
+    deliverables: [
+      "YouTube thumbnail artwork",
+      "Headline and portrait layouts",
+      "Landscape designs",
+    ],
+  },
+
   "short-form-social-media-videos": {
     summary: "Ten vertical edits for social media, from podcast clips to talking-head stories.",
     overview:
