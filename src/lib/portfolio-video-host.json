@@ -1,5 +1,18 @@
 {
   "baseUrl": "https://github.com/AsadDev42/PIXEL2TECH/releases/download/portfolio-media-2026-10-23",
+  "localFiles": {
+    "animated-explainer-videos": [
+      "chapter-typography",
+      "ai-workflow-custom-code",
+      "technical-product-layout",
+      "auntyji-title-reveal",
+      "workplace-kinetic-typography",
+      "chat-gradient-typography",
+      "character-illustrated-explainer",
+      "language-quiz-animation",
+      "digital-video-messaging"
+    ]
+  },
   "collections": {
     "performance-marketing-video-ads": 10,
     "short-form-social-media-videos": 10,

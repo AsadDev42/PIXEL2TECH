@@ -91,6 +91,7 @@ function numberedVideos(
   /** File numbers whose orientation differs from the default. */
   exceptions: Partial<Record<VideoOrientation, number[]>> = {},
 ): PortfolioVideo[] {
+  const localFiles: Record<string, string[]> = videoHost.localFiles;
   const counts: Record<VideoOrientation, number> = { vertical: 0, landscape: 0 };
   return numbers.map((n) => {
     const o: VideoOrientation = exceptions.vertical?.includes(n)
@@ -100,9 +101,11 @@ function numberedVideos(
         : orientation;
     counts[o] += 1;
     return {
-      src: Object.hasOwn(videoHost.collections, slug)
-        ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
-        : `/portfolio/${slug}/${n}.mp4`,
+      src: localFiles[slug]?.[n - 1]
+        ? `/portfolio/${slug}/stream/${localFiles[slug][n - 1]}.mp4`
+        : Object.hasOwn(videoHost.collections, slug)
+          ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
+          : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
       title:
         VIDEO_TITLES[slug]?.[n - 1] ??
