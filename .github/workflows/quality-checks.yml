@@ -1,0 +1,31 @@
+name: quality-checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: oven-sh/setup-bun@v2
+      - name: Install site dependencies
+        run: bun install --frozen-lockfile
+      - name: Install deployment dependencies used by the server
+        run: npm ci
+        working-directory: deploy/prisma
+      - name: Type check, lint, and run booking tests
+        run: npm run check
