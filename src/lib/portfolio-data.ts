@@ -27,6 +27,8 @@ export type VideoOrientation = "vertical" | "landscape";
 export type PortfolioVideo = {
   src: string;
   poster: string;
+  /** Small silent loop for cards; never use the full playback source as a preview. */
+  preview?: string;
   /** Neutral label such as "Talking-head video 3". Never an invented topic. */
   title: string;
   orientation: VideoOrientation;
@@ -107,6 +109,7 @@ function numberedVideos(
           ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
           : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
+      preview: `/portfolio/previews/${slug}/${n}.mp4`,
       title:
         VIDEO_TITLES[slug]?.[n - 1] ??
         `${labels[o] ?? labels[orientation] ?? "Portfolio video"} — selected edit`,
@@ -209,6 +212,7 @@ const LONG_FORM_VIDEOS: PortfolioVideo[] = (
 ).map(([id, hasPreview], i) => ({
   src: hasPreview ? `/portfolio/long-form-video-editing/${i + 1}-preview.mp4` : "",
   poster: `/portfolio/long-form-video-editing/${i + 1}.jpg`,
+  preview: hasPreview ? `/portfolio/previews/long-form-video-editing/${i + 1}.mp4` : undefined,
   title: VIDEO_TITLES["long-form-video-editing"][i],
   orientation: "landscape" as const,
   embed: `https://drive.google.com/file/d/${id}/preview`,
