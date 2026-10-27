@@ -741,6 +741,42 @@ for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "youtube-thumbnail-designs": {
+    process: [
+      {
+        title: "Set the topic",
+        body: "Each thumbnail introduces one subject through its headline and main image.",
+      },
+      {
+        title: "Build the focal point",
+        body: "Portraits, objects and cutouts give the composition a clear place to look first.",
+      },
+      {
+        title: "Keep the headline readable",
+        body: "Large type and contrasting colors help the message hold up in a small preview.",
+      },
+      {
+        title: "Present the complete artwork",
+        body: "Landscape images are shown without cropping so the full composition can be reviewed.",
+      },
+    ],
+    technologies: ["Typography", "Photo compositing", "YouTube"],
+    whyItMatters:
+      "A clear thumbnail helps viewers understand the subject before opening a video. This collection shows different ways to combine a headline, an image and a recognizable visual style.",
+    faqs: [
+      {
+        q: "How many designs are in this collection?",
+        a: "This gallery includes 37 YouTube thumbnail designs.",
+      },
+      {
+        q: "Which topics are represented?",
+        a: "The collection includes podcasts, interviews, business, technology, gaming, sport and documentary topics.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Branding & Design", "Video Editing & Ads"],
+  },
+
   "short-form-social-media-videos": {
     process: [
       {
