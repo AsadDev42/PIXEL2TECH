@@ -59,6 +59,8 @@ export type PortfolioItem = {
    * instead of the subcategory mockup (used for large design collections).
    */
   showAllImages?: boolean;
+  /** Preserve landscape artwork in collection galleries. */
+  galleryAspect?: "landscape";
   /** Self-hosted videos, shown as a video wall on the detail page. */
   videos?: PortfolioVideo[];
   /** A live Shopify store: screenshots in browser/phone frames plus a link to it. */
@@ -233,7 +235,7 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
   "Social Media & Ads": ["Social Media"],
-  Design: ["Branding", "Print & Merchandise"],
+  Design: ["Branding", "Thumbnails", "Print & Merchandise"],
   "Ecom Stores": ["Shopify Stores"],
   Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
@@ -344,6 +346,23 @@ const RAW: RawWork = {
   },
 
   Design: {
+    Thumbnails: [
+      {
+        slug: "youtube-thumbnail-designs",
+        title: "YouTube thumbnail designs",
+        img: "/portfolio/youtube-thumbnail-designs/34.webp",
+        images: numbered(
+          "youtube-thumbnail-designs",
+          [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+          ],
+          "webp",
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+    ],
     Branding: [
       {
         slug: "brand-identity-design-collection",
