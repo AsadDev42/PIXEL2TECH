@@ -1,3 +1,4 @@
+import { DesignProjectCard } from "@/components/design-project-card";
 import { MediaImage } from "@/components/media-image";
 import { Suspense, useState } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
@@ -953,7 +954,7 @@ function PortfolioDetailPage() {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-8 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((r) => (
                   <li key={r.slug}>
                     <Link
@@ -961,27 +962,31 @@ function PortfolioDetailPage() {
                       params={{ slug: r.slug }}
                       className="group block overflow-hidden rounded-2xl border border-border bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                      <div className="relative aspect-[4/5]">
-                        <MediaImage
-                          src={r.img}
-                          srcSet={imageSrcSet(r.img)}
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          alt={`${r.title} — portfolio project preview`}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-                          <p className="text-[11px] uppercase tracking-widest text-white/80">
-                            {r.subcategory}
-                          </p>
-                          <h3 className="mt-1 line-clamp-2 text-base font-semibold">{r.title}</h3>
+                      {r.category === "Design" ? (
+                        <DesignProjectCard item={r} />
+                      ) : (
+                        <div className="relative aspect-[4/5]">
+                          <MediaImage
+                            src={r.img}
+                            srcSet={imageSrcSet(r.img)}
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            alt={`${r.title} — portfolio project preview`}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
+                            <p className="text-[11px] uppercase tracking-widest text-white/80">
+                              {r.subcategory}
+                            </p>
+                            <h3 className="mt-1 line-clamp-2 text-base font-semibold">{r.title}</h3>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </Link>
                   </li>
                 ))}
