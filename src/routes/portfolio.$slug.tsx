@@ -677,8 +677,8 @@ function PortfolioDetailPage() {
                 </h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
                   {wallCopy?.intro ? `${wallCopy.intro} ` : ""}
-                  Open a video to load its player with volume, timeline and fullscreen controls,
-                  then use the side arrows to browse the collection.
+                  Short previews play silently. Open a video for volume, timeline and fullscreen
+                  controls, then use the side arrows to browse the collection.
                 </p>
                 <div className="mt-8">
                   <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
