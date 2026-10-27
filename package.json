@@ -9,8 +9,17 @@
     "postbuild": "node scripts/prepare-deploy-media.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p .",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "test": "node --test scripts/verify-booking.mjs",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify:site": "node scripts/verify-site-refresh.mjs",
+    "verify:media": "node scripts/verify-media-metadata.mjs",
+    "media:variants": "node scripts/generate-media-variants.mjs",
+    "media:previews": "python3 scripts/create-video-previews.py",
+    "calendar:connect": "node scripts/connect-google-calendar.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

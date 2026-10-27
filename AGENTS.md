@@ -14,8 +14,10 @@ Tailwind CSS v4, Vite 8, Nitro 3. Hosted on Prisma Compute; data lives in Prisma
 - Dev server: `npm run dev` (http://localhost:5173)
 - Production build: `npm run build` (standalone Node server in `.output/`, run with
   `node .output/server/index.mjs`)
-- Type check: `npx tsc --noEmit -p .`
+- Type check: `npm run typecheck`
 - Lint: `npm run lint`
+- Booking tests: `npm test` (mocked external requests)
+- Combined validation: `npm run check`
 - Format: `npm run format` (Prettier: 100 columns, double quotes, trailing commas)
 
 ## Deployment
@@ -23,6 +25,13 @@ Tailwind CSS v4, Vite 8, Nitro 3. Hosted on Prisma Compute; data lives in Prisma
 A push to `main` triggers `.github/workflows/prisma-deploy.yml`, which builds the site and deploys
 it to Prisma Compute from `deploy/prisma`. Anything merged to `main` goes live, so keep `main`
 building. Do not force-push or rewrite published history. Details are in `DEPLOY.md`.
+
+## Documentation
+
+- `docs/README.md` indexes current operational guides and historical notes.
+- `docs/architecture.md` maps features to source files and explains server boundaries.
+- `scripts/README.md` lists commands, prerequisites and scripts with external side effects.
+- Generated previews and reports are ignored; CI regenerates previews before deployment.
 
 ## Layout
 

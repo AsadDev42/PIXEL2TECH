@@ -1,65 +1,82 @@
-# Pixel2Tech website
+# Pixel2Tech
 
-Source code for [pixel2tech.com](https://pixel2tech.com), the Pixel2Tech agency site.
+Source for [pixel2tech.com](https://pixel2tech.com), the Pixel2Tech agency website.
+GitHub `main` is the production source of truth. Changes pushed to it automatically deploy.
+
+## Start here
+
+- [Documentation index](docs/README.md): architecture, deployment, booking and maintenance.
+- [Project architecture](docs/architecture.md): where each feature and its content belong.
+- [Script catalog](scripts/README.md): development, verification and media commands.
+- [Repository review](docs/repository-review.md): checks performed and remaining limitations.
+- [Agent conventions](AGENTS.md): implementation rules for coding assistants.
 
 ## Stack
 
-- [TanStack Start](https://tanstack.com/start) with file-based routes in `src/routes`
-- React 19, Tailwind CSS v4, Vite 8
-- [Nitro](https://nitro.build) builds the server; the default target is a standalone Node server
-- Hosting: [Prisma Compute](https://www.prisma.io)
-- Database: Prisma Postgres via Prisma ORM
+TanStack Start, React 19, TypeScript, Tailwind CSS v4, Vite 8 and Nitro.
+Prisma Compute hosts the Node server; Prisma Postgres stores application data.
 
-## Requirements
+## Local setup
 
-- Node.js 22 or newer
-- [Bun](https://bun.sh) for installing dependencies (`bun.lock` is the lockfile). npm works for running scripts.
-
-## Local development
+Use Node.js 24 (matching CI) and Bun. The root uses `bun.lock`; the isolated
+`deploy/prisma` package uses its own `package-lock.json`.
 
 ```sh
-git clone https://github.com/AsadDev42/PIXEL2TECH.git
-cd PIXEL2TECH
 bun install
+npm ci --prefix deploy/prisma
 npm run dev
 ```
 
-The dev server runs on http://localhost:5173 (Vite picks the next free port if 5173 is taken).
+Open http://localhost:5173. Vite selects another port if it is occupied.
+Copy `.env.example` to `.env.local` for optional email, booking and database integration.
+See [booking configuration](docs/google-calendar-booking.md) before enabling Calendar calls.
+Private settings stay in server code and local environment files.
 
-Server-side environment variables go in `.env` or `.env.local` in the repo root. They are loaded into
-`process.env` for server routes and server functions only. Variables prefixed with `VITE_` are also
-exposed to the browser as `import.meta.env.VITE_*`, so never put secrets in a `VITE_` variable.
-See [DEPLOY.md](./DEPLOY.md) for the variables production needs.
+## Daily commands
 
-## Scripts
+| Command                | Purpose                                                       |
+| ---------------------- | ------------------------------------------------------------- |
+| `npm run dev`          | Develop with hot reload                                       |
+| `npm run check`        | Type check, lint, and run booking tests                       |
+| `npm run build`        | Build the production Node server and prepare deployment media |
+| `npm run preview`      | Preview the production build                                  |
+| `npm run format`       | Format maintained project files                               |
+| `npm run format:check` | Check formatting without modifying files                      |
 
-| Command             | What it does                                          |
-| ------------------- | ----------------------------------------------------- |
-| `npm run dev`       | Start the Vite dev server with hot reload             |
-| `npm run build`     | Production build into `.output/`                      |
-| `npm run build:dev` | Build in development mode (readable names, dev React) |
-| `npm run preview`   | Preview the production build                          |
-| `npm run lint`      | Run ESLint                                            |
-| `npm run format`    | Format the code base with Prettier                    |
+The [script catalog](scripts/README.md) covers individual checks, HTTP verification,
+media generation, prerequisites and commands that contact external services.
 
-## Build output
+## Repository layout
 
-`npm run build` produces a self-contained Node server:
+| Path                 | Responsibility                                                               |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `src/routes/`        | File-based pages, HTTP endpoints, metadata and loaders                       |
+| `src/components/`    | Site features and shared presentation; `ui/` holds primitives                |
+| `src/lib/`           | Business facts, content registries, validation, server functions and helpers |
+| `src/content/`       | Structured store and automation project content                              |
+| `src/assets/`        | Asset metadata and imported build assets                                     |
+| `src/server/`        | Server integrations and database access                                      |
+| `src/nitro/`         | Production response compression and video range support                      |
+| `public/`            | Public media and files served without bundling                               |
+| `scripts/`           | Maintained tooling and verification entry points                             |
+| `deploy/prisma/`     | Isolated deployment package, database contract and migrations                |
+| `docs/`              | Architecture, operations, review and historical project notes                |
+| `.github/workflows/` | Quality checks and production deployment                                     |
+
+Keep public media URLs stable. Do not move the generated route tree, database migrations,
+or asset metadata merely to change folder appearance.
+
+## Production
 
 ```sh
 npm run build
 node .output/server/index.mjs
 ```
 
-The server listens on `PORT` (default 3000). To build for a different Nitro target, set
-`NITRO_PRESET`, for example `NITRO_PRESET=vercel npm run build`.
+The server reads `PORT` (default 3000). CI generates the separate silent video previews
+before building, then deploys `.output/` through the existing Prisma workflow.
+Quality checks run for pull requests and pushes to `main`.
 
-## Deployment
-
-Every push to `main` runs the GitHub Actions workflow in
-[`.github/workflows/prisma-deploy.yml`](./.github/workflows/prisma-deploy.yml). It installs
-dependencies, runs `npm run build`, and deploys `.output/` to Prisma Compute using the config in
-[`deploy/prisma`](./deploy/prisma).
-
-Setup steps, secrets, the database, and the domain (pixel2tech.com on Cloudflare DNS) are covered in
-[DEPLOY.md](./DEPLOY.md).
+[DEPLOY.md](DEPLOY.md) remains the authoritative production setup and recovery guide.
+Build output, local reports, generated video previews and personal environment files
+are not source files to upload manually.
