@@ -235,7 +235,7 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
   "Social Media & Ads": ["Social Media"],
-  Design: ["Branding", "Thumbnails", "Print & Merchandise"],
+  Design: ["Branding", "Thumbnails", "Logo & Menu Design", "Print & Merchandise"],
   "Ecom Stores": ["Shopify Stores"],
   Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
@@ -346,6 +346,19 @@ const RAW: RawWork = {
   },
 
   Design: {
+    "Logo & Menu Design": [
+      {
+        slug: "sweet-temptation-logo-menu-design",
+        title: "Sweet Temptation - logo, menus and launch creatives",
+        client: "Sweet Temptation",
+        img: "/portfolio/sweet-temptation-logo-menu-design/logo.webp",
+        images: ["logo", "menu-1", "menu-2", "menu-3"].map(
+          (name) => `/portfolio/sweet-temptation-logo-menu-design/${name}.webp`,
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+    ],
     Thumbnails: [
       {
         slug: "youtube-thumbnail-designs-2",
@@ -367,7 +380,7 @@ const RAW: RawWork = {
           "youtube-thumbnail-designs",
           [
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 36, 37,
           ],
           "webp",
         ),

@@ -59,6 +59,32 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "sweet-temptation-logo-menu-design": {
+    metaTitle: "Sweet Temptation branding and drinks launch design | Pixel2Tech",
+    metaDescription:
+      "Logo, menu design, ads and social posts for UK client Sweet Temptation, including creative work for newly launched drinks.",
+    summary: "Logo, menus and drinks launch creatives for UK client Sweet Temptation.",
+    overview:
+      "Logo and menu artwork created for Sweet Temptation in the UK. The pink and blue identity is carried into dark menu layouts for shakes, waffles, brownies, doughnuts and cookie dough. The wider project also included ad creatives and social posts for newly launched drinks.",
+    challenge:
+      "Organize a detailed dessert menu so customers can find product categories, descriptions and prices clearly.",
+    approach:
+      "Pink and blue branding, bold category headings and structured product rows connect the logo with the menu artwork.",
+    outcome:
+      "A coordinated logo and menu project, with ad creatives and social posts supporting the launch of new drinks.",
+    results: [
+      { label: "Client", value: "Sweet Temptation, UK" },
+      { label: "Identity", value: "Pink and blue logo" },
+      { label: "Artwork", value: "Logo, menus and drinks launch creatives" },
+    ],
+    deliverables: [
+      "Logo artwork",
+      "Dessert menu layouts",
+      "Menu typography and price hierarchy",
+      "New-drink launch ad creatives",
+      "Social media post designs",
+    ],
+  },
   "youtube-thumbnail-designs-2": {
     metaTitle: "YouTube thumbnail designs - collection 2 | Pixel2Tech",
     metaDescription:
@@ -88,17 +114,17 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   "youtube-thumbnail-designs": {
     metaTitle: "YouTube thumbnail designs | Pixel2Tech",
     metaDescription:
-      "Explore 37 YouTube thumbnail designs, including podcasts, interviews, business, gaming, technology and documentary layouts.",
+      "Explore 36 YouTube thumbnail designs, including podcasts, interviews, business, gaming, technology and documentary layouts.",
     summary:
       "YouTube thumbnails for podcasts, interviews, business, gaming and documentary content.",
     overview:
-      "A collection of 37 landscape thumbnail designs. Browse bold headline layouts, portrait cutouts, contrasting colors and collage treatments across podcasts, technology, business, gaming and storytelling topics.",
+      "A collection of 36 landscape thumbnail designs. Browse bold headline layouts, portrait cutouts, contrasting colors and collage treatments across podcasts, technology, business, gaming and storytelling topics.",
     challenge:
       "A thumbnail needs to make its topic easy to recognize while keeping the headline and imagery readable at a small size.",
     approach:
       "The designs pair short headlines with a clear focal image, using contrast, color and composition to distinguish each topic.",
     outcome:
-      "A gallery of 37 thumbnail designs, presented in full so every headline and visual detail remains visible.",
+      "A gallery of 36 thumbnail designs, presented in full so every headline and visual detail remains visible.",
     results: [
       {
         label: "In this collection",

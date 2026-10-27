@@ -741,6 +741,42 @@ for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "sweet-temptation-logo-menu-design": {
+    process: [
+      {
+        title: "Logo identity",
+        body: "The logo pairs pink script lettering with blue accents and a dessert motif.",
+      },
+      {
+        title: "Menu structure",
+        body: "Shakes, waffles, brownies, doughnuts and cookie dough are arranged in clearly headed sections.",
+      },
+      {
+        title: "Product and price hierarchy",
+        body: "Contrasting rows separate item names, descriptions and prices across the menu panels.",
+      },
+      {
+        title: "A consistent visual style",
+        body: "Blue menu headings, pink accents and dark backgrounds carry the identity through the menu artwork.",
+      },
+      {
+        title: "Drinks launch creatives",
+        body: "Ad creatives and social media posts supported the introduction of newly launched drinks.",
+      },
+    ],
+    technologies: ["Logo design", "Typography", "Menu layout"],
+    whyItMatters:
+      "A consistent identity helps customers recognize the business, while a clear menu makes a large product range easier to browse.",
+    faqs: [
+      {
+        q: "What work is included in this project?",
+        a: "The project covers logo and menu design, plus ads and social posts for newly launched drinks. The gallery currently shows the logo and three menu layouts.",
+      },
+      { q: "Where is the client based?", a: "Sweet Temptation is a UK client." },
+    ],
+    relatedReading: [POST.identityProcess, POST.brandGuidelines],
+    relatedServices: ["Branding & Design", "Social Media & Email"],
+  },
   "youtube-thumbnail-designs-2": {
     process: [
       {
@@ -801,7 +837,7 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
     faqs: [
       {
         q: "How many designs are in this collection?",
-        a: "This gallery includes 37 YouTube thumbnail designs.",
+        a: "This gallery includes 36 YouTube thumbnail designs.",
       },
       {
         q: "Which topics are represented?",
