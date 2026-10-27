@@ -321,13 +321,18 @@ function BookShowcase({ covers }: { covers: BookCover[] }) {
 }
 
 /**
- * Every image of a large collection in a lazy-loaded grid. Fixed 4:5 cells
- * with object-contain on a neutral background: no layout shift while images
- * load, and portrait (9:16) or square pieces are shown whole, never cropped.
+ * Every image of a large collection in a lazy-loaded grid. Landscape artwork
+ * keeps a wider cell; object-contain shows the whole design without cropping.
  */
 function ImageCollection({ item, images }: { item: PortfolioItem; images: string[] }) {
   return (
-    <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+    <ul
+      className={
+        item.galleryAspect === "landscape"
+          ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          : "grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4"
+      }
+    >
       {images.map((src, i) => (
         <li key={src} className="overflow-hidden rounded-2xl border border-border bg-muted">
           <MediaImage
@@ -336,7 +341,11 @@ function ImageCollection({ item, images }: { item: PortfolioItem; images: string
             loading={i < 4 ? "eager" : "lazy"}
             decoding="async"
             draggable={false}
-            className="aspect-[4/5] h-auto w-full object-contain"
+            className={
+              item.galleryAspect === "landscape"
+                ? "aspect-video h-auto w-full object-contain"
+                : "aspect-[4/5] h-auto w-full object-contain"
+            }
           />
         </li>
       ))}
