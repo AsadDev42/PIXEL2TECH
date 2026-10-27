@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { useState } from "react";
 import { ClosingCta } from "@/components/closing-cta";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -234,7 +235,7 @@ function ServicesHeroArtwork() {
             className="group min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
           >
             <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted">
-              <img
+              <MediaImage
                 src={visual.image}
                 alt={visual.alt}
                 width={800}

@@ -32,6 +32,60 @@ import {
  */
 const POSTS = [
   {
+    slug: "animated-explainer-video-production-process",
+    title: "Animated Explainer Video Production: A Buyer’s Workflow",
+    excerpt:
+      "Plan the brief, script, storyboard and animatic before detailed animation. Know what to approve and which files to request at delivery.",
+    tag: "Video Editing",
+    date: "October 27, 2026",
+    time: "12:03 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/animated-explainer-video-production-process.svg",
+    imgAlt:
+      "Explainer production diagram moving from an approved script to storyboard frames and animation",
+    related: [
+      "saas-product-demo-video-brief",
+      "video-deliverables-aspect-ratio-brief",
+      "video-editing-handover-checklist",
+    ],
+  },
+  {
+    slug: "video-editing-handover-checklist",
+    title: "Video Editing Handover Checklist: Files Your Team Needs",
+    excerpt:
+      "Agree the final exports, caption files, editable archive and usage records your marketing team needs to publish and maintain its videos.",
+    tag: "Video Editing",
+    date: "October 27, 2026",
+    time: "12:02 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/video-editing-handover-checklist.svg",
+    imgAlt:
+      "Video delivery folders organised into approved exports, captions and an editable project archive",
+    related: [
+      "video-deliverables-aspect-ratio-brief",
+      "podcast-to-short-form-video-workflow",
+      "animated-explainer-video-production-process",
+    ],
+  },
+  {
+    slug: "video-deliverables-aspect-ratio-brief",
+    title: "One Video, Multiple Formats: A Deliverables Brief",
+    excerpt:
+      "Specify landscape, vertical and square video versions with a clear plan for framing, captions, graphics, end cards and publication checks.",
+    tag: "Video Editing",
+    date: "October 27, 2026",
+    time: "12:01 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/video-deliverables-aspect-ratio-brief.svg",
+    imgAlt:
+      "Landscape, square and vertical video frames showing different compositions of the same subject",
+    related: [
+      "video-editing-handover-checklist",
+      "saas-product-demo-video-brief",
+      "animated-explainer-video-production-process",
+    ],
+  },
+  {
     slug: "shopify-product-page-redesign-brief",
     title: "Shopify Product Page Redesign: What to Fix First",
     excerpt:
@@ -1803,6 +1857,7 @@ assertValidIndex(POSTS);
 // the headless guide already carries Asad's authored biography.
 export const POST_INDEX: readonly PostMeta[] = POSTS.map((post) => ({
   ...post,
+  imgAlt: "imgAlt" in post ? post.imgAlt : `${post.title} — article cover`,
   author: post.author.startsWith("Pixel2Tech")
     ? post.slug === "headless-shopify-commerce-guide"
       ? "Asad Farooq"

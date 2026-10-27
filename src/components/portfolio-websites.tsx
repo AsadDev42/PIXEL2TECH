@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, LockKeyhole } from "lucide-react";
@@ -120,7 +121,7 @@ export function PortfolioWebsites({
                       <ArrowUpRight aria-hidden="true" className="h-3 w-3 text-muted-foreground" />
                     </div>
                     <div className="aspect-[16/10] overflow-hidden bg-muted">
-                      <img
+                      <MediaImage
                         src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
                         alt={`${project.client} ${stores ? "store" : "website"} desktop preview`}
                         loading={index < 2 ? "eager" : "lazy"}

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
@@ -225,11 +226,11 @@ function PortfolioPage() {
                   className="group block overflow-hidden rounded-2xl bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                 >
                   <div className="relative aspect-[4/5]">
-                    <img
+                    <MediaImage
                       src={w.img}
                       srcSet={imageSrcSet(w.img)}
                       sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      alt=""
+                      alt={`${w.title} — portfolio project preview`}
                       loading={i < 3 ? "eager" : "lazy"}
                       decoding="async"
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-105"

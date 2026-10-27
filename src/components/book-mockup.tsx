@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 /**
  * CSS-only book mockup: a cover image with a spine, page edges and a soft
  * shadow. Pure markup, so it renders identically on the server and client.
@@ -34,7 +35,7 @@ export function BookMockup({
 
         {/* Front cover */}
         <div className="relative h-full w-full overflow-hidden rounded-r-sm border-l border-white/20 shadow-2xl">
-          <img
+          <MediaImage
             src={src}
             alt={alt}
             loading={loading}

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -167,7 +168,7 @@ export function ServiceVisual({
       {visual.illustration ? (
         <ServiceDiagram kind={visual.illustration} />
       ) : (
-        <img
+        <MediaImage
           src={visual.image}
           alt={visual.alt}
           width={960}

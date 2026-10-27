@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Clapperboard, Film, Megaphone } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
@@ -75,7 +76,7 @@ function SaadPage() {
       <section aria-labelledby="saad-title" className="bg-background py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-10 lg:gap-16">
           <div className="mx-auto w-full max-w-sm overflow-hidden rounded-3xl bg-muted md:max-w-none">
-            <img
+            <MediaImage
               src={saad.img}
               alt={`Portrait of ${saad.name}, ${saad.role} at Pixel2Tech`}
               width={800}

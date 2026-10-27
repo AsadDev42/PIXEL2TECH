@@ -1,3 +1,4 @@
+import { VIDEO_TITLES } from "@/lib/video-titles";
 import { nayyerAssets } from "@/assets/jacques-assets";
 import type { LiveStore } from "@/components/store-showcase";
 import {
@@ -103,7 +104,9 @@ function numberedVideos(
         ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
         : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
-      title: `${labels[o] ?? labels[orientation] ?? "Video"} ${counts[o]}`,
+      title:
+        VIDEO_TITLES[slug]?.[n - 1] ??
+        `${labels[o] ?? labels[orientation] ?? "Portfolio video"} — selected edit`,
       orientation: o,
     };
   });
@@ -203,7 +206,7 @@ const LONG_FORM_VIDEOS: PortfolioVideo[] = (
 ).map(([id, hasPreview], i) => ({
   src: hasPreview ? `/portfolio/long-form-video-editing/${i + 1}-preview.mp4` : "",
   poster: `/portfolio/long-form-video-editing/${i + 1}.jpg`,
-  title: `Long-form video ${i + 1}`,
+  title: VIDEO_TITLES["long-form-video-editing"][i],
   orientation: "landscape" as const,
   embed: `https://drive.google.com/file/d/${id}/preview`,
 }));

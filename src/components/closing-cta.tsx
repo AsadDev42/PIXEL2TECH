@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Star, TrendingUp } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
@@ -73,7 +74,7 @@ export function ClosingCta({
           <ul className="flex -space-x-3" aria-label="The Pixel2Tech team">
             {TEAM.map((m) => (
               <li key={m.name}>
-                <img
+                <MediaImage
                   src={m.img}
                   alt={m.name}
                   title={`${m.name}, ${m.role}`}

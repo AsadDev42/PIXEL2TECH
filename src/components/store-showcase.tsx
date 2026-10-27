@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { ArrowUpRight } from "lucide-react";
 
 export type LiveStore = {
@@ -62,7 +63,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
     <div className="space-y-12 md:space-y-16">
       {hero && (
         <BrowserFrame host={host} label={`${name} ${site} homepage on desktop`}>
-          <img
+          <MediaImage
             src={hero}
             alt={`${name} ${site} homepage on desktop`}
             width={1440}
@@ -90,7 +91,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
                   aria-label={`${name} full homepage, scrollable`}
                   className="max-h-[560px] overflow-y-auto overscroll-contain focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <img
+                  <MediaImage
                     src={store.fullPage}
                     alt={`${name} full homepage on desktop`}
                     loading="lazy"
@@ -116,7 +117,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
               {store.mobile.map((src, i) => (
                 <li key={src}>
                   <div className="overflow-hidden rounded-[2rem] border-[6px] border-foreground/90 bg-foreground/90 shadow-xl shadow-black/10">
-                    <img
+                    <MediaImage
                       src={src}
                       alt={`${name} ${site} on mobile, screen ${i + 1}`}
                       loading="lazy"
@@ -137,7 +138,7 @@ export function StoreShowcase({ store, name }: { store: LiveStore; name: string 
           {restDesktop.map((src, i) => (
             <li key={src}>
               <BrowserFrame host={host} label={`${name} ${site} page ${i + 2}`}>
-                <img
+                <MediaImage
                   src={src}
                   alt={`${name} ${site}, page ${i + 2} on desktop`}
                   width={1440}

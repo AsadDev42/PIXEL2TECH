@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
@@ -62,7 +63,7 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
                         key={src}
                         className={`min-h-0 overflow-hidden rounded-xl border border-border/60 bg-background/60 ${previewIndex === 0 ? "row-span-2" : ""}`}
                       >
-                        <img
+                        <MediaImage
                           src={src}
                           srcSet={imageSrcSet(src)}
                           sizes={

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import {
@@ -114,7 +115,7 @@ export function PersonProfile({ person }: { person: PersonProfileData }) {
             </div>
 
             <div className="mx-auto w-full max-w-sm overflow-hidden rounded-3xl border border-border bg-muted md:mr-0">
-              <img
+              <MediaImage
                 src={person.portrait.src}
                 alt={person.portrait.alt}
                 width={person.portrait.width}

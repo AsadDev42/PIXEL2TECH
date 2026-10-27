@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
@@ -81,7 +82,7 @@ export function BusinessLanding({
                       className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <div className="aspect-[4/3] bg-muted p-4">
-                        <img
+                        <MediaImage
                           src={project.store?.desktop[0] ?? project.img}
                           alt={`${project.client ?? project.title} project preview`}
                           loading="lazy"

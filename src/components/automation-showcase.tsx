@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import type { AutomationShowcaseData } from "@/lib/automation-projects";
 import { VideoWall } from "@/components/video-wall";
 
@@ -13,7 +14,7 @@ export function AutomationShowcase({ data, name }: { data: AutomationShowcaseDat
           <li key={shot.src}>
             <figure>
               <div className="overflow-hidden rounded-2xl border border-border bg-muted shadow-xl shadow-black/5">
-                <img
+                <MediaImage
                   src={shot.src}
                   alt={`${name}: ${shot.caption}`}
                   loading={i === 0 ? "eager" : "lazy"}

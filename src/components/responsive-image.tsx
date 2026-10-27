@@ -1,8 +1,9 @@
+import { MediaImage } from "@/components/media-image";
 import { getFallbackSrc, getImageSources } from "@/lib/blog-images";
 
 type ResponsiveImageProps = {
   src: string;
-  /** Use "" when the image sits next to text that already says what it shows. */
+  /** Describe the article cover or illustration using its visible subject. */
   alt: string;
   /** CSS `sizes` — tells the browser how wide the image renders so it can pick the right file. */
   sizes: string;
@@ -33,7 +34,7 @@ export function ResponsiveImage({
     <picture>
       {avif ? <source type="image/avif" srcSet={avif} sizes={sizes} /> : null}
       {webp ? <source type="image/webp" srcSet={webp} sizes={sizes} /> : null}
-      <img
+      <MediaImage
         src={getFallbackSrc(src)}
         srcSet={srcSet}
         alt={alt}

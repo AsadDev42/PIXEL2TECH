@@ -46,18 +46,20 @@ const seoCard = { url: "/images/services/seo-search-growth-v2.webp" };
 import workSocialPoster from "@/assets/opt-work-social-new-poster.webp.asset.json";
 
 export type HeroMedia =
-  | { kind: "video"; src: string; poster: string }
-  | { kind: "image"; src: string; srcSet: string };
+  | { kind: "video"; src: string; poster: string; alt: string }
+  | { kind: "image"; src: string; srcSet: string; alt: string };
 
 type Asset = { url: string };
 
 const srcSet = (small: Asset, large: Asset) => `${small.url} 384w, ${large.url} 576w`;
-const img = (small: Asset, large: Asset): HeroMedia => ({
+const img = (small: Asset, large: Asset, alt: string): HeroMedia => ({
+  alt,
   kind: "image",
   src: small.url,
   srcSet: srcSet(small, large),
 });
-const vid = (clip: Asset, poster: Asset): HeroMedia => ({
+const vid = (clip: Asset, poster: Asset, alt: string): HeroMedia => ({
+  alt,
   kind: "video",
   src: clip.url,
   poster: poster.url,
@@ -68,6 +70,7 @@ const vid = (clip: Asset, poster: Asset): HeroMedia => ({
  * the top tile of the middle desktop column, so one preload covers both.
  */
 export const heroLcpImage = {
+  alt: "Ravo Kafe brand identity and coffee packaging",
   src: heroRavokafe384.url,
   srcSet: srcSet(heroRavokafe384, heroRavokafe576),
 };
@@ -75,19 +78,19 @@ export const heroLcpImage = {
 /** Three vertical hero columns (md and up), each looping independently. */
 export const heroColumns: HeroMedia[][] = [
   [
-    vid(heroSpiral, heroSpiralPoster),
-    vid(heroSticky, heroStickyPoster),
-    img(heroCoffee384, heroCoffee576),
+    vid(heroSpiral, heroSpiralPoster, "Animated brand and motion-design study"),
+    vid(heroSticky, heroStickyPoster, "Graphic design layout animation"),
+    img(heroCoffee384, heroCoffee576, "Coffee brand and packaging design"),
   ],
   [
     { kind: "image", ...heroLcpImage },
-    img(heroLovebites384, heroLovebites576),
-    vid(heroDesk, heroDeskPoster),
+    img(heroLovebites384, heroLovebites576, "Lovebites snack packaging design"),
+    vid(heroDesk, heroDeskPoster, "Creative production workspace"),
   ],
   [
-    img(heroLima384, heroLima576),
-    vid(heroLaptop, heroLaptopPoster),
-    img(heroArmpearl384, heroArmpearl576),
+    img(heroLima384, heroLima576, "Lima beverage packaging and campaign creative"),
+    vid(heroLaptop, heroLaptopPoster, "Website development on a laptop"),
+    img(heroArmpearl384, heroArmpearl576, "Fashion accessory brand campaign creative"),
   ],
 ];
 
@@ -96,13 +99,29 @@ export const heroColumns: HeroMedia[][] = [
  * paint the hero immediately instead of streaming four clips.
  * The first tile is the preloaded LCP bitmap.
  */
-export const heroMobileTiles: { src: string; srcSet?: string }[] = [
+export const heroMobileTiles: { src: string; srcSet?: string; alt: string }[] = [
   heroLcpImage,
-  { src: heroLovebites384.url, srcSet: srcSet(heroLovebites384, heroLovebites576) },
-  { src: heroLima384.url, srcSet: srcSet(heroLima384, heroLima576) },
-  { src: heroCoffee384.url, srcSet: srcSet(heroCoffee384, heroCoffee576) },
-  { src: heroArmpearl384.url, srcSet: srcSet(heroArmpearl384, heroArmpearl576) },
-  { src: heroSpiralPoster.url },
+  {
+    alt: "Lovebites snack packaging design",
+    src: heroLovebites384.url,
+    srcSet: srcSet(heroLovebites384, heroLovebites576),
+  },
+  {
+    alt: "Lima beverage packaging and campaign creative",
+    src: heroLima384.url,
+    srcSet: srcSet(heroLima384, heroLima576),
+  },
+  {
+    alt: "Coffee brand and packaging design",
+    src: heroCoffee384.url,
+    srcSet: srcSet(heroCoffee384, heroCoffee576),
+  },
+  {
+    alt: "Fashion accessory brand campaign creative",
+    src: heroArmpearl384.url,
+    srcSet: srcSet(heroArmpearl384, heroArmpearl576),
+  },
+  { alt: "Animated brand and motion-design preview", src: heroSpiralPoster.url },
 ];
 
 export type ServiceName = (typeof SERVICES)[number];

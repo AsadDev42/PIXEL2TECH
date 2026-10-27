@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Layers, Sparkles, Target, TrendingUp } from "lucide-react";
 import { TEAM } from "@/lib/team";
@@ -61,7 +62,7 @@ export function AboutWhySection() {
                 to={person.profile!}
                 className="group relative isolate block aspect-[4/5] min-h-64 overflow-hidden rounded-[2rem] bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 lg:aspect-auto"
               >
-                <img
+                <MediaImage
                   src={person.img}
                   alt={person.name}
                   width={600}

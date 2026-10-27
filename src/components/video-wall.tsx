@@ -1,95 +1,54 @@
-import { memo, useCallback, useEffect, useId, useRef, useState } from "react";
-import { Play, Volume2, VolumeX } from "lucide-react";
+import { MediaImage } from "@/components/media-image";
+import { memo, useEffect, useRef, useState } from "react";
+import { Play, Maximize2 } from "lucide-react";
 import type { PortfolioVideo, VideoOrientation } from "@/lib/portfolio-data";
-import { PROTECTED_VIDEO_PROPS, claimVideoSound, onVideoSoundClaimed } from "@/lib/video-sound";
+import { PROTECTED_VIDEO_PROPS } from "@/lib/video-sound";
+import { PortfolioVideoPlayer } from "@/components/portfolio-video-player";
 
 const GRID: Record<VideoOrientation, string> = {
   vertical: "grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
   landscape: "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3",
 };
+const ASPECT = { vertical: "aspect-[9/16]", landscape: "aspect-video" };
 
-const ASPECT: Record<VideoOrientation, string> = {
-  vertical: "aspect-[9/16]",
-  landscape: "aspect-video",
-};
-
-const GROUP_LABEL: Record<VideoOrientation, string> = {
-  vertical: "Vertical videos (9:16)",
-  landscape: "Landscape videos (16:9)",
-};
-
-/**
- * Grid of a project's videos. Every card plays a muted, looping preview while
- * it is on screen; clicking a card restarts it from the beginning with sound,
- * and clicking again returns it to the muted preview. Only one video on the
- * page plays with sound at a time. With reduced motion there are no previews:
- * the poster stays until the visitor presses play.
- */
+/** Muted previews open a full, controlled player without leaving the collection. */
 export function VideoWall({
   videos,
   label,
   layout = "grid",
+  playlist = videos,
 }: {
   videos: PortfolioVideo[];
   label: string;
   layout?: "grid" | "slider";
+  playlist?: PortfolioVideo[];
 }) {
-  const wallId = useId();
-  const [soundIndex, setSoundIndex] = useState<number | null>(null);
-  // Off until mounted, so the server render and reduced-motion visitors get no previews.
+  const [active, setActive] = useState<number | null>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const [motionOK, setMotionOK] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
-
   useEffect(() => {
-    const mq =
-      typeof window.matchMedia === "function"
-        ? window.matchMedia("(prefers-reduced-motion: reduce)")
-        : null;
-    const updateMotion = () => setMotionOK(!mq?.matches);
-    const updateVisibility = () => setPageVisible(!document.hidden);
-    updateMotion();
-    updateVisibility();
-    mq?.addEventListener?.("change", updateMotion);
-    document.addEventListener("visibilitychange", updateVisibility);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setMotionOK(!motion.matches);
+    const visibility = () => setPageVisible(!document.hidden);
+    update();
+    visibility();
+    motion.addEventListener("change", update);
+    document.addEventListener("visibilitychange", visibility);
     return () => {
-      mq?.removeEventListener?.("change", updateMotion);
-      document.removeEventListener("visibilitychange", updateVisibility);
+      motion.removeEventListener("change", update);
+      document.removeEventListener("visibilitychange", visibility);
     };
   }, []);
-
-  // Another player on the page took the sound: go back to previews.
-  useEffect(
-    () =>
-      onVideoSoundClaimed((owner) => {
-        if (!owner.startsWith(`${wallId}:`)) setSoundIndex(null);
-      }),
-    [wallId],
-  );
-
-  const claim = useCallback(
-    (index: number) => {
-      claimVideoSound(`${wallId}:${index}`);
-      setSoundIndex(index);
-    },
-    [wallId],
-  );
-  const release = useCallback((index: number) => {
-    setSoundIndex((current) => (current === index ? null : current));
-  }, []);
-
-  if (videos.length === 0) return null;
-
-  // One grid per orientation, in the order they first appear.
-  const orientations = [...new Set(videos.map((v) => v.orientation))];
-  const mixed = orientations.length > 1;
-
+  if (!videos.length) return null;
+  const orientations = [...new Set(videos.map((video) => video.orientation))];
   return (
     <div role="group" aria-label={label} className="space-y-10">
       {orientations.map((orientation) => (
         <div key={orientation}>
-          {mixed && (
+          {orientations.length > 1 && (
             <h3 className="mb-4 text-sm font-semibold text-muted-foreground">
-              {GROUP_LABEL[orientation]}
+              {orientation === "vertical" ? "Vertical videos (9:16)" : "Landscape videos (16:9)"}
             </h3>
           )}
           <ul
@@ -99,7 +58,7 @@ export function VideoWall({
                 : GRID[orientation]
             }
           >
-            {videos.map((video, index) =>
+            {videos.map((video) =>
               video.orientation === orientation ? (
                 <li
                   key={video.poster}
@@ -111,13 +70,12 @@ export function VideoWall({
                 >
                   <VideoCard
                     video={video}
-                    index={index}
-                    withSound={soundIndex === index}
-                    motionOK={motionOK}
-                    pageVisible={pageVisible}
-                    onClaim={claim}
-                    onRelease={release}
+                    running={motionOK && pageVisible && active === null}
                     showCaption={layout !== "slider"}
+                    onOpen={(button) => {
+                      trigger.current = button;
+                      setActive(playlist.findIndex((item) => item.poster === video.poster));
+                    }}
                   />
                 </li>
               ) : null,
@@ -125,201 +83,97 @@ export function VideoWall({
           </ul>
         </div>
       ))}
+      <PortfolioVideoPlayer
+        videos={playlist}
+        index={active}
+        onSelect={setActive}
+        onClose={() => setActive(null)}
+        returnFocus={trigger}
+      />
     </div>
   );
 }
 
-type CardProps = {
-  video: PortfolioVideo;
-  index: number;
-  withSound: boolean;
-  motionOK: boolean;
-  pageVisible: boolean;
-  onClaim: (index: number) => void;
-  onRelease: (index: number) => void;
-  showCaption?: boolean;
-};
-
 const VideoCard = memo(function VideoCard({
   video,
-  index,
-  withSound,
-  motionOK,
-  pageVisible,
-  onClaim,
-  onRelease,
-  showCaption = true,
-}: CardProps) {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  // Within ~400px of the viewport: start fetching metadata. Stays true once set.
+  running,
+  onOpen,
+  showCaption,
+}: {
+  video: PortfolioVideo;
+  running: boolean;
+  onOpen: (button: HTMLButtonElement) => void;
+  showCaption: boolean;
+}) {
+  const button = useRef<HTMLButtonElement>(null);
+  const preview = useRef<HTMLVideoElement>(null);
   const [near, setNear] = useState(false);
-  // At least 20% visible: run the muted preview.
-  const [inView, setInView] = useState(false);
-  // Any part visible: keep the sound playing.
-  const [onScreen, setOnScreen] = useState(false);
-  const playerOpen = Boolean(video.embed && withSound);
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const el = buttonRef.current;
-    if (!el) return;
+    const element = button.current;
+    if (!element) return;
     if (typeof IntersectionObserver === "undefined") {
       setNear(true);
-      setInView(true);
-      setOnScreen(true);
+      setVisible(true);
       return;
     }
-    const nearObserver = new IntersectionObserver(
+    const nearby = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
+        if (entries.some((entry) => entry.isIntersecting)) {
           setNear(true);
-          nearObserver.disconnect();
+          nearby.disconnect();
         }
       },
       { rootMargin: "400px 0px" },
     );
-    const viewObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[entries.length - 1];
-        if (!entry) return;
-        setOnScreen(entry.isIntersecting);
-        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.2);
-      },
-      { threshold: [0, 0.2, 0.5] },
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(Boolean(entry?.isIntersecting)),
+      { threshold: 0.2 },
     );
-    nearObserver.observe(el);
-    viewObserver.observe(el);
+    nearby.observe(element);
+    observer.observe(element);
     return () => {
-      nearObserver.disconnect();
-      viewObserver.disconnect();
+      nearby.disconnect();
+      observer.disconnect();
     };
-    // The card is swapped for the embedded player and back: observe the new button.
-  }, [playerOpen]);
-
-  // Muted preview: plays while in view, pauses off screen or in a hidden tab.
+  }, []);
   useEffect(() => {
-    const v = videoRef.current;
-    // An embedded player keeps going while the visitor scrolls; only another
-    // video taking the sound closes it.
-    if (withSound && video.embed) return;
-    if (!v) return;
-    if (withSound) {
-      // Scrolled away or switched tabs while listening: back to the preview.
-      if (!onScreen || !pageVisible) onRelease(index);
-      return;
-    }
-    v.muted = true;
-    v.loop = true;
-    if (motionOK && near && inView && pageVisible) {
-      // play() rejects when autoplay is blocked; the poster stays in that case.
-      void v.play().catch(() => undefined);
-    } else if (!v.paused) {
-      v.pause();
-    }
-  }, [withSound, motionOK, near, inView, onScreen, pageVisible, index, onRelease, video.embed]);
-
-  const toggle = () => {
-    if (video.embed) {
-      if (withSound) onRelease(index);
-      else onClaim(index);
-      return;
-    }
-    const v = videoRef.current;
-    if (!v) return;
-    if (withSound) {
-      v.muted = true;
-      v.loop = true;
-      if (!motionOK) v.pause();
-      onRelease(index);
-      return;
-    }
-    // From the start, with sound. play() must run inside the click for iOS.
-    v.loop = false;
-    v.muted = false;
-    try {
-      v.currentTime = 0;
-    } catch {
-      // Not seekable yet; it starts from 0 anyway.
-    }
-    onClaim(index);
-    void v.play().catch(() => {
-      v.muted = true;
-      onRelease(index);
-    });
-  };
-
-  const aspect = ASPECT[video.orientation];
-
-  if (playerOpen) {
-    return (
-      <>
-        <div
-          className={`relative w-full overflow-hidden rounded-2xl border border-border bg-black shadow-sm ring-2 ring-primary ring-offset-2 ring-offset-background ${aspect}`}
-        >
-          <iframe
-            src={video.embed}
-            title={video.title}
-            allow="autoplay; encrypted-media; fullscreen"
-            allowFullScreen
-            sandbox="allow-scripts allow-same-origin allow-presentation"
-            className="absolute inset-0 h-full w-full"
-          />
-          {/* Blocks the provider's pop-out / open-in-new-tab control (top-right) */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-auto absolute right-0 top-0 h-16 w-24 bg-transparent"
-          />
-        </div>
-        <div className="mt-2 flex items-center justify-between gap-2">
-          <p className="text-sm text-muted-foreground">{video.title}</p>
-          <button
-            type="button"
-            onClick={toggle}
-            className="rounded-full text-sm font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            Close player
-          </button>
-        </div>
-      </>
-    );
-  }
-
-  const actionLabel = video.embed ? "Play full video" : "Play with sound";
-
+    const element = preview.current;
+    if (!element) return;
+    if (running && near && visible) void element.play().catch(() => undefined);
+    else element.pause();
+  }, [running, near, visible]);
   return (
     <>
       <button
-        ref={buttonRef}
+        ref={button}
         type="button"
-        onClick={toggle}
-        aria-label={withSound ? `Mute: ${video.title}` : `${actionLabel}: ${video.title}`}
+        onClick={(event) => onOpen(event.currentTarget)}
+        aria-label={`Open video: ${video.title}`}
+        aria-haspopup="dialog"
         data-protect=""
-        className={`group relative block w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${aspect} ${
-          withSound ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""
-        }`}
+        className={`group relative block w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${ASPECT[video.orientation]}`}
       >
-        <img
+        <MediaImage
           src={video.poster}
-          alt=""
+          alt={`${video.title} — preview frame`}
           loading="lazy"
           decoding="async"
           draggable={false}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
-        {video.src && (
+        {video.src && near && (
           <video
-            ref={videoRef}
+            title={video.title}
+            ref={preview}
             src={video.src}
-            poster={near ? video.poster : undefined}
+            poster={video.poster}
             muted
             loop
             playsInline
-            preload={near ? "metadata" : "none"}
+            preload="metadata"
             aria-hidden="true"
             tabIndex={-1}
-            onEnded={() => {
-              if (withSound) onRelease(index);
-            }}
             {...PROTECTED_VIDEO_PROPS}
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
           />
@@ -328,30 +182,17 @@ const VideoCard = memo(function VideoCard({
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/60 to-transparent"
         />
-        {!withSound && (
-          <span
-            aria-hidden="true"
-            className={`pointer-events-none absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-lg transition ${
-              motionOK
-                ? "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
-                : "opacity-100"
-            }`}
-          >
-            <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
-          </span>
-        )}
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute bottom-2 left-2 inline-flex max-w-[calc(100%-1rem)] items-center gap-1 rounded-full px-2 py-1 text-[11px] font-semibold leading-none ${
-            withSound ? "bg-primary text-primary-foreground" : "bg-black/65 text-white"
-          }`}
+          className="pointer-events-none absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-slate-950 shadow-lg transition group-hover:scale-110"
         >
-          {withSound ? (
-            <Volume2 className="h-3.5 w-3.5 shrink-0" />
-          ) : (
-            <VolumeX className="h-3.5 w-3.5 shrink-0" />
-          )}
-          <span className="truncate">{withSound ? "Sound on" : actionLabel}</span>
+          <Play size={20} fill="currentColor" />
+        </span>
+        <span
+          aria-hidden="true"
+          className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/65 px-3 py-1 text-[11px] font-semibold text-white"
+        >
+          <Maximize2 size={12} /> Open player
         </span>
       </button>
       {showCaption && (

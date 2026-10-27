@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Film, Play } from "lucide-react";
@@ -133,6 +134,7 @@ function CollectionSlider({ item, index }: { item: PortfolioItem; index: number 
       <div ref={railRef} id={`${id}-rail`}>
         <VideoWall
           videos={previews}
+          playlist={videos}
           label={`${copy?.title ?? item.title}: selected videos`}
           layout="slider"
         />
@@ -220,9 +222,9 @@ export function PortfolioVideoCollections({ featuredOnly = false }: { featuredOn
                   aria-label={`Watch ${COLLECTION_COPY[slug]?.title ?? item.title}`}
                   className={`relative aspect-[9/16] overflow-hidden rounded-2xl border border-white/15 bg-slate-800 shadow-2xl transition hover:border-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${index === 1 ? "-translate-y-4" : "translate-y-4"}`}
                 >
-                  <img
+                  <MediaImage
                     src={poster}
-                    alt=""
+                    alt={`${COLLECTION_COPY[slug]?.title ?? item.title} — selected video preview`}
                     loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover"

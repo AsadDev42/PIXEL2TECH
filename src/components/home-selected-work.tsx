@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
@@ -80,7 +81,7 @@ export function HomeSelectedWork() {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background transition hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-muted p-4">
-                    <img
+                    <MediaImage
                       src={projectImage(work.slug)}
                       alt={`${project.client ?? project.title} project preview`}
                       loading="lazy"

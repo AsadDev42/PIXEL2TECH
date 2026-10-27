@@ -1,6 +1,8 @@
+import { MediaImage } from "@/components/media-image";
 import { memo, useEffect, useRef, useState } from "react";
 
 type Props = {
+  title: string;
   src: string;
   /** Classes for the wrapper box; the poster and the clip fill it (object-cover). */
   className?: string;
@@ -48,7 +50,7 @@ function afterPageLoad(cb: () => void): () => void {
  * prefers reduced motion or is on Data Saver / a 2G-3G connection: the poster
  * stays instead. Off-screen, hidden-tab and paused clips stop decoding.
  */
-function AutoVideoImpl({ src, className = "", poster, paused = false }: Props) {
+function AutoVideoImpl({ title, src, className = "", poster, paused = false }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   // The <video> element (and its download) only exists once playback is wanted.
@@ -109,9 +111,9 @@ function AutoVideoImpl({ src, className = "", poster, paused = false }: Props) {
   return (
     <div ref={wrapperRef} className={`relative overflow-hidden ${className}`}>
       {poster ? (
-        <img
+        <MediaImage
           src={poster}
-          alt=""
+          alt={`${title} — preview frame`}
           loading="lazy"
           decoding="async"
           draggable={false}
@@ -120,6 +122,8 @@ function AutoVideoImpl({ src, className = "", poster, paused = false }: Props) {
       ) : null}
       {attached ? (
         <video
+          title={title}
+          aria-label={title}
           ref={videoRef}
           src={src}
           poster={poster}

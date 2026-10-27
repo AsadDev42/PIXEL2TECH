@@ -74,7 +74,7 @@ function VideoCard({
       <div className="relative aspect-[9/16] bg-muted">
         <ResponsiveImage
           src={item.poster}
-          alt=""
+          alt={`${item.name} — client video testimonial`}
           sizes={CARD_SIZES}
           width={720}
           height={1280}
@@ -82,6 +82,7 @@ function VideoCard({
         />
         {started ? (
           <video
+            title={`${item.name} — client video testimonial`}
             ref={ref}
             src={item.video}
             poster={item.poster}
@@ -132,7 +133,7 @@ function VideoCard({
       <figcaption className="flex items-center gap-3 p-5 sm:p-6">
         <ResponsiveImage
           src={item.poster}
-          alt=""
+          alt={`${item.name} — client video testimonial`}
           sizes="40px"
           width={40}
           height={40}

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { ClosingCta } from "@/components/closing-cta";
 import { Fragment } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -190,7 +191,7 @@ function AboutPage() {
                     className={`${photo.aspect} overflow-hidden rounded-2xl bg-muted sm:rounded-3xl`}
                   >
                     {/* Above the fold on desktop: load right away instead of lazily. */}
-                    <img
+                    <MediaImage
                       loading="eager"
                       decoding="async"
                       fetchPriority={c === 0 && p === 0 ? "high" : "auto"}
@@ -212,7 +213,7 @@ function AboutPage() {
       <section aria-labelledby="about-story-title" className="bg-muted py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-2 md:items-center md:gap-12 md:px-10 lg:gap-16">
           <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-background sm:rounded-3xl">
-            <img
+            <MediaImage
               loading="lazy"
               decoding="async"
               src={officeImg.url}

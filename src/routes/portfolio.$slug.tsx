@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Suspense, useState } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import {
@@ -329,7 +330,7 @@ function ImageCollection({ item, images }: { item: PortfolioItem; images: string
     <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
       {images.map((src, i) => (
         <li key={src} className="overflow-hidden rounded-2xl border border-border bg-muted">
-          <img
+          <MediaImage
             src={src}
             alt={`${item.title}, design ${i + 1} of ${images.length}`}
             loading={i < 4 ? "eager" : "lazy"}
@@ -365,7 +366,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
             className="mx-auto w-full max-w-[260px] rounded-[2.25rem] border-[10px] border-neutral-900 bg-neutral-900 shadow-xl dark:border-neutral-800"
           >
             <div className="overflow-hidden rounded-[1.5rem] bg-muted">
-              <img
+              <MediaImage
                 src={src}
                 srcSet={imageSrcSet(src)}
                 sizes="260px"
@@ -399,7 +400,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
               <span className="h-2 w-2 rounded-full bg-green-400/70" />
               <span className="ml-3 h-4 w-40 max-w-[50%] rounded-full bg-background/70" />
             </div>
-            <img
+            <MediaImage
               src={src}
               srcSet={imageSrcSet(src)}
               sizes="(min-width: 1152px) 1072px, 100vw"
@@ -441,7 +442,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
               key={src + i}
               className="overflow-hidden rounded-2xl border border-border bg-muted"
             >
-              <img
+              <MediaImage
                 src={src}
                 srcSet={imageSrcSet(src)}
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -463,7 +464,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
     return (
       <div className="space-y-5">
         <div className="overflow-hidden rounded-2xl border border-border bg-muted">
-          <img
+          <MediaImage
             src={all[0]}
             srcSet={imageSrcSet(all[0]!)}
             sizes="(min-width: 1152px) 1072px, 100vw"
@@ -512,7 +513,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
               key={src + i}
               className="overflow-hidden rounded-2xl border border-border bg-muted"
             >
-              <img
+              <MediaImage
                 src={src}
                 srcSet={imageSrcSet(src)}
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -546,7 +547,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {all.slice(0, 6).map((src, i) => (
         <div key={src + i} className="overflow-hidden rounded-2xl border border-border bg-muted">
-          <img
+          <MediaImage
             src={src}
             srcSet={imageSrcSet(src)}
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -676,9 +677,8 @@ function PortfolioDetailPage() {
                 </h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
                   {wallCopy?.intro ? `${wallCopy.intro} ` : ""}
-                  {wallVideos.some((v) => v.embed)
-                    ? "Previews play muted. Tap a video to open the full player."
-                    : "Previews play muted. Tap a video to watch it from the start with sound, and tap again to mute it."}
+                  Previews play muted. Open any video for volume, timeline and fullscreen controls,
+                  then use the side arrows to browse the collection.
                 </p>
                 <div className="mt-8">
                   <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
@@ -723,7 +723,7 @@ function PortfolioDetailPage() {
                       key={src}
                       className="overflow-hidden rounded-2xl border border-border bg-muted shadow-sm"
                     >
-                      <img
+                      <MediaImage
                         src={src}
                         alt={`Nayyer Carpets carpet mockup ${i + 1}`}
                         className="aspect-square w-full object-cover"
@@ -742,7 +742,7 @@ function PortfolioDetailPage() {
                 <h2 className={`mt-2 ${h2Class}`}>Short-form video creatives</h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
                   Vertical videos made for organic social and paid campaigns. The preview plays
-                  muted; tap the video to watch it from the start with sound.
+                  muted; open a video for the full player and next/previous navigation.
                 </p>
                 <div className="mt-8">
                   <VideoSpotlight
@@ -953,11 +953,11 @@ function PortfolioDetailPage() {
                       className="group block overflow-hidden rounded-2xl border border-border bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       <div className="relative aspect-[4/5]">
-                        <img
+                        <MediaImage
                           src={r.img}
                           srcSet={imageSrcSet(r.img)}
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          alt=""
+                          alt={`${r.title} — portfolio project preview`}
                           loading="lazy"
                           decoding="async"
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"

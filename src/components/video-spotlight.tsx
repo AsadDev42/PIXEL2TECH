@@ -1,12 +1,8 @@
-import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { Play, Volume2, VolumeX } from "lucide-react";
+import { PortfolioVideoPlayer } from "@/components/portfolio-video-player";
 import { CarouselControls, CarouselShell, loopOffset } from "@/components/coverflow-3d";
-import {
-  PROTECTED_VIDEO_PROPS,
-  claimVideoSound,
-  onVideoSoundClaimed,
-  prefersReducedMotion,
-} from "@/lib/video-sound";
+import { PROTECTED_VIDEO_PROPS, prefersReducedMotion } from "@/lib/video-sound";
 
 export type SpotlightVideo = {
   src: string;
@@ -32,8 +28,7 @@ const stageStyle = {
  * the slideshow pauses on hover, focus, touch, sound playback or when off-screen.
  *
  * The active slide runs a muted, looping preview while the carousel is on
- * screen. Its button restarts it from the beginning with sound; pressing it
- * again returns to the muted preview. Only one video on the page has sound.
+ * screen. Its button opens the full player; previews pause while the player is open.
  */
 export function VideoSpotlight({
   videos,
@@ -43,7 +38,6 @@ export function VideoSpotlight({
   label?: string;
 }) {
   const count = videos.length;
-  const ownerId = useId();
   const [index, setIndex] = useState(0);
   /** The video playing from the start with sound, if any. */
   const [soundSrc, setSoundSrc] = useState<string | null>(null);
@@ -54,6 +48,7 @@ export function VideoSpotlight({
   const [held, setHeld] = useState(false);
   const [inView, setInView] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
+  const opener = useRef<HTMLButtonElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef(new Map<string, HTMLVideoElement>());
 
@@ -79,29 +74,15 @@ export function VideoSpotlight({
     };
   }, []);
 
-  // Another player on the page took the sound: back to the muted preview.
-  useEffect(
-    () =>
-      onVideoSoundClaimed((owner) => {
-        if (owner !== ownerId) setSoundSrc(null);
-      }),
-    [ownerId],
-  );
-
   const activeSrc = videos[index]?.src;
 
   // The active slide runs a muted, looping preview while the carousel is on
-  // screen; every other slide is paused. A video playing with sound is left alone.
+  // screen; every other slide is paused. Opening the modal pauses all previews.
   useEffect(() => {
-    if (soundSrc && (soundSrc !== activeSrc || !inView || !pageVisible)) {
-      setSoundSrc(null);
-      return;
-    }
     videoRefs.current.forEach((v, src) => {
-      if (src === soundSrc) return;
       v.muted = true;
       v.loop = true;
-      if (src === activeSrc && motionOK && inView && pageVisible) {
+      if (!soundSrc && src === activeSrc && motionOK && inView && pageVisible) {
         void v.play().catch(() => undefined);
       } else if (!v.paused) {
         v.pause();
@@ -131,32 +112,9 @@ export function VideoSpotlight({
     select(index + dir);
   };
 
-  const toggleSound = (src: string) => {
-    const v = videoRefs.current.get(src);
-    if (!v) return;
-    if (soundSrc === src) {
-      // Back to the muted preview (or the still frame with reduced motion).
-      v.muted = true;
-      v.loop = true;
-      if (!motionOK) v.pause();
-      setSoundSrc(null);
-      return;
-    }
-    // From the start, with sound. play() must run inside the click for iOS.
+  const openPlayer = (src: string) => {
     setAutoplay(false);
-    claimVideoSound(ownerId);
-    v.loop = false;
-    v.muted = false;
-    try {
-      v.currentTime = 0;
-    } catch {
-      // Not seekable yet; it starts from 0 anyway.
-    }
     setSoundSrc(src);
-    void v.play().catch(() => {
-      v.muted = true;
-      setSoundSrc(null);
-    });
   };
 
   const active = videos[index]!;
@@ -206,6 +164,7 @@ export function VideoSpotlight({
                   }`}
                 >
                   <video
+                    title={video.title}
                     ref={(el) => {
                       if (el) videoRefs.current.set(video.src, el);
                       else videoRefs.current.delete(video.src);
@@ -227,10 +186,11 @@ export function VideoSpotlight({
                   {isActive && (
                     <button
                       type="button"
-                      onClick={() => toggleSound(video.src)}
-                      aria-label={
-                        withSound ? `Mute: ${video.title}` : `Play with sound: ${video.title}`
-                      }
+                      onClick={(event) => {
+                        opener.current = event.currentTarget;
+                        openPlayer(video.src);
+                      }}
+                      aria-label={`Open video: ${video.title}`}
                       className="group absolute inset-0 flex items-center justify-center focus-visible:outline-none"
                     >
                       <span
@@ -258,7 +218,7 @@ export function VideoSpotlight({
                         ) : (
                           <VolumeX className="h-3.5 w-3.5" />
                         )}
-                        {withSound ? "Sound on" : "Play with sound"}
+                        Open player
                       </span>
                     </button>
                   )}
@@ -290,6 +250,13 @@ export function VideoSpotlight({
           onTogglePlay={() => setAutoplay((on) => !on)}
         />
       </CarouselShell>
+      <PortfolioVideoPlayer
+        videos={videos.map((video) => ({ ...video, orientation: "vertical" as const }))}
+        index={soundSrc === null ? null : videos.findIndex((video) => video.src === soundSrc)}
+        onSelect={(next) => setSoundSrc(videos[next].src)}
+        onClose={() => setSoundSrc(null)}
+        returnFocus={opener}
+      />
     </div>
   );
 }

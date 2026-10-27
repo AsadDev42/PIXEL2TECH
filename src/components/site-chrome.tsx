@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Suspense, useEffect, useState } from "react";
 import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
@@ -78,7 +79,7 @@ export function SiteNav() {
       <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/90">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-5 py-3 sm:gap-4 sm:py-4 md:px-8 lg:px-10">
           <Link to="/" aria-label="Pixel2Tech home" className="flex shrink-0 items-center">
-            <img
+            <MediaImage
               decoding="async"
               width={411}
               height={98}
@@ -86,7 +87,7 @@ export function SiteNav() {
               alt="Pixel2Tech"
               className="block h-9 w-auto sm:h-10 dark:hidden"
             />
-            <img
+            <MediaImage
               decoding="async"
               width={411}
               height={98}
@@ -388,7 +389,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:gap-x-8 lg:grid-cols-[1.1fr_0.65fr_0.9fr_1.5fr] lg:gap-8">
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
-              <img
+              <MediaImage
                 loading="lazy"
                 decoding="async"
                 width={411}

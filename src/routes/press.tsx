@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { ContentGrid } from "@/components/content-blocks";
@@ -64,7 +65,7 @@ export const Route = createFileRoute("/press")({
                 to={person.profile!}
                 className="flex items-center gap-5 rounded-2xl border border-border p-6 hover:bg-muted/40"
               >
-                <img
+                <MediaImage
                   src={person.img}
                   alt={person.name}
                   loading="lazy"

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { ClosingCta } from "@/components/closing-cta";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
@@ -478,11 +479,11 @@ function ServiceLandingPage() {
                     className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground transition hover:border-primary ${FOCUS_RING}`}
                   >
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <img
+                      <MediaImage
                         src={item.store?.desktop[0] ?? item.img}
                         srcSet={imageSrcSet(item.store?.desktop[0] ?? item.img)}
                         sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        alt=""
+                        alt={`${item.title} — selected project preview`}
                         loading="lazy"
                         decoding="async"
                         className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${item.store || item.automation ? "object-contain object-top p-3" : "object-cover"}`}

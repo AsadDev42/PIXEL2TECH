@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { useRef, useState, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
@@ -271,7 +272,7 @@ export function Coverflow3D({
                       backgroundPosition: "center",
                     }}
                   />
-                  <img
+                  <MediaImage
                     src={src}
                     alt={alt(i)}
                     loading={i === 0 ? "eager" : "lazy"}

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Mail, MapPin, Phone, Star, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -195,17 +196,25 @@ export const Route = createFileRoute("/")({
 function HeroTile({ media, paused }: { media: HeroMedia; paused: boolean }) {
   const box = "aspect-[9/16] w-full overflow-hidden rounded-xl bg-muted lg:rounded-2xl";
   if (media.kind === "video") {
-    return <AutoVideo src={media.src} poster={media.poster} paused={paused} className={box} />;
+    return (
+      <AutoVideo
+        title={media.alt}
+        src={media.src}
+        poster={media.poster}
+        paused={paused}
+        className={box}
+      />
+    );
   }
   return (
     <div className={box}>
-      <img
+      <MediaImage
         src={media.src}
         srcSet={media.srcSet}
         sizes={HERO_TILE_SIZES}
         width={384}
         height={683}
-        alt=""
+        alt={media.alt}
         loading="lazy"
         decoding="async"
         draggable={false}
@@ -247,13 +256,13 @@ function Hero() {
         >
           {heroMobileTiles.map((tile) => (
             <div key={tile.src} className="aspect-[3/4] overflow-hidden rounded-xl bg-muted">
-              <img
+              <MediaImage
                 src={tile.src}
                 srcSet={tile.srcSet}
                 sizes={HERO_TILE_SIZES}
                 width={384}
                 height={512}
-                alt=""
+                alt={tile.alt}
                 loading="lazy"
                 decoding="async"
                 draggable={false}
@@ -332,7 +341,7 @@ function Brands() {
         ariaLabel="Brands we've worked with"
         renderItem={(b) => (
           <div className="flex h-6 w-20 shrink-0 items-center justify-center sm:h-8 sm:w-28">
-            <img
+            <MediaImage
               loading="lazy"
               decoding="async"
               src={b.src}
@@ -341,7 +350,7 @@ function Brands() {
               className={`pointer-events-none h-6 max-w-full object-contain opacity-80 transition hover:opacity-100 sm:h-8 ${b.darkSrc ? "dark:hidden" : "dark:invert"}`}
             />
             {b.darkSrc ? (
-              <img
+              <MediaImage
                 loading="lazy"
                 decoding="async"
                 src={b.darkSrc}
@@ -401,17 +410,18 @@ function WhatWeMake() {
             {w.video ? (
               <AutoVideo
                 src={w.img}
+                title={`${w.title} — service showcase`}
                 poster={w.poster}
                 className="pointer-events-none h-full w-full opacity-90 transition duration-700 group-hover:scale-110"
               />
             ) : (
-              <img
+              <MediaImage
                 loading="lazy"
                 decoding="async"
                 src={w.img}
                 width={640}
                 height={853}
-                alt=""
+                alt={`${w.title} — service showcase`}
                 draggable={false}
                 className="pointer-events-none h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
               />
@@ -533,7 +543,7 @@ function Approach() {
             <RatingBadgeContent />
           </FloatingBadge>
           <div className="aspect-square w-full overflow-hidden rounded-full lg:mt-10">
-            <img
+            <MediaImage
               loading="lazy"
               decoding="async"
               src={founderPortrait.url}
@@ -601,7 +611,7 @@ function Studio() {
     <section aria-labelledby="home-studio-title" className={`bg-muted ${SECTION_Y}`}>
       <div className={`${CONTAINER} grid items-center gap-10 lg:grid-cols-2 lg:gap-16`}>
         <figure>
-          <img
+          <MediaImage
             src={officeStudioAsset.url}
             alt="Pixel2Tech designers and developers working at their desks"
             width={800}
@@ -674,7 +684,7 @@ function Insights() {
                 <div className="relative aspect-[40/21] overflow-hidden bg-muted">
                   <ResponsiveImage
                     src={p.img}
-                    alt=""
+                    alt={p.imgAlt || p.title}
                     sizes={
                       i === 0
                         ? "(min-width: 1024px) 400px, 100vw"

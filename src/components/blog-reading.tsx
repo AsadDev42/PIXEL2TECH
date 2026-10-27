@@ -657,7 +657,7 @@ export function RelatedArticles({ posts }: { posts: PostSummary[] }) {
             <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-muted">
               <ResponsiveImage
                 src={r.img}
-                alt=""
+                alt={r.imgAlt || r.title}
                 width={480}
                 height={480}
                 sizes="80px"

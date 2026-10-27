@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { LoopSlider } from "@/components/loop-slider";
@@ -22,7 +23,7 @@ export function TeamCard({ member }: { member: TeamMember }) {
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         )}
-        <img
+        <MediaImage
           loading="lazy"
           decoding="async"
           src={member.img}

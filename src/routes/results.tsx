@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
@@ -86,7 +87,7 @@ function ResultsPage() {
             <li key={project.slug}>
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background">
                 <div className="aspect-[16/10] bg-muted p-4">
-                  <img
+                  <MediaImage
                     src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
                     alt={`${project.client} delivered website`}
                     loading="lazy"

@@ -1,3 +1,4 @@
+import { MediaImage } from "@/components/media-image";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { ContactShadows, Float, OrbitControls } from "@react-three/drei";
@@ -236,9 +237,9 @@ export function InteractiveBookShowcase({
                     : "border-border opacity-70 hover:opacity-100"
                 }`}
               >
-                <img
+                <MediaImage
                   src={c.src}
-                  alt=""
+                  alt={`${c.title} — book cover design`}
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover"

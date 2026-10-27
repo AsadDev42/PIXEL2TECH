@@ -87,7 +87,7 @@ function BlogPage() {
               <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
                 <ResponsiveImage
                   src={featured.img}
-                  alt=""
+                  alt={featured.imgAlt || featured.title}
                   width={1600}
                   height={1000}
                   sizes="(min-width: 1280px) 600px, (min-width: 768px) 45vw, 92vw"
@@ -142,7 +142,7 @@ function BlogPage() {
                   <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
                     <ResponsiveImage
                       src={p.img}
-                      alt=""
+                      alt={p.imgAlt || p.title}
                       width={1600}
                       height={1000}
                       sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
