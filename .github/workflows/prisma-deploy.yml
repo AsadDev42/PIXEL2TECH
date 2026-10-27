@@ -44,6 +44,12 @@ jobs:
         run: npm ci
         working-directory: deploy/prisma
 
+      # Generate smooth silent loops separately so full videos are only fetched on play.
+      - name: Generate lightweight video previews
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          python3 scripts/create-video-previews.py
+
       - name: Build the site (Node server output in .output)
         run: npm run build
         env:
