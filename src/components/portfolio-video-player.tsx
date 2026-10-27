@@ -46,6 +46,8 @@ export function PortfolioVideoPlayer({
       if (!element.getAttribute("src") && source.current) element.src = source.current;
       element.volume = volume.current.level;
       element.muted = volume.current.muted;
+      // Start during the open/next gesture instead of waiting for autoplay policy checks.
+      void element.play().catch(() => undefined);
     }
   }, []);
 
