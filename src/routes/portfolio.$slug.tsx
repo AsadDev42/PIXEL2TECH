@@ -375,7 +375,7 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
             className="h-auto w-full"
           />
           <figcaption className="border-t border-border bg-card px-6 py-4 text-sm text-muted-foreground">
-            Brand presentation mockup. A concept visualization using the project identity.
+            Brand presentation mockups are concept visualizations using the project identity.
           </figcaption>
         </figure>
         <PortfolioImageGallery images={item.images} title={item.title} itemLabel="design" />

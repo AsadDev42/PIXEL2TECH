@@ -485,10 +485,14 @@ const RAW: RawWork = {
         slug: "sweet-temptation-logo-menu-design",
         title: "Sweet Temptation - logo, menus and launch creatives",
         client: "Sweet Temptation",
-        img: "/portfolio/sweet-temptation-logo-menu-design/logo.webp",
-        images: ["logo", "menu-1", "menu-3"].map(
-          (name) => `/portfolio/sweet-temptation-logo-menu-design/${name}.webp`,
-        ),
+        img: "/portfolio/sweet-temptation-logo-menu-design/dark-bag-mockup.jpg",
+        images: [
+          "/portfolio/sweet-temptation-logo-menu-design/dark-bag-mockup.jpg",
+          "/portfolio/sweet-temptation-logo-menu-design/packaging-mockup.jpg",
+          "/portfolio/sweet-temptation-logo-menu-design/stationery-mockup.jpg",
+          "/portfolio/sweet-temptation-logo-menu-design/menu-1.webp",
+          "/portfolio/sweet-temptation-logo-menu-design/menu-3.webp",
+        ],
         showAllImages: true,
         galleryAspect: "landscape",
       },
