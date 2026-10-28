@@ -755,7 +755,11 @@ function PortfolioDetailPage() {
                   controls, then use the side arrows to browse the collection.
                 </p>
                 <div className="mt-8">
-                  <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
+                  <VideoWall
+                    videos={wallVideos}
+                    label={`${item.title}: videos`}
+                    sharePath={`/portfolio/${item.slug}`}
+                  />
                 </div>
               </>
             ) : (

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState, type RefObject } from "react";
 import { ArrowLeft, ArrowRight, RotateCcw, RotateCw, Maximize2, Volume2 } from "lucide-react";
+import { VideoShareControls } from "@/components/video-share-controls";
+import { videoId, videoIdFromHash } from "@/lib/video-sharing";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { claimVideoSound, onVideoSoundClaimed, PROTECTED_VIDEO_PROPS } from "@/lib/video-sound";
 
@@ -18,12 +20,14 @@ export function PortfolioVideoPlayer({
   onSelect,
   onClose,
   returnFocus,
+  sharePath,
 }: {
   videos: PlayerVideo[];
   index: number | null;
   onSelect: (index: number) => void;
   onClose: () => void;
   returnFocus?: RefObject<HTMLElement | null>;
+  sharePath?: string;
 }) {
   const owner = useId();
   const player = useRef<HTMLVideoElement>(null);
@@ -32,6 +36,46 @@ export function PortfolioVideoPlayer({
   const [retry, setRetry] = useState(0);
   const [level, setLevel] = useState(100);
   const active = index === null ? undefined : videos[index];
+  const sharedSelection = useRef({ videos, onSelect, onClose });
+  sharedSelection.current = { videos, onSelect, onClose };
+  const ownedHash = useRef<string | null>(null);
+
+  useEffect(() => {
+    const openSharedVideo = () => {
+      if (sharePath && window.location.pathname !== sharePath) return;
+      const id = videoIdFromHash(window.location.hash);
+      if (!id) {
+        if (ownedHash.current) sharedSelection.current.onClose();
+        return;
+      }
+      const current = sharedSelection.current;
+      const match = current.videos.findIndex((video) => videoId(video) === id);
+      if (match >= 0) current.onSelect(match);
+    };
+    openSharedVideo();
+    window.addEventListener("hashchange", openSharedVideo);
+    return () => window.removeEventListener("hashchange", openSharedVideo);
+  }, [sharePath]);
+
+  useEffect(() => {
+    if (sharePath && window.location.pathname !== sharePath) return;
+    const url = new URL(window.location.href);
+    if (active) {
+      const id = videoId(active);
+      if (videoIdFromHash(url.hash) !== id) {
+        url.hash = `video=${id}`;
+        window.history.replaceState(window.history.state, "", url);
+      }
+      ownedHash.current = id;
+    } else if (ownedHash.current) {
+      if (videoIdFromHash(url.hash) === ownedHash.current) {
+        url.hash = "";
+        window.history.replaceState(window.history.state, "", url);
+      }
+      ownedHash.current = null;
+    }
+  }, [active, sharePath]);
+
   const source = useRef(active?.src ?? "");
   source.current = active?.src ?? "";
   const attachPlayer = useCallback((element: HTMLVideoElement | null) => {
@@ -220,6 +264,7 @@ export function PortfolioVideoPlayer({
             </div>
           )}
           <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-5 py-4 text-xs text-slate-300 sm:px-8">
+            <VideoShareControls key={videoId(active)} video={active} sharePath={sharePath} />
             <span aria-live="polite">
               {index! + 1} / {videos.length} ·{" "}
               {active.orientation === "vertical" ? "Vertical" : "Landscape"}

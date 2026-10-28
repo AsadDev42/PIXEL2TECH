@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p .",
     "lint": "eslint .",
-    "test": "node --test scripts/verify-booking.mjs scripts/verify-compression.mjs",
+    "test": "node --test scripts/verify-booking.mjs scripts/verify-compression.mjs scripts/verify-video-sharing.mjs",
     "check": "npm run typecheck && npm run lint && npm test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

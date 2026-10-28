@@ -135,6 +135,7 @@ function CollectionSlider({ item, index }: { item: PortfolioItem; index: number 
         <VideoWall
           videos={previews}
           playlist={videos}
+          sharePath={`/portfolio/${item.slug}`}
           label={`${copy?.title ?? item.title}: selected videos`}
           layout="slider"
         />
