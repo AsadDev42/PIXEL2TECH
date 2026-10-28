@@ -18,9 +18,9 @@ def create(source):
     with tempfile.TemporaryFile() as log:
         subprocess.run([
             FFMPEG, '-hide_banner', '-nostdin', '-y', '-i', str(source), '-t', '8',
-            '-vf', 'scale=480:480:force_original_aspect_ratio=decrease:force_divisible_by=2,fps=30',
-            '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '29',
-            '-maxrate', '300k', '-bufsize', '600k', '-pix_fmt', 'yuv420p',
+            '-vf', 'scale=480:480:force_original_aspect_ratio=decrease:force_divisible_by=2,fps=24',
+            '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '30',
+            '-maxrate', '250k', '-bufsize', '500k', '-pix_fmt', 'yuv420p',
             '-movflags', '+faststart', str(destination),
         ], stdout=log, stderr=log, check=True)
     return destination.stat().st_size
