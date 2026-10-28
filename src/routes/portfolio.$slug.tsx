@@ -364,15 +364,20 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
   if (item.subcategory === "Logo & Menu Design" && item.images?.length) {
     return (
       <div className="space-y-8">
-        <MediaImage
-          src={item.img}
-          alt="Sweet Temptation logo and menu presentation on a pink studio background"
-          width={1536}
-          height={1024}
-          loading="eager"
-          decoding="async"
-          className="h-auto w-full rounded-2xl border border-border"
-        />
+        <figure className="overflow-hidden rounded-2xl border border-border">
+          <MediaImage
+            src="/portfolio/sweet-temptation-logo-menu-design/brand-presentation-mockup.png"
+            alt="Sweet Temptation menu, dessert box and cup in a pink and blue studio mockup"
+            width={1536}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full"
+          />
+          <figcaption className="border-t border-border bg-card px-6 py-4 text-sm text-muted-foreground">
+            Brand presentation mockup. A concept visualization using the project identity.
+          </figcaption>
+        </figure>
         <PortfolioImageGallery images={item.images} title={item.title} itemLabel="design" />
       </div>
     );
