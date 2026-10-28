@@ -31,6 +31,8 @@ export type PortfolioVideo = {
   preview?: string;
   /** Neutral label such as "Talking-head video 3". Never an invented topic. */
   title: string;
+  /** Recorded publication date for newly added videos. */
+  uploadDate?: string;
   orientation: VideoOrientation;
   /**
    * Full video streamed from an embeddable player (a Google Drive /preview URL),
@@ -161,12 +163,38 @@ const TALKING_HEAD_VIDEOS = numberedVideos(
   { vertical: "Talking-head video" },
   "vertical",
 );
-const UGC_VIDEO_ADS = numberedVideos(
-  "ugc-video-ads",
-  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-  { vertical: "UGC video ad" },
-  "vertical",
-);
+const UGC_VIDEO_ADS: PortfolioVideo[] = [
+  ...numberedVideos(
+    "ugc-video-ads",
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    { vertical: "UGC video ad" },
+    "vertical",
+  ),
+  {
+    src: "https://github.com/AsadDev42/PIXEL2TECH/releases/download/portfolio-media-2026-10-28/ugc-video-ads-16.mp4",
+    poster: "/portfolio/ugc-video-ads/16.jpg",
+    preview: "/portfolio/previews/ugc-video-ads/16.mp4",
+    title: "Skincare product demonstration",
+    orientation: "vertical",
+    uploadDate: "2026-10-28T00:00:00Z",
+  },
+  {
+    src: "https://github.com/AsadDev42/PIXEL2TECH/releases/download/portfolio-media-2026-10-28/ugc-video-ads-17.mp4",
+    poster: "/portfolio/ugc-video-ads/17.jpg",
+    preview: "/portfolio/previews/ugc-video-ads/17.mp4",
+    title: "Portable blender creator demonstration",
+    orientation: "vertical",
+    uploadDate: "2026-10-28T00:00:00Z",
+  },
+  {
+    src: "https://github.com/AsadDev42/PIXEL2TECH/releases/download/portfolio-media-2026-10-28/ugc-video-ads-18.mp4",
+    poster: "/portfolio/ugc-video-ads/18.jpg",
+    preview: "/portfolio/previews/ugc-video-ads/18.mp4",
+    title: "Power tool product demonstration",
+    orientation: "vertical",
+    uploadDate: "2026-10-28T00:00:00Z",
+  },
+];
 const PERFORMANCE_MARKETING_VIDEO_ADS = numberedVideos(
   "performance-marketing-video-ads",
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
