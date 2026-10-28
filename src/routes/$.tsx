@@ -1,22 +1,22 @@
 import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 
 import { classifyLegacyPath } from "@/lib/legacy-urls";
+import { getWatchVideo, watchPageHead } from "@/lib/watch-videos";
+import { VideoWatchPage } from "@/components/video-watch-page";
 
 /**
- * Catch-all for anything the router does not match.
- *
- * The legacy-URL policy lives in `src/lib/legacy-urls.ts` and is applied
- * server-side by the request middleware in `src/start.ts`, which is what
- * crawlers hit (real 301 / 410 status codes). This route only matters for
- * client-side navigation to a stale in-app link:
- *
- *  - `redirect`: navigate to the live page instead of flashing the 404 screen;
- *  - `gone`: do a full page load so the server answers with its real 410 page;
- *  - anything else falls through to the root notFoundComponent.
+ * Dedicated watch pages share the existing catch-all route. Every valid video
+ * renders its primary player and metadata on the server; other unknown URLs
+ * retain the site's legacy redirects, gone responses and genuine 404 behavior.
  */
 export const Route = createFileRoute("/$")({
   beforeLoad: ({ params, location }) => {
-    const verdict = classifyLegacyPath((params as { _splat?: string })._splat ?? "");
+    const path = (params as { _splat?: string })._splat ?? "";
+    if (path.startsWith("watch/")) {
+      if (!getWatchVideo(path)) throw notFound();
+      return;
+    }
+    const verdict = classifyLegacyPath(path);
     if (verdict?.type === "redirect") {
       throw redirect({ to: verdict.target, statusCode: 301, reloadDocument: false });
     }
@@ -26,5 +26,16 @@ export const Route = createFileRoute("/$")({
     }
     throw notFound();
   },
-  component: () => null,
+  loader: ({ params }) => {
+    const video = getWatchVideo((params as { _splat?: string })._splat ?? "");
+    if (!video) throw notFound();
+    return video;
+  },
+  head: ({ loaderData }) =>
+    loaderData ? watchPageHead(loaderData) : { meta: [{ name: "robots", content: "noindex" }] },
+  component: WatchRoute,
 });
+
+function WatchRoute() {
+  return <VideoWatchPage video={Route.useLoaderData()} />;
+}

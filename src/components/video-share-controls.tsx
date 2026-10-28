@@ -13,8 +13,7 @@ export function VideoShareControls({
   const [status, setStatus] = useState("");
   const [manualLink, setManualLink] = useState("");
 
-  const link = () =>
-    `${SITE.url}${videoSharePath(sharePath ?? window.location.pathname, video)}`;
+  const link = () => `${SITE.url}${videoSharePath(sharePath ?? window.location.pathname, video)}`;
 
   const copy = async () => {
     const url = link();

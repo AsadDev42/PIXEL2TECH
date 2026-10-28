@@ -137,6 +137,7 @@ const REDIRECT_MAP: Record<string, string> = {
 
   // --- Home / retired theme demo pages ---
   home: "/",
+  career: "/careers",
 
   // --- About / team ---
   "about-us": "/about",

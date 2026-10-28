@@ -115,3 +115,8 @@ jobs:
             echo ""
             echo "Live URL: ${URL:-not reported}"
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify live watch pages and legacy URLs
+        run: npm run verify:watch
+        env:
+          VERIFY_BASE_URL: ${{ steps.deploy-oidc.outputs.url || steps.deploy-token.outputs.url }}
