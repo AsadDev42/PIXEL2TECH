@@ -206,118 +206,137 @@ const ICON_TILE =
 const CARD = "rounded-2xl border border-border bg-card p-6 text-card-foreground sm:p-8";
 
 /**
- * Swipeable cards on phones, a bento grid from md up. Tile placement and image focus are set per
- * card so each screenshot keeps its subject in frame at both sizes.
+ * Expanding work panels: hovering (desktop) or tapping (mobile) a panel opens it, and the open
+ * panel links to its case study. Desktop panels share one row; on phones they stack as an
+ * accordion so every panel stays reachable without sideways swiping.
  */
 const HERO_WORK = [
   {
     title: "Branding & Design",
     label: "Make your brand recognisable",
-    category: "01 / Brand & content",
-    tile: "md:col-span-5 md:row-span-2",
+    tag: "Brand",
     focus: "object-center",
   },
   {
+    title: "Website Development",
+    label: "Websites that turn visits into enquiries",
+    tag: "Web",
+    focus: "object-top",
+    mobileImage: "/portfolio/cargo-health-wordpress-website/mobile-home.webp",
+  },
+  {
     title: "WordPress & Shopify",
-    label: "Give your business a digital home",
-    category: "02 / Web & commerce",
-    tile: "md:col-span-7",
+    label: "Stores that are easy to shop",
+    tag: "Commerce",
     focus: "object-top",
     mobileImage: "/portfolio/histreet-shopify-store/mobile-home.webp",
   },
   {
     title: "Video Editing & Ads",
     label: "Turn your message into motion",
-    category: "03 / Video & storytelling",
-    tile: "md:col-span-4",
+    tag: "Video",
     focus: "object-[center_30%]",
   },
   {
     title: "Social Media & Email",
     label: "Keep every campaign on brand",
-    category: "04 / Social & campaigns",
-    tile: "md:col-span-3",
+    tag: "Social",
     focus: "object-center",
   },
 ] satisfies {
   title: ServiceTitle;
   label: string;
-  category: string;
-  tile: string;
+  tag: string;
   focus: string;
   mobileImage?: string;
 }[];
 
 function ServicesHeroArtwork() {
+  const [active, setActive] = useState(0);
   return (
-    <div className="mt-10 md:mt-14">
-      <div className="mb-4 flex items-center justify-between md:hidden">
-        <p className={EYEBROW}>Selected work</p>
-        <p aria-hidden="true" className="flex items-center gap-1 text-xs text-muted-foreground">
-          Swipe <ArrowRight size={14} />
-        </p>
-      </div>
-      <ul
-        aria-label="Explore selected work"
-        className="-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:h-[500px] md:grid-cols-12 md:grid-rows-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0 lg:h-[560px] [&::-webkit-scrollbar]:hidden"
-      >
-        {HERO_WORK.map((work, index) => {
-          const visual = SERVICE_PRESENTATION[work.title];
-          return (
-            <li
-              key={work.title}
-              className={`w-[78vw] max-w-[340px] shrink-0 snap-start sm:w-[44vw] md:w-auto md:max-w-none ${work.tile}`}
+    <ul
+      aria-label="Explore selected work"
+      className="mt-12 flex flex-col gap-3 md:mt-16 md:h-[480px] md:flex-row lg:h-[520px]"
+    >
+      {HERO_WORK.map((work, index) => {
+        const visual = SERVICE_PRESENTATION[work.title];
+        const open = active === index;
+        return (
+          <li
+            key={work.title}
+            onMouseEnter={() => setActive(index)}
+            className={`group relative min-w-0 overflow-hidden rounded-3xl bg-slate-900 ring-1 ring-white/10 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:h-full ${open ? "h-[360px] md:flex-[5]" : "h-[72px] md:flex-1"}`}
+          >
+            <picture>
+              {"mobileImage" in work && (
+                <source media="(max-width: 767px)" srcSet={work.mobileImage} />
+              )}
+              <MediaImage
+                src={visual.image}
+                alt={visual.alt}
+                width={1200}
+                height={900}
+                loading={index < 3 ? "eager" : "lazy"}
+                decoding="async"
+                className={`absolute inset-0 h-full w-full object-cover transition duration-1000 ease-out motion-reduce:transition-none ${work.focus} ${open ? "scale-100" : "scale-110 grayscale-[60%]"}`}
+              />
+            </picture>
+            <span
+              aria-hidden="true"
+              className={`absolute inset-0 transition duration-700 ${open ? "bg-linear-to-t from-slate-950 from-25% via-slate-950/75 via-55% to-transparent md:from-10% md:via-slate-950/60 md:via-45%" : "bg-slate-950/90 md:bg-slate-950/65"}`}
+            />
+
+            {/* Closed: a row label on phones, a vertical label on desktop. */}
+            <button
+              type="button"
+              onClick={() => setActive(index)}
+              onFocus={() => setActive(index)}
+              aria-expanded={open}
+              aria-label={`Show ${visual.caption}`}
+              className={`absolute inset-0 flex items-center justify-between px-5 text-left text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-400 md:flex-col md:items-center md:justify-between md:px-0 md:py-6 ${open ? "pointer-events-none opacity-0" : "opacity-100"} transition-opacity duration-300`}
             >
+              <span className="font-mono text-xs text-white/60">0{index + 1}</span>
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] md:rotate-180 md:[writing-mode:vertical-rl]">
+                {work.tag}
+              </span>
+              <span className="grid h-8 w-8 place-items-center rounded-full border border-white/30 md:hidden">
+                <ArrowRight size={14} className="rotate-90" />
+              </span>
+            </button>
+
+            {/* Open: project details and a link to the case study. */}
+            <div
+              className={`absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 transition duration-500 sm:p-6 md:p-8 ${open ? "translate-y-0 opacity-100 delay-200" : "pointer-events-none translate-y-4 opacity-0"}`}
+            >
+              <div className="min-w-0">
+                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-300">
+                  <span className="font-mono">0{index + 1}</span>
+                  <span aria-hidden="true" className="h-px w-6 bg-sky-300/60" />
+                  {work.tag}
+                </p>
+                <h2 className="mt-3 max-w-md text-2xl font-semibold leading-tight tracking-tight text-white text-balance md:text-4xl">
+                  {work.label}
+                </h2>
+                <p className="mt-2 text-xs text-white/70 md:text-sm">{visual.caption}</p>
+              </div>
               <Link
                 to="/portfolio/$slug"
                 params={{ slug: visual.project! }}
-                className="group relative block aspect-[4/5] h-full overflow-hidden rounded-3xl bg-muted shadow-sm ring-1 ring-border/60 transition duration-500 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:aspect-auto"
+                tabIndex={open ? 0 : -1}
+                aria-label={`View project: ${visual.caption}`}
+                className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-slate-950 shadow-lg transition duration-300 hover:rotate-45 hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:h-16 md:w-16"
               >
-                <picture>
-                  {"mobileImage" in work && (
-                    <source media="(max-width: 767px)" srcSet={work.mobileImage} />
-                  )}
-                  <MediaImage
-                    src={visual.image}
-                    alt={visual.alt}
-                    width={1200}
-                    height={900}
-                    loading={index < 2 ? "eager" : "lazy"}
-                    decoding="async"
-                    className={`absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${work.focus}`}
-                  />
-                </picture>
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-slate-950/25 to-transparent"
-                />
-                <span
-                  aria-hidden="true"
-                  className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/95 text-slate-950 shadow-md backdrop-blur transition duration-300 group-hover:rotate-45 group-hover:bg-primary group-hover:text-white motion-reduce:transition-none"
-                >
-                  <ArrowUpRight size={18} />
-                </span>
-                <span className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                  <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-white/75">
-                    {work.category}
-                  </span>
-                  <span
-                    className={`mt-2 block font-semibold leading-tight tracking-tight text-white text-balance ${index === 0 ? "text-xl md:text-3xl" : "text-xl md:text-2xl"}`}
-                  >
-                    {work.label}
-                  </span>
-                  <span className="mt-2 block text-xs text-white/70 md:text-sm">
-                    {visual.caption}
-                  </span>
-                </span>
+                <ArrowUpRight size={22} />
               </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
+
+const SERVICE_RIBBON = SERVICE_LIST.map((s) => s.title);
 
 const STARTING_POINTS = [
   {
@@ -461,43 +480,58 @@ function ServicesPage() {
       {/* Hero */}
       <section
         aria-labelledby="services-title"
-        className="relative overflow-hidden bg-background pb-12 pt-10 md:pb-20 md:pt-16"
+        className="relative isolate overflow-hidden bg-slate-950 pb-12 pt-12 text-white md:pb-16 md:pt-20"
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-32 -top-40 h-[480px] w-[480px] rounded-full bg-primary/10 blur-3xl"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
         />
-        <div className="relative mx-auto max-w-7xl px-5 md:px-10">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Pixel2Tech / Our services
-          </p>
-          <div className="mt-6 grid items-end gap-8 lg:mt-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
-            <h1
-              id="services-title"
-              className="text-[2.5rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
-            >
-              From first idea.
-              <br />
-              <span className="text-primary">To ready for launch.</span>
-            </h1>
-            <div className="lg:pb-2">
-              <p className="max-w-lg text-base leading-relaxed text-foreground/80 sm:text-lg">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-40 -top-40 -z-10 h-[520px] w-[520px] rounded-full bg-primary/40 blur-[120px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-32 top-24 -z-10 h-[420px] w-[420px] rounded-full bg-violet-600/30 blur-[120px]"
+        />
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <div className="hero-stagger grid items-end gap-8 lg:grid-cols-[1.45fr_0.55fr] lg:gap-12">
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-300 backdrop-blur">
+                <span aria-hidden="true" className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
+                </span>
+                Pixel2Tech / Our services
+              </p>
+              <h1
+                id="services-title"
+                className="mt-6 text-[2.75rem] font-bold leading-[0.98] tracking-tight sm:text-7xl"
+              >
+                From first idea.
+                <br />
+                <span className="bg-linear-to-r from-sky-400 via-blue-500 to-violet-400 bg-clip-text text-transparent">
+                  To ready for launch.
+                </span>
+              </h1>
+            </div>
+            <div className="lg:pb-3">
+              <p className="max-w-lg text-base leading-relaxed text-white/80 sm:text-lg">
                 A brand that feels like you. A website built for your customers. Content and systems
                 that keep the business moving.
               </p>
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/55">
                 Choose one discipline or bring them together. Our Lahore team plans the scope,
                 creates the work and helps you launch.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <BookCallButton
                   source="services_hero"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 sm:w-auto"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-white px-6 text-sm font-semibold text-slate-950 shadow-[0_0_40px_-8px_rgba(56,189,248,0.6)] transition hover:bg-sky-300 sm:w-auto"
                 />
                 <a
                   href="#services-list-title"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-6 text-sm font-semibold transition hover:border-primary hover:text-primary sm:w-auto"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur transition hover:border-sky-300 hover:text-sky-300 sm:w-auto"
                 >
                   Find your service <ArrowRight size={17} />
                 </a>
@@ -505,25 +539,37 @@ function ServicesPage() {
             </div>
           </div>
           <ServicesHeroArtwork />
-
-          <nav
-            aria-label="Jump to a service"
-            className="mt-10 border-t border-border pt-6 md:mt-12"
-          >
-            <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
-              {SERVICE_LIST.map((s) => (
-                <li key={s.id} className="shrink-0">
-                  <a
-                    href={`#${s.id}`}
-                    className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full border border-border bg-background px-4 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  >
-                    {s.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
+
+        <div aria-hidden="true" className="edge-fade-x mt-12 overflow-hidden md:mt-16">
+          <div className="marquee-track slow gap-8">
+            {[...SERVICE_RIBBON, ...SERVICE_RIBBON].map((title, index) => (
+              <span
+                key={`${title}-${index}`}
+                className="flex shrink-0 items-center gap-8 text-2xl font-semibold tracking-tight text-white/25 md:text-4xl"
+              >
+                {title}
+                <span className="text-sky-400">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <nav aria-label="Jump to a service" className="mx-auto mt-10 max-w-7xl px-5 md:px-10">
+          <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
+            {SERVICE_LIST.map((s) => (
+              <li key={s.id} className="shrink-0">
+                <a
+                  href={`#${s.id}`}
+                  className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 text-sm font-medium text-white/85 backdrop-blur transition hover:border-sky-300 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                >
+                  <s.Icon size={15} className="text-sky-300" aria-hidden="true" />
+                  {s.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </section>
 
       {/* Services. Card ids come from serviceAnchor(): the footer and case studies link to them. */}
