@@ -32,8 +32,151 @@ import {
  */
 const POSTS = [
   {
+    slug: "ai-logo-problems-before-you-launch",
+    title: "AI Logo Problems: What to Fix Before You Launch",
+    excerpt:
+      "An AI logo can start a direction. Check distinctiveness, lettering, small-size use, production files and ownership questions before building a brand around it.",
+    tag: "Branding",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/logo-design-cost.jpg",
+    imgAlt: "Logo design work presented on a designer's desk",
+    related: ["brand-guidelines-for-small-business"],
+  },
+  {
+    slug: "can-ai-replace-developers",
+    title: "Can AI Replace Developers? What Changes Beyond Writing Code",
+    excerpt:
+      "AI can produce useful code. Shipping dependable software also requires requirements, architecture, testing, deployment and ownership of the result.",
+    tag: "Development",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-built-app-launch-checklist.jpg",
+    imgAlt: "Software development work displayed on a computer",
+    related: ["ai-built-app-launch-checklist"],
+  },
+  {
+    slug: "why-designers-struggle-with-creativity",
+    title: "Why Designers Struggle With Creativity-and How to Reset",
+    excerpt:
+      "When every concept feels familiar, inspect the brief, reference habits and review process. A practical reset for stronger, more explainable design ideas.",
+    tag: "Design",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/outsource-graphic-design-to-pakistan.jpg",
+    imgAlt: "A designer working on visual concepts at a desk",
+    related: ["brand-identity-process-for-startups"],
+  },
+  {
+    slug: "branding-beyond-the-logo",
+    title: "Branding Beyond the Logo: Give Customers a Clear Reason to Choose",
+    excerpt:
+      "Build a brand around a clear audience, useful promise and credible proof. Then make the website, messaging and customer experience express the same idea.",
+    tag: "Branding",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/brand-identity-process-for-startups.jpg",
+    imgAlt: "Brand identity concepts arranged for review",
+    related: ["brand-design-and-brand-building", "brand-guidelines-for-small-business"],
+  },
+  {
+    slug: "after-effects-skills-for-better-reels",
+    title: "After Effects Skills for Reels: Learn Motion Before More Presets",
+    excerpt:
+      "A practical learning sequence for cleaner reels: composition, keyframes, timing, typography, masks, reusable controls and a careful export review.",
+    tag: "Video Editing",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/animated-explainer-video-production-process.jpg",
+    imgAlt: "Storyboard planning for motion graphics and video",
+    related: ["video-editing-handover-checklist"],
+  },
+  {
+    slug: "short-form-content-strategy-for-brands",
+    title: "Short-Form Content Strategy: Give Every Clip One Useful Job",
+    excerpt:
+      "Plan short-form content around customer questions, useful proof and a clear next step. Build a repeatable brief and review the right signals.",
+    tag: "Video Editing",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ugc-ads-for-shopify-brands.jpg",
+    imgAlt: "Creator-style product video production",
+    related: ["reels-vs-long-form-video", "ugc-ads-for-shopify-brands"],
+  },
+  {
+    slug: "reels-vs-long-form-video",
+    title: "Reels vs Long-Form Video: Choose the Job Before the Format",
+    excerpt:
+      "Use short clips for focused moments and longer videos for deeper explanation. Choose by the audience question, evidence needed and next action.",
+    tag: "Video Editing",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/podcast-to-short-form-video-workflow.jpg",
+    imgAlt: "Video production setup for a recorded conversation",
+    related: ["short-form-content-strategy-for-brands", "podcast-to-short-form-video-workflow"],
+  },
+  {
+    slug: "brand-design-and-brand-building",
+    title: "Brand Design and Brand Building: From Identity Files to Everyday Use",
+    excerpt:
+      "Design creates the visual system. Brand building puts it to work through repeated, consistent experiences. A practical roadmap from brief to rollout.",
+    tag: "Branding",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/brand-guidelines-for-small-business.jpg",
+    imgAlt: "A visual brand guideline document with identity applications",
+    related: ["branding-beyond-the-logo"],
+  },
+  {
+    slug: "sonnet-5-vs-gpt-6-astra-vs-gemini-4-argon",
+    title: "Sonnet 5 vs GPT-6 Astra vs Gemini 4 Argon: Which Fits Your Work?",
+    excerpt:
+      "A source-based comparison of the three models, with verified pricing context and a practical way to evaluate coding, creative and business workflows.",
+    tag: "AI",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/gpt-6-vs-claude-opus-5-5-for-business.jpg",
+    imgAlt: "An AI workflow comparison illustrated on a desk",
+    related: ["can-ai-replace-developers"],
+  },
+  {
+    slug: "10x-brand-growth-automation-creative-ideas",
+    title: "10x Your Brand? Build an Automation and Creative Testing Plan",
+    excerpt:
+      "Treat 10x as an ambition, then build a measurable plan around customer insight, useful creative experiments and reliable automation.",
+    tag: "AI Automation",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/automate-lead-follow-up.jpg",
+    imgAlt: "A business workflow being organised on a computer",
+    related: ["why-proper-business-systems-matter"],
+  },
+  {
+    slug: "why-proper-business-systems-matter",
+    title: "Why Proper Business Systems Matter When Your Team Gets Busy",
+    excerpt:
+      "A reliable system makes ownership, quality checks and recovery clear. Use this practical checklist to improve handoffs before adding more tools.",
+    tag: "Business Systems",
+    date: "October 28, 2026",
+    time: "7:03 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/automations-failing-silently-audit.jpg",
+    imgAlt: "Operational workflow and monitoring information on a screen",
+    related: ["automations-failing-silently-audit", "10x-brand-growth-automation-creative-ideas"],
+  },
+  {
     slug: "animated-explainer-video-production-process",
-    title: "Animated Explainer Video Production: A Buyer’s Workflow",
+    title: "Animated Explainer Video Production: A Buyer's Workflow",
     excerpt:
       "Plan the brief, script, storyboard and animatic before detailed animation. Know what to approve and which files to request at delivery.",
     tag: "Video Editing",
@@ -137,7 +280,7 @@ const POSTS = [
     slug: "podcast-to-short-form-video-workflow",
     title: "Podcast to Short-Form Video: A Practical Editing Workflow",
     excerpt:
-      "Select complete ideas, keep the speaker’s meaning intact and organise captions, framing, reviews and handover for useful short podcast clips.",
+      "Select complete ideas, keep the speaker's meaning intact and organise captions, framing, reviews and handover for useful short podcast clips.",
     tag: "Video Editing",
     date: "October 24, 2026",
     time: "7:57 am",
@@ -337,7 +480,7 @@ const POSTS = [
     slug: "building-digital-product-start-with-business",
     title: "Building a Digital Product? Start With the Business, Not the Technology",
     excerpt:
-      "Most founders don't start with a technology problem—they start with a business problem. Learn why successful products are built around outcomes rather than features.",
+      "Most founders don't start with a technology problem-they start with a business problem. Learn why successful products are built around outcomes rather than features.",
     tag: "Business",
     date: "August 10, 2026",
     time: "10:30 am",
@@ -354,7 +497,7 @@ const POSTS = [
   },
   {
     slug: "digital-product-is-more-than-software",
-    title: "Your Digital Product Is More Than Software. It’s a Business System.",
+    title: "Your Digital Product Is More Than Software. It's a Business System.",
     excerpt:
       "For many founders, building a product starts with 'We need an app.' But technology should never be the starting point. Real value is created when technology solves a business problem and reduces friction.",
     tag: "Business",
@@ -394,7 +537,7 @@ const POSTS = [
     slug: "why-businesses-need-better-systems",
     title: "Your Business Doesn't Need More Software. It Needs Better Systems.",
     excerpt:
-      "Most businesses don't have a technology problem—they have a systems problem. Adding another tool rarely fixes friction; sometimes it makes it worse. Here is how to build connected systems that actually scale.",
+      "Most businesses don't have a technology problem-they have a systems problem. Adding another tool rarely fixes friction; sometimes it makes it worse. Here is how to build connected systems that actually scale.",
     tag: "Business",
     date: "August 8, 2026",
     time: "11:00 am",
@@ -413,7 +556,7 @@ const POSTS = [
     slug: "leading-creative-agencies-enterprises-brands-2026",
     title: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
     excerpt:
-      "Creativity now sits alongside technology, customer experience and AI. Here are twelve creative agencies enterprises and growing brands are working with in 2026 — and how to pick the right one.",
+      "Creativity now sits alongside technology, customer experience and AI. Here are twelve creative agencies enterprises and growing brands are working with in 2026 - and how to pick the right one.",
     tag: "Marketing",
     date: "August 7, 2026",
     time: "8:00 pm",
@@ -434,7 +577,7 @@ const POSTS = [
     title:
       "The Biggest SEO Mistakes Businesses Still Make in 2026 (And Why They Cost More Than Rankings)",
     excerpt:
-      "Search has changed. Buyers now ask ChatGPT, Gemini, Perplexity and AI Overviews before they visit your site. Here are the SEO mistakes still costing businesses visibility — and what to do instead.",
+      "Search has changed. Buyers now ask ChatGPT, Gemini, Perplexity and AI Overviews before they visit your site. Here are the SEO mistakes still costing businesses visibility - and what to do instead.",
     tag: "SEO",
     date: "August 7, 2026",
     time: "3:00 pm",
@@ -453,7 +596,7 @@ const POSTS = [
     slug: "why-digital-marketing-agencies-lose-clients",
     title: "Why Digital Marketing Agencies Lose Clients (And 12 Proven Ways to Keep Them in 2026)",
     excerpt:
-      "Client churn is the most expensive problem in agency life. Here are the twelve reasons a digital marketing agency loses accounts in 2026 — and the retention fixes that actually work.",
+      "Client churn is the most expensive problem in agency life. Here are the twelve reasons a digital marketing agency loses accounts in 2026 - and the retention fixes that actually work.",
     tag: "Marketing",
     date: "August 4, 2026",
     time: "2:00 pm",
@@ -493,7 +636,7 @@ const POSTS = [
     slug: "advanced-contextual-advertising-privacy-first-marketing",
     title: "Advanced Contextual Advertising: The Future of Privacy-First Marketing",
     excerpt:
-      "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about — protecting privacy, brand safety, and performance at the same time.",
+      "Third-party cookies are gone. Advanced contextual advertising uses AI and semantic analysis to place ads based on what a page is really about - protecting privacy, brand safety, and performance at the same time.",
     tag: "Marketing",
     date: "August 4, 2026",
     time: "9:00 am",
@@ -514,7 +657,7 @@ const POSTS = [
     slug: "mobile-app-design-process",
     title: "The Complete Mobile App Design Process (2026): From Idea to App Store Launch",
     excerpt:
-      "A practical, end-to-end guide to the mobile app design process — idea validation, research, wireframing, prototyping, UI, design systems, testing, handoff, and launch — written for founders and product teams.",
+      "A practical, end-to-end guide to the mobile app design process - idea validation, research, wireframing, prototyping, UI, design systems, testing, handoff, and launch - written for founders and product teams.",
     tag: "Design",
     date: "August 3, 2026",
     time: "9:00 am",
@@ -556,7 +699,7 @@ const POSTS = [
     slug: "best-linkedin-outreach-platforms",
     title: "Best LinkedIn Outreach Platforms in 2026",
     excerpt:
-      "A practical look at the best LinkedIn outreach platforms in 2026 — what each one is actually good for, how to choose, and the mistakes that quietly kill reply rates.",
+      "A practical look at the best LinkedIn outreach platforms in 2026 - what each one is actually good for, how to choose, and the mistakes that quietly kill reply rates.",
     tag: "Marketing",
     date: "August 2, 2026",
     time: "11:00 am",
@@ -641,9 +784,9 @@ const POSTS = [
   {
     slug: "bots-outnumber-humans-online-2026-website-security",
     title:
-      "Bots Have Officially Taken Over the Internet — Here's What It Means for Your Website in 2026",
+      "Bots Have Officially Taken Over the Internet - Here's What It Means for Your Website in 2026",
     excerpt:
-      "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security — and how Pixel2Tech can help.",
+      "Bot traffic has officially surpassed human traffic in 2026. Learn how this affects your website, analytics, and security - and how Pixel2Tech can help.",
     tag: "Web Development",
     date: "July 29, 2026",
     time: "9:00 am",
@@ -677,7 +820,7 @@ const POSTS = [
     slug: "better-systems-not-more-software",
     title: "Why Most Businesses Don't Need More Software. They Need Better Systems",
     excerpt:
-      "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software — it's the system behind it.",
+      "Businesses keep buying tools and keep facing the same problems. The issue usually isn't the software - it's the system behind it.",
     tag: "Business",
     date: "July 27, 2026",
     time: "10:00 am",
@@ -1850,7 +1993,7 @@ assertValidIndex(POSTS);
 // the headless guide already carries Asad's authored biography.
 export const POST_INDEX: readonly PostMeta[] = POSTS.map((post) => ({
   ...post,
-  imgAlt: "imgAlt" in post ? post.imgAlt : `${post.title} — article cover`,
+  imgAlt: "imgAlt" in post ? post.imgAlt : `${post.title} - article cover`,
   author: post.author.startsWith("Pixel2Tech")
     ? post.slug === "headless-shopify-commerce-guide"
       ? "Asad Farooq"
