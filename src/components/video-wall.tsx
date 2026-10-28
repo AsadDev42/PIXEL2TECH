@@ -1,9 +1,8 @@
 import { MediaImage } from "@/components/media-image";
 import { memo, useEffect, useRef, useState } from "react";
-import { Play, Maximize2, Share2 } from "lucide-react";
+import { Play, Maximize2 } from "lucide-react";
 import type { PortfolioVideo, VideoOrientation } from "@/lib/portfolio-data";
 import { PROTECTED_VIDEO_PROPS } from "@/lib/video-sound";
-import { videoSharePath } from "@/lib/video-sharing";
 import { PortfolioVideoPlayer } from "@/components/portfolio-video-player";
 
 const GRID: Record<VideoOrientation, string> = {
@@ -73,7 +72,6 @@ export function VideoWall({
                 >
                   <VideoCard
                     video={video}
-                    sharePath={sharePath}
                     running={motionOK && pageVisible && active === null}
                     showCaption={layout !== "slider"}
                     onOpen={(button) => {
@@ -104,13 +102,11 @@ const VideoCard = memo(function VideoCard({
   running,
   onOpen,
   showCaption,
-  sharePath,
 }: {
   video: PortfolioVideo;
   running: boolean;
   onOpen: (button: HTMLButtonElement) => void;
   showCaption: boolean;
-  sharePath?: string;
 }) {
   const button = useRef<HTMLButtonElement>(null);
   const preview = useRef<HTMLVideoElement>(null);
@@ -202,16 +198,6 @@ const VideoCard = memo(function VideoCard({
           <Maximize2 size={12} /> Open player
         </span>
       </button>
-      {sharePath && (
-        <a
-          href={videoSharePath(sharePath, video)}
-          aria-label={`Share video: ${video.title}`}
-          className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          <Share2 size={16} aria-hidden="true" />
-          Video link
-        </a>
-      )}
       {showCaption && (
         <p aria-hidden="true" className="mt-2 text-sm text-muted-foreground">
           {video.title}
