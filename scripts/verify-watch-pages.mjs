@@ -29,13 +29,13 @@ for (let offset = 0; offset < samples.length; offset += 6) {
       assert.equal(response.status, 200, `${path}: watch page returns 200`);
       const html = await response.text();
       assert(html.includes(`href="https://pixel2tech.com${path}"`), `${path}: self canonical`);
-      assert.equal((html.match(/<h1[\\s>]/g) ?? []).length, 1, `${path}: one H1`);
+      assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${path}: one H1`);
       assert.equal(
-        (html.match(/<(?:video|iframe)\\b/g) ?? []).length,
+        (html.match(/<(?:video|iframe)\b/g) ?? []).length,
         1,
         `${path}: one main player`,
       );
-      const pattern = /<script[^>]*type="application\\/ld\\+json"[^>]*>(.*?)<\\/script>/gs;
+      const pattern = /<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs;
       const data = [...html.matchAll(pattern)].map((match) => JSON.parse(match[1]));
       const video = data.find((item) => item["@type"] === "VideoObject");
       assert(
