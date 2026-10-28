@@ -13,3 +13,10 @@ deploy/prisma/contract.json
 deploy/prisma/migrations
 deploy/prisma/node_modules
 public/media
+
+# Generated reports, preview clips, and local tooling state.
+output
+public/portfolio/previews
+.agent
+.tanstack
+.wrangler

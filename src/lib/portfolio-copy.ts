@@ -59,6 +59,214 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
  * delivered; add numbers only when the client has agreed to share them.
  */
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
+  "jacques-international-social-media-post-designs": {
+    metaTitle: "Jacques International social media post designs | Pixel2Tech",
+    metaDescription: "Social media post designs created for Jacques International.",
+    summary: "Fashion-focused social media post designs for Jacques International.",
+    overview:
+      "A collection of 19 social media post designs created for Jacques International, presented separately from the affiliate banner collection.",
+    challenge: "Keep fashion imagery and promotional messaging clear in the social feed.",
+    approach: "Product imagery and prominent typography give each layout a clear focal point.",
+    outcome: "19 selected post designs presented in a dedicated client gallery.",
+    results: [
+      { label: "Client", value: "Jacques International" },
+      { label: "Collection", value: "19 posts" },
+      { label: "Scope", value: "Social media post design" },
+    ],
+    deliverables: ["Social media post designs", "Fashion promotional layouts"],
+  },
+  "social-media-and-ad-creative-collection-2": {
+    metaTitle: "Social media and ad designs - collection 2 | Pixel2Tech",
+    metaDescription:
+      "The second curated collection of social media and static ad designs in the Pixel2Tech design portfolio.",
+    summary: "The second collection of social media and static ad designs.",
+    overview:
+      "A separate selection from our social media and ad design work, featuring product compositions, promotional layouts and branded graphics. This collection continues the work shown in collection 1.",
+    challenge:
+      "Keep the main product or message clear while adapting the composition to different brands.",
+    approach: "Branded colors, type hierarchy and product imagery guide each layout.",
+    outcome: "A dedicated design collection with complete artwork and enlarged image previews.",
+    results: [
+      { label: "Collection", value: "Collection 2" },
+      { label: "Scope", value: "Social media and ad design" },
+      { label: "Gallery", value: "Complete artwork" },
+    ],
+    deliverables: ["Social media post designs", "Static ad creatives", "Promotional layouts"],
+  },
+  "jacques-international-affiliate-banner-designs": {
+    metaTitle: "Jacques International affiliate banner designs | Pixel2Tech",
+    metaDescription:
+      "A collection of 36 affiliate banner designs created for Jacques International, featuring fashion imagery and promotional layouts.",
+    summary: "Fashion campaign and affiliate banner designs for Jacques International.",
+    overview:
+      "A collection of 36 affiliate banner designs created for Jacques International. Fashion photography, prominent offers and sale messaging are arranged in a range of tall, square and wide promotional formats.",
+    challenge:
+      "Keep fashion imagery and promotional messages readable across different banner proportions.",
+    approach:
+      "Large headlines, clear offer hierarchy and considered image placement carry the campaign message through the different formats.",
+    outcome:
+      "A dedicated collection of 36 affiliate banner designs, presented in full with enlarged previews.",
+    results: [
+      { label: "Client", value: "Jacques International" },
+      { label: "Collection", value: "36 banner designs" },
+      { label: "Scope", value: "Affiliate banner design" },
+    ],
+    deliverables: [
+      "Affiliate banner designs",
+      "Fashion promotion layouts",
+      "Multiple banner proportions",
+    ],
+  },
+  "petal-paints-social-media-posts": {
+    metaTitle: "Petal Paints social media post designs | Pixel2Tech",
+    metaDescription: "Social post designs for paints, coatings and construction chemicals.",
+    summary: "Social post designs for paints, coatings and construction chemicals.",
+    overview:
+      "A collection of 11 social media post designs created for Petal Paints. Branded layouts pair architectural imagery and product messages with the red and blue Petal identity.",
+    challenge:
+      "Make paint and construction product messages easy to recognize and read in a social feed.",
+    approach:
+      "Brand colors, prominent logos and architectural imagery connect the individual post layouts.",
+    outcome: "11 selected post designs presented together as a dedicated client collection.",
+    results: [
+      { label: "Client", value: "Petal Paints" },
+      { label: "Collection", value: "11 post designs" },
+      { label: "Scope", value: "Social media design" },
+    ],
+    deliverables: [
+      "11 social media post designs",
+      "Paint and coatings creative layouts",
+      "Branded product and architecture compositions",
+    ],
+  },
+  "naveed-can-metal-works-social-media-posts": {
+    metaTitle: "Naveed Can Metal Works social media post designs | Pixel2Tech",
+    metaDescription: "Social media post designs for tin packaging and metal works.",
+    summary: "Social media post designs for tin packaging and metal works.",
+    overview:
+      "A collection of 12 social media post designs created for Naveed Can Metal Works. Product imagery, bold red headlines and branded information panels introduce the business and its tin packaging range.",
+    challenge:
+      "Present industrial packaging products and key messages clearly in a social media format.",
+    approach:
+      "Red and white branding, product compositions and large headlines give each post a clear visual hierarchy.",
+    outcome: "12 selected post designs presented together as a dedicated client collection.",
+    results: [
+      { label: "Client", value: "Naveed Can Metal Works" },
+      { label: "Collection", value: "12 post designs" },
+      { label: "Scope", value: "Social media design" },
+    ],
+    deliverables: [
+      "12 social media post designs",
+      "Tin packaging product layouts",
+      "Branded promotional compositions",
+    ],
+  },
+  "pool-up-app-social-media": {
+    metaTitle: "Pool UP app UI and social media | Pixel2Tech",
+    metaDescription:
+      "App UI design and social media work for Pool UP Ride Sharing App, with the original Figma design reference.",
+    summary: "App UI design and social media work for Pool UP Ride Sharing App.",
+    overview:
+      "Our work for Pool UP covered the ride-sharing app interface and social media design. Explore the original Figma file below for the app UI, including ride tracking, ride requests, dashboard, profile and support screens.",
+    challenge:
+      "Give the ride-sharing app a clear interface across its different screens and present the brand through social media design.",
+    approach:
+      "The app design brings ride discovery, requests, tracking and account screens into one visual experience. Social media design forms part of the same client engagement.",
+    outcome:
+      "An app UI and social media design project presented with its original Figma reference.",
+    results: [
+      { label: "Client", value: "Pool UP" },
+      { label: "Scope", value: "App UI and social media" },
+      { label: "App reference", value: "Original Figma design" },
+    ],
+    deliverables: [
+      "Ride-sharing app UI design",
+      "Ride request and tracking interfaces",
+      "Dashboard and account screens",
+      "Social media design",
+    ],
+  },
+  "sweet-temptation-logo-menu-design": {
+    metaTitle: "Sweet Temptation branding and drinks launch design | Pixel2Tech",
+    metaDescription:
+      "Logo, menu design, ads and social posts for UK client Sweet Temptation, including creative work for newly launched drinks.",
+    summary: "Logo, menus and drinks launch creatives for UK client Sweet Temptation.",
+    overview:
+      "Logo and menu artwork created for Sweet Temptation in the UK. The pink and blue identity is carried into dark menu layouts for shakes, waffles, brownies, doughnuts and cookie dough. The wider project also included ad creatives and social posts for newly launched drinks.",
+    challenge:
+      "Organize a detailed dessert menu so customers can find product categories, descriptions and prices clearly.",
+    approach:
+      "Pink and blue branding, bold category headings and structured product rows connect the logo with the menu artwork.",
+    outcome:
+      "A coordinated logo and menu project, with ad creatives and social posts supporting the launch of new drinks.",
+    results: [
+      { label: "Client", value: "Sweet Temptation, UK" },
+      { label: "Identity", value: "Pink and blue logo" },
+      { label: "Artwork", value: "Logo, menus and drinks launch creatives" },
+    ],
+    deliverables: [
+      "Logo artwork",
+      "Dessert menu layouts",
+      "Menu typography and price hierarchy",
+      "New-drink launch ad creatives",
+      "Social media post designs",
+    ],
+  },
+  "youtube-thumbnail-designs-2": {
+    metaTitle: "YouTube thumbnail designs - collection 2 | Pixel2Tech",
+    metaDescription:
+      "A second collection of 21 landscape YouTube thumbnails featuring dramatic portraits, bold headlines and cinematic compositions.",
+    summary: "Dramatic portraits, bold headlines and cinematic thumbnail compositions.",
+    overview:
+      "Explore 21 landscape YouTube thumbnail designs in this second collection. The artwork combines dramatic portraits, dark backgrounds, high-contrast lettering and detailed image compositions.",
+    challenge:
+      "Keep the main subject and headline clear when a detailed thumbnail is displayed at a small size.",
+    approach:
+      "The collection uses a strong focal subject, contrasting colors and large headlines to organize each composition.",
+    outcome: "A separate gallery of 21 thumbnail designs, each shown in its full landscape format.",
+    results: [
+      {
+        label: "In this collection",
+        value: pieces("youtube-thumbnail-designs-2", "thumbnail designs"),
+      },
+      { label: "Format", value: "16:9 landscape" },
+      { label: "Visual style", value: "Dramatic imagery and bold typography" },
+    ],
+    deliverables: [
+      "YouTube thumbnail artwork",
+      "Landscape compositions",
+      "Headline and image layouts",
+    ],
+  },
+  "youtube-thumbnail-designs": {
+    metaTitle: "YouTube thumbnail designs | Pixel2Tech",
+    metaDescription:
+      "Explore 36 YouTube thumbnail designs, including podcasts, interviews, business, gaming, technology and documentary layouts.",
+    summary:
+      "YouTube thumbnails for podcasts, interviews, business, gaming and documentary content.",
+    overview:
+      "A collection of 36 landscape thumbnail designs. Browse bold headline layouts, portrait cutouts, contrasting colors and collage treatments across podcasts, technology, business, gaming and storytelling topics.",
+    challenge:
+      "A thumbnail needs to make its topic easy to recognize while keeping the headline and imagery readable at a small size.",
+    approach:
+      "The designs pair short headlines with a clear focal image, using contrast, color and composition to distinguish each topic.",
+    outcome:
+      "A gallery of 36 thumbnail designs, presented in full so every headline and visual detail remains visible.",
+    results: [
+      {
+        label: "In this collection",
+        value: pieces("youtube-thumbnail-designs", "thumbnail designs"),
+      },
+      { label: "Format", value: "Landscape YouTube thumbnails" },
+      { label: "Content", value: "Podcasts, business, technology and more" },
+    ],
+    deliverables: [
+      "YouTube thumbnail artwork",
+      "Headline and portrait layouts",
+      "Landscape designs",
+    ],
+  },
+
   "short-form-social-media-videos": {
     summary: "Ten vertical edits for social media, from podcast clips to talking-head stories.",
     overview:
@@ -439,10 +647,11 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
   "social-media-and-ad-creative-collection": {
-    metaTitle: "Social media and ad creative collection | Pixel2Tech",
+    metaTitle: "Social media and ad designs - collection 1 | Pixel2Tech",
     metaDescription:
       "A wide collection of social media posts and ad creatives for beauty, skin care, fashion, apparel and lifestyle brands, made for Meta, Instagram and TikTok.",
-    summary: "Social posts and ad creatives for beauty, fashion and lifestyle brands.",
+    summary:
+      "The first collection of social media and ad designs for beauty, fashion and lifestyle brands.",
     overview:
       "A broad collection of social media posts and static ad creatives across many industries, including beauty and skin care, fashion and apparel, and fitness and lifestyle brands. The designs were made for Meta, Instagram, Facebook and TikTok.",
     challenge:

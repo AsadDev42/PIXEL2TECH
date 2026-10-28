@@ -741,6 +741,283 @@ for (const sub of AUTOMATION_SUBCATEGORIES) BANKS[sub] = BANKS["Automation"]!;
  * portfolio slug (checked in development by warnOnUnknownSlugs below).
  */
 const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
+  "jacques-international-social-media-post-designs": {
+    process: [
+      {
+        title: "Fashion imagery",
+        body: "Product and model photography anchor the promotional compositions.",
+      },
+      {
+        title: "Offer hierarchy",
+        body: "Large headlines and clearly separated offers keep the main message prominent.",
+      },
+    ],
+    technologies: ["Social media design", "Typography", "Image composition"],
+    whyItMatters:
+      "A dedicated collection presents the complete social post designs separately from affiliate banners.",
+    faqs: [
+      {
+        q: "What does this collection include?",
+        a: "19 social media post designs for Jacques International.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Social Media & Email", "Branding & Design"],
+  },
+  "social-media-and-ad-creative-collection-2": {
+    process: [
+      {
+        title: "Image and message",
+        body: "Each composition balances imagery with a clear promotional message.",
+      },
+      {
+        title: "Format and hierarchy",
+        body: "Layouts preserve the full artwork and its original proportions.",
+      },
+      {
+        title: "Explore the collection",
+        body: "Select any design to open the larger preview and browse the complete set.",
+      },
+    ],
+    technologies: ["Typography", "Image composition", "Promotional design"],
+    whyItMatters:
+      "A complete collection shows how individual designs carry a visual style across different formats.",
+    faqs: [
+      {
+        q: "Can I view the designs larger?",
+        a: "Yes. Select an image to open the enlarged viewer, then use the arrows to browse.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Branding & Design"],
+  },
+  "jacques-international-affiliate-banner-designs": {
+    process: [
+      {
+        title: "Image and message",
+        body: "Each composition balances imagery with a clear promotional message.",
+      },
+      {
+        title: "Format and hierarchy",
+        body: "Layouts preserve the full artwork and its original proportions.",
+      },
+      {
+        title: "Explore the collection",
+        body: "Select any design to open the larger preview and browse the complete set.",
+      },
+    ],
+    technologies: ["Typography", "Image composition", "Promotional design"],
+    whyItMatters:
+      "A complete collection shows how individual designs carry a visual style across different formats.",
+    faqs: [
+      {
+        q: "Can I view the designs larger?",
+        a: "Yes. Select an image to open the enlarged viewer, then use the arrows to browse.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Branding & Design"],
+  },
+  "petal-paints-social-media-posts": {
+    process: [
+      {
+        title: "Brand presence",
+        body: "Brand colors, prominent logos and architectural imagery connect the individual post layouts.",
+      },
+      {
+        title: "Post composition",
+        body: "Make paint and construction product messages easy to recognize and read in a social feed.",
+      },
+      {
+        title: "Complete artwork",
+        body: "Each post is shown in full and can be opened in a larger preview.",
+      },
+    ],
+    technologies: ["Social media design", "Typography", "Product composition"],
+    whyItMatters:
+      "Showing the complete collection makes it easier to see the visual style across different posts for the same client.",
+    faqs: [
+      {
+        q: "What is included in this project?",
+        a: "11 social media post designs for Petal Paints.",
+      },
+      {
+        q: "Can I view each design larger?",
+        a: "Yes. Select any post to open the enlarged viewer and browse the collection.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Social Media & Email", "Branding & Design"],
+  },
+  "naveed-can-metal-works-social-media-posts": {
+    process: [
+      {
+        title: "Brand presence",
+        body: "Red and white branding, product compositions and large headlines give each post a clear visual hierarchy.",
+      },
+      {
+        title: "Post composition",
+        body: "Present industrial packaging products and key messages clearly in a social media format.",
+      },
+      {
+        title: "Complete artwork",
+        body: "Each post is shown in full and can be opened in a larger preview.",
+      },
+    ],
+    technologies: ["Social media design", "Typography", "Product composition"],
+    whyItMatters:
+      "Showing the complete collection makes it easier to see the visual style across different posts for the same client.",
+    faqs: [
+      {
+        q: "What is included in this project?",
+        a: "12 social media post designs for Naveed Can Metal Works.",
+      },
+      {
+        q: "Can I view each design larger?",
+        a: "Yes. Select any post to open the enlarged viewer and browse the collection.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Social Media & Email", "Branding & Design"],
+  },
+  "pool-up-app-social-media": {
+    process: [
+      {
+        title: "App screens",
+        body: "The Figma reference includes ride requests, tracking, dashboards, profiles and support screens.",
+      },
+      {
+        title: "Social media design",
+        body: "Social media work was also created for Pool UP as part of this client project.",
+      },
+      {
+        title: "Explore the source design",
+        body: "Open the original Figma file to inspect the app interface in context.",
+      },
+    ],
+    technologies: ["Figma", "App UI design", "Social media design"],
+    whyItMatters:
+      "A client case study brings the app interface and the social media scope together while keeping the original design available to explore.",
+    faqs: [
+      {
+        q: "What work did Pixel2Tech do for Pool UP?",
+        a: "The project included app UI design and social media design.",
+      },
+      {
+        q: "What does the preview show?",
+        a: "The preview shows the app UI from the original Figma file.",
+      },
+    ],
+    relatedReading: [],
+    relatedServices: ["Social Media & Email", "Branding & Design"],
+  },
+  "sweet-temptation-logo-menu-design": {
+    process: [
+      {
+        title: "Logo identity",
+        body: "The logo pairs pink script lettering with blue accents and a dessert motif.",
+      },
+      {
+        title: "Menu structure",
+        body: "Shakes, waffles, brownies, doughnuts and cookie dough are arranged in clearly headed sections.",
+      },
+      {
+        title: "Product and price hierarchy",
+        body: "Contrasting rows separate item names, descriptions and prices across the menu panels.",
+      },
+      {
+        title: "A consistent visual style",
+        body: "Blue menu headings, pink accents and dark backgrounds carry the identity through the menu artwork.",
+      },
+      {
+        title: "Drinks launch creatives",
+        body: "Ad creatives and social media posts supported the introduction of newly launched drinks.",
+      },
+    ],
+    technologies: ["Logo design", "Typography", "Menu layout"],
+    whyItMatters:
+      "A consistent identity helps customers recognize the business, while a clear menu makes a large product range easier to browse.",
+    faqs: [
+      {
+        q: "What work is included in this project?",
+        a: "The project covers logo and menu design, plus ads and social posts for newly launched drinks. The gallery currently shows the logo and three menu layouts.",
+      },
+      { q: "Where is the client based?", a: "Sweet Temptation is a UK client." },
+    ],
+    relatedReading: [POST.identityProcess, POST.brandGuidelines],
+    relatedServices: ["Branding & Design", "Social Media & Email"],
+  },
+  "youtube-thumbnail-designs-2": {
+    process: [
+      {
+        title: "A clear focal subject",
+        body: "Portraits and detailed images anchor the thumbnail composition.",
+      },
+      {
+        title: "Headline hierarchy",
+        body: "Large, contrasting type makes the main message easy to find.",
+      },
+      {
+        title: "Atmosphere and contrast",
+        body: "Dark backgrounds and selective color create separation between the subject and the setting.",
+      },
+      {
+        title: "Complete landscape artwork",
+        body: "The gallery preserves every design in its original landscape composition.",
+      },
+    ],
+    technologies: ["Typography", "Photo compositing", "YouTube"],
+    whyItMatters:
+      "A thumbnail communicates the visual tone of a video before it is opened. This collection presents a range of dramatic image treatments and headline layouts.",
+    faqs: [
+      {
+        q: "How many designs are in this collection?",
+        a: "This second collection contains 21 YouTube thumbnail designs.",
+      },
+      {
+        q: "Is this separate from the first collection?",
+        a: "Yes. The original thumbnail collection remains available as its own portfolio project.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Branding & Design", "Video Editing & Ads"],
+  },
+  "youtube-thumbnail-designs": {
+    process: [
+      {
+        title: "Set the topic",
+        body: "Each thumbnail introduces one subject through its headline and main image.",
+      },
+      {
+        title: "Build the focal point",
+        body: "Portraits, objects and cutouts give the composition a clear place to look first.",
+      },
+      {
+        title: "Keep the headline readable",
+        body: "Large type and contrasting colors help the message hold up in a small preview.",
+      },
+      {
+        title: "Present the complete artwork",
+        body: "Landscape images are shown without cropping so the full composition can be reviewed.",
+      },
+    ],
+    technologies: ["Typography", "Photo compositing", "YouTube"],
+    whyItMatters:
+      "A clear thumbnail helps viewers understand the subject before opening a video. This collection shows different ways to combine a headline, an image and a recognizable visual style.",
+    faqs: [
+      {
+        q: "How many designs are in this collection?",
+        a: "This gallery includes 36 YouTube thumbnail designs.",
+      },
+      {
+        q: "Which topics are represented?",
+        a: "The collection includes podcasts, interviews, business, technology, gaming, sport and documentary topics.",
+      },
+    ],
+    relatedReading: [POST.outsourceVideo, POST.whiteLabelCreative],
+    relatedServices: ["Branding & Design", "Video Editing & Ads"],
+  },
+
   "short-form-social-media-videos": {
     process: [
       {

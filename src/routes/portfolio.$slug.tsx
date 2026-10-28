@@ -1,3 +1,5 @@
+import { PortfolioImageGallery } from "@/components/portfolio-image-gallery";
+import { DesignProjectCard } from "@/components/design-project-card";
 import { MediaImage } from "@/components/media-image";
 import { Suspense, useState } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
@@ -321,13 +323,18 @@ function BookShowcase({ covers }: { covers: BookCover[] }) {
 }
 
 /**
- * Every image of a large collection in a lazy-loaded grid. Fixed 4:5 cells
- * with object-contain on a neutral background: no layout shift while images
- * load, and portrait (9:16) or square pieces are shown whole, never cropped.
+ * Every image of a large collection in a lazy-loaded grid. Landscape artwork
+ * keeps a wider cell; object-contain shows the whole design without cropping.
  */
 function ImageCollection({ item, images }: { item: PortfolioItem; images: string[] }) {
   return (
-    <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+    <ul
+      className={
+        item.galleryAspect === "landscape"
+          ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          : "grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4"
+      }
+    >
       {images.map((src, i) => (
         <li key={src} className="overflow-hidden rounded-2xl border border-border bg-muted">
           <MediaImage
@@ -336,7 +343,11 @@ function ImageCollection({ item, images }: { item: PortfolioItem; images: string
             loading={i < 4 ? "eager" : "lazy"}
             decoding="async"
             draggable={false}
-            className="aspect-[4/5] h-auto w-full object-contain"
+            className={
+              item.galleryAspect === "landscape"
+                ? "aspect-video h-auto w-full object-contain"
+                : "aspect-[4/5] h-auto w-full object-contain"
+            }
           />
         </li>
       ))}
@@ -347,6 +358,69 @@ function ImageCollection({ item, images }: { item: PortfolioItem; images: string
 function CategoryShowcase({ item, images }: { item: PortfolioItem; images: string[] }) {
   const sub = item.subcategory;
   const all = [item.img, ...images];
+
+  if (item.designUrl) {
+    return (
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">App UI preview / original Figma design</p>
+          <a
+            href={item.designUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border px-6 py-3 text-sm font-semibold hover:bg-muted"
+          >
+            Explore app design in Figma
+          </a>
+        </div>
+        <iframe
+          src="https://embed.figma.com/design/cHZOweJxDulqOWVwOv8SLT/New-App-UI?embed-host=share&node-id=0-1"
+          title="Pool UP app UI - Figma design"
+          loading="lazy"
+          allowFullScreen
+          className="h-[640px] w-full rounded-2xl border border-border bg-muted"
+        />
+      </div>
+    );
+  }
+
+  if (item.category === "Social Media & Ads" && item.showAllImages && item.images?.length) {
+    return <PortfolioImageGallery images={item.images} title={item.title} itemLabel="post" />;
+  }
+
+  if (
+    ["Social Media Design", "Ad & Banner Design"].includes(item.subcategory) &&
+    item.images?.length
+  ) {
+    return (
+      <PortfolioImageGallery
+        images={item.images}
+        title={item.title}
+        itemLabel={item.subcategory === "Ad & Banner Design" ? "banner" : "post"}
+      />
+    );
+  }
+
+  if (item.subcategory === "Logo & Menu Design" && item.images?.length) {
+    return (
+      <div className="space-y-8">
+        <MediaImage
+          src={item.img}
+          alt="Sweet Temptation logo and menu presentation on a pink studio background"
+          width={1536}
+          height={1024}
+          loading="eager"
+          decoding="async"
+          className="h-auto w-full rounded-2xl border border-border"
+        />
+        <PortfolioImageGallery images={item.images} title={item.title} itemLabel="design" />
+      </div>
+    );
+  }
+
+  if (item.subcategory === "Thumbnails" && item.images?.length) {
+    return <PortfolioImageGallery images={item.images} title={item.title} />;
+  }
 
   if (item.showAllImages && item.images?.length) {
     return <ImageCollection item={item} images={item.images} />;
@@ -677,8 +751,8 @@ function PortfolioDetailPage() {
                 </h2>
                 <p className="mt-3 max-w-2xl text-[15px] text-muted-foreground">
                   {wallCopy?.intro ? `${wallCopy.intro} ` : ""}
-                  Open a video to load its player with volume, timeline and fullscreen controls,
-                  then use the side arrows to browse the collection.
+                  Short previews play silently. Open a video for volume, timeline and fullscreen
+                  controls, then use the side arrows to browse the collection.
                 </p>
                 <div className="mt-8">
                   <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
@@ -944,7 +1018,7 @@ function PortfolioDetailPage() {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-8 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((r) => (
                   <li key={r.slug}>
                     <Link
@@ -952,27 +1026,31 @@ function PortfolioDetailPage() {
                       params={{ slug: r.slug }}
                       className="group block overflow-hidden rounded-2xl border border-border bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                      <div className="relative aspect-[4/5]">
-                        <MediaImage
-                          src={r.img}
-                          srcSet={imageSrcSet(r.img)}
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          alt={`${r.title} — portfolio project preview`}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-                          <p className="text-[11px] uppercase tracking-widest text-white/80">
-                            {r.subcategory}
-                          </p>
-                          <h3 className="mt-1 line-clamp-2 text-base font-semibold">{r.title}</h3>
+                      {r.category === "Design" ? (
+                        <DesignProjectCard item={r} />
+                      ) : (
+                        <div className="relative aspect-[4/5]">
+                          <MediaImage
+                            src={r.img}
+                            srcSet={imageSrcSet(r.img)}
+                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                            alt={`${r.title} — portfolio project preview`}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-transparent"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
+                            <p className="text-[11px] uppercase tracking-widest text-white/80">
+                              {r.subcategory}
+                            </p>
+                            <h3 className="mt-1 line-clamp-2 text-base font-semibold">{r.title}</h3>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </Link>
                   </li>
                 ))}

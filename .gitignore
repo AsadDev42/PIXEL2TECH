@@ -38,3 +38,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Generated local reports, previews, and scratch work (CI regenerates previews).
+/output/
+/public/portfolio/previews/
+/scratch_*
+
+# Bun owns the root lockfile; deploy/prisma/package-lock.json remains tracked.
+/package-lock.json
+
+# Local environment variants; the example contains placeholders only.
+.env.*
+!.env.example
+
+# Python generators.
+__pycache__/
+*.py[cod]

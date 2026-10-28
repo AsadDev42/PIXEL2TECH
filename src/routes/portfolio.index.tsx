@@ -1,3 +1,4 @@
+import { DesignProjectCard } from "@/components/design-project-card";
 import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
@@ -200,7 +201,11 @@ function PortfolioPage() {
             </h2>
           )}
           <ul
-            className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+            className={
+              active === "Design"
+                ? "mt-6 columns-1 gap-5 sm:columns-2 lg:columns-3"
+                : "mt-6 grid items-start gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+            }
             hidden={
               active === "Video Editing" ||
               active === "Websites" ||
@@ -215,7 +220,11 @@ function PortfolioPage() {
                 item.category !== "Ecom Stores" &&
                 item.category !== "Social Media & Ads",
             ).map((w, i) => (
-              <li key={w.slug} hidden={active ? w.category !== active : undefined}>
+              <li
+                key={w.slug}
+                className={active === "Design" ? "mb-5 break-inside-avoid" : undefined}
+                hidden={active ? w.category !== active : undefined}
+              >
                 <Link
                   to="/portfolio/$slug"
                   params={{ slug: w.slug }}
@@ -225,37 +234,41 @@ function PortfolioPage() {
                   }
                   className="group block overflow-hidden rounded-2xl bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                 >
-                  <div className="relative aspect-[4/5]">
-                    <MediaImage
-                      src={w.img}
-                      srcSet={imageSrcSet(w.img)}
-                      sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      alt={`${w.title} — portfolio project preview`}
-                      loading={i < 3 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-6">
-                      <div className="min-w-0">
-                        <p className="text-xs uppercase tracking-widest text-white/85">
-                          {w.subcategory}
-                        </p>
-                        <h3 className="mt-1 line-clamp-2 text-base font-semibold sm:text-lg">
-                          {w.title}
-                        </h3>
-                      </div>
-                      <span
+                  {w.category === "Design" ? (
+                    <DesignProjectCard item={w} priority={i < 3} />
+                  ) : (
+                    <div className="relative aspect-[4/5]">
+                      <MediaImage
+                        src={w.img}
+                        srcSet={imageSrcSet(w.img)}
+                        sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        alt={`${w.title} — portfolio project preview`}
+                        loading={i < 3 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div
                         aria-hidden="true"
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/90 text-neutral-900 transition group-hover:scale-110"
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
+                        className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-6">
+                        <div className="min-w-0">
+                          <p className="text-xs uppercase tracking-widest text-white/85">
+                            {w.subcategory}
+                          </p>
+                          <h3 className="mt-1 line-clamp-2 text-base font-semibold sm:text-lg">
+                            {w.title}
+                          </h3>
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/90 text-neutral-900 transition group-hover:scale-110"
+                        >
+                          <ArrowUpRight className="h-4 w-4" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </Link>
               </li>
             ))}

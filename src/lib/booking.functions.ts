@@ -14,7 +14,7 @@ function throttle(limit: number, prefix: string) {
   hits.set(key, [...recent, now]);
 }
 export const bookingAvailability = createServerFn({ method: "POST" })
-  .inputValidator(z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }))
+  .validator(z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }))
   .handler(async ({ data }) => {
     throttle(90, "availability");
     try {
@@ -27,7 +27,7 @@ export const bookingAvailability = createServerFn({ method: "POST" })
     }
   });
 export const bookStrategyCall = createServerFn({ method: "POST" })
-  .inputValidator(
+  .validator(
     z.object({
       start: z.string().datetime(),
       name: z.string().trim().min(2).max(120),

@@ -23,15 +23,21 @@ const MIN_BYTES = 1024;
 
 function acceptsGzip(header: string | null): boolean {
   if (!header) return false;
-  return header.split(",").some((part) => {
+  let wildcard = false;
+  for (const part of header.split(",")) {
     const [name, ...params] = part.trim().toLowerCase().split(";");
-    if (name !== "gzip" && name !== "*") return false;
+    if (name !== "gzip" && name !== "*") continue;
     const q = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
-    return !q || Number(q.slice(2)) > 0;
-  });
+    const quality = q ? Number(q.slice(2)) : 1;
+    const accepted = Number.isFinite(quality) && quality > 0 && quality <= 1;
+    // An explicit coding overrides the wildcard, including an explicit refusal.
+    if (name === "gzip") return accepted;
+    wildcard = accepted;
+  }
+  return wildcard;
 }
 
-function shouldCompress(req: Request, res: Response): boolean {
+function canCompress(req: Request, res: Response): boolean {
   if (req.method === "HEAD" || !res.body) return false;
   if (res.status !== 200) return false;
   if (res.headers.has("content-encoding")) return false;
@@ -39,7 +45,7 @@ function shouldCompress(req: Request, res: Response): boolean {
   if (/\bno-transform\b/i.test(res.headers.get("cache-control") ?? "")) return false;
   const length = res.headers.get("content-length");
   if (length !== null && Number(length) < MIN_BYTES) return false;
-  return acceptsGzip(req.headers.get("accept-encoding"));
+  return true;
 }
 
 function addVary(headers: Headers) {
@@ -57,11 +63,16 @@ function compress(req: Request, res: Response): Response {
     headers.set("cache-control", "no-cache");
     res = new Response(res.body, { status: res.status, statusText: res.statusText, headers });
   }
-  if (!shouldCompress(req, res)) return res;
+  if (!canCompress(req, res)) return res;
   const headers = new Headers(res.headers);
+  // Both representations must vary so shared caches keep their encodings separate.
+  addVary(headers);
+  if (!acceptsGzip(req.headers.get("accept-encoding"))) {
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+  }
   headers.delete("content-length");
   headers.set("content-encoding", "gzip");
-  addVary(headers);
+
   // A strong ETag names the uncompressed bytes; mark it weak for the gzip copy.
   const etag = headers.get("etag");
   if (etag && !etag.startsWith("W/")) headers.set("etag", `W/${etag}`);

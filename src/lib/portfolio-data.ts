@@ -27,6 +27,8 @@ export type VideoOrientation = "vertical" | "landscape";
 export type PortfolioVideo = {
   src: string;
   poster: string;
+  /** Small silent loop for cards; never use the full playback source as a preview. */
+  preview?: string;
   /** Neutral label such as "Talking-head video 3". Never an invented topic. */
   title: string;
   orientation: VideoOrientation;
@@ -50,6 +52,8 @@ export type PortfolioItem = {
   video?: string;
   /** Optional extra images belonging to this same project (shown in its gallery). */
   images?: string[];
+  /** Public Figma design reference for an app design case study. */
+  designUrl?: string;
   /** Dedicated images for a 3D slider or special showcase. */
   slider?: string[];
   /**
@@ -57,6 +61,8 @@ export type PortfolioItem = {
    * instead of the subcategory mockup (used for large design collections).
    */
   showAllImages?: boolean;
+  /** Preserve landscape artwork in collection galleries. */
+  galleryAspect?: "landscape";
   /** Self-hosted videos, shown as a video wall on the detail page. */
   videos?: PortfolioVideo[];
   /** A live Shopify store: screenshots in browser/phone frames plus a link to it. */
@@ -107,6 +113,7 @@ function numberedVideos(
           ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
           : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
+      preview: `/portfolio/previews/${slug}/${n}.mp4`,
       title:
         VIDEO_TITLES[slug]?.[n - 1] ??
         `${labels[o] ?? labels[orientation] ?? "Portfolio video"} — selected edit`,
@@ -209,6 +216,7 @@ const LONG_FORM_VIDEOS: PortfolioVideo[] = (
 ).map(([id, hasPreview], i) => ({
   src: hasPreview ? `/portfolio/long-form-video-editing/${i + 1}-preview.mp4` : "",
   poster: `/portfolio/long-form-video-editing/${i + 1}.jpg`,
+  preview: hasPreview ? `/portfolio/previews/long-form-video-editing/${i + 1}.mp4` : undefined,
   title: VIDEO_TITLES["long-form-video-editing"][i],
   orientation: "landscape" as const,
   embed: `https://drive.google.com/file/d/${id}/preview`,
@@ -229,7 +237,14 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const SUBS: Record<Category, string[]> = {
   "Social Media & Ads": ["Social Media"],
-  Design: ["Branding", "Print & Merchandise"],
+  Design: [
+    "Branding",
+    "Thumbnails",
+    "Logo & Menu Design",
+    "Social Media Design",
+    "Ad & Banner Design",
+    "Print & Merchandise",
+  ],
   "Ecom Stores": ["Shopify Stores"],
   Websites: ["WordPress Sites", "Custom Websites"],
   "Video Editing": ["Short Form", "Long Form", "Commercial"],
@@ -253,6 +268,82 @@ function storeItem(p: StoreProject): RawItem {
 const RAW: RawWork = {
   "Social Media & Ads": {
     "Social Media": [
+      {
+        slug: "jacques-international-social-media-post-designs",
+        title: "Jacques International - social media post designs",
+        client: "Jacques International",
+        img: "/portfolio/jacques-international-social-media-post-designs/1.webp",
+        images: [
+          "/portfolio/jacques-international-social-media-post-designs/1.webp",
+          "/portfolio/jacques-international-social-media-post-designs/2.webp",
+          "/portfolio/jacques-international-social-media-post-designs/3.webp",
+          "/portfolio/jacques-international-social-media-post-designs/4.webp",
+          "/portfolio/jacques-international-social-media-post-designs/5.webp",
+          "/portfolio/jacques-international-social-media-post-designs/6.webp",
+          "/portfolio/jacques-international-social-media-post-designs/7.webp",
+          "/portfolio/jacques-international-social-media-post-designs/8.webp",
+          "/portfolio/jacques-international-social-media-post-designs/9.webp",
+          "/portfolio/jacques-international-social-media-post-designs/10.webp",
+          "/portfolio/jacques-international-social-media-post-designs/11.webp",
+          "/portfolio/jacques-international-social-media-post-designs/12.webp",
+          "/portfolio/jacques-international-social-media-post-designs/13.webp",
+          "/portfolio/jacques-international-social-media-post-designs/14.webp",
+          "/portfolio/jacques-international-social-media-post-designs/15.webp",
+          "/portfolio/jacques-international-social-media-post-designs/16.webp",
+          "/portfolio/jacques-international-social-media-post-designs/17.webp",
+          "/portfolio/jacques-international-social-media-post-designs/18.webp",
+          "/portfolio/jacques-international-social-media-post-designs/19.webp",
+        ],
+        showAllImages: true,
+      },
+      {
+        slug: "petal-paints-social-media-posts",
+        title: "Petal Paints - social media post designs",
+        client: "Petal Paints",
+        img: "/portfolio/petal-paints-social-media-posts/1.webp",
+        images: [
+          "/portfolio/petal-paints-social-media-posts/1.webp",
+          "/portfolio/petal-paints-social-media-posts/2.webp",
+          "/portfolio/petal-paints-social-media-posts/3.webp",
+          "/portfolio/petal-paints-social-media-posts/4.webp",
+          "/portfolio/petal-paints-social-media-posts/5.webp",
+          "/portfolio/petal-paints-social-media-posts/6.webp",
+          "/portfolio/petal-paints-social-media-posts/7.webp",
+          "/portfolio/petal-paints-social-media-posts/8.webp",
+          "/portfolio/petal-paints-social-media-posts/9.webp",
+          "/portfolio/petal-paints-social-media-posts/10.webp",
+          "/portfolio/petal-paints-social-media-posts/11.webp",
+        ],
+        showAllImages: true,
+      },
+      {
+        slug: "naveed-can-metal-works-social-media-posts",
+        title: "Naveed Can Metal Works - social media post designs",
+        client: "Naveed Can Metal Works",
+        img: "/portfolio/naveed-can-metal-works-social-media-posts/1.webp",
+        images: [
+          "/portfolio/naveed-can-metal-works-social-media-posts/1.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/2.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/3.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/4.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/5.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/6.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/7.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/8.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/9.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/10.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/11.webp",
+          "/portfolio/naveed-can-metal-works-social-media-posts/12.webp",
+        ],
+        showAllImages: true,
+      },
+      {
+        slug: "pool-up-app-social-media",
+        title: "Pool UP - app UI and social media",
+        client: "Pool UP",
+        img: "/portfolio/pool-up-app-social-media/app-overview.webp",
+        designUrl: "https://www.figma.com/design/cHZOweJxDulqOWVwOv8SLT/New-App-UI?node-id=0-1",
+      },
       {
         // Explicit slugs keep project URLs stable when titles change.
         slug: "madluvv-social-media-meta-ads",
@@ -329,17 +420,115 @@ const RAW: RawWork = {
         images: SKIN_CARE_POSTS,
         showAllImages: true,
       },
-      {
-        slug: "social-media-and-ad-creative-collection",
-        title: "Social media and ad creative collection",
-        img: CREATIVE_COLLECTION[0]!,
-        images: CREATIVE_COLLECTION,
-        showAllImages: true,
-      },
     ],
   },
 
   Design: {
+    "Social Media Design": [
+      {
+        slug: "social-media-and-ad-creative-collection",
+        title: "Social media and ad designs - collection 1",
+        img: CREATIVE_COLLECTION[0]!,
+        images: CREATIVE_COLLECTION.slice(0, Math.ceil(CREATIVE_COLLECTION.length / 2)),
+        showAllImages: true,
+      },
+      {
+        slug: "social-media-and-ad-creative-collection-2",
+        title: "Social media and ad designs - collection 2",
+        img: CREATIVE_COLLECTION[Math.ceil(CREATIVE_COLLECTION.length / 2)]!,
+        images: CREATIVE_COLLECTION.slice(Math.ceil(CREATIVE_COLLECTION.length / 2)),
+        showAllImages: true,
+      },
+    ],
+    "Ad & Banner Design": [
+      {
+        slug: "jacques-international-affiliate-banner-designs",
+        title: "Jacques International - affiliate banner designs",
+        client: "Jacques International",
+        img: "/portfolio/jacques-international-affiliate-banner-designs/1.webp",
+        images: [
+          "/portfolio/jacques-international-affiliate-banner-designs/1.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/2.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/3.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/4.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/5.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/6.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/7.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/8.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/9.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/10.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/11.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/12.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/13.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/14.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/15.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/16.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/17.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/18.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/19.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/20.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/21.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/22.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/23.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/24.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/25.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/26.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/27.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/28.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/29.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/30.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/31.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/32.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/33.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/34.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/35.webp",
+          "/portfolio/jacques-international-affiliate-banner-designs/36.webp",
+        ],
+        showAllImages: true,
+      },
+    ],
+    "Logo & Menu Design": [
+      {
+        slug: "sweet-temptation-logo-menu-design",
+        title: "Sweet Temptation - logo, menus and launch creatives",
+        client: "Sweet Temptation",
+        img: "/portfolio/sweet-temptation-logo-menu-design/logo.webp",
+        images: ["logo", "menu-1", "menu-2", "menu-3"].map(
+          (name) => `/portfolio/sweet-temptation-logo-menu-design/${name}.webp`,
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+    ],
+    Thumbnails: [
+      {
+        slug: "youtube-thumbnail-designs-2",
+        title: "YouTube thumbnail designs - collection 2",
+        img: "/portfolio/youtube-thumbnail-designs-2/1.webp",
+        images: numbered(
+          "youtube-thumbnail-designs-2",
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+          "webp",
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+      {
+        slug: "youtube-thumbnail-designs",
+        title: "YouTube thumbnail designs",
+        img: "/portfolio/youtube-thumbnail-designs/34.webp",
+        images: numbered(
+          "youtube-thumbnail-designs",
+          [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 36, 37,
+          ],
+          "webp",
+        ),
+        showAllImages: true,
+        galleryAspect: "landscape",
+      },
+    ],
     Branding: [
       {
         slug: "brand-identity-design-collection",

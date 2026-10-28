@@ -1,7 +1,8 @@
 import { MediaImage } from "@/components/media-image";
-import { memo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { Play, Maximize2 } from "lucide-react";
 import type { PortfolioVideo, VideoOrientation } from "@/lib/portfolio-data";
+import { PROTECTED_VIDEO_PROPS } from "@/lib/video-sound";
 import { PortfolioVideoPlayer } from "@/components/portfolio-video-player";
 
 const GRID: Record<VideoOrientation, string> = {
@@ -10,7 +11,7 @@ const GRID: Record<VideoOrientation, string> = {
 };
 const ASPECT = { vertical: "aspect-[9/16]", landscape: "aspect-video" };
 
-/** Posters stay lightweight; only the selected video is fetched in the full player. */
+/** Lightweight muted loops keep the original preview experience without fetching full videos. */
 export function VideoWall({
   videos,
   label,
@@ -24,12 +25,25 @@ export function VideoWall({
 }) {
   const [active, setActive] = useState<number | null>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const [motionOK, setMotionOK] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setMotionOK(!motion.matches);
+    const visibility = () => setPageVisible(!document.hidden);
+    update();
+    visibility();
+    motion.addEventListener("change", update);
+    document.addEventListener("visibilitychange", visibility);
+    return () => {
+      motion.removeEventListener("change", update);
+      document.removeEventListener("visibilitychange", visibility);
+    };
+  }, []);
   if (!videos.length) return null;
   const orientations = [...new Set(videos.map((video) => video.orientation))];
   return (
     <div role="group" aria-label={label} className="space-y-10">
-      <link rel="preconnect" href="https://github.com" />
-      <link rel="preconnect" href="https://release-assets.githubusercontent.com" />
       {orientations.map((orientation) => (
         <div key={orientation}>
           {orientations.length > 1 && (
@@ -56,6 +70,7 @@ export function VideoWall({
                 >
                   <VideoCard
                     video={video}
+                    running={motionOK && pageVisible && active === null}
                     showCaption={layout !== "slider"}
                     onOpen={(button) => {
                       trigger.current = button;
@@ -81,16 +96,57 @@ export function VideoWall({
 
 const VideoCard = memo(function VideoCard({
   video,
+  running,
   onOpen,
   showCaption,
 }: {
   video: PortfolioVideo;
+  running: boolean;
   onOpen: (button: HTMLButtonElement) => void;
   showCaption: boolean;
 }) {
+  const button = useRef<HTMLButtonElement>(null);
+  const preview = useRef<HTMLVideoElement>(null);
+  const [near, setNear] = useState(false);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const element = button.current;
+    if (!element) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setNear(true);
+      setVisible(true);
+      return;
+    }
+    const nearby = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setNear(true);
+          nearby.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" },
+    );
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(Boolean(entry?.isIntersecting)),
+      { threshold: 0.2 },
+    );
+    nearby.observe(element);
+    observer.observe(element);
+    return () => {
+      nearby.disconnect();
+      observer.disconnect();
+    };
+  }, []);
+  useEffect(() => {
+    const element = preview.current;
+    if (!element) return;
+    if (running && near && visible) void element.play().catch(() => undefined);
+    else element.pause();
+  }, [running, near, visible]);
   return (
     <>
       <button
+        ref={button}
         type="button"
         onClick={(event) => onOpen(event.currentTarget)}
         aria-label={`Open video: ${video.title}`}
@@ -106,6 +162,22 @@ const VideoCard = memo(function VideoCard({
           draggable={false}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
+        {video.preview && near && (
+          <video
+            title={video.title}
+            ref={preview}
+            src={video.preview}
+            poster={video.poster}
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            tabIndex={-1}
+            {...PROTECTED_VIDEO_PROPS}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          />
+        )}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/60 to-transparent"

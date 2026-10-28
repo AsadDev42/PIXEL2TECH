@@ -44,6 +44,13 @@ jobs:
         run: npm ci
         working-directory: deploy/prisma
 
+      # Generate smooth silent loops separately so full videos are only fetched on play.
+      - name: Generate lightweight video previews
+        run: |
+          python3 -m pip install --disable-pip-version-check imageio-ffmpeg==0.6.0
+          export P2T_FFMPEG="$(python3 -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')"
+          python3 scripts/create-video-previews.py
+
       - name: Build the site (Node server output in .output)
         run: npm run build
         env:

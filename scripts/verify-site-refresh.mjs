@@ -74,7 +74,17 @@ const workPaths = [...llms.matchAll(/https:\/\/pixel2tech\.com(\/portfolio\/[^)\
   (match) => match[1],
 );
 assert(articlePaths.length >= 96, "Complete article discovery index");
-assert.equal(workPaths.length, 132, "Complete work discovery index");
+const workSitemap = await page("/portfolio-sitemap.xml");
+const sitemapWorkPaths = [
+  ...workSitemap.matchAll(/<loc>https:\/\/pixel2tech\.com(\/portfolio\/[^<]+)<\/loc>/g),
+].map((match) => match[1]);
+assert(sitemapWorkPaths.length > 0, "Portfolio sitemap is populated");
+assert.equal(new Set(workPaths).size, workPaths.length, "No duplicate work discovery links");
+assert.deepEqual(
+  [...workPaths].sort(),
+  [...sitemapWorkPaths].sort(),
+  "Complete work discovery index matches the portfolio sitemap",
+);
 let checked = 0;
 for (let i = 0; i < articlePaths.length; i += 6) {
   await Promise.all(

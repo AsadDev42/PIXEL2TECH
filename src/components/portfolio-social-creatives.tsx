@@ -20,7 +20,7 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
             A look inside each collection
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Three creatives from every project. Open a collection to see the complete work.
+            Selected creative work from each project. Open a collection to explore the designs.
           </p>
         </div>
         {featuredOnly && (
@@ -57,7 +57,13 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-300 hover:border-foreground/25 hover:shadow-lg hover:shadow-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:rounded-3xl"
               >
                 <div className="bg-muted/60 p-4 sm:p-5">
-                  <div className="grid aspect-[4/3] grid-cols-[1.6fr_1fr] grid-rows-2 gap-2 sm:gap-3">
+                  <div
+                    className={
+                      previews.length === 1
+                        ? "grid aspect-[4/3] grid-cols-1"
+                        : "grid aspect-[4/3] grid-cols-[1.6fr_1fr] grid-rows-2 gap-2 sm:gap-3"
+                    }
+                  >
                     {previews.map((src, previewIndex) => (
                       <div
                         key={src}
@@ -71,7 +77,7 @@ export function PortfolioSocialCreatives({ featuredOnly = false }: { featuredOnl
                               ? "(min-width: 1280px) 320px, (min-width: 768px) 28vw, 55vw"
                               : "(min-width: 1280px) 200px, (min-width: 768px) 18vw, 35vw"
                           }
-                          alt={`${project.client ?? project.title} — creative ${previewIndex + 1} of 3`}
+                          alt={`${project.client ?? project.title} — creative ${previewIndex + 1} of ${previews.length}`}
                           loading={index < 2 ? "eager" : "lazy"}
                           decoding="async"
                           className="h-full w-full object-contain"
