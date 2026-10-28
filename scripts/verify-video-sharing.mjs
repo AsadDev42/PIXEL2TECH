@@ -41,10 +41,7 @@ test("embedded videos have distinct stable links", () => {
   const video = { src: "", embed: "https://drive.google.com/file/d/first/preview" };
   const other = { src: "", embed: "https://drive.google.com/file/d/second/preview" };
   assert.notEqual(videoId(video), videoId(other));
-  assert.equal(
-    videoSharePath("/portfolio/long-form", video),
-    `/watch/long-form/${videoId(video)}`,
-  );
+  assert.equal(videoSharePath("/portfolio/long-form", video), `/watch/long-form/${videoId(video)}`);
 });
 
 test("watch page sharing preserves the original ID after adding a fallback poster", () => {

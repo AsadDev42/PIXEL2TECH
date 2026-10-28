@@ -52,7 +52,6 @@ const preloadBookShowcase = () => void import("@/components/book-3d-showcase");
 const BOOK_COVERS_SLUG = "book-cover-design-portfolio";
 const NAYYER_SLUG = "nayyer-carpets-creative-direction-mockups";
 
-
 /** Heading and intro above the video wall of projects that carry `videos`. */
 const VIDEO_WALL_COPY: Record<string, { heading: string; intro: string }> = {
   "short-form-social-media-videos": {
