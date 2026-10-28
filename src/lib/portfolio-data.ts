@@ -269,6 +269,13 @@ const RAW: RawWork = {
   "Social Media & Ads": {
     "Social Media": [
       {
+        slug: "skin-care-social-media-creatives",
+        title: "Skin care social media creatives",
+        img: SKIN_CARE_POSTS[0]!,
+        images: SKIN_CARE_POSTS,
+        showAllImages: true,
+      },
+      {
         slug: "jacques-international-social-media-post-designs",
         title: "Jacques International - social media post designs",
         client: "Jacques International",
@@ -294,6 +301,43 @@ const RAW: RawWork = {
           "/portfolio/jacques-international-social-media-post-designs/18.webp",
           "/portfolio/jacques-international-social-media-post-designs/19.webp",
         ],
+        showAllImages: true,
+      },
+      {
+        slug: "healthcare-meta-ad-creatives",
+        title: "Healthcare Meta ad creatives",
+        // Original nerve-pain artwork selected by the owner as the cover.
+        img: "/portfolio/healthcare-meta-ad-creatives/6.webp",
+        images: HEALTHCARE_ADS,
+        showAllImages: true,
+      },
+      {
+        // Explicit slugs keep project URLs stable when titles change.
+        slug: "madluvv-social-media-meta-ads",
+        title: "MADLUVV — social media and Meta ads",
+        client: "MADLUVV",
+        img: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
+        images: [
+          "/media/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
+          "/media/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",
+          "/media/5ca499ea-9272-400e-9a5f-c971dd39de9b/madluvv-3.png",
+          "/media/89733ae3-ce34-47b7-8da1-ae426679b42c/madluvv-4.png",
+          "/media/907cdda9-156c-4f46-8db0-8636373881c6/madluvv-5.png",
+          "/media/d86bb39b-e140-4bc3-aa43-3065ee73af4c/madluvv-6.png",
+          "/media/dea8407c-4606-411f-8493-ed3fede95eb6/madluvv-7.png",
+          "/media/21615bc5-1b59-4ed8-8da8-7c294082eb0f/madluvv-8.png",
+          "/media/d3c35c06-c103-4ae7-a58a-856e1edd0c53/madluvv-9.png",
+          "/media/526d0055-df91-415a-a35e-4bd6e9b161e3/madluvv-10.png",
+          "/media/7db7c628-1bb0-4e8e-893e-cea7e58d3a9a/madluvv-11.jpg",
+          "/media/a83227d7-7e64-4cf6-8a2d-369e3bfeb039/madluvv-12.jpg",
+          "/media/106746bf-ed5e-434a-b77b-c15943ac2fe5/madluvv-13.jpg",
+        ],
+      },
+      {
+        slug: "food-and-drink-social-media-creatives",
+        title: "Food and drink social media creatives",
+        img: FOOD_AND_DRINK_POSTS[0]!,
+        images: FOOD_AND_DRINK_POSTS,
         showAllImages: true,
       },
       {
@@ -338,35 +382,6 @@ const RAW: RawWork = {
         showAllImages: true,
       },
       {
-        slug: "pool-up-app-social-media",
-        title: "Pool UP - app UI and social media",
-        client: "Pool UP",
-        img: "/portfolio/pool-up-app-social-media/app-overview.webp",
-        designUrl: "https://www.figma.com/design/cHZOweJxDulqOWVwOv8SLT/New-App-UI?node-id=0-1",
-      },
-      {
-        // Explicit slugs keep project URLs stable when titles change.
-        slug: "madluvv-social-media-meta-ads",
-        title: "MADLUVV — social media and Meta ads",
-        client: "MADLUVV",
-        img: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
-        images: [
-          "/media/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
-          "/media/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",
-          "/media/5ca499ea-9272-400e-9a5f-c971dd39de9b/madluvv-3.png",
-          "/media/89733ae3-ce34-47b7-8da1-ae426679b42c/madluvv-4.png",
-          "/media/907cdda9-156c-4f46-8db0-8636373881c6/madluvv-5.png",
-          "/media/d86bb39b-e140-4bc3-aa43-3065ee73af4c/madluvv-6.png",
-          "/media/dea8407c-4606-411f-8493-ed3fede95eb6/madluvv-7.png",
-          "/media/21615bc5-1b59-4ed8-8da8-7c294082eb0f/madluvv-8.png",
-          "/media/d3c35c06-c103-4ae7-a58a-856e1edd0c53/madluvv-9.png",
-          "/media/526d0055-df91-415a-a35e-4bd6e9b161e3/madluvv-10.png",
-          "/media/7db7c628-1bb0-4e8e-893e-cea7e58d3a9a/madluvv-11.jpg",
-          "/media/a83227d7-7e64-4cf6-8a2d-369e3bfeb039/madluvv-12.jpg",
-          "/media/106746bf-ed5e-434a-b77b-c15943ac2fe5/madluvv-13.jpg",
-        ],
-      },
-      {
         slug: "affinity-law-social-media-ad-creatives",
         title: "Affinity Law — social media and ad creatives",
         client: "Affinity Law",
@@ -397,28 +412,6 @@ const RAW: RawWork = {
         client: "Swishtag",
         img: swishtagAssets.cover,
         images: swishtagAssets.images,
-      },
-      {
-        slug: "healthcare-meta-ad-creatives",
-        title: "Healthcare Meta ad creatives",
-        // Original nerve-pain artwork selected by the owner as the cover.
-        img: "/portfolio/healthcare-meta-ad-creatives/6.webp",
-        images: HEALTHCARE_ADS,
-        showAllImages: true,
-      },
-      {
-        slug: "food-and-drink-social-media-creatives",
-        title: "Food and drink social media creatives",
-        img: FOOD_AND_DRINK_POSTS[0]!,
-        images: FOOD_AND_DRINK_POSTS,
-        showAllImages: true,
-      },
-      {
-        slug: "skin-care-social-media-creatives",
-        title: "Skin care social media creatives",
-        img: SKIN_CARE_POSTS[0]!,
-        images: SKIN_CARE_POSTS,
-        showAllImages: true,
       },
     ],
   },
