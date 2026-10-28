@@ -1,0 +1,32 @@
+name: Prepare Sweet Temptation mockup
+on:
+  push:
+    branches: [media/prepare-sweet-mockup]
+permissions:
+  contents: read
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Optimize generated mockup for the website
+        run: |
+          python3 -m pip install --disable-pip-version-check imageio-ffmpeg==0.6.0
+          python3 - <<'PY'
+          import base64
+          import pathlib
+          import subprocess
+          import imageio_ffmpeg
+          source = pathlib.Path("public/portfolio/sweet-temptation-logo-menu-design/brand-presentation-mockup.png")
+          target = pathlib.Path("sweet-temptation-mockup.jpg")
+          subprocess.run([
+              imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-i", str(source),
+              "-vf", "scale=1200:-2", "-frames:v", "1", "-q:v", "3", str(target)
+          ], check=True)
+          data = target.read_bytes()
+          print("MOCKUP_JPEG_BYTES:" + str(len(data)))
+          encoded = base64.b64encode(data).decode("ascii")
+          for offset in range(0, len(encoded), 16000):
+              print("MOCKUP_CHUNK:" + encoded[offset:offset + 16000])
+          PY
