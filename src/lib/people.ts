@@ -68,7 +68,6 @@ export type PersonProfileData = {
     items: string[];
     note: { label: string; text: string };
   };
-  testimonials: { quote: string; author: string }[];
   faqs: FaqItem[];
   closing: { heading: string; body: string };
 };
@@ -325,23 +324,6 @@ export const USAMA_FAROOQ: PersonProfileData = {
     ],
     note: { label: "Languages", text: "Urdu (native), English (full professional)." },
   },
-  testimonials: [
-    {
-      quote:
-        "Usama treats growth like an engineering problem. He mapped our pipeline, fixed the leaks and had qualified calls booked within weeks.",
-      author: "Founder, B2B software company",
-    },
-    {
-      quote:
-        "He is the rare business leader who understands both the numbers and the creative. Our proposals finally matched the quality of our work.",
-      author: "Director, e-commerce brand",
-    },
-    {
-      quote:
-        "Clear communication, realistic timelines and no overselling. That is why we kept working with his team.",
-      author: "Operations lead, US client",
-    },
-  ],
   faqs: [
     {
       q: "Who is Usama Farooq?",
@@ -615,23 +597,6 @@ export const ASAD_FAROOQ: PersonProfileData = {
       text: "Associate Degree, Information Technology — Government College University, Faisalabad (2021–2023).",
     },
   },
-  testimonials: [
-    {
-      quote:
-        "Asad does not just deliver files. He questions the brief, sharpens the positioning, and then designs. Our brand finally looks like the company we want to be.",
-      author: "Founder, B2B SaaS",
-    },
-    {
-      quote:
-        "Our ad creative went from generic to genuinely stop-scroll. The biggest difference was having one person owning direction across every channel.",
-      author: "Marketing lead, e-commerce brand",
-    },
-    {
-      quote:
-        "Fast, senior, and calm under deadlines. He built a system our in-house team can keep running without him.",
-      author: "Operations director, agency client",
-    },
-  ],
   faqs: [
     {
       q: "What does Asad Farooq do at Pixel2Tech?",

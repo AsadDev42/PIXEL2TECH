@@ -1,19 +1,11 @@
 import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import {
-  ArrowUpRight,
-  Award,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Quote,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Award, Mail, MapPin, MessageCircle, Phone, Sparkles } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq } from "@/components/faq";
+import { VideoTestimonials } from "@/components/video-testimonials";
 import { trackEvent } from "@/lib/analytics";
 import { SITE } from "@/lib/site-config";
 import type { PersonProfileData } from "@/lib/people";
@@ -316,27 +308,7 @@ export function PersonProfile({ person }: { person: PersonProfileData }) {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section aria-labelledby="testimonials-title" className={`bg-muted ${SECTION}`}>
-        <div className={CONTAINER}>
-          <SectionHeading id="testimonials-title">What clients say</SectionHeading>
-          <ul className="mt-10 grid gap-4 md:grid-cols-3">
-            {person.testimonials.map((t) => (
-              <li key={t.author}>
-                <figure className={`h-full ${CARD}`}>
-                  <Quote className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <blockquote className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption className="mt-4 text-xs font-semibold text-foreground">
-                    {t.author}
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <VideoTestimonials className="bg-muted" />
 
       {/* FAQ */}
       <section aria-labelledby="faq-title" className={`bg-background ${SECTION}`}>

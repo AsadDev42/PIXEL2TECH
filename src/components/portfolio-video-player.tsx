@@ -21,6 +21,7 @@ export function PortfolioVideoPlayer({
   onClose,
   returnFocus,
   sharePath,
+  shareable = true,
 }: {
   videos: PlayerVideo[];
   index: number | null;
@@ -28,6 +29,8 @@ export function PortfolioVideoPlayer({
   onClose: () => void;
   returnFocus?: RefObject<HTMLElement | null>;
   sharePath?: string;
+  /** Disable share controls and all URL/hash selection for private-to-the-page media. */
+  shareable?: boolean;
 }) {
   const owner = useId();
   const player = useRef<HTMLVideoElement>(null);
@@ -41,6 +44,7 @@ export function PortfolioVideoPlayer({
   const ownedHash = useRef<string | null>(null);
 
   useEffect(() => {
+    if (!shareable) return;
     const openSharedVideo = () => {
       if (sharePath && window.location.pathname !== sharePath) return;
       const id = videoIdFromHash(window.location.hash);
@@ -55,9 +59,10 @@ export function PortfolioVideoPlayer({
     openSharedVideo();
     window.addEventListener("hashchange", openSharedVideo);
     return () => window.removeEventListener("hashchange", openSharedVideo);
-  }, [sharePath]);
+  }, [sharePath, shareable]);
 
   useEffect(() => {
+    if (!shareable) return;
     if (sharePath && window.location.pathname !== sharePath) return;
     const url = new URL(window.location.href);
     if (active) {
@@ -74,7 +79,7 @@ export function PortfolioVideoPlayer({
       }
       ownedHash.current = null;
     }
-  }, [active, sharePath]);
+  }, [active, sharePath, shareable]);
 
   const source = useRef(active?.src ?? "");
   source.current = active?.src ?? "";
@@ -264,7 +269,9 @@ export function PortfolioVideoPlayer({
             </div>
           )}
           <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-5 py-4 text-xs text-slate-300 sm:px-8">
-            <VideoShareControls key={videoId(active)} video={active} sharePath={sharePath} />
+            {shareable && (
+              <VideoShareControls key={videoId(active)} video={active} sharePath={sharePath} />
+            )}
             <span aria-live="polite">
               {index! + 1} / {videos.length} ·{" "}
               {active.orientation === "vertical" ? "Vertical" : "Landscape"}

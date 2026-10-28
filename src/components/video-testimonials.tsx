@@ -1,164 +1,18 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
+import { Play } from "lucide-react";
 import { LoopSlider } from "@/components/loop-slider";
-import { Pause, Play } from "lucide-react";
 import { ResponsiveImage } from "@/components/responsive-image";
+import { PortfolioVideoPlayer } from "@/components/portfolio-video-player";
+import { TESTIMONIAL_VIDEOS } from "@/lib/testimonial-videos";
 
-type Item = {
-  name: string;
-  role: string;
-  quote: string;
-  video: string;
-  poster: string;
-  /** WebVTT captions file. Required once a clip contains speech (WCAG 1.2.2). */
-  captions?: string;
-  /** The clip has spoken audio: it then plays with sound after the visitor presses play. */
-  hasAudio?: boolean;
-};
-
-const items: Item[] = [
-  {
-    name: "Skincare brand founder",
-    role: "Website, social content and AI DM automation",
-    quote:
-      "They built my website clean, fast, professional. They create my social media content now, and they set up AI automation for my DMs. Every message gets an instant reply, and orders go straight to my website, even while I sleep.",
-    video: "/testimonials/skincare-founder.mp4",
-    poster: "/testimonials/skincare-founder.webp",
-    hasAudio: true,
-  },
-  {
-    name: "Brand owner",
-    role: "Branding, content, ads, website and WhatsApp automation",
-    quote:
-      "They did not just make me a logo. They built my entire brand strategy, a full design system, all my social media creatives, even the videos, and they ran my ads. The website is fully automated: leads come in and WhatsApp follows up automatically.",
-    video: "/testimonials/brand-owner.mp4",
-    poster: "/testimonials/brand-owner.webp",
-    hasAudio: true,
-  },
-];
-
-/**
- * Card widths, shared by the list items and the poster `sizes` hint. Clips are
- * vertical reels, so the media box is 9:16 and shows the whole frame.
- */
 const CARD_WIDTH = "w-[72vw] max-w-[296px] sm:w-[296px] lg:w-[320px] lg:max-w-[320px]";
 const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 296px, 72vw";
 
-function VideoCard({
-  item,
-  onPlayingChange,
-}: {
-  item: Item;
-  onPlayingChange?: (playing: boolean) => void;
-}) {
-  const ref = useRef<HTMLVideoElement>(null);
-  // The <video> is only created on the first press, so nothing downloads before then.
-  const [started, setStarted] = useState(false);
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    if (started) void ref.current?.play().catch(() => setPlaying(false));
-  }, [started]);
-
-  const toggle = () => {
-    const video = ref.current;
-    if (!started || !video) {
-      setStarted(true);
-      return;
-    }
-    if (video.paused) void video.play().catch(() => undefined);
-    else video.pause();
-  };
-
-  return (
-    <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:rounded-3xl">
-      <div className="relative aspect-[9/16] bg-muted">
-        <ResponsiveImage
-          src={item.poster}
-          alt={`${item.name} — client video testimonial`}
-          sizes={CARD_SIZES}
-          width={720}
-          height={1280}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {started ? (
-          <video
-            title={`${item.name} — client video testimonial`}
-            ref={ref}
-            src={item.video}
-            poster={item.poster}
-            playsInline
-            loop
-            muted={!item.hasAudio}
-            preload="auto"
-            aria-hidden="true"
-            tabIndex={-1}
-            onPlay={() => {
-              setPlaying(true);
-              onPlayingChange?.(true);
-            }}
-            onPause={() => {
-              setPlaying(false);
-              onPlayingChange?.(false);
-            }}
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            {item.captions ? (
-              <track kind="captions" src={item.captions} srcLang="en" label="English" default />
-            ) : null}
-          </video>
-        ) : null}
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={`${playing ? "Pause" : "Play"} video from ${item.name}`}
-          className="group absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/40 via-transparent to-transparent"
-        >
-          <span
-            aria-hidden="true"
-            className={`flex h-14 w-14 items-center justify-center rounded-full bg-background text-foreground shadow-lg ring-1 ring-border transition group-hover:scale-105 sm:h-16 sm:w-16 ${
-              playing ? "opacity-0 group-focus-visible:opacity-100" : "opacity-100"
-            }`}
-          >
-            {playing ? (
-              <Pause className="h-6 w-6" />
-            ) : (
-              <Play className="ml-1 h-6 w-6" fill="currentColor" />
-            )}
-          </span>
-        </button>
-      </div>
-      <blockquote className="flex-1 px-5 pt-5 sm:px-6 sm:pt-6">
-        <p className="text-sm leading-relaxed text-muted-foreground">“{item.quote}”</p>
-      </blockquote>
-      <figcaption className="flex items-center gap-3 p-5 sm:p-6">
-        <ResponsiveImage
-          src={item.poster}
-          alt={`${item.name} — client video testimonial`}
-          sizes="40px"
-          width={40}
-          height={40}
-          className="h-10 w-10 rounded-full object-cover"
-        />
-        <span className="min-w-0">
-          <span className="block truncate text-sm font-semibold text-card-foreground">
-            {item.name}
-          </span>
-          <span className="block truncate text-xs text-muted-foreground">{item.role}</span>
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
-/**
- * Client video testimonials in a looping row that drifts right to left and can
- * be dragged. The row holds still while a clip is playing.
- */
+/** Testimonial cards open the shared player without sharing or URL navigation. */
 export function VideoTestimonials({ className = "bg-background" }: { className?: string }) {
   const headingId = useId();
-  const [playingCount, setPlayingCount] = useState(0);
-  const onPlayingChange = (playing: boolean) =>
-    setPlayingCount((n) => Math.max(0, n + (playing ? 1 : -1)));
+  const [active, setActive] = useState<number | null>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
 
   return (
     <section aria-labelledby={headingId} className={`py-16 md:py-24 ${className}`}>
@@ -171,24 +25,67 @@ export function VideoTestimonials({ className = "bg-background" }: { className?:
             What clients say
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            A few words from people we&apos;ve worked with. Press play to watch a clip.
+            Watch the testimonials. Select a video to open the player, then use the arrows to
+            browse.
           </p>
         </div>
       </div>
       <LoopSlider
-        items={items}
-        keyFor={(item, i) => `${item.name}-${i}`}
+        items={TESTIMONIAL_VIDEOS}
+        keyFor={(item, index) => `${item.poster}-${index}`}
         direction="rtl"
         speed={35}
-        autoplay={playingCount === 0}
+        autoplay={active === null}
+        pauseOnHover
+        pauseControlLabel="testimonial carousel"
         gapClassName="gap-4 sm:gap-6"
         className="mt-8 pb-2"
         ariaLabel="Client testimonials"
-        renderItem={(item) => (
-          <div className={`${CARD_WIDTH} h-full`}>
-            <VideoCard item={item} onPlayingChange={onPlayingChange} />
-          </div>
+        renderItem={(item, index) => (
+          <figure
+            className={`${CARD_WIDTH} overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:rounded-3xl`}
+          >
+            <button
+              type="button"
+              aria-label={`Play ${item.title.toLowerCase()}`}
+              aria-haspopup="dialog"
+              tabIndex={index >= TESTIMONIAL_VIDEOS.length ? -1 : undefined}
+              onClick={(event) => {
+                trigger.current = event.currentTarget;
+                setActive(index % TESTIMONIAL_VIDEOS.length);
+              }}
+              className="group relative block aspect-[9/16] w-full overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+            >
+              <ResponsiveImage
+                src={item.poster}
+                alt={`${item.title} — video preview`}
+                sizes={CARD_SIZES}
+                width={720}
+                height={1280}
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 flex items-center justify-center bg-linear-to-t from-black/40 via-transparent to-transparent"
+              >
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-background text-foreground shadow-lg ring-1 ring-border transition group-hover:scale-105 sm:h-16 sm:w-16">
+                  <Play className="h-6 w-6" fill="currentColor" />
+                </span>
+              </span>
+            </button>
+            <figcaption className="p-4 text-sm font-semibold text-card-foreground">
+              {item.title}
+            </figcaption>
+          </figure>
         )}
+      />
+      <PortfolioVideoPlayer
+        videos={TESTIMONIAL_VIDEOS}
+        index={active}
+        onSelect={setActive}
+        onClose={() => setActive(null)}
+        returnFocus={trigger}
+        shareable={false}
       />
     </section>
   );
