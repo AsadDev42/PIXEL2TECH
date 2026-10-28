@@ -25,8 +25,10 @@ export type WatchVideo = PortfolioVideo & {
   uploadDate: string;
 };
 
+type SourceVideo = Omit<PortfolioVideo, "poster"> & { poster?: string; uploadDate?: string };
+
 export const WATCH_VIDEOS: WatchVideo[] = ALL_ITEMS.flatMap((item) => {
-  const videos: (PortfolioVideo & { uploadDate?: string })[] = [
+  const videos: SourceVideo[] = [
     ...(item.videos ?? []),
     ...(item.automation?.videos ?? []),
     ...(PROJECT_VIDEOS[item.slug] ?? []).map((video) => ({
@@ -71,9 +73,7 @@ export function videoSchema(video: WatchVideo) {
     thumbnailUrl: [video.thumbnail],
     uploadDate: video.uploadDate,
     url: `${SITE.url}${video.path}`,
-    ...(video.embed
-      ? { embedUrl: video.embed }
-      : { contentUrl: absoluteImageUrl(video.src) }),
+    ...(video.embed ? { embedUrl: video.embed } : { contentUrl: absoluteImageUrl(video.src) }),
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
   };
 }

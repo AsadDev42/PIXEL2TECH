@@ -23,20 +23,29 @@ for (const url of urls) {
 }
 const samples = [...collections.values()];
 for (let offset = 0; offset < samples.length; offset += 6) {
-  await Promise.all(samples.slice(offset, offset + 6).map(async (path) => {
-    const response = await fetch(`${base}${path}`);
-    assert.equal(response.status, 200, `${path}: watch page returns 200`);
-    const html = await response.text();
-    assert(html.includes(`href="https://pixel2tech.com${path}"`), `${path}: self canonical`);
-    assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${path}: one H1`);
-    assert.equal((html.match(/<(?:video|iframe)\b/g) ?? []).length, 1, `${path}: one main player`);
-    const data = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)]
-      .map((match) => JSON.parse(match[1]));
-    const video = data.find((item) => item["@type"] === "VideoObject");
-    assert(video?.name && video.description && video.thumbnailUrl?.length, `${path}: video metadata`);
-    assert(Number.isFinite(Date.parse(video.uploadDate)), `${path}: recorded publication date`);
-    assert(video.contentUrl || video.embedUrl, `${path}: crawlable playback URL`);
-  }));
+  await Promise.all(
+    samples.slice(offset, offset + 6).map(async (path) => {
+      const response = await fetch(`${base}${path}`);
+      assert.equal(response.status, 200, `${path}: watch page returns 200`);
+      const html = await response.text();
+      assert(html.includes(`href="https://pixel2tech.com${path}"`), `${path}: self canonical`);
+      assert.equal((html.match(/<h1[\\s>]/g) ?? []).length, 1, `${path}: one H1`);
+      assert.equal(
+        (html.match(/<(?:video|iframe)\\b/g) ?? []).length,
+        1,
+        `${path}: one main player`,
+      );
+      const pattern = /<script[^>]*type="application\\/ld\\+json"[^>]*>(.*?)<\\/script>/gs;
+      const data = [...html.matchAll(pattern)].map((match) => JSON.parse(match[1]));
+      const video = data.find((item) => item["@type"] === "VideoObject");
+      assert(
+        video?.name && video.description && video.thumbnailUrl?.length,
+        `${path}: video metadata`,
+      );
+      assert(Number.isFinite(Date.parse(video.uploadDate)), `${path}: recorded publication date`);
+      assert(video.contentUrl || video.embedUrl, `${path}: crawlable playback URL`);
+    }),
+  );
 }
 const missing = await fetch(`${base}/watch/not-a-collection/v-abc`, { redirect: "manual" });
 assert.equal(missing.status, 404, "Unknown watch videos remain real 404s");
@@ -61,4 +70,6 @@ for (const [path, status, target] of legacy) {
   assert.equal(response.status, status, `${path}: correct retired URL status`);
   if (target) assert.equal(new URL(response.headers.get("location"), base).pathname, target);
 }
-console.log(`Verified ${blocks.length} sitemap videos, ${samples.length} watch pages and ${legacy.length} legacy URLs.`);
+console.log(
+  `Verified ${blocks.length} sitemap videos, ${samples.length} watch pages and ${legacy.length} legacy URLs.`,
+);
