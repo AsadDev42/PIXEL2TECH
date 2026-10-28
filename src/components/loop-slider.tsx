@@ -7,6 +7,8 @@ type DirY = "up" | "down";
 
 type Props<T> = {
   items: T[];
+  /** Announce an active rendered copy even when it belongs to the repeated half. */
+  activeItemIndex?: number;
   renderItem: (item: T, index: number) => ReactNode;
   keyFor: (item: T, index: number) => string;
   /** Scroll axis. Default "x". */
@@ -25,6 +27,10 @@ type Props<T> = {
   draggable?: boolean;
   /** Auto-scroll drift. Set false to stop drifting (drag still works). Default true. */
   autoplay?: boolean;
+  /** Stop residual glide while a media player is running; dragging still works. */
+  freezeMomentum?: boolean;
+  /** Keep the default focus pause unless the caller provides an explicit pause control. */
+  pauseOnFocus?: boolean;
   /** Pause the drift while the pointer hovers the track. Default false. */
   pauseOnHover?: boolean;
   /**
@@ -37,7 +43,7 @@ type Props<T> = {
    * Called when an item is clicked or tapped without dragging. Use it to make
    * whole cards clickable: real links inside cards cannot start a drag.
    */
-  onItemClick?: (item: T, index: number) => void;
+  onItemClick?: (item: T, index: number, renderedIndex: number) => void;
 };
 
 /**
@@ -49,6 +55,7 @@ type Props<T> = {
  */
 function LoopSliderImpl<T>({
   items,
+  activeItemIndex,
   renderItem,
   keyFor,
   axis = "x",
@@ -59,6 +66,8 @@ function LoopSliderImpl<T>({
   ariaLabel,
   draggable = true,
   autoplay = true,
+  freezeMomentum = false,
+  pauseOnFocus = true,
   pauseOnHover = false,
   pauseControlLabel,
   onItemClick,
@@ -85,6 +94,10 @@ function LoopSliderImpl<T>({
   // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
   const autoplayRef = useRef(autoplay);
   autoplayRef.current = autoplay;
+  const freezeMomentumRef = useRef(freezeMomentum);
+  freezeMomentumRef.current = freezeMomentum;
+  const pauseOnFocusRef = useRef(pauseOnFocus);
+  pauseOnFocusRef.current = pauseOnFocus;
   const itemsRef = useRef(items);
   itemsRef.current = items;
   const onItemClickRef = useRef(onItemClick);
@@ -126,13 +139,14 @@ function LoopSliderImpl<T>({
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       const s = stateRef.current;
+      if (freezeMomentumRef.current) s.velocity = 0;
       if (!s.dragging) {
         const drifting =
           autoplayRef.current &&
           !pausedRef.current &&
           !reducedMotion.matches &&
           // Never move content out from under keyboard focus.
-          !s.focused &&
+          !(pauseOnFocusRef.current && s.focused) &&
           !(pauseOnHoverRef.current && s.hovering);
         if (drifting) s.pos += dir * speed * dt;
         if (Math.abs(s.velocity) > 1) {
@@ -199,7 +213,10 @@ function LoopSliderImpl<T>({
       // children — pointer capture retargets the click to the track, which
       // silently swallows link and button activation.
       const target = e.target as Element | null;
-      if (target?.closest?.("a,button,[role='button'],input,textarea,select")) return;
+      const interactive = target?.closest?.(
+        "a,button,[role='button'],input,textarea,select,video,audio,[data-loop-no-drag]",
+      );
+      if (interactive && !interactive.matches("button[data-loop-drag]")) return;
       if (e.pointerType === "mouse") e.preventDefault();
       const cell = target?.closest?.("[data-loop-index]");
       downIndexRef.current = cell ? Number(cell.getAttribute("data-loop-index")) : null;
@@ -232,7 +249,7 @@ function LoopSliderImpl<T>({
       s.lastMove = client;
       s.lastMoveT = now;
     };
-    const onUp = () => {
+    const onUp = (event: PointerEvent) => {
       const s = stateRef.current;
       if (!s.dragging) return;
       s.dragging = false;
@@ -249,8 +266,15 @@ function LoopSliderImpl<T>({
       const i = downIndexRef.current;
       downIndexRef.current = null;
       const list = itemsRef.current;
-      if (s.moved <= 5 && i !== null && list.length && onItemClickRef.current) {
-        onItemClickRef.current(list[i % list.length], i % list.length);
+      if (event.type === "pointercancel") s.velocity = 0;
+      if (
+        event.type !== "pointercancel" &&
+        s.moved <= 5 &&
+        i !== null &&
+        list.length &&
+        onItemClickRef.current
+      ) {
+        onItemClickRef.current(list[i % list.length], i % list.length, i);
       }
     };
     const onClickCapture = (e: MouseEvent) => {
@@ -359,7 +383,7 @@ function LoopSliderImpl<T>({
                 key={keyFor(item, i)}
                 className="shrink-0"
                 data-loop-index={i}
-                aria-hidden={clone ? "true" : undefined}
+                aria-hidden={clone && activeItemIndex !== i ? "true" : undefined}
               >
                 {renderItem(item, i)}
               </div>
