@@ -486,7 +486,7 @@ const RAW: RawWork = {
         title: "Sweet Temptation - logo, menus and launch creatives",
         client: "Sweet Temptation",
         img: "/portfolio/sweet-temptation-logo-menu-design/logo.webp",
-        images: ["logo", "menu-1", "menu-2", "menu-3"].map(
+        images: ["logo", "menu-1", "menu-3"].map(
           (name) => `/portfolio/sweet-temptation-logo-menu-design/${name}.webp`,
         ),
         showAllImages: true,

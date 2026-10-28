@@ -366,10 +366,10 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
       <div className="space-y-8">
         <figure className="overflow-hidden rounded-2xl border border-border">
           <MediaImage
-            src="/portfolio/sweet-temptation-logo-menu-design/brand-presentation-mockup.png"
+            src="/portfolio/sweet-temptation-logo-menu-design/brand-presentation-mockup.jpg"
             alt="Sweet Temptation menu, dessert box and cup in a pink and blue studio mockup"
-            width={1536}
-            height={1024}
+            width={1200}
+            height={800}
             loading="lazy"
             decoding="async"
             className="h-auto w-full"
