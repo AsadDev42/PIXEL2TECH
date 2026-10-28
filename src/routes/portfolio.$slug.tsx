@@ -18,7 +18,7 @@ import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd } from "@/components/faq";
 import { BookCarousel } from "@/components/book-carousel";
 import { Coverflow3D } from "@/components/coverflow-3d";
-import { VideoSpotlight, type SpotlightVideo } from "@/components/video-spotlight";
+import { VideoSpotlight } from "@/components/video-spotlight";
 import { StoreShowcase } from "@/components/store-showcase";
 import { AutomationShowcase } from "@/components/automation-showcase";
 import { VideoWall } from "@/components/video-wall";
@@ -40,23 +40,7 @@ import {
 } from "@/lib/portfolio-data";
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { getProjectDetail } from "@/lib/portfolio-detail";
-import affinityVideo1 from "@/assets/affinity-video-1.mp4.asset.json";
-import affinityVideo2 from "@/assets/affinity-video-2.mp4.asset.json";
-import affinityVideo3 from "@/assets/affinity-video-3.mp4.asset.json";
-import affinityVideo4 from "@/assets/affinity-video-4.mp4.asset.json";
-import madluvvVideo1 from "@/assets/madluvv-video-1.mp4.asset.json";
-import madluvvVideo2 from "@/assets/madluvv-video-2.mp4.asset.json";
-import madluvvVideo3 from "@/assets/madluvv-video-3.mp4.asset.json";
-import madluvvVideo4 from "@/assets/madluvv-video-4.mp4.asset.json";
-import madluvvVideo5 from "@/assets/madluvv-video-5.mp4.asset.json";
-import madluvvVideo6 from "@/assets/madluvv-video-6.mp4.asset.json";
-import madluvvVideo8 from "@/assets/madluvv-video-8.mp4.asset.json";
-import madluvvVideo9 from "@/assets/madluvv-video-9.mp4.asset.json";
-import madluvvVideo10 from "@/assets/madluvv-video-10.mp4.asset.json";
-import madluvvVideo11 from "@/assets/madluvv-video-11.mp4.asset.json";
-import madluvvVideo12 from "@/assets/madluvv-video-12.mp4.asset.json";
-import madluvvVideo13 from "@/assets/madluvv-video-13.mp4.asset.json";
-import madluvvVideo14 from "@/assets/madluvv-video-14.mp4.asset.json";
+import { PROJECT_VIDEOS } from "@/lib/project-videos";
 
 // three.js + drei is ~1 MB: only fetched when a visitor opens the 3D view on
 // the book-cover case study, never on the other portfolio pages.
@@ -67,30 +51,6 @@ const preloadBookShowcase = () => void import("@/components/book-3d-showcase");
 
 const BOOK_COVERS_SLUG = "book-cover-design-portfolio";
 const NAYYER_SLUG = "nayyer-carpets-creative-direction-mockups";
-
-const PROJECT_VIDEOS: Record<string, SpotlightVideo[]> = {
-  "affinity-law-social-media-ad-creatives": [
-    { src: affinityVideo1.url, title: "He accepted the first offer and couldn't go back" },
-    { src: affinityVideo2.url, title: "Partly at fault? You may still have a claim" },
-    { src: affinityVideo3.url, title: "Insurance companies check your social media" },
-    { src: affinityVideo4.url, title: "What to expect after hiring a lawyer" },
-  ],
-  "madluvv-social-media-meta-ads": [
-    { src: madluvvVideo1.url, title: "Creator review: new favourite eyebrow product" },
-    { src: madluvvVideo2.url, title: "Mother's Day PSA" },
-    { src: madluvvVideo3.url, title: "Beach day approved: waterproof brows" },
-    { src: madluvvVideo4.url, title: "Brow Stamp Kit: easier than you expect" },
-    { src: madluvvVideo5.url, title: "Simple brow routine with Laminate Me gel" },
-    { src: madluvvVideo6.url, title: "Set Me Setting Spray for melting makeup" },
-    { src: madluvvVideo8.url, title: "The science behind perfectly shaped brows" },
-    { src: madluvvVideo9.url, title: "Clean stencil, clean brows" },
-    { src: madluvvVideo10.url, title: "Brow Stamp ASMR moment" },
-    { src: madluvvVideo11.url, title: "Celebrating Social Media Day with the community" },
-    { src: madluvvVideo12.url, title: "The life-changing eyeliner hack" },
-    { src: madluvvVideo13.url, title: "How to actually romanticise your life" },
-    { src: madluvvVideo14.url, title: "Which brow shape is your favourite?" },
-  ],
-};
 
 /** Heading and intro above the video wall of projects that carry `videos`. */
 const VIDEO_WALL_COPY: Record<string, { heading: string; intro: string }> = {
@@ -755,7 +715,11 @@ function PortfolioDetailPage() {
                   controls, then use the side arrows to browse the collection.
                 </p>
                 <div className="mt-8">
-                  <VideoWall videos={wallVideos} label={`${item.title}: videos`} />
+                  <VideoWall
+                    videos={wallVideos}
+                    label={`${item.title}: videos`}
+                    sharePath={`/portfolio/${item.slug}`}
+                  />
                 </div>
               </>
             ) : (

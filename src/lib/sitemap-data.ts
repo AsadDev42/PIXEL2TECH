@@ -3,6 +3,7 @@ import { POST_INDEX } from "@/lib/blog-index";
 import { PRIVACY_UPDATED, TERMS_UPDATED } from "@/lib/legal-dates";
 import { toISODate, type PostMeta } from "@/lib/blog-types";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
+import { WATCH_VIDEOS, type WatchVideo } from "@/lib/watch-videos";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 /** Site origin for every <loc>. Single source of truth: SITE.url. */
@@ -14,6 +15,7 @@ export interface SitemapEntry {
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority?: string;
   images?: string[];
+  video?: WatchVideo;
 }
 
 /**
@@ -28,7 +30,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
   "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
   "/services": "2026-08-01",
-  "/portfolio": "2026-10-24",
+  "/portfolio": "2026-10-28",
   "/contact": "2026-08-01",
   "/privacy-policy": PRIVACY_UPDATED.iso,
   "/terms-and-conditions": TERMS_UPDATED.iso,
@@ -113,12 +115,21 @@ export function blogEntries(): SitemapEntry[] {
 }
 
 export function portfolioEntries(): SitemapEntry[] {
-  return ALL_ITEMS.map((i) => ({
-    path: `/portfolio/${i.slug}`,
-    lastmod: STATIC_LASTMOD["/portfolio"],
-    changefreq: "monthly",
-    priority: "0.5",
-  }));
+  return [
+    ...ALL_ITEMS.map((item) => ({
+      path: `/portfolio/${item.slug}`,
+      lastmod: STATIC_LASTMOD["/portfolio"],
+      changefreq: "monthly" as const,
+      priority: "0.5",
+    })),
+    ...WATCH_VIDEOS.map((video) => ({
+      path: video.path,
+      lastmod: "2026-10-28",
+      changefreq: "monthly" as const,
+      priority: "0.6",
+      video,
+    })),
+  ];
 }
 
 function absolute(src: string | undefined): string | undefined {
@@ -174,6 +185,19 @@ export function buildUrlset(entries: SitemapEntry[], withImages = false): string
       e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
       e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
       e.priority ? `    <priority>${e.priority}</priority>` : null,
+      ...(e.video
+        ? [
+            "    <video:video>",
+            `      <video:thumbnail_loc>${escapeXml(e.video.thumbnail)}</video:thumbnail_loc>`,
+            `      <video:title>${escapeXml(e.video.title)}</video:title>`,
+            `      <video:description>${escapeXml(e.video.description)}</video:description>`,
+            e.video.embed
+              ? `      <video:player_loc>${escapeXml(e.video.embed)}</video:player_loc>`
+              : `      <video:content_loc>${escapeXml(absolute(e.video.src) ?? "")}</video:content_loc>`,
+            `      <video:publication_date>${escapeXml(e.video.uploadDate)}</video:publication_date>`,
+            "    </video:video>",
+          ]
+        : []),
       ...(withImages && e.images
         ? e.images.map(
             (src) =>
@@ -183,9 +207,13 @@ export function buildUrlset(entries: SitemapEntry[], withImages = false): string
     ]),
   );
 
-  const open = withImages
-    ? `<urlset xmlns="${SITEMAP_NS}" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">`
-    : `<urlset xmlns="${SITEMAP_NS}">`;
+  const imageNamespace = withImages
+    ? ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'
+    : "";
+  const videoNamespace = entries.some((entry) => entry.video)
+    ? ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"'
+    : "";
+  const open = `<urlset xmlns="${SITEMAP_NS}"${imageNamespace}${videoNamespace}>`;
 
   return [XML_DECLARATION, open, ...urls, `</urlset>`].join("\n");
 }

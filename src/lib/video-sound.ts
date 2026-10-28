@@ -28,10 +28,11 @@ export function prefersReducedMotion(): boolean {
   );
 }
 
-/** Media attributes that hide the browser's download, speed and cast/PiP options. */
+/** UI deterrents only: these do not encrypt video or block download tools. */
 export const PROTECTED_VIDEO_PROPS = {
   controlsList: "nodownload noplaybackrate noremoteplayback",
   disablePictureInPicture: true,
   disableRemotePlayback: true,
+  onContextMenu: (event: { preventDefault: () => void }) => event.preventDefault(),
   "data-protect": "",
 } as const;
