@@ -205,57 +205,116 @@ const ICON_TILE =
   "grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary";
 const CARD = "rounded-2xl border border-border bg-card p-6 text-card-foreground sm:p-8";
 
+/**
+ * Swipeable cards on phones, a bento grid from md up. Tile placement and image focus are set per
+ * card so each screenshot keeps its subject in frame at both sizes.
+ */
+const HERO_WORK = [
+  {
+    title: "Branding & Design",
+    label: "Make your brand recognisable",
+    category: "01 / Brand & content",
+    tile: "md:col-span-5 md:row-span-2",
+    focus: "object-center",
+  },
+  {
+    title: "WordPress & Shopify",
+    label: "Give your business a digital home",
+    category: "02 / Web & commerce",
+    tile: "md:col-span-7",
+    focus: "object-top",
+    mobileImage: "/portfolio/histreet-shopify-store/mobile-home.webp",
+  },
+  {
+    title: "Video Editing & Ads",
+    label: "Turn your message into motion",
+    category: "03 / Video & storytelling",
+    tile: "md:col-span-4",
+    focus: "object-[center_30%]",
+  },
+  {
+    title: "Social Media & Email",
+    label: "Keep every campaign on brand",
+    category: "04 / Social & campaigns",
+    tile: "md:col-span-3",
+    focus: "object-center",
+  },
+] satisfies {
+  title: ServiceTitle;
+  label: string;
+  category: string;
+  tile: string;
+  focus: string;
+  mobileImage?: string;
+}[];
+
 function ServicesHeroArtwork() {
-  const examples = [
-    {
-      title: "Branding & Design",
-      label: "Make your brand recognisable",
-      category: "01 / Brand & content",
-    },
-    {
-      title: "WordPress & Shopify",
-      label: "Give your business a digital home",
-      category: "02 / Web & commerce",
-    },
-    {
-      title: "Video Editing & Ads",
-      label: "Turn your message into motion",
-      category: "03 / Video & storytelling",
-    },
-  ] as const;
   return (
-    <div aria-label="Explore selected work" className="mt-12 grid gap-4 sm:grid-cols-3">
-      {examples.map(({ title, label, category }) => {
-        const visual = SERVICE_PRESENTATION[title];
-        return (
-          <Link
-            key={title}
-            to="/portfolio/$slug"
-            params={{ slug: visual.project! }}
-            className="group min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
-          >
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted">
-              <MediaImage
-                src={visual.image}
-                alt={visual.alt}
-                width={800}
-                height={450}
-                className={`h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] ${title === "WordPress & Shopify" ? "object-top" : title === "Video Editing & Ads" ? "object-[center_35%]" : ""}`}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-white text-slate-950"
+    <div className="mt-10 md:mt-14">
+      <div className="mb-4 flex items-center justify-between md:hidden">
+        <p className={EYEBROW}>Selected work</p>
+        <p aria-hidden="true" className="flex items-center gap-1 text-xs text-muted-foreground">
+          Swipe <ArrowRight size={14} />
+        </p>
+      </div>
+      <ul
+        aria-label="Explore selected work"
+        className="-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:h-[500px] md:grid-cols-12 md:grid-rows-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0 lg:h-[560px] [&::-webkit-scrollbar]:hidden"
+      >
+        {HERO_WORK.map((work, index) => {
+          const visual = SERVICE_PRESENTATION[work.title];
+          return (
+            <li
+              key={work.title}
+              className={`w-[78vw] max-w-[340px] shrink-0 snap-start sm:w-[44vw] md:w-auto md:max-w-none ${work.tile}`}
+            >
+              <Link
+                to="/portfolio/$slug"
+                params={{ slug: visual.project! }}
+                className="group relative block aspect-[4/5] h-full overflow-hidden rounded-3xl bg-muted shadow-sm ring-1 ring-border/60 transition duration-500 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background md:aspect-auto"
               >
-                <ArrowUpRight size={18} />
-              </span>
-            </div>
-            <p className="mt-4 text-[10px] font-semibold uppercase tracking-widest text-primary">
-              {category}
-            </p>
-            <h2 className="mt-2 text-base font-semibold tracking-tight">{label}</h2>
-          </Link>
-        );
-      })}
+                <picture>
+                  {"mobileImage" in work && (
+                    <source media="(max-width: 767px)" srcSet={work.mobileImage} />
+                  )}
+                  <MediaImage
+                    src={visual.image}
+                    alt={visual.alt}
+                    width={1200}
+                    height={900}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                    className={`absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${work.focus}`}
+                  />
+                </picture>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-t from-slate-950/85 via-slate-950/25 to-transparent"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/95 text-slate-950 shadow-md backdrop-blur transition duration-300 group-hover:rotate-45 group-hover:bg-primary group-hover:text-white motion-reduce:transition-none"
+                >
+                  <ArrowUpRight size={18} />
+                </span>
+                <span className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                  <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-white/75">
+                    {work.category}
+                  </span>
+                  <span
+                    className={`mt-2 block font-semibold leading-tight tracking-tight text-white text-balance ${index === 0 ? "text-xl md:text-3xl" : "text-xl md:text-2xl"}`}
+                  >
+                    {work.label}
+                  </span>
+                  <span className="mt-2 block text-xs text-white/70 md:text-sm">
+                    {visual.caption}
+                  </span>
+                </span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
@@ -400,37 +459,45 @@ function ServicesPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section aria-labelledby="services-title" className="bg-background py-12 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+      <section
+        aria-labelledby="services-title"
+        className="relative overflow-hidden bg-background pb-12 pt-10 md:pb-20 md:pt-16"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-32 -top-40 h-[480px] w-[480px] rounded-full bg-primary/10 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-7xl px-5 md:px-10">
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary" />
             Pixel2Tech / Our services
           </p>
-          <div className="mt-6 grid items-end gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-12">
+          <div className="mt-6 grid items-end gap-8 lg:mt-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
             <h1
               id="services-title"
-              className="max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+              className="text-[2.5rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
             >
               From first idea.
               <br />
               <span className="text-primary">To ready for launch.</span>
             </h1>
-            <div>
-              <p className="max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <div className="lg:pb-2">
+              <p className="max-w-lg text-base leading-relaxed text-foreground/80 sm:text-lg">
                 A brand that feels like you. A website built for your customers. Content and systems
                 that keep the business moving.
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
                 Choose one discipline or bring them together. Our Lahore team plans the scope,
                 creates the work and helps you launch.
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-4">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                 <BookCallButton
                   source="services_hero"
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 sm:w-auto"
                 />
                 <a
                   href="#services-list-title"
-                  className="inline-flex min-h-12 items-center gap-2 text-sm font-semibold hover:text-primary"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border px-6 text-sm font-semibold transition hover:border-primary hover:text-primary sm:w-auto"
                 >
                   Find your service <ArrowRight size={17} />
                 </a>
@@ -439,13 +506,16 @@ function ServicesPage() {
           </div>
           <ServicesHeroArtwork />
 
-          <nav aria-label="Jump to a service" className="mt-12 border-t border-border pt-6">
-            <ul className="flex flex-wrap gap-2 sm:gap-3">
+          <nav
+            aria-label="Jump to a service"
+            className="mt-10 border-t border-border pt-6 md:mt-12"
+          >
+            <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
               {SERVICE_LIST.map((s) => (
-                <li key={s.id}>
+                <li key={s.id} className="shrink-0">
                   <a
                     href={`#${s.id}`}
-                    className="inline-flex min-h-11 items-center rounded-full border border-border bg-background px-4 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full border border-border bg-background px-4 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     {s.title}
                   </a>
