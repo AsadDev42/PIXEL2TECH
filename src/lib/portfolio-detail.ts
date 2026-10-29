@@ -940,7 +940,7 @@ const DETAIL_OVERRIDES: Record<string, ProjectDetail> = {
     faqs: [
       {
         q: "What work is included in this project?",
-        a: "The project covers logo and menu design, plus ads and social posts for newly launched drinks. The gallery currently shows the logo and three menu layouts.",
+        a: "The project covers logo and menu design, plus ads and social posts for newly launched drinks. The gallery includes brand presentation mockups, menu print presentations and all three original menu layouts.",
       },
       { q: "Where is the client based?", a: "Sweet Temptation is a UK client." },
     ],

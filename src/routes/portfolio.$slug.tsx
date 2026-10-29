@@ -378,6 +378,37 @@ function CategoryShowcase({ item, images }: { item: PortfolioItem; images: strin
             Brand presentation mockups are concept visualizations using the project identity.
           </figcaption>
         </figure>
+        <div className="grid gap-6 md:grid-cols-2">
+          {[2, 3].map((number) => (
+            <figure key={number} className="overflow-hidden rounded-2xl border border-border">
+              <div
+                className={
+                  number === 2
+                    ? "flex min-h-64 items-center bg-[#f7e6eb] p-8 sm:p-10"
+                    : "flex min-h-64 items-center bg-[#e3f2f8] p-8 sm:p-10"
+                }
+              >
+                <MediaImage
+                  src={"/portfolio/sweet-temptation-logo-menu-design/menu-" + number + ".webp"}
+                  alt={
+                    "Sweet Temptation original menu layout " +
+                    number +
+                    " in a print presentation mockup"
+                  }
+                  loading="lazy"
+                  className={
+                    number === 2
+                      ? "h-auto w-full -rotate-3 border border-black/10 shadow-[12px_24px_32px_-12px_rgba(15,23,42,0.4)]"
+                      : "h-auto w-full rotate-3 border border-black/10 shadow-[12px_24px_32px_-12px_rgba(15,23,42,0.4)]"
+                  }
+                />
+              </div>
+              <figcaption className="border-t border-border bg-card px-6 py-4 text-sm text-muted-foreground">
+                Menu print presentation · original artwork
+              </figcaption>
+            </figure>
+          ))}
+        </div>
         <PortfolioImageGallery images={item.images} title={item.title} itemLabel="design" />
       </div>
     );
