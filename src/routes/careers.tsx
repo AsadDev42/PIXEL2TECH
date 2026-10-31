@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-chrome";
 import { ContentGrid } from "@/components/content-blocks";
+import { ContactForm } from "@/components/contact-form";
 import { businessHead } from "@/lib/page-seo";
-import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/careers")({
   head: () =>
     businessHead(
       "/careers",
       "Careers at Pixel2Tech",
-      "Learn what Pixel2Tech's design, development and video team works on, what to include in a portfolio introduction and how to ask about current opportunities.",
+      "Explore careers at Pixel2Tech and send an application with your discipline, experience and portfolio. Applications go directly to our team.",
     ),
   component: () => (
     <PageShell>
@@ -24,11 +24,11 @@ export const Route = createFileRoute("/careers")({
           like ours, send a focused introduction with examples of your own contribution.
         </p>
         <div className="my-8 rounded-2xl border border-border bg-muted/40 p-6">
-          <h2 className="text-lg font-semibold">Ask about current opportunities</h2>
+          <h2 className="text-lg font-semibold">Open applications</h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            We are not advertising a specific vacancy on this page. Contact the team to find out
-            whether there is a suitable role or project collaboration before treating your
-            introduction as an application to an open position.
+            We welcome applications from designers, developers, video editors and automation
+            specialists. This is an open application form, not a promise that a specific vacancy is
+            available. We review your details against our current and upcoming needs.
           </p>
         </div>
         <ContentGrid
@@ -68,23 +68,23 @@ export const Route = createFileRoute("/careers")({
         />
         <section className="mb-12 grid gap-8 rounded-[2rem] bg-muted/40 p-6 sm:p-10 lg:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold">Start a conversation with the team.</h2>
+            <h2 className="text-2xl font-bold">Send your application.</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              We use your introduction to understand the work you want to do and whether it fits a
-              current need. If there is a potential match, the team can discuss responsibilities,
-              working arrangements and next steps with you.
+              Share a focused introduction and a few examples of your work. Your application will be
+              emailed to our team at sales@pixel2tech.com. If there is a potential match, we can
+              follow up about responsibilities, working arrangements and next steps.
             </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Send your portfolio and a short introduction</h3>
-            <a
-              href={`mailto:${SITE.email}?subject=Portfolio%20introduction%20-%20Pixel2Tech`}
-              className="mt-5 inline-flex min-h-12 items-center rounded-full bg-foreground px-6 text-sm font-semibold text-background"
-            >
-              Introduce yourself by email
-            </a>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Include your discipline or role, location and time zone, relevant experience,
+              availability, and links to two or three portfolio pieces or a CV. Please use links
+              rather than attaching sensitive documents.
+            </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              To see the kind of work we make, explore our{" "}
+              We handle application information under our{" "}
+              <Link to="/privacy-policy" className="underline underline-offset-4">
+                Privacy Policy
+              </Link>
+              . To see the kind of work we make, explore our{" "}
               <Link to="/portfolio" className="underline underline-offset-4">
                 portfolio
               </Link>{" "}
@@ -94,6 +94,19 @@ export const Route = createFileRoute("/careers")({
               </Link>
               .
             </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-background p-5 sm:p-8">
+            <h3 className="text-lg font-semibold">Application form</h3>
+            <ContactForm
+              source="careers"
+              idPrefix="careers-application"
+              className="mt-5"
+              submitLabel="Send application"
+              messageLabel="Introduction and portfolio links"
+              messagePlaceholder="Tell us which role or discipline interests you, what you have worked on, when you are available, and link to your portfolio or CV."
+              messageHint="Please do not include passwords, identity documents or other sensitive information. Portfolio and CV links should open without a login where possible."
+              successMessage="Thanks for applying. Your application has been sent to our team."
+            />
           </div>
         </section>
       </div>

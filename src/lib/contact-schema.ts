@@ -10,7 +10,7 @@ import { SITE } from "@/lib/site-config";
  */
 
 /** Pages that render <ContactForm>. Sent to the server and to analytics. */
-export const CONTACT_SOURCES = ["home", "contact", "services"] as const;
+export const CONTACT_SOURCES = ["home", "contact", "services", "careers"] as const;
 export type ContactSource = (typeof CONTACT_SOURCES)[number];
 
 /** Submissions faster than this (ms since the form mounted) are treated as bots. */

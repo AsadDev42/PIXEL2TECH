@@ -95,4 +95,60 @@ export const INDUSTRIES = [
       "telehealth-org-wordpress-website",
     ],
   },
+  {
+    slug: "food-and-hospitality",
+    title: "Food & hospitality",
+    heading: "Make the menu, the brand and the next order work together.",
+    description:
+      "Branding, menus, social content and digital creative for food and hospitality businesses, supported by real Pixel2Tech project examples.",
+    intro:
+      "Food brands need to make products easy to recognise and tempting to choose. We bring visual identity, menu design and campaign content together so customers see a consistent offer wherever they find you.",
+    capabilities: [
+      {
+        title: "Menus and product presentation",
+        body: "We organise menu items, descriptions and visuals so customers can scan the offer and find what they want across print and digital formats.",
+      },
+      {
+        title: "Brand identity and campaign design",
+        body: "We carry a recognisable visual direction across packaging, promotions, social posts and other customer-facing materials.",
+      },
+      {
+        title: "Social media and launch creative",
+        body: "We develop content around new products, best sellers and seasonal offers, using the approved details and formats your team needs.",
+      },
+      {
+        title: "Website and ordering journeys",
+        body: "We can help clarify the online route from discovering a product to finding the right menu, store or ordering next step.",
+      },
+    ],
+    projects: ["sweet-temptation-logo-menu-design", "food-and-drink-social-media-creatives"],
+  },
+  {
+    slug: "home-and-local-services",
+    title: "Home & local services",
+    heading: "Help local customers understand the service and take the next step.",
+    description:
+      "Websites, service information and campaign creative for home and local service businesses, with relevant Pixel2Tech project examples.",
+    intro:
+      "Local service customers want to know what you do, where you work and how to request help. We make those details easier to find through clear websites, practical visual content and straightforward enquiry paths.",
+    capabilities: [
+      {
+        title: "Service websites and local pages",
+        body: "We structure services, locations and contact details so visitors can quickly confirm whether you can help and how to get in touch.",
+      },
+      {
+        title: "Trust-building brand and project visuals",
+        body: "We present your team, work and service standards consistently across your website and customer-facing materials.",
+      },
+      {
+        title: "Enquiry forms and follow-up",
+        body: "We connect an easy-to-use enquiry form with the agreed contact workflow and make clear who follows up next.",
+      },
+      {
+        title: "Social and promotional creative",
+        body: "We create reusable campaign assets that explain a service, highlight completed work or support a seasonal promotion.",
+      },
+    ],
+    projects: ["ez-junk-removal-wordpress-website", "naveed-can-metal-works-social-media-posts"],
+  },
 ] as const;

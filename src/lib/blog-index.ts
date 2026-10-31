@@ -32,6 +32,49 @@ import {
  */
 const POSTS = [
   {
+    slug: "ai-risks-digital-marketing-brand-protection",
+    title: "AI in Digital Marketing: A Practical Risk Checklist for Your Brand",
+    excerpt:
+      "Use AI in marketing with clearer controls for privacy, security, biased outputs, brand voice, human review and vendor oversight.",
+    tag: "AI",
+    date: "October 30, 2026",
+    time: "9:10 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-built-app-launch-checklist.jpg",
+    imgAlt: "A team reviewing digital marketing and AI workflows",
+    related: ["github-repositories-to-learn-ai", "can-ai-replace-developers"],
+  },
+  {
+    slug: "github-repositories-to-learn-ai",
+    title: "Want to Master AI? Start with These 15 GitHub Repositories",
+    excerpt:
+      "A practical guide to 15 free GitHub repositories for learning generative AI, machine learning, AI agents, computer vision and reinforcement learning.",
+    tag: "AI",
+    date: "October 30, 2026",
+    time: "9:00 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-built-app-launch-checklist.jpg",
+    imgAlt: "A developer exploring AI tools and code on a computer",
+    related: [
+      "ai-risks-digital-marketing-brand-protection",
+      "can-ai-replace-developers",
+      "sonnet-5-vs-gpt-6-astra-vs-gemini-4-argon",
+    ],
+  },
+  {
+    slug: "dublin-ai-startups-funding",
+    title: "10 Dublin AI Startups to Know (and Their Reported Funding)",
+    excerpt:
+      "Meet 10 Dublin AI startups working across security, fleet safety, satellites, finance, observability and more—with funding figures checked against published sources.",
+    tag: "AI",
+    date: "October 30, 2026",
+    time: "9:05 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-built-app-launch-checklist.jpg",
+    imgAlt: "A technology team building AI products",
+    related: ["github-repositories-to-learn-ai", "sonnet-5-vs-gpt-6-astra-vs-gemini-4-argon"],
+  },
+  {
     slug: "ai-logo-problems-before-you-launch",
     title: "AI Logo Problems: What to Fix Before You Launch",
     excerpt:

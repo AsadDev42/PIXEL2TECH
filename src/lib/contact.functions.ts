@@ -141,7 +141,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // Emails are best-effort: a delivery problem must not fail a saved submission.
     const eventId = crypto.randomUUID();
-    const owner = ownerEmail();
+    const owner = data.source === "careers" ? SITE.email : ownerEmail();
     try {
       const sendTemplateEmail = await loadMailer();
       const sends: Promise<unknown>[] = [

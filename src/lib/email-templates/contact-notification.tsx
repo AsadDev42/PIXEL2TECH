@@ -19,7 +19,7 @@ interface Props {
   email?: string;
   phone?: string;
   subject?: string;
-  /** Which form sent it: home, contact, services or newsletter. */
+  /** Which form sent it: home, contact, services, careers or newsletter. */
   source?: string;
   message?: string;
   submittedAt?: string;
@@ -29,6 +29,7 @@ const SOURCE_LABELS: Record<string, string> = {
   home: "Home page form",
   contact: "Contact page form",
   services: "Services page form",
+  careers: "Careers application form",
   newsletter: "Blog newsletter signup",
 };
 
@@ -39,6 +40,7 @@ const fullName = ({ firstName, lastName }: Props) =>
 const Email = (props: Props) => {
   const { email, phone, subject, source, message, submittedAt } = props;
   const isNewsletter = source === "newsletter";
+  const isApplication = source === "careers";
   const name = fullName(props);
   return (
     <Html lang="en" dir="ltr">
@@ -46,12 +48,18 @@ const Email = (props: Props) => {
       <Preview>
         {isNewsletter
           ? `Newsletter signup: ${email || "unknown address"}`
-          : `New inquiry from ${name || email || "a visitor"}`}
+          : `${isApplication ? "New application" : "New inquiry"} from ${name || email || "a visitor"}`}
       </Preview>
       <Body style={main}>
         <Container style={container}>
           <Text style={eyebrow}>{SITE.name.toUpperCase()} WEBSITE</Text>
-          <Heading style={h1}>{isNewsletter ? "New newsletter signup" : "New inquiry"}</Heading>
+          <Heading style={h1}>
+            {isNewsletter
+              ? "New newsletter signup"
+              : isApplication
+                ? "New job application"
+                : "New inquiry"}
+          </Heading>
           <Hr style={hr} />
           <Section>
             {source ? (
@@ -102,7 +110,9 @@ export const template = {
   subject: (data: Props) =>
     data.source === "newsletter"
       ? "New newsletter signup"
-      : `New inquiry from ${fullName(data) || data.email || "the website"}`,
+      : data.source === "careers"
+        ? `New job application from ${fullName(data) || data.email || "the website"}`
+        : `New inquiry from ${fullName(data) || data.email || "the website"}`,
   displayName: "Contact form notification",
   previewData: {
     firstName: "Jane",

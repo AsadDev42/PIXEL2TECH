@@ -157,6 +157,10 @@ export type ContactFormProps = {
   /** Prefix for element ids. Defaults to `contact-<source>`; set it if a page shows two forms. */
   idPrefix?: string;
   submitLabel?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  messageHint?: string;
+  successMessage?: string;
   className?: string;
 };
 
@@ -169,6 +173,10 @@ export function ContactForm({
   source,
   idPrefix,
   submitLabel = "Send message",
+  messageLabel = "Message",
+  messagePlaceholder = "What are you working on, and where could you use a hand?",
+  messageHint,
+  successMessage = CONTACT_SUCCESS_MESSAGE,
   className,
 }: ContactFormProps) {
   const p = idPrefix ?? `contact-${source}`;
@@ -214,7 +222,7 @@ export function ContactForm({
         });
         trackEvent("contact_form_submitted", { source });
         reset();
-        setStatus({ kind: "success", message: CONTACT_SUCCESS_MESSAGE });
+        setStatus({ kind: "success", message: successMessage });
       } catch (err) {
         setStatus({ kind: "error", message: submitErrorMessage(err) });
       }
@@ -289,7 +297,7 @@ export function ContactForm({
 
       <div className="min-w-0 sm:col-span-2">
         <label htmlFor={messageId} className="mb-2 block text-sm font-medium text-foreground">
-          Message
+          {messageLabel}
           <span aria-hidden="true" className="ml-1 text-destructive">
             *
           </span>
@@ -301,12 +309,15 @@ export function ContactForm({
           maxLength={5000}
           required
           readOnly={submitting}
-          placeholder="What are you working on, and where could you use a hand?"
+          placeholder={messagePlaceholder}
           value={values.message}
           onChange={onChange("message")}
           onBlur={handleBlur("message")}
           aria-invalid={errors.message ? true : undefined}
-          aria-describedby={describedBy(errors.message && messageErrorId)}
+          aria-describedby={describedBy(
+            messageHint && `${messageId}-hint`,
+            errors.message && messageErrorId,
+          )}
           className={cn(
             FIELD_CLASS,
             "min-h-32 resize-y",
@@ -314,6 +325,14 @@ export function ContactForm({
           )}
         />
         <FieldError id={messageErrorId} message={errors.message} />
+        {messageHint ? (
+          <p
+            id={`${messageId}-hint`}
+            className="mt-2 text-sm leading-relaxed text-muted-foreground"
+          >
+            {messageHint}
+          </p>
+        ) : null}
       </div>
 
       <div className="min-w-0 sm:col-span-2">
