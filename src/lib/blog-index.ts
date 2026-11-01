@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "ai-chat-support-automate-vs-keep-human",
+    title: "AI Chat Support That Actually Helps: What to Automate, What to Keep Human",
+    excerpt: "AI chat support works when it answers the questions it can answer well and hands over the rest quickly. A practical split for small businesses: automate the routine, keep humans for the sensitive and the valuable.",
+    tag: "AI Solutions",
+    date: "November 1, 2026",
+    time: "3:37 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-chat-support-automate-vs-keep-human.jpg",
+    imgAlt: "AI Chat Support That Actually Helps: What to Automate, What to Keep Human",
+  },
+    {
     slug: "missed-calls-after-hours-callback-automation",
     title: "Missed Calls After Hours: A Simple Automation That Books the Callback",
     excerpt: "Missed calls after hours are often lost enquiries, not just missed calls. A simple callback automation captures the caller, promises a time and creates a task the team can actually follow.",
