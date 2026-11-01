@@ -264,7 +264,7 @@ const WORK_LINKS = [
   { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;
 
-const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest"];
+const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest", "YouTube", "Threads", "Bluesky", "Medium"];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
