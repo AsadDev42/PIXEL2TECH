@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "missed-calls-after-hours-callback-automation",
+    title: "Missed Calls After Hours: A Simple Automation That Books the Callback",
+    excerpt: "Missed calls after hours are often lost enquiries, not just missed calls. A simple callback automation captures the caller, promises a time and creates a task the team can actually follow.",
+    tag: "Automation",
+    date: "November 1, 2026",
+    time: "12:34 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/missed-calls-after-hours-callback-automation.jpg",
+    imgAlt: "Missed Calls After Hours: A Simple Automation That Books the Callback",
+  },
+    {
     slug: "selling-to-us-customers-website-trust",
     title: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
     excerpt: "Selling to customers in Los Angeles, New York or New Jersey from abroad? Your website must answer trust, communication and delivery questions before a US buyer books a first call.",
