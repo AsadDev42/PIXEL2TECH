@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+      slug: "internal-linking-service-websites",
+      title: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
+      excerpt: "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
+      tag: "SEO",
+      date: "November 1, 2026",
+      time: "6:01 pm",
+      author: "Asad Farooq",
+      img: "/blog/covers/internal-linking-service-websites.jpg",
+      imgAlt: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
+  },
+  {
     slug: "wordpress-monthly-maintenance-tasks",
         title: "WordPress Maintenance: The Monthly Tasks That Stop Small Problems Becoming Downtime",
     excerpt: "A practical monthly WordPress maintenance routine for business owners: updates, backups, security checks, speed checks and content checks that prevent downtime.",
