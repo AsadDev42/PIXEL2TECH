@@ -23,12 +23,10 @@ const post = {
       body: [
         "A common mistake is copying the voice of a bigger competitor. Their voice fits their customers, their prices and their history. Yours should fit the people you actually serve.",
         "Ask three questions before you write a single guideline:",
+        "1. Who is reading this, and what do they worry about?",
+        "2. What do they need to feel before they contact you?",
+        "3. What would sound wrong to them, even if it sounds clever?",
         "A law firm client wants calm and precise language. A fitness coach client wants energy and encouragement. A home services customer wants plain, reassuring instructions. The right voice follows the reader, not the trend.",
-      ],
-      bullets: [
-        "Who is reading this, and what do they worry about?",
-        "What do they need to feel before they contact you?",
-        "What would sound wrong to them, even if it sounds clever?",
       ],
     },
     {
@@ -43,14 +41,12 @@ const post = {
       heading: "Build a small voice guide, not a long document",
       body: [
         "You do not need a fifty page manual. One page is enough for most small teams. It should include:",
+        "- The three or four voice traits, each with a short example",
+        "- Words you use often, and words you avoid",
+        "- How you open an email, a web page and an ad",
+        "- How you handle bad news, such as a delay or a price increase",
+        "- Two before and after examples that show a weak sentence rewritten in your voice",
         "Keep this page where writers actually work. A guide hidden in a shared drive helps nobody. Pin it in the same place as your brand colours and logo files.",
-      ],
-      bullets: [
-        "The three or four voice traits, each with a short example",
-        "Words you use often, and words you avoid",
-        "How you open an email, a web page and an ad",
-        "How you handle bad news, such as a delay or a price increase",
-        "Two before and after examples that show a weak sentence rewritten in your voice",
       ],
     },
     {
