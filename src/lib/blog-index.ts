@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "selling-to-us-customers-website-trust",
+    title: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
+    excerpt: "Selling to customers in Los Angeles, New York or New Jersey from abroad? Your website must answer trust, communication and delivery questions before a US buyer books a first call.",
+    tag: "Web Development",
+    date: "November 1, 2026",
+    time: "12:00 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-to-us-customers-website-trust.jpg",
+    imgAlt: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
+  },
+    {
     slug: "custom-booking-platform-vs-off-the-shelf-software",
     title: "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
     excerpt: "When does a service business need a custom booking platform, and when is off the shelf software enough? A practical decision guide covering cost, fit, data and growth.",
