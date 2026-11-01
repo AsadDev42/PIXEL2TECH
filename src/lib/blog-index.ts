@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+        slug: "how-to-brief-a-video-editor-first-cut",
+        title: "How to Brief a Video Editor So the First Cut Is Close to Final",
+        excerpt: "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
+        tag: "Video Editing",
+        date: "November 1, 2026",
+        time: "7:47 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/how-to-brief-a-video-editor-first-cut.jpg",
+        imgAlt: "How to Brief a Video Editor So the First Cut Is Close to Final",
+  },
+  {
       slug: "internal-linking-service-websites",
       title: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
       excerpt: "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
