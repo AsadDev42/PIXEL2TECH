@@ -32,6 +32,21 @@ import {
  */
 const POSTS = [
   {
+    slug: "custom-booking-platform-vs-off-the-shelf-software",
+    title: "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
+    excerpt: "When does a service business need a custom booking platform, and when is off the shelf software enough? A practical decision guide covering cost, fit, data and growth.",
+    tag: "Custom Platforms",
+    date: "November 1, 2026",
+    time: "11:27 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/custom-web-app-development-cost.jpg",
+    related: [
+      "custom-web-app-development-cost",
+      "custom-shopify-app-vs-public-app",
+      "better-systems-not-more-software",
+  ],
+  },
+  {
         slug: "how-to-find-your-brand-voice",
         title: "How to Find Your Brand Voice (and Keep It Consistent Everywhere)",
         excerpt: "A practical guide to finding a brand voice that fits your business, writing it down in plain words, and keeping it consistent across your website, emails and ads.",
