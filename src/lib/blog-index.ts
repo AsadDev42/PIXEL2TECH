@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "wordpress-monthly-maintenance-tasks",
+        title: "WordPress Maintenance: The Monthly Tasks That Stop Small Problems Becoming Downtime",
+    excerpt: "A practical monthly WordPress maintenance routine for business owners: updates, backups, security checks, speed checks and content checks that prevent downtime.",
+    tag: "WordPress",
+    date: "November 1, 2026",
+    time: "5:32 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/wordpress-monthly-maintenance-tasks.jpg",
+    imgAlt: "WordPress Maintenance: The Monthly Tasks That Stop Small Problems Becoming Downtime",
+  },
+  {
     slug: "email-list-growth-without-discounts-service-businesses",
     title: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
     excerpt: "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
