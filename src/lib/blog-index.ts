@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "how-to-find-your-brand-voice",
+        title: "How to Find Your Brand Voice (and Keep It Consistent Everywhere)",
+        excerpt: "A practical guide to finding a brand voice that fits your business, writing it down in plain words, and keeping it consistent across your website, emails and ads.",
+        tag: "Branding",
+        date: "October 31, 2026",
+        time: "9:00 am",
+        author: "Asad Farooq",
+        img: "/blog/covers/brand-identity-process-for-startups.jpg",
+        imgAlt: "Brand identity concepts arranged for review",
+        related: ["branding-beyond-the-logo", "brand-guidelines-for-small-business", "brand-identity-process-for-startups"],
+  },
+  {
     slug: "ai-risks-digital-marketing-brand-protection",
     title: "AI in Digital Marketing: A Practical Risk Checklist for Your Brand",
     excerpt:
