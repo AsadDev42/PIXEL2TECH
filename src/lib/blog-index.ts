@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    
+      slug: "film-client-testimonial-video-one-afternoon",
+    title: "How to Film a Client Testimonial Video in One Afternoon",
+    excerpt: "A practical plan for filming a client testimonial video in one afternoon: the questions to ask, the setup to keep simple, and the edits that turn one interview into useful clips.",
+    tag: "Video Editing",
+    date: "November 1, 2026",
+    time: "8:59 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/film-client-testimonial-video-one-afternoon.jpg",
+    imgAlt: "Client speaking to camera during a testimonial video interview",
+  },
+    {
         slug: "how-to-brief-a-video-editor-first-cut",
         title: "How to Brief a Video Editor So the First Cut Is Close to Final",
         excerpt: "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
