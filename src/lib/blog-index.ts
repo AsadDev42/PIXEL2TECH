@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "email-list-growth-without-discounts-service-businesses",
+    title: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
+    excerpt: "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
+    tag: "Email Marketing",
+    date: "November 1, 2026",
+    time: "5:08 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/email-list-growth-without-discounts-service-businesses.jpg",
+    imgAlt: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
+  },
+    {
     slug: "ai-chat-support-automate-vs-keep-human",
     title: "AI Chat Support That Actually Helps: What to Automate, What to Keep Human",
     excerpt: "AI chat support works when it answers the questions it can answer well and hands over the rest quickly. A practical split for small businesses: automate the routine, keep humans for the sensitive and the valuable.",
