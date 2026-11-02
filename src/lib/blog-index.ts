@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "shopify-checkout-questions-before-buy",
+    title: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
+    excerpt: "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
+    tag: "Shopify",
+    date: "November 2, 2026",
+    time: "2:27 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/shopify-checkout-questions-before-buy.jpg",
+    imgAlt: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
+  },
+  {
    
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
