@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+        slug: "weekly-social-media-routine-service-businesses",
+        title: "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
+        excerpt: "Daily posting burns out most service businesses. A weekly routine built on one planning block, three useful post types and a short review keeps social media consistent without taking over the week.",
+        tag: "Social Media",
+        date: "November 2, 2026",
+        time: "7:34 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/weekly-social-media-routine-service-businesses.jpg",
+        imgAlt: "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
+  },
+  {
     slug: "search-intent-service-pages",
         title: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
         excerpt: "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
