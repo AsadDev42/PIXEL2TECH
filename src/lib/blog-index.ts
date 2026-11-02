@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+   
+    slug: "selling-singapore-malaysia-website",
+    title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
+    excerpt: "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
+    tag: "Web Development",
+    date: "November 2, 2026",
+    time: "12:41 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-singapore-malaysia-website.jpg",
+    imgAlt: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
+  },
+  {
     slug: "colour-type-choices-small-brand-look-established",
     title: "Colour and Type Choices That Make a Small Brand Look Established",
     excerpt: "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
