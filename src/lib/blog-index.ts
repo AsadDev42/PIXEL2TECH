@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "search-intent-service-pages",
+        title: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
+        excerpt: "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
+        tag: "SEO",
+        date: "November 2, 2026",
+        time: "4:58 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/search-intent-service-pages.jpg",
+        imgAlt: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
+  },
+  {
     slug: "shopify-checkout-questions-before-buy",
     title: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
     excerpt: "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
