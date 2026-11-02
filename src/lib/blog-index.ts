@@ -32,6 +32,17 @@ import {
  */
 const POSTS = [
   {
+    slug: "colour-type-choices-small-brand-look-established",
+    title: "Colour and Type Choices That Make a Small Brand Look Established",
+    excerpt: "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
+    tag: "Branding",
+    date: "November 2, 2026",
+    time: "10:53 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/colour-type-choices-small-brand-look-established.jpg",
+    imgAlt: "Colour and Type Choices That Make a Small Brand Look Established",
+  },
+  {
     
       slug: "film-client-testimonial-video-one-afternoon",
     title: "How to Film a Client Testimonial Video in One Afternoon",
