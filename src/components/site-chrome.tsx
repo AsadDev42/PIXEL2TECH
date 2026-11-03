@@ -143,8 +143,8 @@ const NAV: readonly NavItem[] = [
   { label: "Contact", to: "/contact" },
 ];
 
-/** Inline nav needs ~1000px; below that the menu button takes over. */
-const DESKTOP_NAV_QUERY = "(min-width: 1024px)";
+/** Inline nav with dropdowns needs ~1200px; below that the menu button takes over. */
+const DESKTOP_NAV_QUERY = "(min-width: 1280px)";
 
 function isActive(pathname: string, to: string) {
   if (to === "/") return pathname === "/";
@@ -284,7 +284,7 @@ function NavDropdown({
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
       }}
     >
-      <div className="flex items-center">
+      <div className="flex items-center gap-1">
         <Link
           to={item.to}
           aria-current={pathname === item.to ? "page" : undefined}
@@ -312,10 +312,10 @@ function NavDropdown({
           aria-expanded={open}
           aria-controls={menuId}
           aria-label={`More ${item.label} pages`}
-          className="inline-flex h-8 w-6 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex h-8 w-5 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ChevronDown
-            className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+            className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
             aria-hidden="true"
           />
         </button>
@@ -415,7 +415,7 @@ export function SiteNav() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-5 text-sm font-medium text-foreground lg:flex xl:gap-8 xl:text-[15px]"
+            className="hidden items-center gap-8 text-sm font-medium text-foreground xl:flex"
           >
             {NAV.map((n) => {
               if (n.children) {
@@ -455,8 +455,8 @@ export function SiteNav() {
               onClick={() => openBooking("header")}
               className="hidden min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90 sm:inline-flex"
             >
-              <span className="xl:hidden">Book a call</span>
-              <span className="hidden xl:inline">{PRIMARY_CTA_LABEL}</span>
+              <span className="2xl:hidden">Book a call</span>
+              <span className="hidden 2xl:inline">{PRIMARY_CTA_LABEL}</span>
             </button>
             <button
               type="button"
@@ -464,7 +464,7 @@ export function SiteNav() {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground xl:hidden"
             >
               {open ? (
                 <X className="h-5 w-5" aria-hidden="true" />
@@ -481,7 +481,7 @@ export function SiteNav() {
       <div
         aria-hidden="true"
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-300 ease-out lg:hidden ${
+        className={`fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-300 ease-out xl:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
@@ -500,7 +500,7 @@ export function SiteNav() {
           willChange: "transform",
           backfaceVisibility: "hidden",
         }}
-        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden ${
+        className={`fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-sm flex-col overflow-y-auto overscroll-contain border-l border-border bg-background shadow-2xl transition-transform duration-[420ms] ease-[cubic-bezier(0.32,0.72,0,1)] xl:hidden ${
           open ? "" : "pointer-events-none"
         }`}
       >
