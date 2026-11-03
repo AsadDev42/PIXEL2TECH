@@ -11,6 +11,7 @@ import { FadeIn } from "@/components/motion";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
+import { INDUSTRIES } from "@/lib/industry-pages";
 import { PRIMARY_CTA_LABEL, SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 // Modal code (and its booking form) is only fetched when a user opens it.
@@ -18,29 +19,129 @@ const BookingModal = lazyWithRetry(() =>
   import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
 );
 
-// Pages that were only reachable from the footer, grouped under About in the header.
-const ABOUT_LINKS = [
-  { label: "About us", to: "/about", description: "Our studio, team and way of working" },
-  { label: "Industries", to: "/industries", description: "The businesses we design and build for" },
-  { label: "Project outcomes", to: "/results", description: "What changed after past projects" },
-  { label: "For agencies", to: "/for-agencies", description: "White-label design, web and video" },
-  { label: "Careers", to: "/careers", description: "Show us your work and apply" },
-  { label: "Press", to: "/press", description: "Studio background for media" },
-  {
-    label: "Free Shopify checklist",
-    to: "/resources/shopify-store-checklist",
-    description: "See your store through a shopper's eyes",
-  },
-] as const;
+type StaticTo =
+  | "/"
+  | "/about"
+  | "/careers"
+  | "/press"
+  | "/services"
+  | "/for-agencies"
+  | "/industries"
+  | "/portfolio"
+  | "/results"
+  | "/blog"
+  | "/resources/shopify-store-checklist"
+  | "/contact";
 
-const NAV = [
+type NavChild =
+  | { kind: "page"; label: string; description?: string; to: StaticTo }
+  | { kind: "service"; label: string; description?: string; slug: string }
+  | { kind: "industry"; label: string; description?: string; slug: string };
+
+type NavItem = {
+  label: string;
+  to: StaticTo;
+  /** The first child that points at `to` is shown as the group's overview link. */
+  children?: readonly NavChild[];
+  wide?: boolean;
+};
+
+// Every page from the footer sits under the section it belongs to; Industries is its own group.
+const NAV: readonly NavItem[] = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about", children: ABOUT_LINKS },
-  { label: "Services", to: "/services" },
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Blog", to: "/blog" },
+  {
+    label: "About",
+    to: "/about",
+    children: [
+      {
+        kind: "page",
+        label: "About us",
+        to: "/about",
+        description: "Our studio, team and way of working",
+      },
+      {
+        kind: "page",
+        label: "Careers",
+        to: "/careers",
+        description: "Show us your work and apply",
+      },
+      { kind: "page", label: "Press", to: "/press", description: "Studio background for media" },
+    ],
+  },
+  {
+    label: "Services",
+    to: "/services",
+    wide: true,
+    children: [
+      {
+        kind: "page",
+        label: "All services",
+        to: "/services",
+        description: "Compare every service we offer",
+      },
+      ...SERVICES.map((title) => ({
+        kind: "service" as const,
+        label: title,
+        slug: serviceAnchor(title),
+      })),
+      {
+        kind: "page",
+        label: "For agencies",
+        to: "/for-agencies",
+        description: "White-label design, web and video",
+      },
+    ],
+  },
+  {
+    label: "Industries",
+    to: "/industries",
+    children: [
+      {
+        kind: "page",
+        label: "All industries",
+        to: "/industries",
+        description: "The businesses we design and build for",
+      },
+      ...INDUSTRIES.map((industry) => ({
+        kind: "industry" as const,
+        label: industry.title,
+        slug: industry.slug,
+      })),
+    ],
+  },
+  {
+    label: "Portfolio",
+    to: "/portfolio",
+    children: [
+      {
+        kind: "page",
+        label: "Portfolio",
+        to: "/portfolio",
+        description: "Branding, web and video work",
+      },
+      {
+        kind: "page",
+        label: "Project outcomes",
+        to: "/results",
+        description: "What changed after past projects",
+      },
+    ],
+  },
+  {
+    label: "Blog",
+    to: "/blog",
+    children: [
+      { kind: "page", label: "Blog", to: "/blog", description: "Articles and practical guides" },
+      {
+        kind: "page",
+        label: "Free Shopify checklist",
+        to: "/resources/shopify-store-checklist",
+        description: "See your store through a shopper's eyes",
+      },
+    ],
+  },
   { label: "Contact", to: "/contact" },
-] as const;
+];
 
 /** Inline nav needs ~1000px; below that the menu button takes over. */
 const DESKTOP_NAV_QUERY = "(min-width: 1024px)";
@@ -50,22 +151,72 @@ function isActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
 }
 
-function isGroupActive(pathname: string, item: (typeof NAV)[number]) {
+function childPath(child: NavChild) {
+  if (child.kind === "service") return `/services/${child.slug}`;
+  if (child.kind === "industry") return `/industries/${child.slug}`;
+  return child.to;
+}
+
+function isGroupActive(pathname: string, item: NavItem) {
   if (isActive(pathname, item.to)) return true;
-  return "children" in item && item.children.some((c) => isActive(pathname, c.to));
+  return item.children?.some((c) => isActive(pathname, childPath(c))) ?? false;
+}
+
+/** Sub-links of a group, without the overview link that repeats the group's own page. */
+function subLinks(item: NavItem) {
+  return (item.children ?? []).filter((c) => !(c.kind === "page" && c.to === item.to));
+}
+
+function ChildLink({
+  child,
+  className,
+  current,
+  children,
+}: {
+  child: NavChild;
+  className: string;
+  current: boolean;
+  children: React.ReactNode;
+}) {
+  const ariaCurrent = current ? ("page" as const) : undefined;
+  if (child.kind === "service") {
+    return (
+      <Link
+        to="/services/$slug"
+        params={{ slug: child.slug }}
+        aria-current={ariaCurrent}
+        className={className}
+      >
+        {children}
+      </Link>
+    );
+  }
+  if (child.kind === "industry") {
+    return (
+      <Link
+        to="/industries/$slug"
+        params={{ slug: child.slug }}
+        aria-current={ariaCurrent}
+        className={className}
+      >
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <Link to={child.to} aria-current={ariaCurrent} className={className}>
+      {children}
+    </Link>
+  );
 }
 
 /** Desktop dropdown: opens on mouse hover, keyboard focus or the chevron button. */
 function NavDropdown({
-  label,
-  to,
-  items,
+  item,
   active,
   pathname,
 }: {
-  label: string;
-  to: (typeof NAV)[number]["to"];
-  items: typeof ABOUT_LINKS;
+  item: NavItem;
   active: boolean;
   pathname: string;
 }) {
@@ -73,6 +224,8 @@ function NavDropdown({
   const ref = useRef<HTMLDivElement>(null);
   const menuId = useId();
   const lastPointer = useRef("");
+  const overview = item.children?.find((c) => c.kind === "page" && c.to === item.to);
+  const links = subLinks(item);
 
   useEffect(() => {
     setOpen(false);
@@ -94,6 +247,32 @@ function NavDropdown({
     };
   }, [open]);
 
+  const itemCls = (current: boolean) =>
+    `flex items-start justify-between gap-3 rounded-xl px-3 py-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none ${
+      current ? "bg-muted" : ""
+    }`;
+
+  const renderChild = (child: NavChild) => {
+    // The overview link only counts as current on the exact page, not its sub-pages.
+    const current =
+      child === overview ? pathname === item.to : isActive(pathname, childPath(child));
+    return (
+      <ChildLink child={child} current={current} className={itemCls(current)}>
+        <span>
+          <span className="block text-sm font-semibold text-foreground">{child.label}</span>
+          {child.description && (
+            <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
+              {child.description}
+            </span>
+          )}
+        </span>
+        {current && (
+          <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" />
+        )}
+      </ChildLink>
+    );
+  };
+
   return (
     <div
       ref={ref}
@@ -105,13 +284,13 @@ function NavDropdown({
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
       }}
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center">
         <Link
-          to={to}
-          aria-current={pathname === to ? "page" : undefined}
+          to={item.to}
+          aria-current={pathname === item.to ? "page" : undefined}
           className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
         >
-          <span className={active ? "font-semibold" : ""}>{label}</span>
+          <span className={active ? "font-semibold" : ""}>{item.label}</span>
           {active && (
             <span
               aria-hidden="true"
@@ -132,8 +311,8 @@ function NavDropdown({
           }}
           aria-expanded={open}
           aria-controls={menuId}
-          aria-label={`More ${label} pages`}
-          className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          aria-label={`More ${item.label} pages`}
+          className="inline-flex h-8 w-6 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ChevronDown
             className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -144,43 +323,24 @@ function NavDropdown({
 
       <div
         id={menuId}
-        className={`absolute left-1/2 top-full z-50 w-80 -translate-x-1/2 pt-3 transition duration-200 ease-out ${
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition duration-200 ease-out ${
+          item.wide ? "w-[36rem]" : "w-80"
+        } ${
           open
             ? "visible translate-y-0 opacity-100"
             : "pointer-events-none invisible -translate-y-1 opacity-0"
         }`}
       >
-        <ul className="rounded-2xl border border-border bg-background p-2 shadow-xl">
-          {items.map((item) => {
-            const current = isActive(pathname, item.to);
-            return (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  aria-current={current ? "page" : undefined}
-                  className={`flex items-start justify-between gap-3 rounded-xl px-3 py-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none ${
-                    current ? "bg-muted" : ""
-                  }`}
-                >
-                  <span>
-                    <span className="block text-sm font-semibold text-foreground">
-                      {item.label}
-                    </span>
-                    <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
-                      {item.description}
-                    </span>
-                  </span>
-                  {current && (
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand"
-                    />
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="rounded-2xl border border-border bg-background p-2 shadow-xl">
+          {overview && (
+            <div className="mb-1 border-b border-border pb-1">{renderChild(overview)}</div>
+          )}
+          <ul className={item.wide ? "grid grid-cols-2 gap-x-1" : ""}>
+            {links.map((child) => (
+              <li key={childPath(child)}>{renderChild(child)}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
@@ -190,14 +350,14 @@ export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const aboutGroupActive = ABOUT_LINKS.some((c) => isActive(pathname, c.to));
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(aboutGroupActive);
+  const activeGroup = NAV.find((n) => n.children && isGroupActive(pathname, n))?.label ?? null;
+  const [mobileGroup, setMobileGroup] = useState<string | null>(activeGroup);
 
-  // Close menu on route change; keep the About group expanded when on one of its pages.
+  // Close menu on route change; keep the current page's group expanded in the drawer.
   useEffect(() => {
     setOpen(false);
-    setMobileAboutOpen(aboutGroupActive);
-  }, [pathname, aboutGroupActive]);
+    setMobileGroup(activeGroup);
+  }, [pathname, activeGroup]);
 
   // Lock body scroll while the menu is open; close on Escape or when the
   // viewport grows into the desktop nav breakpoint.
@@ -258,13 +418,11 @@ export function SiteNav() {
             className="hidden items-center gap-5 text-sm font-medium text-foreground lg:flex xl:gap-8 xl:text-[15px]"
           >
             {NAV.map((n) => {
-              if ("children" in n) {
+              if (n.children) {
                 return (
                   <NavDropdown
                     key={n.to}
-                    label={n.label}
-                    to={n.to}
-                    items={n.children}
+                    item={n}
                     active={isGroupActive(pathname, n)}
                     pathname={pathname}
                   />
@@ -367,8 +525,10 @@ export function SiteNav() {
               transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
               transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
             };
-            if ("children" in n) {
+            if (n.children) {
               const groupActive = isGroupActive(pathname, n);
+              const expanded = mobileGroup === n.label;
+              const listId = `mobile-${n.label.toLowerCase()}-links`;
               return (
                 <div
                   key={n.to}
@@ -393,54 +553,52 @@ export function SiteNav() {
                     </Link>
                     <button
                       type="button"
-                      onClick={() => setMobileAboutOpen((v) => !v)}
-                      aria-expanded={mobileAboutOpen}
-                      aria-controls="mobile-about-links"
-                      aria-label={`${mobileAboutOpen ? "Hide" : "Show"} more ${n.label} pages`}
+                      onClick={() => setMobileGroup(expanded ? null : n.label)}
+                      aria-expanded={expanded}
+                      aria-controls={listId}
+                      aria-label={`${expanded ? "Hide" : "Show"} more ${n.label} pages`}
                       className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition active:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <ChevronDown
                         className={`h-5 w-5 transition-transform duration-200 ${
-                          mobileAboutOpen ? "rotate-180" : ""
+                          expanded ? "rotate-180" : ""
                         }`}
                         aria-hidden="true"
                       />
                     </button>
                   </div>
                   <div
-                    id="mobile-about-links"
-                    inert={!mobileAboutOpen || undefined}
+                    id={listId}
+                    inert={!expanded || undefined}
                     className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                      mobileAboutOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
                     <ul className="ml-4 flex flex-col gap-1 overflow-hidden border-l border-border pl-3">
-                      {n.children
-                        .filter((c) => c.to !== n.to)
-                        .map((c) => {
-                          const current = isActive(pathname, c.to);
-                          return (
-                            <li key={c.to}>
-                              <Link
-                                to={c.to}
-                                aria-current={current ? "page" : undefined}
-                                className={`flex min-h-11 items-center justify-between rounded-xl px-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                                  current
-                                    ? "bg-muted text-foreground"
-                                    : "text-foreground/70 active:bg-muted/60"
-                                }`}
-                              >
-                                <span>{c.label}</span>
-                                {current && (
-                                  <span
-                                    aria-hidden="true"
-                                    className="h-2 w-2 rounded-full bg-brand"
-                                  />
-                                )}
-                              </Link>
-                            </li>
-                          );
-                        })}
+                      {subLinks(n).map((c) => {
+                        const current = isActive(pathname, childPath(c));
+                        return (
+                          <li key={childPath(c)}>
+                            <ChildLink
+                              child={c}
+                              current={current}
+                              className={`flex min-h-11 items-center justify-between rounded-xl px-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                                current
+                                  ? "bg-muted text-foreground"
+                                  : "text-foreground/70 active:bg-muted/60"
+                              }`}
+                            >
+                              <span>{c.label}</span>
+                              {current && (
+                                <span
+                                  aria-hidden="true"
+                                  className="h-2 w-2 rounded-full bg-brand"
+                                />
+                              )}
+                            </ChildLink>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
