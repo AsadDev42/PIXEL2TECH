@@ -1,7 +1,7 @@
 import { MediaImage } from "@/components/media-image";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Suspense, useEffect, useState } from "react";
-import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
+import { Suspense, useEffect, useId, useRef, useState } from "react";
+import { ArrowUp, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
@@ -18,9 +18,24 @@ const BookingModal = lazyWithRetry(() =>
   import("@/components/booking-modal").then((m) => ({ default: m.BookingModal })),
 );
 
+// Pages that were only reachable from the footer, grouped under About in the header.
+const ABOUT_LINKS = [
+  { label: "About us", to: "/about", description: "Our studio, team and way of working" },
+  { label: "Industries", to: "/industries", description: "The businesses we design and build for" },
+  { label: "Project outcomes", to: "/results", description: "What changed after past projects" },
+  { label: "For agencies", to: "/for-agencies", description: "White-label design, web and video" },
+  { label: "Careers", to: "/careers", description: "Show us your work and apply" },
+  { label: "Press", to: "/press", description: "Studio background for media" },
+  {
+    label: "Free Shopify checklist",
+    to: "/resources/shopify-store-checklist",
+    description: "See your store through a shopper's eyes",
+  },
+] as const;
+
 const NAV = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "About", to: "/about", children: ABOUT_LINKS },
   { label: "Services", to: "/services" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Blog", to: "/blog" },
@@ -35,15 +50,154 @@ function isActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
 }
 
+function isGroupActive(pathname: string, item: (typeof NAV)[number]) {
+  if (isActive(pathname, item.to)) return true;
+  return "children" in item && item.children.some((c) => isActive(pathname, c.to));
+}
+
+/** Desktop dropdown: opens on mouse hover, keyboard focus or the chevron button. */
+function NavDropdown({
+  label,
+  to,
+  items,
+  active,
+  pathname,
+}: {
+  label: string;
+  to: (typeof NAV)[number]["to"];
+  items: typeof ABOUT_LINKS;
+  active: boolean;
+  pathname: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const menuId = useId();
+  const lastPointer = useRef("");
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      // Touch taps also fire pointerenter; only a real mouse should open on hover.
+      onPointerEnter={(e) => e.pointerType === "mouse" && setOpen(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setOpen(false)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
+      }}
+    >
+      <div className="flex items-center gap-1">
+        <Link
+          to={to}
+          aria-current={pathname === to ? "page" : undefined}
+          className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
+        >
+          <span className={active ? "font-semibold" : ""}>{label}</span>
+          {active && (
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-1 left-0 h-[2px] w-full bg-foreground"
+            />
+          )}
+        </Link>
+        <button
+          type="button"
+          onPointerDown={(e) => {
+            lastPointer.current = e.pointerType;
+          }}
+          onClick={() => {
+            // Hover has already opened it for a mouse, so a click must not close it again.
+            if (lastPointer.current === "mouse") setOpen(true);
+            else setOpen((v) => !v);
+            lastPointer.current = "";
+          }}
+          aria-expanded={open}
+          aria-controls={menuId}
+          aria-label={`More ${label} pages`}
+          className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+
+      <div
+        id={menuId}
+        className={`absolute left-1/2 top-full z-50 w-80 -translate-x-1/2 pt-3 transition duration-200 ease-out ${
+          open
+            ? "visible translate-y-0 opacity-100"
+            : "pointer-events-none invisible -translate-y-1 opacity-0"
+        }`}
+      >
+        <ul className="rounded-2xl border border-border bg-background p-2 shadow-xl">
+          {items.map((item) => {
+            const current = isActive(pathname, item.to);
+            return (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  aria-current={current ? "page" : undefined}
+                  className={`flex items-start justify-between gap-3 rounded-xl px-3 py-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none ${
+                    current ? "bg-muted" : ""
+                  }`}
+                >
+                  <span>
+                    <span className="block text-sm font-semibold text-foreground">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
+                      {item.description}
+                    </span>
+                  </span>
+                  {current && (
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand"
+                    />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const aboutGroupActive = ABOUT_LINKS.some((c) => isActive(pathname, c.to));
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(aboutGroupActive);
 
-  // Close menu on route change
+  // Close menu on route change; keep the About group expanded when on one of its pages.
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+    setMobileAboutOpen(aboutGroupActive);
+  }, [pathname, aboutGroupActive]);
 
   // Lock body scroll while the menu is open; close on Escape or when the
   // viewport grows into the desktop nav breakpoint.
@@ -104,6 +258,18 @@ export function SiteNav() {
             className="hidden items-center gap-5 text-sm font-medium text-foreground lg:flex xl:gap-8 xl:text-[15px]"
           >
             {NAV.map((n) => {
+              if ("children" in n) {
+                return (
+                  <NavDropdown
+                    key={n.to}
+                    label={n.label}
+                    to={n.to}
+                    items={n.children}
+                    active={isGroupActive(pathname, n)}
+                    pathname={pathname}
+                  />
+                );
+              }
               const active = isActive(pathname, n.to);
               return (
                 <Link
@@ -197,15 +363,95 @@ export function SiteNav() {
         <nav aria-label="Mobile" className="flex flex-col gap-1 px-4 pt-2">
           {NAV.map((n, i) => {
             const active = isActive(pathname, n.to);
+            const motion = {
+              transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
+              transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
+            };
+            if ("children" in n) {
+              const groupActive = isGroupActive(pathname, n);
+              return (
+                <div
+                  key={n.to}
+                  style={motion}
+                  className={`transition-[opacity,transform] duration-300 ease-out ${
+                    open ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div
+                    className={`flex min-h-14 items-center justify-between rounded-2xl pl-4 pr-2 ${
+                      active ? "bg-muted" : ""
+                    }`}
+                  >
+                    <Link
+                      to={n.to}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex min-h-14 flex-1 items-center text-lg font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                        groupActive ? "text-foreground" : "text-foreground/80"
+                      }`}
+                    >
+                      {n.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setMobileAboutOpen((v) => !v)}
+                      aria-expanded={mobileAboutOpen}
+                      aria-controls="mobile-about-links"
+                      aria-label={`${mobileAboutOpen ? "Hide" : "Show"} more ${n.label} pages`}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition active:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <ChevronDown
+                        className={`h-5 w-5 transition-transform duration-200 ${
+                          mobileAboutOpen ? "rotate-180" : ""
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                  <div
+                    id="mobile-about-links"
+                    inert={!mobileAboutOpen || undefined}
+                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                      mobileAboutOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <ul className="ml-4 flex flex-col gap-1 overflow-hidden border-l border-border pl-3">
+                      {n.children
+                        .filter((c) => c.to !== n.to)
+                        .map((c) => {
+                          const current = isActive(pathname, c.to);
+                          return (
+                            <li key={c.to}>
+                              <Link
+                                to={c.to}
+                                aria-current={current ? "page" : undefined}
+                                className={`flex min-h-11 items-center justify-between rounded-xl px-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                                  current
+                                    ? "bg-muted text-foreground"
+                                    : "text-foreground/70 active:bg-muted/60"
+                                }`}
+                              >
+                                <span>{c.label}</span>
+                                {current && (
+                                  <span
+                                    aria-hidden="true"
+                                    className="h-2 w-2 rounded-full bg-brand"
+                                  />
+                                )}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
             return (
               <Link
                 key={n.to}
                 to={n.to}
                 aria-current={active ? "page" : undefined}
-                style={{
-                  transitionDelay: open ? `${120 + i * 45}ms` : "0ms",
-                  transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
-                }}
+                style={motion}
                 className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-lg font-semibold tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                   open ? "opacity-100" : "opacity-0"
                 } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
@@ -264,7 +510,17 @@ const WORK_LINKS = [
   { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;
 
-const FOOTER_SOCIALS = ["Facebook", "Instagram", "X / Twitter", "LinkedIn", "Pinterest", "YouTube", "Threads", "Bluesky", "Medium"];
+const FOOTER_SOCIALS = [
+  "Facebook",
+  "Instagram",
+  "X / Twitter",
+  "LinkedIn",
+  "Pinterest",
+  "YouTube",
+  "Threads",
+  "Bluesky",
+  "Medium",
+];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
