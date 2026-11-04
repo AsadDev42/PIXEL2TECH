@@ -58,7 +58,7 @@ const SECTIONS: LegalSection[] = [
           "**Call bookings.** Our booking form collects your name, email address, chosen time, time zone and any project notes you provide. We send these details to Google Calendar to schedule the call and create a Google Meet link. Google sends a calendar invitation to your email address. Please do not include sensitive information in project notes.",
           "**Communications.** Your name, contact details and the content of emails, phone calls, WhatsApp or social media messages and video calls with us, including files you send.",
           "**Client and project information.** If you become a client: your name, job title, company, billing and tax details, payment records, and the content, files, brand materials and account access you give us so we can do the work.",
-          "**Job and freelance applications.** Your contact details, introduction, portfolio or CV links and other information you choose to include in the careers form or send us by email.",
+          "**Job and freelance applications.** Your contact details, introduction, portfolio links, CV (as a link or an attached file) and other information you choose to include in the careers form or send us by email. A CV attached to the form is emailed to our team and is not stored in our website database.",
         ],
       },
       "Please do not send payment card numbers, passwords, government identification numbers, health information or other sensitive information through our website forms. If we need access to one of your accounts for a project, we will agree a suitable way to arrange it with you.",
@@ -159,7 +159,7 @@ const SECTIONS: LegalSection[] = [
       {
         list: [
           "**Prisma** (Prisma Data, Inc.), which hosts our website (Prisma Compute) and provides the database that stores form submissions and newsletter sign-ups (Prisma Postgres);",
-          "**Resend**, our email delivery provider, which sends the notification and confirmation emails for our contact form;",
+          "**Resend**, our email delivery provider, which sends the notification and confirmation emails for our contact and careers forms, including any CV attached to an application;",
           "**Google** (Google Analytics, Google Fonts, Google Maps and Google Meet) and **Microsoft** (Microsoft Clarity);",
           "**Google Calendar and Google Meet**, for scheduling and holding calls; and",
           "providers of business email, file storage, project management, communication, accounting, invoicing and payment services, and freelancers or subcontractors who help us deliver projects.",

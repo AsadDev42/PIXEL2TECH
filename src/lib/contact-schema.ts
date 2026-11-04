@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CV_MAX_BASE64_LENGTH } from "@/lib/cv-file";
 import { SITE } from "@/lib/site-config";
 
 /**
@@ -116,11 +117,15 @@ const spamGuardShape = {
 };
 
 /** What `submitContactForm` accepts. */
-export const contactSubmissionSchema = contactBaseSchema.extend({
-  subject: subjectField.optional(),
-  source: z.enum(CONTACT_SOURCES).optional(),
-  ...spamGuardShape,
-});
+export const contactSubmissionSchema = contactBaseSchema
+  .extend({
+    subject: subjectField.optional(),
+    source: z.enum(CONTACT_SOURCES).optional(),
+    /** Careers only. The server checks the decoded bytes before using it. */
+    cv: z.object({ base64: z.string().min(1).max(CV_MAX_BASE64_LENGTH) }).optional(),
+    ...spamGuardShape,
+  })
+  .refine((data) => !data.cv || data.source === "careers");
 export type ContactSubmission = z.input<typeof contactSubmissionSchema>;
 
 /** What `subscribeToNewsletter` accepts. */
@@ -147,6 +152,8 @@ export const SUBMIT_ERRORS = {
   rateLimited:
     "You've sent a few of these in a short time. Please wait a few minutes and try again.",
   unavailable: `We couldn't save that just now. Please try again, or email us at ${SITE.email}.`,
+  cvInvalid: "We couldn't read that CV. Please attach a PDF or Word (.docx) file up to 5 MB.",
+  cvNotSent: `We saved your details but couldn't send your CV. Please email it to ${SITE.email}.`,
 } as const;
 
 const GENERIC_SUBMIT_ERROR = `Something went wrong on our side. Please try again, or email us at ${SITE.email}.`;

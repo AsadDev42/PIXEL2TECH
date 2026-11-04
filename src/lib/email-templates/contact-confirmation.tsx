@@ -7,8 +7,9 @@ import type { TemplateEntry } from "./registry";
  * Sent to whatever address a visitor typed into the contact form, so it is a
  * fixed acknowledgement on purpose: no name, subject or message from the form.
  * Echoing visitor text here would let anyone send our email to strangers.
+ * `isApplication` only picks between fixed wordings.
  */
-const Email = () => (
+const Email = ({ isApplication }: { isApplication?: boolean }) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>{`Thanks for getting in touch with ${SITE.name}.`}</Preview>
@@ -17,7 +18,14 @@ const Email = () => (
         <Text style={eyebrow}>{SITE.name.toUpperCase()}</Text>
         <Heading style={h1}>Thanks for getting in touch</Heading>
         <Text style={p}>
-          We&rsquo;ve received your message and will reply within one business day.
+          {isApplication ? (
+            <>
+              We&rsquo;ve received your application. If there is a potential match, we&rsquo;ll
+              follow up about next steps.
+            </>
+          ) : (
+            <>We&rsquo;ve received your message and will reply within one business day.</>
+          )}
         </Text>
         <Text style={p}>Want to add something? Reply to this email or write to {SITE.email}.</Text>
         <Hr style={hr} />

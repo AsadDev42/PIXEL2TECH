@@ -23,6 +23,8 @@ interface Props {
   source?: string;
   message?: string;
   submittedAt?: string;
+  /** Careers only: the name of the CV attached to this email. */
+  cvFilename?: string;
 }
 
 const SOURCE_LABELS: Record<string, string> = {
@@ -38,7 +40,7 @@ const fullName = ({ firstName, lastName }: Props) =>
 
 /** Sent to the owner (SITE.email or CONTACT_OWNER_EMAIL). Reply-To is the visitor. */
 const Email = (props: Props) => {
-  const { email, phone, subject, source, message, submittedAt } = props;
+  const { email, phone, subject, source, message, submittedAt, cvFilename } = props;
   const isNewsletter = source === "newsletter";
   const isApplication = source === "careers";
   const name = fullName(props);
@@ -86,6 +88,12 @@ const Email = (props: Props) => {
               <>
                 <Text style={label}>Subject</Text>
                 <Text style={value}>{subject}</Text>
+              </>
+            ) : null}
+            {isApplication ? (
+              <>
+                <Text style={label}>CV</Text>
+                <Text style={value}>{cvFilename ? `Attached: ${cvFilename}` : "Not attached"}</Text>
               </>
             ) : null}
             <Text style={label}>Message</Text>

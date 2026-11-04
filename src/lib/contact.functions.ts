@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeader, getRequestIP } from "@tanstack/react-start/server";
 import type { z } from "zod";
+import { CV_MAX_BYTES, base64ToBytes, cvAttachmentName, detectCvKind } from "@/lib/cv-file";
 import { SITE } from "@/lib/site-config";
 import type { NewContact } from "@/server/db/contacts.server";
 import {
@@ -126,10 +127,25 @@ async function loadMailer() {
   return sendTemplateEmail;
 }
 
+/** Checks the uploaded bytes and names the file; the applicant's own file name is never used. */
+function prepareCvAttachment({
+  cv,
+  firstName,
+  lastName,
+}: Pick<z.output<typeof contactSubmissionSchema>, "cv" | "firstName" | "lastName">) {
+  if (!cv) return undefined;
+  const bytes = base64ToBytes(cv.base64);
+  const kind = bytes && bytes.length <= CV_MAX_BYTES ? detectCvKind(bytes) : null;
+  if (!kind) throw new Error(SUBMIT_ERRORS.cvInvalid);
+  return { filename: cvAttachmentName(firstName, lastName, kind), content: cv.base64 };
+}
+
 export const submitContactForm = createServerFn({ method: "POST" })
   .validator((input: ContactSubmission) => parseSubmission(contactSubmissionSchema, input))
   .handler(async ({ data }) => {
     if (!passesSpamGuards(data)) return { ok: true as const };
+
+    const cvAttachment = prepareCvAttachment(data);
 
     await saveContact({
       firstName: data.firstName,
@@ -142,6 +158,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
     // Emails are best-effort: a delivery problem must not fail a saved submission.
     const eventId = crypto.randomUUID();
     const owner = data.source === "careers" ? SITE.email : ownerEmail();
+    let ownerNotified = false;
     try {
       const sendTemplateEmail = await loadMailer();
       const sends: Promise<unknown>[] = [
@@ -155,9 +172,11 @@ export const submitContactForm = createServerFn({ method: "POST" })
             source: data.source ?? "",
             message: data.message,
             submittedAt: submittedAt(),
+            cvFilename: cvAttachment?.filename,
           },
           idempotencyKey: `contact-notification-${eventId}`,
           replyTo: data.email,
+          attachments: cvAttachment ? [cvAttachment] : undefined,
         }),
       ];
       // The visitor's copy is a fixed acknowledgement: it never repeats anything
@@ -178,18 +197,23 @@ export const submitContactForm = createServerFn({ method: "POST" })
       ) {
         sends.push(
           sendTemplateEmail("contact-confirmation", data.email, {
+            templateData: { isApplication: data.source === "careers" },
             idempotencyKey: `contact-confirmation-${eventId}`,
             replyTo: owner,
           }),
         );
       }
       const results = await Promise.allSettled(sends);
+      ownerNotified = results[0].status === "fulfilled";
       for (const r of results) {
         if (r.status === "rejected") console.warn("[contact] email failed", r.reason);
       }
     } catch (e) {
       console.warn("[contact] email setup failed", e);
     }
+
+    // A CV is only ever in the email, so unlike the rest of the form it would be lost silently.
+    if (cvAttachment && !ownerNotified) throw new Error(SUBMIT_ERRORS.cvNotSent);
 
     return { ok: true as const };
   });

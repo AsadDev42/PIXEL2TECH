@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, FileText, Loader2, Paperclip, X } from "lucide-react";
 import { submitContactForm } from "@/lib/contact.functions";
 import {
   CONTACT_FORM_INITIAL,
@@ -11,6 +11,7 @@ import {
   type ContactFormValues,
   type ContactSource,
 } from "@/lib/contact-schema";
+import { CV_ACCEPT, CV_MAX_BYTES, bytesToBase64, detectCvKind } from "@/lib/cv-file";
 import { trackEvent } from "@/lib/analytics";
 import { useFormValidation, useSpamGuard } from "@/lib/use-form-validation";
 import { cn } from "@/lib/utils";
@@ -151,6 +152,123 @@ function describedBy(...ids: Array<string | false | undefined>) {
   return ids.filter(Boolean).join(" ") || undefined;
 }
 
+type AttachedCv = { name: string; size: number; base64: string };
+
+function formatFileSize(bytes: number) {
+  return bytes < 1024 * 1024
+    ? `${Math.max(1, Math.round(bytes / 1024))} KB`
+    : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+/** Optional file picker. The file is checked as soon as it's chosen, and again on the server. */
+function CvField({
+  id,
+  cv,
+  error,
+  disabled,
+  onChange,
+  onError,
+}: {
+  id: string;
+  cv: AttachedCv | null;
+  error?: string;
+  disabled: boolean;
+  onChange: (cv: AttachedCv | null) => void;
+  onError: (message?: string) => void;
+}) {
+  const input = useRef<HTMLInputElement>(null);
+  const hintId = `${id}-hint`;
+  const errorId = `${id}-error`;
+
+  const onPick = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    // Lets the same file be chosen again after it's removed.
+    e.target.value = "";
+    if (!file) return;
+    onChange(null);
+    if (file.size > CV_MAX_BYTES) {
+      onError("That file is over 5 MB. Please attach a smaller one.");
+      return;
+    }
+    try {
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      if (!detectCvKind(bytes)) {
+        onError("Please attach a PDF or Word (.docx) file. Word files with macros can't be sent.");
+        return;
+      }
+      onError(undefined);
+      onChange({ name: file.name, size: file.size, base64: bytesToBase64(bytes) });
+    } catch {
+      onError("We couldn't read that file. Please try again or choose another one.");
+    }
+  };
+
+  return (
+    <div className="min-w-0 sm:col-span-2">
+      <label htmlFor={id} className="mb-2 block text-sm font-medium text-foreground">
+        CV<span className="font-normal text-muted-foreground">{" (optional)"}</span>
+      </label>
+      <input
+        ref={input}
+        id={id}
+        type="file"
+        accept={CV_ACCEPT}
+        disabled={disabled}
+        onChange={onPick}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy(hintId, error && errorId)}
+        className="peer sr-only"
+      />
+      {cv ? (
+        <div className="flex min-h-12 items-center gap-3 rounded-xl border border-muted-foreground/60 bg-background px-4 py-2 dark:border-muted-foreground/50">
+          <FileText className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+          <span className="min-w-0 flex-1 text-sm text-foreground">
+            <span className="block truncate font-medium">{cv.name}</span>
+            <span className="block text-muted-foreground">{formatFileSize(cv.size)}</span>
+          </span>
+          <button
+            type="button"
+            disabled={disabled}
+            onClick={() => {
+              onChange(null);
+              input.current?.focus();
+            }}
+            aria-label={`Remove ${cv.name}`}
+            className="inline-flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+      ) : (
+        <label
+          htmlFor={id}
+          aria-hidden="true"
+          className={cn(
+            "flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed bg-background px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
+            error ? FIELD_INVALID_CLASS : FIELD_VALID_CLASS,
+          )}
+        >
+          <Paperclip className="h-4 w-4" aria-hidden="true" />
+          Attach your CV
+        </label>
+      )}
+      <p id={hintId} className="mt-2 text-sm text-muted-foreground">
+        PDF or Word (.docx), up to 5 MB.
+      </p>
+      <FieldError id={errorId} message={error} />
+      {error ? (
+        <button
+          type="button"
+          onClick={() => onError(undefined)}
+          className="mt-2 inline-flex min-h-11 cursor-pointer items-center rounded text-sm font-semibold text-foreground underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Continue without a CV
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export type ContactFormProps = {
   /** Which page the form is on. Goes into the owner's email subject and analytics. */
   source: ContactSource;
@@ -161,6 +279,8 @@ export type ContactFormProps = {
   messagePlaceholder?: string;
   messageHint?: string;
   successMessage?: string;
+  /** Shows the optional CV picker. Careers only; the server rejects a CV from any other form. */
+  allowCv?: boolean;
   className?: string;
 };
 
@@ -177,6 +297,7 @@ export function ContactForm({
   messagePlaceholder = "What are you working on, and where could you use a hand?",
   messageHint,
   successMessage = CONTACT_SUCCESS_MESSAGE,
+  allowCv = false,
   className,
 }: ContactFormProps) {
   const p = idPrefix ?? `contact-${source}`;
@@ -185,6 +306,8 @@ export function ContactForm({
   const { values, errors, submitting, submitRef, setField, handleBlur, handleSubmit, reset } =
     useFormValidation(contactBaseSchema, CONTACT_FORM_INITIAL);
   const [status, setStatus] = useState<FormStatusState | { kind: "invalid" }>({ kind: "idle" });
+  const [cv, setCv] = useState<AttachedCv | null>(null);
+  const [cvError, setCvError] = useState<string>();
 
   const errorCount = Object.values(errors).filter(Boolean).length;
   let shownStatus: FormStatusState;
@@ -209,6 +332,11 @@ export function ContactForm({
 
   const onSubmit = handleSubmit(
     async (data) => {
+      // A rejected file must not be dropped without the applicant deciding to.
+      if (cvError) {
+        setStatus({ kind: "error", message: "Please fix your CV, or continue without one." });
+        return;
+      }
       setStatus({ kind: "idle" });
       try {
         await submit({
@@ -216,12 +344,14 @@ export function ContactForm({
             ...data,
             subject: buildInquirySubject(data.firstName, data.lastName, source),
             source,
+            cv: cv ? { base64: cv.base64 } : undefined,
             website: guard.website,
             elapsedMs: guard.elapsedMs(),
           },
         });
-        trackEvent("contact_form_submitted", { source });
+        trackEvent("contact_form_submitted", { source, has_cv: Boolean(cv) });
         reset();
+        setCv(null);
         setStatus({ kind: "success", message: successMessage });
       } catch (err) {
         setStatus({ kind: "error", message: submitErrorMessage(err) });
@@ -334,6 +464,17 @@ export function ContactForm({
           </p>
         ) : null}
       </div>
+
+      {allowCv ? (
+        <CvField
+          id={`${p}-cv`}
+          cv={cv}
+          error={cvError}
+          disabled={submitting}
+          onChange={setCv}
+          onError={setCvError}
+        />
+      ) : null}
 
       <div className="min-w-0 sm:col-span-2">
         <button

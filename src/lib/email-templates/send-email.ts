@@ -12,6 +12,7 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const DEFAULT_FROM = "Pixel2Tech <noreply@notify.pixel2tech.com>";
 const MAX_ATTEMPTS = 3;
 const REQUEST_TIMEOUT_MS = 10_000;
+const ATTACHMENT_TIMEOUT_MS = 30_000;
 
 export type SendTemplateEmailResult = { sent: true; id: string };
 
@@ -20,6 +21,8 @@ export interface SendTemplateEmailOptions {
   /** Dedupes retries of the same logical send for 24h; defaults to a random UUID (no dedupe). Max 256 chars. */
   idempotencyKey?: string;
   replyTo?: string;
+  /** `content` is base64. Resend allows 40MB per email after encoding. */
+  attachments?: { filename: string; content: string }[];
 }
 
 /** A Resend API failure. `code` is Resend's error `name` (e.g. "validation_error", "rate_limit_exceeded"). */
@@ -98,6 +101,7 @@ export async function sendTemplateEmail(
     html,
     text,
     ...(options.replyTo ? { reply_to: options.replyTo } : {}),
+    ...(options.attachments?.length ? { attachments: options.attachments } : {}),
     // Tag values allow only ASCII letters, digits, "_" and "-"; template names fit.
     tags: [{ name: "template", value: templateName.replace(/[^A-Za-z0-9_-]/g, "_") }],
   });
@@ -113,7 +117,9 @@ export async function sendTemplateEmail(
           "Idempotency-Key": idempotencyKey,
         },
         body,
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+        signal: AbortSignal.timeout(
+          options.attachments?.length ? ATTACHMENT_TIMEOUT_MS : REQUEST_TIMEOUT_MS,
+        ),
       });
     } catch (error) {
       // Network error or timeout: safe to retry thanks to the idempotency key.
