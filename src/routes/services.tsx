@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
 import { ClosingCta } from "@/components/closing-cta";
+import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  ArrowUpRight,
-  Check,
   Brain,
   Clapperboard,
   Cog,
@@ -24,7 +22,7 @@ import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
-import { ServiceVisual } from "@/components/service-visual";
+import { ServiceDiagram } from "@/components/service-visual";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
@@ -214,123 +212,148 @@ const STARTING_POINTS = [
     title: "Launch a new brand",
     body: "Give the business a clear identity, a useful website and the content needed to introduce it.",
     send: "Tell us who you serve, what you offer and when you want to launch.",
+    visual: "Branding & Design",
     services: ["Branding & Design", "Website Development", "Video Editing & Ads"],
   },
   {
     title: "Improve an online store",
     body: "Work on how shoppers discover products, make a choice and complete an order, with creative that supports the offer.",
     send: "Share your store URL, the shopping journey you want to improve and the tools you use.",
+    visual: "WordPress & Shopify",
     services: ["WordPress & Shopify", "Social Media & Email", "SEO & Search Growth"],
   },
   {
     title: "Keep your content consistent",
     body: "Turn approved ideas, product information and footage into a coordinated library of social, email and video assets.",
     send: "Bring your existing brand assets, a sample of your footage and the channels you publish on.",
+    visual: "Social Media & Email",
     services: ["Branding & Design", "Social Media & Email", "Video Editing & Ads"],
   },
   {
     title: "Connect your tools and team",
     body: "Map the handovers between your website, team and tools, then build the interface or workflow the task needs.",
     send: "Walk us through one repetitive task, the tools involved and where the handover breaks down.",
+    visual: "Automation & CRM",
     services: ["Automation & CRM", "AI Solutions", "Custom Platforms & Apps"],
   },
-] satisfies { title: string; body: string; send: string; services: ServiceTitle[] }[];
+] satisfies {
+  title: string;
+  body: string;
+  send: string;
+  visual: ServiceTitle;
+  services: ServiceTitle[];
+}[];
+
+/** Real project image, or the labelled illustration for services without one. */
+function ServiceArtwork({
+  title,
+  eager = false,
+  src,
+}: {
+  title: ServiceTitle;
+  eager?: boolean;
+  /** Same project, in a crop that suits a narrow slot. */
+  src?: string;
+}) {
+  const visual = SERVICE_PRESENTATION[title];
+  if (visual.illustration) return <ServiceDiagram kind={visual.illustration} />;
+  return (
+    <MediaImage
+      src={src ?? visual.image}
+      alt={visual.alt}
+      width={960}
+      height={600}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+    />
+  );
+}
+
+/** Tile widths on the 12-column desktop grid, in service order. Sums to 12 per row. */
+const TILE_SPANS = [
+  "lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-4",
+  "lg:col-span-4",
+  "lg:col-span-4",
+  "lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-5",
+  "lg:col-span-7",
+];
 
 /**
- * The page's main job: a plain list of what we do. Hovering or focusing a row shows that service's
- * work and scope in the side panel. Phones skip the panel, and each row opens its service page.
- * Row ids come from serviceAnchor(): the footer and case studies link to them.
+ * The page's main job: show what we do through the work itself. Tile ids come from
+ * serviceAnchor(): the footer and case studies link to them.
  */
-function ServiceIndex() {
-  const [activeId, setActiveId] = useState(SERVICE_LIST[0].id);
-  const active = SERVICE_LIST.find((s) => s.id === activeId) ?? SERVICE_LIST[0];
-  const presentation = SERVICE_PRESENTATION[active.title];
-
-  useEffect(() => {
-    const syncToHash = () => {
-      const id = window.location.hash.slice(1);
-      if (SERVICE_LIST.some((s) => s.id === id)) setActiveId(id);
-    };
-    syncToHash();
-    window.addEventListener("hashchange", syncToHash);
-    return () => window.removeEventListener("hashchange", syncToHash);
-  }, []);
-
+function ServiceGallery() {
   return (
     <section
       id="services-list"
       aria-labelledby="services-list-title"
       className="scroll-mt-20 border-t border-border py-12 md:py-16"
     >
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 md:px-10 lg:grid-cols-12 lg:gap-16">
-        <div className="min-w-0 lg:col-span-7">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <h2 id="services-list-title" className={H2}>
             Choose the work you need.
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            See what each discipline covers, the kind of brief it suits and examples from our work.
-            Your proposal defines the exact deliverables for your project.
+          <p className="max-w-md leading-relaxed text-muted-foreground">
+            See what each discipline covers and examples from our work. Your proposal defines the
+            exact deliverables for your project.
           </p>
-          <ul className="mt-8 border-t border-border">
-            {SERVICE_LIST.map((s) => {
-              const isActive = s.id === active.id;
-              return (
-                <li
-                  key={s.id}
-                  id={s.id}
-                  className="scroll-mt-28 border-b border-border target:bg-primary/5"
-                >
-                  <Link
-                    to="/services/$slug"
-                    params={{ slug: s.id }}
-                    onMouseEnter={() => setActiveId(s.id)}
-                    onFocus={() => setActiveId(s.id)}
-                    className={`group flex items-center gap-4 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:gap-6 ${
-                      isActive ? "lg:text-primary" : ""
-                    }`}
-                  >
-                    <s.Icon
-                      className="h-6 w-6 shrink-0 text-primary"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-xl font-bold leading-snug tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
-                        {s.title}
-                      </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
-                        {s.desc}
-                      </span>
-                    </span>
-                    <ArrowRight
-                      className="h-5 w-5 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
         </div>
-
-        <aside
-          aria-label={`${active.title} at a glance`}
-          className="hidden min-w-0 lg:sticky lg:top-24 lg:col-span-5 lg:block lg:self-start"
-        >
-          <ServiceVisual title={active.title} />
-          <div className="mt-6">
-            <p className="font-semibold text-foreground">{presentation.bestFor}</p>
-            <ul className="mt-4 space-y-2">
-              {presentation.deliverables.map((deliverable) => (
-                <li key={deliverable} className="flex items-start gap-2 text-sm leading-relaxed">
-                  <Check size={15} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
-                  {deliverable}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-muted-foreground">{active.tags.join(" · ")}</p>
-          </div>
-        </aside>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+          {SERVICE_LIST.map((s, index) => (
+            <li
+              key={s.id}
+              id={s.id}
+              className={`min-w-0 scroll-mt-28 rounded-3xl target:ring-2 target:ring-primary ${TILE_SPANS[index]}`}
+            >
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.id }}
+                className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground transition hover:border-primary ${FOCUS_RING}`}
+              >
+                <div className="relative h-56 shrink-0 overflow-hidden bg-muted sm:h-64 lg:h-80">
+                  <ServiceArtwork
+                    title={s.title}
+                    eager={index < 2}
+                    src={
+                      s.title === "WordPress & Shopify"
+                        ? "/portfolio/histreet-shopify-store/mobile-home.webp"
+                        : undefined
+                    }
+                  />
+                  <span className="absolute left-3 top-3 max-w-[calc(100%-1.5rem)] rounded-2xl bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
+                    {SERVICE_PRESENTATION[s.title].caption}
+                  </span>
+                </div>
+                <div className="flex flex-1 items-start gap-4 p-5 sm:p-6">
+                  <span
+                    aria-hidden="true"
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground"
+                  >
+                    <s.Icon className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-xl font-bold leading-snug tracking-tight">
+                      {s.title}
+                    </span>
+                    <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                      {s.desc}
+                    </span>
+                  </span>
+                  <ArrowRight
+                    className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary"
+                    aria-hidden="true"
+                  />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -384,9 +407,9 @@ function ServicesPage() {
         </div>
       </section>
 
-      <ServiceIndex />
+      <ServiceGallery />
 
-      {/* Start from a goal */}
+      {/* Start from a goal: each card shows which services combine to reach it */}
       <section
         aria-labelledby="services-start-title"
         className="bg-slate-950 py-16 text-white md:py-24"
@@ -404,35 +427,61 @@ function ServicesPage() {
               we can help shape the first phase.
             </p>
           </div>
-          <ul className="mt-10 border-t border-white/15">
+          <ul className="mt-10 grid gap-6 md:grid-cols-2">
             {STARTING_POINTS.map((point) => (
               <li
                 key={point.title}
-                className="grid gap-4 border-b border-white/15 py-8 lg:grid-cols-12 lg:gap-8"
+                className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5"
               >
-                <h3 className="text-2xl font-bold leading-snug tracking-tight lg:col-span-3">
-                  {point.title}
-                </h3>
-                <div className="min-w-0 lg:col-span-5">
+                <div className="relative h-56 shrink-0 overflow-hidden bg-slate-900 sm:h-72">
+                  <ServiceArtwork title={point.visual} />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent"
+                  />
+                  <h3 className="absolute inset-x-0 bottom-0 p-5 text-2xl font-bold leading-tight tracking-tight sm:p-6 sm:text-3xl">
+                    {point.title}
+                  </h3>
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <p className="leading-relaxed text-slate-200">{point.body}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                  <ol
+                    aria-label="Services involved"
+                    className="relative mt-6 grid grid-cols-3 gap-2"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-[16.67%] right-[16.67%] top-6 h-px bg-white/25"
+                    />
+                    {point.services.map((title) => {
+                      const ServiceIcon = SERVICE_DETAILS[title].Icon;
+                      return (
+                        <li key={title} className="relative min-w-0">
+                          <Link
+                            to="/services/$slug"
+                            params={{ slug: serviceAnchor(title) }}
+                            className="group/node flex flex-col items-center gap-2 rounded-xl text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                          >
+                            <span className="grid h-12 w-12 place-items-center rounded-full border border-white/25 bg-slate-950 text-sky-300 transition group-hover/node:border-sky-300 group-hover/node:bg-sky-300 group-hover/node:text-slate-950">
+                              <ServiceIcon
+                                className="h-5 w-5"
+                                strokeWidth={1.75}
+                                aria-hidden="true"
+                              />
+                            </span>
+                            <span className="text-xs font-semibold leading-snug text-white group-hover/node:text-sky-300">
+                              {title}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  <p className="mt-6 border-t border-white/10 pt-4 text-sm leading-relaxed text-slate-400">
                     <span className="font-semibold text-slate-200">What to send: </span>
                     {point.send}
                   </p>
                 </div>
-                <ul className="flex min-w-0 flex-col items-start lg:col-span-4">
-                  {point.services.map((title) => (
-                    <li key={title}>
-                      <Link
-                        to="/services/$slug"
-                        params={{ slug: serviceAnchor(title) }}
-                        className="inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-sky-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                      >
-                        {title} <ArrowUpRight size={14} aria-hidden="true" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               </li>
             ))}
           </ul>

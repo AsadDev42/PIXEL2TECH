@@ -15,7 +15,11 @@ import {
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 import type { ServiceTitle } from "@/lib/service-pages";
 
-function ServiceDiagram({ kind }: { kind: "platform" | "search" | "automation" | "assistant" }) {
+export function ServiceDiagram({
+  kind,
+}: {
+  kind: "platform" | "search" | "automation" | "assistant";
+}) {
   if (kind === "automation" || kind === "assistant") {
     const automation = kind === "automation";
     const color = automation ? "#2563eb" : "#7c3aed";
