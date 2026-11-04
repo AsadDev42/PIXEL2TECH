@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "welcome-email-series-subscribers-enquiries",
+        title: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
+        excerpt:
+              "A welcome email series turns a new subscriber into a real enquiry. A practical four email plan for service businesses, with timing, topics and one clear next step per email.",
+        tag: "Email Marketing",
+        date: "November 4, 2026",
+        time: "4:52 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/welcome-email-series-subscribers-enquiries.jpg?v=3",
+        imgAlt: "A phone screen showing a mail app icon with new messages",
+  },
+  {
         slug: "local-seo-service-businesses-dubai-qatar",
         title: "Local SEO for Service Businesses in Dubai and Qatar: A Practical Checklist",
         excerpt:
