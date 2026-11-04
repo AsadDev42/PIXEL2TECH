@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "wordpress-plugin-updates-safe-routine",
+        title: "WordPress Plugin Updates Without Breaking Your Site: A Safe Weekly Routine",
+        excerpt:
+              "WordPress plugin updates keep your site secure, but a rushed update can break it. A safe weekly routine with a backup, a staging check and a rollback plan.",
+        tag: "WordPress",
+        date: "November 4, 2026",
+        time: "12:19 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/wordpress-plugin-updates-safe-routine.jpg?v=3",
+        imgAlt: "WordPress PHP code on a dark screen",
+  },
+  {
         slug: "brand-photography-brief-consistent-channels",
         title: "A Brand Photography Brief That Keeps Every Channel Looking Like the Same Business",
         excerpt:
