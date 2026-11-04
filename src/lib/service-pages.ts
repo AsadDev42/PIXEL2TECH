@@ -197,7 +197,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       },
       {
         q: "Can you refresh our logo instead of starting over?",
-        a: "Yes. If customers already recognize your name and logo, a refresh keeps what they know and fixes what isn't working, such as poor legibility at small sizes or colors that clash online. If the brand no longer fits the business, a full rebrand may make more sense. We'll give you our honest view on the scoping call.",
+        a: "Yes. If customers already recognize your name and logo, a refresh keeps what they know and fixes what isn't working, such as poor legibility at small sizes or colors that clash online. If the brand no longer fits the business, a full rebrand may make more sense. We'll give you our view on the scoping call.",
       },
       {
         q: "Do we own the logo and brand files?",
@@ -498,7 +498,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       },
       {
         q: "Should we build custom software or use an existing tool?",
-        a: "Use an existing tool if it covers most of what you need at a fair price; that's usually faster and cheaper. Build custom when your workflow is what sets you apart, when you're stitching together tools that don't talk to each other, or when per-user fees grow faster than your team. We'll tell you honestly which side you're on.",
+        a: "Use an existing tool if it covers most of what you need at a fair price; that's usually faster and cheaper. Build custom when your workflow is what sets you apart, when you're stitching together tools that don't talk to each other, or when per-user fees grow faster than your team. We'll tell you which side you're on.",
       },
       {
         q: "What is an MVP, and do I need one?",
@@ -611,7 +611,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       },
       {
         q: "How much does workflow automation cost?",
-        a: "It depends on how many workflows you need, how many tools they connect and the volume they run at. Platform fees for Zapier, Make or n8n hosting are separate from our build fee. After a free scoping call we send a fixed quote for the build, with the expected platform costs listed so you can see the full picture.",
+        a: "It depends on how many workflows you need, how many tools they connect and the volume they run at. Platform fees for Zapier, Make or n8n hosting are separate from our build fee. After a free scoping call we send a fixed quote for the build, with the expected platform costs listed so you can see the total.",
       },
     ],
     ctaTitle: "Find out what your team can stop doing by hand",
@@ -684,7 +684,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         slug: "ai-chatbot-cost-small-business",
         title: "AI chatbot cost for small businesses",
-        desc: "A buy-vs-build breakdown of what a chatbot really costs.",
+        desc: "A buy-vs-build breakdown of what a chatbot costs.",
       },
       {
         slug: "ai-receptionist-for-law-firms",
@@ -1009,7 +1009,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       },
       {
         q: "How many versions of a video ad should we test?",
-        a: "Enough to learn something without spreading your budget too thin. A practical start is a few different hooks on the same core video, each exported for the placements you'll run. Once one version wins, we make new variations around it. Your budget and how quickly results come in decide how many you can test at once.",
+        a: "Enough to learn something without spreading your budget too thin. Start with a few different hooks on the same core video, each exported for the placements you'll run. Once one version wins, we make new variations around it. Your budget and how quickly results come in decide how many you can test at once.",
       },
       {
         q: "Which formats and aspect ratios do you deliver?",

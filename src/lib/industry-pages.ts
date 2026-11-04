@@ -2,11 +2,11 @@ export const INDUSTRIES = [
   {
     slug: "beauty-and-ecommerce",
     title: "Beauty & DTC ecommerce",
-    heading: "From brand discovery to a better shopping journey.",
+    heading: "Shopify stores, product creative and ads for beauty and DTC brands.",
     description:
       "Shopify development, product creative and content for beauty and direct-to-consumer brands, with examples from Pixel2Tech's portfolio.",
     intro:
-      "Product storytelling, store design and ad creative belong in the same conversation. We bring those disciplines together around the way your customers discover, compare and buy.",
+      "We plan product storytelling, store design and ad creative together around the way your customers discover, compare and buy.",
     capabilities: [
       {
         title: "Shopify storefronts and product pages",
@@ -66,7 +66,7 @@ export const INDUSTRIES = [
   {
     slug: "healthcare",
     title: "Healthcare & medical services",
-    heading: "Clear communication for services people need to trust.",
+    heading: "Websites and visual content for medical and healthcare services.",
     description:
       "Healthcare website and creative work from Pixel2Tech, including medical courier websites and healthcare ad collections.",
     intro:
@@ -98,7 +98,7 @@ export const INDUSTRIES = [
   {
     slug: "food-and-hospitality",
     title: "Food & hospitality",
-    heading: "Make the menu, the brand and the next order work together.",
+    heading: "Menus, branding and campaign content for food and hospitality brands.",
     description:
       "Branding, menus, social content and digital creative for food and hospitality businesses, supported by real Pixel2Tech project examples.",
     intro:
@@ -130,14 +130,14 @@ export const INDUSTRIES = [
     description:
       "Websites, service information and campaign creative for home and local service businesses, with relevant Pixel2Tech project examples.",
     intro:
-      "Local service customers want to know what you do, where you work and how to request help. We make those details easier to find through clear websites, practical visual content and straightforward enquiry paths.",
+      "Local service customers want to know what you do, where you work and how to request help. We make those details easier to find through clear websites, visual content and simple enquiry paths.",
     capabilities: [
       {
         title: "Service websites and local pages",
         body: "We structure services, locations and contact details so visitors can quickly confirm whether you can help and how to get in touch.",
       },
       {
-        title: "Trust-building brand and project visuals",
+        title: "Brand and project visuals",
         body: "We present your team, work and service standards consistently across your website and customer-facing materials.",
       },
       {
