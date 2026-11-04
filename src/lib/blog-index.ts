@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "brand-photography-brief-consistent-channels",
+        title: "A Brand Photography Brief That Keeps Every Channel Looking Like the Same Business",
+        excerpt:
+              "A brand photography brief keeps your website,  social media and ads looking like one business. What to specify before the shoot, so every photo works in every place.",
+        tag: "Branding",
+        date: "November 4, 2026",
+        time: "10:38 am",
+        author: "Asad Farooq",
+        img: "/blog/covers/brand-photography-brief-consistent-channels.jpg?v=3",
+        imgAlt: "Camera lenses arranged on a dark surface",
+  },
+  {
     slug: "weekly-social-media-routine-service-businesses",
     title:
       "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
