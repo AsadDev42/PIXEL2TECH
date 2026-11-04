@@ -19,40 +19,22 @@ export function ClosingCta({
 }: {
   id: string;
   title: string;
-  /** Words appended to the title in brand blue. */
+  /** Words appended to the title. */
   highlight?: string;
   body: string;
   /** Analytics source for the booking button. */
   source: string;
 }) {
   return (
-    <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#0A0D1F] text-white">
-      {/* Decorative glow and grid */}
-      <div
-        aria-hidden="true"
-        className="absolute -right-20 -top-24 -z-10 h-80 w-80 rounded-full bg-[#1E90FF]/40 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-32 -left-16 -z-10 h-72 w-72 rounded-full bg-[#1E90FF]/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]"
-      />
-
+    <div className="overflow-hidden rounded-[2rem] bg-[#0A0D1F] text-white">
       <div className="grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:p-16">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-            Let&apos;s work together
-          </p>
           <h2
             id={id}
-            className="mt-6 text-3xl font-bold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            className="text-3xl font-bold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-5xl"
           >
             {title}
-            {highlight ? <span className="text-[#4DA3FF]"> {highlight}</span> : null}
+            {highlight ? ` ${highlight}` : null}
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-white/75">{body}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -70,7 +52,7 @@ export function ClosingCta({
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
+        <div className="rounded-3xl border border-white/10 p-6 sm:p-8">
           <ul className="flex -space-x-3" aria-label="The Pixel2Tech team">
             {TEAM.map((m) => (
               <li key={m.name}>
@@ -89,7 +71,7 @@ export function ClosingCta({
           </ul>
           <p className="mt-5 text-lg font-semibold">One team, all in-house</p>
           <p className="mt-1 text-sm text-white/65">
-            Design, web development, video and automation under one roof.
+            Design, web development, video and automation.
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-white/5 p-4">
