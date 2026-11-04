@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "ai-tools-small-business-content-time-rework",
+        title: "AI Tools for Small Business Content: Where They Save Time and Where They Create Rework",
+        excerpt:
+              "AI tools save time on small business content, but only in the right places. Where AI helps, where human review is essential, and how to avoid rework.",
+        tag: "AI Solutions",
+        date: "November 4, 2026",
+        time: "7:23 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/ai-tools-small-business-content-time-rework.jpg?v=3",
+        imgAlt: "Abstract 3D letters spelling AI over a digital network background",
+  },
+  {
         slug: "welcome-email-series-subscribers-enquiries",
         title: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
         excerpt:
