@@ -65,7 +65,12 @@ const NAV: readonly NavItem[] = [
         to: "/careers",
         description: "Show us your work and apply",
       },
-      { kind: "page", label: "Press", to: "/press", description: "Studio background for media" },
+      {
+        kind: "page",
+        label: "Press",
+        to: "/press",
+        description: "Studio overview and media contact",
+      },
     ],
   },
   {
@@ -77,7 +82,7 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "All services",
         to: "/services",
-        description: "Compare every service we offer",
+        description: "See every service we offer",
       },
       ...SERVICES.map((title) => ({
         kind: "service" as const,
@@ -115,9 +120,9 @@ const NAV: readonly NavItem[] = [
     children: [
       {
         kind: "page",
-        label: "Portfolio",
+        label: "All work",
         to: "/portfolio",
-        description: "Branding, web and video work",
+        description: "Brand, web, social, video and software projects",
       },
       {
         kind: "page",
@@ -131,7 +136,12 @@ const NAV: readonly NavItem[] = [
     label: "Blog",
     to: "/blog",
     children: [
-      { kind: "page", label: "Blog", to: "/blog", description: "Articles and practical guides" },
+      {
+        kind: "page",
+        label: "All articles",
+        to: "/blog",
+        description: "Guides on Shopify, web, SEO, AI and branding",
+      },
       {
         kind: "page",
         label: "Free Shopify checklist",
@@ -556,7 +566,7 @@ export function SiteNav() {
                       onClick={() => setMobileGroup(expanded ? null : n.label)}
                       aria-expanded={expanded}
                       aria-controls={listId}
-                      aria-label={`${expanded ? "Hide" : "Show"} more ${n.label} pages`}
+                      aria-label={`${expanded ? "Hide" : "Show"} ${n.label} pages`}
                       className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition active:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <ChevronDown
