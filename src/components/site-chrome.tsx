@@ -1,7 +1,38 @@
 import { MediaImage } from "@/components/media-image";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Suspense, useEffect, useId, useRef, useState } from "react";
-import { ArrowUp, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUp,
+  ArrowUpRight,
+  BookOpen,
+  Brain,
+  Briefcase,
+  Building2,
+  ChevronDown,
+  Clapperboard,
+  ClipboardCheck,
+  Cog,
+  Globe,
+  Handshake,
+  House,
+  Layers,
+  LayoutGrid,
+  Megaphone,
+  Menu,
+  Newspaper,
+  Palette,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  Stethoscope,
+  TrendingUp,
+  UserPlus,
+  Users,
+  UtensilsCrossed,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
@@ -33,17 +64,46 @@ type StaticTo =
   | "/resources/shopify-store-checklist"
   | "/contact";
 
+type NavChildBase = { label: string; description: string; icon: LucideIcon };
+
 type NavChild =
-  | { kind: "page"; label: string; description?: string; to: StaticTo }
-  | { kind: "service"; label: string; description?: string; slug: string }
-  | { kind: "industry"; label: string; description?: string; slug: string };
+  | (NavChildBase & { kind: "page"; to: StaticTo })
+  | (NavChildBase & { kind: "service"; slug: string })
+  | (NavChildBase & { kind: "industry"; slug: string });
 
 type NavItem = {
   label: string;
   to: StaticTo;
-  /** The first child that points at `to` is shown as the group's overview link. */
+  /** The child that points at `to` is the group's overview link. */
   children?: readonly NavChild[];
+  /** Two columns of sub-pages, with the group's other pages in a side rail. */
   wide?: boolean;
+};
+
+const SERVICE_MENU: Record<(typeof SERVICES)[number], { icon: LucideIcon; description: string }> = {
+  "Branding & Design": { icon: Palette, description: "Logo, color palette and brand guidelines" },
+  "Website Development": { icon: Globe, description: "Landing pages and full business sites" },
+  "WordPress & Shopify": { icon: ShoppingBag, description: "Sites, stores and product pages" },
+  "Custom Platforms & Apps": { icon: Layers, description: "Mobile apps, SaaS and client portals" },
+  "Automation & CRM": { icon: Cog, description: "Workflows, CRM setup and integrations" },
+  "AI Solutions": { icon: Brain, description: "Chatbots, voice agents and RAG systems" },
+  "SEO & Search Growth": { icon: Search, description: "On-page SEO, audits and keywords" },
+  "Social Media & Email": { icon: Megaphone, description: "Content, ad campaigns and newsletters" },
+  "Video Editing & Ads": {
+    icon: Clapperboard,
+    description: "Reels, brand videos and ad creatives",
+  },
+};
+
+const INDUSTRY_MENU: Record<string, { icon: LucideIcon; description: string }> = {
+  "beauty-and-ecommerce": { icon: Sparkles, description: "Shopify, product creative and content" },
+  "professional-services": { icon: Briefcase, description: "Service websites and enquiry forms" },
+  healthcare: { icon: Stethoscope, description: "Medical websites and accessible forms" },
+  "food-and-hospitality": {
+    icon: UtensilsCrossed,
+    description: "Menus, brand identity and launch creative",
+  },
+  "home-and-local-services": { icon: House, description: "Service websites and local pages" },
 };
 
 // Every page from the footer sits under the section it belongs to; Industries is its own group.
@@ -57,18 +117,21 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "About us",
         to: "/about",
+        icon: Users,
         description: "Our studio, team and way of working",
       },
       {
         kind: "page",
         label: "Careers",
         to: "/careers",
+        icon: UserPlus,
         description: "Show us your work and apply",
       },
       {
         kind: "page",
         label: "Press",
         to: "/press",
+        icon: Newspaper,
         description: "Studio overview and media contact",
       },
     ],
@@ -82,17 +145,20 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "All services",
         to: "/services",
+        icon: LayoutGrid,
         description: "See every service we offer",
       },
       ...SERVICES.map((title) => ({
         kind: "service" as const,
         label: title,
         slug: serviceAnchor(title),
+        ...SERVICE_MENU[title],
       })),
       {
         kind: "page",
         label: "For agencies",
         to: "/for-agencies",
+        icon: Handshake,
         description: "White-label design, web and video",
       },
     ],
@@ -105,12 +171,15 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "All industries",
         to: "/industries",
+        icon: Building2,
         description: "The businesses we design and build for",
       },
       ...INDUSTRIES.map((industry) => ({
         kind: "industry" as const,
         label: industry.title,
         slug: industry.slug,
+        icon: INDUSTRY_MENU[industry.slug]?.icon ?? Building2,
+        description: INDUSTRY_MENU[industry.slug]?.description ?? industry.heading,
       })),
     ],
   },
@@ -122,12 +191,14 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "All work",
         to: "/portfolio",
+        icon: LayoutGrid,
         description: "Brand, web, social, video and software projects",
       },
       {
         kind: "page",
         label: "Project outcomes",
         to: "/results",
+        icon: TrendingUp,
         description: "What changed after past projects",
       },
     ],
@@ -140,12 +211,14 @@ const NAV: readonly NavItem[] = [
         kind: "page",
         label: "All articles",
         to: "/blog",
+        icon: BookOpen,
         description: "Guides on Shopify, web, SEO, AI and branding",
       },
       {
         kind: "page",
         label: "Free Shopify checklist",
         to: "/resources/shopify-store-checklist",
+        icon: ClipboardCheck,
         description: "See your store through a shopper's eyes",
       },
     ],
@@ -225,29 +298,35 @@ function NavDropdown({
   item,
   active,
   pathname,
+  openMenu,
+  setOpenMenu,
 }: {
   item: NavItem;
   active: boolean;
   pathname: string;
+  /** Owned by the nav, so opening one menu always closes the others. */
+  openMenu: string | null;
+  setOpenMenu: React.Dispatch<React.SetStateAction<string | null>>;
 }) {
-  const [open, setOpen] = useState(false);
+  const open = openMenu === item.label;
   const ref = useRef<HTMLDivElement>(null);
   const menuId = useId();
   const lastPointer = useRef("");
-  const overview = item.children?.find((c) => c.kind === "page" && c.to === item.to);
-  const links = subLinks(item);
+  const children = item.children ?? [];
+  const overview = children.find((c) => c.kind === "page" && c.to === item.to);
+  const railLinks = item.wide ? children.filter((c) => c.kind === "page") : [];
+  const listLinks = item.wide ? children.filter((c) => c.kind !== "page") : children;
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const show = () => setOpenMenu(item.label);
+  const hide = () => setOpenMenu((current) => (current === item.label ? null : current));
 
   useEffect(() => {
     if (!open) return;
     const onPointer = (e: PointerEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      if (!ref.current?.contains(e.target as Node)) hide();
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") hide();
     };
     document.addEventListener("pointerdown", onPointer);
     document.addEventListener("keydown", onKey);
@@ -255,30 +334,37 @@ function NavDropdown({
       document.removeEventListener("pointerdown", onPointer);
       document.removeEventListener("keydown", onKey);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- hide only depends on the stable setter and label
   }, [open]);
-
-  const itemCls = (current: boolean) =>
-    `flex items-start justify-between gap-3 rounded-xl px-3 py-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none ${
-      current ? "bg-muted" : ""
-    }`;
 
   const renderChild = (child: NavChild) => {
     // The overview link only counts as current on the exact page, not its sub-pages.
     const current =
       child === overview ? pathname === item.to : isActive(pathname, childPath(child));
+    const Icon = child.icon;
     return (
-      <ChildLink child={child} current={current} className={itemCls(current)}>
-        <span>
-          <span className="block text-sm font-semibold text-foreground">{child.label}</span>
-          {child.description && (
-            <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
-              {child.description}
-            </span>
-          )}
+      <ChildLink
+        child={child}
+        current={current}
+        className={`group/item flex items-center gap-3 rounded-2xl p-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${
+          current ? "bg-muted" : ""
+        }`}
+      >
+        <span
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
+            current
+              ? "bg-primary text-primary-foreground"
+              : "bg-primary/10 text-primary group-hover/item:bg-primary group-hover/item:text-primary-foreground"
+          }`}
+        >
+          <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
-        {current && (
-          <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" />
-        )}
+        <span className="min-w-0">
+          <span className="block text-sm font-semibold text-foreground">{child.label}</span>
+          <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
+            {child.description}
+          </span>
+        </span>
       </ChildLink>
     );
   };
@@ -288,10 +374,14 @@ function NavDropdown({
       ref={ref}
       className="relative"
       // Touch taps also fire pointerenter; only a real mouse should open on hover.
-      onPointerEnter={(e) => e.pointerType === "mouse" && setOpen(true)}
-      onPointerLeave={(e) => e.pointerType === "mouse" && setOpen(false)}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") show();
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") hide();
+      }}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) hide();
       }}
     >
       <div className="flex items-center gap-1">
@@ -315,8 +405,8 @@ function NavDropdown({
           }}
           onClick={() => {
             // Hover has already opened it for a mouse, so a click must not close it again.
-            if (lastPointer.current === "mouse") setOpen(true);
-            else setOpen((v) => !v);
+            if (lastPointer.current === "mouse" || !open) show();
+            else hide();
             lastPointer.current = "";
           }}
           aria-expanded={open}
@@ -333,23 +423,42 @@ function NavDropdown({
 
       <div
         id={menuId}
-        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 transition duration-200 ease-out ${
-          item.wide ? "w-[36rem]" : "w-80"
+        className={`absolute left-1/2 top-full z-50 origin-top -translate-x-1/2 pt-4 transition duration-200 ease-out motion-reduce:transition-none ${
+          item.wide ? "w-[58rem]" : "w-[22rem]"
         } ${
           open
-            ? "visible translate-y-0 opacity-100"
-            : "pointer-events-none invisible -translate-y-1 opacity-0"
+            ? "visible translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none invisible -translate-y-1 scale-[0.98] opacity-0"
         }`}
       >
-        <div className="rounded-2xl border border-border bg-background p-2 shadow-xl">
-          {overview && (
-            <div className="mb-1 border-b border-border pb-1">{renderChild(overview)}</div>
-          )}
-          <ul className={item.wide ? "grid grid-cols-2 gap-x-1" : ""}>
-            {links.map((child) => (
+        <div
+          className={`rounded-3xl border border-border bg-background p-2 shadow-[0_24px_60px_-20px_rgba(10,13,31,0.3)] ${
+            item.wide ? "flex gap-2" : ""
+          }`}
+        >
+          <ul className={item.wide ? "grid flex-1 grid-cols-2 gap-1" : "grid gap-1"}>
+            {listLinks.map((child) => (
               <li key={childPath(child)}>{renderChild(child)}</li>
             ))}
           </ul>
+          {item.wide && (
+            <div className="flex w-64 shrink-0 flex-col rounded-2xl bg-muted/50 p-2">
+              <ul className="grid gap-1">
+                {railLinks.map((child) => (
+                  <li key={childPath(child)}>{renderChild(child)}</li>
+                ))}
+              </ul>
+              <div className="mt-auto p-2">
+                <p className="text-sm font-semibold text-foreground">Not sure where to start?</p>
+                <Link
+                  to="/contact"
+                  className="mt-1 inline-flex min-h-11 items-center gap-1 rounded text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Talk to us <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -360,12 +469,14 @@ export function SiteNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const activeGroup = NAV.find((n) => n.children && isGroupActive(pathname, n))?.label ?? null;
   const [mobileGroup, setMobileGroup] = useState<string | null>(activeGroup);
 
   // Close menu on route change; keep the current page's group expanded in the drawer.
   useEffect(() => {
     setOpen(false);
+    setOpenMenu(null);
     setMobileGroup(activeGroup);
   }, [pathname, activeGroup]);
 
@@ -435,6 +546,8 @@ export function SiteNav() {
                     item={n}
                     active={isGroupActive(pathname, n)}
                     pathname={pathname}
+                    openMenu={openMenu}
+                    setOpenMenu={setOpenMenu}
                   />
                 );
               }
@@ -598,7 +711,13 @@ export function SiteNav() {
                                   : "text-foreground/70 active:bg-muted/60"
                               }`}
                             >
-                              <span>{c.label}</span>
+                              <span className="flex min-w-0 items-center gap-3">
+                                <c.icon
+                                  className="h-4 w-4 shrink-0 text-primary"
+                                  aria-hidden="true"
+                                />
+                                {c.label}
+                              </span>
                               {current && (
                                 <span
                                   aria-hidden="true"
