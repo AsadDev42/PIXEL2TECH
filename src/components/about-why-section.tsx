@@ -5,27 +5,23 @@ import { TEAM } from "@/lib/team";
 
 const REASONS = [
   {
-    title: "One team, one shared brief",
-    body: "Brand, web, video and automation work from the same project context. Your goals and approved direction stay visible across the disciplines involved.",
-    detail: "Connected from the start",
+    title: "One brief for every discipline",
+    body: "Brand, web, video and automation work from the same brief, so everyone involved can see your goals and approved direction.",
     Icon: Sparkles,
   },
   {
-    title: "Design and development in step",
-    body: "Designers and developers review the practical details together, so layouts, interactions and content are considered before the build is handed over.",
-    detail: "A considered handover",
+    title: "Designers and developers review together",
+    body: "They go through layouts, interactions and content together before the build is handed over.",
     Icon: Layers,
   },
   {
-    title: "Decisions with a clear purpose",
+    title: "Goals agreed before the work starts",
     body: "We agree what the project needs to achieve and use that brief to guide the work, the review points and the checks before delivery.",
-    detail: "A shared definition of done",
     Icon: Target,
   },
   {
     title: "Plan the next phase",
     body: "We discuss how your team will update the work, which dependencies need an owner and what future improvements belong in a separate phase.",
-    detail: "Useful beyond launch",
     Icon: TrendingUp,
   },
 ];
@@ -50,8 +46,7 @@ export function AboutWhySection() {
             </h2>
           </div>
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-            A project moves through people, decisions and handovers. We bring the disciplines
-            together around one brief and a clear plan for the work.
+            We work from one brief and a clear plan, across every discipline your project needs.
           </p>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.85fr_1.25fr]">
@@ -84,7 +79,7 @@ export function AboutWhySection() {
             ))}
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
-            {REASONS.map(({ title, body, detail, Icon }, index) => (
+            {REASONS.map(({ title, body, Icon }, index) => (
               <article
                 key={title}
                 className="flex flex-col rounded-[2rem] border border-border bg-background p-6 sm:p-8"
@@ -105,18 +100,13 @@ export function AboutWhySection() {
                 </div>
                 <h3 className="mt-6 text-xl font-semibold leading-snug tracking-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
-                <div className="mt-auto pt-6">
-                  <p className="border-t border-border pt-4 text-xs font-medium text-primary">
-                    {detail}
-                  </p>
-                </div>
               </article>
             ))}
           </div>
         </div>
         <div className="mt-6 flex flex-col justify-between gap-4 rounded-2xl border border-border bg-background px-6 py-5 sm:flex-row sm:items-center">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Bring a focused brief. We will help connect the right people and disciplines.
+            Bring a focused brief, and we will match it with the right people.
           </p>
           <Link
             to="/services"
