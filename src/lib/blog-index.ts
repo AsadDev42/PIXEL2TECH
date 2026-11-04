@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "local-seo-service-businesses-dubai-qatar",
+        title: "Local SEO for Service Businesses in Dubai and Qatar: A Practical Checklist",
+        excerpt:
+              "Local SEO in Dubai and Qatar helps service businesses be found by nearby customers. A practical checklist covering profiles, service pages, reviews and local proof.",
+        tag: "SEO",
+        date: "November 4, 2026",
+        time: "2:47 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/local-seo-service-businesses-dubai-qatar.jpg?v=3",
+        imgAlt: "The Dubai skyline and highway interchange at dusk",
+  },
+  {
         slug: "wordpress-plugin-updates-safe-routine",
         title: "WordPress Plugin Updates Without Breaking Your Site: A Safe Weekly Routine",
         excerpt:
