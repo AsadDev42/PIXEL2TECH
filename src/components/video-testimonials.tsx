@@ -51,8 +51,7 @@ export function VideoTestimonials({ className = "bg-background" }: { className?:
         speed={35}
         autoplay={!playing}
         freezeMomentum={playing}
-        pauseOnFocus={false}
-        pauseControlLabel="testimonial carousel"
+        pauseOnHover
         gapClassName="gap-4 sm:gap-6"
         className="mt-8 pb-2"
         ariaLabel="Client testimonials"

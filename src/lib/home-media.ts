@@ -75,22 +75,42 @@ export const heroLcpImage = {
   srcSet: srcSet(heroRavokafe384, heroRavokafe576),
 };
 
+/** A video portfolio piece as a hero tile: its small silent preview, never the full video. */
+const portfolioVideo = (slug: string, n: number, alt: string): HeroMedia => ({
+  alt,
+  kind: "video",
+  src: `/portfolio/previews/${slug}/${n}.mp4`,
+  poster: `/portfolio/${slug}/${n}.jpg`,
+});
+
+const SHORT_FORM = "short-form-social-media-videos";
+const TALKING_HEAD = "vip-talking-head-videos";
+
 /** Three vertical hero columns (md and up), each looping independently. */
 export const heroColumns: HeroMedia[][] = [
   [
     vid(heroSpiral, heroSpiralPoster, "Animated brand and motion-design study"),
+    portfolioVideo(SHORT_FORM, 1, "Short-form social video from our portfolio"),
     vid(heroSticky, heroStickyPoster, "Graphic design layout animation"),
+    portfolioVideo(SHORT_FORM, 2, "Short-form social video from our portfolio"),
     img(heroCoffee384, heroCoffee576, "Coffee brand and packaging design"),
+    portfolioVideo(SHORT_FORM, 3, "Short-form social video from our portfolio"),
   ],
   [
     { kind: "image", ...heroLcpImage },
+    portfolioVideo(TALKING_HEAD, 1, "Talking-head video from our portfolio"),
     img(heroLovebites384, heroLovebites576, "Lovebites snack packaging design"),
+    portfolioVideo(TALKING_HEAD, 2, "Talking-head video from our portfolio"),
     vid(heroDesk, heroDeskPoster, "Creative production workspace"),
+    portfolioVideo(TALKING_HEAD, 3, "Talking-head video from our portfolio"),
   ],
   [
     img(heroLima384, heroLima576, "Lima beverage packaging and campaign creative"),
+    portfolioVideo(SHORT_FORM, 4, "Short-form social video from our portfolio"),
     vid(heroLaptop, heroLaptopPoster, "Website development on a laptop"),
+    portfolioVideo(SHORT_FORM, 5, "Short-form social video from our portfolio"),
     img(heroArmpearl384, heroArmpearl576, "Fashion accessory brand campaign creative"),
+    portfolioVideo(SHORT_FORM, 6, "Short-form social video from our portfolio"),
   ],
 ];
 

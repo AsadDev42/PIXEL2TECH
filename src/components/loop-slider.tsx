@@ -1,5 +1,4 @@
 import { memo, useEffect, useRef, useState, type ReactNode } from "react";
-import { Pause, Play } from "lucide-react";
 
 type Axis = "x" | "y";
 type DirX = "rtl" | "ltr";
@@ -29,16 +28,10 @@ type Props<T> = {
   autoplay?: boolean;
   /** Stop residual glide while a media player is running; dragging still works. */
   freezeMomentum?: boolean;
-  /** Keep the default focus pause unless the caller provides an explicit pause control. */
+  /** Stop drifting while keyboard focus is inside the track. Default true. */
   pauseOnFocus?: boolean;
   /** Pause the drift while the pointer hovers the track. Default false. */
   pauseOnHover?: boolean;
-  /**
-   * Show a Pause/Play button (WCAG 2.2.2: moving content needs a pause control).
-   * Pass the accessible name, e.g. "team carousel". Hidden under reduced motion,
-   * where nothing drifts anyway.
-   */
-  pauseControlLabel?: string;
   /**
    * Called when an item is clicked or tapped without dragging. Use it to make
    * whole cards clickable: real links inside cards cannot start a drag.
@@ -69,7 +62,6 @@ function LoopSliderImpl<T>({
   freezeMomentum = false,
   pauseOnFocus = true,
   pauseOnHover = false,
-  pauseControlLabel,
   onItemClick,
 }: Props<T>) {
   const loop = [...items, ...items];
@@ -88,9 +80,6 @@ function LoopSliderImpl<T>({
     hovering: false,
     focused: false,
   });
-  const [paused, setPaused] = useState(false);
-  const pausedRef = useRef(paused);
-  pausedRef.current = paused;
   // Kept in refs so toggling autoplay/hover-pause never rebuilds the RAF loop.
   const autoplayRef = useRef(autoplay);
   autoplayRef.current = autoplay;
@@ -143,7 +132,6 @@ function LoopSliderImpl<T>({
       if (!s.dragging) {
         const drifting =
           autoplayRef.current &&
-          !pausedRef.current &&
           !reducedMotion.matches &&
           // Never move content out from under keyboard focus.
           !(pauseOnFocusRef.current && s.focused) &&
@@ -346,26 +334,6 @@ function LoopSliderImpl<T>({
     ? `flex w-max ${touchClass} select-none ${gapClassName}`
     : `flex flex-col h-max ${touchClass} select-none ${gapClassName}`;
 
-  const pauseButton =
-    pauseControlLabel && autoplay ? (
-      <div className="mx-auto mt-4 flex max-w-7xl justify-end px-5 motion-reduce:hidden md:px-10">
-        <button
-          type="button"
-          onClick={() => setPaused((v) => !v)}
-          aria-pressed={paused}
-          aria-label={`${paused ? "Play" : "Pause"} ${pauseControlLabel}`}
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-sm font-semibold text-foreground transition hover:bg-muted"
-        >
-          {paused ? (
-            <Play className="h-4 w-4" aria-hidden="true" />
-          ) : (
-            <Pause className="h-4 w-4" aria-hidden="true" />
-          )}
-          {paused ? "Play" : "Pause"}
-        </button>
-      </div>
-    ) : null;
-
   return (
     <>
       <div
@@ -391,7 +359,6 @@ function LoopSliderImpl<T>({
           })}
         </div>
       </div>
-      {pauseButton}
     </>
   );
 }
