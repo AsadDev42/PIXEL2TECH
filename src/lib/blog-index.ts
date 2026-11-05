@@ -194,6 +194,22 @@ const POSTS = [
     ],
   },
   {
+    slug: "ad-creative-testing-small-budgets",
+    title: "Ad Creative Testing for Small Budgets: How to Learn From Every Test",
+    excerpt:
+        "Small budgets can still test ad creative well. How to test one idea at a time, read the result honestly, and turn every test into a better next ad.",
+    tag: "Video & Ads",
+    date: "November 3, 2026",
+    time: "4:48 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ad-creative-testing-small-budgets.jpg?v=3",
+    imgAlt: "Laptop showing advertising performance charts",
+    related: [
+      "meta-ads-creative-testing-small-budget",
+      "ugc-ads-for-shopify-brands",
+    ],
+  },
+  {
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
     excerpt:
