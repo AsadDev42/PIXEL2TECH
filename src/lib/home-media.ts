@@ -113,7 +113,7 @@ export const heroColumns: HeroMedia[][] = [
   [
     { kind: "image", ...heroLcpImage },
     portfolioVideo(TALKING_HEAD, 1, "Talking-head video from our portfolio"),
-    socialPost(40, "Burger restaurant social media design", "post"),
+    socialPost(2, "T-shirt brand social media design", "post"),
     img(heroLovebites384, heroLovebites576, "Lovebites snack packaging design"),
     portfolioVideo(TALKING_HEAD, 2, "Talking-head video from our portfolio"),
     vid(heroDesk, heroDeskPoster, "Creative production workspace"),
