@@ -16,7 +16,7 @@ export type TeamMember = {
   founder?: boolean;
 };
 
-/** The in-house team. Shown on Home and About; its length is the team size. */
+/** The in-house team. Shown on Home and About. */
 export const TEAM: TeamMember[] = [
   {
     name: "Usama Farooq",
@@ -45,5 +45,3 @@ export const TEAM: TeamMember[] = [
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
 ];
-
-export const TEAM_SIZE = TEAM.length;

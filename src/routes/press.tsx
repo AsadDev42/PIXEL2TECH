@@ -7,7 +7,7 @@ import { ContentGrid } from "@/components/content-blocks";
 import { trackEvent } from "@/lib/analytics";
 import { businessHead } from "@/lib/page-seo";
 import { SITE, STATS } from "@/lib/site-config";
-import { TEAM, TEAM_SIZE } from "@/lib/team";
+import { TEAM } from "@/lib/team";
 
 const FOUNDERS = TEAM.filter((person) => person.founder);
 
@@ -78,7 +78,6 @@ function PressPage() {
     { label: "Founded", value: STATS.foundingYear },
     { label: "Based in", value: SITE.location },
     { label: "Founders", value: FOUNDERS.map((person) => person.name).join(" and ") },
-    { label: "In-house team", value: `${TEAM_SIZE} people` },
     { label: "Work", value: "Brand, web, video & automation" },
   ];
 

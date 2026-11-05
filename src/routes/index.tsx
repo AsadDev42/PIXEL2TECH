@@ -24,7 +24,7 @@ import {
 } from "@/lib/home-media";
 import { HomeSelectedWork } from "@/components/home-selected-work";
 import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
-import { TEAM, TEAM_SIZE } from "@/lib/team";
+import { TEAM } from "@/lib/team";
 
 import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
@@ -159,7 +159,6 @@ export const Route = createFileRoute("/")({
           address: { "@type": "PostalAddress", ...SITE.address },
           areaServed: "Worldwide",
           priceRange: "$$",
-          numberOfEmployees: { "@type": "QuantitativeValue", value: TEAM_SIZE },
           // Matches SITE.hours.
           openingHoursSpecification: [
             {
@@ -494,9 +493,7 @@ function ProjectsBadgeContent() {
         <div className="text-sm font-bold text-card-foreground">
           {STATS.projects} projects shipped
         </div>
-        <div className="text-xs text-muted-foreground">
-          Since {STATS.foundingYear}, {TEAM_SIZE} people in-house
-        </div>
+        <div className="text-xs text-muted-foreground">In-house since {STATS.foundingYear}</div>
       </div>
     </>
   );
@@ -586,9 +583,7 @@ function Team() {
           <h2 id="home-team-title" className={H2}>
             Meet the people behind the work
           </h2>
-          <p className={LEAD}>
-            Designers, developers and video editors: {TEAM_SIZE} of us, all in-house.
-          </p>
+          <p className={LEAD}>Designers, developers and video editors, all in-house.</p>
         </div>
         <Link to="/about" className={`${BTN_SECONDARY} shrink-0 self-start sm:self-auto`}>
           About the team
@@ -601,7 +596,6 @@ function Team() {
 }
 
 const STUDIO_FACTS = [
-  { label: "Team members", value: String(TEAM_SIZE) },
   { label: "Projects shipped", value: STATS.projects },
   { label: "Founded", value: STATS.foundingYear },
 ];
@@ -634,7 +628,7 @@ function Studio() {
             brands, shipping code and reviewing campaigns together. Clients abroad work with us over
             email, WhatsApp and Google Meet.
           </p>
-          <dl className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
+          <dl className="mt-8 grid grid-cols-2 gap-3 sm:gap-4">
             {STUDIO_FACTS.map((f) => (
               <div
                 key={f.label}

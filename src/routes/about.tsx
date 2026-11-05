@@ -9,14 +9,14 @@ import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { TeamSlider } from "@/components/team-slider";
 import { AboutWhySection } from "@/components/about-why-section";
 import { SITE, STATS } from "@/lib/site-config";
-import { TEAM, TEAM_SIZE } from "@/lib/team";
+import { TEAM } from "@/lib/team";
 import officeImg from "@/assets/office.webp.asset.json";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const PAGE_URL = `${SITE.url}/about`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "About Pixel2Tech | Design, Web & Video Team in Lahore";
-const DESCRIPTION = `Meet the ${TEAM_SIZE}-person in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, working with clients in the US, UK, Gulf and Europe.`;
+const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, working with clients in the US, UK, Gulf and Europe.`;
 
 /** People with a profile page are the founders (same rule as the root Organization schema). */
 const FOUNDERS = TEAM.filter((m) => m.founder);
@@ -45,7 +45,6 @@ const HERO_COLUMNS: Photo[][] = [
 const HERO_STATS = [
   { value: STATS.projects, label: "Projects delivered" },
   { value: STATS.clients, label: "Clients" },
-  { value: String(TEAM_SIZE), label: "Team members" },
 ];
 
 const ABOUT_FAQS: FaqItem[] = [
@@ -170,7 +169,7 @@ function AboutPage() {
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-border pt-6 sm:gap-6">
+            <dl className="mt-10 grid max-w-xs grid-cols-2 gap-4 border-t border-border pt-6 sm:gap-6">
               {HERO_STATS.map((s) => (
                 <div key={s.label} className="flex min-w-0 flex-col-reverse">
                   <dt className="mt-1 text-xs text-muted-foreground sm:text-sm">{s.label}</dt>

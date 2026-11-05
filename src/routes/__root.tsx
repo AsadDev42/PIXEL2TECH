@@ -16,7 +16,7 @@ import { isChunkLoadError, reloadForStaleChunk } from "@/lib/lazy-with-retry";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "@/components/theme-provider";
 import { PageShell } from "@/components/site-chrome";
 import { SITE, STATS } from "@/lib/site-config";
-import { TEAM, TEAM_SIZE } from "@/lib/team";
+import { TEAM } from "@/lib/team";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { ContentProtection } from "@/components/content-protection";
 import { CursorFollower } from "@/components/cursor-follower";
@@ -165,7 +165,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           email: SITE.email,
           telephone: SITE.phoneE164,
           foundingDate: STATS.foundingYear,
-          numberOfEmployees: { "@type": "QuantitativeValue", value: TEAM_SIZE },
           founder: TEAM.filter((m) => m.founder).map((m) => ({
             "@type": "Person",
             name: m.name,
