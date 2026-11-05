@@ -1,7 +1,6 @@
-import { MediaImage } from "@/components/media-image";
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { MediaImage } from "@/components/media-image";
 import { PageShell } from "@/components/site-chrome";
 import { ProjectNextStep } from "@/components/content-blocks";
 import { businessHead } from "@/lib/page-seo";
@@ -18,130 +17,147 @@ const CASES = [
   project: STORE_PROJECTS.find((project) => project.slug === item.slug)!,
 }));
 
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
+/** The case study pages carry the full text; this page shows the opening point of each. */
+const firstSentence = (text: string) => text.split(/(?<=\.)\s/)[0];
+
 export const Route = createFileRoute("/results")({
   head: () =>
     businessHead(
       "/results",
       "Project outcomes & case studies",
-      "Explore five named Pixel2Tech website and Shopify case studies. Filter by industry and service, and inspect the delivered work and engagement details.",
+      "Explore five named Pixel2Tech website and Shopify case studies: the business need, what was built and what customers can now do on each site.",
     ),
   component: ResultsPage,
 });
 
 function ResultsPage() {
-  const [industry, setIndustry] = useState("All industries");
-  const [service, setService] = useState("All services");
-  const cases = CASES.filter(
-    (item) =>
-      (industry === "All industries" || item.industry === industry) &&
-      (service === "All services" ||
-        (item.project.platform === "Shopify" ? "Shopify stores" : "Websites") === service),
-  );
   return (
     <PageShell>
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24">
+      <header className="mx-auto max-w-7xl px-5 pb-12 pt-12 md:px-10 md:pb-16 md:pt-20">
         <p className="text-xs font-semibold uppercase tracking-widest text-primary">
           Project outcomes
         </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-          See what changed. Inspect the work.
+        <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          Five builds, and what each one changed for customers.
         </h1>
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Five builds, with the business need, design decisions and delivered result explained.
-          These are observable changes to the customer journey; revenue or conversion lifts are only
-          meaningful with a measured baseline. Filter by industry or service to explore the work.
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          For each one: the business need, what was built and what customers can now do. We describe
+          changes you can see on the site, because revenue or conversion lifts are only meaningful
+          with a measured baseline.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <label className="text-sm font-semibold">
-            Industry
-            <select
-              value={industry}
-              onChange={(event) => setIndustry(event.target.value)}
-              className="ml-3 min-h-11 rounded-xl border border-border bg-background px-4"
-            >
-              {["All industries", "Ecommerce", "Beauty", "Education", "Healthcare"].map(
-                (option) => (
-                  <option key={option}>{option}</option>
-                ),
-              )}
-            </select>
-          </label>
-          <label className="text-sm font-semibold">
-            Service
-            <select
-              value={service}
-              onChange={(event) => setService(event.target.value)}
-              className="ml-3 min-h-11 rounded-xl border border-border bg-background px-4"
-            >
-              {["All services", "Shopify stores", "Websites"].map((option) => (
-                <option key={option}>{option}</option>
-              ))}
-            </select>
-          </label>
+        <nav aria-label="Jump to a case study" className="mt-10">
+          <ul className="-mx-5 flex gap-3 overflow-x-auto px-5 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-5 md:gap-4 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+            {CASES.map(({ project }) => (
+              <li key={project.slug} className="w-40 shrink-0 md:w-auto">
+                <a href={`#${project.slug}`} className={`group block rounded-2xl ${FOCUS_RING}`}>
+                  <span className="block aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted">
+                    <MediaImage
+                      src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
+                      alt=""
+                      loading="eager"
+                      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                    />
+                  </span>
+                  <span className="mt-2 block text-sm font-semibold transition-colors group-hover:text-primary">
+                    {project.client}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+
+      <div className="mx-auto max-w-7xl divide-y divide-border border-t border-border px-5 md:px-10">
+        {CASES.map(({ project, industry }, index) => (
+          <article
+            key={project.slug}
+            id={project.slug}
+            className="grid scroll-mt-20 gap-8 py-12 md:py-16 lg:grid-cols-12 lg:items-center lg:gap-16"
+          >
+            <div className={`relative min-w-0 lg:col-span-7 ${index % 2 ? "lg:order-last" : ""}`}>
+              <div className="aspect-[16/10] overflow-hidden rounded-3xl border border-border bg-muted">
+                <MediaImage
+                  src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
+                  alt={`${project.client} delivered website on desktop`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+              <div className="absolute -bottom-4 right-4 aspect-[9/16] w-1/5 min-w-20 overflow-hidden rounded-2xl border-4 border-background bg-muted shadow-xl">
+                <MediaImage
+                  src={`/portfolio/${project.slug}/mobile-home.webp`}
+                  alt={`${project.client} delivered website on a phone`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+            </div>
+
+            <div className="min-w-0 lg:col-span-5">
+              <p className="text-xs font-medium text-muted-foreground">
+                {industry} · {project.platform} ·{" "}
+                {project.engagement === "white-label"
+                  ? "Agency partner work"
+                  : project.engagement === "direct"
+                    ? "Direct client"
+                    : "Delivered project"}
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                {project.client}
+              </h2>
+              <p className="mt-4 text-lg font-medium leading-snug text-foreground">
+                {firstSentence(project.outcome)}
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">The business need: </span>
+                {firstSentence(project.challenge)}
+              </p>
+              <h3 className="mt-6 text-sm font-semibold">What we built</h3>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {project.deliverables.slice(0, 4).map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm leading-relaxed">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/portfolio/$slug"
+                params={{ slug: project.slug }}
+                className={`mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
+              >
+                Read the case study <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="flex flex-col gap-4 border-t border-border py-10 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">Want to see more of our work?</h2>
+            <p className="mt-1 text-muted-foreground">
+              The portfolio also covers branding, video, social content and automation.
+            </p>
+          </div>
+          <Link
+            to="/portfolio"
+            className={`inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-semibold transition hover:bg-muted ${FOCUS_RING}`}
+          >
+            See the full portfolio <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
-        <p aria-live="polite" className="mt-4 text-sm text-muted-foreground">
-          {cases.length} {cases.length === 1 ? "case study" : "case studies"}
-        </p>
-        <ul className="mt-8 grid gap-6 md:grid-cols-2">
-          {cases.map(({ project, industry }) => (
-            <li key={project.slug}>
-              <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background">
-                <div className="aspect-[16/10] bg-muted p-4">
-                  <MediaImage
-                    src={`/portfolio/${project.slug}/${project.shots.desktop[0]}.webp`}
-                    alt={`${project.client} delivered website`}
-                    loading="lazy"
-                    className="h-full w-full object-contain object-top"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-xs text-muted-foreground">
-                    {industry} · {project.platform} ·{" "}
-                    {project.engagement === "white-label"
-                      ? "Agency partner work"
-                      : project.engagement === "direct"
-                        ? "Direct client"
-                        : "Delivered project"}
-                  </p>
-                  <h2 className="mt-3 text-2xl font-bold">{project.client}</h2>
-                  <dl className="mt-6 space-y-5 text-sm leading-relaxed">
-                    {[
-                      ["The business need", project.challenge],
-                      ["What we changed", project.approach],
-                      ["The delivered outcome", project.outcome],
-                    ].map(([label, body]) => (
-                      <div key={label}>
-                        <dt className="font-semibold">{label}</dt>
-                        <dd className="mt-2 text-muted-foreground">{body}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <Link
-                    to="/portfolio/$slug"
-                    params={{ slug: project.slug }}
-                    className="mt-auto inline-flex min-h-11 items-center gap-2 pt-6 text-sm font-semibold text-primary"
-                  >
-                    Read the case study <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
-        {!cases.length && (
-          <p className="mt-8 rounded-2xl bg-muted p-6 text-sm">
-            No case studies match these filters. Choose All industries or All services to broaden
-            the selection.
-          </p>
-        )}
-        <div className="mt-12">
-          <ProjectNextStep
-            title="What should change for your customers?"
-            body="Send your current website, the task customers struggle with and the business goal behind it. We can discuss the right scope, relevant examples and how to check the result after launch."
-            source="project-outcomes"
-          />
-        </div>
-      </section>
+        <ProjectNextStep
+          title="What should change for your customers?"
+          body="Send your current website, the task customers struggle with and the business goal behind it. We can discuss the right scope, relevant examples and how to check the result after launch."
+          source="project-outcomes"
+        />
+      </div>
     </PageShell>
   );
 }
