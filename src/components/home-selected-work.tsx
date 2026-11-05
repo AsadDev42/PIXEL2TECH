@@ -8,10 +8,10 @@ import { ALL_ITEMS } from "@/lib/portfolio-data";
 /** `ratio` is the image's own width / height, so each piece keeps its real shape. */
 const HOME_WORK = [
   {
-    slug: "unze-london-shopify-store",
+    slug: "skin-deep-shopify-store",
     label: "Ecom Stores",
-    description: "Shopify store for a shoes, bags and clothing brand.",
-    image: "/portfolio/unze-london-shopify-store/desktop-home.webp",
+    description: "Shopify store for a natural skincare, haircare and beauty brand.",
+    image: "/portfolio/skin-deep-shopify-store/desktop-home.webp",
     ratio: 1280 / 800,
   },
   {
@@ -50,10 +50,10 @@ const HOME_WORK = [
     ratio: 1,
   },
   {
-    slug: "skin-deep-shopify-store",
+    slug: "unze-london-shopify-store",
     label: "Ecom Stores",
-    description: "Shopify store for a natural skincare, haircare and beauty brand.",
-    image: "/portfolio/skin-deep-shopify-store/desktop-home.webp",
+    description: "Shopify store for a shoes, bags and clothing brand.",
+    image: "/portfolio/unze-london-shopify-store/desktop-home.webp",
     ratio: 1280 / 800,
   },
 ].map((work) => {
