@@ -146,6 +146,22 @@ const POSTS = [
     imgAlt: "A shopper holding a payment card while using a laptop",
   },
   {
+    slug: "customer-portal-customers-actually-use",
+    title: "A Customer Portal That Customers Actually Use: What to Include in Version One",
+    excerpt:
+      "A customer portal only earns its keep when customers return to it. What to include in version one, what to leave out, and how to launch without a long build.",
+    tag: "Custom Platforms",
+    date: "November 3, 2026",
+    time: "10:41 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/customer-portal-customers-actually-use.jpg?v=3",
+    imgAlt: "Analytics dashboard on a laptop screen",
+    related: [
+      "custom-booking-platform-vs-off-the-shelf-software",
+      "custom-web-app-development-cost",
+    ],
+  },
+  {
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
     excerpt:
