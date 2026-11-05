@@ -207,7 +207,7 @@ function HeroTile({ media, paused }: { media: HeroMedia; paused: boolean }) {
     );
   }
   return (
-    <div className={box}>
+    <div className={media.shape === "post" ? box.replace("aspect-[9/16]", "aspect-[4/5]") : box}>
       <MediaImage
         src={media.src}
         srcSet={media.srcSet}

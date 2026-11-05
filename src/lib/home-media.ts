@@ -47,7 +47,14 @@ import workSocialPoster from "@/assets/opt-work-social-new-poster.webp.asset.jso
 
 export type HeroMedia =
   | { kind: "video"; src: string; poster: string; alt: string }
-  | { kind: "image"; src: string; srcSet: string; alt: string };
+  | {
+      kind: "image";
+      src: string;
+      srcSet: string;
+      alt: string;
+      /** Square-ish artwork uses a shorter tile, so its headline isn't cropped. */
+      shape?: "post";
+    };
 
 type Asset = { url: string };
 
@@ -83,6 +90,12 @@ const portfolioVideo = (slug: string, n: number, alt: string): HeroMedia => ({
   poster: `/portfolio/${slug}/${n}.jpg`,
 });
 
+/** A piece from the social and ad creative collection. */
+const socialPost = (n: number, alt: string, shape?: "post"): HeroMedia => {
+  const src = `/portfolio/social-media-and-ad-creative-collection/${n}.webp`;
+  return { kind: "image", src, srcSet: `${src} 736w`, alt, shape };
+};
+
 const SHORT_FORM = "short-form-social-media-videos";
 const TALKING_HEAD = "vip-talking-head-videos";
 
@@ -91,14 +104,16 @@ export const heroColumns: HeroMedia[][] = [
   [
     vid(heroSpiral, heroSpiralPoster, "Animated brand and motion-design study"),
     portfolioVideo(SHORT_FORM, 1, "Short-form social video from our portfolio"),
+    socialPost(5, "Iced latte social media design"),
     vid(heroSticky, heroStickyPoster, "Graphic design layout animation"),
-    portfolioVideo(SHORT_FORM, 2, "Short-form social video from our portfolio"),
+    portfolioVideo(TALKING_HEAD, 9, "Talking-head video from our portfolio"),
     img(heroCoffee384, heroCoffee576, "Coffee brand and packaging design"),
     portfolioVideo(SHORT_FORM, 3, "Short-form social video from our portfolio"),
   ],
   [
     { kind: "image", ...heroLcpImage },
     portfolioVideo(TALKING_HEAD, 1, "Talking-head video from our portfolio"),
+    socialPost(40, "Burger restaurant social media design", "post"),
     img(heroLovebites384, heroLovebites576, "Lovebites snack packaging design"),
     portfolioVideo(TALKING_HEAD, 2, "Talking-head video from our portfolio"),
     vid(heroDesk, heroDeskPoster, "Creative production workspace"),
@@ -107,6 +122,7 @@ export const heroColumns: HeroMedia[][] = [
   [
     img(heroLima384, heroLima576, "Lima beverage packaging and campaign creative"),
     portfolioVideo(SHORT_FORM, 4, "Short-form social video from our portfolio"),
+    socialPost(13, "Restaurant brunch social media design", "post"),
     vid(heroLaptop, heroLaptopPoster, "Website development on a laptop"),
     portfolioVideo(SHORT_FORM, 5, "Short-form social video from our portfolio"),
     img(heroArmpearl384, heroArmpearl576, "Fashion accessory brand campaign creative"),
