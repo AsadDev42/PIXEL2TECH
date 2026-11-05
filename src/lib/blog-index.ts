@@ -162,6 +162,22 @@ const POSTS = [
     ],
   },
   {
+    slug: "lead-follow-up-crm-routine-small-teams",
+    title: "Lead Follow Up That Does Not Depend on Memory: A Simple CRM Routine for Small Teams",
+    excerpt:
+        "Leads are lost when follow up depends on memory. A simple CRM routine that assigns every enquiry, sets the next step, and keeps small teams consistent.",
+    tag: "Automation & CRM",
+    date: "November 3, 2026",
+    time: "12:37 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/lead-follow-up-crm-routine-small-teams.jpg?v=3",
+    imgAlt: "Team planning with colourful sticky notes on a glass wall",
+    related: [
+      "ai-chat-support-automate-vs-keep-human",
+      "automate-lead-follow-up",
+    ],
+  },
+  {
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
     excerpt:
