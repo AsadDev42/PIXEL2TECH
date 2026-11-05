@@ -210,6 +210,22 @@ const POSTS = [
     ],
   },
   {
+    slug: "selling-spain-italy-website",
+    title: "Selling to Customers in Spain and Italy: What Your Website Must Get Right for European Buyers",
+    excerpt:
+        "Buyers in Spain and Italy check trust, language, delivery and support before they enquire. What your website must show clearly for European customers.",
+    tag: "Web Development",
+    date: "November 3, 2026",
+    time: "7:26 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-spain-italy-website.jpg?v=3",
+    imgAlt: "The Colosseum in Rome, Italy",
+    related: [
+      "selling-singapore-malaysia-website",
+      "selling-to-us-customers-website-trust",
+    ],
+  },
+  {
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
     excerpt:
