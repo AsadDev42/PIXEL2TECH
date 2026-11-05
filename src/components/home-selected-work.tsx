@@ -85,15 +85,15 @@ export function HomeSelectedWork() {
           announcement={`Project ${index + 1} of ${count}: ${active.name}, ${active.label}`}
           className="mt-8"
         >
-          <div className="relative overflow-hidden py-6" style={{ perspective: "1400px" }}>
+          <div className="relative overflow-hidden py-10" style={{ perspective: "1800px" }}>
             <div
-              className="relative mx-auto w-[220px] sm:w-[300px] lg:w-[340px]"
+              className="relative mx-auto w-[210px] sm:w-[270px] lg:w-[300px]"
               style={{ transformStyle: "preserve-3d", aspectRatio: "4 / 5" }}
             >
               {HOME_WORK.map((work, i) => {
                 const offset = loopOffset(i, index, count);
                 const abs = Math.abs(offset);
-                const visible = abs <= 3;
+                const visible = abs <= 2;
                 const card = (
                   <MediaImage
                     src={work.image}
@@ -114,8 +114,8 @@ export function HomeSelectedWork() {
                     onClick={offset !== 0 ? () => select(i) : undefined}
                     className="absolute inset-0 transition-all duration-500 ease-out motion-reduce:transition-none"
                     style={{
-                      transform: `translateX(${offset * 56}%) translateZ(${-abs * 180}px) rotateY(${offset * -32}deg) scale(${1 - abs * 0.04})`,
-                      opacity: visible ? 1 - abs * 0.22 : 0,
+                      transform: `translateX(${offset * 82}%) translateZ(${-abs * 120}px) rotateY(${offset * -18}deg)`,
+                      opacity: abs <= 1 ? 1 : visible ? 0.45 : 0,
                       zIndex: 100 - abs,
                       pointerEvents: visible ? "auto" : "none",
                       cursor: "pointer",
@@ -127,12 +127,12 @@ export function HomeSelectedWork() {
                         params={{ slug: work.slug }}
                         draggable={false}
                         aria-label={`View project: ${work.name}`}
-                        className="block h-full w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        className="block h-full w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
                         {card}
                       </Link>
                     ) : (
-                      <div className="h-full w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl">
+                      <div className="h-full w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-md">
                         {card}
                       </div>
                     )}
@@ -142,7 +142,7 @@ export function HomeSelectedWork() {
             </div>
           </div>
 
-          <div className="mx-auto mt-4 min-h-28 max-w-xl text-center">
+          <div className="mx-auto mt-6 min-h-28 max-w-xl text-center">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
               {active.label}
               {active.whiteLabel ? " · Agency partner work" : ""}
@@ -152,7 +152,7 @@ export function HomeSelectedWork() {
           </div>
 
           <CarouselControls
-            className="mt-4"
+            className="mt-6"
             count={count}
             index={index}
             onStep={step}
