@@ -3,6 +3,7 @@ import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Check,
   Brain,
   Clapperboard,
   Cog,
@@ -22,7 +23,7 @@ import { PageShell } from "@/components/site-chrome";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
-import { ServiceDiagram } from "@/components/service-visual";
+import { getItemBySlug } from "@/lib/portfolio-data";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
@@ -39,47 +40,47 @@ type ServiceDetail = { Icon: LucideIcon; desc: string; tags: string[] };
 const SERVICE_DETAILS: Record<ServiceTitle, ServiceDetail> = {
   "Branding & Design": {
     Icon: Palette,
-    desc: "Logo, color palette, typography and brand guidelines, so your business looks consistent everywhere it shows up.",
+    desc: "Logo, color palette, typography and brand guidelines.",
     tags: ["Logo", "Brand guide", "UI/UX"],
   },
   "Website Development": {
     Icon: Globe,
-    desc: "Fast, mobile-ready websites, from a single landing page to a full business site, built to turn visitors into inquiries.",
+    desc: "Mobile-ready websites, from a single landing page to a full business site.",
     tags: ["React", "Next.js", "Custom code"],
   },
   "WordPress & Shopify": {
     Icon: ShoppingBag,
-    desc: "WordPress sites and Shopify stores with the theme, plugins, product pages and payment setup done for you.",
+    desc: "Sites and stores, including the theme, plugins, product pages and payment setup.",
     tags: ["WordPress", "Shopify", "WooCommerce"],
   },
   "Custom Platforms & Apps": {
     Icon: Layers,
-    desc: "Mobile apps, SaaS products, client portals and dashboards built from scratch around how your business works.",
+    desc: "Built from scratch around how your business works.",
     tags: ["SaaS", "Mobile app", "Portals"],
   },
   "Automation & CRM": {
     Icon: Cog,
-    desc: "Workflow automation, CRM setup and integrations that take repetitive work, like copying leads between tools, off your team's plate.",
+    desc: "Workflow automation, CRM setup and integrations, such as moving leads between tools.",
     tags: ["n8n", "Make", "Zapier", "Custom CRM"],
   },
   "AI Solutions": {
     Icon: Brain,
-    desc: "AI chatbots, voice agents and RAG systems that answer common customer questions and search your own documents.",
+    desc: "Chatbots, voice agents and RAG systems that answer from your own documents.",
     tags: ["Chatbots", "RAG", "Voice agents"],
   },
   "SEO & Search Growth": {
     Icon: Search,
-    desc: "On-page SEO, technical audits and keyword strategy to help the right people find your business on Google.",
+    desc: "Fixes and plans for how your business appears on Google.",
     tags: ["On-page SEO", "Technical SEO", "Local SEO"],
   },
   "Social Media & Email": {
     Icon: Megaphone,
-    desc: "Content, ad campaigns, email sequences and newsletters across the major platforms.",
+    desc: "Content, ad campaigns, email sequences and newsletters.",
     tags: ["Instagram", "Facebook ads", "Email"],
   },
   "Video Editing & Ads": {
     Icon: Clapperboard,
-    desc: "Reels, brand videos, YouTube content and paid ad creatives, edited for the platform they'll run on.",
+    desc: "Reels, brand videos, YouTube content and paid ad creative.",
     tags: ["Reels", "YouTube", "Paid ads"],
   },
 };
@@ -244,115 +245,147 @@ const STARTING_POINTS = [
   services: ServiceTitle[];
 }[];
 
-/** Real project image, or the labelled illustration for services without one. */
-function ServiceArtwork({
-  title,
-  eager = false,
-  src,
-}: {
+/**
+ * What each service tile shows. Real work only: a project image with its name, or for services
+ * with no published project, large type listing what the service covers. No mock screens.
+ */
+const TILES: {
   title: ServiceTitle;
-  eager?: boolean;
-  /** Same project, in a crop that suits a narrow slot. */
-  src?: string;
-}) {
-  const visual = SERVICE_PRESENTATION[title];
-  if (visual.illustration) return <ServiceDiagram kind={visual.illustration} />;
-  return (
-    <MediaImage
-      src={src ?? visual.image}
-      alt={visual.alt}
-      width={960}
-      height={600}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-    />
-  );
-}
-
-/** Tile widths on the 12-column desktop grid, in service order. Sums to 12 per row. */
-const TILE_SPANS = [
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-5",
-  "lg:col-span-7",
+  image?: string;
+  alt?: string;
+  /** White-label work always says so on the card. */
+  partner?: boolean;
+  covers?: string[];
+  tone?: string;
+}[] = [
+  {
+    title: "Branding & Design",
+    image: SERVICE_PRESENTATION["Branding & Design"].image,
+    alt: SERVICE_PRESENTATION["Branding & Design"].alt,
+  },
+  {
+    title: "Website Development",
+    image: "/portfolio/cargo-health-wordpress-website/mobile-home.webp",
+    alt: SERVICE_PRESENTATION["Website Development"].alt,
+    partner: true,
+  },
+  {
+    title: "WordPress & Shopify",
+    image: "/portfolio/histreet-shopify-store/mobile-home.webp",
+    alt: SERVICE_PRESENTATION["WordPress & Shopify"].alt,
+  },
+  {
+    title: "Automation & CRM",
+    image: getItemBySlug("inquiry-to-invoice-automation")?.img,
+    alt: "Inquiry to invoice automation workflow",
+  },
+  {
+    title: "Custom Platforms & Apps",
+    covers: ["SaaS products", "Mobile apps", "Client portals", "Dashboards"],
+    tone: "bg-primary text-white",
+  },
+  {
+    title: "AI Solutions",
+    image: getItemBySlug("rag-document-assistant")?.img,
+    alt: "Document assistant workflow",
+  },
+  {
+    title: "Social Media & Email",
+    image: SERVICE_PRESENTATION["Social Media & Email"].image,
+    alt: SERVICE_PRESENTATION["Social Media & Email"].alt,
+  },
+  {
+    title: "SEO & Search Growth",
+    covers: ["Technical audits", "On-page SEO", "Keyword strategy", "Local SEO"],
+    tone: "bg-sky-100 text-slate-950 dark:bg-slate-800 dark:text-white",
+  },
+  {
+    title: "Video Editing & Ads",
+    image: SERVICE_PRESENTATION["Video Editing & Ads"].image,
+    alt: SERVICE_PRESENTATION["Video Editing & Ads"].alt,
+  },
 ];
 
-/**
- * The page's main job: show what we do through the work itself. Tile ids come from
- * serviceAnchor(): the footer and case studies link to them.
- */
-function ServiceGallery() {
+/** Tile ids come from serviceAnchor(): the footer and case studies link to them. */
+function ServiceWall() {
   return (
     <section
       id="services-list"
       aria-labelledby="services-list-title"
-      className="scroll-mt-20 border-t border-border py-12 md:py-16"
+      className="scroll-mt-20 pb-16 md:pb-24"
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
           <h2 id="services-list-title" className={H2}>
-            Choose the work you need.
+            What we do
           </h2>
-          <p className="max-w-md leading-relaxed text-muted-foreground">
-            See what each discipline covers and examples from our work. Your proposal defines the
-            exact deliverables for your project.
+          <p className="max-w-sm leading-relaxed text-muted-foreground">
+            Open a service to see its scope, our work and how pricing works.
           </p>
         </div>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
-          {SERVICE_LIST.map((s, index) => (
-            <li
-              key={s.id}
-              id={s.id}
-              className={`min-w-0 scroll-mt-28 rounded-3xl target:ring-2 target:ring-primary ${TILE_SPANS[index]}`}
-            >
-              <Link
-                to="/services/$slug"
-                params={{ slug: s.id }}
-                className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground transition hover:border-primary ${FOCUS_RING}`}
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {TILES.map((tile, index) => {
+            const service = SERVICE_DETAILS[tile.title];
+            const id = serviceAnchor(tile.title);
+            return (
+              <li
+                key={tile.title}
+                id={id}
+                className="min-w-0 scroll-mt-28 rounded-3xl target:ring-4 target:ring-primary"
               >
-                <div className="relative h-56 shrink-0 overflow-hidden bg-muted sm:h-64 lg:h-80">
-                  <ServiceArtwork
-                    title={s.title}
-                    eager={index < 2}
-                    src={
-                      s.title === "WordPress & Shopify"
-                        ? "/portfolio/histreet-shopify-store/mobile-home.webp"
-                        : undefined
-                    }
-                  />
-                  <span className="absolute left-3 top-3 max-w-[calc(100%-1.5rem)] rounded-2xl bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
-                    {SERVICE_PRESENTATION[s.title].caption}
-                  </span>
-                </div>
-                <div className="flex flex-1 items-start gap-4 p-5 sm:p-6">
-                  <span
-                    aria-hidden="true"
-                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground"
-                  >
-                    <s.Icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-xl font-bold leading-snug tracking-tight">
-                      {s.title}
+                <Link
+                  to="/services/$slug"
+                  params={{ slug: id }}
+                  className={`group relative block aspect-[4/5] overflow-hidden rounded-3xl ${tile.tone ?? "bg-muted"} ${FOCUS_RING}`}
+                >
+                  {tile.image ? (
+                    <MediaImage
+                      src={tile.image}
+                      alt={tile.alt ?? ""}
+                      width={800}
+                      height={1000}
+                      loading={index < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
+                    />
+                  ) : (
+                    <ul
+                      aria-hidden="true"
+                      className="absolute inset-x-0 top-0 p-6 text-3xl font-bold leading-tight tracking-tight sm:p-8 lg:text-4xl"
+                    >
+                      {tile.covers?.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <span className="absolute inset-x-3 bottom-3 rounded-2xl bg-background p-4 text-foreground shadow-lg">
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="min-w-0 text-lg font-bold leading-snug tracking-tight">
+                        {tile.title}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-foreground text-background transition group-hover:translate-x-1"
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
                     </span>
-                    <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
-                      {s.desc}
+                    {tile.partner ? (
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        Agency partner work
+                      </span>
+                    ) : null}
+                    {/* The description stays out of the way until someone hovers or tabs to the card. */}
+                    <span className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr] motion-reduce:transition-none">
+                      <span className="overflow-hidden text-sm leading-relaxed text-muted-foreground">
+                        <span className="block pt-2">{service.desc}</span>
+                      </span>
                     </span>
                   </span>
-                  <ArrowRight
-                    className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-primary"
-                    aria-hidden="true"
-                  />
-                </div>
-              </Link>
-            </li>
-          ))}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -363,25 +396,21 @@ function ServicesPage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section
-        aria-labelledby="services-title"
-        className="bg-background pb-12 pt-12 md:pb-16 md:pt-20"
-      >
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 md:px-10 lg:grid-cols-12 lg:items-end lg:gap-16">
-          <div className="min-w-0 lg:col-span-8">
-            <p className="text-sm font-semibold text-primary">Services</p>
-            <h1
-              id="services-title"
-              className="mt-4 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
-            >
-              Branding, websites, apps, automation and video from one studio in Lahore.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+      <section aria-labelledby="services-title" className="pb-12 pt-12 md:pb-16 md:pt-20">
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <h1
+            id="services-title"
+            className="max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            Branding, websites, apps, automation and video from one studio in Lahore.
+          </h1>
+          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center">
+            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:col-span-7">
               You can hire us for a single job, such as a logo, a Shopify store or a set of ad
               edits, and add other services later if you need them. Our in-house team plans the
               scope, does the work and hands it over.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
               <BookCallButton
                 source="services_hero"
                 className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
@@ -390,15 +419,19 @@ function ServicesPage() {
                 href="#services-list"
                 className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
               >
-                Find your service <ArrowRight size={16} aria-hidden="true" />
+                See what we do <ArrowRight size={16} aria-hidden="true" />
               </a>
             </div>
           </div>
-          <div className="min-w-0 border-l-2 border-primary pl-6 lg:col-span-4">
-            <h2 className="font-semibold text-foreground">On every project</h2>
-            <ul className="mt-3 space-y-3">
+          <div className="mt-10 border-y border-border py-6">
+            <h2 className="sr-only">On every project</h2>
+            <ul className="grid gap-4 md:grid-cols-3 md:gap-8">
               {ON_EVERY_PROJECT.map((item) => (
-                <li key={item} className="text-sm leading-relaxed text-muted-foreground">
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm font-medium text-foreground"
+                >
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -407,7 +440,7 @@ function ServicesPage() {
         </div>
       </section>
 
-      <ServiceGallery />
+      <ServiceWall />
 
       {/* Start from a goal: each card shows which services combine to reach it */}
       <section
@@ -434,7 +467,15 @@ function ServicesPage() {
                 className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5"
               >
                 <div className="relative h-56 shrink-0 overflow-hidden bg-slate-900 sm:h-72">
-                  <ServiceArtwork title={point.visual} />
+                  <MediaImage
+                    src={TILES.find((tile) => tile.title === point.visual)?.image}
+                    alt=""
+                    width={960}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                  />
                   <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent"

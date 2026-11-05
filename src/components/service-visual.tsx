@@ -64,7 +64,7 @@ export function ServiceDiagram({
             ))}
             <Check x="25" y="204" width="16" height="16" color={color} />
             <text x="48" y="217" fontSize="12" fill="#334155">
-              The right information. The next action.
+              Enquiry saved and follow-up assigned
             </text>
           </g>
         ) : (
@@ -72,7 +72,7 @@ export function ServiceDiagram({
             <rect x="22" y="22" width="356" height="206" rx="18" fill="white" stroke="#ede9fe" />
             <Sparkles x="40" y="39" width="18" height="18" color={color} />
             <text x="67" y="53" fontSize="12" fontWeight="600" fill="#0f172a">
-              Your knowledge, easier to find
+              Ask your documents
             </text>
             <path d="M40 70 H360" stroke="#ede9fe" />
             <rect x="78" y="84" width="280" height="38" rx="10" fill="#ede9fe" />
