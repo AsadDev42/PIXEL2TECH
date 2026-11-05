@@ -178,6 +178,22 @@ const POSTS = [
     ],
   },
   {
+    slug: "ai-meeting-notes-team-will-trust",
+    title: "AI Meeting Notes That Your Team Will Actually Trust: A Practical Setup Guide",
+    excerpt:
+        "AI meeting notes save time only when the team trusts them. A practical setup for accuracy, privacy, and a short human check before notes are shared.",
+    tag: "AI Solutions",
+    date: "November 3, 2026",
+    time: "2:52 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-meeting-notes-team-will-trust.jpg?v=3",
+    imgAlt: "Team collaborating around a table with laptops",
+    related: [
+      "ai-meeting-assistants-business-guide",
+      "ai-tools-small-business-content-time-rework",
+    ],
+  },
+  {
     slug: "selling-singapore-malaysia-website",
     title: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
     excerpt:
