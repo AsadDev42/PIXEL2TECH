@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+slug: "selling-peru-website-latin-american-buyers",
+    title: "Selling to Customers in Peru: What Your Website Must Get Right for Latin American Buyers",
+    excerpt:
+        "Peruvian buyers check trust, payment, delivery and support before they enquire. What your website must show clearly to win customers in Peru and Latin America.",
+    tag: "Web Development",
+    date: "November 6, 2026",
+    time: "10:41 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-peru-website-latin-american-buyers.jpg",
+    imgAlt: "A colourful street in Lima, Peru, with colonial balconies",
+  },
+    {
     slug: "best-outsourcing-agencies-for-remote-work",
     title: "Best Outsourcing Agencies for Remote Work: 9 to Compare in 2026",
     excerpt:
