@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+      slug: "lead-scoring-without-big-crm",
+    title: "Lead Scoring Without a Big CRM: A Simple System for Small Sales Teams",
+    excerpt:
+      "Small sales teams do not need expensive software to prioritise leads. A simple lead scoring system that sorts hot, warm and cold enquiries in plain terms.",
+    tag: "Automation",
+    date: "November 6, 2026",
+    time: "2:49 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/lead-scoring-without-big-crm.jpg",
+    imgAlt: "A sales team workspace with a customer dashboard on a monitor",
+  },
+    {
         slug: "custom-quote-calculator-service-websites",
         title: "A Custom Quote Calculator for Service Websites: What to Build in Version One",
         excerpt:
