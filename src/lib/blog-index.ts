@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "one-question-week-social-content",
+    title: "One Customer Question, a Week of Content: A Simple Social Media System for Service Businesses",
+    excerpt:
+        "One real customer question can fill a week of social media content. A simple system that turns questions into posts, clips, emails and stories without daily brainstorming.",
+    tag: "Social Media",
+    date: "November 6, 2026",
+    time: "7:21 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/one-question-week-social-content.jpg",
+    imgAlt: "A notebook and laptop used to plan a week of social media posts",
+  },
+  {
   slug: "short-form-video-hooks-first-three-seconds",
   title: "Short Form Video Hooks: How to Hold Attention Past the First Three Seconds",
   excerpt:
