@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+  slug: "short-form-video-hooks-first-three-seconds",
+  title: "Short Form Video Hooks: How to Hold Attention Past the First Three Seconds",
+  excerpt:
+    "Most short videos lose viewers in the first three seconds. How to write hooks that state the result, the problem or the surprise, and keep viewers watching.",
+  tag: "Video Editing",
+  date: "November 6, 2026",
+  time: "4:57 pm",
+  author: "Asad Farooq",
+  img: "/blog/covers/short-form-video-hooks-first-three-seconds.jpg",
+  imgAlt: "A creator filming a short video on a smartphone with a ring light",
+  },
+  {
       slug: "lead-scoring-without-big-crm",
     title: "Lead Scoring Without a Big CRM: A Simple System for Small Sales Teams",
     excerpt:
