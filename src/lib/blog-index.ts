@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "custom-quote-calculator-service-websites",
+        title: "A Custom Quote Calculator for Service Websites: What to Build in Version One",
+        excerpt:
+                "A quote calculator turns vague price enquiries into qualified leads. What to build in version one, what to leave out of version one, and how to keep quotes honest.",
+        tag: "Custom Platforms",
+        date: "November 6, 2026",
+        time: "12:33 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/custom-quote-calculator-service-websites.jpg",
+        imgAlt: "A small business owner reviewing a price quote on a laptop",
+  },
+  {
 slug: "selling-peru-website-latin-american-buyers",
     title: "Selling to Customers in Peru: What Your Website Must Get Right for Latin American Buyers",
     excerpt:
