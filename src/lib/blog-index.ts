@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "selling-dubai-qatar-website-gulf-buyers",
+        title: "Selling to Customers in Dubai and Qatar: What Your Website Must Get Right for Gulf Buyers",
+        excerpt:
+              "Buyers in Dubai and Qatar check trust, payment, delivery, and support before they enquire. What your website must show clearly to win customers in the Gulf.",
+        tag: "Web Development",
+        date: "November 7, 2026",
+        time: "7:36 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/selling-dubai-qatar-website-gulf-buyers.jpg",
+        imgAlt: "The Dubai skyline at dusk with modern towers",
+  },
+  {
     slug: "ai-lead-qualification-before-first-call",
     title: "AI Lead Qualification: What to Automate Before the First Human Call",
     excerpt:
