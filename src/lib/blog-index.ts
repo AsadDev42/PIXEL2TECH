@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "ai-lead-qualification-before-first-call",
+    title: "AI Lead Qualification: What to Automate Before the First Human Call",
+    excerpt:
+            "AI can qualify leads before your team picks up the phone, if you automate the right questions. What to ask, what to score, and where a human must step in.",
+        tag: "AI Solutions",
+        date: "November 7, 2026",
+        time: "5:08 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/ai-lead-qualification-before-first-call.jpg",
+        imgAlt: "A sales dashboard showing qualified leads sorted by score",
+  },
+  {
         slug: "get-cited-ai-search-service-websites",
         title: "How to Get Cited by AI Search: A Practical Guide for Service Websites",
         excerpt:
