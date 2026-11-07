@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "get-cited-ai-search-service-websites",
+        title: "How to Get Cited by AI Search: A Practical Guide for Service Websites",
+        excerpt:
+                "Buyers now ask AI search for answers before they visit a website. How to write service pages that AI Overviews, ChatGPT, and Perplexity can find, understand, and cite.",
+        tag: "SEO",
+        date: "November 7, 2026",
+        time: "2:52 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/get-cited-ai-search-service-websites.jpg",
+        imgAlt: "A laptop showing an AI search answer citing a service website",
+  },
+    {
     slug: "woocommerce-vs-shopify-service-businesses",
     title: "WooCommerce vs Shopify for Service Businesses: Which One Fits Your Sales Process",
     excerpt:
