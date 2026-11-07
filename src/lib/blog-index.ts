@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "woocommerce-vs-shopify-service-businesses",
+    title: "WooCommerce vs Shopify for Service Businesses: Which One Fits Your Sales Process",
+    excerpt:
+      "WooCommerce and Shopify both sell, but they fit different service businesses. Compare control, cost, maintenance, and the sales process each one supports.",
+    tag: "Shopify",
+    date: "November 7, 2026",
+    time: "12:19 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/woocommerce-vs-shopify-service-businesses.jpg",
+    imgAlt: "A service business owner comparing two online store dashboards",
+  },
+  {
     slug: "logo-refresh-checklist-keep-change-test",
     title: "A Logo Refresh Checklist: What to Keep, What to Change, and What to Test First",
     excerpt:
