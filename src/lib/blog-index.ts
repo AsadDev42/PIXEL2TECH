@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "logo-refresh-checklist-keep-change-test",
+    title: "A Logo Refresh Checklist: What to Keep, What to Change, and What to Test First",
+    excerpt:
+      "A logo refresh should sharpen recognition, not erase it. What to keep, what to change, and what to test before the new logo goes live.",
+    tag: "Branding",
+    date: "November 7, 2026",
+    time: "10:47 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/logo-refresh-checklist-keep-change-test.jpg",
+    imgAlt: "A designer reviewing a refreshed logo on a laptop screen",
+  },
+  {
     slug: "one-question-week-social-content",
     title: "One Customer Question, a Week of Content: A Simple Social Media System for Service Businesses",
     excerpt:
