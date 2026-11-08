@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "monthly-email-newsletter-service-businesses",
+        title: "A Monthly Email Newsletter Service Businesses Can Actually Keep Up With",
+        excerpt:
+                "A monthly email newsletter works when it is simple enough to sustain. A practical plan for service businesses that keeps every issue useful and on time.",
+        tag: "Email Marketing",
+        date: "November 8, 2026",
+        time: "4:57 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/monthly-email-newsletter-service-businesses.jpg",
+        imgAlt: "A person writing a newsletter on a laptop at a desk",
+  },
+  {
         slug: "subtitles-captions-ads-watch-time",
         title: "Subtitles and Captions for Ads: A Practical Guide That Lifts Watch Time",
         excerpt:
