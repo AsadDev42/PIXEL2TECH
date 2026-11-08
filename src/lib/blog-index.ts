@@ -32,7 +32,19 @@ import {
  */
 const POSTS = [
   {
-        slug: "monthly-email-newsletter-service-businesses",
+        slug: "selling-new-jersey-website",
+    title: "Selling to Customers in New Jersey: What Your Website Must Get Right",
+    excerpt:
+      "New Jersey buyers check trust, delivery, and support before they enquire. What your website must get right to win customers in New Jersey.",
+    tag: "Web Development",
+    date: "November 8, 2026",
+    time: "7:21 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-new-jersey-website.jpg",
+    imgAlt: "A New Jersey main street with small shops at dusk",
+  },
+  {
+    slug: "monthly-email-newsletter-service-businesses",
         title: "A Monthly Email Newsletter Service Businesses Can Actually Keep Up With",
         excerpt:
                 "A monthly email newsletter works when it is simple enough to sustain. A practical plan for service businesses that keeps every issue useful and on time.",
