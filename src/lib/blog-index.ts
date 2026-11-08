@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "internal-tools-team-actually-use",
+    title: "Internal Tools Your Team Will Actually Use: A Practical Build Guide",
+        excerpt:
+                "Internal tools fail when they ignore daily work. A practical build guide for building internal tools your team will actually use, from the first workflow to launch.",
+        tag: "Custom Platforms",
+        date: "November 8, 2026",
+        time: "10:41 am",
+        author: "Asad Farooq",
+        img: "/blog/covers/internal-tools-team-actually-use.jpg",
+        imgAlt: "A small team working around a laptop showing a dashboard",
+  },
+    {
         slug: "selling-dubai-qatar-website-gulf-buyers",
         title: "Selling to Customers in Dubai and Qatar: What Your Website Must Get Right for Gulf Buyers",
         excerpt:
