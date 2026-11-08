@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "subtitles-captions-ads-watch-time",
+        title: "Subtitles and Captions for Ads: A Practical Guide That Lifts Watch Time",
+        excerpt:
+                "Many viewers watch ads with the sound off. A practical guide to subtitles and captions for ads that keeps the message clear and holds attention longer.",
+        tag: "Video Editing",
+        date: "November 8, 2026",
+        time: "2:49 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/subtitles-captions-ads-watch-time.jpg",
+        imgAlt: "A video editor checking captions on a monitor timeline",
+  },
+    {
     slug: "automate-handover-sales-to-delivery",
     title: "Automating the Handover From Sales to Delivery: A Workflow That Stops Dropped Work",
     excerpt:
