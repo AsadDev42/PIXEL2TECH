@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "automate-handover-sales-to-delivery",
+    title: "Automating the Handover From Sales to Delivery: A Workflow That Stops Dropped Work",
+    excerpt:
+        "A handover from sales to delivery fails when details stay in one person's head. An automated workflow that carries every promise, file, and deadline across.",
+    tag: "Automation",
+    date: "November 8, 2026",
+    time: "12:33 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/automate-handover-sales-to-delivery.jpg",
+    imgAlt: "One colleague handing a folder to another in an office",
+  },
+  {
         slug: "internal-tools-team-actually-use",
     title: "Internal Tools Your Team Will Actually Use: A Practical Build Guide",
         excerpt:
