@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "how-to-name-service-business-memorable",
+    title: "How to Name a Service Business So Customers Remember It",
+    excerpt:
+      "A memorable service business name is short, easy to say on the phone, and easy to find online. A practical naming guide for service businesses, from the first shortlist to the final check.",
+    tag: "Branding",
+    date: "November 9, 2026",
+    time: "10:44 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/how-to-name-service-business-memorable.jpg",
+    imgAlt: "A person brainstorming business name ideas on a whiteboard",
+  },
+  {
         slug: "selling-new-jersey-website",
     title: "Selling to Customers in New Jersey: What Your Website Must Get Right",
     excerpt:
