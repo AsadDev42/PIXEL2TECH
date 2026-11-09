@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "google-business-profile-posts-local-enquiries",
+        title: "Google Business Profile Posts That Bring Local Enquiries: A Weekly Routine",
+        excerpt:
+                "Google Business Profile posts put your service in front of nearby customers who are already searching. A weekly posting routine for service businesses, with four post types that work.",
+        tag: "SEO",
+        date: "November 9, 2026",
+        time: "2:57 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/google-business-profile-posts-local-enquiries.jpg",
+        imgAlt: "A smartphone showing a Google Business Profile listing",
+  },
+  {
         slug: "speed-up-slow-wordpress-site-checklist",
         title: "Speed Up a Slow WordPress Site: A Practical Checklist for Business Owners",
         excerpt:
