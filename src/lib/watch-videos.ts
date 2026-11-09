@@ -1,7 +1,24 @@
 import { ALL_ITEMS, absoluteImageUrl, type PortfolioVideo } from "@/lib/portfolio-data";
+import { getProjectCopy } from "@/lib/portfolio-copy";
 import { PROJECT_VIDEOS } from "@/lib/project-videos";
 import { SITE } from "@/lib/site-config";
+import DURATIONS from "@/lib/video-durations.json";
 import { videoId } from "@/lib/video-sharing";
+
+/** Real lengths of self-hosted files, from scripts/video-durations.mjs. */
+const SECONDS: Record<string, number> = DURATIONS;
+
+/** ISO 8601 duration for VideoObject, e.g. 95 -> "PT1M35S". */
+export function isoDuration(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `PT${m ? `${m}M` : ""}${s || !m ? `${s}S` : ""}`;
+}
+
+/** Human length for the page, e.g. 95 -> "1:35". */
+export function clockDuration(seconds: number): string {
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
 
 // First public collection commits in this repository, rather than request-time dates.
 const FIRST_PUBLISHED: Record<string, string> = {
@@ -23,6 +40,11 @@ export type WatchVideo = PortfolioVideo & {
   description: string;
   thumbnail: string;
   uploadDate: string;
+  /** Length in seconds, when the file is self-hosted and was measured. */
+  seconds?: number;
+  /** 1-based position and size of its collection, for "Video 3 of 12". */
+  position: number;
+  total: number;
 };
 
 type SourceVideo = Omit<PortfolioVideo, "poster"> & { poster?: string; uploadDate?: string };
@@ -37,24 +59,31 @@ export const WATCH_VIDEOS: WatchVideo[] = ALL_ITEMS.flatMap((item) => {
     })),
   ];
   const seen = new Set<string>();
-  return videos.flatMap((video) => {
+  const unique = videos.filter((video) => {
     const id = videoId(video);
-    if (seen.has(id)) return [];
+    if (seen.has(id)) return false;
     seen.add(id);
-    const thumbnail = absoluteImageUrl(video.poster || item.img);
-    return [
-      {
-        ...video,
-        id,
-        path: `/watch/${item.slug}/${id}`,
-        poster: video.poster || item.img,
-        collectionSlug: item.slug,
-        collectionTitle: item.title,
-        description: `${video.title}. Video work from ${item.title} by ${SITE.name}.`,
-        thumbnail,
-        uploadDate: video.uploadDate || FIRST_PUBLISHED[item.slug] || "2026-10-11T19:33:28Z",
-      },
-    ];
+    return true;
+  });
+  const summary = getProjectCopy(item).summary;
+  return unique.map((video, index) => {
+    const id = videoId(video);
+    const seconds = video.embed ? undefined : SECONDS[video.src];
+    const shape = video.orientation === "vertical" ? "Vertical (9:16)" : "Horizontal (16:9)";
+    return {
+      ...video,
+      id,
+      path: `/watch/${item.slug}/${id}`,
+      poster: video.poster || item.img,
+      collectionSlug: item.slug,
+      collectionTitle: item.title,
+      description: `${video.title}: ${shape.toLowerCase()} video ${index + 1} of ${unique.length} from ${item.title}, edited by ${SITE.name}. ${summary}`,
+      thumbnail: absoluteImageUrl(video.poster || item.img),
+      uploadDate: video.uploadDate || FIRST_PUBLISHED[item.slug] || "2026-10-11T19:33:28Z",
+      seconds,
+      position: index + 1,
+      total: unique.length,
+    };
   });
 });
 
@@ -72,6 +101,7 @@ export function videoSchema(video: WatchVideo) {
     description: video.description,
     thumbnailUrl: [video.thumbnail],
     uploadDate: video.uploadDate,
+    ...(video.seconds ? { duration: isoDuration(video.seconds) } : {}),
     url: `${SITE.url}${video.path}`,
     ...(video.embed ? { embedUrl: video.embed } : { contentUrl: absoluteImageUrl(video.src) }),
     publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },

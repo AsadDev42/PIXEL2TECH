@@ -138,6 +138,10 @@ const REDIRECT_MAP: Record<string, string> = {
   // --- Home / retired theme demo pages ---
   home: "/",
   career: "/careers",
+  // Crawlers pick up a stray "$" (from prices like "$4.6B" in llms.txt) as a
+  // relative link; send it home instead of letting it 404.
+  $: "/",
+  "%24": "/",
 
   // --- About / team ---
   "about-us": "/about",

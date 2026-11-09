@@ -24,20 +24,20 @@ export interface SitemapEntry {
  * use "now": a lastmod that changes on every request teaches Google to ignore it.
  */
 export const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-10-24",
-  "/about": "2026-08-02",
+  "/": "2026-11-04",
+  "/about": "2026-11-04",
   "/asad-farooq": "2026-08-08",
   "/saad": "2026-09-27",
   "/usama-farooq": "2026-08-08",
-  "/services": "2026-08-01",
+  "/services": "2026-11-04",
   "/portfolio": "2026-10-28",
-  "/contact": "2026-08-01",
+  "/contact": "2026-10-06",
   "/privacy-policy": PRIVACY_UPDATED.iso,
   "/terms-and-conditions": TERMS_UPDATED.iso,
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
-export const SERVICE_PAGES_LASTMOD = "2026-09-24";
+export const SERVICE_PAGES_LASTMOD = "2026-11-04";
 
 type Post = PostMeta;
 
@@ -81,23 +81,23 @@ export function pageEntries(): SitemapEntry[] {
         priority: "0.7",
         lastmod: latestLastmod(blogEntries()),
       },
-      { path: "/for-agencies", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.8" },
-      { path: "/industries", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.7" },
+      { path: "/for-agencies", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.8" },
+      { path: "/industries", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.7" },
       ...INDUSTRIES.map((industry) => ({
         path: `/industries/${industry.slug}`,
-        lastmod: "2026-10-24",
+        lastmod: "2026-11-04",
         changefreq: "monthly" as const,
         priority: "0.7",
       })),
-      { path: "/careers", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.5" },
+      { path: "/careers", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.5" },
       {
         path: "/resources/shopify-store-checklist",
-        lastmod: "2026-10-24",
+        lastmod: "2026-11-04",
         changefreq: "monthly",
         priority: "0.6",
       },
-      { path: "/results", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.8" },
-      { path: "/press", lastmod: "2026-10-24", changefreq: "monthly", priority: "0.5" },
+      { path: "/results", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.8" },
+      { path: "/press", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.5" },
       { path: "/contact", changefreq: "yearly", priority: "0.6" },
       { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
       { path: "/terms-and-conditions", changefreq: "yearly", priority: "0.3" },
@@ -124,7 +124,7 @@ export function portfolioEntries(): SitemapEntry[] {
     })),
     ...WATCH_VIDEOS.map((video) => ({
       path: video.path,
-      lastmod: "2026-10-28",
+      lastmod: "2026-11-09",
       changefreq: "monthly" as const,
       priority: "0.6",
       video,
@@ -194,6 +194,7 @@ export function buildUrlset(entries: SitemapEntry[], withImages = false): string
             e.video.embed
               ? `      <video:player_loc>${escapeXml(e.video.embed)}</video:player_loc>`
               : `      <video:content_loc>${escapeXml(absolute(e.video.src) ?? "")}</video:content_loc>`,
+            e.video.seconds ? `      <video:duration>${e.video.seconds}</video:duration>` : null,
             `      <video:publication_date>${escapeXml(e.video.uploadDate)}</video:publication_date>`,
             "    </video:video>",
           ]
