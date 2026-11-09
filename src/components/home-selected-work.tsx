@@ -32,8 +32,8 @@ const HOME_WORK = [
     slug: "short-form-social-media-videos",
     label: "Video Editing",
     description: "Short-form edits prepared for social content.",
-    image: "/portfolio/short-form-social-media-videos/5.jpg",
-    ratio: 720 / 1280,
+    image: "/portfolio/short-form-social-media-videos/home-cover.webp",
+    ratio: 1672 / 941,
   },
   {
     slug: "acely-website",
