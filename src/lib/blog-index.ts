@@ -40,7 +40,7 @@ const POSTS = [
     date: "November 9, 2026",
     time: "7:29 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/before-after-videos-sell-service-work.jpg",
+    img: "/blog/covers/before-after-videos-sell-service-work.jpg?v=3",
     imgAlt: "A video editor comparing before and after clips on a monitor",
   },
   {
