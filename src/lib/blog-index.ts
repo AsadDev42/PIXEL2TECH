@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "speed-up-slow-wordpress-site-checklist",
+        title: "Speed Up a Slow WordPress Site: A Practical Checklist for Business Owners",
+        excerpt:
+                "A slow WordPress site loses visitors before they read a word. A practical speed checklist for business owners, from measuring the problem to the fixes that matter most.",
+        tag: "WordPress",
+        date: "November 9, 2026",
+        time: "12:38 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/speed-up-slow-wordpress-site-checklist.jpg",
+        imgAlt: "A laptop showing a website loading with a stopwatch beside it",
+  },
+    {
     slug: "how-to-name-service-business-memorable",
     title: "How to Name a Service Business So Customers Remember It",
     excerpt:
