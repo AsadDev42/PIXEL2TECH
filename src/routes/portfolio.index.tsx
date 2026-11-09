@@ -106,6 +106,61 @@ const FILTERS: { label: string; slug?: CategorySlug; count: number }[] = [
   })),
 ];
 
+/**
+ * Every project as a plain text link, grouped by discipline. The "All work"
+ * view only shows featured websites, stores and social work, and the filtered
+ * views canonicalise to /portfolio, so without this list dozens of project
+ * pages had no link pointing at them.
+ */
+function ProjectIndex() {
+  return (
+    <section aria-labelledby="project-index-title" className="bg-background py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <h2
+          id="project-index-title"
+          className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+        >
+          Every project, by discipline
+        </h2>
+        <div className="mt-8 grid grid-flow-row-dense gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((category) => {
+            const items = ALL_ITEMS.filter((item) => item.category === category);
+            if (items.length === 0) return null;
+            // Long lists take the full width in several columns instead of one tall column.
+            const long = items.length > 20;
+            return (
+              <div key={category} className={long ? "sm:col-span-2 lg:col-span-3" : undefined}>
+                <h3 className="border-b border-border pb-2 text-sm font-semibold uppercase tracking-widest text-primary">
+                  {category} <span className="text-muted-foreground">({items.length})</span>
+                </h3>
+                <ul
+                  className={
+                    long
+                      ? "mt-3 columns-1 gap-x-8 sm:columns-2 lg:columns-4 [&>li]:mb-2"
+                      : "mt-3 space-y-2"
+                  }
+                >
+                  {items.map((item) => (
+                    <li key={item.slug}>
+                      <Link
+                        to="/portfolio/$slug"
+                        params={{ slug: item.slug }}
+                        className="text-sm text-muted-foreground hover:text-foreground"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const TRUST_STATS = [
   { value: STATS.projects, label: "Projects delivered" },
   { value: STATS.clients, label: "Clients" },
@@ -275,6 +330,8 @@ function PortfolioPage() {
           </ul>
         </div>
       </section>
+
+      {!active && <ProjectIndex />}
 
       {/* Numbers */}
       <section

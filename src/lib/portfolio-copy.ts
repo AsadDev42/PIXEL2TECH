@@ -61,7 +61,8 @@ export function pickFromBank<T>(arr: readonly T[], seed: number, offset = 0): T 
 const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   "jacques-international-social-media-post-designs": {
     metaTitle: "Jacques International social media post designs | Pixel2Tech",
-    metaDescription: "Social media post designs created for Jacques International.",
+    metaDescription:
+      "19 fashion-focused social media post designs for Jacques International, using product imagery and bold type to keep each promotion clear in the feed.",
     summary: "Fashion-focused social media post designs for Jacques International.",
     overview:
       "A collection of 19 social media post designs created for Jacques International, presented separately from the affiliate banner collection.",
@@ -119,7 +120,8 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   },
   "petal-paints-social-media-posts": {
     metaTitle: "Petal Paints social media post designs | Pixel2Tech",
-    metaDescription: "Social post designs for paints, coatings and construction chemicals.",
+    metaDescription:
+      "11 social media post designs for Petal Paints, pairing architectural imagery and product messages with Petal's red and blue identity.",
     summary: "Social post designs for paints, coatings and construction chemicals.",
     overview:
       "A collection of 11 social media post designs created for Petal Paints. Branded layouts pair architectural imagery and product messages with the red and blue Petal identity.",
@@ -141,7 +143,8 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   },
   "naveed-can-metal-works-social-media-posts": {
     metaTitle: "Naveed Can Metal Works social media post designs | Pixel2Tech",
-    metaDescription: "Social media post designs for tin packaging and metal works.",
+    metaDescription:
+      "12 social media post designs for Naveed Can Metal Works, using product imagery, bold red headlines and branded panels to present its tin packaging range.",
     summary: "Social media post designs for tin packaging and metal works.",
     overview:
       "A collection of 12 social media post designs created for Naveed Can Metal Works. Product imagery, bold red headlines and branded information panels introduce the business and its tin packaging range.",
@@ -479,7 +482,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
   "nayyer-carpets-creative-direction-mockups": {
-    metaTitle: "Nayyer Carpets creative direction and product visuals | Pixel2Tech",
+    metaTitle: "Nayyer Carpets creative direction and visuals | Pixel2Tech",
     metaDescription:
       "Creative direction, social media creatives and realistic carpet mockups for Nayyer Carpets, used across their website and social channels.",
     summary: "Creative direction, social media creative and product visuals for a carpet brand.",

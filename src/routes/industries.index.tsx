@@ -30,7 +30,7 @@ export const Route = createFileRoute("/industries/")({
     businessHead(
       "/industries",
       "Industries we support",
-      "Explore how Pixel2Tech connects branding, websites, campaign creative and automation for ecommerce, professional services, healthcare, food and local service businesses.",
+      "How Pixel2Tech brings branding, websites, creative and automation to ecommerce, professional services, healthcare, food and local service businesses.",
     ),
   component: IndustriesPage,
 });

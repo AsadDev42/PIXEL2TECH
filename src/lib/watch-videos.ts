@@ -1,6 +1,7 @@
 import { ALL_ITEMS, absoluteImageUrl, type PortfolioVideo } from "@/lib/portfolio-data";
 import { getProjectCopy } from "@/lib/portfolio-copy";
 import { PROJECT_VIDEOS } from "@/lib/project-videos";
+import { fitDescription, fitTitle } from "@/lib/seo-text";
 import { SITE } from "@/lib/site-config";
 import DURATIONS from "@/lib/video-durations.json";
 import { videoId } from "@/lib/video-sharing";
@@ -122,20 +123,21 @@ export function videoSchema(video: WatchVideo) {
 
 export function watchPageHead(video: WatchVideo) {
   const url = `${SITE.url}${video.path}`;
-  const title = `${video.title} | ${video.collectionTitle} | ${SITE.name}`;
+  const title = fitTitle([video.title, video.collectionTitle, SITE.name]);
+  const description = fitDescription(video.description);
   return {
     meta: [
       { title },
-      { name: "description", content: video.description },
+      { name: "description", content: description },
       { name: "robots", content: "index, follow, max-video-preview:-1" },
       { property: "og:title", content: title },
-      { property: "og:description", content: video.description },
+      { property: "og:description", content: description },
       { property: "og:url", content: url },
       { property: "og:type", content: "video.other" },
       { property: "og:image", content: video.thumbnail },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: video.description },
+      { name: "twitter:description", content: description },
       { name: "twitter:image", content: video.thumbnail },
     ],
     links: [{ rel: "canonical", href: url }],

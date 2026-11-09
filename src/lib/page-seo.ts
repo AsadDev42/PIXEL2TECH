@@ -1,6 +1,8 @@
 import { SITE } from "@/lib/site-config";
+import { fitDescription } from "@/lib/seo-text";
 
-export function businessHead(path: string, title: string, description: string) {
+export function businessHead(path: string, title: string, fullDescription: string) {
+  const description = fitDescription(fullDescription);
   const image = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
   return {
     meta: [

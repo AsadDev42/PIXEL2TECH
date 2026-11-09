@@ -11,7 +11,7 @@ const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b
 const PAGE_URL = `${SITE.url}/contact`;
 const TITLE = "Contact Pixel2Tech | Start a Project or Book a Call";
 const DESCRIPTION =
-  "Tell us about your branding, website, video or automation project. We reply within one business day, or book a free strategy call. Based in Lahore, working worldwide.";
+  "Tell us about your branding, website, video or automation project. We reply within one business day, or you can book a free strategy call.";
 
 const MAP_QUERY = encodeURIComponent(SITE.location);
 

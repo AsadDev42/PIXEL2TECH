@@ -3,6 +3,7 @@ import { DesignProjectCard } from "@/components/design-project-card";
 import { MediaImage } from "@/components/media-image";
 import { Suspense, useState } from "react";
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { fitDescription } from "@/lib/seo-text";
 import {
   ArrowLeft,
   ArrowRight,
@@ -122,7 +123,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
     const copy = getProjectCopy(item);
     const detail = getProjectDetail(item);
     const title = copy.metaTitle ?? `${item.title} — ${item.subcategory} case study | Pixel2Tech`;
-    const desc = copy.metaDescription;
+    const desc = fitDescription(copy.metaDescription);
     const url = `${SITE.url}/portfolio/${item.slug}`;
     const image = absoluteImageUrl(item.img);
     const imageAlt = `${item.title}, a Pixel2Tech ${item.subcategory.toLowerCase()} project`;

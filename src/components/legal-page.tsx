@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { FadeIn } from "@/components/motion";
 import { SITE } from "@/lib/site-config";
+import { fitDescription } from "@/lib/seo-text";
 
 /**
  * One block inside a legal section:
@@ -42,6 +43,7 @@ export function legalPageHead({
 }) {
   const title = `${name} | ${SITE.name}`;
   const url = `${SITE.url}${path}`;
+  description = fitDescription(description);
   return {
     meta: [
       { title },

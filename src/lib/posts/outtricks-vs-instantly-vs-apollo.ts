@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
   h1: "Outtricks vs Instantly vs Apollo: The Ultimate 2026 Comparison",
-  metaTitle: "Outtricks vs Instantly vs Apollo: 2026 Outbound Platform Comparison",
+  metaTitle: "Outtricks vs Instantly vs Apollo (2026 Comparison)",
   metaDescription:
     "Deep dive comparison of Outtricks, Instantly, and Apollo. Learn which B2B sales platform offers the best lead data, deliverability, and ROI for your 2026 outreach strategy.",
   ogTitle: "Outtricks vs Instantly vs Apollo: Which One Wins in 2026?",

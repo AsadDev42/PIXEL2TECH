@@ -1,4 +1,5 @@
 import { countWords, getReadingMinutes, postTimestamps, type BlogPost } from "@/lib/blog-types";
+import { fitDescription } from "@/lib/seo-text";
 import { SITE } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
 
@@ -30,17 +31,7 @@ function pageTitle(post: BlogPost): string {
  * excerpt, trimmed to whole sentences that fit. No "…" and no cut words.
  */
 function pageDescription(post: BlogPost): string {
-  const authored = post.metaDescription?.trim();
-  if (authored) return authored;
-  const text = post.excerpt.replace(/\s+/g, " ").trim();
-  if (text.length <= DESCRIPTION_MAX) return text;
-  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text];
-  let out = "";
-  for (const s of sentences) {
-    if ((out + s).trim().length > DESCRIPTION_MAX) break;
-    out += s;
-  }
-  return (out || sentences[0]).trim();
+  return fitDescription(post.metaDescription?.trim() || post.excerpt, DESCRIPTION_MAX);
 }
 
 const STOP = new Set(
