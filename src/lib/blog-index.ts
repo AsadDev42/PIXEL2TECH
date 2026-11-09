@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "before-after-videos-sell-service-work",
+    title: "Before and After Videos: A Simple Format That Sells Service Work",
+    excerpt:
+        "A before and after video shows the result of service work in seconds, with proof no paragraph can match. A practical guide to filming the pair honestly and using it everywhere.",
+    tag: "Video Editing",
+    date: "November 9, 2026",
+    time: "7:29 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/before-after-videos-sell-service-work.jpg",
+    imgAlt: "A video editor comparing before and after clips on a monitor",
+  },
+  {
       slug: "ai-quoting-proposals-faster-estimates",
     title: "AI for Quoting and Proposals: Faster Estimates Without Losing the Human Check",
     excerpt:
