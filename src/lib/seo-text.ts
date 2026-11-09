@@ -10,13 +10,15 @@ export const DESCRIPTION_MAX = 160;
 export function fitDescription(text: string, max = DESCRIPTION_MAX): string {
   const clean = text.replace(/\s+/g, " ").trim();
   if (clean.length <= max) return clean;
-  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [clean];
+  // A sentence ends at . ! or ? followed by a space, so "pixel2tech.com" is not a break.
+  const sentences = clean.split(/(?<=[.!?])\s+/);
   let out = "";
   for (const s of sentences) {
-    if ((out + s).trim().length > max) break;
-    out += s;
+    const next = out ? `${out} ${s}` : s;
+    if (next.length > max) break;
+    out = next;
   }
-  return (out || sentences[0]!).trim();
+  return out || sentences[0]!;
 }
 
 /** Join title parts with " | ", dropping middle parts until it fits. */

@@ -9,7 +9,7 @@ const post: PostBody = {
   h1: "Your Digital Product Is More Than Software. It’s a Business System.",
   metaTitle: "Digital Product Strategy: Beyond Software to Business Systems | Pixel2Tech",
   metaDescription:
-    "Learn why your digital product is more than just software. Discover how to build business systems that solve problems, remove friction, and drive growth through technology strategy.",
+    "Your digital product is more than software. How to build systems that solve a real business problem, remove friction and support growth.",
   ogTitle: "Your Digital Product Is More Than Software. It’s a Business System.",
   ogDescription:
     "Technology is not the starting point—business problems are. Learn how to build digital products that function as powerful business systems.",

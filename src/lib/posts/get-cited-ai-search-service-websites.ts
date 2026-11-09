@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "How to Get Cited by AI Search: A Practical Guide for Service Websites",
   metaTitle: "How to Get Cited by AI Search: Service Websites",
-  metaDescription: "Buyers now ask AI search for answers before they visit a website. How to write service pages that AI Overviews, ChatGPT, and Perplexity can find, understand, and cite.",
+  metaDescription: "Buyers now ask AI search before they visit a website. How to write service pages that AI Overviews, ChatGPT and Perplexity can find and cite.",
   ogTitle: "How to Get Cited by AI Search: A Practical Guide for Service Websites",
   ogDescription: "Buyers now ask AI search for answers before they visit a website. How to write service pages that AI Overviews, ChatGPT, and Perplexity can find, understand, and cite.",
   keywords: [

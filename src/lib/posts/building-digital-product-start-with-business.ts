@@ -9,7 +9,7 @@ const post: PostBody = {
   h1: "Building a Digital Product? Start With the Business, Not the Technology",
   metaTitle: "Building Digital Products: Business-First Technology Strategy | Pixel2Tech",
   metaDescription:
-    "Don't build technology for technology's sake. Learn how to focus on business outcomes, reduce friction, and build scalable digital products that solve real problems.",
+    "Most founders start with a business problem, not a technology one. Why good digital products are built around outcomes and less friction, not features.",
   ogTitle: "Building a Digital Product? Start With the Business, Not the Technology",
   ogDescription:
     "Start with the business problem, not the code. Learn the framework for building products that create real measurable value.",

@@ -433,7 +433,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   "madluvv-social-media-meta-ads": {
     metaTitle: "MADLUVV social media, Meta ads and Shopify work | Pixel2Tech",
     metaDescription:
-      "How Pixel2Tech ran social media and Meta ad creative for MADLUVV, the brand behind the Brow Stamp Kit, and improved its Shopify product pages, schema and mobile speed.",
+      "How Pixel2Tech ran social media and Meta ad creative for MADLUVV, maker of the Brow Stamp Kit, and improved its Shopify product pages and mobile speed.",
     summary: "Social media, Meta ad creative and Shopify improvements for a brow and beauty brand.",
     overview:
       "MADLUVV sells brow and beauty products, including its Brow Stamp Kit. We ran their social media on Instagram, Facebook, TikTok and LinkedIn, produced the creative for their Meta ads, and worked on their Shopify store.",
@@ -458,7 +458,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   "affinity-law-social-media-ad-creatives": {
     metaTitle: "Affinity Law social media and ad creatives | Pixel2Tech",
     metaDescription:
-      "Social media management and campaign creative for Affinity Law, a personal injury firm in Toronto and the GTA: posts, static ad creatives and creative support for Meta, AppLovin and Google Ads.",
+      "Social media management and ad creative for Affinity Law, a Toronto personal injury firm: posts, static ads and creative for Meta, AppLovin and Google Ads.",
     summary:
       "Social media management and ad creative for a Toronto and GTA personal injury law firm.",
     overview:
@@ -534,7 +534,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   "book-cover-design-portfolio": {
     metaTitle: "Book cover design portfolio | Pixel2Tech",
     metaDescription:
-      "Book covers by Pixel2Tech for finance, business and self-help titles, including How to Start Your Own Private Bank, Wealth Without Wall Street, Inflation Nation and Tax Sale Secrets.",
+      "Book covers by Pixel2Tech for finance, business and self-help titles, including How to Start Your Own Private Bank and Wealth Without Wall Street.",
     summary:
       "Cover art, typography and realistic mockups for finance, business and self-help books.",
     overview:

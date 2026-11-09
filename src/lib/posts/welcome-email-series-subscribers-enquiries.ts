@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
   metaTitle: "Welcome Emails That Turn Subscribers Into Enquiries",
-  metaDescription: "A welcome email series turns a new subscriber into a real enquiry. A practical four email plan for service businesses, with timing, topics and one clear next step per email.",
+  metaDescription: "A welcome email series turns a new subscriber into an enquiry. A four-email plan for service businesses, with timing, topics and one next step each.",
   ogTitle: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
   ogDescription: "A welcome email series turns a new subscriber into a real enquiry. A practical four email plan for service businesses, with timing, topics and one clear next step per email.",
   keywords: [

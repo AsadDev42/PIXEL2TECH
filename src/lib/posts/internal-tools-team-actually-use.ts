@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Internal Tools Your Team Will Actually Use: A Practical Build Guide",
   metaTitle: "Internal Tools Your Team Will Actually Use",
-  metaDescription: "Internal tools fail when they ignore daily work. A practical build guide for building internal tools your team will actually use, from the first workflow to launch.",
+  metaDescription: "Internal tools fail when they ignore daily work. A practical guide to building tools your team will actually use, from the first workflow to launch.",
   ogTitle: "Internal Tools Your Team Will Actually Use: A Practical Build Guide",
   ogDescription: "Internal tools fail when they ignore daily work. A practical build guide for building internal tools your team will actually use, from the first workflow to launch.",
   keywords: [

@@ -11,7 +11,7 @@ import {
 import { PRIVACY_UPDATED } from "@/lib/legal-dates";
 import { SITE } from "@/lib/site-config";
 
-const DESCRIPTION = `How ${SITE.name} collects, uses, shares and protects personal information, which cookies and analytics tools pixel2tech.com uses, and how to exercise your privacy rights.`;
+const DESCRIPTION = `How ${SITE.name} collects, uses and protects personal information, which cookies and analytics pixel2tech.com uses, and how to use your privacy rights.`;
 const UPDATED = PRIVACY_UPDATED.label;
 const UPDATED_ISO = PRIVACY_UPDATED.iso;
 

@@ -8,7 +8,7 @@ const post: PostBody = {
   h1: "How AI and Automation Are Reshaping Business Operations",
   metaTitle: "How AI and Automation Are Reshaping Business Operations | Pixel2Tech",
   metaDescription:
-    "Discover how AI and automation are transforming business operations, improving efficiency, reducing repetitive work, streamlining workflows, and helping companies scale.",
+    "How AI and automation reduce repetitive work, improve decisions, streamline workflows and help businesses build operations that scale.",
   ogTitle: "How AI and Automation Are Reshaping Business Operations",
   ogDescription:
     "Discover how AI and automation are transforming business operations, improving efficiency, reducing repetitive work, streamlining workflows, and helping companies scale.",

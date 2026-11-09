@@ -4,7 +4,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
   metaTitle: "Weekly Social Media Routine for Service Businesses",
-  metaDescription: "Daily posting burns out most service businesses. A weekly routine built on one planning block, three useful post types and a short review keeps social media consistent without taking over the week.",
+  metaDescription: "Daily posting burns out most service businesses. A weekly routine with one planning block, three post types and a short review keeps you consistent.",
   ogTitle: "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
   ogDescription: "Daily posting burns out most service businesses. A weekly routine built on one planning block, three useful post types and a short review keeps social media consistent without taking over the week.",
   keywords: [

@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
   metaTitle: "Email List Growth Without Discounts",
-  metaDescription: "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
+  metaDescription: "Service businesses don't need discounts to grow an email list. A useful checklist, calculator or guide, offered at the right moment, works better.",
   ogTitle: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
   ogDescription: "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
   keywords: ["email list growth", "lead magnets", "service businesses", "email marketing", "email follow-up sequence"],

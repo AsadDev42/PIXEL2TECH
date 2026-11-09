@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Speed Up a Slow WordPress Site: A Practical Checklist for Business Owners",
   metaTitle: "Speed Up a Slow WordPress Site: A Practical Checklist",
-  metaDescription: "A slow WordPress site loses visitors before they read a word. A practical speed checklist for business owners, from measuring the problem to the fixes that matter most.",
+  metaDescription: "A slow WordPress site loses visitors before they read a word. This checklist shows owners how to measure the problem and which fixes matter most.",
   ogTitle: "Speed Up a Slow WordPress Site: A Practical Checklist for Business Owners",
   ogDescription: "A slow WordPress site loses visitors before they read a word. A practical speed checklist for business owners, from measuring the problem to the fixes that matter most.",
   keywords: [

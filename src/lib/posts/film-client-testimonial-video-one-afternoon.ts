@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "How to Film a Client Testimonial Video in One Afternoon",
   metaTitle: "How to Film a Client Testimonial Video in One Afternoon",
-  metaDescription: "A practical plan for filming a client testimonial video in one afternoon: the questions to ask, the setup to keep simple, and the edits that turn one interview into useful clips.",
+  metaDescription: "How to film a client testimonial video in one afternoon: the questions to ask, a simple setup, and the edits that turn one interview into clips.",
   ogTitle: "How to Film a Client Testimonial Video in One Afternoon",
   ogDescription: "A practical plan for filming a client testimonial video in one afternoon: the questions to ask, the setup to keep simple, and the edits that turn one interview into useful clips.",
   keywords: ["client testimonial video", "how to film a testimonial video", "testimonial video questions", "video editing services", "Pixel2Tech"],

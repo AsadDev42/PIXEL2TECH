@@ -11,7 +11,7 @@ const post: PostBody = {
   h1: "Why Verified Wholesale Sourcing Beats Auctions and Liquidation Marketplaces",
   metaTitle: "Verified Wholesale Sourcing vs Auctions & Liquidation",
   metaDescription:
-    "Why verified wholesale sourcing outperforms auctions and liquidation marketplaces: verified suppliers, escrow payments, managed logistics, and fixed wholesale pricing.",
+    "Why verified wholesale sourcing protects margins better than auctions and liquidation: verified suppliers, escrow payments, managed logistics, fixed prices.",
   ogTitle: "Why Verified Wholesale Sourcing Beats Auctions and Liquidation Marketplaces",
   ogDescription:
     "Verified suppliers, escrow protection, managed freight, and predictable landed cost — a safer sourcing model for retailers, Amazon sellers, wholesalers, and manufacturers.",

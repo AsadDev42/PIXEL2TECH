@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "One Customer Question, a Week of Content: A Simple Social Media System for Service Businesses",
   metaTitle: "One Question, a Week of Social Media Content",
-  metaDescription: "One real customer question can fill a week of social media content. A simple system that turns questions into posts, clips, emails and stories without daily brainstorming.",
+  metaDescription: "One real customer question can fill a week of social content. A simple system for turning questions into posts, clips, emails and stories.",
   ogTitle: "One Customer Question, a Week of Content: A Simple Social Media System for Service Businesses",
   ogDescription: "One real customer question can fill a week of social media content. A simple system that turns questions into posts, clips, emails and stories without daily brainstorming.",
   keywords: [

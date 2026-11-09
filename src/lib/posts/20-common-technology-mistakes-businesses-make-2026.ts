@@ -10,7 +10,7 @@ const post: PostBody = {
   h1: "20 Most Common Technology Mistakes Businesses Make in 2026",
   metaTitle: "20 Common Technology Mistakes Businesses Make in 2026 | Pixel2Tech",
   metaDescription:
-    "Avoid these 20 common technology mistakes in 2026. Learn how to simplify your tech stack, implement AI effectively, and build systems that drive real business impact.",
+    "Twenty technology mistakes businesses make in 2026, and how to simplify your tools, use AI where it helps and build systems with real business impact.",
   ogTitle: "20 Most Common Technology Mistakes Businesses Make in 2026",
   ogDescription:
     "Is your technology creating more work than it removes? Avoid these 20 common mistakes and learn how to build a smarter, simpler business system.",
