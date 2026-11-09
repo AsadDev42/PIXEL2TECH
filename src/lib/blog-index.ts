@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+      slug: "ai-quoting-proposals-faster-estimates",
+    title: "AI for Quoting and Proposals: Faster Estimates Without Losing the Human Check",
+    excerpt:
+        "AI can draft quotes and proposals in minutes, but a wrong price or a missed scope item costs more than the time saved. A practical setup for faster estimates with a human check before anything goes out.",
+tag: "AI Solutions",
+    date: "November 9, 2026",
+    time: "5:12 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-quoting-proposals-faster-estimates.jpg",
+    imgAlt: "A person reviewing an AI drafted quote on a laptop",
+  },
+  {
         slug: "google-business-profile-posts-local-enquiries",
         title: "Google Business Profile Posts That Bring Local Enquiries: A Weekly Routine",
         excerpt:
