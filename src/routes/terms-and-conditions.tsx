@@ -10,7 +10,7 @@ import {
 import { TERMS_UPDATED } from "@/lib/legal-dates";
 import { SERVICES, SITE } from "@/lib/site-config";
 
-const DESCRIPTION = `The terms that apply when you use pixel2tech.com or hire ${SITE.name} for branding, websites, apps, automation, AI, SEO, social media or video work, including payment, ownership and liability.`;
+const DESCRIPTION = `The terms that apply when you use pixel2tech.com or hire ${SITE.name} for design, web, automation or video work, including payment, ownership and liability.`;
 const UPDATED = TERMS_UPDATED.label;
 const UPDATED_ISO = TERMS_UPDATED.iso;
 
