@@ -18,5 +18,12 @@
     "short-form-social-media-videos": 10,
     "long-form-video-and-podcast-production": 9,
     "animated-explainer-videos": 9
+  },
+  "cdn": {
+    "baseUrl": "https://cdn.jsdelivr.net/gh/AsadDev42/PIXEL2TECH@9915cb26aed49c090c4c0fed8c27f0898d36ee74/public/portfolio",
+    "collections": {
+      "cash-cow-youtube-videos": 17,
+      "vip-talking-head-videos": 10
+    }
   }
 }

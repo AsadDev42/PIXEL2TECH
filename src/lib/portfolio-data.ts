@@ -113,7 +113,9 @@ function numberedVideos(
         ? `/portfolio/${slug}/stream/${localFiles[slug][n - 1]}.mp4`
         : Object.hasOwn(videoHost.collections, slug)
           ? `${videoHost.baseUrl}/${slug}-${n}.mp4`
-          : `/portfolio/${slug}/${n}.mp4`,
+          : Object.hasOwn(videoHost.cdn.collections, slug)
+            ? `${videoHost.cdn.baseUrl}/${slug}/${n}.mp4`
+            : `/portfolio/${slug}/${n}.mp4`,
       poster: `/portfolio/${slug}/${n}.jpg`,
       preview: `/portfolio/previews/${slug}/${n}.mp4`,
       title:

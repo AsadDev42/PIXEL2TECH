@@ -5,8 +5,20 @@ import { SITE } from "@/lib/site-config";
 import DURATIONS from "@/lib/video-durations.json";
 import { videoId } from "@/lib/video-sharing";
 
-/** Real lengths of self-hosted files, from scripts/video-durations.mjs. */
+/** Real lengths of the repo's video files, from scripts/video-durations.mjs. */
 const SECONDS: Record<string, number> = DURATIONS;
+
+/**
+ * The repo path a video was measured at. Videos served from jsDelivr or a
+ * GitHub release keep their source copy at /portfolio/<slug>/<n>.mp4.
+ */
+function measuredPath(src: string): string {
+  const cdn = /\/public(\/portfolio\/[a-z0-9-]+\/\d+\.mp4)$/.exec(src);
+  if (cdn) return cdn[1]!;
+  const release = /\/releases\/download\/[^/]+\/([a-z0-9-]+)-(\d+)\.mp4$/.exec(src);
+  if (release) return `/portfolio/${release[1]}/${release[2]}.mp4`;
+  return src;
+}
 
 /** ISO 8601 duration for VideoObject, e.g. 95 -> "PT1M35S". */
 export function isoDuration(seconds: number): string {
@@ -68,7 +80,7 @@ export const WATCH_VIDEOS: WatchVideo[] = ALL_ITEMS.flatMap((item) => {
   const summary = getProjectCopy(item).summary;
   return unique.map((video, index) => {
     const id = videoId(video);
-    const seconds = video.embed ? undefined : SECONDS[video.src];
+    const seconds = video.embed ? undefined : SECONDS[measuredPath(video.src)];
     const shape = video.orientation === "vertical" ? "Vertical (9:16)" : "Horizontal (16:9)";
     return {
       ...video,
