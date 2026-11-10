@@ -108,9 +108,9 @@ export const PRICING_POINTS: { title: string; desc: string }[] = [
 
 const COPY: Record<ServiceTitle, ServicePageCopy> = {
   "Branding & Design": {
-    metaTitle: "Branding & Design Agency for US Startups | Pixel2Tech",
+    metaTitle: "Branding Agency for Startups & Small Business | Pixel2Tech",
     metaDescription:
-      "A branding and design agency for US startups: logo, color palette, typography and brand guidelines, designed in-house and fixed-quoted after a free call.",
+      "A branding agency for US startups and small businesses: logo, colors, typography and brand guidelines, designed in-house. Fixed quote after a free call.",
     serviceType: "Brand identity design",
     h1: "Branding and design agency",
     h1Highlight: "for US startups and small businesses",
@@ -925,12 +925,12 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Video Editing & Ads": {
-    metaTitle: "Video Editing Agency for US Brands | Pixel2Tech",
+    metaTitle: "Video Editing Services for US Brands & Agencies | Pixel2Tech",
     metaDescription:
-      "A video editing agency for US brands: reels, brand videos, YouTube edits and ad creative, edited in-house for each platform. Fixed quote after a free call.",
+      "Video editing services for US brands and agencies: reels, YouTube videos, brand videos and ad creative, edited in-house. Fixed quote after a free call.",
     serviceType: "Video editing and video ad production",
-    h1: "Video editing agency",
-    h1Highlight: "for US brands",
+    h1: "Video editing services",
+    h1Highlight: "for US brands and agencies",
     answer:
       "Pixel2Tech, a Lahore-based video editing studio working with clients worldwide, from the US and UK to Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
     tags: ["Reels", "YouTube", "Paid ads"],
@@ -1021,6 +1021,10 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         q: "Can you edit video for a regulated business such as a law firm?",
         a: "Yes. For Affinity Law, a personal injury firm, we supported their video content and made campaign creative that explains their services clearly and feels professional rather than alarming. Regulated businesses should still check every video against their own advertising rules before it runs, and we build that approval step into the schedule.",
+      },
+      {
+        q: "Do you offer YouTube video editing services?",
+        a: "Yes. We edit long-form YouTube videos with color, sound cleanup, chapters and thumbnails, and cut Shorts from each episode. For a channel that publishes every week, we agree a monthly volume and a style guide so every upload looks consistent.",
       },
       {
         q: "How does ongoing video editing work?",

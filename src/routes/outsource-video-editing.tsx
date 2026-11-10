@@ -35,6 +35,14 @@ const FAQS: FaqItem[] = [
     q: "How is outsourced video editing priced?",
     a: "Every project or monthly volume gets a fixed quote in writing. Price depends on the number and length of videos, short-form or long-form, versions per video, and captions, motion graphics or sound work.",
   },
+  {
+    q: "Is this a video editing subscription service?",
+    a: "Not an unlimited-requests subscription. Regular editing runs as a monthly retainer with an agreed volume of videos, formats and review rounds, quoted in writing. Retainers run for any minimum term stated in the proposal and then month to month until either side cancels with 30 days' written notice.",
+  },
+  {
+    q: "Is outsourcing video editing better than hiring an editor?",
+    a: "It depends on your volume. A full-time editor makes sense when there is enough work every week to keep one person busy. Outsourcing suits teams whose volume goes up and down, or who need several formats, such as long-form, short clips and ads, without hiring for each skill.",
+  },
 ];
 
 export const Route = createFileRoute("/outsource-video-editing")({
@@ -84,7 +92,7 @@ function OutsourceVideoEditing() {
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <ContentGrid
-          heading="Who outsources video editing to us"
+          heading="Who uses our video editing outsourcing"
           items={[
             {
               title: "Marketing and creative agencies",
@@ -101,7 +109,7 @@ function OutsourceVideoEditing() {
           ]}
         />
         <ContentGrid
-          heading="How outsourced editing works"
+          heading="How outsourced video editing works"
           numbered
           items={[
             {
@@ -149,7 +157,7 @@ function OutsourceVideoEditing() {
             },
             {
               href: "/services/video-editing-and-ads",
-              title: "Video editing agency",
+              title: "Video editing services",
               desc: "Reels, YouTube, brand videos and ad creative for US brands.",
             },
           ]}
