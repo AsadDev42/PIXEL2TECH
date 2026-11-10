@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+        slug: "re-engagement-emails-win-back-subscribers",
+        title: "Re-engagement Emails: How to Win Back Subscribers Who Stopped Opening",
+        excerpt:
+              "Subscribers who stopped opening are not lost yet. A simple re-engagement email sequence that reminds them why they signed up, asks what they want, and cleans the list honestly.",
+        tag: "Email Marketing",
+        date: "November 10, 2026",
+        time: "7:33 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/re-engagement-emails-win-back-subscribers.jpg",
+        imgAlt: "A person opening an email inbox on a laptop in a warm workspace",
+  },
+  {
     slug: "how-to-scope-custom-web-app-first-version",
     title: "How to Scope a Custom Web App So the First Version Ships on Time",
     excerpt:
