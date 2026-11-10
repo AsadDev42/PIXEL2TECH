@@ -31,6 +31,18 @@ import {
  * Slugs must be unique. `tsc` and a runtime check both fail on duplicates.
  */
 const POSTS = [
+    {
+    slug: "how-to-scope-custom-web-app-first-version",
+      title: "How to Scope a Custom Web App So the First Version Ships on Time",
+          excerpt:
+                "A custom web app ships on time when version one is small and specific. How to scope the first version decide what to leave out, and keep the build honest.",
+          tag: "Custom Platforms",
+          date: "November 10, 2026",
+          time: "5:14 pm",
+          author: "Asad Farooq",
+          img: "/blog/covers/how-to-scope-custom-web-app-first-version.jpg",
+          imgAlt: "A team planning a web app on a whiteboard with wireframe sketches",
+    },
   {
     slug: "wordpress-security-basics-business-owners",
     title: "WordPress Security Basics for Business Owners: A Checklist That Takes an Hour",
