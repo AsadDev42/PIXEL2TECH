@@ -7,16 +7,17 @@ export const SITE = {
   name: "Pixel2Tech",
   url: "https://pixel2tech.com",
   /** One positioning line, used word for word in titles, footer and schema. */
-  positioning: "Branding, web design, video and automation studio in Lahore, Pakistan",
+  positioning:
+    "Branding, web design, video and automation studio for US, UK, Canadian and EU businesses",
   shortDescription:
-    "Pixel2Tech is a creative and web studio in Lahore, Pakistan. We design brands, build websites and apps, produce video and automate busywork for clients worldwide.",
+    "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with businesses in the United States, United Kingdom, Canada and Europe. We design brands, build websites and apps, produce video and automate busywork.",
   email: "sales@pixel2tech.com",
   phoneDisplay: "+92 317 7475233",
   phoneE164: "+923177475233",
   whatsappUrl:
     "https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0",
   location: "Lahore, Pakistan",
-  locationLine: "Based in Lahore, working with clients worldwide",
+  locationLine: "Based in Lahore, Pakistan, working with clients in the US, UK, Canada and EU",
   /** City only, by the owner's decision: no street address is published. */
   address: {
     addressLocality: "Lahore",
@@ -24,21 +25,23 @@ export const SITE = {
     addressCountry: "PK",
   },
   /**
-   * Countries with dedicated market guides on the blog, plus Pakistan. Used as
-   * areaServed in the business JSON-LD.
+   * Target markets, US first, then the countries with market guides on the
+   * blog. Used as areaServed in the business JSON-LD.
    */
   areaServed: [
     "United States",
+    "Canada",
     "United Kingdom",
+    "Spain",
+    "Italy",
     "United Arab Emirates",
     "Qatar",
     "Singapore",
     "Malaysia",
-    "Spain",
-    "Italy",
     "Peru",
-    "Pakistan",
   ],
+  /** The four markets named in page copy. */
+  primaryMarkets: ["United States", "United Kingdom", "Canada", "European Union"],
   /** Machine-readable hours (JSON-LD). Keep in sync with `hours` below. */
   openingHours: [
     {

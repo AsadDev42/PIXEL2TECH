@@ -951,7 +951,7 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              {SITE.positioning}, working with clients worldwide.
+              {SITE.positioning}. Based in Lahore, Pakistan.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(

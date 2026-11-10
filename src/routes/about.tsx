@@ -15,8 +15,8 @@ import officeImg from "@/assets/office.webp.asset.json";
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const PAGE_URL = `${SITE.url}/about`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
-const TITLE = "About Pixel2Tech | Design, Web & Video Team in Lahore";
-const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, working with clients in the US, UK, Gulf and Europe.`;
+const TITLE = "About Pixel2Tech | Lahore Team for US, UK & EU Brands";
+const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, Pakistan, working with clients in the US, UK, Canada and Europe.`;
 
 /** People with a profile page are the founders (same rule as the root Organization schema). */
 const FOUNDERS = TEAM.filter((m) => m.founder);
@@ -154,7 +154,7 @@ function AboutPage() {
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               Designers, developers, video editors and an automation lead, working from Lahore with
-              clients in the US, UK, Gulf and Europe.
+              clients in the US, UK, Canada and Europe.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <BookCallButton

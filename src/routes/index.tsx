@@ -61,9 +61,9 @@ const BTN_SECONDARY = `${BTN} border border-border bg-background text-foreground
 /* ------------------------------------------------------------------------ */
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const TITLE = "Pixel2Tech | Branding, Web Design & Video Studio in Lahore";
+const TITLE = "Pixel2Tech | Web Design, Branding & Video for US Businesses";
 const DESCRIPTION =
-  "Pixel2Tech is a creative and web studio in Lahore, Pakistan: branding, websites, apps, video and automation for clients worldwide. Book a free call.";
+  "A Lahore, Pakistan studio helping US, UK, Canadian and EU businesses with branding, websites, Shopify, video and automation. Book a free call.";
 
 const HERO_TILE_SIZES = "(max-width: 479px) 30vw, (max-width: 767px) 144px, 170px";
 
@@ -82,7 +82,7 @@ const HOME_FAQS: FaqItem[] = [
   },
   {
     q: "Do you work with international clients?",
-    a: "Yes. We're based in Lahore, Pakistan and work with clients across the US, UK, Gulf, and Europe — communication over email, WhatsApp, and Google Meet.",
+    a: "Yes. We work with clients across the US, UK, Canada and Europe from our studio in Lahore, Pakistan, over email, WhatsApp and Google Meet, with a fixed written quote before we start.",
   },
   {
     q: "Can you handle both design and development?",
@@ -184,6 +184,9 @@ function Hero() {
         className={`${CONTAINER} grid items-center gap-10 py-12 sm:py-16 md:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-20`}
       >
         <div className="min-w-0">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+            For US, UK, Canadian and EU businesses · Based in Lahore, Pakistan
+          </p>
           <h1
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"

@@ -31,7 +31,7 @@ const PAGE_URL = `${SITE.url}/services`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "Pixel2Tech Services | Branding, Websites, Video & Automation";
 const DESCRIPTION =
-  "Branding, websites, Shopify and WordPress, custom apps, automation, AI chatbots, SEO, social media and video editing from one Lahore studio, quoted up front.";
+  "Branding, websites, Shopify, custom apps, automation, SEO, social and video editing for US, UK, Canadian and EU businesses, quoted up front.";
 
 type ServiceTitle = (typeof SERVICES)[number];
 type ServiceDetail = { Icon: LucideIcon; desc: string; tags: string[] };
@@ -174,7 +174,7 @@ export const Route = createFileRoute("/services")({
               name: s.title,
               description: s.desc,
               url: `${SITE.url}/services/${s.id}`,
-              areaServed: "Worldwide",
+              areaServed: SITE.areaServed.map((name) => ({ "@type": "Country", name })),
               provider: ORG_REF,
             },
           })),
@@ -402,7 +402,8 @@ function ServicesPage() {
             id="services-title"
             className="max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Branding, websites, apps, automation and video from one studio in Lahore.
+            Branding, websites, apps, automation and video for US, UK, Canadian and EU businesses,
+            from one studio in Lahore.
           </h1>
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center">
             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:col-span-7">

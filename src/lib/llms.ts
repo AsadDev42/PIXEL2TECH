@@ -25,7 +25,7 @@ function entityLines(): string[] {
   return [
     "# Pixel2Tech",
     "",
-    `> ${SITE.positioning}. Founded in ${STATS.foundingYear}, based in ${SITE.location}, working with clients worldwide.`,
+    `> ${SITE.positioning}. Founded in ${STATS.foundingYear}, based in ${SITE.location}.`,
     "",
     `Last updated: ${latestLastmod(pageEntries()) ?? ""}`,
     "",
@@ -36,7 +36,7 @@ function entityLines(): string[] {
     `- Founders: ${founders.join(", ")}`,
     `- Team: ${TEAM.map((m) => `${m.name}, ${m.role}`).join("; ")}`,
     `- Projects delivered: ${STATS.projects}`,
-    `- Markets served: ${SITE.areaServed.join(", ")}, and clients worldwide`,
+    `- Main markets: ${SITE.primaryMarkets.join(", ")}. Also serves: ${SITE.areaServed.slice(5).join(", ")}`,
     `- Services: ${SERVICE_PAGES.map((page) => page.title).join(", ")}`,
     `- Contact: ${SITE.email}, ${SITE.phoneDisplay}`,
     `- Hours: ${SITE.hours.map((h) => `${h.days} ${h.time}`).join("; ")} (Pakistan time)`,

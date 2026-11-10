@@ -211,7 +211,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               contactType: "sales",
               email: SITE.email,
               telephone: SITE.phoneDisplay,
-              areaServed: "Worldwide",
+              areaServed: ["US", "CA", "GB", "ES", "IT"],
               availableLanguage: ["English", "Urdu"],
             },
           ],

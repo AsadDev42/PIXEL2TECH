@@ -12,7 +12,7 @@ import { TEAM } from "@/lib/team";
 const FOUNDERS = TEAM.filter((person) => person.founder);
 
 const COMPANY_DESCRIPTION =
-  "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with clients worldwide. Its in-house team covers branding, website and Shopify development, video production and automation. Projects connect the way a business looks, the way its website works and the content it publishes.";
+  "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with clients in the United States, United Kingdom, Canada and Europe. Its in-house team covers branding, website and Shopify development, video production and automation. Projects connect the way a business looks, the way its website works and the content it publishes.";
 
 const ENQUIRY_INCLUDES = ["The publication or event", "Your topic", "The format", "Your deadline"];
 const ENQUIRY_NEEDS = ["An interview", "Company facts", "Founder portraits", "Project imagery"];

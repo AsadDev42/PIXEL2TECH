@@ -122,10 +122,7 @@ export const Route = createFileRoute("/services_/$slug")({
             description: page.answer,
             url,
             provider: ORG_REF,
-            areaServed: [
-              { "@type": "Country", name: "United States" },
-              { "@type": "Place", name: "Worldwide" },
-            ],
+            areaServed: SITE.areaServed.map((name) => ({ "@type": "Country", name })),
             audience: {
               "@type": "BusinessAudience",
               audienceType: "US startups, small and midsize businesses, DTC brands and agencies",
