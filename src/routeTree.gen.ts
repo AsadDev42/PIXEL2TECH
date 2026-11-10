@@ -31,11 +31,13 @@ import { Route as ResultsRouteImport } from './routes/results'
 import { Route as SaadRouteImport } from './routes/saad'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
+import { Route as ShopifyDevelopmentAgencyRouteImport } from './routes/shopify-development-agency'
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
+import { Route as WhiteLabelWebDevelopmentRouteImport } from './routes/white-label-web-development'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -156,6 +158,12 @@ const ServicesSitemapDotxmlRoute = ServicesSitemapDotxmlRouteImport.update({
   path: '/services-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopifyDevelopmentAgencyRoute =
+  ShopifyDevelopmentAgencyRouteImport.update({
+    id: '/shopify-development-agency',
+    path: '/shopify-development-agency',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SitemapDotrssRoute = SitemapDotrssRouteImport.update({
   id: '/sitemap.rss',
   path: '/sitemap.rss',
@@ -181,6 +189,12 @@ const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
   path: '/usama-farooq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhiteLabelWebDevelopmentRoute =
+  WhiteLabelWebDevelopmentRouteImport.update({
+    id: '/white-label-web-development',
+    path: '/white-label-web-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WpSitemapDotxmlRoute = WpSitemapDotxmlRouteImport.update({
   id: '/wp-sitemap.xml',
   path: '/wp-sitemap.xml',
@@ -251,11 +265,13 @@ export interface FileRoutesByFullPath {
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
+  '/shopify-development-agency': typeof ShopifyDevelopmentAgencyRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -289,11 +305,13 @@ export interface FileRoutesByTo {
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
+  '/shopify-development-agency': typeof ShopifyDevelopmentAgencyRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -328,11 +346,13 @@ export interface FileRoutesById {
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
+  '/shopify-development-agency': typeof ShopifyDevelopmentAgencyRoute
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
@@ -368,11 +388,13 @@ export interface FileRouteTypes {
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
+    | '/shopify-development-agency'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/industries/$slug'
@@ -406,11 +428,13 @@ export interface FileRouteTypes {
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
+    | '/shopify-development-agency'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/industries/$slug'
@@ -444,11 +468,13 @@ export interface FileRouteTypes {
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
+    | '/shopify-development-agency'
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
     | '/industries/$slug'
@@ -483,11 +509,13 @@ export interface RootRouteChildren {
   SaadRoute: typeof SaadRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
+  ShopifyDevelopmentAgencyRoute: typeof ShopifyDevelopmentAgencyRoute
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UsamaFarooqRoute: typeof UsamaFarooqRoute
+  WhiteLabelWebDevelopmentRoute: typeof WhiteLabelWebDevelopmentRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   IndustriesSlugRoute: typeof IndustriesSlugRoute
@@ -655,6 +683,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shopify-development-agency': {
+      id: '/shopify-development-agency'
+      path: '/shopify-development-agency'
+      fullPath: '/shopify-development-agency'
+      preLoaderRoute: typeof ShopifyDevelopmentAgencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.rss': {
       id: '/sitemap.rss'
       path: '/sitemap.rss'
@@ -688,6 +723,13 @@ declare module '@tanstack/react-router' {
       path: '/usama-farooq'
       fullPath: '/usama-farooq'
       preLoaderRoute: typeof UsamaFarooqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/white-label-web-development': {
+      id: '/white-label-web-development'
+      path: '/white-label-web-development'
+      fullPath: '/white-label-web-development'
+      preLoaderRoute: typeof WhiteLabelWebDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wp-sitemap.xml': {
@@ -779,11 +821,13 @@ const rootRouteChildren: RootRouteChildren = {
   SaadRoute: SaadRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
+  ShopifyDevelopmentAgencyRoute: ShopifyDevelopmentAgencyRoute,
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UsamaFarooqRoute: UsamaFarooqRoute,
+  WhiteLabelWebDevelopmentRoute: WhiteLabelWebDevelopmentRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   IndustriesSlugRoute: IndustriesSlugRoute,

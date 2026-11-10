@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BusinessLanding } from "@/components/business-landing";
 import { ContentGrid, ProjectNextStep } from "@/components/content-blocks";
+import { LandingLinks } from "@/components/landing-extras";
 import { businessHead } from "@/lib/page-seo";
 
 export const Route = createFileRoute("/for-agencies")({
@@ -96,6 +97,26 @@ export const Route = createFileRoute("/for-agencies")({
             </div>
           </div>
         </section>
+        <LandingLinks
+          heading="Go deeper"
+          links={[
+            {
+              href: "/white-label-web-development",
+              title: "White label web development",
+              desc: "Shopify, WordPress and custom builds delivered under your agency's name.",
+            },
+            {
+              href: "/shopify-development-agency",
+              title: "Shopify development",
+              desc: "Custom themes, headless storefronts, apps and integrations.",
+            },
+            {
+              href: "/blog/white-label-shopify-development-for-agencies",
+              title: "White label Shopify guide",
+              desc: "How agencies hand over Shopify builds and pick a partner.",
+            },
+          ]}
+        />
         <ProjectNextStep
           title="Have a brief that needs a production team?"
           body="Share the work you want us to own. We will review the requirements, flag missing inputs and discuss a scope your agency can plan around."

@@ -30,6 +30,7 @@ const post: PostBody = {
       body: [
         "Most page-one results for this topic are vendor lists that rank their own company first. This guide is deliberately not a list. It covers how to run the arrangement: scoping, access, hand-off, contracts and how to test a partner before trusting them with a launch.",
         "White-label work usually falls into five buckets: theme builds from the agency's designs, custom sections and templates on premium themes, custom apps and integrations, platform migrations, and monthly maintenance. Each has a different risk profile, so many agencies start a new partner on sections or maintenance before handing over a full build.",
+        "If you are looking for a partner, our [white label web development](/white-label-web-development) page explains how we work with agencies, and our [Shopify development agency](/shopify-development-agency) page covers the store builds themselves.",
       ],
     },
     {

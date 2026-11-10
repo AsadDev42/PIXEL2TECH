@@ -57,6 +57,8 @@ type StaticTo =
   | "/press"
   | "/services"
   | "/for-agencies"
+  | "/shopify-development-agency"
+  | "/white-label-web-development"
   | "/industries"
   | "/portfolio"
   | "/results"
@@ -793,6 +795,8 @@ const WORK_LINKS = [
   { label: "Portfolio", to: "/portfolio" },
   { label: "Project outcomes", to: "/results" },
   { label: "For agencies", to: "/for-agencies" },
+  { label: "Shopify development agency", to: "/shopify-development-agency" },
+  { label: "White label web development", to: "/white-label-web-development" },
   { label: "Blog", to: "/blog" },
   { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;

@@ -81,7 +81,19 @@ export function pageEntries(): SitemapEntry[] {
         priority: "0.7",
         lastmod: latestLastmod(blogEntries()),
       },
-      { path: "/for-agencies", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.8" },
+      { path: "/for-agencies", lastmod: "2026-11-10", changefreq: "monthly", priority: "0.8" },
+      {
+        path: "/shopify-development-agency",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.8",
+      },
+      {
+        path: "/white-label-web-development",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.8",
+      },
       { path: "/industries", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.7" },
       ...INDUSTRIES.map((industry) => ({
         path: `/industries/${industry.slug}`,
