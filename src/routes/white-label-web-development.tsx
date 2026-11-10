@@ -15,6 +15,10 @@ const FAQS: FaqItem[] = [
     a: "White label web development means an outside team builds websites or online stores that your agency delivers to its clients under your own name. You keep the client relationship, the brief and the billing; the development partner does the agreed build work behind the scenes.",
   },
   {
+    q: "How do you choose a white label web development agency?",
+    a: "Look at real projects on the platform you sell, ask how they handle client confidentiality, and check how they scope work: a written quote, named deliverables and agreed review rounds. Send a small first project to see how they communicate before handing over larger builds.",
+  },
+  {
     q: "Will you contact our clients?",
     a: "Only if you want us to. By default your team runs client calls and approvals and we work through your project manager. Before the project starts we agree who talks to whom, so nobody is surprised.",
   },

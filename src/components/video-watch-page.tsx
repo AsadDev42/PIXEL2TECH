@@ -122,8 +122,17 @@ export function VideoWatchPage({ video }: { video: WatchVideo }) {
                   <a href={`/portfolio/${video.collectionSlug}`} className="text-primary">
                     See the full project
                   </a>
-                  <a href="/services/video-editing-and-ads" className="text-primary">
-                    Video editing and ad services
+                  {video.collectionSlug === "wedding-video-and-reel-editing" ? (
+                    <a href="/wedding-video-editing-services" className="text-primary">
+                      Wedding video editing services
+                    </a>
+                  ) : (
+                    <a href="/services/video-editing-and-ads" className="text-primary">
+                      Video editing and ad services
+                    </a>
+                  )}
+                  <a href="/outsource-video-editing" className="text-primary">
+                    Outsource your video editing
                   </a>
                 </div>
               </div>

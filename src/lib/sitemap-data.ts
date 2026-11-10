@@ -94,6 +94,18 @@ export function pageEntries(): SitemapEntry[] {
         changefreq: "monthly",
         priority: "0.8",
       },
+      {
+        path: "/outsource-video-editing",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.8",
+      },
+      {
+        path: "/wedding-video-editing-services",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.8",
+      },
       { path: "/industries", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.7" },
       ...INDUSTRIES.map((industry) => ({
         path: `/industries/${industry.slug}`,

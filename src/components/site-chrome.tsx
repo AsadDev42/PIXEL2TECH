@@ -59,6 +59,8 @@ type StaticTo =
   | "/for-agencies"
   | "/shopify-development-agency"
   | "/white-label-web-development"
+  | "/outsource-video-editing"
+  | "/wedding-video-editing-services"
   | "/industries"
   | "/portfolio"
   | "/results"
@@ -797,6 +799,8 @@ const WORK_LINKS = [
   { label: "For agencies", to: "/for-agencies" },
   { label: "Shopify development agency", to: "/shopify-development-agency" },
   { label: "White label web development", to: "/white-label-web-development" },
+  { label: "Outsource video editing", to: "/outsource-video-editing" },
+  { label: "Wedding video editing", to: "/wedding-video-editing-services" },
   { label: "Blog", to: "/blog" },
   { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;

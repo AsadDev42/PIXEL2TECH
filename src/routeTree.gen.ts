@@ -21,6 +21,7 @@ import { Route as ForAgenciesRouteImport } from './routes/for-agencies'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
 import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as OutsourceVideoEditingRouteImport } from './routes/outsource-video-editing'
 import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
@@ -37,6 +38,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
+import { Route as WeddingVideoEditingServicesRouteImport } from './routes/wedding-video-editing-services'
 import { Route as WhiteLabelWebDevelopmentRouteImport } from './routes/white-label-web-development'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -106,6 +108,11 @@ const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   id: '/llms.txt',
   path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutsourceVideoEditingRoute = OutsourceVideoEditingRouteImport.update({
+  id: '/outsource-video-editing',
+  path: '/outsource-video-editing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PageSitemapDotxmlRoute = PageSitemapDotxmlRouteImport.update({
@@ -189,6 +196,12 @@ const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
   path: '/usama-farooq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WeddingVideoEditingServicesRoute =
+  WeddingVideoEditingServicesRouteImport.update({
+    id: '/wedding-video-editing-services',
+    path: '/wedding-video-editing-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WhiteLabelWebDevelopmentRoute =
   WhiteLabelWebDevelopmentRouteImport.update({
     id: '/white-label-web-development',
@@ -255,6 +268,7 @@ export interface FileRoutesByFullPath {
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -271,6 +285,7 @@ export interface FileRoutesByFullPath {
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -295,6 +310,7 @@ export interface FileRoutesByTo {
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -311,6 +327,7 @@ export interface FileRoutesByTo {
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -336,6 +353,7 @@ export interface FileRoutesById {
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
@@ -352,6 +370,7 @@ export interface FileRoutesById {
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -378,6 +397,7 @@ export interface FileRouteTypes {
     | '/images-sitemap.xml'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -394,6 +414,7 @@ export interface FileRouteTypes {
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -418,6 +439,7 @@ export interface FileRouteTypes {
     | '/images-sitemap.xml'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -434,6 +456,7 @@ export interface FileRouteTypes {
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -458,6 +481,7 @@ export interface FileRouteTypes {
     | '/images-sitemap.xml'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
     | '/portfolio-sitemap.xml'
@@ -474,6 +498,7 @@ export interface FileRouteTypes {
     | '/sitemap_index.xml'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -499,6 +524,7 @@ export interface RootRouteChildren {
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
   LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
+  OutsourceVideoEditingRoute: typeof OutsourceVideoEditingRoute
   PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
@@ -515,6 +541,7 @@ export interface RootRouteChildren {
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UsamaFarooqRoute: typeof UsamaFarooqRoute
+  WeddingVideoEditingServicesRoute: typeof WeddingVideoEditingServicesRoute
   WhiteLabelWebDevelopmentRoute: typeof WhiteLabelWebDevelopmentRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -611,6 +638,13 @@ declare module '@tanstack/react-router' {
       path: '/llms.txt'
       fullPath: '/llms.txt'
       preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outsource-video-editing': {
+      id: '/outsource-video-editing'
+      path: '/outsource-video-editing'
+      fullPath: '/outsource-video-editing'
+      preLoaderRoute: typeof OutsourceVideoEditingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/page-sitemap.xml': {
@@ -725,6 +759,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsamaFarooqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wedding-video-editing-services': {
+      id: '/wedding-video-editing-services'
+      path: '/wedding-video-editing-services'
+      fullPath: '/wedding-video-editing-services'
+      preLoaderRoute: typeof WeddingVideoEditingServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/white-label-web-development': {
       id: '/white-label-web-development'
       path: '/white-label-web-development'
@@ -811,6 +852,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
   LlmsFullDottxtRoute: LlmsFullDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
+  OutsourceVideoEditingRoute: OutsourceVideoEditingRoute,
   PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
@@ -827,6 +869,7 @@ const rootRouteChildren: RootRouteChildren = {
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UsamaFarooqRoute: UsamaFarooqRoute,
+  WeddingVideoEditingServicesRoute: WeddingVideoEditingServicesRoute,
   WhiteLabelWebDevelopmentRoute: WhiteLabelWebDevelopmentRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,

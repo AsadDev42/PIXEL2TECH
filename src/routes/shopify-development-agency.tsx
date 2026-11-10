@@ -32,6 +32,10 @@ const FAQS: FaqItem[] = [
     a: "Yes. Send us the store URL and what is not working, such as a slow product page, a broken app, tracking that stopped after a checkout change or a theme you want to customize. We review it and quote the fix before we change anything.",
   },
   {
+    q: "Do you work on Shopify Plus stores?",
+    a: "Yes. We build and customize stores on any Shopify plan, including Shopify Plus. If your project relies on Plus-only features, such as checkout extensibility or B2B, list them in the brief so they are scoped and quoted before work starts.",
+  },
+  {
     q: "Do you build Shopify stores for agencies under their name?",
     a: `Yes. ${partnered} of the Shopify stores in our portfolio were built as white-label development partner for agencies. See our white label web development page for how briefs, reviews and handovers work.`,
   },

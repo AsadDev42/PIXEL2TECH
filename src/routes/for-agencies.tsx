@@ -111,6 +111,11 @@ export const Route = createFileRoute("/for-agencies")({
               desc: "Custom themes, headless storefronts, apps and integrations.",
             },
             {
+              href: "/outsource-video-editing",
+              title: "White label video editing",
+              desc: "Reels, YouTube, podcast and ad edits delivered for your clients.",
+            },
+            {
               href: "/blog/white-label-shopify-development-for-agencies",
               title: "White label Shopify guide",
               desc: "How agencies hand over Shopify builds and pick a partner.",
