@@ -707,7 +707,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
   "logo-design-folio": {
-    metaTitle: "Logo design folio | Pixel2Tech",
+    metaTitle: "Logo design folio: wordmarks and brand marks | Pixel2Tech",
     metaDescription:
       "A folio of logo designs by Pixel2Tech: wordmarks and combination marks for creative agencies, marketing firms and wellness brands, shown on brand colors.",
     summary: "Wordmarks and combination marks for agencies and wellness brands.",

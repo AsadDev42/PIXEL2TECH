@@ -5,8 +5,13 @@ import { LoopSlider } from "@/components/loop-slider";
 import { LinkedInBadge } from "@/components/linkedin-badge";
 import { TEAM, type TeamMember } from "@/lib/team";
 
-/** One team card. Portraits are grayscale only on devices that can hover. */
-export function TeamCard({ member }: { member: TeamMember }) {
+/**
+ * One team card. Portraits are grayscale only on devices that can hover.
+ * `clone` marks the loop slider's second, hidden copy: it keeps the look but
+ * drops the heading and alt text so each name is in the page once.
+ */
+export function TeamCard({ member, clone = false }: { member: TeamMember; clone?: boolean }) {
+  const Name = clone ? "p" : "h3";
   return (
     <article
       className={`group w-[min(78vw,300px)] shrink-0 overflow-hidden rounded-2xl border border-border bg-background transition duration-300 hover:shadow-xl sm:w-[320px] dark:border-white/10 dark:bg-white/[0.03] ${member.profile ? "cursor-pointer" : ""}`}
@@ -27,16 +32,16 @@ export function TeamCard({ member }: { member: TeamMember }) {
           loading="lazy"
           decoding="async"
           src={member.img}
-          alt={`Portrait of ${member.name}, ${member.role} at Pixel2Tech`}
+          alt={clone ? "" : `Portrait of ${member.name}, ${member.role} at Pixel2Tech`}
           draggable={false}
           className="pointer-events-none h-full w-full object-cover transition duration-500 [@media(hover:hover)]:grayscale [@media(hover:hover)]:group-hover:grayscale-0"
         />
       </div>
       <div className="p-4 md:p-5">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-bold tracking-tight text-foreground sm:text-base">
+          <Name className="text-sm font-bold tracking-tight text-foreground sm:text-base">
             {member.name}
-          </h3>
+          </Name>
           {member.linkedin && <LinkedInBadge name={member.name} url={member.linkedin} />}
         </div>
         <p className="mt-1 text-xs text-muted-foreground">{member.role}</p>
@@ -62,7 +67,7 @@ export function TeamSlider({ className = "mt-10 sm:mt-14" }: { className?: strin
       onItemClick={(m) => {
         if (m.profile) void navigate({ to: m.profile });
       }}
-      renderItem={(m) => <TeamCard member={m} />}
+      renderItem={(m, i) => <TeamCard member={m} clone={i >= TEAM.length} />}
     />
   );
 }

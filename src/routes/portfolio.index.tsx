@@ -183,7 +183,7 @@ function PortfolioPage() {
               Portfolio
             </p>
             <h1 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Our work
+              Our work: brand, web and video case studies
             </h1>
             <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               Brand identities, websites, social content, video and custom software we&apos;ve made

@@ -17,13 +17,28 @@ export const SITE = {
     "https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0",
   location: "Lahore, Pakistan",
   locationLine: "Based in Lahore, working with clients worldwide",
+  /** City only, by the owner's decision: no street address is published. */
   address: {
-    streetAddress: "Office 12, Main Boulevard, Gulberg III",
     addressLocality: "Lahore",
     addressRegion: "Punjab",
-    postalCode: "54000",
     addressCountry: "PK",
   },
+  /**
+   * Countries with dedicated market guides on the blog, plus Pakistan. Used as
+   * areaServed in the business JSON-LD.
+   */
+  areaServed: [
+    "United States",
+    "United Kingdom",
+    "United Arab Emirates",
+    "Qatar",
+    "Singapore",
+    "Malaysia",
+    "Spain",
+    "Italy",
+    "Peru",
+    "Pakistan",
+  ],
   /** Machine-readable hours (JSON-LD). Keep in sync with `hours` below. */
   openingHours: [
     {
@@ -32,6 +47,8 @@ export const SITE = {
       closes: "18:00",
     },
     { days: ["Saturday"], opens: "10:00", closes: "16:00" },
+    // 00:00 to 00:00 is how schema.org marks a day as closed.
+    { days: ["Sunday"], opens: "00:00", closes: "00:00" },
   ],
   hours: [
     { days: "Monday – Friday", time: "9:00 AM – 6:00 PM" },
@@ -43,7 +60,7 @@ export const SITE = {
 /** Trust figures. Keep every page in sync by importing these. */
 export const STATS = {
   clients: "15+",
-  projects: "50+",
+  projects: "140+",
   rating: "4.9",
   foundingYear: "2023",
   years: "3",

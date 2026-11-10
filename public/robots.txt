@@ -1,5 +1,27 @@
+# Pixel2Tech robots.txt
+#
+# Every crawler may read the site except the form and booking API.
+# AI search and answer engines (ChatGPT search, Perplexity, Claude, Gemini)
+# are allowed on purpose so they can find and cite our pages. AI training
+# crawlers are not blocked either: they fall under the default rule below.
+
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api
+Disallow: /api/
+
 User-agent: *
 Allow: /
+Disallow: /api
 Disallow: /api/
 
 Sitemap: https://pixel2tech.com/sitemap.xml

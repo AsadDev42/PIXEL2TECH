@@ -15,7 +15,16 @@ export function fitDescription(text: string, max = DESCRIPTION_MAX): string {
   let out = "";
   for (const s of sentences) {
     const next = out ? `${out} ${s}` : s;
-    if (next.length > max) break;
+    if (next.length > max) {
+      // A short result reads thin in search. Take the next sentence up to its
+      // last comma that fits, ended with a full stop, so it is still whole.
+      if (out && out.length < 110) {
+        const room = max - out.length - 1;
+        const cut = s.slice(0, room).lastIndexOf(",");
+        if (cut >= 40) out = `${out} ${s.slice(0, cut)}.`;
+      }
+      break;
+    }
     out = next;
   }
   return out || sentences[0]!;

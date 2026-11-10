@@ -23,7 +23,7 @@ import {
   type HeroMedia,
 } from "@/lib/home-media";
 import { HomeSelectedWork } from "@/components/home-selected-work";
-import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
+import { SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
 
 import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
@@ -61,9 +61,6 @@ const BTN_SECONDARY = `${BTN} border border-border bg-background text-foreground
 /* ------------------------------------------------------------------------ */
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const LOGO_URL =
-  "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png";
-
 const TITLE = "Pixel2Tech | Branding, Web Design & Video Studio in Lahore";
 const DESCRIPTION =
   "Pixel2Tech is a creative and web studio in Lahore, Pakistan: branding, websites, apps, video and automation for clients worldwide. Book a free call.";
@@ -141,49 +138,6 @@ export const Route = createFileRoute("/")({
           ],
         }),
       },
-      {
-        type: "application/ld+json",
-        // Same @id as the Organization in __root, so search engines read one
-        // business entity with these local-business details added to it.
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "@id": `${SITE.url}/#organization`,
-          name: SITE.name,
-          description: SITE.shortDescription,
-          url: SITE.url,
-          image: OG_IMAGE,
-          logo: LOGO_URL,
-          email: SITE.email,
-          telephone: SITE.phoneE164,
-          address: { "@type": "PostalAddress", ...SITE.address },
-          areaServed: "Worldwide",
-          priceRange: "$$",
-          // Matches SITE.hours.
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "09:00",
-              closes: "18:00",
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Saturday"],
-              opens: "10:00",
-              closes: "16:00",
-            },
-          ],
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: `${SITE.name} services`,
-            itemListElement: SERVICES.map((name) => ({
-              "@type": "Offer",
-              itemOffered: { "@type": "Service", name },
-            })),
-          },
-        }),
-      },
     ],
   }),
 });
@@ -234,7 +188,8 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            One studio. <span className="block text-primary">From brief to launch.</span>
+            One studio for brand, web and video.{" "}
+            <span className="block text-primary">From brief to launch.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
             Brand, website and video from one in-house team. Work directly with the people making
@@ -621,7 +576,7 @@ function Studio() {
 
         <div className="min-w-0">
           <h2 id="home-studio-title" className={H2}>
-            One studio. One team. 50+ projects.
+            One studio. One team. {STATS.projects} projects.
           </h2>
           <p className={LEAD}>
             Designers, developers and editors work side by side in our Lahore office, sketching
@@ -741,7 +696,7 @@ function HomeContact() {
       <div className={`${CONTAINER} grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-16`}>
         <div className="min-w-0">
           <h2 id="home-contact-title" className={H2}>
-            Have a project in mind?
+            Start a project with us
           </h2>
           <p className={LEAD}>Tell us what you need. We reply within one business day.</p>
           <ul className="mt-8 space-y-2 text-base">

@@ -346,7 +346,7 @@ const RAW: RawWork = {
         slug: "madluvv-social-media-meta-ads",
         title: "MADLUVV — social media and Meta ads",
         client: "MADLUVV",
-        img: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
+        img: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.webp",
         images: [
           "/media/c4bd4358-8aaf-45f3-a6bb-075dec4226e4/madluvv-1.png",
           "/media/5c9ddbab-b0cd-4337-b1f1-8910c27bc9e3/madluvv-2.png",

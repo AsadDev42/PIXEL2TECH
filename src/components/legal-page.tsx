@@ -18,11 +18,11 @@ export type LegalSection = { heading: string; body: LegalBlock[] };
 /** Short, non-binding overview shown above the table of contents. */
 export type LegalSummary = { points: readonly string[]; note: string };
 
-/** Postal address on one line, built from SITE so it never drifts. */
-export const POSTAL_ADDRESS = `${SITE.name}, ${SITE.address.streetAddress}, ${SITE.address.addressLocality}, ${SITE.address.addressRegion} ${SITE.address.postalCode}, Pakistan`;
+/** Business location on one line, built from SITE so it never drifts. */
+export const POSTAL_ADDRESS = `${SITE.name}, ${SITE.address.addressLocality}, ${SITE.address.addressRegion}, Pakistan`;
 
-/** "Email …, call … or write to …" sentence used at the end of each legal page. */
-export const CONTACT_SENTENCE = `Email ${SITE.email}, call ${SITE.phoneDisplay}, or write to ${POSTAL_ADDRESS}.`;
+/** "Email … or call …" sentence used at the end of each legal page. */
+export const CONTACT_SENTENCE = `Email ${SITE.email} or call ${SITE.phoneDisplay}.`;
 
 const OG_IMAGE = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
 

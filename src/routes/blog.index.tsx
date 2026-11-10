@@ -74,7 +74,7 @@ function BlogPage() {
     <PageShell>
       <PageHeader
         eyebrow="Blog"
-        title="Notes from the studio"
+        title="Guides on branding, websites, SEO and automation"
         subtitle="Practical guides on branding, websites, Shopify, SEO and automation, written by the people who do the work."
       />
 

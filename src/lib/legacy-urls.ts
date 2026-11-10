@@ -37,6 +37,7 @@ const RESERVED_PREFIXES = [
 const RESERVED_EXACT = new Set([
   "robots.txt",
   "llms.txt",
+  "llms-full.txt",
   "sitemap.xml",
   "pages-sitemap.xml",
   "blog-sitemap.xml",

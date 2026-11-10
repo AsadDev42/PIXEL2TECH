@@ -125,7 +125,7 @@ export const USAMA_FAROOQ: PersonProfileData = {
     paragraphs: [
       "Most businesses do not have a marketing problem. They have a system problem: leads arrive inconsistently, follow-up is manual, and nobody can say which activity produced revenue. Fixing that gap is the work Usama has built his career on.",
       "He started as a computer science lecturer, moved into business analysis and outbound at Programmers Force, then into growth leadership at Aquila360 and Ethisol, where he closed $300K+ in new business in his first year and secured a Fortune 500 partnership. Along the way he scaled a marketplace profile from $1K to $100K in under a year and built complete outbound email infrastructures from scratch.",
-      "In 2024 he founded Pixel2Tech to bring strategy, design, development and automation under one senior team, so clients no longer have to stitch together three vendors to launch a single idea.",
+      "In 2023 he founded Pixel2Tech to bring strategy, design, development and automation under one senior team, so clients no longer have to stitch together three vendors to launch a single idea.",
       "As CEO he owns strategy, partnerships and growth, and stays personally involved in every major client relationship, from the first discovery call to long-term account planning.",
     ],
   },
@@ -169,7 +169,7 @@ export const USAMA_FAROOQ: PersonProfileData = {
     {
       role: "CEO & Founder",
       org: "Pixel2Tech",
-      period: "Aug 2024 — Present",
+      period: "2023 — Present",
       place: "Lahore, Pakistan",
       desc: "Leads company strategy, client partnerships and growth. Built Pixel2Tech into a creative and web studio serving founders across the US, Europe and the Gulf.",
     },
@@ -396,7 +396,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
     heading: "Creative that is built to perform",
     paragraphs: [
       "Most businesses publish content every day, but very few build creative systems that actually attract clients and compound over time. That gap is the work Asad has spent his career closing.",
-      "He started in 2021 as a graphic designer in Lahore, moved into motion and video, and then into full creative direction, leading teams at agencies serving Shopify Plus brands, B2B software companies and international groups across Canada, Germany and Belgium. In 2024 he co-founded Pixel2Tech to bring design, video, development and automation under one senior team.",
+      "He started in 2021 as a graphic designer in Lahore, moved into motion and video, and then into full creative direction, leading teams at agencies serving Shopify Plus brands, B2B software companies and international groups across Canada, Germany and Belgium. In 2023 he co-founded Pixel2Tech to bring design, video, development and automation under one senior team.",
       "His approach pairs creative craft with marketing strategy: positioning first, then messaging, then design. Every asset (a logo, a landing page, a 15-second reel) is judged on whether it moves a business metric, not only on whether it looks good in a portfolio.",
       "Today he leads creative direction at Pixel2Tech, mentors the studio's designers and editors, and works directly with founders who need senior creative thinking without building an in-house team from scratch.",
     ],
@@ -441,7 +441,7 @@ export const ASAD_FAROOQ: PersonProfileData = {
     {
       role: "Co-Founder & CPO",
       org: "Pixel2Tech",
-      period: "Aug 2024 — Present",
+      period: "2023 — Present",
       place: "Lahore, Pakistan",
       desc: "Leading creative direction across branding, web, social and video for global clients. Building the creative systems and quality standards the whole studio runs on.",
     },

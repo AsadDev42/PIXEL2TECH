@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post = {
   h1: "Selling to Customers in Dubai and Qatar: What Your Website Must Get Right for Gulf Buyers",
-  metaTitle: "Selling in Dubai and Qatar: Website Guide for Gulf",
+  metaTitle: "Selling in Dubai and Qatar: Website Guide for Gulf Buyers",
   metaDescription: "Buyers in Dubai and Qatar check trust, payment, delivery, and support before they enquire. What your website must show clearly to win customers in the Gulf.",
   ogTitle: "Selling to Customers in Dubai and Qatar: What Your Website Must Get Right for Gulf Buyers",
   ogDescription: "Buyers in Dubai and Qatar check trust, payment, delivery, and support before they enquire. What your website must show clearly to win customers in the Gulf.",

@@ -97,7 +97,7 @@ export const SERVICE_PRESENTATION: Record<ServiceTitle, ServicePresentation> = {
       "Social, ad and email assets",
       "Campaign setup and agreed reporting",
     ],
-    image: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
+    image: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.webp",
     alt: "MADLUVV beauty product creative from the social media and Meta ads collection",
     caption: "MADLUVV social and Meta ad creative",
     project: "madluvv-social-media-meta-ads",

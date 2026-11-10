@@ -1,5 +1,8 @@
 import { memo, useEffect, useRef, useState, type ReactNode } from "react";
 
+/** Everything that can take keyboard focus inside a slide. */
+const FOCUSABLE = "a[href], button, input, select, textarea, video[controls], [tabindex]";
+
 type Axis = "x" | "y";
 type DirX = "rtl" | "ltr";
 type DirY = "up" | "down";
@@ -66,6 +69,31 @@ function LoopSliderImpl<T>({
 }: Props<T>) {
   const loop = [...items, ...items];
   const trackRef = useRef<HTMLDivElement>(null);
+
+  // Links and buttons inside the aria-hidden copy must not take keyboard focus
+  // (axe "aria-hidden-focus"). Clicks still work; only the tab stop goes.
+  // Runs after every render so a copy that becomes the active item gets its
+  // focus back.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    for (const slot of Array.from(track.children)) {
+      const hidden = slot.getAttribute("aria-hidden") === "true";
+      slot.querySelectorAll<HTMLElement>(FOCUSABLE).forEach((el) => {
+        if (hidden) {
+          if (!el.hasAttribute("data-loop-tabindex")) {
+            el.setAttribute("data-loop-tabindex", el.getAttribute("tabindex") ?? "");
+          }
+          el.tabIndex = -1;
+        } else if (el.hasAttribute("data-loop-tabindex")) {
+          const previous = el.getAttribute("data-loop-tabindex");
+          if (previous) el.setAttribute("tabindex", previous);
+          else el.removeAttribute("tabindex");
+          el.removeAttribute("data-loop-tabindex");
+        }
+      });
+    }
+  });
   const stateRef = useRef({
     pos: 0,
     half: 0,

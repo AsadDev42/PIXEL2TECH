@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as ForAgenciesRouteImport } from './routes/for-agencies'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
+import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
@@ -93,6 +94,11 @@ const ForAgenciesRoute = ForAgenciesRouteImport.update({
 const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
   id: '/images-sitemap.xml',
   path: '/images-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
+  id: '/llms-full.txt',
+  path: '/llms-full.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
@@ -233,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
@@ -270,6 +277,7 @@ export interface FileRoutesByTo {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
@@ -308,6 +316,7 @@ export interface FileRoutesById {
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
@@ -347,6 +356,7 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms-full.txt'
     | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
@@ -384,6 +394,7 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms-full.txt'
     | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
@@ -421,6 +432,7 @@ export interface FileRouteTypes {
     | '/favicon.ico'
     | '/for-agencies'
     | '/images-sitemap.xml'
+    | '/llms-full.txt'
     | '/llms.txt'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
@@ -459,6 +471,7 @@ export interface RootRouteChildren {
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   ForAgenciesRoute: typeof ForAgenciesRoute
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
+  LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
@@ -556,6 +569,13 @@ declare module '@tanstack/react-router' {
       path: '/images-sitemap.xml'
       fullPath: '/images-sitemap.xml'
       preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms-full.txt': {
+      id: '/llms-full.txt'
+      path: '/llms-full.txt'
+      fullPath: '/llms-full.txt'
+      preLoaderRoute: typeof LlmsFullDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms.txt': {
@@ -747,6 +767,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaviconDoticoRoute: FaviconDoticoRoute,
   ForAgenciesRoute: ForAgenciesRoute,
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
+  LlmsFullDottxtRoute: LlmsFullDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,

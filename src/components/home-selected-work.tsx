@@ -8,6 +8,13 @@ import { ALL_ITEMS } from "@/lib/portfolio-data";
 /** `ratio` is the image's own width / height, so each piece keeps its real shape. */
 const HOME_WORK = [
   {
+    slug: "short-form-social-media-videos",
+    label: "Video Editing",
+    description: "Short-form edits prepared for social content.",
+    image: "/portfolio/short-form-social-media-videos/home-cover.webp",
+    ratio: 1672 / 941,
+  },
+  {
     slug: "skin-deep-shopify-store",
     label: "Ecom Stores",
     description: "Shopify store for a natural skincare, haircare and beauty brand.",
@@ -18,7 +25,7 @@ const HOME_WORK = [
     slug: "madluvv-social-media-meta-ads",
     label: "Social Media & Ads",
     description: "Social content and Meta ad creative for MADLUVV.",
-    image: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.png",
+    image: "/media/5029b141-c991-4ba8-9909-25e972eb8692/madluvv-cover.webp",
     ratio: 1122 / 1402,
   },
   {
@@ -27,13 +34,6 @@ const HOME_WORK = [
     description: "Logo, menus and launch creatives.",
     image: "/portfolio/sweet-temptation-logo-menu-design/menu-cover.webp",
     ratio: 1536 / 1024,
-  },
-  {
-    slug: "short-form-social-media-videos",
-    label: "Video Editing",
-    description: "Short-form edits prepared for social content.",
-    image: "/portfolio/short-form-social-media-videos/home-cover.webp",
-    ratio: 1672 / 941,
   },
   {
     slug: "acely-website",

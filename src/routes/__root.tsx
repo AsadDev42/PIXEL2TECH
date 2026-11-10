@@ -15,7 +15,8 @@ import appCss from "../styles.css?url";
 import { isChunkLoadError, reloadForStaleChunk } from "@/lib/lazy-with-retry";
 import { ThemeProvider, THEME_BOOT_SCRIPT } from "@/components/theme-provider";
 import { PageShell } from "@/components/site-chrome";
-import { SITE, STATS } from "@/lib/site-config";
+import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
+import { SOCIAL_LINKS } from "@/components/social-links";
 import { TEAM } from "@/lib/team";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { ContentProtection } from "@/components/content-protection";
@@ -133,18 +134,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:site_name", content: "Pixel2Tech" },
       { property: "og:locale", content: "en_US" },
+      { name: "twitter:site", content: "@Pixel2tech" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preconnect", href: "https://images.unsplash.com", crossOrigin: "anonymous" },
+      // Self-hosted fonts (see src/styles.css): preload the two latin files every page uses.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap",
+        rel: "preload",
+        href: "/fonts/manrope-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: "/fonts/sora-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
@@ -156,14 +167,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Organization",
+          // The one business entity for the whole site. Pages refer to it by @id.
+          "@type": ["Organization", "ProfessionalService"],
           "@id": "https://pixel2tech.com/#organization",
           name: "Pixel2Tech",
           description: SITE.shortDescription,
           url: SITE.url,
           logo: "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
+          image: "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg",
           email: SITE.email,
-          telephone: SITE.phoneE164,
+          telephone: SITE.phoneDisplay,
+          priceRange: "$$",
           foundingDate: STATS.foundingYear,
           founder: TEAM.filter((m) => m.founder).map((m) => ({
             "@type": "Person",
@@ -178,24 +192,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             opens: h.opens,
             closes: h.closes,
           })),
-          areaServed: ["US", "GB", "AE", "PK", "Worldwide"],
+          areaServed: SITE.areaServed.map((name) => ({ "@type": "Country", name })),
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: `${SITE.name} services`,
+            itemListElement: SERVICES.map((name) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name,
+                url: `${SITE.url}/services/${serviceAnchor(name)}`,
+              },
+            })),
+          },
           contactPoint: [
             {
               "@type": "ContactPoint",
               contactType: "sales",
               email: SITE.email,
-              telephone: SITE.phoneE164,
+              telephone: SITE.phoneDisplay,
               areaServed: "Worldwide",
               availableLanguage: ["English", "Urdu"],
             },
           ],
-          sameAs: [
-            "https://www.facebook.com/profile.php?id=61575635244591",
-            "https://www.instagram.com/pixel_2tech/",
-            "https://x.com/Pixel2tech",
-            "https://www.linkedin.com/company/pixel2tech",
-            "https://www.pinterest.com/pixel2tech/",
-          ],
+          // The same nine official profiles as the footer.
+          sameAs: SOCIAL_LINKS.map((link) => link.href),
         }),
       },
       {

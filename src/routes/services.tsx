@@ -173,7 +173,7 @@ export const Route = createFileRoute("/services")({
               "@type": "Service",
               name: s.title,
               description: s.desc,
-              url: `${PAGE_URL}#${s.id}`,
+              url: `${SITE.url}/services/${s.id}`,
               areaServed: "Worldwide",
               provider: ORG_REF,
             },

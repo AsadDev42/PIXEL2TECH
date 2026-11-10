@@ -71,10 +71,16 @@ export default defineConfig(({ command, mode }): UserConfig => {
           "/blog/covers/**": {
             headers: { "cache-control": "public, max-age=604800, stale-while-revalidate=86400" },
           },
+          "/testimonials/**": {
+            headers: { "cache-control": "public, max-age=604800, stale-while-revalidate=86400" },
+          },
+          // Self-hosted font files. A new font version gets a new file name.
+          "/fonts/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
           "/favicon.png": {
             headers: { "cache-control": "public, max-age=86400, stale-while-revalidate=604800" },
           },
           "/llms.txt": { headers: { "cache-control": "public, max-age=3600" } },
+          "/llms-full.txt": { headers: { "cache-control": "public, max-age=3600" } },
           "/robots.txt": { headers: { "cache-control": "public, max-age=3600" } },
         },
       }),
