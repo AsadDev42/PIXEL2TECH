@@ -184,19 +184,17 @@ function Hero() {
         className={`${CONTAINER} grid items-center gap-10 py-12 sm:py-16 md:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-20`}
       >
         <div className="min-w-0">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
-            For businesses worldwide, from the US to the EU · Based in Lahore, Pakistan
-          </p>
           <h1
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            One studio for brand, web and video.{" "}
-            <span className="block text-primary">From brief to launch.</span>
+            Websites, branding and video{" "}
+            <span className="block text-primary">that bring in customers.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            Brand, website and video from one in-house team. Work directly with the people making
-            it, with a clear scope and a fixed written quote before we begin.
+            For service businesses, online stores and agencies in the US, UK and Europe. You work
+            directly with the designers, developers and editors doing the job, and get a fixed
+            written quote before we start.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
