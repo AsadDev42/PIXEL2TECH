@@ -26,7 +26,7 @@ const post: PostBody = {
   ],
   content: [
     {
-      heading: "What is white-label Shopify development?",
+      heading: "What is a white label Shopify development service?",
       definition:
         "White-label Shopify development is when a specialist studio builds Shopify themes, sections, apps or migrations for an agency, and the agency delivers the work to its clients under its own brand. The agency keeps the client relationship, sets the price and owns quality; the partner works behind the scenes.",
       body: [
@@ -172,7 +172,7 @@ const post: PostBody = {
       ],
     },
     {
-      heading: "How to trial a white-label partner",
+      heading: "How to choose and trial a white label Shopify agency",
       body: [
         "Don't test a new partner on a client's launch. Pay for a real but contained task first, such as a custom section from one of your designs or a small bug list on a staging store, and score the result.",
         "Watch the questions they ask before starting as closely as the code. A partner who asks about editable settings, mobile behavior and edge cases before quoting is showing you how they'll work on the big project.",

@@ -7,6 +7,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   metaTitle: "Mobile App UX Design Process: The Complete 2026 Guide",
+  h1: "The Mobile App UX Design Process (2026): From Idea to App Store Launch",
   metaDescription:
     "A step-by-step mobile app design process for 2026: idea validation, user research, wireframing, prototyping, UI design, testing, handoff, and App Store launch.",
   ogTitle: "The Complete Mobile App Design Process (2026): Idea to App Store Launch",
@@ -94,7 +95,7 @@ const post: PostBody = {
   ],
   content: [
     {
-      heading: "Quick Answer: What Is the Mobile App Design Process?",
+      heading: "Quick Answer: What Is the Mobile App UX Design Process?",
       definition:
         "The mobile app design process is a repeatable sequence — validate, research, define, design, test, launch, improve — that turns an idea into a product people can use without instructions.",
       body: [

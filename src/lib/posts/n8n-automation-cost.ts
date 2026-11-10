@@ -55,7 +55,7 @@ const post: PostBody = {
       },
     },
     {
-      heading: "n8n Cloud vs self-hosted: plans and limits",
+      heading: "n8n pricing: official Cloud plans vs self-hosted",
       definition:
         "n8n Cloud is hosted and maintained by n8n and priced by monthly workflow executions. Self-hosted n8n runs on your own server. The Community edition is free, and paid Business and Enterprise licenses add team, security and governance features.",
       body: [

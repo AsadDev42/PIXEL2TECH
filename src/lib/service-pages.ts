@@ -486,9 +486,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "When it's worth building your own Shopify app.",
       },
       {
-        slug: "website-ownership-checklist",
-        title: "Do you own your website and code?",
-        desc: "A checklist for domains, hosting, accounts and code rights.",
+        slug: "mobile-app-design-process",
+        title: "Mobile app UX design process",
+        desc: "Each step from idea validation to App Store launch, with costs and timelines.",
       },
     ],
     faqs: [
@@ -577,9 +577,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     ],
     articles: [
       {
-        slug: "contact-form-crm-integration-brief",
-        title: "Connect a contact form to your CRM",
-        desc: "Define field mapping, duplicate handling, routing and recovery checks.",
+        slug: "n8n-automation-cost",
+        title: "n8n pricing and costs",
+        desc: "Cloud plans vs self-hosting, build effort and upkeep compared.",
       },
       {
         slug: "automate-lead-follow-up",
