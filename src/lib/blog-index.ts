@@ -40,7 +40,7 @@ const POSTS = [
     date: "November 10, 2026",
     time: "12:41 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/selling-los-angeles-website.jpg",
+    img: "/blog/covers/selling-los-angeles-website.jpg?v=3",
     imgAlt: "Los Angeles downtown skyline at dusk with palm trees",
   },
     {
@@ -52,7 +52,7 @@ const POSTS = [
     date: "November 10, 2026",
     time: "10:52 am",
     author: "Asad Farooq",
-    img: "/blog/covers/how-to-write-brand-story-customers-remember.jpg",
+    img: "/blog/covers/how-to-write-brand-story-customers-remember.jpg?v=3",
     imgAlt: "A business owner telling a story to a customer in a bright studio",
   },
   {
