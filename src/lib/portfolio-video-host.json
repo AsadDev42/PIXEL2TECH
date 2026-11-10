@@ -20,7 +20,7 @@
     "animated-explainer-videos": 9
   },
   "cdn": {
-    "baseUrl": "https://cdn.jsdelivr.net/gh/AsadDev42/PIXEL2TECH@9915cb26aed49c090c4c0fed8c27f0898d36ee74/public/portfolio",
+    "baseUrl": "https://cdn.jsdelivr.net/gh/AsadDev42/PIXEL2TECH@7a6a46a2ccbb88d8d7703af31b1e7a532052f44c/public/portfolio",
     "collections": {
       "cash-cow-youtube-videos": 17,
       "vip-talking-head-videos": 10,
