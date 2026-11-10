@@ -33,7 +33,7 @@ const post: PostBody = {
     { label: "Our Work", to: "/portfolio" },
     { label: "Contact", to: "/contact" },
   ],
-  metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands | Pixel2Tech",
+  metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands",
   metaDescription:
     "Understand headless Shopify commerce: how it works, real benefits and costs, when to switch, and how to migrate without losing SEO, speed, or revenue.",
   keywords: [

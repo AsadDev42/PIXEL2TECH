@@ -4,7 +4,7 @@ const post = {
   h1: "AI Chat Support That Actually Helps: What to Automate, What to Keep Human",
   metaTitle: "AI Chat Support: What to Automate, Keep Human",
   metaDescription:
-    "AI chat support works when it answers the questions it can answer well and hands over the rest quickly. A practical split for small businesses: automate the routine, keep humans for the sensitive and the valuable.",
+    "AI chat support works when it answers routine questions well and hands the rest over fast. What small businesses should automate, and what to keep human.",
   ogTitle: "AI Chat Support That Actually Helps: What to Automate, What to Keep Human",
   ogDescription:
     "AI chat support works when it answers the questions it can answer well and hands over the rest quickly. A practical split for small businesses: automate the routine, keep humans for the sensitive and the valuable.",

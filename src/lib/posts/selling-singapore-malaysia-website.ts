@@ -4,7 +4,7 @@ const post = {
   h1: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
   metaTitle: "Singapore and Malaysia: What Your Website Must Get Right",
   metaDescription:
-    "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
+    "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your site must show.",
   ogTitle: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
   ogDescription:
     "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",

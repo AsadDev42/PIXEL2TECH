@@ -4,7 +4,7 @@ const post = {
   h1: "How to Brief a Video Editor So the First Cut Is Close to Final",
   metaTitle: "How to Brief a Video Editor for a Near-Final First Cut",
   metaDescription:
-    "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
+    "Most video revisions come from a brief that missed the audience, the video's job or the must-keep moments. How to brief an editor for a better first cut.",
   ogTitle: "How to Brief a Video Editor So the First Cut Is Close to Final",
   ogDescription:
     "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",

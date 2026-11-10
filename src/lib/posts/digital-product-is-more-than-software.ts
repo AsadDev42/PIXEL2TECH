@@ -7,7 +7,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   h1: "Your Digital Product Is More Than Software. It’s a Business System.",
-  metaTitle: "Digital Product Strategy: Beyond Software to Business Systems | Pixel2Tech",
+  metaTitle: "Digital Product Strategy: More Than Software | Pixel2Tech",
   metaDescription:
     "Your digital product is more than software. How to build systems that solve a real business problem, remove friction and support growth.",
   ogTitle: "Your Digital Product Is More Than Software. It’s a Business System.",

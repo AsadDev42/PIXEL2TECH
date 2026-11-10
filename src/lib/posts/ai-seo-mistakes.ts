@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
   h1: "The AI SEO Mistakes Stopping Your Content From Ranking in 2026",
-  metaTitle: "AI SEO Mistakes in 2026 | Why Your Content Isn't Ranking | Pixel2Tech",
+  metaTitle: "AI SEO Mistakes in 2026: Why Your Content Isn't Ranking",
   metaDescription:
     "The most common AI SEO mistakes businesses make in 2026, why AI content stops ranking, and a practical framework to fix visibility in Google and AI search.",
   keywords: [

@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "How to Make Your Startup Investor-Ready Before Raising Funding | Pixel2Tech",
+  metaTitle: "How to Make Your Startup Investor-Ready Before Funding",
   metaDescription:
     "Investors check your website, product and brand before they read your deck. How an MVP, branding and a professional site help you look investor-ready.",
   keywords: [

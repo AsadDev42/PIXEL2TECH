@@ -4,7 +4,7 @@ const post = {
   h1: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
   metaTitle: "Shopify Checkout Questions to Answer Before They Buy",
   metaDescription:
-    "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
+    "Most abandoned checkouts start with an unanswered question. The questions Shopify customers ask before they buy, and where on your store each answer belongs.",
   ogTitle: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
   ogDescription:
     "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",

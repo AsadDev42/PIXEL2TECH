@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "AI Meeting Assistants: Are They Worth It for Your Business? | Pixel2Tech",
+  metaTitle: "AI Meeting Assistants: Are They Worth It for Business?",
   metaDescription:
     "Discover whether AI meeting assistants are worth the investment for your business. Learn the benefits, challenges, ROI, and how to choose the right solution.",
   keywords: [

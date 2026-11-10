@@ -4,7 +4,7 @@ const post = {
   h1: "Local SEO for Service Businesses in Dubai and Qatar: A Practical Checklist",
   metaTitle: "Local SEO in Dubai and Qatar: A Practical Checklist",
   metaDescription:
-    "Local SEO in Dubai and Qatar helps service businesses be found by nearby customers. A practical checklist covering profiles, service pages, reviews and local proof.",
+    "Local SEO in Dubai and Qatar helps nearby customers find your service business. A practical checklist for profiles, service pages, reviews and local proof.",
   ogTitle: "Local SEO for Service Businesses in Dubai and Qatar: A Practical Checklist",
   ogDescription:
     "Local SEO in Dubai and Qatar helps service businesses be found by nearby customers. A practical checklist covering profiles, service pages, reviews and local proof.",

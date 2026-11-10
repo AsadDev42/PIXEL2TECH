@@ -4,7 +4,7 @@ const post: PostBody = {
   h1: "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
   metaTitle: "Custom Booking Platform vs Off the Shelf Software",
   metaDescription:
-    "When does a service business need a custom booking platform, and when is off the shelf software enough? A practical decision guide covering cost, fit, data and growth.",
+    "When does a service business need a custom booking platform, and when is off the shelf software enough? A decision guide covering cost, fit, data and growth.",
   ogTitle:
     "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
   ogDescription:

@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "10 Signs to Replace Your Digital Marketing Agency | Pixel2Tech",
+  metaTitle: "Replace Your Digital Marketing Agency? 10 Signs It's Time",
   metaDescription:
     "Is your marketing agency failing to deliver? Discover the warning signs, hidden costs, and how the right digital partner accelerates business growth.",
   keywords: [

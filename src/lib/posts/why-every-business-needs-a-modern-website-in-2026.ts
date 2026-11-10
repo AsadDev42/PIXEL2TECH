@@ -1,6 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
+  metaTitle: "Why Every Business Needs a Modern Website in 2026",
   metaDescription:
     "A 10-point website audit: speed, clarity, mobile UX, trust signals, SEO basics, analytics, accessibility, fresh content, conversion paths and brand fit.",
   content: [

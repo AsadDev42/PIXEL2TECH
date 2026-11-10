@@ -4,7 +4,7 @@ const post = {
   h1: "Colour and Type Choices That Make a Small Brand Look Established",
   metaTitle: "Colour and Type That Make a Small Brand Look Established",
   metaDescription:
-    "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
+    "A small brand looks established when its colour and type stay consistent and restrained. How to pick a palette and type pairing that hold up everywhere.",
   ogTitle: "Colour and Type Choices That Make a Small Brand Look Established",
   ogDescription:
     "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",

@@ -4,7 +4,7 @@ const post = {
   h1: "Selling to Customers in Los Angeles: What Your Website Must Get Right",
   metaTitle: "Selling to Customers in Los Angeles: Website Guide",
   metaDescription:
-    "Los Angeles buyers check trust, speed, and local relevance before they enquire. What your website must show clearly to win customers in Los Angeles, from first visit to first call.",
+    "Los Angeles buyers check trust, speed and local relevance before they enquire. What your website must show to win LA customers, from first visit to first call.",
   ogTitle: "Selling to Customers in Los Angeles: What Your Website Must Get Right",
   ogDescription:
     "Los Angeles buyers check trust, speed, and local relevance before they enquire. What your website must show clearly to win customers in Los Angeles, from first visit to first call.",

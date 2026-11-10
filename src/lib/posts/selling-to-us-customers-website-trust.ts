@@ -4,7 +4,7 @@ const post = {
   h1: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
   metaTitle: "Selling to US Customers from Abroad: Website Trust",
   metaDescription:
-    "Selling to customers in Los Angeles, New York or New Jersey from abroad? Your website must answer trust, communication and delivery questions before a US buyer books a first call.",
+    "Selling to customers in Los Angeles, New York or New Jersey from abroad? Your website must answer trust, communication and delivery questions first.",
   ogTitle:
     "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
   ogDescription:

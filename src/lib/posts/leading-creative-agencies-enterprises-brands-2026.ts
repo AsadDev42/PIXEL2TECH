@@ -8,7 +8,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   h1: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
-  metaTitle: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
+  metaTitle: "12 Leading Creative Agencies for Enterprises in 2026",
   metaDescription:
     "A practical list of 12 leading creative agencies for enterprises and brands in 2026 — what each is best at, plus how to choose the right creative partner.",
   ogTitle: "12 Leading Creative Agencies for Enterprises & Brands in 2026",

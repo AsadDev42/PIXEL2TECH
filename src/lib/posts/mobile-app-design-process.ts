@@ -6,7 +6,7 @@ import type { PostBody } from "@/lib/blog-types";
  * opens with a direct answer before expanding into detail.
  */
 const post: PostBody = {
-  metaTitle: "The Complete Mobile App Design Process (2026 Guide) | Pixel2Tech",
+  metaTitle: "Mobile App Design Process: The Complete 2026 Guide",
   metaDescription:
     "A step-by-step mobile app design process for 2026: idea validation, user research, wireframing, prototyping, UI design, testing, handoff, and App Store launch.",
   ogTitle: "The Complete Mobile App Design Process (2026): Idea to App Store Launch",

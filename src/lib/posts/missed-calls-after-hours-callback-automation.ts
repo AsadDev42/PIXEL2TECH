@@ -4,7 +4,7 @@ const post: PostBody = {
   h1: "Missed Calls After Hours: A Simple Automation That Books the Callback",
   metaTitle: "Missed Calls After Hours: Callback Automation",
   metaDescription:
-    "Missed calls after hours are often lost enquiries, not just missed calls. A simple callback automation captures the caller, promises a time and creates a task the team can actually follow.",
+    "Missed calls after hours are often lost enquiries. A simple callback automation captures the caller, promises a time and creates a task the team can follow.",
   ogTitle: "Missed Calls After Hours: A Simple Automation That Books the Callback",
   ogDescription:
     "Missed calls after hours are often lost enquiries, not just missed calls. A simple callback automation captures the caller, promises a time and creates a task the team can actually follow.",

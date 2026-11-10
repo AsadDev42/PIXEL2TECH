@@ -7,7 +7,7 @@ import type { PostBody } from "@/lib/blog-types";
  * its own slug: better-systems-not-more-software.
  */
 const post: PostBody = {
-  metaTitle: "Why Businesses Need Better Systems Instead of More Software | Pixel2Tech",
+  metaTitle: "Why Businesses Need Better Systems Instead of More Software",
   metaDescription:
     "Learn why businesses struggle despite using multiple software tools and how AI, automation, and connected systems help companies scale more efficiently.",
   keywords: [

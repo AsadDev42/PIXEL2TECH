@@ -10,7 +10,7 @@ const post: PostBody = {
   h1: "The Biggest SEO Mistakes Businesses Still Make in 2026",
   metaTitle: "The Biggest SEO Mistakes Businesses Still Make in 2026",
   metaDescription:
-    "Seven SEO mistakes still costing businesses visibility in 2026 — ignoring search intent, AI search, user experience and content upkeep — plus the fixes that work.",
+    "Seven SEO mistakes still costing businesses visibility in 2026, from ignoring search intent and AI search to stale content, plus the fixes that work.",
   ogTitle: "The Biggest SEO Mistakes Businesses Still Make in 2026",
   ogDescription:
     "Search intent, AI search visibility, topic clusters, UX and content refreshes — the SEO mistakes that cost more than rankings, and how to fix them.",

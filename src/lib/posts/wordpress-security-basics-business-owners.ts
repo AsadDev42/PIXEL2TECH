@@ -4,7 +4,7 @@ const post = {
   h1: "WordPress Security Basics for Business Owners: A Checklist That Takes an Hour",
   metaTitle: "WordPress Security Basics for Business Owners",
   metaDescription:
-    "WordPress security for business owners does not need a specialist. A one hour checklist covering logins, updates, backups, and the settings that stop most attacks.",
+    "WordPress security for business owners needs no specialist. A one hour checklist for logins, updates, backups and the settings that stop most attacks.",
   ogTitle: "WordPress Security Basics for Business Owners: A Checklist That Takes an Hour",
   ogDescription:
     "WordPress security for business owners does not need a specialist. A one hour checklist covering logins, updates, backups, and the settings that stop most attacks.",

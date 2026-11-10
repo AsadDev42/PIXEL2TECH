@@ -1,9 +1,9 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "Kling O1 Explained: Features, Use Cases & Business Benefits | Pixel2Tech",
+  metaTitle: "Kling O1 Explained: Features, Use Cases and Benefits",
   metaDescription:
-    "Discover what Kling O1 is, how it works, its key features, business use cases, and how AI video can transform marketing, content creation, and digital experiences.",
+    "What Kling O1 is, how it works, its key features and business use cases, and how AI video can help marketing and content teams create more.",
   keywords: [
     "Kling O1",
     "Kling O1 AI",

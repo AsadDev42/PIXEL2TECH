@@ -4,7 +4,7 @@ const post = {
   h1: "AI for Quoting and Proposals: Faster Estimates Without Losing the Human Check",
   metaTitle: "AI for Quoting and Proposals: Faster Estimates",
   metaDescription:
-    "AI can draft quotes and proposals in minutes, but a wrong price or a missed scope item costs more than the time saved. A practical setup for faster estimates with a human check before anything goes out.",
+    "AI can draft quotes and proposals in minutes, but a wrong price costs more than the time saved. A practical setup for faster estimates with a human check.",
   ogTitle: "AI for Quoting and Proposals: Faster Estimates Without Losing the Human Check",
   ogDescription:
     "AI can draft quotes and proposals in minutes, but a wrong price or a missed scope item costs more than the time saved. A practical setup for faster estimates with a human check before anything goes out.",

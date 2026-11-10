@@ -4,7 +4,7 @@ const post = {
   h1: "Before and After Videos: A Simple Format That Sells Service Work",
   metaTitle: "Before and After Videos That Sell Service Work",
   metaDescription:
-    "A before and after video shows the result of service work in seconds, with proof no paragraph can match. A practical guide to filming the pair honestly and using it everywhere.",
+    "A before and after video proves service work in seconds. A practical guide to filming the pair honestly and using it on your website, social media and ads.",
   ogTitle: "Before and After Videos: A Simple Format That Sells Service Work",
   ogDescription:
     "A before and after video shows the result of service work in seconds, with proof no paragraph can match. A practical guide to filming the pair honestly and using it everywhere.",

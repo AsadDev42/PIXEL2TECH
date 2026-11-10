@@ -3,7 +3,7 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   metaTitle: "How to Find Your Brand Voice: A Practical Guide",
   metaDescription:
-    "A practical guide to finding a brand voice that fits your business, writing it down in plain words, and keeping it consistent across your website, emails and ads.",
+    "How to find a brand voice that fits your business, write it down in plain words and keep it consistent across your website, emails and ads.",
   keyTakeaways: [
     "Brand voice is how your business talks when it writes: its tone, word choices and attitude, not a slogan.",
     "Start with your customers' worries and what they need to feel, not a bigger competitor's voice.",

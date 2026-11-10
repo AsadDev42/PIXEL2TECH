@@ -6,7 +6,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   h1: "How AI and Automation Are Reshaping Business Operations",
-  metaTitle: "How AI and Automation Are Reshaping Business Operations | Pixel2Tech",
+  metaTitle: "AI and Automation in Business Operations | Pixel2Tech",
   metaDescription:
     "How AI and automation reduce repetitive work, improve decisions, streamline workflows and help businesses build operations that scale.",
   ogTitle: "How AI and Automation Are Reshaping Business Operations",

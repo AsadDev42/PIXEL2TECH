@@ -4,7 +4,7 @@ const post = {
   h1: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
   metaTitle: "Internal Linking for Service Websites",
   metaDescription:
-    "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
+    "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with clear rules.",
   ogTitle:
     "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
   ogDescription:

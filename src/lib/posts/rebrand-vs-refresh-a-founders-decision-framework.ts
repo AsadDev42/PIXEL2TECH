@@ -1,6 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
+  metaTitle: "Rebrand vs. Refresh: A Founder's Decision Framework",
   metaDescription:
     "Rebrand or refresh? Five questions to answer first, about your audience, your offer, growth, team buy-in and commitment, before you change your brand.",
   content: [

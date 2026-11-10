@@ -8,7 +8,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   h1: "20 Most Common Technology Mistakes Businesses Make in 2026",
-  metaTitle: "20 Common Technology Mistakes Businesses Make in 2026 | Pixel2Tech",
+  metaTitle: "20 Technology Mistakes Businesses Make in 2026",
   metaDescription:
     "Twenty technology mistakes businesses make in 2026, and how to simplify your tools, use AI where it helps and build systems with real business impact.",
   ogTitle: "20 Most Common Technology Mistakes Businesses Make in 2026",

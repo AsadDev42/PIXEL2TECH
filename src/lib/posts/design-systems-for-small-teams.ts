@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "Design Systems for Small Teams: A Practical Guide | Pixel2Tech",
+  metaTitle: "Design Systems for Small Teams: A Practical Guide",
   metaDescription:
     "Learn how small teams can build effective design systems using simple components, tokens, and patterns to improve consistency, speed, and product quality.",
   keywords: [

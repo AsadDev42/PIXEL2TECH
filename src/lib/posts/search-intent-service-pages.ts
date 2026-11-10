@@ -4,7 +4,7 @@ const post = {
   h1: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
   metaTitle: "Search Intent for Service Pages: Match Customer Needs",
   metaDescription:
-    "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
+    "A service page ranks when it matches what the searcher wants: an answer, a comparison or a supplier. How to read search intent and shape each page around it.",
   ogTitle: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
   ogDescription:
     "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",

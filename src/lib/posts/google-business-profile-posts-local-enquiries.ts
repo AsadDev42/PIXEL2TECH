@@ -4,7 +4,7 @@ const post = {
   h1: "Google Business Profile Posts That Bring Local Enquiries: A Weekly Routine",
   metaTitle: "Google Business Profile Posts That Bring Local Enquiries",
   metaDescription:
-    "Google Business Profile posts put your service in front of nearby customers who are already searching. A weekly posting routine for service businesses, with four post types that work.",
+    "Google Business Profile posts reach nearby customers who are already searching. A weekly posting routine for service businesses, with four post types that work.",
   ogTitle: "Google Business Profile Posts That Bring Local Enquiries: A Weekly Routine",
   ogDescription:
     "Google Business Profile posts put your service in front of nearby customers who are already searching. A weekly posting routine for service businesses, with four post types that work.",

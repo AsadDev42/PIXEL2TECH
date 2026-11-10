@@ -4,7 +4,7 @@ const post = {
   h1: "How to Name a Service Business So Customers Remember It",
   metaTitle: "How to Name a Service Business Customers Remember",
   metaDescription:
-    "A memorable service business name is short, easy to say on the phone, and easy to find online. A practical naming guide for service businesses, from the first shortlist to the final check.",
+    "A memorable service business name is short, easy to say on the phone and easy to find online. A naming guide from the first shortlist to the final check.",
   ogTitle: "How to Name a Service Business So Customers Remember It",
   ogDescription:
     "A memorable service business name is short, easy to say on the phone, and easy to find online. A practical naming guide for service businesses, from the first shortlist to the final check.",

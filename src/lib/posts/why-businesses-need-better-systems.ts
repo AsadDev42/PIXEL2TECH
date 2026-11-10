@@ -8,7 +8,7 @@ import type { PostBody } from "@/lib/blog-types";
  */
 const post: PostBody = {
   h1: "Your Business Doesn't Need More Software. It Needs Better Systems.",
-  metaTitle: "Your Business Needs Better Systems, Not More Software | Pixel2Tech",
+  metaTitle: "Better Business Systems, Not More Software | Pixel2Tech",
   metaDescription:
     "Most businesses have a systems problem, not a technology problem. Why adding tools adds friction, and how to build connected workflows that scale.",
   ogTitle: "Your Business Doesn't Need More Software. It Needs Better Systems.",

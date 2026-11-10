@@ -1,9 +1,9 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "AI & Design Systems: The Future of Product Development | Pixel2Tech",
+  metaTitle: "AI Design Systems: The Future of Product Development",
   metaDescription:
-    "Learn how AI is reshaping UI/UX design and why robust design systems are becoming the critical bridge between AI generation and professional product experiences.",
+    "How AI is reshaping UI/UX design, and why strong design systems are the bridge between AI-generated screens and professional product experiences.",
   keywords: [
     "AI Design",
     "Design Systems",
