@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "White-Label Shopify Development: A Guide for Agencies",
+  metaTitle: "White Label Shopify Development Services for Agencies",
   metaDescription:
     "How agencies can outsource Shopify builds under their own brand: pricing models, store access, hand-off workflow, contracts and how to trial a partner.",
   keywords: [
@@ -12,6 +12,8 @@ const post: PostBody = {
     "shopify collaborator access",
     "agency development partner nda",
     "white label shopify developer uk",
+    "white label shopify services",
+    "white label shopify agency",
   ],
   disclosure:
     "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with agencies in the US, UK and Europe, and offers white-label Shopify development and creative.",

@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "WhatsApp Business API Setup Guide: UK, EU and US (2026)",
+  metaTitle: "WhatsApp Business API Setup and Pricing: UK, EU, US (2026)",
   metaDescription:
     "Set up the WhatsApp Business API in the UK, EU or US: Meta verification, Cloud API vs a BSP, per-message rates in USD, GBP and EUR, and GDPR opt-in rules.",
   keywords: [
@@ -12,6 +12,7 @@ const post: PostBody = {
     "WhatsApp Business app vs API",
     "WhatsApp Business API GDPR opt-in",
     "WhatsApp Business Solution Provider",
+    "WhatsApp Business Platform pricing",
   ],
   disclosure:
     "Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe, and offers the WhatsApp API setup and integration services discussed here.",

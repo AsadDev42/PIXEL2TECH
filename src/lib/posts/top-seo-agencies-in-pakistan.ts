@@ -12,6 +12,7 @@ const post: PostBody = {
     "SEO agency Pakistan pricing USD",
     "white label SEO Pakistan",
     "hire SEO agency abroad",
+    "SEO company in Lahore",
   ],
   disclosure:
     "Disclosure: Pixel2Tech wrote this list and put itself at number 1. Our entry describes our own services; it is not an independent review. Pixel2Tech is a design and development studio in Lahore, Pakistan that works with clients in the US, UK and Europe. Compare every agency on its SEO results, references and pricing before you decide.",

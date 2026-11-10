@@ -11,6 +11,7 @@ const post: PostBody = {
     "squarespace vs wordpress seo",
     "website platform for law firm",
     "webflow vs wordpress 2026",
+    "webflow vs wordpress vs squarespace",
   ],
   disclosure:
     "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the WordPress and website development services discussed here.",

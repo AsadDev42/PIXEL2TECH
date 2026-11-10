@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "n8n Cost in 2026: Cloud, Self-Hosting, Build and Upkeep",
+  metaTitle: "n8n Pricing 2026: Cloud Plans, Self-Hosting and Upkeep",
   metaDescription:
     "What n8n costs: Cloud plans vs self-hosting, server and upkeep, build effort, and when it beats Zapier or Make on price. Prices as of September 2026.",
   keywords: [
@@ -11,6 +11,7 @@ const post: PostBody = {
     "hire n8n expert cost",
     "n8n vs zapier cost",
     "n8n vps hosting",
+    "n8n cloud plans",
   ],
   disclosure:
     "Pixel2Tech is a design and development studio in Lahore, Pakistan, and offers the automation build and maintenance services discussed here.",
