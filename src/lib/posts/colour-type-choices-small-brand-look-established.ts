@@ -22,6 +22,28 @@ const post = {
     "Test colour and type together on a phone, a social post, an email header, an invoice and a card.",
     "Write the choices down on one page and share it with everyone who makes anything for the brand.",
   ],
+  faqs: [
+    {
+      q: "How many colours should a small brand colour palette have?",
+      a: "Three is usually enough: one main colour, one supporting colour for accents, and one neutral for backgrounds and text. Using the same three colours everywhere makes a small brand look deliberate. Every extra colour is another choice your team has to get right, every time, which is how a brand starts to look improvised.",
+    },
+    {
+      q: "How do I choose the main colour for a small business brand?",
+      a: "Pick a colour that suits the work and the customers, not just personal taste, because customers read colour as a signal about the kind of business they are dealing with. Then test it in real places, such as a website header, a social media profile, a printed invoice and a small phone screen. If it fails in one common place, keep looking.",
+    },
+    {
+      q: "How many fonts should a small brand use?",
+      a: "Two typefaces are enough, as long as each has a clear job. One carries headlines and short statements, and the other carries longer reading text such as service descriptions. Avoid two typefaces that look almost the same, because near matches look like mistakes. A clear contrast, such as a strong sans serif headline with a calmer serif or sans serif body, reads as a decision.",
+    },
+    {
+      q: "Should body text use a bright brand colour?",
+      a: "Usually not. Contrast drops as text gets smaller, so a colour that works well as a large block can fail as small text. Keep body text in a dark neutral, and save bright colours for short headings, buttons and highlights. Check the result on a phone and in a social media caption, where small sizes are common.",
+    },
+    {
+      q: "What should a small brand's colour palette and type guide include?",
+      a: "A one page guide is enough for most small businesses. List the main and supporting colours with their hex codes, the two typefaces and their jobs, and three examples of correct use and three of incorrect use. Share it with everyone who makes anything for the brand, including freelancers and new team members, so the brand stops drifting.",
+    },
+  ],
   internalLinks: [
     {
       label: "The Brand Identity Process for Startups: From Discovery to Launch",

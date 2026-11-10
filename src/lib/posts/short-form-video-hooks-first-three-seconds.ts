@@ -39,6 +39,10 @@ const post = {
       q: "What is the most common hook mistake?",
       a: "Starting with an introduction, a greeting, or a logo, instead of the result, the problem, or the surprise that the viewer cares about.",
     },
+    {
+      q: "How do you test short form video hooks?",
+      a: "Take one finished video and create two or three versions with different openings, keeping the rest identical. Compare them fairly on one measure first, such as how many viewers watch past the first three seconds. Keep a short list of the hooks that worked, with the video topic beside each one, so patterns become a starting point for every new video.",
+    },
   ],
   internalLinks: [
     {

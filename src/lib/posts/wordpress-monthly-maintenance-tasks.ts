@@ -24,6 +24,28 @@ const post = {
     "Check speed and mobile display, and fix broken links and outdated content.",
     "Keep a one page monthly log, with a fixed day each month for the routine.",
   ],
+  faqs: [
+    {
+      q: "What WordPress maintenance tasks should be done every month?",
+      a: "A simple monthly WordPress maintenance routine covers seven steps: confirm a recent, tested backup; update core, theme and plugins, then test key pages and forms; remove unused plugins, themes and user accounts; review security reports and login activity; check speed and mobile display; fix broken links and outdated content; and write a short note in a maintenance log.",
+    },
+    {
+      q: "In what order should WordPress updates be done?",
+      a: "Back up first, then update WordPress core, then the theme, then plugins, one group at a time. Updating everything at once makes it hard to tell which change caused a problem. Afterwards, check the home page, a service page, the contact page and any checkout or booking step, and submit a test enquiry through your own form.",
+    },
+    {
+      q: "How do I know if my WordPress backups actually work?",
+      a: "Check that a recent backup exists and that it includes both the files and the database. If backups run automatically, read the reports, because a failed backup job that nobody reads is the same as no backup at all. Once in a while, test the restore process on a staging copy rather than on the live site.",
+    },
+    {
+      q: "Should I delete inactive WordPress plugins and themes?",
+      a: "Yes. Unused plugins and themes are not harmless: they still need updates and still add risk, even when inactive. If a plugin has not been used in months, delete it rather than leaving it installed. The same monthly review is a good time to remove user accounts for people who no longer work with you.",
+    },
+    {
+      q: "Why keep a WordPress maintenance log?",
+      a: "A one page WordPress maintenance log records the date, what was updated, what was tested and anything that needs attention next month. If a problem appears later, the log shows what changed and when. If someone else takes over the site, it shows them the routine. Pair it with a fixed day each month for the checks.",
+    },
+  ],
   internalLinks: [
     {
       label: "WordPress vs Webflow vs Squarespace for a Service Business Site",

@@ -39,6 +39,10 @@ const post = {
       q: "When is a custom app the wrong choice?",
       a: "When an off the shelf tool already does the job well, and the differences are preferences rather than real needs. A custom build earns its cost when the workflow is specific to the business and no standard tool fits it.",
     },
+    {
+      q: "How do you scope a custom web app?",
+      a: "Write the job the app does in one sentence from the user's side, and list each person who uses it with the one thing they must be able to do. Test every proposed feature by asking who uses it, what happens if it is missing on launch day and whether it can be added later. Then fix the launch date, write down what version one will not do, and walk through the scope before building.",
+    },
   ],
   internalLinks: [
     {

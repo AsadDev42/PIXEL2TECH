@@ -58,6 +58,10 @@ const post: PostBody = {
       q: "Can I use all three together?",
       a: "Absolutely. Many of our clients use Apollo for lead sourcing, Instantly for initial low-stakes volume testing, and Outtricks for high-value account engagement and precise follow-up.",
     },
+    {
+      q: "How does pricing compare between Outtricks, Instantly and Apollo?",
+      a: "Apollo is priced per user and per credit, which can become expensive as a team and its data needs grow. Instantly charges a flat fee for unlimited accounts, which gives it the lowest cost per send. Outtricks is typically tiered by the complexity and scale of the system and often costs more upfront than Instantly, with its return tied to higher conversion rates and protecting your domain assets.",
+    },
   ],
   content: [
     {

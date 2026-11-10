@@ -39,6 +39,10 @@ const post = {
       q: "How do we stop AI quotes from sounding generic?",
       a: "Give it your own inputs: past quotes that won work, the words your team actually uses, and the details of the specific enquiry. A draft built from your own material will sound like your business, not like a template.",
     },
+    {
+      q: "How should a service business start using AI for quoting and proposals?",
+      a: "Start with one service that has a clear scope and a steady flow of enquiries. Build a template, a rate card and a short human check for that service, and run it for a month. Measure how long quoting takes and how often the check changes something important. Expand to the next service only when time drops and corrections stay small.",
+    },
   ],
   internalLinks: [
     {

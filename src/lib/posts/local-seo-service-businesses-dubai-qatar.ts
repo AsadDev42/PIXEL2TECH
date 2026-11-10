@@ -39,6 +39,10 @@ const post = {
       q: "Should we target every district name in Dubai and Doha?",
       a: "No. Target the main service areas you genuinely serve, with detailed pages, rather than many thin pages that repeat the same text with a different district name.",
     },
+    {
+      q: "How should a service business get reviews for local SEO in Dubai and Qatar?",
+      a: "Ask satisfied customers at the right moment, such as after a completed project or a successful delivery, and make it easy with a direct link. Respond to reviews, including critical ones, in a calm, specific way. Never buy reviews or ask for them in a burst that looks artificial; a steady flow of genuine reviews over time is more credible and safer for the profile.",
+    },
   ],
   internalLinks: [
     {

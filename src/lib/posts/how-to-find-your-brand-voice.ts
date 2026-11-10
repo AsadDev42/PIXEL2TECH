@@ -10,6 +10,28 @@ const post = {
     "Describe three or four traits with examples and opposites, and keep the guide to one page where writers work.",
     "Test the voice on your home page, emails, ads and forms, and review it twice a year.",
   ],
+  faqs: [
+    {
+      q: "What is brand voice, and how is it different from a tagline?",
+      a: "Brand voice is how your business talks when it writes: the tone, word choices and attitude that show up in every message. A tagline is a single line, while voice runs through your website, emails, ads and forms. A clear voice makes a business feel like one team instead of several strangers sharing a logo.",
+    },
+    {
+      q: "How do I find my brand voice as a small business?",
+      a: "Start with your customers rather than a bigger competitor. Ask who is reading, what they worry about, what they need to feel before they contact you, and what would sound wrong to them even if it sounds clever. Then choose three or four voice traits, explain each with an example, and write down the opposite of each trait.",
+    },
+    {
+      q: 'Why are descriptions like "professional yet friendly" not enough for a brand voice?',
+      a: 'Vague phrases can mean almost anything, so they do not help anyone write. Describe each trait with what you actually do, for example: "We are warm and direct. We greet the reader, answer the question in the first two sentences, and avoid jargon." Adding an opposite, such as warm but not chatty, stops writers drifting to either extreme.',
+    },
+    {
+      q: "How long should a brand voice guide be?",
+      a: "One page is enough for most small teams. Include your three or four traits with short examples, words you use and avoid, how you open an email, web page and ad, how you handle bad news, and two before and after rewrites. Keep it where writers actually work, next to your brand colours and logo files.",
+    },
+    {
+      q: "How do I keep a brand voice consistent when freelancers or new staff write for us?",
+      a: "Make the voice page part of every brief, and ask new writers to rewrite one existing paragraph in your voice before they start a larger job. That short test shows misunderstandings early, when they are cheap to fix. Review the voice twice a year, keeping what still fits and updating what sounds dated.",
+    },
+  ],
   content: [
     {
       heading: "Why brand voice matters more than a tagline",

@@ -39,6 +39,10 @@ const post = {
       q: "Do we need a CRM to run lead scoring?",
       a: "No. A sheet works for a small team. Move to a CRM when lead volume, or the time spent scoring, makes the sheet painful.",
     },
+    {
+      q: "What is the difference between fit and intent in lead scoring?",
+      a: "Fit asks whether the lead matches the customers you serve best, using signals such as business type, job size, service area and budget range. Intent asks what the lead has actually done, such as requesting a quote, booking a call or replying to a follow up. Give the most intent points to actions that take effort, and let those points fade over time.",
+    },
   ],
   internalLinks: [
     {

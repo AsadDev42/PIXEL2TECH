@@ -9,6 +9,28 @@ const post: PostBody = {
     "Include content, product data, variant states and merchant editing in the scope.",
     "Check representative products and measure commercial effects separately from delivery.",
   ],
+  faqs: [
+    {
+      q: "What should a Shopify product page include?",
+      a: "It should answer the customer’s questions in order: what the product is, whether it fits the need, which option to choose, what it costs and what happens after ordering. The details vary by category, such as ingredients for skincare, dimensions for furniture or fit guidance for footwear. Keep the immediate decision clear near the purchase button, and group supporting detail under descriptive headings.",
+    },
+    {
+      q: "What should the scope of a Shopify product page redesign include?",
+      a: "Name the product families covered, the templates being changed, reusable information blocks and app integrations. List excluded work too, such as new photography, catalogue clean-up, checkout changes or translation. Include merchant editing in the acceptance criteria, so your team can change a size guide or image without editing code, and agree where the work will be previewed and how the existing theme can be restored.",
+    },
+    {
+      q: "How should a Shopify product page redesign be tested before launch?",
+      a: "Test representative products rather than only the one used in the presentation: a simple item, a multi-variant item, a sold-out item and a product with optional data missing. Repeat the shopping actions on desktop and mobile, check keyboard access, and confirm that the title, price and selected variant agree and that the correct variant and quantity reach the cart. Record pass or fail with the exact product and device.",
+    },
+    {
+      q: "Will a new product page design increase sales?",
+      a: "A design change does not independently prove a revenue increase. Compare post-launch behaviour with a baseline that includes traffic sources, promotions, stock availability and the measurement period, and describe the uncertainty if traffic or the offer changed at the same time. The immediate outcome is a working, maintainable product template; commercial results need observation after launch.",
+    },
+    {
+      q: "How many images should a Shopify product page have?",
+      a: "There is no set number, because more media is not automatically better if the images repeat the same information. Give each image a job: a primary image identifies the product, a detail image explains material or finish, a scale image helps with dimensions and an in-use image shows context. A short demonstration can help when the buying question involves movement or a process.",
+    },
+  ],
   content: [
     {
       heading: "When does a Shopify product page need a redesign?",

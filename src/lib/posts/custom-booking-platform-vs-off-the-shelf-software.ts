@@ -24,6 +24,28 @@ const post: PostBody = {
     "Check data ownership and export, and who can maintain the platform if the original builder is unavailable.",
     "Use the five-question test before choosing between standard and custom software.",
   ],
+  faqs: [
+    {
+      q: "When does a service business need a custom booking platform?",
+      a: "A custom booking platform makes sense when rules unique to your business cause manual work, double bookings or lost jobs that a standard tool cannot remove. Examples include booking by practitioner, room and equipment at once, pricing by area with deposits only for larger jobs, or managing waitlists and certificates. If your flow is close to standard, off the shelf software is usually enough.",
+    },
+    {
+      q: "Is off the shelf booking software cheaper than a custom build?",
+      a: "For a standard flow, usually yes: it wins on speed, price and maintenance, with updates, support and tested payment and calendar connections included. But stacking three or four tools to cover one flow can cost more in time and errors than a single custom platform. If staff copy the same booking between tools every day, the cheap option is no longer cheap.",
+    },
+    {
+      q: "How do I justify the cost of a custom booking platform?",
+      a: "Ask for the value in plain numbers before approving a build: how many hours of admin it will remove each week, and how many missed bookings it will prevent. Compare that with the true cost of the current manual work, not just the subscription price of a ready made tool. If nobody can answer those questions, the scope is not ready.",
+    },
+    {
+      q: "Who owns the customer data in a booking platform?",
+      a: "With a subscription tool, your booking history, customer list and payment records live in someone else's system, so check how you can export them in full before you sign. With a custom platform, confirm who owns the code, where it is hosted, and who can maintain it if the original builder is unavailable. A custom build without documentation and handover is a risk, not an asset.",
+    },
+    {
+      q: "Should I try standard booking software before building a custom one?",
+      a: "Often, yes, especially while you are still learning what you need. A few months on a standard tool shows which features you use, which you ignore and which workarounds you keep inventing. That evidence makes any later custom build cheaper, because it is based on real use rather than guesses.",
+    },
+  ],
   internalLinks: [
     {
       label: "Custom Web App Development Cost in 2026: US, UK and EU Rates",

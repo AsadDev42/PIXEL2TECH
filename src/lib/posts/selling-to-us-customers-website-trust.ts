@@ -25,6 +25,28 @@ const post = {
     "Answer payment, ownership, revisions and post-launch support upfront.",
     "Keep the enquiry form small and keep your reply promise.",
   ],
+  faqs: [
+    {
+      q: "What should a website show before selling to US customers from abroad?",
+      a: "It should answer four questions a distant buyer is asking: are you real, will you understand my market, will communication be easy, and will delivery be reliable. That means real projects with context, a clear numbered process, stated working hours and time-zone overlap, honest answers on payment and ownership, and a small enquiry form with a reply promise you keep.",
+    },
+    {
+      q: "How should an overseas studio handle time zones with US clients?",
+      a: "Address time zones directly, because they are the first worry for many US buyers. State your working hours in a way a US reader can understand, note the hours when you are available for live calls in Eastern or Pacific time, and say how quickly you reply to messages outside those hours.",
+    },
+    {
+      q: "Should my website explain payment and ownership to US buyers?",
+      a: "Yes. Some buyers will not ask about payment, ownership or contracts on a first call; they simply leave if the website leaves them guessing. Explain who owns the website, design files and code, how revisions work, what happens if something breaks after launch, and how payment is structured. You do not need to publish every contract detail.",
+    },
+    {
+      q: "Do location pages help when selling to US customers?",
+      a: "Only when they are genuine. A page about serving New York businesses should reflect real experience with that market, not just repeat the city name. Honest, specific content builds trust, while generic location pages destroy it. Write for US buyers directly, using the spelling, terms and examples they recognise, and describe services the way a US business owner would.",
+    },
+    {
+      q: "How long should an enquiry form be for US buyers?",
+      a: "Keep it small, because a long form asks for trust before you have earned it. Name, email, a short project description and an optional budget range are enough to start, and you can ask for detail after replying. Add a clear reply promise, such as one business day, and keep it, because your first reply is a sample of your working style.",
+    },
+  ],
   internalLinks: [
     {
       label: "A Custom Booking Platform vs Off the Shelf Software",

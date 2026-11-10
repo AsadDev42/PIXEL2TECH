@@ -39,6 +39,10 @@ const post = {
       q: "What if the before and after difference is subtle?",
       a: "Show the detail instead of the wide shot. A close up of the repaired area, the finished edge, or the new fixture tells the story better than a wide shot where nothing seems to change. If the difference is genuinely invisible, the format is not right for that job.",
     },
+    {
+      q: "Do we need permission to film a customer's property for a before and after video?",
+      a: "Yes. Ask before filming a customer's property or featuring their space, and agree where the video will be used. A short written agreement, even a message confirming permission, avoids awkward conversations later. Most customers are happy to help when they are asked properly and the result looks good.",
+    },
   ],
   internalLinks: [
     {

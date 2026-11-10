@@ -23,6 +23,28 @@ const post = {
     "The first three emails build trust by delivering value, sharing an example, then offering a clear next step",
     "Keep the list clean with double opt-in, segmentation by lead magnet and service interest, and removal of persistent non-openers after a re-engagement attempt",
   ],
+  faqs: [
+    {
+      q: "How can a service business grow an email list without offering discounts?",
+      a: "Offer a short, useful download that answers a question customers already ask before they buy, such as a checklist, a cost or time calculator, a comparison sheet, a list of questions to ask any provider, or a one page template. It earns subscribers who have already shown interest in the problem you solve, rather than people who only want a cheaper price.",
+    },
+    {
+      q: "Why are discounts a weak way to drive email list growth?",
+      a: "A discount attracts people who want a cheaper price, not people who want your service. When later emails have no discount, they ignore them, unsubscribe or mark them as spam. That hurts deliverability for the subscribers who did want to hear from you, so the list looks bigger while performing worse.",
+    },
+    {
+      q: "Where should a lead magnet go on a service business website?",
+      a: "Place it on the page where the question already lives, not on a generic subscribe page. A preparation checklist belongs on the relevant service page near the point where visitors decide whether to enquire, a comparison sheet on the pricing or services page, and a template in the blog post that explains the problem it solves. Keep the sign up form to name and email.",
+    },
+    {
+      q: "What should the first emails after a lead magnet download say?",
+      a: "A simple three email sequence works well. The first delivers the download, repeats the one thing it helps with and invites a reply with a question. The second, a few days later, shares a short example or a common mistake related to the same problem. The third offers a clear next step, such as a short call, a quote or a booking link, with no pressure to decide.",
+    },
+    {
+      q: "How do I keep an email list clean as it grows?",
+      a: "Use double opt in where your email tool supports it, so only people who confirm join. After a polite re engagement attempt, remove or suppress subscribers who never open anything, and keep spam complaints and bounces low, because inbox providers judge your sending reputation on them. Segment by lead magnet and service interest so every email stays relevant.",
+    },
+  ],
   internalLinks: [
     {
       label: "Contact Form to CRM Integration: A Reliable Project Brief",

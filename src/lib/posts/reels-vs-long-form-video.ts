@@ -91,6 +91,18 @@ const post = {
       q: "Can I post the same excerpt everywhere?",
       a: "Use a shared idea, then check the framing, captions, opening, available links and viewing experience for each intended platform.",
     },
+    {
+      q: "Should a brand use reels or long-form video?",
+      a: "It depends on what the viewer needs to understand. A quick product detail or a single objection can fit a reel, while a buying decision with several trade-offs may need a fuller long-form demonstration. Write the viewer's question in plain language and list the evidence needed to answer it honestly, then choose the format. Neither is automatically more professional or more commercially useful.",
+    },
+    {
+      q: "How do I turn a long-form video into reels?",
+      a: "A longer recording can supply useful short clips, but each excerpt needs its own setup and conclusion. Remove references to earlier sections the viewer has not seen, reframe the picture, rewrite the opening where needed, and check that captions make sense on their own. Where a platform offers a linking feature, point the clip to a relevant longer video.",
+    },
+    {
+      q: "How should I compare results from reels and long-form video?",
+      a: "Review each video against its own purpose rather than comparing raw view counts. Short-video attention, longer-video engagement and qualified business actions are different signals. Record the purpose and expected next action for each version before publishing, then use the results to decide what to produce next with the formats your audience and team can support.",
+    },
   ],
   sources: [
     {

@@ -17,6 +17,28 @@ const post = {
     "Make internal linking part of every new publish, linking each new post to a relevant service page and a related post",
     "Measure whether visitors from blog posts reach service pages more often, and move or rewrite links that send almost no visitors to their hub",
   ],
+  faqs: [
+    {
+      q: "What is internal linking on a service website?",
+      a: "Internal linking means the links between pages on your own website. They help visitors find the next useful page to read or act on, and they show Google how your pages relate to each other and which ones matter most. Because it uses content you already have, fixing internal links is one of the cheapest SEO improvements a service business can make.",
+    },
+    {
+      q: "How many internal links should a page have?",
+      a: "There is no fixed number. A short page may need only two or three internal links, while a long guide may need more. Add links where they help a reader rather than to fill a quota, and ask a simple question for each one: would a real reader want this link at this point? If not, leave it out.",
+    },
+    {
+      q: "What is a hub page in an internal linking structure?",
+      a: "A hub page is the main page for one service, such as a web design service page. Supporting pages around it, like a pricing guide, a project brief template, case studies and related blog posts, each link back to the hub, and the hub links out to the most useful of them. This helps visitors move towards an enquiry and helps Google see which page is central to the topic.",
+    },
+    {
+      q: "What should internal link text say?",
+      a: 'Link text should describe the destination, so a reader knows what they will get before they click. A phrase such as "read our guide to writing a website brief" is clear, while "click here" tells the reader and Google nothing. You do not need to force keywords into every link, because clear, honest descriptions work better and read better.',
+    },
+    {
+      q: "How do I find and fix orphan pages?",
+      a: "Orphan pages are pages with no internal links pointing to them, which makes them hard for visitors to find and hard for Google to value. Your website tools or a simple site crawl can show pages with no incoming internal links. Give each useful orphan page a link from a relevant page, or decide whether it should be removed or merged.",
+    },
+  ],
   internalLinks: [
     {
       label: "The Biggest SEO Mistakes Businesses Still Make in 2026",

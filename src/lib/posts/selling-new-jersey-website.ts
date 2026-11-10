@@ -39,6 +39,10 @@ const post = {
       q: "How often should we update the New Jersey page?",
       a: "Check it every month, and update it whenever your service area, response time, or local proof changes. A page that stays current keeps earning enquiries.",
     },
+    {
+      q: "How can a website build trust with customers in New Jersey?",
+      a: "Show real local detail instead of general promises. Explain how delivery, installation, or support works in their area, what happens if something goes wrong, and who they contact after the sale. Add specific, current proof such as recent New Jersey work, reviews from local customers, and photos of real projects, and remove anything out of date.",
+    },
   ],
   internalLinks: [
     {

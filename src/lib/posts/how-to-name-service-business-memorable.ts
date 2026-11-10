@@ -39,6 +39,10 @@ const post = {
       q: "When should we check trademarks?",
       a: "Before you spend money on signs, a website, or printed material. A quick search of the relevant trademark register, and a check with a local adviser if the name matters to the business, is cheaper than a rename later.",
     },
+    {
+      q: "How do I test a service business name before using it?",
+      a: "Narrow the list to three names and test them with ten people who match your customers. Say each name once, ask what kind of business they expect, then ask them to spell it an hour later. Also read each name as a web address, an email address and a Google Business Profile listing, and choose the one most people remember and spell correctly.",
+    },
   ],
   internalLinks: [
     {

@@ -24,6 +24,28 @@ const post = {
     "Use clear, simple English first, and add local detail only where it reflects real experience.",
     "Prove distance will not be a problem with real work, clear reply times and working hours buyers can convert easily.",
   ],
+  faqs: [
+    {
+      q: "What should a website for Singapore and Malaysia customers show first?",
+      a: "Many buyers in Singapore and Malaysia first meet a business on a phone, through a search result, a social media link or a message from a friend. The headline, the main offer and the enquiry button should all be visible without hunting, and pages should load quickly with text that is easy to read on a small screen. Check your main pages on a mid range phone, not only on a desktop computer.",
+    },
+    {
+      q: "Do I need a separate website for Singapore and Malaysia?",
+      a: "No. Selling in Singapore and Malaysia does not require a different website for each country. It requires one site that is clear about price, delivery, payment, contact and next steps, and that proves with real examples that distance is handled. Where the two markets differ, such as delivery times, shipping options or return rules, state each country's terms rather than forcing one onto the other.",
+    },
+    {
+      q: "How should prices and delivery be shown to buyers in Singapore and Malaysia?",
+      a: "State prices in a currency the buyer recognises, and say clearly whether taxes or delivery charges are included. Uncertainty about cost and delivery stops more enquiries than a high price does. For services, explain what happens after an enquiry, how long a first reply takes and what a typical project timeline looks like, so the buyer can picture the next steps.",
+    },
+    {
+      q: "What language should a Singapore or Malaysia website use?",
+      a: "English is widely used in business in both countries, so clear, simple English is a strong starting point. Avoid idioms, slang and long sentences, and use short paragraphs and plain headings for buyers reading quickly on a phone, sometimes in a second language. Add local detail, such as the cities and delivery areas you actually serve, only where it reflects real experience.",
+    },
+    {
+      q: "How can an overseas business build trust with buyers in Singapore and Malaysia?",
+      a: "Show real work with context: what the client needed, what you delivered and what changed. If you have served clients in the region, say so plainly on the relevant page. State your working hours in a way buyers can convert easily, and add a short note about reply times and live call availability, because many buyers will not ask and will simply choose a supplier who has already answered.",
+    },
+  ],
   internalLinks: [
     {
       label:

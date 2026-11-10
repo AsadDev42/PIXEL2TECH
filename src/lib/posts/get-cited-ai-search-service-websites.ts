@@ -39,6 +39,10 @@ const post = {
       q: "Should we write differently for AI than for people?",
       a: "No. Write for people first, with direct answers, clear headings, and honest facts. The same qualities make a page easy for AI systems to understand and cite.",
     },
+    {
+      q: "Why does consistent business information matter for getting cited by AI search?",
+      a: "AI search checks your website against your Google Business Profile, listings, social profiles and other mentions. If services, prices, hours or service areas differ between those places, the AI system has to guess which version is true, and it may choose none of them. Keep the same wording on the website and main profiles, and review the basics regularly.",
+    },
   ],
   internalLinks: [
     {

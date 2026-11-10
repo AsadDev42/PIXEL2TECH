@@ -39,6 +39,10 @@ const post = {
       q: "Should AI content be disclosed to readers?",
       a: "Follow the rules of the platform you publish on, and be honest about how content was made when asked. For most business content, human review and factual accuracy matter more than the tool used.",
     },
+    {
+      q: "Which content tasks are AI tools best for in a small business?",
+      a: "AI tools save the most time on short tasks that are easy to check and easy to discard, such as social media captions, email subject line variations and first draft outlines. They also help with routine editing, like shortening a paragraph or making a heading clearer. Service pages, pricing pages and case studies should stay human led, with AI helping on structure and clarity only.",
+    },
   ],
   internalLinks: [
     {

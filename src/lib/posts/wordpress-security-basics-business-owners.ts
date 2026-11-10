@@ -39,6 +39,10 @@ const post = {
       q: "What should we do first if the site is hacked?",
       a: "Change every password, take the site offline or into maintenance mode, restore from the most recent clean backup, and update everything before going live again. Then find how the attacker got in, or it will happen again.",
     },
+    {
+      q: "What are the most important WordPress security basics for a business owner?",
+      a: 'Start with logins: long, unique passwords, no "admin" username, two factor authentication and no old accounts. Then update the core, theme and plugins weekly with a backup first, and delete what you do not use. Keep a backup you have tested, limit login attempts, and check the site monthly for changes you did not make. These basics take about an hour and stop most automated attacks.',
+    },
   ],
   internalLinks: [
     {

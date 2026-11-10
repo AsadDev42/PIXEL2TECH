@@ -67,6 +67,18 @@ const post = {
       q: "What should junior developers learn?",
       a: "Learn to read code, debug, model data, write useful tests and explain trade-offs. These skills help you evaluate generated work and develop judgement.",
     },
+    {
+      q: "Can AI replace software developers?",
+      a: "AI can draft components, explain unfamiliar code, suggest migrations and create first implementations from a brief. It does not, by itself, decide whether a feature solves the right problem, handles sensitive data correctly or will stay maintainable. A developer's role can shift towards specifying constraints, reviewing changes and diagnosing failures, and how far that goes depends on the system, the team and the cost of getting something wrong.",
+    },
+    {
+      q: "Does research show that AI will replace developers?",
+      a: "Not in the way the question suggests. DORA's 2025 research describes AI as an amplifier of an organisation's existing strengths and weaknesses, which means teams need clear processes and feedback loops to turn assistance into dependable delivery. It does not establish that every team will become faster or that a particular job disappears.",
+    },
+    {
+      q: "How can a business measure whether AI is helping its developers?",
+      a: "Measure your own workflow on similar tasks. Record the time from a clear request to an accepted change, the amount of rework, defects found after release and the effort needed to maintain the result. Counting generated lines of code or completed prompts can reward activity without showing whether the product actually improved.",
+    },
   ],
   sources: [
     {

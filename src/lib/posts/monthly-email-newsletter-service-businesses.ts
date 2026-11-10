@@ -39,6 +39,10 @@ const post = {
       q: "What is the best day to send a monthly newsletter?",
       a: "The best day is the one your team can keep every month. Pick a fixed day, tell readers when to expect it, and keep that promise.",
     },
+    {
+      q: "How do I measure whether a monthly email newsletter is working?",
+      a: "Look at replies, questions and enquiries rather than open rates alone. Count how many readers reply, how many ask about a service and how many mention the newsletter on a call. After each issue, keep a short note of the topic, what readers did and what to repeat or change, and a clear pattern will appear over a few months.",
+    },
   ],
   internalLinks: [
     {

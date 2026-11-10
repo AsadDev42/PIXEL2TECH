@@ -40,6 +40,10 @@ const post = {
       q: "How can I test whether the website works for these markets?",
       a: "Ask a small number of people from Spain or Italy to complete a simple task, such as finding delivery details or submitting an enquiry, and note where they hesitate. Their pauses will show you exactly what to fix first.",
     },
+    {
+      q: "What payment and privacy details matter when selling to Spain and Italy?",
+      a: "Use payment methods familiar to European customers, show secure checkout clearly and link to a plain language privacy notice. Explain how customer data is used and give a simple way to contact support. If you sell services, also explain what happens when a client needs changes and how revisions or support are handled.",
+    },
   ],
   internalLinks: [
     {

@@ -69,6 +69,18 @@ const post = {
       q: "Does an SVG export solve the problem?",
       a: "Only if the artwork inside it is clean and usable. A file extension does not guarantee good curves, correct lettering or a clear identity.",
     },
+    {
+      q: "How do I check if an AI logo works at small sizes?",
+      a: "Test the mark in a small website header, a social avatar, an invoice and a one-colour print rather than simply shrinking a detailed lockup. View it on light and dark backgrounds, print a small black-and-white sample, and check that the symbol and name stay distinguishable without effects. A working identity may need a full wordmark, a compact mark and a single-colour version.",
+    },
+    {
+      q: "What logo files should I ask for before launching with an AI logo?",
+      a: "A PNG alone is not a complete identity handover. Ask for a clean vector master, appropriate raster exports, colour specifications and clear guidance on spacing and minimum size. If the lettering uses a font, record the font and its licence. Then test the actual delivered files in the intended application, not a separate preview.",
+    },
+    {
+      q: "Can an AI-generated logo be protected by copyright?",
+      a: "Under U.S. Copyright Office guidance from January 2025, AI assistance does not automatically rule out copyright protection, but prompts alone do not supply the human authorship required. That is a U.S. copyright position, not worldwide trademark clearance. Keep the generator's terms, licences, prompts and records of human edits, and get professional review if the business has significant exposure.",
+    },
   ],
   sources: [
     {

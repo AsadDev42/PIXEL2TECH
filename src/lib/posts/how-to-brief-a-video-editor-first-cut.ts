@@ -21,6 +21,28 @@ const post = {
     "Mark must-keep and must-not-use clips, and give style examples with one line on what you like.",
     "Agree timecoded feedback, revision rounds and final files before editing starts.",
   ],
+  faqs: [
+    {
+      q: "What should a video editor brief include?",
+      a: "A useful video editor brief covers one job for the video, the audience in plain words, the three points it must cover, and must-keep clips marked in order. It should also include two or three style examples, the formats and lengths needed, the exact call to action, and the review method, revision rounds and final files you expect.",
+    },
+    {
+      q: "Why does my first cut keep needing so many revisions?",
+      a: "Most first-cut revisions come from a missing brief rather than poor editing. If the editor was not told who the video is for, what it must make the viewer do, or which moments must stay, even a skilled editor is guessing. When taste notes outnumber must-fix notes, the brief probably also missed style examples.",
+    },
+    {
+      q: "How long should a video editing brief be?",
+      a: "It does not need to be long. It needs to be specific about the job, the audience and the limits. Ten clear lines beat ten pages of vague direction, and a one page checklist you reuse for every project is usually enough to get the first cut much closer to final.",
+    },
+    {
+      q: "How do I describe the style I want to a video editor?",
+      a: 'Show examples instead of relying on style words, because words like "modern" mean different things to different people. Two or three examples are enough: one for pace, one for captions and one for overall feel. Add one line on what you like in each, so the editor knows which part of the example you mean.',
+    },
+    {
+      q: "What is the best way to give feedback on a first cut?",
+      a: 'Use timecoded notes grouped by priority, such as "At 0:12, cut this sentence", rather than vague comments like "this part feels off". Separate must-fix notes, which are errors, missing points or wrong facts, from nice-to-have notes, which are taste. Agree the feedback method and number of revision rounds before editing starts.',
+    },
+  ],
   internalLinks: [
     {
       label: "SaaS Product Demo Video: How to Brief a Production Team",

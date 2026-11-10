@@ -106,6 +106,14 @@ const post: PostBody = {
       q: "What should I send an editor before requesting multiple sizes?",
       a: "Send the destination list, audience, next action, existing footage, brand files, caption requirements and the versions you expect to receive. Ask for a sample frame in each format before full production.",
     },
+    {
+      q: "What is a video delivery matrix?",
+      a: "A video delivery matrix lists each required version and the decisions attached to it: aspect ratio, intended placement, approximate story scope, language, caption treatment and final action. Reviewing a proposal against it shows whether a request for extra sizes hides additional composition and editing work. Link it to the approved script and footage, and confirm who approves each variant.",
+    },
+    {
+      q: "How do you check video exports in different aspect ratios before publishing?",
+      a: "Separate composition approval from technical delivery. First confirm each version is readable and understandable, then check that the file plays correctly and meets the destination's dimensions, encoding and audio settings. Upload a test where practical and inspect the processed result, including the opening image, caption timing, sound, cropping and final action, because a correct local file can still display differently.",
+    },
   ],
   sources: [
     { label: "W3C: accessible audio and video", href: "https://www.w3.org/WAI/media/av/" },

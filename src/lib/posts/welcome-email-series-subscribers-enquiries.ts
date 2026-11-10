@@ -39,6 +39,10 @@ const post = {
       q: "What if a subscriber does not reply to the series?",
       a: "Keep them on the regular list with useful, infrequent updates. A subscriber who is not ready today may enquire months later, if the business stays helpful and easy to contact.",
     },
+    {
+      q: "What should the first email in a welcome email series include?",
+      a: "It should arrive within minutes of sign up and deliver exactly what was promised, whether that is a checklist, a guide or a clear explanation of the updates the subscriber will receive. Keep it short: a one line thank you, the resource with a clear link or attachment, and a note on what the next email will cover. Do not sell in this email.",
+    },
   ],
   internalLinks: [
     {

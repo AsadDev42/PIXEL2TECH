@@ -39,6 +39,10 @@ const post = {
       q: "Do captions help with accessibility?",
       a: "Yes. Captions help viewers who are deaf or hard of hearing, viewers in noisy places, and viewers watching in a second language. Clear captions make the ad usable for a wider audience.",
     },
+    {
+      q: "Are automatic captions good enough for video ads?",
+      a: "Automated captions are a useful starting point, but they need a human check before an ad goes live. A caption with a wrong word is worse than no caption, because it teaches the viewer the wrong message. Check names, numbers and product words against the brief, check the timing, and watch the finished ad once with sound off and once with sound on.",
+    },
   ],
   internalLinks: [
     {

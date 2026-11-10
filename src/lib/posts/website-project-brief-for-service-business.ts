@@ -9,6 +9,28 @@ const post: PostBody = {
     "Separate business facts, content production, design, development and integrations in the brief.",
     "Agree launch checks and ownership so the proposal covers a usable website and a workable handover.",
   ],
+  faqs: [
+    {
+      q: "What should a website project brief include?",
+      a: "A website project brief should explain who the business serves, what visitors need to understand and what should happen when they enquire. For a service business, that means service descriptions with clear boundaries, the primary enquiry and its handover, a content inventory, useful design references, existing systems and URLs, acceptance criteria, handover plans and the dependencies behind the launch date.",
+    },
+    {
+      q: "Should a website brief start with a page count?",
+      a: "No. Describe the customer task and enquiry workflow first, then build a content inventory before agreeing the page count. The sitemap should emerge from what visitors need and the content actually available, rather than a fixed page package. A proposal becomes clearer when the agency can tell the difference between designing a page and researching and writing it.",
+    },
+    {
+      q: "How do I make design references useful in a website project brief?",
+      a: "Share a few references and explain the specific feature you value, such as clear service navigation, calm typography or an effective contact sequence. Asking for a site 'like this one' leaves the designer guessing. Also provide brand files, approved colours, fonts, image rights and guidelines, and mention practical constraints, such as your team needing to publish case studies without developer help.",
+    },
+    {
+      q: "What should happen to existing URLs during a website redesign?",
+      a: "Keep a list of current URLs and identify the pages that already receive relevant visits or enquiries. If URLs change, include a mapping and redirect plan in the brief. A new visual design does not require renaming every working service URL, so keep useful URLs where possible and ask the agency to identify any redirects that are required.",
+    },
+    {
+      q: "Should passwords be included in a website brief?",
+      a: "No. The brief should name the domain registrar, host, content platform, form tools, analytics, booking systems and CRM connections, along with who owns each one. When the agency needs access, share it through appropriate user roles rather than writing passwords into the document. Also state whether the project includes migration or only changes within the current setup.",
+    },
+  ],
   content: [
     {
       heading: "What belongs in a website project brief?",

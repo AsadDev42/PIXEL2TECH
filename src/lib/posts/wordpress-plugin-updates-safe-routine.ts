@@ -39,6 +39,10 @@ const post = {
       q: "Do I need a staging site?",
       a: "A staging site is the safest place to test major updates, but even without one, a fresh backup, small batches and a quiet update time reduce risk a great deal.",
     },
+    {
+      q: "What should I check after WordPress plugin updates?",
+      a: "Check the actions customers take, not just whether the home page loads. Submit the contact form, search for a real term, check the menu, buttons and forms on a phone, and for a shop, add a product to the cart and confirm payment options appear at checkout. Also check speed and appearance on one or two key pages, because an update can change styling or hide a section.",
+    },
   ],
   internalLinks: [
     {

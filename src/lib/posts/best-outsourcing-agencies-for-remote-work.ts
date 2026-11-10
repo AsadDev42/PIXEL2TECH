@@ -188,6 +188,10 @@ const post = {
       q: "Why is Pixel2Tech on this list?",
       a: "We publish this guide and included ourselves for one specific need: small businesses that want brand, website and video work from one team. We say so openly, and the other companies suit needs we don't serve.",
     },
+    {
+      q: "What should I ask an outsourcing agency before signing a contract?",
+      a: "Ask who will actually do the work and whether that person will stay on the project, and whether the agency uses its own staff, freelancers or subcontractors. Confirm when the code, designs and files become yours, how out-of-scope changes are priced, and what hours overlap with yours. Ask to speak to a recent client, and test the agency with one small paid project first.",
+    },
   ],
 } satisfies PostBody;
 

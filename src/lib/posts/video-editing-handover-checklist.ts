@@ -94,6 +94,14 @@ const post: PostBody = {
       q: "How do I check that a handover is usable?",
       a: "Open the approved exports, compare the delivery index with the files, and test the editable archive on the receiving team’s system when editable delivery is included.",
     },
+    {
+      q: "What should be included in a video editing handover?",
+      a: "A video editing handover usually starts with approved final masters, channel versions and a delivery index describing each file's purpose. If editable delivery is agreed, it can also include an organised project archive with the referenced media, a readme listing the editing application, version and dependencies, caption files and transcripts, and an asset record of logos, stock, music and voice recordings.",
+    },
+    {
+      q: "How should final files be named in a video editing handover?",
+      a: "Use a naming pattern that includes the project, subject, format, language and revision, such as product-introduction_16x9_en_approved-v03.mp4 rather than export3.mp4. Keep approved files in a separate final-delivery folder and draft review files elsewhere, so nobody publishes an old version by mistake. A name like final-new-revised can still be the wrong edit without a record of who approved it.",
+    },
   ],
   sources: [
     { label: "W3C: accessible audio and video", href: "https://www.w3.org/WAI/media/av/" },

@@ -39,6 +39,10 @@ const post = {
       q: "Who should own the tool after launch?",
       a: "One named person should own it, with time set aside to collect feedback and fix problems. Without an owner, small issues pile up until the team stops using the tool.",
     },
+    {
+      q: "Why do teams stop using internal tools?",
+      a: "Most internal tools fail not because the code is weak, but because the tool asks for extra work and gives little back. Tools built from a feature list rather than a real workflow, designed without the busiest user in mind, or missing reliable search, permissions and exports get worked around. Without weekly measurement and fixes, the team drifts back to spreadsheets.",
+    },
   ],
   internalLinks: [
     {

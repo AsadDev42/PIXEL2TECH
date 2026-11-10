@@ -39,6 +39,10 @@ const post = {
       q: "How do we handle leads when the owner is away?",
       a: "Before leave, the owner should hand over open leads with their next steps and dates, and a colleague should be named as cover.",
     },
+    {
+      q: "What is a simple CRM routine for lead follow up in a small team?",
+      a: "Record every enquiry in the CRM on the day it arrives, with contact details, source and a short note. Give each lead one named owner and one next step with a date. Each morning, team members complete the actions due on their own lists, and once a week the team reviews the full pipeline to find leads that are stuck.",
+    },
   ],
   internalLinks: [
     {

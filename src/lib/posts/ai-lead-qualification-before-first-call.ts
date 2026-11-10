@@ -39,6 +39,10 @@ const post = {
       q: "How do we know the qualification is working?",
       a: "Compare the share of first calls that turn into real opportunities before and after. If calls get shorter and better qualified, it is working. If good leads complain about the questions, shorten them.",
     },
+    {
+      q: "Should leads know that AI is handling lead qualification?",
+      a: "Yes. A short note that the first questions are automated, with a human reading every reply, is enough. Leads do not mind automation when it is quick and useful; they mind it when it wastes their time or pretends to be a person. Also say plainly what happens next, such as a call within one working day, and keep that promise.",
+    },
   ],
   internalLinks: [
     {

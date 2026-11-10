@@ -9,6 +9,28 @@ const post: PostBody = {
     "Approve the story and product facts before committing to animation and detailed editing.",
     "Include clean screen captures, caption files, usage rights and update ownership in the handover.",
   ],
+  faqs: [
+    {
+      q: "What is the difference between a SaaS product demo video, an explainer and a tutorial?",
+      a: "A SaaS product demo video shows how the product handles a specific workflow. An explainer introduces the problem and the product’s approach, while a tutorial teaches an existing user to complete a task. The formats can share footage, but they serve different viewer needs, so choose the job before discussing animation styles or running time.",
+    },
+    {
+      q: "What should a SaaS product demo video brief include?",
+      a: "Include the product link, target audience, working feature list, approved sample data, existing brand files and any available recordings. Name a product reviewer and a marketing decision owner, explain the desired next step, and say where the video will sit on the page. A short description of the one workflow to demonstrate gives the production team a concrete starting point.",
+    },
+    {
+      q: "How do I prepare screen recordings for a product demo video?",
+      a: "Record in a clean demonstration environment with approved sample data, and remove private customer information, notifications, access tokens and unrelated browser tabs first. Record a calm pass through each approved action, leaving space before and after important steps. Give the editor meaningfully named files, note the preferred take, and flag any cursor movement or loading state that matters to understanding the product.",
+    },
+    {
+      q: "When should the product team review a demo video?",
+      a: "Approve the script and shot plan for factual accuracy before detailed motion work begins. Then review a rough cut for sequence, clarity and pacing, and finally check captions, sound, graphics and exports. A story change after motion graphics are finished can require new recordings, different timing and replacement visuals throughout the edit.",
+    },
+    {
+      q: "Can a landscape demo video simply be cropped for vertical social posts?",
+      a: "Not always. An interface walkthrough often needs different framing to remain readable on a phone, so the brief should state whether a vertical version needs a new composition or is simply a crop. Plan that work before the full-width edit is locked, rather than discovering the problem at export.",
+    },
+  ],
   content: [
     {
       heading: "Should you commission a demo, explainer or tutorial?",

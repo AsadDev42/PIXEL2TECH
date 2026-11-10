@@ -39,6 +39,10 @@ const post = {
       q: "Should we share the full transcript as well as the summary?",
       a: "Share the summary as the main record, and keep the transcript available for reference if needed. Most team members only need decisions and actions. A full transcript is useful when someone wants to check exact wording.",
     },
+    {
+      q: "How should we handle privacy and consent with AI meeting notes?",
+      a: "Tell participants in advance that the meeting will be recorded, and explain where recordings are stored and how long they are kept. Let anyone ask for recording to pause for a sensitive point, and avoid recording personal or sensitive discussions without a clear reason and clear consent. If a client or guest joins, ask permission explicitly and note it in the meeting invite.",
+    },
   ],
   internalLinks: [
     {

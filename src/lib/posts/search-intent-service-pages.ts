@@ -25,6 +25,28 @@ const post = {
     "Check behaviour, not just rankings: if a page is not working, check intent before rewriting everything.",
     "Make intent part of publishing: search the target phrase, note what kind of pages rank, and link the pages that serve the neighbouring jobs.",
   ],
+  faqs: [
+    {
+      q: "What is search intent for a service page?",
+      a: "Search intent is the job behind a search: the searcher wants an answer, a comparison or a supplier. A service page performs when it matches that job, because visitors stay, read and enquire. When the page serves a different job, visitors return to the search results, and Google notices.",
+    },
+    {
+      q: "How do I find the search intent behind a keyword without paid tools?",
+      a: 'Search the phrase yourself and look at what ranks. Guides and explainers mean the searcher wants to learn, service pages and agency home pages mean they want to hire, and comparison articles and price guides mean they want to compare. Also note the headings and "people also ask" style questions in the results, because those are the sub questions your page must answer.',
+    },
+    {
+      q: "Should one service page target learning, comparing and hiring searches at once?",
+      a: "Usually not. A page that tries to do all three jobs tends to do none of them clearly and leaves every visitor partly unsatisfied. Three focused pages, linked to each other, work better: a reader who came to learn can move to the hiring page when ready, and a reader who came to compare can move to pricing detail.",
+    },
+    {
+      q: "Why does my service page get visits but no enquiries?",
+      a: "The page may be answering the wrong question, or hiding its next step. Check behaviour from that search: do visitors stay and read, and do they move on to a service page, contact page or case study? Check intent before rewriting everything, because splitting one confused page into two focused pages, or moving the enquiry step earlier, can fix more than a full rewrite.",
+    },
+    {
+      q: "How should headings on a service page be written?",
+      a: 'Write headings as real customer questions, in the words customers use. "What is included in a brand identity package?" matches the visitor\'s question far better than a heading such as "Our comprehensive solutions". Keep the first paragraph under each heading direct: state the answer, then add detail, because visitors decide in seconds whether the page will help them.',
+    },
+  ],
   internalLinks: [
     {
       label:

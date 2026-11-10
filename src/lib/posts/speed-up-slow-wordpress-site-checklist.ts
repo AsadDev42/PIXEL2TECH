@@ -39,6 +39,10 @@ const post = {
       q: "Can speed work hurt search rankings if done badly?",
       a: "Yes, if a fix breaks pages, removes content, or blocks search engines from reading the site. That is why every change should be tested on a staging copy first, and why speed should be measured before and after each change.",
     },
+    {
+      q: "What is the most common cause of a slow WordPress site?",
+      a: "On most slow WordPress sites, images cause more delay than anything else. Photos uploaded straight from a phone or a camera can be several megabytes each, so a page with five of them asks a visitor's phone to download far more than it needs. Resize each image to the size it displays at, compress it before upload, and use a modern format where your site supports it.",
+    },
   ],
   internalLinks: [
     {

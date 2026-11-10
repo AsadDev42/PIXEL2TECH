@@ -22,6 +22,28 @@ const post = {
     "Judge the chat by resolution, not by chat volume.",
     "Start narrow with five to ten frequent questions, then expand only when that scope resolves cleanly.",
   ],
+  faqs: [
+    {
+      q: "What questions should AI chat support handle for a small business?",
+      a: "AI chat support works best for questions with one clear, stable answer: opening hours, service areas, prices for standard services, delivery times, how to book or reschedule, and what to bring to an appointment. These are asked often, rarely change without notice, and a wrong answer is easy to spot and fix. Keep the answers short and sourced from your own pages.",
+    },
+    {
+      q: "When should an AI chatbot hand a customer over to a human?",
+      a: "Decide the triggers before launch. Useful ones include the customer asking for a person, repeating a question, mentioning a complaint, refund or cancellation, asking about a non-standard price, or staying in the chat beyond a short limit without a resolution. Pass the full conversation to the human so the customer does not have to start again.",
+    },
+    {
+      q: "What should never be left to AI chat support?",
+      a: "Keep a human in charge of money changing, complaints, cancellations with a fee, medical or legal advice, and customers who are upset. These are moments where trust is decided, and a fast automated answer that feels dismissive can cost more than a human's time. High value enquiries, such as large projects or long contracts, also deserve a human conversation early.",
+    },
+    {
+      q: "How do I measure whether AI chat support is working?",
+      a: "Judge it by resolution, not by how many chats it handled. Count chats that ended with a booking, a correct answer, or a clean handover a human then resolved. In the first month, track chats that ended without handover, how fast humans replied to handovers, and which questions kept failing, and review failed chats weekly.",
+    },
+    {
+      q: "How should a small business start with AI chat support?",
+      a: "Start narrow. Automate five to ten frequent questions, add clear handover triggers, and review new questions each week with a human. Expand only when that narrow scope is resolving cleanly. A small chat that genuinely helps customers is better than a broad chat that frustrates them.",
+    },
+  ],
   internalLinks: [
     {
       label: "Missed Calls After Hours: A Simple Automation That Books the Callback",

@@ -40,6 +40,10 @@ const post = {
       q: "What if we run out of questions?",
       a: "Revisit older questions with new examples, or ask followers what they want answered next. A simple poll often produces the next month of ideas.",
     },
+    {
+      q: "How do I know if a social media content system is working?",
+      a: "Judge each week by replies, direct messages and enquiries that mention the topic, alongside the usual likes and views. A post with modest likes but three genuine enquiries has done its job better than a popular post with none. If a question gets no response, try it in a different format, such as a clip instead of a text post, before dropping the topic.",
+    },
   ],
   internalLinks: [
     {

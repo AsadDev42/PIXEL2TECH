@@ -67,6 +67,18 @@ const post = {
       q: "Should every clip sell directly?",
       a: "No. Assign clips different jobs, including discovery, explanation, reassurance and purchase support, then evaluate each against its purpose.",
     },
+    {
+      q: "How do I start a short-form content strategy for a brand?",
+      a: "Begin with the questions customers ask before choosing, using or trusting the product, rather than with a posting calendar. Group them by purpose: understanding the problem, seeing the product work, comparing options or taking the next step. A small business can start with one useful series instead of a different format every day, which makes the work easier to plan and review.",
+    },
+    {
+      q: "What should a short-form video brief include?",
+      a: "A simple brief has four fields: the customer question, the opening line, the proof and the next step. Add any claims that need approval before filming. This keeps the creator and editor working towards the same outcome and reduces the temptation to fill a weak explanation with unrelated transitions.",
+    },
+    {
+      q: "How do you measure whether a short-form content strategy is working?",
+      a: "Keep a record of the question, opening, format and intended action for each post, then compare patterns across several related clips rather than judging from a single result. Separate attention measures from meaningful actions, such as qualified inquiries or visits to a relevant resource. A widely viewed clip and a commercially useful clip can serve different roles.",
+    },
   ],
   sources: [
     {

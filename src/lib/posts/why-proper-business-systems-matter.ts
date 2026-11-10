@@ -72,6 +72,18 @@ const post = {
       q: "How can I tell whether the system is working?",
       a: "Check whether another person can complete the workflow, explain its status and recover from a common exception without relying on hidden knowledge.",
     },
+    {
+      q: "Why do proper business systems matter as a team gets busier?",
+      a: "When work is light, people can remember missing details and fix informal handoffs through conversation. As activity increases, that breaks down: an inquiry has no owner, a brief is missing an attachment, or a customer gets two versions of a document. A proper business system makes the next action visible by defining what starts the work, what is required, who owns it and what counts as done.",
+    },
+    {
+      q: "How do I start building a business system for one workflow?",
+      a: "Choose one workflow the team already performs and define its input and its meaning of done. Write down the quality checks between those points, give each handoff a named owner, and keep one authoritative place for current status. Then follow a real piece of work from start to finish with someone who did not design the process, and fix the largest gap first.",
+    },
+    {
+      q: "What should a business system do when a step fails?",
+      a: "Plan for exceptions as part of the design. Ask what happens when information is missing, a service is unavailable or a confirmation is lost, and decide which situations can be retried and which need a person to investigate. For automated workflows, check that alerts reach the responsible person with a useful reference, and keep enough history to explain the state of the work.",
+    },
   ],
   sources: [
     {

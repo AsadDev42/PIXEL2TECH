@@ -39,6 +39,10 @@ const post = {
       q: "How often should we update the story?",
       a: "When the proof changes. A new result, a new service, or a new type of customer is a reason to update. Do not rewrite the story every quarter. Consistency is what makes it memorable.",
     },
+    {
+      q: "How do I write a brand story for a service business?",
+      a: "Start with the problem your customer faced before they found you, written the way a customer would describe it to a friend. Then say what you do differently in one sentence a customer could repeat, and prove it with one real example that names the type of customer, the situation and the result. Finally, cut every sentence that only flatters the business.",
+    },
   ],
   internalLinks: [
     {

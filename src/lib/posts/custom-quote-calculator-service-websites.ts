@@ -39,6 +39,10 @@ const post = {
       q: "How often should calculator prices be reviewed?",
       a: "Monthly, by one named owner, and immediately after any price change. An out of date calculator damages trust faster than having no calculator.",
     },
+    {
+      q: "What questions should a custom quote calculator ask?",
+      a: "Only the questions that genuinely change the price. For most service businesses that means four to six choices, such as the type of job, size or quantity, level of service, timing and location or delivery method. Write each choice in the customer's words rather than internal package codes, add short explanations where a choice could be misunderstood, and set sensible defaults.",
+    },
   ],
   internalLinks: [
     {

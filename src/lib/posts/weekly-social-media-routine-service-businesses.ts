@@ -25,6 +25,28 @@ const post = {
     "Keep engagement to a short daily limit, such as fifteen minutes, and spend ten minutes at the end of the week reviewing what worked.",
     "A weekly routine survives busy weeks, which is exactly why it works.",
   ],
+  faqs: [
+    {
+      q: "How often should a service business post on social media?",
+      a: "Consistency matters more than frequency. Three useful posts a week, published every week, build more trust than posting daily for two weeks and then stopping for two months. A burst of activity followed by silence makes customers assume the business has gone quiet, so choose a pace your team can keep through busy weeks.",
+    },
+    {
+      q: "How much time does a weekly social media routine take?",
+      a: "A weekly social media routine for a small team can run on one planning block of about an hour each week, enough to choose, write, prepare images for and schedule three posts. Add a short daily limit for engagement, such as fifteen minutes, and a ten minute review at the end of the week.",
+    },
+    {
+      q: "What should a service business post on social media each week?",
+      a: "Rotate three repeatable post types. First, a useful answer to a question customers actually ask, such as a tip, a checklist or a common mistake. Second, proof of work, such as a finished project, a before and after or a behind the scenes look. Third, a next step that invites one small, clear action, like reading a guide or booking a call.",
+    },
+    {
+      q: "Is it OK to reuse content in a weekly social media routine?",
+      a: "Yes. Reusing content is how small teams stay consistent, and it is not laziness. A blog post or a client project can become a tip post, a proof post and a question post across different weeks. Change the angle and the opening line each time, so every post stands on its own.",
+    },
+    {
+      q: "How do I know which social media posts are working?",
+      a: "Spend ten minutes at the end of each week reviewing. Look for the post that got the most useful responses, not just the most likes, and note which questions came up again in comments or messages. Use those answers to choose the next week's three posts, so the routine improves from its own results.",
+    },
+  ],
   internalLinks: [
     {
       label:

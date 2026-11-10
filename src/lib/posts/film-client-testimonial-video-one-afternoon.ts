@@ -23,6 +23,28 @@ const post = {
     "Plan the edit before filming so one interview yields a full video and short clips.",
     "Agree use in writing before publishing, then place the video where buyers make decisions.",
   ],
+  faqs: [
+    {
+      q: "How long should a client testimonial video be?",
+      a: "Around sixty to ninety seconds works well for a full testimonial video. The same interview can also produce two or three short clips, each making one point, for social media, plus a captioned version for people who watch without sound. Open with the strongest result or quote, because the first few seconds decide whether a viewer keeps watching.",
+    },
+    {
+      q: "What questions should I ask in a client testimonial video?",
+      a: "Prepare five or six short, open questions and share them with the client in advance. Ask what problem they were trying to solve, what made them choose you, what working with the team was like day to day, what result mattered most, and whether they would recommend you and to whom. Avoid yes or no questions, which produce short, flat answers instead of stories.",
+    },
+    {
+      q: "Do I need professional equipment to film a testimonial video?",
+      a: "No. A phone on a tripod or a basic camera is enough if the sound is clean. Film in a quiet room with soft, natural light facing the client and a plain background. Sound matters more than picture quality, so use a small lapel microphone, keep a phone close to the speaker as a backup recorder, and record a few seconds of room silence for the editor.",
+    },
+    {
+      q: "Which client should I ask to record a testimonial?",
+      a: "Choose a client who can speak clearly about a specific result, not just one who likes you. The strongest stories cover the problem before they found you, why they chose you, what the work was like in practice, and what changed afterwards. Ask them to think of one concrete example before filming day, such as a launch, a booking increase or a problem solved.",
+    },
+    {
+      q: "Do I need written permission to use a client testimonial video?",
+      a: "Agree in writing how the video will be used before you publish it, for example on your website, in ads and on social media. Confirm the client's name, business and job title as they want them shown. A short written agreement protects both sides and avoids awkward requests to remove the video later.",
+    },
+  ],
   internalLinks: [
     {
       label: "How to Brief a Video Editor So the First Cut Is Close to Final",

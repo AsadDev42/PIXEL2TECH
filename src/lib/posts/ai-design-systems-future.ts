@@ -22,6 +22,28 @@ const post: PostBody = {
     "The role of the designer is shifting from element creation to system definition and strategic oversight.",
     "Understanding implementation (tokens, components, APIs) is now a core requirement for modern designers.",
   ],
+  faqs: [
+    {
+      q: "Why do AI design tools need a design system?",
+      a: "AI can generate an interface quickly, but it does not know your product's rules unless they are defined. Without a design system, AI-generated screens can use mismatched typography, inconsistent spacing or their own versions of existing components. A clear design system gives AI a framework to work within, so the screens it produces actually belong to your product.",
+    },
+    {
+      q: "Can better prompts replace a design system in AI design?",
+      a: "No. A prompt can tell AI what you want to build, but it does not replace the underlying rules of your product. A signup form generated from a good prompt may look acceptable at first glance and still ignore your typography, spacing, accessibility decisions or existing components. Those rules need to live in the design system itself.",
+    },
+    {
+      q: "Are design tokens enough for AI-generated interfaces?",
+      a: "Not on their own. Design tokens define visual properties such as colors, font sizes, spacing and borders, but they don't always say how something should behave. A heading token may define size and weight without saying where the heading can be used or how it responds at different screen sizes. Mature systems add reusable components, clear APIs, examples and documentation.",
+    },
+    {
+      q: "How can a design system stop AI from creating accessibility problems?",
+      a: "By encoding accessibility decisions explicitly instead of leaving them in a designer's head. For example, a team may avoid relying on placeholder text because it disappears when users type or creates contrast problems. If the component API and documentation prevent or discourage that pattern, AI is far less likely to generate it.",
+    },
+    {
+      q: "What skills do designers need when working with AI design tools?",
+      a: "Designers don't need to become full-time developers, but understanding how interfaces are built is increasingly valuable. Useful concepts include components, props and variants, responsive layouts, design tokens, component APIs, accessibility and basic HTML/CSS. A designer who understands implementation can write better prompts, spot problems faster and build more realistic product experiences.",
+    },
+  ],
   content: [
     {
       heading: "AI Has Changed the Way Digital Products Are Designed and Built",

@@ -37,7 +37,11 @@ const post = {
     },
     {
       q: "How do we know if the portal is working?",
-      a: "Watch repeat visits and completed tasks, and count repeat enquiries about the same topics.Repeat visits and fewer status requests show it is working.",
+      a: "Watch repeat visits and completed tasks, and count repeat enquiries about the same topics. Repeat visits and fewer status requests show it is working.",
+    },
+    {
+      q: "What features should a customer portal include in version one?",
+      a: "Focus on the everyday tasks customers repeat: checking status, finding documents, paying invoices and asking for help. Add a simple, secure sign in and mobile friendly pages, and show order or project status in plain language. Leave live chat, chatbots, complex ticket categories, advanced reporting and complex permissions for later, unless customers have asked for them.",
     },
   ],
   internalLinks: [

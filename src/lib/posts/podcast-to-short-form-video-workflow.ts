@@ -9,6 +9,28 @@ const post: PostBody = {
     "Keep the speaker’s meaning intact when shortening or rearranging material.",
     "Agree clip selection, framing, caption files, review ownership and delivery organisation before editing.",
   ],
+  faqs: [
+    {
+      q: "How do I choose which podcast moments to turn into short-form video?",
+      a: "Pick complete ideas that make sense without the full episode, such as an answer to a customer question, a practical explanation or a clearly framed opinion. Start with the questions your customers ask, and shortlist each candidate with timestamps, the idea, the audience and why it is worth watching on its own. Check a little before and after each excerpt for missing context.",
+    },
+    {
+      q: "What should I send an editor before turning a podcast into short-form video?",
+      a: "Send one source folder per episode with original video, separate audio where available, camera labels and the preferred audio source. Include the episode title, speaker names and pronunciation, sections that must not be used, and a transcript as a navigation aid. Also give the audience, intended placements and which supporting assets are approved for reuse.",
+    },
+    {
+      q: "How many clips should one podcast episode produce?",
+      a: "Avoid a fixed clip quota that forces weak material into production. Agree a target batch and a selection review, with a way to flag when an episode does not contain enough suitable moments. The quantity should follow the source and the brief, because an editor can improve pace and clarity but cannot create a strong answer that was never recorded.",
+    },
+    {
+      q: "How do you make a wide podcast recording work as a vertical video?",
+      a: "One centre crop of a two-person interview is not always readable. Check face positions, camera quality and whether the active speaker stays visible, then choose between alternating single-speaker crops, an intentional split composition or selected supporting visuals. Review captions and callouts in the uploaded preview, and keep a clean master so a later placement can be reframed.",
+    },
+    {
+      q: "How should feedback on podcast clips be organised?",
+      a: "Approve one representative clip first to settle framing, captions, logo use, pacing and the final invitation before the whole batch is styled. Then collect feedback by clip ID and timestamp, and nominate one person to consolidate comments into factual corrections, brand requirements and preferences. Keep a record of who approved each clip.",
+    },
+  ],
   content: [
     {
       heading: "What makes a podcast clip worth publishing?",

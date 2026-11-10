@@ -64,6 +64,18 @@ const post = {
       q: "Should I stop using presets?",
       a: "Presets can save time. Learn what they change and adapt them to the message, timing and identity instead of treating the default result as finished.",
     },
+    {
+      q: "What After Effects skills should I learn first for reels?",
+      a: "Start with properties, keyframes and timing curves. Animate position, scale and opacity on a single shape and a short title, then combine them and compare an abrupt movement with a softer arrival. Learning to control timing in the Graph Editor teaches more than applying several presets whose timing you cannot yet diagnose.",
+    },
+    {
+      q: "How do I make text readable in an After Effects reel?",
+      a: "Treat typography as a reading task. Choose a clear hierarchy, use emphasis sparingly, group captions into meaningful phrases and leave enough time to understand each one. Preview the composition at roughly phone size, and keep essential text away from platform controls, using a current preview of the intended platform rather than one fixed safe-zone template.",
+    },
+    {
+      q: "How should I hand over an After Effects project to another editor?",
+      a: "Name layers clearly, separate footage from graphics and expose the text and colour choices that need regular changes. Keep a clean master before creating campaign versions. Record the required fonts, effects and assets, avoid depending on an opaque stack of third-party plugins, and confirm that the recipient can actually open the project.",
+    },
   ],
   sources: [
     {

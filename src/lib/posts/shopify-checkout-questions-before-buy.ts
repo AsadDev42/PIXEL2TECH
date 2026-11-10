@@ -25,6 +25,28 @@ const post = {
     "Answer shipping, tracking and contact questions in the order confirmation email and on the order status page.",
     "Audit your own store as a customer and fix the product page first, then the cart, then checkout, then the confirmation email.",
   ],
+  faqs: [
+    {
+      q: "Why do customers abandon a Shopify checkout?",
+      a: "Store owners often blame price, and sometimes price is the reason. More often, the customer had a simple question they could not answer quickly, such as how much delivery costs, when the order will arrive, whether returns are easy, or whether they need an account. Each unanswered question is a reason to pause, and a paused customer often does not come back.",
+    },
+    {
+      q: "Where should delivery and returns information go on a Shopify store?",
+      a: 'Put it on the product page, near the buy button, in one or two short lines with a link to full details. A line such as "Delivery in 3 to 5 working days. Free returns within 30 days." answers more than a paragraph buried lower on the page. If delivery cost varies by location, say so plainly and let customers check it before checkout.',
+    },
+    {
+      q: "Should I offer guest checkout on my Shopify store?",
+      a: 'Yes, where your store allows it. "Do I need an account?" is one of the questions customers ask at checkout, and forcing an account adds friction at the moment they are deciding whether to pay. Keep the rest of the form short as well, asking only for what you need to fulfil the order and explaining any field that is not obvious.',
+    },
+    {
+      q: "Is a longer FAQ page the best way to reduce abandoned checkouts?",
+      a: "Usually not. Customers rarely leave checkout to read a separate FAQ page. It works better to put each answer where the question comes up: delivery and returns on the product page, the full total in the cart, payment and account answers on the checkout page, and shipping and contact details in the order confirmation email.",
+    },
+    {
+      q: "How can I find out which questions are stopping my Shopify checkout?",
+      a: "Open your own store as a customer and go through it without buying. On each page, write down every question you ask yourself and note whether the answer is on that page or hidden elsewhere. Then fix the product page first, followed by the cart, checkout and the confirmation email. Five or six short, well placed answers often recover more checkouts than a redesign.",
+    },
+  ],
   internalLinks: [
     {
       label: "Shopify Black Friday Checklist 2026: Fix Checkout, Stop Bots",

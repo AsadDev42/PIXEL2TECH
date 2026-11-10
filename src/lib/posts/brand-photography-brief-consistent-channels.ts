@@ -39,6 +39,10 @@ const post = {
       q: "What if we only have a small budget?",
       a: "Prioritise the three most important shots, in the places customers see first, such as the home page and the main service page. A small, consistent set beats a large, mixed set.",
     },
+    {
+      q: "What shots should a brand photography shot list include?",
+      a: "Cover five kinds of photo: the result, such as finished work or a product in use; the process, such as hands doing the job; people in real settings; the place, such as your workspace or shop; and close details that prove quality. Keep the list realistic for one shoot day, and mark the three most important shots so they are done first.",
+    },
   ],
   internalLinks: [
     {

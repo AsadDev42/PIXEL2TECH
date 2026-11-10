@@ -9,6 +9,28 @@ const post: PostBody = {
     "Handle duplicate submissions and failures without losing legitimate enquiries.",
     "Keep credentials on the server, minimise collected data and give a named person responsibility for alerts.",
   ],
+  faqs: [
+    {
+      q: "How does a contact form to CRM integration handle duplicate submissions?",
+      a: "People double-click, refresh or retry, and systems may retry deliveries, so the integration needs a way to identify the same submission. A submission identifier can help, but the exact mechanism depends on the tools involved. It must also tell a duplicate delivery apart from a new enquiry by the same person, so using only the email address as a suppression rule is risky because it can discard a legitimate second request.",
+    },
+    {
+      q: "What happens if the CRM is down when someone submits a contact form?",
+      a: "That depends on what was agreed before the build. For each failure, decide what the visitor sees, whether the request is preserved, whether a retry is safe and who is notified. A fallback inbox helps only if it is monitored, and the person responsible for alerts should know how to find the original request, check whether the CRM already processed it and replay it safely.",
+    },
+    {
+      q: "Where should CRM credentials be stored for a website form?",
+      a: "Keep them in server-side configuration or the automation platform’s credential store, with only the permissions the integration needs. They should never be embedded in website JavaScript, a public repository or a shared brief. Also record which business account owns the connection, who can rotate the credentials and what happens when the person who originally authorised it leaves the team.",
+    },
+    {
+      q: "How do I test a contact form to CRM integration before launch?",
+      a: "Use an acceptance matrix that covers a new contact, an existing contact with a new enquiry, missing required information, empty optional fields, an unknown service value, a repeated submission and failures such as unavailable CRM access. For each case, specify the expected website state, CRM record, assignment and notification. Then check the deployed production configuration with an authorised, controlled submission, because a working local demonstration does not prove the live setup is correct.",
+    },
+    {
+      q: "What should a contact form success message say?",
+      a: "It should tell the visitor whether the form was accepted, whether they need to retry and what happens next. Show it only when the agreed acceptance condition is met, not merely because the submit button was clicked. If requests are stored first and processed later, the message should describe receipt rather than immediate assignment, and the visitor’s input should be preserved when a recoverable error occurs.",
+    },
+  ],
   content: [
     {
       heading: "What should a contact form to CRM integration do?",

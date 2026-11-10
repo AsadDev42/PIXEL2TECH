@@ -39,6 +39,10 @@ const post = {
       q: "Can we migrate from one to the other later?",
       a: "Yes, with planning. Products, customers, orders, and content can move, but redirects, payment settings, and the checkout flow need careful rebuilding. Keep data exportable from the start to make a future move easier.",
     },
+    {
+      q: "Should a service business use WooCommerce or Shopify?",
+      a: "Choose the platform that fits how you sell. Shopify suits teams that want a managed store, a clean checkout and minimal technical upkeep. WooCommerce suits businesses already on WordPress that want custom quote, booking and checkout flows and have someone responsible for maintenance. Before committing, run a quote request, a booking and a payment on each platform as a customer would.",
+    },
   ],
   internalLinks: [
     {

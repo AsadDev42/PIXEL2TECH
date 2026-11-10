@@ -67,6 +67,18 @@ const post = {
       q: "How detailed should the guidelines be?",
       a: "Detailed enough for the people using them. Start with clear rules and realistic examples for the applications the business produces most often.",
     },
+    {
+      q: "What is the difference between brand design and brand building?",
+      a: "Brand design creates the visual choices that identify a business: the mark, type, colour, imagery and composition rules. Brand building is the repeated use of those choices alongside the offer, messaging and customer experience. A set of design files starts the process, but the brand is built as people use them consistently in the places customers actually see.",
+    },
+    {
+      q: "What should a brand design handover include?",
+      a: "Agree the editable files, export formats, font records, colour values and example templates before delivery, and note who will update each asset and in which tools. Include examples of correct use and common mistakes, light, dark and single-colour logo versions where appropriate, and a record of asset licences and font requirements. Keep a master folder separate from campaign exports.",
+    },
+    {
+      q: "Where should a new brand identity be rolled out first?",
+      a: "Start with the places that most visibly establish or contradict the new identity, such as the website header, social profiles, storefront, primary packaging and proposal documents. Use a rollout checklist with an owner and approval status for each item, and separate launch-critical changes from work that can follow later. There is no need to discard usable stock without a business reason.",
+    },
   ],
   internalLinks: [
     {

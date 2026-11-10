@@ -39,6 +39,10 @@ const post = {
       q: "What should we never post on a Business Profile?",
       a: "Avoid misleading claims, prices you cannot honour, and photos of work that is not yours. Keep every post accurate and current, and remove or replace anything that is out of date.",
     },
+    {
+      q: "What should a Google Business Profile post include?",
+      a: "Write one or two short paragraphs that name the service and the area, add a real photo of your work, and end with one next step, such as call, book or visit the website. Give each post one job, whether that is an offer, an update, an event or proof of a finished job. A post that tries to say everything says nothing clearly.",
+    },
   ],
   internalLinks: [
     {

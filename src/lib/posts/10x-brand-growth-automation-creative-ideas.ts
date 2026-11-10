@@ -64,6 +64,18 @@ const post = {
       q: "What should a small team automate first?",
       a: "Start with a frequent, well-understood task whose input, output and owner are clear. Use a limited pilot and include a way to handle failure.",
     },
+    {
+      q: "How do you set a realistic 10x growth target for a brand?",
+      a: "Choose the specific outcome, such as reach, inquiries, repeat purchases or revenue, then record a starting baseline and a time period. Define the quality conditions growth must preserve, because ten times as many inquiries can create little value if most are unsuitable or the team cannot respond. Treat 10x as an ambition that helps prioritise work, not a promised result.",
+    },
+    {
+      q: "How do you find the bottleneck before buying automation software?",
+      a: "Map how a customer moves from discovering the business to receiving value, and look for a recurring point where useful opportunities are lost, such as unclear positioning, weak evidence, slow response, inconsistent follow-up or difficult onboarding. Gather examples, choose one constraint and define an observable improvement. That gives both the creative work and the automation a concrete job.",
+    },
+    {
+      q: "How should a brand test creative ideas alongside automation?",
+      a: "Turn recurring customer questions, objections and moments of product use into small creative hypotheses. Write a brief stating the audience, message, evidence and intended action, and change one major idea between experiments so the team can interpret the result. More variations only help when they test different explanations, not just different backgrounds or colours.",
+    },
   ],
   sources: [
     {

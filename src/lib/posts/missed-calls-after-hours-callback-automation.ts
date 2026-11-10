@@ -23,6 +23,28 @@ const post: PostBody = {
     "Handle callback tasks first in the morning, in arrival order, and track called, booked and not reached.",
     "Keep it simple at first: one message, one capture form, one task list and one confirmation.",
   ],
+  faqs: [
+    {
+      q: "What should an after hours message say to callers?",
+      a: 'State your business hours and offer a callback instead of asking the caller to try again. A vague message such as "leave a message" helps nobody, while a clear one says when the next callback window opens. Promise a callback only, not a booking, quote or diagnosis, and let the callback itself do the selling.',
+    },
+    {
+      q: "What information should a missed call automation capture?",
+      a: "Name, number and reason for calling are enough. A long form after hours will lose the caller and can turn a warm enquiry cold. If the caller came from a website or an ad, keep that source with the record so the team has the context when they call back.",
+    },
+    {
+      q: "How should missed calls on weekends and holidays be handled?",
+      a: 'Promise the next working day, not "tomorrow". A Friday evening caller who is promised a Monday callback needs to hear Monday in the message. Set the next working day automatically if your system supports it, or use a simple rule the team can update for holidays, and keep the promised window realistic for the team that will make the calls.',
+    },
+    {
+      q: "How do I know if an after hours callback automation is working?",
+      a: "Track three numbers for a month: how many after hours callers were captured, how many were called inside the promised window, and how many became bookings. Those numbers show whether the automation is doing its job without a complicated dashboard. If the team cannot reach everyone inside the window, widen it or add a second callback slot.",
+    },
+    {
+      q: "Where should missed call callback tasks go?",
+      a: "Create one task in the system the team already uses, assigned to a named person or a small team, with a due time inside the promised callback window. Avoid sending callers to a general inbox with no owner, an email that can be buried or a note in a second app. Each morning, handle callback tasks before new work, in the order they arrived.",
+    },
+  ],
   internalLinks: [
     {
       label: "Automate Lead Follow-Up and Routing: A Small Business Guide",

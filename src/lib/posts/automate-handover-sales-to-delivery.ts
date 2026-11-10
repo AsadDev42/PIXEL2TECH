@@ -39,6 +39,10 @@ const post = {
       q: "What should we do when a handover arrives incomplete?",
       a: "Stop and return it the same day, with the missing items named. Accepting an incomplete handover only moves the problem to delivery, where it costs more to fix. Our brief on [connecting a contact form to a CRM](/blog/contact-form-crm-integration-brief) shows the same principle: define the required fields first, then enforce them.",
     },
+    {
+      q: "What information should a sales to delivery handover include?",
+      a: "It should carry the full promise: the agreed scope, the price and payment terms, the deadline, the customer contact, and any promise made during the sale, even a small one. Proposals, briefs, message threads and reference material should travel with the job in one place. When the handover is complete, delivery should be able to start without a meeting to fill the gaps.",
+    },
   ],
   internalLinks: [
     {

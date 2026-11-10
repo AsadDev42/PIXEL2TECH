@@ -66,6 +66,18 @@ const post = {
       q: "How can a client help a designer produce better concepts?",
       a: "Provide a clear audience, objective, essential content, real examples and a single decision-maker. Explain the reasons behind preferences and objections.",
     },
+    {
+      q: "Why do designers struggle with creativity on some projects?",
+      a: "A creative block often starts with an unclear problem rather than a lack of talent. When a brief only asks for something modern, premium and different, almost any attractive layout can seem to qualify, which makes decisions harder. Translating those adjectives into a situation, such as who will see the design and what they should do, gives exploration a purpose.",
+    },
+    {
+      q: "How can designers use references without limiting their creativity?",
+      a: "Avoid looking only at work from the same category, because concepts can inherit the same typeface, gradient and layout without a deliberate decision. Build a reference board around separate questions, such as hierarchy, photography and tone, and add observations from the real business. Describe what you learned from each reference instead of copying its finished arrangement.",
+    },
+    {
+      q: "Do AI tools help designers be more creative?",
+      a: "They can help with exploration, but volume is not the same as variety. Many images built from the same visual assumptions may repeat one idea, so define what should change between rounds, such as the metaphor, composition or point of view. Afterwards, close the tools and write down the argument for each direction, keeping purpose and final judgement visible.",
+    },
   ],
   internalLinks: [
     {

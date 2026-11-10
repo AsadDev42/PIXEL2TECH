@@ -67,6 +67,18 @@ const post = {
       q: "Should branding happen before the website?",
       a: "Clarify the offer and positioning first, then develop the identity and website together so the message and experience support each other.",
     },
+    {
+      q: "What does branding include beyond the logo?",
+      a: "A logo makes a business recognisable, but the reason to choose it also comes from the offer, the language, the evidence and the experience of buying. Branding covers the promise you make, the proof behind it and whether your website, sales messages, delivery instructions and support all sound like the same business. It starts with the customer decision you want to make easier.",
+    },
+    {
+      q: "How do I turn a vague brand promise into something specific?",
+      a: "Replace broad words such as quality, innovation and excellence with a visible commitment, such as your deliverables, review stages and handover process. One useful format is a sentence with four parts: who the offer serves, what it helps them achieve, how it works and what supports the claim. Keep the promise within what the business can actually deliver.",
+    },
+    {
+      q: "When should a business update its branding?",
+      a: "Revisit the position when the audience, offer or business model changes, rather than every time a new visual trend appears. After rollout, review sales conversations, common objections and the questions that come up before purchase to see what customers still misunderstand, and use that to refine the message. Routine improvements can strengthen the existing direction without a full rebrand.",
+    },
   ],
   internalLinks: [
     {

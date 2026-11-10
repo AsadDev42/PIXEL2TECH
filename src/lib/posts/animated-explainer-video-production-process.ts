@@ -80,6 +80,14 @@ const post: PostBody = {
       q: "What should I approve before full animation?",
       a: "Approve the script, scene sequence, visual style and timing approach. State which review stages your proposal includes and who can make the final decision.",
     },
+    {
+      q: "What should an animated explainer video brief include?",
+      a: "Describe who will watch, what they already know, what they should understand afterwards, where the video will appear and what the next action should be. Add your existing assets, preferred examples, intended channels and deadline. The brief should also cover captions, usage rights, format variants such as a vertical version, and how future product changes will be handled.",
+    },
+    {
+      q: "Does an animated explainer video need captions?",
+      a: "Plan for them. Specify caption files and transcripts in the brief alongside the visual treatment, and review their accuracy before publication. Captions should represent relevant spoken and non-speech audio, and important visual information may need an additional description. If the video must work without sound, plan that version deliberately, because switching off the voiceover does not create a complete silent story.",
+    },
   ],
   sources: [
     {

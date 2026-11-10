@@ -88,6 +88,18 @@ const post = {
       q: "Which one is best for coding?",
       a: "This article does not report a coding benchmark. Test representative changes in your own codebase, including correctness, regression checks, review effort and cost.",
     },
+    {
+      q: "How much do Sonnet 5, GPT-6 Astra and Gemini 4 Argon cost per million tokens?",
+      a: "At standard uncached API rates checked on October 28, 2026, Claude Sonnet 5 was $2 input and $10 output per million tokens, and GPT-6 Astra was $10 input and $50 output. Gemini 4 Argon had introductory rates of $2 and $10 through November 30, 2026, with announced rates of $4 and $20 from December 1, 2026. These figures exclude caching discounts and additional charges.",
+    },
+    {
+      q: "What context windows do Sonnet 5 and Gemini 4 Argon support?",
+      a: "Anthropic lists Sonnet 5 with a 1M-token context window and a 128K-token maximum output. Google documents Gemini 4 Argon with a unified 1M-token context window, long output and configurable thinking levels. OpenAI positions GPT-6 Astra for demanding reasoning, software engineering and tool use. These are documented features and intended uses, not proof of which model performs best on your tasks.",
+    },
+    {
+      q: "How should a team choose between Sonnet 5, GPT-6 Astra and Gemini 4 Argon?",
+      a: "Run a small, fair evaluation on representative tasks with the same inputs and acceptance criteria, and record whether each result was accepted, what the reviewer corrected, the time to a usable outcome and the billed cost. Choose the model with the lowest dependable cost per accepted outcome. A team can also use an economical default for ordinary work and escalate difficult cases to another model.",
+    },
   ],
   sources: [
     {

@@ -39,6 +39,10 @@ const post = {
       q: "What time should we be reachable?",
       a: "Aim to cover Los Angeles business hours, Pacific Time, for live replies. If your team works in another timezone, publish the overlap hours clearly and use an automated acknowledgement that states when a human reply will arrive.",
     },
+    {
+      q: "How quickly should I follow up when selling to Los Angeles customers?",
+      a: "Aim to reply within the hour. Large competitors reply the next day, so a fast reply with a useful next step is one of the biggest advantages a smaller supplier has. Set up an alert so every enquiry reaches a person immediately, and keep the reply short: confirm receipt, repeat the request in one line and propose a time for a call.",
+    },
   ],
   internalLinks: [
     {

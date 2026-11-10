@@ -39,6 +39,10 @@ const post = {
       q: "What files should a refresh deliver?",
       a: "A full colour version, a one colour version, a reversed version for dark backgrounds, a simplified small size version, and the main formats for web, print, and social media, all named clearly.",
     },
+    {
+      q: "How do I test a logo refresh before it goes live?",
+      a: "Test the refreshed logo where customers will see it: the website header, a social media avatar, an email signature, an invoice and a phone screen at actual size. Compare it beside the old logo, and check it in black and white and at the smallest size it will ever appear. A short test with five people outside the team will catch problems the design team has stopped seeing.",
+    },
   ],
   internalLinks: [
     {

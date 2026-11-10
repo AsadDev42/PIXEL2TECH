@@ -39,6 +39,10 @@ const post = {
       q: "Should I test video or static images first?",
       a: "Test the format your audience already engages with, and test one clear idea inside that format. Video often shows a product or story well, but a strong idea matters more than the format itself.",
     },
+    {
+      q: "What are the most common mistakes in ad creative testing on a small budget?",
+      a: "Three traps waste small budgets most often: testing too many ideas at once, which leaves every version underfunded; changing the test midway, which destroys the comparison; and judging creative only by sales on day one, when some ads need time to build familiarity. Keep tests small, keep the rules fixed during the test, and judge each one by the question it was designed to answer.",
+    },
   ],
   internalLinks: [
     {

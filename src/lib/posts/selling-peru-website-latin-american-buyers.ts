@@ -40,6 +40,10 @@ const post = {
       q: "How fast should we reply to a Peruvian enquiry?",
       a: "Aim for one working day, and state that reply time on the contact page. A fast, clear first reply matters more than a long first reply.",
     },
+    {
+      q: "Why does mobile design matter when selling to customers in Peru?",
+      a: "Many buyers in Peru will first open your site on a phone, possibly on a slower connection. A slow home page or a form that is hard to complete on a small screen can lose enquiries before your offer is even read. Keep images sensibly sized, keep the main message near the top, test the enquiry form on a phone, and give each page one clear next step.",
+    },
   ],
   internalLinks: [
     {

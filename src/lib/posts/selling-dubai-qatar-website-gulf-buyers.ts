@@ -40,6 +40,10 @@ const post = {
       q: "How fast should we reply to a Gulf enquiry?",
       a: "Aim for the same working day, and state that reply time on the contact page. Gulf buyers expect speed, and a fast, clear first reply matters more than a long first reply.",
     },
+    {
+      q: "What payment and delivery details should a website show when selling to customers in Dubai and Qatar?",
+      a: "State which payment methods you accept, in which currency, and what happens if a payment fails or a service needs to be rescheduled. For physical products, give delivery times to the UAE and Qatar, delivery costs or a way to check them, and any customs or import charges that apply. Put a short version near the price and the buy button, with a link to the full detail.",
+    },
   ],
   internalLinks: [
     {
