@@ -32,6 +32,19 @@ import {
  */
 const POSTS = [
   {
+    slug: "wordpress-security-basics-business-owners",
+    title: "WordPress Security Basics for Business Owners: A Checklist That Takes an Hour",
+    excerpt:
+        "WordPress security for business owners does not need a specialist. A one hour checklist covering logins, updates, backups, and the settings that stop most attacks.",
+tag: "WordPress",
+    date: "November 10, 2026",
+    time: "2:58 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/wordpress-security-basics-business-owners.jpg",
+    imgAlt: "A laptop showing a website dashboard with a padlock symbol",
+  },
+      
+  {
     slug: "selling-los-angeles-website",
     title: "Selling to Customers in Los Angeles: What Your Website Must Get Right",
     excerpt:
