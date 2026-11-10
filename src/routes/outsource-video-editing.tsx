@@ -54,7 +54,7 @@ function OutsourceVideoEditing() {
     <BusinessLanding
       eyebrow="Outsource video editing"
       title="Outsource video editing to an in-house team"
-      intro={`Send your footage and get finished edits back: reels, YouTube videos, podcasts, wedding films and ad creative, cut for the platform each one runs on. Our portfolio has ${videoCount} edited videos across ${VIDEO_COLLECTIONS.length} collections, and we also edit white label for agencies.`}
+      intro={`Pixel2Tech is a video editing studio in Lahore, Pakistan that businesses worldwide, from the US and UK to Canada and the EU outsource editing to. Send your footage and get finished edits back: reels, YouTube videos, podcasts, wedding films and ad creative, cut for the platform each one runs on. Our portfolio has ${videoCount} edited videos across ${VIDEO_COLLECTIONS.length} collections, and we also edit white label for agencies.`}
       capabilities={[
         {
           title: "Short-form and social",

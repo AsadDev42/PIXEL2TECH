@@ -6,13 +6,13 @@ import { PageShell } from "@/components/site-chrome";
 import { ContentGrid } from "@/components/content-blocks";
 import { trackEvent } from "@/lib/analytics";
 import { businessHead } from "@/lib/page-seo";
-import { SITE, STATS } from "@/lib/site-config";
+import { SERVICES, SITE, STATS } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
 
 const FOUNDERS = TEAM.filter((person) => person.founder);
 
 const COMPANY_DESCRIPTION =
-  "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with clients in the United States, United Kingdom, Canada and Europe. Its in-house team covers branding, website and Shopify development, video production and automation. Projects connect the way a business looks, the way its website works and the content it publishes.";
+  "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with clients worldwide, including the United States, United Kingdom, Canada and Europe. Its in-house team covers branding, website and Shopify development, video production and automation. Projects connect the way a business looks, the way its website works and the content it publishes.";
 
 const ENQUIRY_INCLUDES = ["The publication or event", "Your topic", "The format", "Your deadline"];
 const ENQUIRY_NEEDS = ["An interview", "Company facts", "Founder portraits", "Project imagery"];
@@ -74,11 +74,23 @@ function CopyDescriptionButton() {
 }
 
 function PressPage() {
+  // Plain, checkable facts only, all from site-config and the team list.
   const facts = [
+    { label: "Name", value: SITE.name },
     { label: "Founded", value: STATS.foundingYear },
     { label: "Based in", value: SITE.location },
-    { label: "Founders", value: FOUNDERS.map((person) => person.name).join(" and ") },
-    { label: "Work", value: "Brand, web, video & automation" },
+    {
+      label: "Clients",
+      value: `Worldwide, including the ${SITE.primaryMarkets.join(", ").replace(/, ([^,]*)$/, " and $1")}`,
+    },
+    {
+      label: FOUNDERS.length > 1 ? "Founders" : "Founder",
+      value: FOUNDERS.map((person) => `${person.name}, ${person.role}`).join("; "),
+    },
+    { label: "Projects", value: `${STATS.projects} delivered` },
+    { label: "Services", value: SERVICES.join(", ") },
+    { label: "Pricing", value: "Fixed written quote after a free scoping call" },
+    { label: "Contact", value: SITE.email },
   ];
 
   return (

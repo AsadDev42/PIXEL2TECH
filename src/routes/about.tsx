@@ -16,7 +16,7 @@ const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b
 const PAGE_URL = `${SITE.url}/about`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "About Pixel2Tech | Lahore Team for US, UK & EU Brands";
-const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, Pakistan, working with clients in the US, UK, Canada and Europe.`;
+const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, developers and video editors in Lahore, Pakistan, working with clients worldwide.`;
 
 /** People with a profile page are the founders (same rule as the root Organization schema). */
 const FOUNDERS = TEAM.filter((m) => m.founder);
@@ -154,7 +154,7 @@ function AboutPage() {
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               Designers, developers, video editors and an automation lead, working from Lahore with
-              clients in the US, UK, Canada and Europe.
+              clients worldwide, from the US and UK to Canada and Europe.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <BookCallButton

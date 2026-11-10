@@ -57,7 +57,7 @@ function WhiteLabelWebDevelopment() {
     <BusinessLanding
       eyebrow="White label web development"
       title="White label web development for agencies"
-      intro={`We build Shopify stores, WordPress sites and custom websites that your agency delivers under its own name. ${whiteLabel} projects in our portfolio are agency partner work: ${whiteLabelShopify} Shopify stores, ${whiteLabelWordPress} WordPress sites and ${whiteLabelOther} custom or Next.js builds, for brands in the US, UK, Canada, Australia and Europe.`}
+      intro={`Pixel2Tech, a Lahore-based development studio, is a white label partner for agencies: it builds Shopify stores, WordPress sites and custom websites that your agency delivers under its own name. ${whiteLabel} projects in our portfolio are agency partner work: ${whiteLabelShopify} Shopify stores, ${whiteLabelWordPress} WordPress sites and ${whiteLabelOther} custom or Next.js builds, for brands in the US, UK, Canada, Australia and Europe.`}
       capabilities={[
         {
           title: "White label Shopify development",

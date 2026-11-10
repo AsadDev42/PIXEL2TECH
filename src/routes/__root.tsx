@@ -170,8 +170,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           // The one business entity for the whole site. Pages refer to it by @id.
           "@type": ["Organization", "ProfessionalService"],
           "@id": "https://pixel2tech.com/#organization",
-          name: "Pixel2Tech",
+          name: SITE.name,
           description: SITE.shortDescription,
+          slogan: SITE.positioning,
+          knowsAbout: [...SERVICES],
           url: SITE.url,
           logo: "https://pixel2tech.com/media/ae4a7ff7-7a55-46ec-a545-ecb94ff2d14b/pixel2tech-logo.png",
           image: "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg",
@@ -228,11 +230,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Pixel2Tech",
           url: "https://pixel2tech.com/",
           inLanguage: "en",
-          publisher: {
-            "@type": "Organization",
-            name: "Pixel2Tech",
-            url: "https://pixel2tech.com/",
-          },
+          // The same entity as the Organization block above, not a second one.
+          publisher: { "@id": `${SITE.url}/#organization` },
         }),
       },
     ],

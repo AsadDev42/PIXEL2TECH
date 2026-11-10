@@ -58,7 +58,7 @@ function ShopifyDevelopmentAgency() {
     <BusinessLanding
       eyebrow="Shopify development agency"
       title="Shopify development agency for brands that sell online"
-      intro={`We design and build Shopify stores: theme setup and customization, custom themes, headless storefronts, apps and integrations. Our portfolio has ${shopify} Shopify stores across fashion, beauty, home and wellness, ${shopifyDirect} built directly for brands and ${partnered} as development partner for agencies.`}
+      intro={`Pixel2Tech is a Shopify development agency in Lahore, Pakistan that designs and builds stores for brands worldwide, from the US and UK to Canada and the EU: theme setup and customization, custom themes, headless storefronts, apps and integrations. Our portfolio has ${shopify} Shopify stores across fashion, beauty, home and wellness, ${shopifyDirect} built directly for brands and ${partnered} as development partner for agencies.`}
       capabilities={[
         {
           title: "Store design and build",

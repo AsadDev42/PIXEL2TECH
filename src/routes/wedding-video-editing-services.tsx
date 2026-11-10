@@ -56,7 +56,7 @@ function WeddingVideoEditingServices() {
     <BusinessLanding
       eyebrow="Wedding video editing services"
       title="Wedding video editing services"
-      intro={`Send us the footage from the day and we edit it into a wedding film worth rewatching, plus vertical reels for social media. Our wedding collection has ${weddingVideos.length} finished edits: ${films} horizontal films and ${reels} vertical reels, from bridal portraits and couple shoots to nikah, church and baraat footage.`}
+      intro={`Pixel2Tech, a Lahore-based video editing studio, edits wedding footage for couples and videographers worldwide. Send us the footage from the day and we edit it into a wedding film worth rewatching, plus vertical reels for social media. Our wedding collection has ${weddingVideos.length} finished edits: ${films} horizontal films and ${reels} vertical reels, from bridal portraits and couple shoots to nikah, church and baraat footage.`}
       capabilities={[
         {
           title: "Wedding highlight films",

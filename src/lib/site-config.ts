@@ -7,17 +7,17 @@ export const SITE = {
   name: "Pixel2Tech",
   url: "https://pixel2tech.com",
   /** One positioning line, used word for word in titles, footer and schema. */
-  positioning:
-    "Branding, web design, video and automation studio for US, UK, Canadian and EU businesses",
+  positioning: "Branding, web design, video and automation studio for businesses worldwide",
   shortDescription:
-    "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with businesses in the United States, United Kingdom, Canada and Europe. We design brands, build websites and apps, produce video and automate busywork.",
+    "Pixel2Tech is a creative and web studio based in Lahore, Pakistan, working with businesses worldwide, including the United States, United Kingdom, Canada and Europe. We design brands, build websites and apps, produce video and automate busywork.",
   email: "sales@pixel2tech.com",
   phoneDisplay: "+92 317 7475233",
   phoneE164: "+923177475233",
   whatsappUrl:
     "https://api.whatsapp.com/send/?phone=923177475233&text&type=phone_number&app_absent=0",
   location: "Lahore, Pakistan",
-  locationLine: "Based in Lahore, Pakistan, working with clients in the US, UK, Canada and EU",
+  locationLine:
+    "Based in Lahore, Pakistan, working with clients worldwide, including the US, UK, Canada and EU",
   /** City only, by the owner's decision: no street address is published. */
   address: {
     addressLocality: "Lahore",

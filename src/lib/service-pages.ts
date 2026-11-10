@@ -42,7 +42,10 @@ type ServicePageCopy = {
   /** H1 is `${h1} ${h1Highlight}`; the highlight names who the service is for. */
   h1: string;
   h1Highlight: string;
-  /** One-sentence answer to "what do you do?" under the H1. */
+  /**
+   * One-sentence answer to "what do you do?" under the H1. It opens with
+   * "Pixel2Tech" so the line still names the studio when an AI answer quotes it.
+   */
   answer: string;
   /** Short tags: typical deliverables and tools (same as the /services card). */
   tags: string[];
@@ -112,7 +115,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Branding and design agency",
     h1Highlight: "for US startups and small businesses",
     answer:
-      "We design your logo, color palette, typography and brand guidelines, plus the templates that apply them, so your website, social posts, ads and packaging all look like one company.",
+      "Pixel2Tech, a Lahore-based branding studio working with businesses worldwide, from the US and UK to Canada and the EU, designs logos, color palettes, typography and brand guidelines, plus the templates that apply them, so a company's website, social posts, ads and packaging all look like one brand.",
     tags: ["Logo", "Brand guide", "UI/UX"],
     deliverables: [
       {
@@ -219,7 +222,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Web design agency",
     h1Highlight: "for US small businesses and startups",
     answer:
-      "We design and build fast, mobile-ready websites in React, Next.js or custom code, from a single landing page to a full business site, set up so visitors understand what you offer and get in touch.",
+      "Pixel2Tech is a web design and development studio in Lahore, Pakistan that builds fast, mobile-ready websites in React, Next.js or custom code for businesses worldwide, from the US and UK to Canada and the EU, from a single landing page to a full business site, set up so visitors understand the offer and get in touch.",
     tags: ["React", "Next.js", "Custom code"],
     deliverables: [
       {
@@ -326,7 +329,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Shopify and WordPress development",
     h1Highlight: "for US brands",
     answer:
-      "We build and improve Shopify stores and WordPress sites, handling the theme, product pages, apps or plugins and payment setup, so you can run the store yourself after launch.",
+      "Pixel2Tech builds and improves Shopify stores and WordPress sites for brands worldwide, from the US and UK to Canada and the EU, handling the theme, product pages, apps or plugins and payment setup, so the owner can run the store after launch.",
     tags: ["Shopify", "WordPress", "WooCommerce"],
     deliverables: [
       {
@@ -431,7 +434,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Custom apps, SaaS and client portals",
     h1Highlight: "for US startups and small businesses",
     answer:
-      "We design and build mobile apps, SaaS products, client portals and internal dashboards around how your business works, starting with the smallest version that proves the idea.",
+      "Pixel2Tech, a Lahore-based product studio working with businesses worldwide, from the US and UK to Canada and the EU, designs and builds mobile apps, SaaS products, client portals and internal dashboards around how a business works, starting with the smallest version that proves the idea.",
     tags: ["SaaS", "Mobile app", "Portals"],
     deliverables: [
       {
@@ -524,7 +527,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Workflow automation and CRM setup",
     h1Highlight: "for US small businesses",
     answer:
-      "We map the repetitive work your team does by hand, such as copying leads between tools or chasing follow-ups, then automate it in n8n, Make or Zapier and set up a CRM that keeps every lead in one place.",
+      "Pixel2Tech maps the repetitive work a team does by hand, such as copying leads between tools or chasing follow-ups, then automates it in n8n, Make or Zapier and sets up a CRM that keeps every lead in one place. The Lahore-based team works with businesses worldwide, from the US and UK to Canada and the EU.",
     tags: ["n8n", "Make", "Zapier", "Custom CRM"],
     deliverables: [
       {
@@ -625,7 +628,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "AI chatbots and voice agents",
     h1Highlight: "for US businesses",
     answer:
-      "We build AI chatbots, voice agents and RAG systems that answer common customer questions from your own content, capture leads and hand complex conversations to your team.",
+      "Pixel2Tech builds AI chatbots, voice agents and RAG systems that answer common customer questions from a business's own content, capture leads and hand complex conversations to its team. The studio is based in Lahore, Pakistan and works with companies worldwide, from the US and UK to Canada and the EU.",
     tags: ["Chatbots", "RAG", "Voice agents"],
     deliverables: [
       {
@@ -730,7 +733,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "SEO agency",
     h1Highlight: "for US small businesses and online stores",
     answer:
-      "We audit your site for technical problems, fix on-page issues, plan keywords around what your customers search for and set up local SEO, so the right people find your business on Google.",
+      "Pixel2Tech, a Lahore-based studio serving businesses worldwide, from the US and UK to Canada and the EU, audits sites for technical problems, fixes on-page issues, plans keywords around what customers search for and sets up local SEO, so the right people find the business on Google.",
     tags: ["On-page SEO", "Technical SEO", "Local SEO"],
     deliverables: [
       {
@@ -823,7 +826,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Social media marketing agency",
     h1Highlight: "for US brands",
     answer:
-      "We plan and design your social content, produce creative for paid ads, and write and build email sequences and newsletters, so your brand looks and sounds the same everywhere customers see it.",
+      "Pixel2Tech plans and designs social content, produces creative for paid ads, and writes and builds email sequences and newsletters for brands worldwide, from the US and UK to Canada and the EU, so a brand looks and sounds the same everywhere customers see it.",
     tags: ["Instagram", "Facebook ads", "Email"],
     deliverables: [
       {
@@ -929,7 +932,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Video editing agency",
     h1Highlight: "for US brands",
     answer:
-      "We edit reels, brand videos, YouTube content and paid ad creative from your footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
+      "Pixel2Tech, a Lahore-based video editing studio working with clients worldwide, from the US and UK to Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
     tags: ["Reels", "YouTube", "Paid ads"],
     deliverables: [
       {
