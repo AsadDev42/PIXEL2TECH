@@ -105,11 +105,11 @@ export const PRICING_POINTS: { title: string; desc: string }[] = [
 
 const COPY: Record<ServiceTitle, ServicePageCopy> = {
   "Branding & Design": {
-    metaTitle: "Brand Identity & Logo Design for US Startups | Pixel2Tech",
+    metaTitle: "Branding & Design Agency for US Startups | Pixel2Tech",
     metaDescription:
-      "Logo, color palette, typography and brand guidelines for US startups and small businesses, designed in-house and fixed-quoted after a free scoping call.",
+      "A branding and design agency for US startups: logo, color palette, typography and brand guidelines, designed in-house and fixed-quoted after a free call.",
     serviceType: "Brand identity design",
-    h1: "Brand identity and logo design",
+    h1: "Branding and design agency",
     h1Highlight: "for US startups and small businesses",
     answer:
       "We design your logo, color palette, typography and brand guidelines, plus the templates that apply them, so your website, social posts, ads and packaging all look like one company.",
@@ -212,11 +212,11 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Website Development": {
-    metaTitle: "Website Development for US Small Businesses | Pixel2Tech",
+    metaTitle: "Web Design Agency for US Small Businesses | Pixel2Tech",
     metaDescription:
-      "Mobile-ready websites for US small businesses and startups, built in React, Next.js or custom code by an in-house team. Fixed quote after a free call.",
+      "A web design agency for US small businesses and startups: mobile-ready sites in React, Next.js or custom code, built in-house. Fixed quote after a free call.",
     serviceType: "Website development",
-    h1: "Website development",
+    h1: "Web design agency",
     h1Highlight: "for US small businesses and startups",
     answer:
       "We design and build fast, mobile-ready websites in React, Next.js or custom code, from a single landing page to a full business site, set up so visitors understand what you offer and get in touch.",
@@ -723,11 +723,11 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "SEO & Search Growth": {
-    metaTitle: "Technical & Local SEO for US Small Businesses | Pixel2Tech",
+    metaTitle: "SEO Agency for US Small Businesses | Pixel2Tech",
     metaDescription:
       "Technical SEO audits, on-page fixes, keyword strategy and local SEO for US small businesses and online stores, so the right customers find you on Google.",
     serviceType: "Search engine optimization",
-    h1: "Technical and local SEO",
+    h1: "SEO agency",
     h1Highlight: "for US small businesses and online stores",
     answer:
       "We audit your site for technical problems, fix on-page issues, plan keywords around what your customers search for and set up local SEO, so the right people find your business on Google.",
@@ -816,11 +816,11 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Social Media & Email": {
-    metaTitle: "Social Media & Email Marketing for US Brands | Pixel2Tech",
+    metaTitle: "Social Media Marketing Agency for US Brands | Pixel2Tech",
     metaDescription:
-      "Social content, Meta ad creative, email flows and newsletters for US brands, planned and designed by an in-house team. Scoped on a free call, fixed-quoted.",
+      "A social media marketing agency for US brands: social content, Meta ad creative, email flows and newsletters, made in-house. Fixed quote after a free call.",
     serviceType: "Social media and email marketing",
-    h1: "Social media and email marketing",
+    h1: "Social media marketing agency",
     h1Highlight: "for US brands",
     answer:
       "We plan and design your social content, produce creative for paid ads, and write and build email sequences and newsletters, so your brand looks and sounds the same everywhere customers see it.",
@@ -922,11 +922,11 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Video Editing & Ads": {
-    metaTitle: "Video Editing & Ad Creative for US Brands | Pixel2Tech",
+    metaTitle: "Video Editing Agency for US Brands | Pixel2Tech",
     metaDescription:
-      "Reels, brand videos, YouTube edits and paid ad creative for US brands, edited in-house for the platform they'll run on. Fixed quote after a free call.",
+      "A video editing agency for US brands: reels, brand videos, YouTube edits and ad creative, edited in-house for each platform. Fixed quote after a free call.",
     serviceType: "Video editing and video ad production",
-    h1: "Video editing and ad creative",
+    h1: "Video editing agency",
     h1Highlight: "for US brands",
     answer:
       "We edit reels, brand videos, YouTube content and paid ad creative from your footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
