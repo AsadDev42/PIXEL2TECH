@@ -14,10 +14,15 @@ export type TeamMember = {
   linkedin?: string;
   /** Co-founders (listed as founders in structured data and on About). */
   founder?: boolean;
+  /**
+   * Temporarily off the site: no card, byline, schema or profile page.
+   * Remove the flag to bring the person back everywhere.
+   */
+  hidden?: boolean;
 };
 
-/** The in-house team. Shown on Home and About. */
-export const TEAM: TeamMember[] = [
+/** Everyone, including people who are temporarily hidden. */
+export const ALL_TEAM: TeamMember[] = [
   {
     name: "Usama Farooq",
     role: "CEO & Founder",
@@ -25,6 +30,8 @@ export const TEAM: TeamMember[] = [
     profile: "/usama-farooq",
     founder: true,
     linkedin: "https://www.linkedin.com/in/osama-farooq-manj/",
+    // Hidden from the site for now, by the owner's request (Nov 2026).
+    hidden: true,
   },
   {
     name: "Asad Farooq",
@@ -45,3 +52,11 @@ export const TEAM: TeamMember[] = [
   { name: "Ahsan Mushtaq", role: "Website Developer", img: teamAhsan.url },
   { name: "Noman Ahmed", role: "Video Editor", img: teamNoman.url },
 ];
+
+/** The in-house team shown on the site. Shown on Home and About. */
+export const TEAM: TeamMember[] = ALL_TEAM.filter((m) => !m.hidden);
+
+/** True when a profile page belongs to someone who is hidden for now. */
+export function isHiddenProfile(path: string): boolean {
+  return ALL_TEAM.some((m) => m.profile === path && m.hidden);
+}

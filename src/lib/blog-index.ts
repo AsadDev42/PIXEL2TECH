@@ -18,6 +18,7 @@ import {
   type PostMeta,
   type PostSummary,
 } from "@/lib/blog-types";
+import { isHiddenProfile } from "@/lib/team";
 
 /**
  * Blog manifest: the listing metadata of every article.
@@ -2687,8 +2688,12 @@ export const POST_INDEX: readonly PostMeta[] = POSTS.map((post) => ({
   author: post.author.startsWith("Pixel2Tech")
     ? post.slug === "headless-shopify-commerce-guide"
       ? "Asad Farooq"
-      : "Usama Farooq"
-    : post.author,
+      : isHiddenProfile("/usama-farooq")
+        ? "Pixel2Tech Team"
+        : "Usama Farooq"
+    : post.author === "Usama Farooq" && isHiddenProfile("/usama-farooq")
+      ? "Pixel2Tech Team"
+      : post.author,
 })).sort((a, b) => publishedAt(b) - publishedAt(a));
 
 const BY_SLUG = new Map(POST_INDEX.map((p) => [p.slug, p]));

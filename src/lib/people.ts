@@ -18,7 +18,7 @@ import teamAsad from "@/assets/team-asad.webp.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-1080.webp.asset.json";
 import { faqJsonLd, type FaqItem } from "@/components/faq";
 import { SITE } from "@/lib/site-config";
-import { TEAM } from "@/lib/team";
+import { ALL_TEAM } from "@/lib/team";
 
 /**
  * Content for the founder profile pages (/usama-farooq, /asad-farooq).
@@ -73,7 +73,7 @@ export type PersonProfileData = {
 };
 
 function teamMember(path: ProfilePath) {
-  const member = TEAM.find((m) => m.profile === path);
+  const member = ALL_TEAM.find((m) => m.profile === path);
   if (!member) throw new Error(`No TEAM entry has profile ${path}`);
   return member;
 }
