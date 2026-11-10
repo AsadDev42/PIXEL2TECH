@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "how-to-write-brand-story-customers-remember",
+    title: "How to Write a Brand Story Customers Actually Remember",
+    excerpt:
+      "A brand story customers remember is short, specific and true. How to write one for a service business, from the problem you solve to the proof that backs it up.",
+    tag: "Branding",
+    date: "November 10, 2026",
+    time: "10:52 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/how-to-write-brand-story-customers-remember.jpg",
+    imgAlt: "A business owner telling a story to a customer in a bright studio",
+  },
+  {
     slug: "before-after-videos-sell-service-work",
     title: "Before and After Videos: A Simple Format That Sells Service Work",
     excerpt:
