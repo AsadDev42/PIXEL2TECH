@@ -270,6 +270,30 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
 
+  "wedding-video-and-reel-editing": {
+    summary: "Wedding films and vertical reels, from bridal portraits to couple shoots and baraat arrivals.",
+    overview:
+      "A collection of 28 wedding videos: 19 horizontal films and 9 vertical reels. They cover bridal portraits, couple shoots at palaces, forts and gardens, nikah and church ceremonies, baraat arrivals and evening celebrations.",
+    challenge:
+      "Wedding footage is long and emotional, and each edit has to keep the best moments while fitting the place it will be watched, from a full-screen film to a 9:16 reel.",
+    approach:
+      "Horizontal films keep a cinematic frame and pace for the full story, while vertical reels are cut tighter around one look, moment or location for Instagram and TikTok.",
+    outcome: "28 finished wedding films and reels presented together in one collection.",
+    deliverables: [
+      "Wedding highlight films",
+      "Vertical wedding reels",
+      "Bridal and couple portrait edits",
+      "Ceremony and celebration edits",
+    ],
+    metaTitle: "Wedding video and reel editing | Pixel2Tech",
+    metaDescription:
+      "28 wedding films and reels edited by Pixel2Tech: bridal portraits, couple shoots, nikah and church ceremonies, baraat arrivals, in 16:9 and 9:16.",
+    results: [
+      { label: "In this set", value: pieces("wedding-video-and-reel-editing", "wedding videos") },
+      { label: "Formats", value: "19 horizontal films, 9 vertical reels" },
+      { label: "Made for", value: "YouTube, Instagram and TikTok" },
+    ],
+  },
   "short-form-social-media-videos": {
     summary: "Ten vertical edits for social media, from podcast clips to talking-head stories.",
     overview:

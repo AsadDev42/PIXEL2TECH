@@ -209,6 +209,14 @@ const SHORT_FORM_SOCIAL_VIDEOS = numberedVideos(
   { vertical: "Short-form social video" },
   "vertical",
 );
+// Mostly horizontal films; these numbers are the vertical reels.
+const WEDDING_VIDEOS = numberedVideos(
+  "wedding-video-and-reel-editing",
+  Array.from({ length: 28 }, (_, i) => i + 1),
+  { landscape: "Wedding film", vertical: "Wedding reel" },
+  "landscape",
+  { vertical: [1, 3, 4, 5, 6, 8, 10, 19, 24] },
+);
 const LONG_FORM_AND_PODCAST_VIDEOS = numberedVideos(
   "long-form-video-and-podcast-production",
   [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -596,6 +604,12 @@ const RAW: RawWork = {
   },
   "Video Editing": {
     "Short Form": [
+      {
+        slug: "wedding-video-and-reel-editing",
+        title: "Wedding video and reel editing",
+        img: WEDDING_VIDEOS[13]!.poster,
+        videos: WEDDING_VIDEOS,
+      },
       {
         slug: "short-form-social-media-videos",
         title: "Short-form video production for social media",
