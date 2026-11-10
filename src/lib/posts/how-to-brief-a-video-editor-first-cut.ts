@@ -3,10 +3,18 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "How to Brief a Video Editor So the First Cut Is Close to Final",
   metaTitle: "How to Brief a Video Editor for a Near-Final First Cut",
-  metaDescription: "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
+  metaDescription:
+    "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
   ogTitle: "How to Brief a Video Editor So the First Cut Is Close to Final",
-  ogDescription: "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
-  keywords: ["video editor brief", "first cut video editing", "video editing brief", "reduce video revisions", "short form video editing"],
+  ogDescription:
+    "Most video revisions come from a brief that missed the audience, the job of the video and the must keep moments. A clear brief, with examples and limits, gets the first cut much closer to final.",
+  keywords: [
+    "video editor brief",
+    "first cut video editing",
+    "video editing brief",
+    "reduce video revisions",
+    "short form video editing",
+  ],
   keyTakeaways: [
     "Most first-cut revisions come from a missing brief, not poor editing.",
     "Give the video one job and name the audience in plain words.",
@@ -14,9 +22,18 @@ const post = {
     "Agree timecoded feedback, revision rounds and final files before editing starts.",
   ],
   internalLinks: [
-    { label: "SaaS Product Demo Video: How to Brief a Production Team", to: "/blog/saas-product-demo-video-brief" },
-    { label: "Video Editing Handover Checklist: Files Your Team Needs", to: "/blog/video-editing-handover-checklist" },
-    { label: "One Video, Multiple Formats: A Deliverables Brief", to: "/blog/video-deliverables-aspect-ratio-brief" },
+    {
+      label: "SaaS Product Demo Video: How to Brief a Production Team",
+      to: "/blog/saas-product-demo-video-brief",
+    },
+    {
+      label: "Video Editing Handover Checklist: Files Your Team Needs",
+      to: "/blog/video-editing-handover-checklist",
+    },
+    {
+      label: "One Video, Multiple Formats: A Deliverables Brief",
+      to: "/blog/video-deliverables-aspect-ratio-brief",
+    },
   ],
   cta: {
     title: "Get fewer rounds on your next video",
@@ -34,27 +51,27 @@ const post = {
       heading: "Start with one job for the video",
       body: [
         "Every video should have one job. Common jobs include getting a booking, explaining a service, building trust with a testimonial, or getting a click to a product page. Pick one, and write it in a sentence. If the video tries to do three jobs, the viewer will remember none of them.",
-        "Then name the audience in plain words. \"Small business owners in Los Angeles who need a website redesign\" is a brief. \"Everyone\" is not a brief. The audience decides the language, the examples, the pace and the call to action. An editor who knows the audience can cut for them. An editor who does not will cut for a general viewer who does not exist.",
+        'Then name the audience in plain words. "Small business owners in Los Angeles who need a website redesign" is a brief. "Everyone" is not a brief. The audience decides the language, the examples, the pace and the call to action. An editor who knows the audience can cut for them. An editor who does not will cut for a general viewer who does not exist.',
       ],
     },
     {
       heading: "Give the editor the material in order",
       body: [
         "Send footage, audio and graphics in a clear order, with the must keep moments marked. A simple way is to list the clips in the order you expect them, and mark each one as must keep, nice to have, or cut if it slows the video. Also mark any clip that must not be used, such as a shot with a wrong logo, a background detail or a person who did not agree to appear.",
-        "Include the script or the spoken points, even for a short ad. If the video has no script, list the three points it must cover, in order. Add the music direction in words, not just a genre. \"Calm, confident, no vocals, similar to this example\" helps far more than \"something upbeat\".",
+        'Include the script or the spoken points, even for a short ad. If the video has no script, list the three points it must cover, in order. Add the music direction in words, not just a genre. "Calm, confident, no vocals, similar to this example" helps far more than "something upbeat".',
       ],
     },
     {
       heading: "Show, do not just describe, the style",
       body: [
-        "Style words mean different things to different people. \"Modern\" can mean minimal, bold, fast or clean, depending on who hears it. Show two or three examples instead. One example for pace, one for captions and one for the overall feel is enough. Note what you like in each example, in one line. \"I like the pace here, but our captions should be larger\" is useful direction. \"Make it like this\" alone is not, because the editor cannot know which part you mean.",
+        'Style words mean different things to different people. "Modern" can mean minimal, bold, fast or clean, depending on who hears it. Show two or three examples instead. One example for pace, one for captions and one for the overall feel is enough. Note what you like in each example, in one line. "I like the pace here, but our captions should be larger" is useful direction. "Make it like this" alone is not, because the editor cannot know which part you mean.',
         "Also state the technical limits up front. Where will the video play? A vertical reel, a website header and a paid ad have different lengths, safe areas for captions and sound rules. A video made for sound on will fail as a silent autoplay ad, and a video made for silent viewing will feel empty with sound. List the formats, lengths and caption needs before editing starts.",
       ],
     },
     {
       heading: "Agree the review in advance",
       body: [
-        "Agree how feedback will be given, and how many rounds are included. The cleanest method is timecoded notes, grouped by priority. \"At 0:12, cut this sentence\" is actionable. \"This part feels off\" is not, and it usually leads to a second round that fixes the wrong thing.",
+        'Agree how feedback will be given, and how many rounds are included. The cleanest method is timecoded notes, grouped by priority. "At 0:12, cut this sentence" is actionable. "This part feels off" is not, and it usually leads to a second round that fixes the wrong thing.',
         "Separate must fix notes from nice to have notes. Must fix notes are errors, missing points or wrong facts. Nice to have notes are taste. When taste notes outnumber must fix notes, the brief probably missed the style examples, and the next brief should include them.",
         "Finally, agree what final files you will receive. Edited video in each format, captions as a separate file, and the project or source files if your agreement includes them. Asking for these after delivery is slower and sometimes impossible, so put them in the brief.",
       ],

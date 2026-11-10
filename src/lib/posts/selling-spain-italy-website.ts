@@ -3,9 +3,12 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Selling to Customers in Spain and Italy: What Your Website Must Get Right for European Buyers",
   metaTitle: "Selling to Customers in Spain and Italy",
-  metaDescription: "Buyers in Spain and Italy check trust, language, delivery and support before they enquire. What your website must show clearly for European customers.",
-  ogTitle: "Selling to Customers in Spain and Italy: What Your Website Must Get Right for European Buyers",
-  ogDescription: "Buyers in Spain and Italy check trust, language, delivery and support before they enquire. What your website must show clearly for European customers.",
+  metaDescription:
+    "Buyers in Spain and Italy check trust, language, delivery and support before they enquire. What your website must show clearly for European customers.",
+  ogTitle:
+    "Selling to Customers in Spain and Italy: What Your Website Must Get Right for European Buyers",
+  ogDescription:
+    "Buyers in Spain and Italy check trust, language, delivery and support before they enquire. What your website must show clearly for European customers.",
   keywords: [
     "selling to Spain and Italy",
     "European customers",
@@ -44,7 +47,8 @@ const post = {
       to: "/blog/selling-singapore-malaysia-website",
     },
     {
-      label: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
+      label:
+        "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
       to: "/blog/selling-to-us-customers-website-trust",
     },
   ],

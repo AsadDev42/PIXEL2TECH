@@ -32,8 +32,8 @@ const post = {
     {
       heading: "Describe your voice in plain words",
       body: [
-        "Vague descriptions like \"professional yet friendly\" do not help anyone write. They can mean almost anything. Choose three or four traits and explain each one with an example.",
-        "For example, instead of \"friendly\", write: \"We are warm and direct. We greet the reader, answer the question in the first two sentences, and avoid jargon.\" Instead of \"expert\", write: \"We explain the reason behind a recommendation in one short sentence, so the reader can judge it for themselves.\"",
+        'Vague descriptions like "professional yet friendly" do not help anyone write. They can mean almost anything. Choose three or four traits and explain each one with an example.',
+        'For example, instead of "friendly", write: "We are warm and direct. We greet the reader, answer the question in the first two sentences, and avoid jargon." Instead of "expert", write: "We explain the reason behind a recommendation in one short sentence, so the reader can judge it for themselves."',
         "Then add the opposite for each trait. If you are warm and direct, you are not chatty for its own sake. If you are expert, you are not academic. Opposites stop writers from drifting to either extreme.",
       ],
     },

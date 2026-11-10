@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "WordPress Plugin Updates Without Breaking Your Site: A Safe Weekly Routine",
   metaTitle: "WordPress Plugin Updates: A Safe Weekly Routine",
-  metaDescription: "WordPress plugin updates keep your site secure, but a rushed update can break it. A safe weekly routine with a backup, a staging check and a rollback plan.",
+  metaDescription:
+    "WordPress plugin updates keep your site secure, but a rushed update can break it. A safe weekly routine with a backup, a staging check and a rollback plan.",
   ogTitle: "WordPress Plugin Updates Without Breaking Your Site: A Safe Weekly Routine",
-  ogDescription: "WordPress plugin updates keep your site secure, but a rushed update can break it. A safe weekly routine with a backup, a staging check and a rollback plan.",
+  ogDescription:
+    "WordPress plugin updates keep your site secure, but a rushed update can break it. A safe weekly routine with a backup, a staging check and a rollback plan.",
   keywords: [
     "WordPress plugin updates",
     "WordPress maintenance",

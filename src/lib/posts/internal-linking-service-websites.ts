@@ -3,9 +3,12 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
   metaTitle: "Internal Linking for Service Websites",
-  metaDescription: "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
-  ogTitle: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
-  ogDescription: "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
+  metaDescription:
+    "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
+  ogTitle:
+    "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
+  ogDescription:
+    "Internal links guide visitors to the next useful page and help Google understand your services. A simple hub structure for service websites, with practical rules and common mistakes.",
   keywords: ["internal linking", "service websites", "SEO", "site structure", "internal links"],
   keyTakeaways: [
     "Build a hub structure around each main service page, with supporting pages linking to it and to each other",
@@ -15,8 +18,14 @@ const post = {
     "Measure whether visitors from blog posts reach service pages more often, and move or rewrite links that send almost no visitors to their hub",
   ],
   internalLinks: [
-    { label: "The Biggest SEO Mistakes Businesses Still Make in 2026", to: "/blog/biggest-seo-mistakes-businesses-make-2026" },
-    { label: "The AI SEO Mistakes Stopping Your Content From Ranking in 2026", to: "/blog/ai-seo-mistakes" },
+    {
+      label: "The Biggest SEO Mistakes Businesses Still Make in 2026",
+      to: "/blog/biggest-seo-mistakes-businesses-make-2026",
+    },
+    {
+      label: "The AI SEO Mistakes Stopping Your Content From Ranking in 2026",
+      to: "/blog/ai-seo-mistakes",
+    },
   ],
   cta: {
     title: "Start with a hub structure",

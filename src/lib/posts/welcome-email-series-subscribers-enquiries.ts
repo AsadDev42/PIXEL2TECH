@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
   metaTitle: "Welcome Emails That Turn Subscribers Into Enquiries",
-  metaDescription: "A welcome email series turns a new subscriber into an enquiry. A four-email plan for service businesses, with timing, topics and one next step each.",
+  metaDescription:
+    "A welcome email series turns a new subscriber into an enquiry. A four-email plan for service businesses, with timing, topics and one next step each.",
   ogTitle: "A Welcome Email Series That Turns New Subscribers Into Enquiries",
-  ogDescription: "A welcome email series turns a new subscriber into a real enquiry. A practical four email plan for service businesses, with timing, topics and one clear next step per email.",
+  ogDescription:
+    "A welcome email series turns a new subscriber into a real enquiry. A practical four email plan for service businesses, with timing, topics and one clear next step per email.",
   keywords: [
     "welcome email series",
     "email marketing for service businesses",
@@ -40,11 +42,13 @@ const post = {
   ],
   internalLinks: [
     {
-      label: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
+      label:
+        "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
       to: "/blog/email-list-growth-without-discounts-service-businesses",
     },
     {
-      label: "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
+      label:
+        "A Simple Weekly Social Media Routine for Service Businesses (No Daily Posting Required)",
       to: "/blog/weekly-social-media-routine-service-businesses",
     },
   ],

@@ -33,7 +33,8 @@ const post: PostBody = {
       to: "/blog/automations-failing-silently-audit",
     },
     {
-      label: "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
+      label:
+        "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
       to: "/blog/custom-booking-platform-vs-off-the-shelf-software",
     },
   ],
@@ -53,7 +54,7 @@ const post: PostBody = {
       heading: "What the automation should do, in order",
       body: [
         "A useful after hours automation has four steps, and each one matters.",
-        "First, answer with a clear message. State the business hours, and offer a callback instead of asking the caller to try again. A vague message such as \"leave a message\" helps nobody. A clear message says when the next callback window opens.",
+        'First, answer with a clear message. State the business hours, and offer a callback instead of asking the caller to try again. A vague message such as "leave a message" helps nobody. A clear message says when the next callback window opens.',
         "Second, capture the minimum details. Name, number and reason for calling are enough. A long form after hours will lose the caller. If the caller came from a website or ad, keep that source with the record so the team knows the context.",
         "Third, create one task in the system the team already uses. Not an email that can be buried, and not a note in a second app. One task, assigned to a named person or a small team, with a due time inside the promised callback window.",
         "Fourth, send the caller a confirmation. A short message that repeats the promised callback time builds trust. It also gives the caller a record, so they do not need to call again to check.",
@@ -62,8 +63,8 @@ const post: PostBody = {
     {
       heading: "What to promise, and what not to promise",
       body: [
-        "Promise only what the morning team can deliver. If callbacks happen between 9 and 11, say that. Do not promise \"we will call you back shortly\" when shortly means tomorrow. A specific window that is kept beats a fast promise that is broken.",
-        "Also decide what happens on weekends and holidays. A Friday evening caller who is promised a Monday callback needs to hear Monday, not \"tomorrow\". Put the next working day in the message, automatically if your system supports it, or in a simple rule the team can update for holidays.",
+        'Promise only what the morning team can deliver. If callbacks happen between 9 and 11, say that. Do not promise "we will call you back shortly" when shortly means tomorrow. A specific window that is kept beats a fast promise that is broken.',
+        'Also decide what happens on weekends and holidays. A Friday evening caller who is promised a Monday callback needs to hear Monday, not "tomorrow". Put the next working day in the message, automatically if your system supports it, or in a simple rule the team can update for holidays.',
         "Do not promise a booking, a quote or a diagnosis in the after hours message. Promise a callback, and let the callback do the selling. Overpromising in an automated message creates complaints that a human then has to undo.",
       ],
     },

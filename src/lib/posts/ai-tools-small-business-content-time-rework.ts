@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "AI Tools for Small Business Content: Where They Save Time and Where They Create Rework",
   metaTitle: "AI Tools for Business Content: Where They Save Time",
-  metaDescription: "AI tools save time on small business content, but only in the right places. Where AI helps, where human review is essential, and how to avoid rework.",
+  metaDescription:
+    "AI tools save time on small business content, but only in the right places. Where AI helps, where human review is essential, and how to avoid rework.",
   ogTitle: "AI Tools for Small Business Content: Where They Save Time and Where They Create Rework",
-  ogDescription: "AI tools save time on small business content, but only in the right places. Where AI helps, where human review is essential, and how to avoid rework.",
+  ogDescription:
+    "AI tools save time on small business content, but only in the right places. Where AI helps, where human review is essential, and how to avoid rework.",
   keywords: [
     "AI tools for small business",
     "AI content workflow",

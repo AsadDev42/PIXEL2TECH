@@ -1,12 +1,13 @@
 import type { PostBody } from "@/lib/blog-types";
 
-
 const post = {
   h1: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
   metaTitle: "Search Intent for Service Pages: Match Customer Needs",
-  metaDescription: "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
+  metaDescription:
+    "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
   ogTitle: "Search Intent for Service Pages: Match the Page to What the Customer Actually Wants",
-  ogDescription: "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
+  ogDescription:
+    "A service page ranks when it matches what the searcher actually wants: an answer, a comparison, or a supplier. How to read search intent and shape each page around it.",
   keywords: [
     "search intent",
     "service pages",
@@ -26,11 +27,13 @@ const post = {
   ],
   internalLinks: [
     {
-      label: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
+      label:
+        "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
       to: "/blog/internal-linking-service-websites",
     },
     {
-      label: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
+      label:
+        "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
       to: "/blog/selling-to-us-customers-website-trust",
     },
     {
@@ -46,7 +49,7 @@ const post = {
     {
       heading: "The same service, three different searches",
       body: [
-        "A customer searching for a service is rarely looking for the same thing every time. One person searches \"what does a brand identity package include\" and wants an explanation. Another searches \"brand identity designer for a startup\" and wants a supplier. A third searches \"brand identity package cost\" and wants pricing guidance. Sending all three to the same generic service page serves none of them well.",
+        'A customer searching for a service is rarely looking for the same thing every time. One person searches "what does a brand identity package include" and wants an explanation. Another searches "brand identity designer for a startup" and wants a supplier. A third searches "brand identity package cost" and wants pricing guidance. Sending all three to the same generic service page serves none of them well.',
         "Search intent is simply the job behind the search. When a page matches that job, visitors stay, read and enquire. When it does not, they return to the search results, and Google notices.",
       ],
     },
@@ -54,7 +57,7 @@ const post = {
       heading: "Learn intent from the search results themselves",
       body: [
         "You do not need expensive tools to read intent. Search the phrase yourself and look at what ranks. If the top results are guides and explainers, the searcher wants to learn. If they are service pages and agency home pages, the searcher wants to hire. If they are comparison articles and price guides, the searcher wants to compare before deciding.",
-        "Also notice the questions in the results: the headings, the \"people also ask\" style questions, and the topics every top page covers. Those are the sub questions your page must answer if it wants to compete. A page that answers a different question, however well written, will struggle.",
+        'Also notice the questions in the results: the headings, the "people also ask" style questions, and the topics every top page covers. Those are the sub questions your page must answer if it wants to compete. A page that answers a different question, however well written, will struggle.',
       ],
     },
     {
@@ -67,7 +70,7 @@ const post = {
     {
       heading: "Match headings to the questions customers ask",
       body: [
-        "Headings are where intent becomes visible. Write headings as answers to real customer questions, in the words customers use. \"What is included in a brand identity package?\" is a better heading than \"Our comprehensive solutions\", because it matches the question the visitor arrived with.",
+        'Headings are where intent becomes visible. Write headings as answers to real customer questions, in the words customers use. "What is included in a brand identity package?" is a better heading than "Our comprehensive solutions", because it matches the question the visitor arrived with.',
         "Keep the first paragraph under each heading direct. State the answer, then add detail. Visitors scanning a page decide in seconds whether it will help them. A page that delays its answers loses readers who would otherwise have stayed.",
       ],
     },
@@ -87,6 +90,5 @@ const post = {
     },
   ],
 };
-
 
 export default post satisfies PostBody;

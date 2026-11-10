@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "A Brand Photography Brief That Keeps Every Channel Looking Like the Same Business",
   metaTitle: "Brand Photography Brief for Consistent Channels",
-  metaDescription: "A brand photography brief keeps your website, social media and ads looking like one business. What to specify before the shoot, so every photo works in every place.",
+  metaDescription:
+    "A brand photography brief keeps your website, social media and ads looking like one business. What to specify before the shoot, so every photo works in every place.",
   ogTitle: "A Brand Photography Brief That Keeps Every Channel Looking Like the Same Business",
-  ogDescription: "A brand photography brief keeps your website, social media and ads looking like one business. What to specify before the shoot, so every photo works in every place.",
+  ogDescription:
+    "A brand photography brief keeps your website, social media and ads looking like one business. What to specify before the shoot, so every photo works in every place.",
   keywords: [
     "brand photography brief",
     "brand photography",

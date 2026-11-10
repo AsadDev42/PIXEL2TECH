@@ -3,10 +3,19 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
   metaTitle: "Email List Growth Without Discounts",
-  metaDescription: "Service businesses don't need discounts to grow an email list. A useful checklist, calculator or guide, offered at the right moment, works better.",
-  ogTitle: "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
-  ogDescription: "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
-  keywords: ["email list growth", "lead magnets", "service businesses", "email marketing", "email follow-up sequence"],
+  metaDescription:
+    "Service businesses don't need discounts to grow an email list. A useful checklist, calculator or guide, offered at the right moment, works better.",
+  ogTitle:
+    "Email List Growth Without Discounts: Lead Magnets That Service Businesses Can Ship This Week",
+  ogDescription:
+    "Service businesses do not need to discount to grow an email list. A useful checklist, calculator or short guide, offered at the right moment, earns subscribers who actually want the service.",
+  keywords: [
+    "email list growth",
+    "lead magnets",
+    "service businesses",
+    "email marketing",
+    "email follow-up sequence",
+  ],
   keyTakeaways: [
     "Discounts attract people who want a cheaper price, not the service, and hurt deliverability when later emails have no discount",
     "One useful checklist, calculator, comparison sheet or template earns subscribers who already care about the problem",
@@ -15,8 +24,14 @@ const post = {
     "Keep the list clean with double opt-in, segmentation by lead magnet and service interest, and removal of persistent non-openers after a re-engagement attempt",
   ],
   internalLinks: [
-    { label: "Contact Form to CRM Integration: A Reliable Project Brief", to: "/blog/contact-form-crm-integration-brief" },
-    { label: "Missed Calls After Hours: A Simple Automation That Books the Callback", to: "/blog/missed-calls-after-hours-callback-automation" },
+    {
+      label: "Contact Form to CRM Integration: A Reliable Project Brief",
+      to: "/blog/contact-form-crm-integration-brief",
+    },
+    {
+      label: "Missed Calls After Hours: A Simple Automation That Books the Callback",
+      to: "/blog/missed-calls-after-hours-callback-automation",
+    },
   ],
   cta: {
     title: "Build an email list that books work",
@@ -33,7 +48,7 @@ const post = {
     {
       heading: "Choose a lead magnet that solves one small problem",
       body: [
-        "A good lead magnet does one job well. It should be useful in ten minutes, specific to one service, and easy to judge. Vague guides with titles such as \"The Ultimate Guide to Everything\" rarely get finished, and they rarely lead to a booking.",
+        'A good lead magnet does one job well. It should be useful in ten minutes, specific to one service, and easy to judge. Vague guides with titles such as "The Ultimate Guide to Everything" rarely get finished, and they rarely lead to a booking.',
         "Practical formats that work for service businesses include:",
         "1. A checklist for preparing for the service, such as what to check before a website redesign or a home repair visit.",
         "2. A short cost or time calculator, with the assumptions stated plainly.",
@@ -46,7 +61,7 @@ const post = {
     {
       heading: "Offer it where the question is already being asked",
       body: [
-        "A lead magnet hidden on a generic \"subscribe\" page will not grow a list. Offer it on the page where the question lives. A checklist for preparing for a service belongs on that service page, near the point where a visitor is deciding whether to enquire. A comparison sheet belongs on the pricing or services page. A template belongs in the blog post that explains the problem it solves.",
+        'A lead magnet hidden on a generic "subscribe" page will not grow a list. Offer it on the page where the question lives. A checklist for preparing for a service belongs on that service page, near the point where a visitor is deciding whether to enquire. A comparison sheet belongs on the pricing or services page. A template belongs in the blog post that explains the problem it solves.',
         "Keep the sign up short. Name and email are enough at this stage. Every extra field lowers sign ups, and you can learn more about the subscriber from which lead magnet they chose and which emails they open later.",
       ],
     },

@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "A Customer Portal That Customers Actually Use: What to Include in Version One",
   metaTitle: "A Customer Portal That Customers Actually Use",
-  metaDescription: "A customer portal only earns its keep when customers return to it. What to include in version one, what to leave out, and how to launch without a long build.",
+  metaDescription:
+    "A customer portal only earns its keep when customers return to it. What to include in version one, what to leave out, and how to launch without a long build.",
   ogTitle: "A Customer Portal That Customers Actually Use: What to Include in Version One",
-  ogDescription: "A customer portal only earns its keep when customers return to it. What to include in version one, what to leave out, and how to launch without a long build.",
+  ogDescription:
+    "A customer portal only earns its keep when customers return to it. What to include in version one, what to leave out, and how to launch without a long build.",
   keywords: [
     "customer portal",
     "customer portal features",
@@ -40,7 +42,8 @@ const post = {
   ],
   internalLinks: [
     {
-      label: "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
+      label:
+        "A Custom Booking Platform vs Off the Shelf Software: A Decision Guide for Service Businesses",
       to: "/blog/custom-booking-platform-vs-off-the-shelf-software",
     },
     {

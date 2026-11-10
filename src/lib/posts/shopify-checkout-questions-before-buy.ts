@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
   metaTitle: "Shopify Checkout Questions to Answer Before They Buy",
-  metaDescription: "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
+  metaDescription:
+    "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
   ogTitle: "Shopify Checkout Questions Customers Ask Before They Buy (and Where to Answer Them)",
-  ogDescription: "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
+  ogDescription:
+    "Most abandoned checkouts start with an unanswered question, not a bad product. The questions Shopify customers ask before they buy, and exactly where on your store each answer belongs.",
   keywords: [
     "Shopify checkout",
     "abandoned checkout",
@@ -53,7 +55,7 @@ const post = {
       heading: "On the product page: delivery, returns and fit",
       body: [
         "Delivery and returns questions start on the product page, long before checkout. A customer deciding between two similar products wants to know, before adding anything to the cart, roughly how long delivery takes and whether returns are straightforward.",
-        "Answer these questions near the buy button, in one or two short lines, with a link to full details. A line such as \"Delivery in 3 to 5 working days. Free returns within 30 days.\" answers more than a paragraph buried at the bottom of the page. If delivery cost varies by location, say so plainly and let the customer check it before checkout, not during it.",
+        'Answer these questions near the buy button, in one or two short lines, with a link to full details. A line such as "Delivery in 3 to 5 working days. Free returns within 30 days." answers more than a paragraph buried at the bottom of the page. If delivery cost varies by location, say so plainly and let the customer check it before checkout, not during it.',
         "Fit and use questions belong here too. Size guides, what's included, and how the product is used should sit close to the product description and images. A customer who has to search for basic product facts will assume the store has not thought about them.",
       ],
     },
@@ -68,7 +70,7 @@ const post = {
       heading: "At checkout: payment, accounts and security",
       body: [
         "Checkout questions are about trust and friction. Customers ask: do I need an account, which payment methods do you accept, is my card safe, and what happens after I pay? Answer each one on the checkout page itself, not only on a separate help page.",
-        "Offer guest checkout where your store allows it. State the payment methods clearly, with the logos customers recognise. A short note about what happens next, for example \"You will receive an order confirmation by email within a few minutes, with tracking when your order ships,\" removes the uncertainty that follows payment.",
+        'Offer guest checkout where your store allows it. State the payment methods clearly, with the logos customers recognise. A short note about what happens next, for example "You will receive an order confirmation by email within a few minutes, with tracking when your order ships," removes the uncertainty that follows payment.',
         "Keep the form short. Every field you add is a chance for a customer to stop. Ask only for what you need to fulfil the order, and explain any field that is not obvious.",
       ],
     },

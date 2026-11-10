@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Ad Creative Testing for Small Budgets: How to Learn From Every Test",
   metaTitle: "Ad Creative Testing for Small Budgets",
-  metaDescription: "Small budgets can still test ad creative well. How to test one idea at a time, read the result honestly, and turn every test into a better next ad.",
+  metaDescription:
+    "Small budgets can still test ad creative well. How to test one idea at a time, read the result honestly, and turn every test into a better next ad.",
   ogTitle: "Ad Creative Testing for Small Budgets: How to Learn From Every Test",
-  ogDescription: "Small budgets can still test ad creative well. How to test one idea at a time, read the result honestly, and turn every test into a better next ad.",
+  ogDescription:
+    "Small budgets can still test ad creative well. How to test one idea at a time, read the result honestly, and turn every test into a better next ad.",
   keywords: [
     "ad creative testing",
     "small budget ads",

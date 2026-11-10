@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Lead Follow Up That Does Not Depend on Memory: A Simple CRM Routine for Small Teams",
   metaTitle: "Lead Follow Up That Does Not Depend on Memory",
-  metaDescription: "Leads are lost when follow up depends on memory. A simple CRM routine that assigns every enquiry, sets the next step, and keeps small teams consistent.",
+  metaDescription:
+    "Leads are lost when follow up depends on memory. A simple CRM routine that assigns every enquiry, sets the next step, and keeps small teams consistent.",
   ogTitle: "Lead Follow Up That Does Not Depend on Memory: A Simple CRM Routine for Small Teams",
-  ogDescription: "Leads are lost when follow up depends on memory. A simple CRM routine that assigns every enquiry, sets the next step, and keeps small teams consistent.",
+  ogDescription:
+    "Leads are lost when follow up depends on memory. A simple CRM routine that assigns every enquiry, sets the next step, and keeps small teams consistent.",
   keywords: [
     "lead follow up",
     "CRM routine",
@@ -63,7 +65,7 @@ const post = {
     {
       heading: "Assign one owner and one next step",
       body: [
-        "Every lead needs a named owner. Shared ownership usually means no ownership, so avoid assigning a lead to a team or a group. Alongside the owner, record one clear next step, such as send a quote, book a call, or share examples of past work. Vague notes such as \"follow up soon\" do not help, because they do not say what to do or when to do it.A useful next step names the action and the date.",
+        'Every lead needs a named owner. Shared ownership usually means no ownership, so avoid assigning a lead to a team or a group. Alongside the owner, record one clear next step, such as send a quote, book a call, or share examples of past work. Vague notes such as "follow up soon" do not help, because they do not say what to do or when to do it.A useful next step names the action and the date.',
       ],
     },
     {

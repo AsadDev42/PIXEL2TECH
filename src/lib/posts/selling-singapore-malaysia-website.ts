@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
   metaTitle: "Singapore and Malaysia: What Your Website Must Get Right",
-  metaDescription: "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
+  metaDescription:
+    "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
   ogTitle: "Selling to Customers in Singapore and Malaysia: What Your Website Must Get Right",
-  ogDescription: "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
+  ogDescription:
+    "Singapore and Malaysia buyers are careful, mobile first and quick to leave a site that hides delivery, payment or support details. What your website must show clearly before they enquire.",
   keywords: [
     "Singapore website",
     "Malaysia website",
@@ -24,11 +26,13 @@ const post = {
   ],
   internalLinks: [
     {
-      label: "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
+      label:
+        "Selling to US Customers from Abroad: What Your Website Must Prove Before the First Call",
       to: "/blog/selling-to-us-customers-website-trust",
     },
     {
-      label: "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
+      label:
+        "Internal Linking for Service Websites: A Simple Structure That Helps Visitors and Google",
       to: "/blog/internal-linking-service-websites",
     },
     {
@@ -37,7 +41,8 @@ const post = {
     },
   ],
   cta: {
-    title: "If your site is not winning enquiries from Singapore or Malaysia, start with the clarity gaps",
+    title:
+      "If your site is not winning enquiries from Singapore or Malaysia, start with the clarity gaps",
     body: "Pixel2Tech builds websites for service businesses that sell across borders, with clear service pages, honest delivery and pricing information, and enquiry flows designed to turn visits into conversations. If your site is not winning enquiries from Singapore or Malaysia, start with the clarity gaps above.",
   },
   content: [

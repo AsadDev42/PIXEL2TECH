@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "Colour and Type Choices That Make a Small Brand Look Established",
   metaTitle: "Colour and Type That Make a Small Brand Look Established",
-  metaDescription: "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
+  metaDescription:
+    "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
   ogTitle: "Colour and Type Choices That Make a Small Brand Look Established",
-  ogDescription: "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
+  ogDescription:
+    "A small brand looks established when its colour and type choices stay consistent and restrained. A practical guide to picking a palette and a type pairing that hold up everywhere.",
   keywords: [
     "colour palette small brand",
     "brand typography pairing",

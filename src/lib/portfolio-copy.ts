@@ -271,7 +271,8 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
   },
 
   "wedding-video-and-reel-editing": {
-    summary: "Wedding films and vertical reels, from bridal portraits to couple shoots and baraat arrivals.",
+    summary:
+      "Wedding films and vertical reels, from bridal portraits to couple shoots and baraat arrivals.",
     overview:
       "A collection of 28 wedding videos: 19 horizontal films and 9 vertical reels. They cover bridal portraits, couple shoots at palaces, forts and gardens, nikah and church ceremonies, baraat arrivals and evening celebrations.",
     challenge:

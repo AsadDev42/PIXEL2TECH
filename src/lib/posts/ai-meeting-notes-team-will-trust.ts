@@ -3,9 +3,11 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "AI Meeting Notes That Your Team Will Actually Trust: A Practical Setup Guide",
   metaTitle: "AI Meeting Notes That Your Team Will Actually Trust",
-  metaDescription: "AI meeting notes save time only when the team trusts them. A practical setup for accuracy, privacy, and a short human check before notes are shared.",
+  metaDescription:
+    "AI meeting notes save time only when the team trusts them. A practical setup for accuracy, privacy, and a short human check before notes are shared.",
   ogTitle: "AI Meeting Notes That Your Team Will Actually Trust: A Practical Setup Guide",
-  ogDescription: "AI meeting notes save time only when the team trusts them. A practical setup for accuracy, privacy, and a short human check before notes are shared.",
+  ogDescription:
+    "AI meeting notes save time only when the team trusts them. A practical setup for accuracy, privacy, and a short human check before notes are shared.",
   keywords: [
     "AI meeting notes",
     "meeting notes template",
@@ -44,7 +46,8 @@ const post = {
       to: "/blog/ai-meeting-assistants-business-guide",
     },
     {
-      label: "AI Tools for Small Business Content: Where They Save Time and Where They Create Rework",
+      label:
+        "AI Tools for Small Business Content: Where They Save Time and Where They Create Rework",
       to: "/blog/ai-tools-small-business-content-time-rework",
     },
   ],

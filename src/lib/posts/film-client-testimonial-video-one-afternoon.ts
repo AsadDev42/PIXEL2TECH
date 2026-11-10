@@ -3,10 +3,18 @@ import type { PostBody } from "@/lib/blog-types";
 const post = {
   h1: "How to Film a Client Testimonial Video in One Afternoon",
   metaTitle: "How to Film a Client Testimonial Video in One Afternoon",
-  metaDescription: "How to film a client testimonial video in one afternoon: the questions to ask, a simple setup, and the edits that turn one interview into clips.",
+  metaDescription:
+    "How to film a client testimonial video in one afternoon: the questions to ask, a simple setup, and the edits that turn one interview into clips.",
   ogTitle: "How to Film a Client Testimonial Video in One Afternoon",
-  ogDescription: "A practical plan for filming a client testimonial video in one afternoon: the questions to ask, the setup to keep simple, and the edits that turn one interview into useful clips.",
-  keywords: ["client testimonial video", "how to film a testimonial video", "testimonial video questions", "video editing services", "Pixel2Tech"],
+  ogDescription:
+    "A practical plan for filming a client testimonial video in one afternoon: the questions to ask, the setup to keep simple, and the edits that turn one interview into useful clips.",
+  keywords: [
+    "client testimonial video",
+    "how to film a testimonial video",
+    "testimonial video questions",
+    "video editing services",
+    "Pixel2Tech",
+  ],
   keyTakeaways: [
     "A client speaking in their own words carries more weight than any claim a business makes about itself.",
     "Pick a client with a specific result and a clear story: the problem, the choice, the experience, and the outcome.",
@@ -16,7 +24,10 @@ const post = {
     "Agree use in writing before publishing, then place the video where buyers make decisions.",
   ],
   internalLinks: [
-    { label: "How to Brief a Video Editor So the First Cut Is Close to Final", to: "/blog/how-to-brief-a-video-editor-first-cut" },
+    {
+      label: "How to Brief a Video Editor So the First Cut Is Close to Final",
+      to: "/blog/how-to-brief-a-video-editor-first-cut",
+    },
   ],
   cta: {
     title: "Turn one afternoon into a testimonial that sells",
@@ -50,7 +61,7 @@ const post = {
         "- What was it like working with the team day to day?",
         "- What result mattered most to you?",
         "- Would you recommend us, and to whom?",
-        "Avoid questions that invite a yes or no answer. \"Did you like working with us?\" produces a short, flat answer. \"What was working with us actually like?\" produces a story. Listen for the sentences that sound natural, and let the client finish before moving on.",
+        'Avoid questions that invite a yes or no answer. "Did you like working with us?" produces a short, flat answer. "What was working with us actually like?" produces a story. Listen for the sentences that sound natural, and let the client finish before moving on.',
       ],
     },
     {
