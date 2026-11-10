@@ -40,8 +40,8 @@ const POSTS = [
     date: "November 10, 2026",
     time: "5:14 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/how-to-scope-custom-web-app-first-version.jpg",
-    imgAlt: "A team planning a web app on a whiteboard with wireframe sketches",
+    img: "/blog/covers/how-to-scope-custom-web-app-first-version.jpg?v=3",
+    imgAlt: "A hand sketching web app screen wireframes on paper",
   },
   {
     slug: "wordpress-security-basics-business-owners",
@@ -52,8 +52,8 @@ const POSTS = [
     date: "November 10, 2026",
     time: "2:58 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/wordpress-security-basics-business-owners.jpg",
-    imgAlt: "A laptop showing a website dashboard with a padlock symbol",
+    img: "/blog/covers/wordpress-security-basics-business-owners.jpg?v=3",
+    imgAlt: "A padlock resting on a laptop keyboard",
   },
 
   {
