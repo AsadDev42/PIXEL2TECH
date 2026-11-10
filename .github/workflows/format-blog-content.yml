@@ -1,0 +1,64 @@
+# The automated "Add blog post" pipeline commits straight to main through the
+# GitHub API (cover image, then the post file, then the blog-index.ts entry) and
+# does not run Prettier. This workflow formats those files with the repo's
+# locked Prettier version and commits the result, so main stays formatted.
+#
+# Only src/lib/posts/** and src/lib/blog-index.ts are touched. Commits pushed
+# with GITHUB_TOKEN do not start other workflows, so the format-only commit
+# does not trigger another deploy.
+name: format-blog-content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/lib/posts/**"
+      - "src/lib/blog-index.ts"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: format-blog-content
+  cancel-in-progress: false
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - uses: oven-sh/setup-bun@v2
+
+      # Same lockfile as quality-checks, so the Prettier version matches CI and local.
+      - name: Install site dependencies (bun.lock)
+        run: bun install --frozen-lockfile
+
+      - name: Format blog posts and the blog index
+        run: node node_modules/prettier/bin/prettier.cjs --write "src/lib/posts/**/*.ts" src/lib/blog-index.ts
+
+      - name: Commit and push if anything changed
+        run: |
+          if git diff --quiet; then
+            echo "Blog files are already formatted."
+            exit 0
+          fi
+          git diff --stat
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Format generated blog files with Prettier"
+          # The pipeline may push its next file meanwhile; rebase and retry (never force).
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git pull --rebase origin main
+          done
+          echo "::error::Could not push the formatted files after 3 attempts."
+          exit 1

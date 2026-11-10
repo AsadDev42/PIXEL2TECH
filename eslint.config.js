@@ -62,4 +62,13 @@ export default tseslint.config(
     rules: { "spacing/no-unapproved-spacing": "off" },
   },
   eslintPluginPrettier,
+  {
+    // Blog posts and their index entries are written straight to main by the
+    // automated "Add blog post" pipeline (GitHub API, outside this repo), which
+    // does not run Prettier. .github/workflows/format-blog-content.yml formats
+    // these files after every such push, so layout here is not a lint error.
+    // Type checking and every other rule still apply.
+    files: ["src/lib/posts/**/*.ts", "src/lib/blog-index.ts"],
+    rules: { "prettier/prettier": "off" },
+  },
 );
