@@ -32,6 +32,18 @@ import {
  */
 const POSTS = [
   {
+    slug: "selling-los-angeles-website",
+    title: "Selling to Customers in Los Angeles: What Your Website Must Get Right",
+    excerpt:
+        "Los Angeles buyers check trust, speed, and local relevance before they enquire. What your website must show clearly to win customers in Los Angeles, from first visit to first call.",
+    tag: "Web Development",
+    date: "November 10, 2026",
+    time: "12:41 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/selling-los-angeles-website.jpg",
+    imgAlt: "Los Angeles downtown skyline at dusk with palm trees",
+  },
+    {
     slug: "how-to-write-brand-story-customers-remember",
     title: "How to Write a Brand Story Customers Actually Remember",
     excerpt:
