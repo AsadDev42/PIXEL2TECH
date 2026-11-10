@@ -40,8 +40,8 @@ const POSTS = [
     date: "November 10, 2026",
     time: "7:33 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/re-engagement-emails-win-back-subscribers.jpg",
-    imgAlt: "A person opening an email inbox on a laptop in a warm workspace",
+    img: "/blog/covers/re-engagement-emails-win-back-subscribers.jpg?v=3",
+    imgAlt: "A pile of blank paper envelopes",
   },
   {
     slug: "how-to-scope-custom-web-app-first-version",

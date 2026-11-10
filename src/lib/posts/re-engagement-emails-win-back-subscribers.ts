@@ -4,7 +4,7 @@ const post = {
   h1: "Re-engagement Emails: How to Win Back Subscribers Who Stopped Opening",
   metaTitle: "Re-engagement Emails: Win Back Subscribers",
   metaDescription:
-    "Subscribers who stopped opening are not lost yet. A simple re-engagement email sequence that reminds them why they signed up, asks what they want, and cleans the list honestly.",
+    "Subscribers who stopped opening are not lost yet. A re-engagement email sequence that reminds them why they signed up, asks what they want and cleans the list.",
   ogTitle: "Re-engagement Emails: How to Win Back Subscribers Who Stopped Opening",
   ogDescription:
     "Subscribers who stopped opening are not lost yet. A simple re-engagement email sequence that reminds them why they signed up, asks what they want, and cleans the list honestly.",
@@ -38,6 +38,10 @@ const post = {
     {
       q: "What if someone re-engages and then goes quiet again?",
       a: "Let them go the second time. Run the sequence once per subscriber per year at most. Repeated re-engagement campaigns to the same people are a sign the regular emails need attention, not the subscriber.",
+    },
+    {
+      q: "Why remove subscribers who do not respond to a re-engagement email?",
+      a: "A silent subscriber is not free. Subscribers who never open drag down your open rates, which hurts deliverability, so the people who do want your emails see fewer of them. A list of one thousand people who open is worth far more than five thousand who do not. Remove the ones who stay silent after the goodbye email, or move them to a very occasional list.",
     },
   ],
   internalLinks: [
