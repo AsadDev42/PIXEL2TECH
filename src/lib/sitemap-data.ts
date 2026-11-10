@@ -37,7 +37,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
-export const SERVICE_PAGES_LASTMOD = "2026-11-04";
+export const SERVICE_PAGES_LASTMOD = "2026-11-10";
 
 type Post = PostMeta;
 
@@ -105,6 +105,24 @@ export function pageEntries(): SitemapEntry[] {
         lastmod: "2026-11-10",
         changefreq: "monthly",
         priority: "0.8",
+      },
+      {
+        path: "/website-redesign-services",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.8",
+      },
+      {
+        path: "/superside-alternative",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.7",
+      },
+      {
+        path: "/superside-vs-pixel2tech",
+        lastmod: "2026-11-10",
+        changefreq: "monthly",
+        priority: "0.7",
       },
       { path: "/industries", lastmod: "2026-11-04", changefreq: "monthly", priority: "0.7" },
       ...INDUSTRIES.map((industry) => ({

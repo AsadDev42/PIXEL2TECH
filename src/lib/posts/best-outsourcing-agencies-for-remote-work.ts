@@ -96,6 +96,7 @@ const post = {
           heading: "Superside",
           body: [
             "[Superside](https://www.superside.com/) offers a flexible subscription covering more than 20 creative services, including brand identity, motion design, ad creative and social media creative. Clients get a dedicated team and project manager. It says more than 400 brands use it, and it is built to extend in-house teams at mid-sized and large companies.",
+            "If you want a defined project with a fixed quote rather than a subscription, our [Superside alternative](/superside-alternative) page compares the two ways of buying.",
           ],
         },
         {

@@ -36,8 +36,11 @@ import { Route as ShopifyDevelopmentAgencyRouteImport } from './routes/shopify-d
 import { Route as SitemapDotrssRouteImport } from './routes/sitemap[.]rss'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[.]xml'
+import { Route as SupersideAlternativeRouteImport } from './routes/superside-alternative'
+import { Route as SupersideVsPixel2techRouteImport } from './routes/superside-vs-pixel2tech'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
+import { Route as WebsiteRedesignServicesRouteImport } from './routes/website-redesign-services'
 import { Route as WeddingVideoEditingServicesRouteImport } from './routes/wedding-video-editing-services'
 import { Route as WhiteLabelWebDevelopmentRouteImport } from './routes/white-label-web-development'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
@@ -186,6 +189,16 @@ const Sitemap_indexDotxmlRoute = Sitemap_indexDotxmlRouteImport.update({
   path: '/sitemap_index.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupersideAlternativeRoute = SupersideAlternativeRouteImport.update({
+  id: '/superside-alternative',
+  path: '/superside-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupersideVsPixel2techRoute = SupersideVsPixel2techRouteImport.update({
+  id: '/superside-vs-pixel2tech',
+  path: '/superside-vs-pixel2tech',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
@@ -194,6 +207,11 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
 const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
   id: '/usama-farooq',
   path: '/usama-farooq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsiteRedesignServicesRoute = WebsiteRedesignServicesRouteImport.update({
+  id: '/website-redesign-services',
+  path: '/website-redesign-services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingVideoEditingServicesRoute =
@@ -283,8 +301,11 @@ export interface FileRoutesByFullPath {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/superside-alternative': typeof SupersideAlternativeRoute
+  '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
@@ -325,8 +346,11 @@ export interface FileRoutesByTo {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/superside-alternative': typeof SupersideAlternativeRoute
+  '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
@@ -368,8 +392,11 @@ export interface FileRoutesById {
   '/sitemap.rss': typeof SitemapDotrssRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sitemap_index.xml': typeof Sitemap_indexDotxmlRoute
+  '/superside-alternative': typeof SupersideAlternativeRoute
+  '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/usama-farooq': typeof UsamaFarooqRoute
+  '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
@@ -412,8 +439,11 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/superside-alternative'
+    | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/website-redesign-services'
     | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
@@ -454,8 +484,11 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/superside-alternative'
+    | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/website-redesign-services'
     | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
@@ -496,8 +529,11 @@ export interface FileRouteTypes {
     | '/sitemap.rss'
     | '/sitemap.xml'
     | '/sitemap_index.xml'
+    | '/superside-alternative'
+    | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
     | '/usama-farooq'
+    | '/website-redesign-services'
     | '/wedding-video-editing-services'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
@@ -539,8 +575,11 @@ export interface RootRouteChildren {
   SitemapDotrssRoute: typeof SitemapDotrssRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Sitemap_indexDotxmlRoute: typeof Sitemap_indexDotxmlRoute
+  SupersideAlternativeRoute: typeof SupersideAlternativeRoute
+  SupersideVsPixel2techRoute: typeof SupersideVsPixel2techRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   UsamaFarooqRoute: typeof UsamaFarooqRoute
+  WebsiteRedesignServicesRoute: typeof WebsiteRedesignServicesRoute
   WeddingVideoEditingServicesRoute: typeof WeddingVideoEditingServicesRoute
   WhiteLabelWebDevelopmentRoute: typeof WhiteLabelWebDevelopmentRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
@@ -745,6 +784,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Sitemap_indexDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/superside-alternative': {
+      id: '/superside-alternative'
+      path: '/superside-alternative'
+      fullPath: '/superside-alternative'
+      preLoaderRoute: typeof SupersideAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superside-vs-pixel2tech': {
+      id: '/superside-vs-pixel2tech'
+      path: '/superside-vs-pixel2tech'
+      fullPath: '/superside-vs-pixel2tech'
+      preLoaderRoute: typeof SupersideVsPixel2techRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-and-conditions': {
       id: '/terms-and-conditions'
       path: '/terms-and-conditions'
@@ -757,6 +810,13 @@ declare module '@tanstack/react-router' {
       path: '/usama-farooq'
       fullPath: '/usama-farooq'
       preLoaderRoute: typeof UsamaFarooqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/website-redesign-services': {
+      id: '/website-redesign-services'
+      path: '/website-redesign-services'
+      fullPath: '/website-redesign-services'
+      preLoaderRoute: typeof WebsiteRedesignServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-video-editing-services': {
@@ -867,8 +927,11 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotrssRoute: SitemapDotrssRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Sitemap_indexDotxmlRoute: Sitemap_indexDotxmlRoute,
+  SupersideAlternativeRoute: SupersideAlternativeRoute,
+  SupersideVsPixel2techRoute: SupersideVsPixel2techRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   UsamaFarooqRoute: UsamaFarooqRoute,
+  WebsiteRedesignServicesRoute: WebsiteRedesignServicesRoute,
   WeddingVideoEditingServicesRoute: WeddingVideoEditingServicesRoute,
   WhiteLabelWebDevelopmentRoute: WhiteLabelWebDevelopmentRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,

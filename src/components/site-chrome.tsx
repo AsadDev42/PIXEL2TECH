@@ -61,6 +61,8 @@ type StaticTo =
   | "/white-label-web-development"
   | "/outsource-video-editing"
   | "/wedding-video-editing-services"
+  | "/website-redesign-services"
+  | "/superside-alternative"
   | "/industries"
   | "/portfolio"
   | "/results"
@@ -801,6 +803,8 @@ const WORK_LINKS = [
   { label: "White label web development", to: "/white-label-web-development" },
   { label: "Outsource video editing", to: "/outsource-video-editing" },
   { label: "Wedding video editing", to: "/wedding-video-editing-services" },
+  { label: "Website redesign services", to: "/website-redesign-services" },
+  { label: "Superside alternative", to: "/superside-alternative" },
   { label: "Blog", to: "/blog" },
   { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
 ] as const;
