@@ -33,11 +33,11 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-      slug: "selling-new-york-website",
+    slug: "selling-new-york-website",
     title: "Selling to Customers in New York: What Your Website Must Get Right",
     excerpt:
-        "New York buyers check trust, speed, and local relevance before they enquire. What your website must show clearly to win customers in New York, from first visit to first call.",
-tag: "Web Development",
+      "New York buyers check trust, speed, and local relevance before they enquire. What your website must show clearly to win customers in New York, from first visit to first call.",
+    tag: "Web Development",
     date: "November 11, 2026",
     time: "7:34 pm",
     author: "Asad Farooq",
