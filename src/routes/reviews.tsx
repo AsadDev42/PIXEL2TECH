@@ -237,8 +237,8 @@ function ReviewsPage() {
 
       {/* How every engagement works */}
       <section id="terms" aria-labelledby="terms-title" className={`bg-muted/50 ${SECTION}`}>
-        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-12`}>
-          <div className="min-w-0 lg:col-span-7">
+        <div className={CONTAINER}>
+          <div className="max-w-2xl">
             <p className={EYEBROW}>Working with us</p>
             <h2 id="terms-title" className={`mt-4 ${H2}`}>
               What every client gets
@@ -247,48 +247,49 @@ function ReviewsPage() {
               Every project starts with a free call, and you get a fixed quote in writing before any
               work starts.
             </p>
-            <ul className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              {PRICING_POINTS.map((point, i) => {
-                const PointIcon = PRICING_ICONS[i] ?? Check;
-                return (
-                  <li key={point.title} className="flex min-w-0 gap-4">
-                    <span
-                      aria-hidden="true"
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background text-primary"
-                    >
-                      <PointIcon className="h-5 w-5" strokeWidth={1.75} />
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="font-semibold leading-snug">{point.title}</h3>
-                      <p className={`mt-1 ${BODY}`}>{point.desc}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
           </div>
-          <div className="min-w-0 rounded-3xl border border-border bg-background p-6 sm:p-8 lg:col-span-5 lg:self-start">
-            <h3 className="text-xl font-semibold leading-snug tracking-tight">
-              Ask about a project like yours
-            </h3>
-            <p className={`mt-4 ${BODY}`}>
-              On the free 30-minute call you can ask about any project in the portfolio, how it was
-              scoped and which roles worked on it. We reply to messages within one business day.
-            </p>
+          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {PRICING_POINTS.map((point, i) => {
+              const PointIcon = PRICING_ICONS[i] ?? Check;
+              return (
+                <li key={point.title} className="flex min-w-0 flex-col bg-background p-6 sm:p-8">
+                  <div aria-hidden="true" className="flex items-center justify-between gap-4">
+                    <PointIcon className="h-6 w-6 text-primary" strokeWidth={1.75} />
+                    <span className="text-sm font-medium tabular-nums text-muted-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-lg font-semibold leading-snug">{point.title}</h3>
+                  <p className={`mt-2 ${BODY}`}>{point.desc}</p>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="mt-4 flex flex-col gap-6 rounded-3xl bg-slate-950 p-6 text-white sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:p-10">
+            <div className="min-w-0 max-w-2xl">
+              <h3 className="text-2xl font-semibold leading-snug tracking-tight">
+                Ask about a project like yours
+              </h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-slate-300">
+                On the free 30-minute call you can ask about any project in the portfolio, how it
+                was scoped and which roles worked on it. We reply to messages within one business
+                day.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                Payment terms, revisions and ownership are covered in our{" "}
+                <Link
+                  to="/terms-and-conditions"
+                  className="font-medium text-white underline decoration-sky-300/60 underline-offset-4 transition hover:decoration-sky-300"
+                >
+                  terms and conditions
+                </Link>
+                .
+              </p>
+            </div>
             <BookCallButton
               source="reviews_side"
-              className={`mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:opacity-90 ${FOCUS_RING}`}
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-white px-6 text-sm font-medium text-slate-950 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             />
-            <p className={`mt-6 border-t border-border pt-6 ${BODY}`}>
-              Payment terms, revisions and ownership are covered in our{" "}
-              <Link
-                to="/terms-and-conditions"
-                className="font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary"
-              >
-                terms and conditions
-              </Link>
-              .
-            </p>
           </div>
         </div>
       </section>
