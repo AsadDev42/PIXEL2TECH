@@ -42,6 +42,7 @@ import { FadeIn } from "@/components/motion";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
+import { openCookieSettings } from "@/lib/consent";
 import { INDUSTRIES } from "@/lib/industry-pages";
 import { PRIMARY_CTA_LABEL, SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
@@ -1081,6 +1082,13 @@ export function SiteFooter() {
             >
               Terms &amp; conditions
             </Link>
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
+            >
+              Cookie settings
+            </button>
             <a
               href="#main-content"
               aria-label="Back to top"

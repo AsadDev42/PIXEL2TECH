@@ -20,7 +20,7 @@ const TERMS_URL = `${SITE.url}/terms-and-conditions`;
 
 const SUMMARY: LegalSummary = {
   points: [
-    "We collect the details you send us (contact form, newsletter sign-up, call bookings, emails and messages) and usage data from Google Analytics and Microsoft Clarity.",
+    "We collect the details you send us (contact form, newsletter sign-up, call bookings, emails and messages) and, if you accept analytics cookies, usage data from Google Analytics and Microsoft Clarity.",
     "We use this information to reply to you, prepare proposals, deliver and bill for our services, keep the site secure and improve it.",
     "We do not sell personal information. Service providers such as our hosting, email, scheduling and analytics providers process data for us, sometimes outside your country.",
     `You can ask to access, correct or delete your information, or object to its use, by emailing ${SITE.email}.`,
@@ -65,7 +65,7 @@ const SECTIONS: LegalSection[] = [
       { subheading: "Information collected automatically" },
       {
         list: [
-          "**Usage and device information.** On the live site, Google Analytics and Microsoft Clarity record information such as the pages you view, the site that referred you, the date and time of your visit, how long you stay, your device type, operating system, browser, screen size and language, and your approximate location (such as city or country) derived from your IP address. They use cookies and similar identifiers to recognize repeat visits.",
+          "**Usage and device information.** If you accept analytics cookies, Google Analytics and Microsoft Clarity record information such as the pages you view, the site that referred you, the date and time of your visit, how long you stay, your device type, operating system, browser, screen size and language, and your approximate location (such as city or country) derived from your IP address. They use cookies and similar identifiers to recognize repeat visits.",
           "**Interaction events.** We record events such as submitting a form, opening the booking window, completing a booking, filtering or opening portfolio projects, and clicking our email, phone or WhatsApp links. These events record that the action happened, not what you typed.",
           "**Session recordings and heatmaps.** Microsoft Clarity records how visitors interact with pages, including clicks, taps, scrolling and mouse movement, and uses this to create session replays and heatmaps. Clarity offers masking features designed to hide sensitive text, such as what you type into form fields, and we do not use Clarity to collect the content of our forms.",
           "**Server and security logs.** Our hosting provider receives technical information when your browser requests a page, such as your IP address, the page requested, the time, your browser and the referring page, and may use it to provide us with visit statistics. Our forms also use your IP address and email address for a short time to limit repeated submissions and block spam.",
@@ -109,7 +109,7 @@ const SECTIONS: LegalSection[] = [
         list: [
           "**Contract.** To take steps you ask for before entering into a contract (such as preparing a proposal) and to perform our contract with you.",
           "**Legitimate interests.** To run, promote and improve our business, understand how our site is used, keep it secure, communicate with business contacts, get paid and protect our legal rights. We only rely on this basis where our interests are not overridden by your rights and interests.",
-          "**Consent.** Where the law requires your consent, for example for certain marketing emails or, in some countries, for analytics cookies. You can withdraw consent at any time; this does not affect processing that took place before you withdrew it.",
+          "**Consent.** Where the law requires your consent, for example for certain marketing emails and for analytics cookies, which we only use after you accept them in the cookie banner. You can withdraw consent at any time; this does not affect processing that took place before you withdrew it.",
           "**Legal obligation.** To keep accounting and tax records and comply with other legal requirements.",
         ],
       },
@@ -119,13 +119,22 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "Cookies and similar technologies",
     body: [
-      `Cookies are small files stored on your device. Similar technologies include local storage and scripts that collect information about your visit. Google Analytics and Microsoft Clarity only load on the live site (${DOMAIN}), a few seconds after the page loads or when you first interact with it.`,
+      `Cookies are small files stored on your device. Similar technologies include local storage and scripts that collect information about your visit. When you first visit ${DOMAIN}, a cookie banner asks whether we may use analytics cookies. Google Analytics and Microsoft Clarity load only if you choose “Accept all” or switch analytics on in “Manage preferences”, and only on the live site. If you choose “Reject non-essential”, they do not load.`,
+      { subheading: "Your cookie choice" },
+      {
+        list: [
+          "**Changing your mind.** Use the “Cookie settings” link at the bottom of every page to change your choice at any time. If you switch analytics off, we stop Google Analytics and Microsoft Clarity for the rest of your visit and delete their cookies on our domain.",
+          "**How long we remember it.** Your choice is stored for about six months, then the banner asks again. We also ask again if we add a new type of cookie.",
+          "**Advertising cookies.** We do not use advertising, retargeting or social media tracking cookies on this site.",
+        ],
+      },
       { subheading: "What we use" },
       {
         list: [
-          "**Google Analytics (Google).** Measures visits, traffic sources and events so we can see which pages are useful. Sets cookies such as _ga and _ga_<ID>. Learn more at https://policies.google.com/technologies/partner-sites.",
-          "**Microsoft Clarity (Microsoft).** Produces session replays, heatmaps and usage insights. Sets cookies such as _clck and _clsk, and Microsoft may set cookies on its own domains. Learn more in the Microsoft Privacy Statement at https://www.microsoft.com/privacy/privacystatement.",
-          "**Theme preference (local storage).** Remembers whether you chose the light or dark theme. It stays on your device until you clear your browser data.",
+          "**Google Analytics (Google, analytics, only with your consent).** Measures visits, traffic sources and events so we can see which pages are useful. Sets cookies such as _ga and _ga_<ID>. Learn more at https://policies.google.com/technologies/partner-sites.",
+          "**Microsoft Clarity (Microsoft, analytics, only with your consent).** Produces session replays, heatmaps and usage insights. Sets cookies such as _clck and _clsk, and Microsoft may set cookies on its own domains. Learn more in the Microsoft Privacy Statement at https://www.microsoft.com/privacy/privacystatement.",
+          "**Cookie choice (necessary).** The p2t_consent cookie remembers whether you accepted or rejected analytics cookies, so the banner does not appear on every page. It lasts about six months.",
+          "**Theme preference (local storage, necessary).** Remembers whether you chose the light or dark theme. It stays on your device until you clear your browser data.",
           "**Technical session storage.** Records when the page last reloaded itself after a site update, to prevent reload loops. It is cleared when you close the tab.",
         ],
       },
@@ -134,7 +143,7 @@ const SECTIONS: LegalSection[] = [
       {
         list: [
           "fonts from Google Fonts;",
-          "YouTube videos in some blog posts, and Google Drive videos in some portfolio pages;",
+          "YouTube videos in some blog posts, loaded in YouTube's privacy-enhanced mode (youtube-nocookie.com), and Google Drive videos in some portfolio pages;",
           "a Google Maps map on our contact page; and",
           "images and videos served from third-party content networks.",
         ],
@@ -142,6 +151,7 @@ const SECTIONS: LegalSection[] = [
       { subheading: "Your choices" },
       {
         list: [
+          "You can accept or reject analytics cookies in our cookie banner, and change your choice later from the “Cookie settings” link in the footer.",
           "You can block or delete cookies and site data in your browser settings. The site still works without them, although some embedded content may not load.",
           "You can opt out of Google Analytics on all websites with Google's browser add-on: https://tools.google.com/dlpage/gaoptout.",
           "Browser tracking protection and content blockers can stop Google Analytics and Microsoft Clarity from loading.",

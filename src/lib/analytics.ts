@@ -1,7 +1,11 @@
+import { clearAnalyticsCookies, hasAnalyticsConsent } from "@/lib/consent";
+
 /**
  * Analytics in one place: IDs, the gtag queue, script loading and events.
- * AnalyticsTracker (src/components/analytics-tracker.tsx) decides *when* the
- * third-party scripts load; everything else lives here.
+ * Nothing here runs until the visitor accepts analytics cookies in the consent
+ * banner (src/lib/consent.ts). AnalyticsTracker
+ * (src/components/analytics-tracker.tsx) decides *when* the third-party scripts
+ * load once consent is given; everything else lives here.
  */
 declare global {
   interface Window {
@@ -20,10 +24,17 @@ export const CLARITY_ID = "xwm4fwtyip";
  * otherwise send owner/test sessions to GA and Clarity, and Clarity cannot load
  * the preview's stylesheets on replay, so those recordings show unstyled pages.
  */
+let lastPagePath: string | null = null;
+
 const PRODUCTION_HOSTS = new Set(["pixel2tech.com", "www.pixel2tech.com"]);
 
 function isProductionHost() {
   return typeof window !== "undefined" && PRODUCTION_HOSTS.has(window.location.hostname);
+}
+
+/** Production host and the visitor has accepted analytics cookies. */
+function analyticsAllowed() {
+  return isProductionHost() && hasAnalyticsConsent();
 }
 
 /**
@@ -35,15 +46,42 @@ function isProductionHost() {
  * (including the first), so GA's automatic one would double-count.
  */
 export function initAnalytics() {
-  if (!isProductionHost() || !GA_ID || window.gtag) return;
+  if (!analyticsAllowed() || !GA_ID) return;
+  (window as unknown as Record<string, unknown>)[`ga-disable-${GA_ID}`] = false;
+  if (window.gtag) {
+    window.gtag("consent", "update", { analytics_storage: "granted" });
+    return;
+  }
   window.dataLayer = window.dataLayer || [];
   // gtag.js only understands the `arguments` object, not a rest-param array.
   window.gtag = function gtag() {
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer?.push(arguments);
   };
+  // Consent Mode v2: analytics was accepted; the site runs no ads, so ad
+  // storage and ad personalization stay denied.
+  window.gtag("consent", "default", {
+    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
   window.gtag("js", new Date());
   window.gtag("config", GA_ID, { send_page_view: false });
+}
+
+/**
+ * Stops analytics after the visitor withdraws consent: tells GA and Clarity,
+ * blocks further GA hits for this page load and deletes their cookies.
+ */
+export function revokeAnalytics() {
+  if (typeof window === "undefined") return;
+  if (GA_ID) (window as unknown as Record<string, unknown>)[`ga-disable-${GA_ID}`] = true;
+  window.gtag?.("consent", "update", { analytics_storage: "denied" });
+  window.clarity?.("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+  window.clarity?.("consent", false);
+  clearAnalyticsCookies();
+  lastPagePath = null;
 }
 
 function appendScript(src: string) {
@@ -55,7 +93,7 @@ function appendScript(src: string) {
 
 /** Fetches gtag.js and Microsoft Clarity, once per page load. */
 export function loadAnalyticsScripts() {
-  if (!isProductionHost() || window.__p2tTagsLoaded) return;
+  if (!analyticsAllowed() || window.__p2tTagsLoaded) return;
   window.__p2tTagsLoaded = true;
 
   if (GA_ID) {
@@ -73,14 +111,14 @@ export function loadAnalyticsScripts() {
       clarity.q = queue;
       window.clarity = clarity;
     }
+    window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
     appendScript(`https://www.clarity.ms/tag/${CLARITY_ID}`);
   }
 }
 
-let lastPagePath: string | null = null;
-
 export function trackPageview(path: string, title?: string) {
   if (typeof window === "undefined" || !window.gtag || path === lastPagePath) return;
+  if (!hasAnalyticsConsent()) return;
   lastPagePath = path;
   window.gtag("event", "page_view", {
     page_path: path,
@@ -90,6 +128,6 @@ export function trackPageview(path: string, title?: string) {
 }
 
 export function trackEvent(name: string, params: Record<string, unknown> = {}) {
-  if (typeof window === "undefined" || !window.gtag) return;
+  if (typeof window === "undefined" || !window.gtag || !hasAnalyticsConsent()) return;
   window.gtag("event", name, params);
 }

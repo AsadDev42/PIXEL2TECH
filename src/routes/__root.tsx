@@ -19,6 +19,7 @@ import { SERVICES, SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { SOCIAL_LINKS } from "@/components/social-links";
 import { TEAM } from "@/lib/team";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { CookieConsent } from "@/components/cookie-consent";
 import { ContentProtection } from "@/components/content-protection";
 import { CursorFollower } from "@/components/cursor-follower";
 
@@ -266,6 +267,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AnalyticsTracker />
+        <CookieConsent />
         <ContentProtection />
 
         {/* Honour the OS "reduce motion" setting for every framer-motion animation. */}

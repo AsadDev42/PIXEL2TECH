@@ -354,7 +354,7 @@ export function ArticleSection({ section }: { section: BlogSection }) {
           <div className="aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
             <iframe
               className="h-full w-full"
-              src={`https://www.youtube.com/embed/${section.video.id}`}
+              src={`https://www.youtube-nocookie.com/embed/${section.video.id}`}
               title={section.video.title ?? "Embedded video"}
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

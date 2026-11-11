@@ -107,7 +107,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://*.clarity.ms https://www.googletagmanager.com",
       "connect-src 'self' https: wss:",
       "media-src 'self' https: blob:",
-      "frame-src 'self' https://www.youtube.com https://player.vimeo.com https://drive.google.com https://www.google.com https://maps.google.com https://embed.figma.com",
+      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://drive.google.com https://www.google.com https://maps.google.com https://embed.figma.com",
       "worker-src 'self' blob:",
       "manifest-src 'self'",
       "upgrade-insecure-requests",
@@ -118,7 +118,7 @@ const securityMiddleware = createMiddleware().server(async ({ request, next }) =
   h.set("Referrer-Policy", "strict-origin-when-cross-origin");
   h.set(
     "Permissions-Policy",
-    'accelerometer=(), autoplay=(self "https://drive.google.com" "https://www.youtube.com" "https://player.vimeo.com"), camera=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), fullscreen=(self "https://drive.google.com" "https://www.youtube.com" "https://player.vimeo.com")',
+    'accelerometer=(), autoplay=(self "https://drive.google.com" "https://www.youtube.com" "https://www.youtube-nocookie.com" "https://player.vimeo.com"), camera=(), display-capture=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=(), fullscreen=(self "https://drive.google.com" "https://www.youtube.com" "https://www.youtube-nocookie.com" "https://player.vimeo.com")',
   );
   h.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
   h.set("Cross-Origin-Opener-Policy", "same-origin");
