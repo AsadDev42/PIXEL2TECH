@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronRight, Copy, Mail } from "lucide-react";
 import { MediaImage } from "@/components/media-image";
 import { PageShell } from "@/components/site-chrome";
-import { ContentGrid } from "@/components/content-blocks";
 import { trackEvent } from "@/lib/analytics";
 import { businessHead } from "@/lib/page-seo";
 import { SERVICES, SITE, STATS } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
+import { usePageEntrance } from "@/lib/use-anime";
+import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
 
 const FOUNDERS = TEAM.filter((person) => person.founder);
 
@@ -73,16 +74,47 @@ function CopyDescriptionButton() {
   );
 }
 
+const EYEBROW = "text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground";
+const H2 =
+  "text-3xl font-semibold leading-tight tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl";
+const LEAD = "mt-4 text-base leading-relaxed text-muted-foreground";
+const BODY = "text-[15px] leading-relaxed text-muted-foreground";
+const CONTAINER = "mx-auto max-w-7xl px-5 md:px-10";
+const SECTION = "scroll-mt-32 py-16 md:py-24";
+
+const TOPICS = [
+  {
+    title: "Building a connected brand",
+    body: "How a studio carries visual identity and messaging into websites, social content and video, with examples from its project work.",
+  },
+  {
+    title: "Website and store decisions",
+    body: "How product navigation, page structure and mobile layouts are planned around what a customer needs to do next.",
+  },
+  {
+    title: "The production process",
+    body: "How an in-house team handles briefs, reviews, design-to-development handovers and agency production partnerships.",
+  },
+];
+
+const USAGE_RULES = [
+  "Please use the name Pixel2Tech and link to pixel2tech.com.",
+  "Contact us for image files and usage permission.",
+  "Client-owned materials and agency partner work may need additional approval before they can be reproduced.",
+];
+
 function PressPage() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  usePageEntrance(rootRef);
+
+  const clients = `Worldwide, including the ${SITE.primaryMarkets.join(", ").replace(/, ([^,]*)$/, " and $1")}`;
+
   // Plain, checkable facts only, all from site-config and the team list.
   const facts = [
     { label: "Name", value: SITE.name },
     { label: "Founded", value: STATS.foundingYear },
     { label: "Based in", value: SITE.location },
-    {
-      label: "Clients",
-      value: `Worldwide, including the ${SITE.primaryMarkets.join(", ").replace(/, ([^,]*)$/, " and $1")}`,
-    },
+    { label: "Clients", value: clients },
     {
       label: FOUNDERS.length > 1 ? "Founders" : "Founder",
       value: FOUNDERS.map((person) => `${person.name}, ${person.role}`).join("; "),
@@ -93,60 +125,137 @@ function PressPage() {
     { label: "Contact", value: SITE.email },
   ];
 
+  const highlights = [
+    { label: "Founded", value: STATS.foundingYear },
+    { label: "Based in", value: SITE.location },
+    { label: "Projects delivered", value: STATS.projects },
+    { label: "Clients", value: "Worldwide" },
+  ];
+
   return (
     <PageShell>
-      <div className="mx-auto max-w-7xl px-5 pb-16 pt-12 md:px-10 md:pb-24 md:pt-20">
-        <header className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <div className="lg:pt-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Press & studio information
-            </p>
-            <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Company facts, founders and a media contact.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              For writers, podcast hosts and event organisers who need company information or a
-              conversation with our founders.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#media-enquiry"
-                className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
+      {/* Hero */}
+      <section aria-labelledby="press-title" className="bg-background pb-12 pt-8 md:pb-16 md:pt-12">
+        <div ref={rootRef} className={CONTAINER}>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+              <li>
+                <Link
+                  to="/"
+                  className={`inline-flex min-h-10 items-center rounded hover:text-foreground ${FOCUS_RING}`}
+                >
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <ChevronRight className="h-4 w-4" />
+              </li>
+              <li aria-current="page" className="font-medium text-foreground">
+                Press
+              </li>
+            </ol>
+          </nav>
+
+          <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+            <div data-enter className="min-w-0 lg:col-span-6">
+              <p className={EYEBROW}>Press and studio information</p>
+              <h1
+                id="press-title"
+                className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
-                Send a media enquiry <ArrowRight size={16} aria-hidden="true" />
-              </a>
-              <a
-                href="#founders"
-                className={`inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
-              >
-                Meet the founders
-              </a>
+                Company facts, founders <span className="text-primary">and a media contact</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                For writers, podcast hosts and event organisers who need company information or a
+                conversation with our founders.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href="#media-enquiry"
+                  className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:opacity-90 ${FOCUS_RING}`}
+                >
+                  Send a media enquiry <ArrowRight size={16} aria-hidden="true" />
+                </a>
+                <a
+                  href="#founders"
+                  className={`inline-flex min-h-12 items-center justify-center rounded-full border border-border px-6 text-sm font-medium text-foreground transition hover:bg-muted ${FOCUS_RING}`}
+                >
+                  Meet the founders
+                </a>
+              </div>
             </div>
+
+            <figure data-enter className="relative min-w-0 lg:col-span-6">
+              <img
+                src={officeStudioAsset.url}
+                alt="Pixel2Tech designers and developers working at their desks"
+                width={800}
+                height={600}
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/3] w-full rounded-3xl object-cover"
+              />
+              <figcaption className="absolute bottom-4 left-4 rounded-2xl bg-background/95 p-4 shadow-[var(--elev-2)] backdrop-blur sm:bottom-6 sm:left-6 sm:p-5">
+                <span className="block text-sm text-muted-foreground">The studio</span>
+                <span className="mt-1 block font-semibold text-foreground">{SITE.location}</span>
+              </figcaption>
+            </figure>
           </div>
 
-          <section
-            aria-labelledby="company-facts"
-            className="rounded-[2rem] border border-border bg-muted/40 p-6 sm:p-8"
+          <dl
+            data-enter
+            className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border bg-border md:mt-16 lg:grid-cols-4"
           >
-            <h2
-              id="company-facts"
-              className="text-xs font-semibold uppercase tracking-widest text-primary"
-            >
+            {highlights.map((item) => (
+              <div key={item.label} className="min-w-0 bg-background p-5 sm:p-6">
+                <dt className="text-sm text-muted-foreground">{item.label}</dt>
+                <dd className="mt-2 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                  {item.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* Company description and facts */}
+      <section aria-labelledby="about-pixel2tech" className={`bg-muted/50 ${SECTION}`}>
+        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
+          <div className="min-w-0 lg:col-span-5">
+            <p className={EYEBROW}>Company description</p>
+            <h2 id="about-pixel2tech" className={`mt-4 ${H2}`}>
+              About Pixel2Tech
+            </h2>
+            <p className={LEAD}>Use this description as it is, or copy it into your notes.</p>
+            <figure className="mt-8 rounded-3xl border border-border bg-background p-6 sm:p-8">
+              <blockquote className="text-lg leading-relaxed text-foreground">
+                {COMPANY_DESCRIPTION}
+              </blockquote>
+              <figcaption className="mt-6 border-t border-border pt-6">
+                <CopyDescriptionButton />
+              </figcaption>
+            </figure>
+          </div>
+
+          <section aria-labelledby="company-facts" className="min-w-0 lg:col-span-7">
+            <h2 id="company-facts" className="text-xl font-semibold tracking-tight">
               Company facts
             </h2>
-            <dl className="mt-4 divide-y divide-border">
+            <dl className="mt-6 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-background">
               {facts.map((fact) => (
-                <div key={fact.label} className="grid gap-1 py-4 sm:grid-cols-[8rem_1fr] sm:gap-4">
+                <div key={fact.label} className="grid gap-1 p-5 sm:grid-cols-3 sm:gap-6 sm:p-6">
                   <dt className="text-sm text-muted-foreground">{fact.label}</dt>
-                  <dd className="font-semibold text-foreground">{fact.value}</dd>
+                  <dd className="min-w-0 break-words font-medium text-foreground sm:col-span-2">
+                    {fact.value}
+                  </dd>
                 </div>
               ))}
-              <div className="grid gap-1 py-4 sm:grid-cols-[8rem_1fr] sm:gap-4">
+              <div className="grid gap-1 p-5 sm:grid-cols-3 sm:gap-6 sm:p-6">
                 <dt className="text-sm text-muted-foreground">Website</dt>
-                <dd>
+                <dd className="sm:col-span-2">
                   <a
                     href={SITE.url}
-                    className={`-my-3 inline-flex min-h-11 items-center rounded font-semibold text-primary hover:underline ${FOCUS_RING}`}
+                    className={`-my-3 inline-flex min-h-11 items-center rounded font-medium text-primary hover:underline ${FOCUS_RING}`}
                   >
                     pixel2tech.com
                   </a>
@@ -154,73 +263,57 @@ function PressPage() {
               </div>
             </dl>
           </section>
-        </header>
+        </div>
+      </section>
 
-        <section
-          aria-labelledby="about-pixel2tech"
-          className="mt-12 border-t border-border pt-12 md:mt-16 md:pt-16"
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Company description
-              </p>
-              <h2
-                id="about-pixel2tech"
-                className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
-              >
-                About Pixel2Tech
-              </h2>
-            </div>
-            <CopyDescriptionButton />
+      {/* Founders */}
+      <section id="founders" aria-labelledby="founders-heading" className={SECTION}>
+        <div className={CONTAINER}>
+          <div className="max-w-2xl">
+            <p className={EYEBROW}>Founders</p>
+            <h2 id="founders-heading" className={`mt-4 ${H2}`}>
+              Meet the founders
+            </h2>
+            <p className={LEAD}>
+              Use these profile pages for background, current role descriptions and examples of the
+              work. For a quote or interview, send a request so we can confirm who is best placed to
+              speak.
+            </p>
           </div>
-          <blockquote className="mt-6 max-w-4xl border-l-2 border-primary pl-6 text-lg leading-relaxed text-foreground">
-            {COMPANY_DESCRIPTION}
-          </blockquote>
-        </section>
-
-        <section
-          id="founders"
-          aria-labelledby="founders-heading"
-          className="mt-12 scroll-mt-24 border-t border-border pt-12 md:mt-16 md:pt-16"
-        >
-          <h2 id="founders-heading" className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Meet the founders
-          </h2>
-          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            Use these profile pages for background, current role descriptions and examples of the
-            work. For a quote or interview, send a request so we can confirm who is best placed to
-            speak.
-          </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             {FOUNDERS.map((person) => (
               <article
                 key={person.name}
-                className="flex items-center gap-5 rounded-2xl border border-border p-5 sm:gap-6 sm:p-6"
+                className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-border bg-background sm:flex-row"
               >
                 <MediaImage
                   src={person.img}
-                  alt={person.name}
+                  alt={`Portrait of ${person.name}, ${person.role} at Pixel2Tech`}
                   loading="lazy"
-                  className="h-24 w-24 shrink-0 rounded-2xl object-cover object-top sm:h-32 sm:w-32"
+                  decoding="async"
+                  className="aspect-[4/3] w-full shrink-0 object-cover object-top sm:aspect-auto sm:w-48 lg:w-56"
                 />
-                <div className="min-w-0">
-                  <h3 className="text-lg font-semibold sm:text-xl">{person.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{person.role}</p>
-                  <div className="mt-3 flex flex-wrap gap-x-5">
-                    <Link
-                      to={person.profile!}
-                      className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-semibold text-primary hover:underline ${FOCUS_RING}`}
-                    >
-                      Founder profile <ArrowRight size={14} aria-hidden="true" />
-                    </Link>
+                <div className="flex min-w-0 flex-col justify-center p-6 sm:p-8">
+                  <p className="text-sm font-medium text-primary">{person.role}</p>
+                  <h3 className="mt-2 text-2xl font-semibold leading-snug tracking-tight">
+                    {person.name}
+                  </h3>
+                  <div className="mt-4 flex flex-wrap gap-x-5">
+                    {person.profile && (
+                      <Link
+                        to={person.profile}
+                        className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-primary hover:underline ${FOCUS_RING}`}
+                      >
+                        Founder profile <ArrowRight size={14} aria-hidden="true" />
+                      </Link>
+                    )}
                     {person.linkedin && (
                       <a
                         href={person.linkedin}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={`${person.name} on LinkedIn (opens in a new tab)`}
-                        className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-semibold text-foreground hover:underline ${FOCUS_RING}`}
+                        className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-foreground hover:underline ${FOCUS_RING}`}
                       >
                         LinkedIn <ArrowUpRight size={14} aria-hidden="true" />
                       </a>
@@ -230,45 +323,58 @@ function PressPage() {
               </article>
             ))}
           </div>
-        </section>
-
-        <div className="mt-12 md:mt-16">
-          <ContentGrid
-            heading="Topics we can discuss"
-            numbered
-            items={[
-              {
-                title: "Building a connected brand",
-                body: "How a studio carries visual identity and messaging into websites, social content and video, with examples from its project work.",
-              },
-              {
-                title: "Website and store decisions",
-                body: "How product navigation, page structure and mobile layouts are planned around what a customer needs to do next.",
-              },
-              {
-                title: "The production process",
-                body: "How an in-house team handles briefs, reviews, design-to-development handovers and agency production partnerships.",
-              },
-            ]}
-          />
         </div>
+      </section>
 
-        <section
-          id="media-enquiry"
-          aria-labelledby="media-enquiry-heading"
-          className="grid scroll-mt-24 gap-8 rounded-[2rem] border border-transparent bg-slate-950 p-6 text-white sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12 dark:border-white/15"
-        >
-          <div>
-            <h2 id="media-enquiry-heading" className="text-3xl font-bold tracking-tight">
-              Send a media enquiry.
+      {/* Interview topics */}
+      <section aria-labelledby="topics-heading" className={`bg-muted/50 ${SECTION}`}>
+        <div className={CONTAINER}>
+          <div className="max-w-2xl">
+            <p className={EYEBROW}>Interviews</p>
+            <h2 id="topics-heading" className={`mt-4 ${H2}`}>
+              Topics we can discuss
             </h2>
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          </div>
+          <ol className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-3">
+            {TOPICS.map((topic, i) => (
+              <li key={topic.title} className="flex min-w-0 flex-col bg-background p-6 sm:p-8">
+                <span aria-hidden="true" className="text-sm font-medium tabular-nums text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-8 text-xl font-semibold leading-snug tracking-tight">
+                  {topic.title}
+                </h3>
+                <p className={`mt-3 ${BODY}`}>{topic.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Media enquiry */}
+      <section
+        id="media-enquiry"
+        aria-labelledby="media-enquiry-heading"
+        className={`bg-slate-950 text-white ${SECTION}`}
+      >
+        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
+          <div className="min-w-0 lg:col-span-7">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">
+              Media enquiries
+            </p>
+            <h2
+              id="media-enquiry-heading"
+              className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            >
+              Send a media enquiry
+            </h2>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
                 { heading: "Include", items: ENQUIRY_INCLUDES },
                 { heading: "Tell us if you need", items: ENQUIRY_NEEDS },
               ].map((group) => (
-                <div key={group.heading}>
-                  <h3 className="text-sm font-semibold text-sky-300">{group.heading}</h3>
+                <div key={group.heading} className="rounded-2xl bg-white/5 p-6">
+                  <h3 className="text-sm font-medium text-sky-300">{group.heading}</h3>
                   <ul className="mt-4 space-y-3">
                     {group.items.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-slate-200">
@@ -284,11 +390,11 @@ function PressPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
                 href={ENQUIRY_HREF}
                 onClick={() => trackEvent("email_click", { location: "press" })}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-medium text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 <Mail size={16} aria-hidden="true" /> Contact the studio
               </a>
@@ -298,25 +404,29 @@ function PressPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/15 p-6">
-            <h3 className="text-lg font-semibold">Using our name and project work</h3>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
-              <li>Please use the name Pixel2Tech and link to pixel2tech.com.</li>
-              <li>Contact us for image files and usage permission.</li>
-              <li>
-                Client-owned materials and agency partner work may need additional approval before
-                they can be reproduced.
-              </li>
+          <div className="min-w-0 rounded-3xl border border-white/15 p-6 sm:p-8 lg:col-span-5 lg:self-start">
+            <h3 className="text-xl font-semibold leading-snug tracking-tight">
+              Using our name and project work
+            </h3>
+            <ul className="mt-6 divide-y divide-white/10">
+              {USAGE_RULES.map((rule) => (
+                <li
+                  key={rule}
+                  className="py-4 text-[15px] leading-relaxed text-slate-300 first:pt-0 last:pb-0"
+                >
+                  {rule}
+                </li>
+              ))}
             </ul>
             <Link
               to="/portfolio"
-              className="mt-5 inline-flex min-h-11 items-center gap-1 rounded text-sm font-semibold text-sky-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="mt-6 inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-sky-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               Explore the project portfolio <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </PageShell>
   );
 }
