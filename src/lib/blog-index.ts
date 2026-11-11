@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "automate-client-onboarding-same-day-start",
+    title: "Automating Client Onboarding: A Workflow That Starts Work the Same Day",
+    excerpt:
+        "Client onboarding sets the tone for the whole project. An automated workflow that collects what you need, sets expectations, and starts work the same day the client signs.",
+    tag: "Automation",
+    date: "November 11, 2026",
+    time: "10:47 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/automate-client-onboarding-same-day-start.jpg",
+    imgAlt: "A team welcoming a new client with a laptop and checklist in a bright office",
+  },
+  {
     slug: "re-engagement-emails-win-back-subscribers",
     title: "Re-engagement Emails: How to Win Back Subscribers Who Stopped Opening",
     excerpt:
