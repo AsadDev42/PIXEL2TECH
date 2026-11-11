@@ -36,7 +36,7 @@ const POSTS = [
     slug: "automate-client-onboarding-same-day-start",
     title: "Automating Client Onboarding: A Workflow That Starts Work the Same Day",
     excerpt:
-        "Client onboarding sets the tone for the whole project. An automated workflow that collects what you need, sets expectations, and starts work the same day the client signs.",
+      "Client onboarding sets the tone for the whole project. An automated workflow that collects what you need, sets expectations, and starts work the same day the client signs.",
     tag: "Automation",
     date: "November 11, 2026",
     time: "10:47 am",
