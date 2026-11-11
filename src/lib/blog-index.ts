@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "testimonial-vs-case-study-video-first",
+    title: "Client Testimonials vs Case Study Videos: Which One to Film First",
+    excerpt:
+      "A testimonial and a case study do different jobs. Which one to film first depends on what your next customer doubts, trust or proof, and this guide shows how to decide.",
+    tag: "Video Editing",
+    date: "November 11, 2026",
+    time: "5:09 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/testimonial-vs-case-study-video-first.jpg",
+    imgAlt: "A client speaking to camera during a testimonial video shoot",
+  },
+  {
     slug: "monthly-seo-audit-service-websites",
     title: "A Monthly SEO Audit for Service Websites: Catch Drops Before They Cost Enquiries",
     excerpt:
