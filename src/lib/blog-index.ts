@@ -36,7 +36,7 @@ const POSTS = [
     slug: "monthly-seo-audit-service-websites",
     title: "A Monthly SEO Audit for Service Websites: Catch Drops Before They Cost Enquiries",
     excerpt:
-        "SEO drops are cheap to fix when you catch them early and expensive when you find them months later. A monthly audit checklist for service websites, in about an hour.",
+      "SEO drops are cheap to fix when you catch them early and expensive when you find them months later. A monthly audit checklist for service websites, in about an hour.",
     tag: "SEO",
     date: "November 11, 2026",
     time: "2:58 pm",
@@ -44,7 +44,7 @@ const POSTS = [
     img: "/blog/covers/monthly-seo-audit-service-websites.jpg",
     imgAlt: "A laptop showing website analytics and search rankings on a desk",
   },
-    {
+  {
     slug: "ai-content-review-human-checklist",
     title: "AI Content Review: A Human Checklist Before Anything Goes Live",
     excerpt:
