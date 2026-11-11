@@ -28,6 +28,7 @@ import { openCookieSettings } from "@/lib/consent";
 import { businessHead } from "@/lib/page-seo";
 import { SITE } from "@/lib/site-config";
 import { usePageEntrance } from "@/lib/use-anime";
+import officeStudioAsset from "@/assets/office-studio.webp.asset.json";
 
 /*
  * Truth rules for this page: only what terms-and-conditions.tsx,
@@ -137,6 +138,30 @@ const PORTFOLIO_RULES = [
   "If you ask us to remove a project, we take it down from our own channels within a reasonable time.",
   "We publish testimonials and reviews from you only with your permission.",
   "You can ask us to leave the small credit link out of a website footer.",
+];
+
+/** The confidentiality section of our terms, one row per question a client asks. */
+const CONFIDENTIALITY = [
+  {
+    label: "What it covers",
+    value:
+      "Both sides keep the other's confidential information private and use it only for the project. That covers non-public business, technical and financial information, and it includes account credentials.",
+  },
+  {
+    label: "Who can see it",
+    value:
+      "We share it only with team members, contractors and advisers who need it and are bound by confidentiality.",
+  },
+  {
+    label: "How long it lasts",
+    value:
+      "Two years after the agreement ends, and for as long as the information remains a trade secret.",
+  },
+  {
+    label: "When you ask",
+    value:
+      "We return or delete your confidential information. The exceptions are copies the law requires us to keep and copies in routine backups, which stay until they are overwritten.",
+  },
 ];
 
 const DATA_PRACTICES: { title: string; desc: string; Icon: LucideIcon }[] = [
@@ -290,6 +315,9 @@ function TrustCenterPage() {
     },
   ];
 
+  const leadOwnership = OWNERSHIP.slice(0, 2);
+  const moreOwnership = OWNERSHIP.slice(2);
+
   return (
     <PageShell>
       {/* Hero */}
@@ -314,8 +342,8 @@ function TrustCenterPage() {
             </ol>
           </nav>
 
-          <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-16">
-            <div data-enter className="min-w-0 lg:col-span-7">
+          <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+            <div data-enter className="min-w-0 lg:col-span-6">
               <p className={EYEBROW}>Trust center</p>
               <h1
                 id={id("title")}
@@ -344,27 +372,45 @@ function TrustCenterPage() {
               </div>
             </div>
 
-            <section
-              data-enter
-              aria-labelledby={id("summary")}
-              className="min-w-0 rounded-3xl border border-border bg-muted/40 p-6 sm:p-8 lg:col-span-5"
-            >
-              <h2 id={id("summary")} className={EYEBROW}>
-                The short version
-              </h2>
-              <dl className="mt-4 divide-y divide-border">
-                {SUMMARY.map((fact) => (
-                  <div
-                    key={fact.label}
-                    className="grid gap-1 py-4 sm:grid-cols-[8rem_1fr] sm:gap-4"
-                  >
-                    <dt className="text-sm text-muted-foreground">{fact.label}</dt>
-                    <dd className="font-medium text-foreground">{fact.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
+            <figure data-enter className="relative min-w-0 lg:col-span-6">
+              <img
+                src={officeStudioAsset.url}
+                alt="The Pixel2Tech team at work in the studio, with the logo on the back wall"
+                width={1600}
+                height={1074}
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/3] w-full rounded-3xl object-cover"
+              />
+              <figcaption className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-background/95 p-4 shadow-[var(--elev-2)] backdrop-blur sm:bottom-6 sm:left-6 sm:right-auto sm:p-5">
+                <span className="min-w-0">
+                  <span className="block text-sm text-muted-foreground">In-house studio</span>
+                  <span className="mt-1 block font-semibold text-foreground">{SITE.location}</span>
+                </span>
+              </figcaption>
+            </figure>
           </div>
+
+          <section data-enter aria-labelledby={id("summary")} className="mt-12 md:mt-16">
+            <h2 id={id("summary")} className={EYEBROW}>
+              The short version
+            </h2>
+            <dl className="mt-4 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+              {SUMMARY.map((fact) => (
+                <div key={fact.label} className="flex min-w-0 gap-4 bg-background p-5 sm:p-6">
+                  <Check
+                    aria-hidden="true"
+                    className="mt-1 h-5 w-5 shrink-0 text-primary"
+                    strokeWidth={2.25}
+                  />
+                  <div className="min-w-0">
+                    <dt className="text-sm text-muted-foreground">{fact.label}</dt>
+                    <dd className="mt-1 font-medium leading-snug text-foreground">{fact.value}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+          </section>
         </div>
       </section>
 
@@ -374,13 +420,13 @@ function TrustCenterPage() {
         className="sticky top-[61px] z-30 border-y border-border bg-background/95 backdrop-blur sm:top-[73px]"
       >
         <ul
-          className={`${CONTAINER} flex gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
+          className={`${CONTAINER} flex gap-2 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
         >
           {sections.map((s) => (
             <li key={s.id} className="shrink-0">
               <a
                 href={`#${s.id}`}
-                className={`inline-flex min-h-12 items-center whitespace-nowrap rounded px-3 text-sm font-medium text-muted-foreground transition hover:text-foreground ${FOCUS_RING}`}
+                className={`inline-flex min-h-10 items-center whitespace-nowrap rounded-full border border-border px-4 text-sm font-medium text-muted-foreground transition hover:border-foreground hover:text-foreground ${FOCUS_RING}`}
               >
                 {s.label}
               </a>
@@ -391,8 +437,8 @@ function TrustCenterPage() {
 
       {/* Ownership */}
       <section id={id("ownership")} aria-labelledby={id("ownership-title")} className={SECTION}>
-        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
-          <div className="lg:sticky lg:top-40 lg:col-span-4 lg:self-start">
+        <div className={CONTAINER}>
+          <div className="max-w-2xl">
             <p className={EYEBROW}>Files and IP</p>
             <h2 id={id("ownership-title")} className={`mt-4 ${H2}`}>
               Who owns the files and code
@@ -402,16 +448,54 @@ function TrustCenterPage() {
               exactly which files you receive.
             </p>
           </div>
-          <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
-            {OWNERSHIP.map((item, i) => (
-              <li key={item.title} className="min-w-0 border-t border-border pb-8 pt-6">
-                <span aria-hidden="true" className="text-sm font-medium tabular-nums text-primary">
+          <ol className="mt-10 grid gap-4 md:grid-cols-2">
+            {leadOwnership.map((item, i) => (
+              <li
+                key={item.title}
+                className={`flex min-w-0 flex-col rounded-3xl p-6 sm:p-8 lg:p-10 ${
+                  i === 0 ? "bg-muted/60" : "bg-primary text-primary-foreground"
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`text-sm font-medium tabular-nums ${
+                    i === 0 ? "text-primary" : "text-primary-foreground/80"
+                  }`}
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-3 text-xl font-semibold leading-snug tracking-tight">
+                <h3 className="mt-8 text-2xl font-semibold leading-snug tracking-tight">
                   {item.title}
                 </h3>
-                <p className={`mt-2 ${BODY}`}>{item.desc}</p>
+                <p
+                  className={`mt-3 text-[15px] leading-relaxed ${
+                    i === 0 ? "text-muted-foreground" : "text-primary-foreground/90"
+                  }`}
+                >
+                  {item.desc}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <ol
+            start={leadOwnership.length + 1}
+            className="mt-4 divide-y divide-border overflow-hidden rounded-3xl border border-border"
+          >
+            {moreOwnership.map((item, i) => (
+              <li
+                key={item.title}
+                className="grid min-w-0 gap-2 p-6 sm:p-8 md:grid-cols-12 md:gap-8"
+              >
+                <div className="flex items-baseline gap-4 md:col-span-4">
+                  <span
+                    aria-hidden="true"
+                    className="text-sm font-medium tabular-nums text-primary"
+                  >
+                    {String(leadOwnership.length + i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
+                </div>
+                <p className={`md:col-span-8 ${BODY}`}>{item.desc}</p>
               </li>
             ))}
           </ol>
@@ -424,44 +508,48 @@ function TrustCenterPage() {
         aria-labelledby={id("confidentiality-title")}
         className={`bg-muted/50 ${SECTION}`}
       >
-        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-12`}>
-          <div className="min-w-0 lg:col-span-7">
-            <p className={EYEBROW}>Confidentiality</p>
-            <h2 id={id("confidentiality-title")} className={`mt-4 ${H2}`}>
-              Confidentiality and NDAs
-            </h2>
-            <div className="mt-6 max-w-2xl space-y-4">
-              <p className={BODY}>
-                Both sides keep the other&apos;s confidential information private and use it only
-                for the project. That covers non-public business, technical and financial
-                information, and it includes account credentials.
-              </p>
-              <p className={BODY}>
-                We share it only with team members, contractors and advisers who need it and are
-                bound by confidentiality. The duty lasts for two years after the agreement ends, and
-                for as long as the information remains a trade secret.
-              </p>
-              <p className={BODY}>
-                On request, we return or delete your confidential information. The exceptions are
-                copies the law requires us to keep and copies in routine backups, which stay until
-                they are overwritten.
-              </p>
-              <p className="text-[15px] font-medium leading-relaxed text-foreground">
-                Ask us if you need an NDA before you share files. A signed NDA between us takes
-                priority over the confidentiality section of our terms.
+        <div className={CONTAINER}>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="min-w-0 lg:col-span-5">
+              <p className={EYEBROW}>Confidentiality</p>
+              <h2 id={id("confidentiality-title")} className={`mt-4 ${H2}`}>
+                Confidentiality and NDAs
+              </h2>
+              <div className="mt-8 rounded-3xl bg-slate-950 p-6 text-white sm:p-8">
+                <h3 className="text-xl font-semibold leading-snug tracking-tight">
+                  Need an NDA first?
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-slate-300">
+                  Ask us if you need an NDA before you share files. A signed NDA between us takes
+                  priority over the confidentiality section of our terms.
+                </p>
+              </div>
+            </div>
+            <dl className="min-w-0 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-background lg:col-span-7">
+              {CONFIDENTIALITY.map((row) => (
+                <div key={row.label} className="grid gap-2 p-6 sm:grid-cols-3 sm:gap-6 sm:p-8">
+                  <dt className="text-sm font-medium text-foreground">{row.label}</dt>
+                  <dd className={`sm:col-span-2 ${BODY}`}>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="mt-4 grid gap-8 rounded-3xl border border-border bg-background p-6 sm:p-8 lg:grid-cols-12 lg:gap-16 lg:p-10">
+            <div className="min-w-0 lg:col-span-4">
+              <h3 className="text-2xl font-semibold leading-snug tracking-tight">
+                Your project in our portfolio
+              </h3>
+              <p className={`mt-3 ${BODY}`}>
+                How we show finished work, and how you keep a project out of it.
               </p>
             </div>
-          </div>
-          <div className="min-w-0 rounded-3xl border border-border bg-background p-6 sm:p-8 lg:col-span-5 lg:self-start">
-            <h3 className="text-xl font-semibold leading-snug tracking-tight">
-              Your project in our portfolio
-            </h3>
-            <ul className="mt-6 space-y-4">
+            <ul className="min-w-0 divide-y divide-border lg:col-span-8">
               {PORTFOLIO_RULES.map((rule) => (
-                <li key={rule} className="flex gap-3">
+                <li key={rule} className="flex gap-4 py-4 first:pt-0 last:pb-0">
                   <Check
                     aria-hidden="true"
-                    className="mt-1 h-4 w-4 shrink-0 text-primary"
+                    className="mt-1 h-5 w-5 shrink-0 text-primary"
                     strokeWidth={2.25}
                   />
                   <span className="text-[15px] leading-relaxed text-foreground">{rule}</span>
@@ -475,29 +563,24 @@ function TrustCenterPage() {
       {/* Client data and logins */}
       <section id={id("data")} aria-labelledby={id("data-title")} className={SECTION}>
         <div className={CONTAINER}>
-          <div className="max-w-2xl">
-            <p className={EYEBROW}>Client data</p>
-            <h2 id={id("data-title")} className={`mt-4 ${H2}`}>
-              How we handle client data and logins
-            </h2>
-            <p className={LEAD}>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+            <div className="max-w-2xl">
+              <p className={EYEBROW}>Client data</p>
+              <h2 id={id("data-title")} className={`mt-4 ${H2}`}>
+                How we handle client data and logins
+              </h2>
+            </div>
+            <p className="max-w-md border-l-2 border-primary pl-4 text-[15px] leading-relaxed text-foreground">
               You stay in control of your accounts and data. Please keep your own backups of your
               website, data and files before and during our work.
             </p>
           </div>
-          <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {DATA_PRACTICES.map(({ title, desc, Icon }) => (
-              <li key={title} className="flex min-w-0 gap-4 border-t border-border pt-6">
-                <span
-                  aria-hidden="true"
-                  className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"
-                >
-                  <Icon className="h-5 w-5" strokeWidth={1.75} />
-                </span>
-                <div className="min-w-0">
-                  <h3 className="font-semibold leading-snug">{title}</h3>
-                  <p className={`mt-1 ${BODY}`}>{desc}</p>
-                </div>
+              <li key={title} className="flex min-w-0 flex-col bg-background p-6 sm:p-8">
+                <Icon className="h-6 w-6 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                <h3 className="mt-6 text-lg font-semibold leading-snug">{title}</h3>
+                <p className={`mt-2 ${BODY}`}>{desc}</p>
               </li>
             ))}
           </ul>
@@ -510,22 +593,20 @@ function TrustCenterPage() {
         aria-labelledby={id("privacy-title")}
         className={`bg-slate-950 text-white ${SECTION}`}
       >
-        <div className={CONTAINER}>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">Privacy</p>
-              <h2
-                id={id("privacy-title")}
-                className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
-              >
-                Privacy and cookies on this website
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-300">
-                This covers pixel2tech.com and how we handle the details you send us. Websites and
-                stores we build for clients have their own privacy notices.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
+        <div className={`${CONTAINER} grid gap-10 lg:grid-cols-12 lg:gap-16`}>
+          <div className="min-w-0 lg:sticky lg:top-40 lg:col-span-5 lg:self-start">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">Privacy</p>
+            <h2
+              id={id("privacy-title")}
+              className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            >
+              Privacy and cookies on this website
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-300">
+              This covers pixel2tech.com and how we handle the details you send us. Websites and
+              stores we build for clients have their own privacy notices.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <CookieSettingsButton className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-medium text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" />
               <Link
                 to="/privacy-policy"
@@ -536,11 +617,19 @@ function TrustCenterPage() {
               </Link>
             </div>
           </div>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-            {SITE_PRIVACY.map((point) => (
-              <li key={point.title} className="flex min-w-0 flex-col bg-slate-950 p-6 sm:p-8">
-                <h3 className="text-sm font-medium text-sky-300">{point.title}</h3>
-                <p className="mt-3 break-words leading-relaxed text-slate-200">{point.desc}</p>
+          <ul className="min-w-0 divide-y divide-white/10 border-y border-white/10 lg:col-span-7">
+            {SITE_PRIVACY.map((point, i) => (
+              <li key={point.title} className="grid gap-2 py-6 sm:grid-cols-12 sm:gap-6 sm:py-8">
+                <span
+                  aria-hidden="true"
+                  className="text-sm font-medium tabular-nums text-slate-400 sm:col-span-1"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0 sm:col-span-11">
+                  <h3 className="text-lg font-semibold leading-snug text-white">{point.title}</h3>
+                  <p className="mt-2 break-words leading-relaxed text-slate-300">{point.desc}</p>
+                </div>
               </li>
             ))}
           </ul>
@@ -563,16 +652,17 @@ function TrustCenterPage() {
             {working.map(({ title, Icon, body }) => (
               <article
                 key={title}
-                className="flex min-w-0 flex-col rounded-3xl border border-border bg-background p-6 sm:p-8"
+                className="flex min-w-0 flex-col rounded-3xl bg-muted/50 p-6 sm:p-8"
               >
-                <span
-                  aria-hidden="true"
-                  className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary"
-                >
-                  <Icon className="h-6 w-6" strokeWidth={1.75} />
-                </span>
-                <h3 className="mt-6 text-xl font-medium tracking-tight">{title}</h3>
-                <div className={`mt-3 ${BODY}`}>{body}</div>
+                <div className="flex items-center gap-3">
+                  <Icon
+                    className="h-5 w-5 shrink-0 text-primary"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-lg font-semibold leading-snug">{title}</h3>
+                </div>
+                <div className={`mt-4 border-t border-border pt-4 ${BODY}`}>{body}</div>
               </article>
             ))}
           </div>
