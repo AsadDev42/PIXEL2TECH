@@ -30,8 +30,6 @@ export const ALL_TEAM: TeamMember[] = [
     profile: "/usama-farooq",
     founder: true,
     linkedin: "https://www.linkedin.com/in/osama-farooq-manj/",
-    // Hidden from the site for now, by the owner's request (Nov 2026).
-    hidden: true,
   },
   {
     name: "Asad Farooq",

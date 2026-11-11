@@ -73,7 +73,7 @@ export function pageEntries(): SitemapEntry[] {
       })),
       { path: "/asad-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/saad", changefreq: "monthly", priority: "0.5" },
-      // /usama-farooq is left out while the profile is hidden (see TEAM).
+      { path: "/usama-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/portfolio", changefreq: "weekly", priority: "0.8" },
       {
         path: "/blog",
