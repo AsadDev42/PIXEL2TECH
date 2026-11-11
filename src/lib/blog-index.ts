@@ -33,16 +33,16 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-        slug: "ai-content-review-human-checklist",
-        title: "AI Content Review: A Human Checklist Before Anything Goes Live",
-        excerpt:
-              "AI can draft content fast, but it can also invent facts, flatten your voice, and miss the point. A short human checklist that catches those problems before anything goes live.",
-        tag: "AI Solutions",
-        date: "November 11, 2026",
-        time: "12:36 pm",
-        author: "Asad Farooq",
-        img: "/blog/covers/ai-content-review-human-checklist.jpg",
-        imgAlt: "A person reviewing AI drafted content on a laptop with a checklist",
+    slug: "ai-content-review-human-checklist",
+    title: "AI Content Review: A Human Checklist Before Anything Goes Live",
+    excerpt:
+      "AI can draft content fast, but it can also invent facts, flatten your voice, and miss the point. A short human checklist that catches those problems before anything goes live.",
+    tag: "AI Solutions",
+    date: "November 11, 2026",
+    time: "12:36 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-content-review-human-checklist.jpg",
+    imgAlt: "A person reviewing AI drafted content on a laptop with a checklist",
   },
   {
     slug: "automate-client-onboarding-same-day-start",
