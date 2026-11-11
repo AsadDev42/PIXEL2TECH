@@ -32,7 +32,7 @@ type RelatedWork = { slug: string; note: string };
 /** A planned or published article at /blog/<slug>. */
 type RelatedArticle = { slug: string; title: string; desc: string };
 
-type ServicePageCopy = {
+export type ServicePageCopy = {
   /** <title>, 60 characters or fewer. */
   metaTitle: string;
   /** Meta description, 140 to 155 characters. */
@@ -108,14 +108,14 @@ export const PRICING_POINTS: { title: string; desc: string }[] = [
 
 const COPY: Record<ServiceTitle, ServicePageCopy> = {
   "Branding & Design": {
-    metaTitle: "Branding Agency for Startups & Small Business | Pixel2Tech",
+    metaTitle: "Brand identity design services and logo design | Pixel2Tech",
     metaDescription:
-      "A branding agency for US startups and small businesses: logo, colors, typography and brand guidelines, designed in-house. Fixed quote after a free call.",
+      "A branding agency for small business. Brand identity design, logo design and graphic design services, with brand guidelines. Fixed quote after a free call.",
     serviceType: "Brand identity design",
-    h1: "Branding and design agency",
+    h1: "Branding agency and brand identity design",
     h1Highlight: "for US startups and small businesses",
     answer:
-      "Pixel2Tech, a Lahore-based branding studio working with businesses worldwide, from the US and UK to Canada and the EU, designs logos, color palettes, typography and brand guidelines, plus the templates that apply them, so a company's website, social posts, ads and packaging all look like one brand.",
+      "Pixel2Tech is a branding agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. Its brand identity design services cover logos, color palettes, typography and brand guidelines, plus the templates that apply them, so a company's website, social posts, ads and packaging all look like one brand.",
     tags: ["Logo", "Brand guide", "UI/UX"],
     deliverables: [
       {
@@ -726,14 +726,14 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "SEO & Search Growth": {
-    metaTitle: "SEO Agency for US Small Businesses | Pixel2Tech",
+    metaTitle: "SEO agency and on-page SEO services | Pixel2Tech",
     metaDescription:
-      "Technical SEO audits, on-page fixes, keyword strategy and local SEO for US small businesses and online stores, so the right customers find you on Google.",
+      "An SEO agency for US small businesses. On-page SEO services, technical SEO audits, keyword strategy, Shopify SEO and local SEO. Fixed quote after a call.",
     serviceType: "Search engine optimization",
     h1: "SEO agency",
     h1Highlight: "for US small businesses and online stores",
     answer:
-      "Pixel2Tech, a Lahore-based studio serving businesses worldwide, from the US and UK to Canada and the EU, audits sites for technical problems, fixes on-page issues, plans keywords around what customers search for and sets up local SEO, so the right people find the business on Google.",
+      "Pixel2Tech is an SEO agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. It audits sites for technical problems, provides on-page SEO services, plans keywords around what customers search for and sets up local SEO, so the right people find the business on Google.",
     tags: ["On-page SEO", "Technical SEO", "Local SEO"],
     deliverables: [
       {

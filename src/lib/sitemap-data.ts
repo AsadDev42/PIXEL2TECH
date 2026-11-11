@@ -5,6 +5,7 @@ import { toISODate, type PostMeta } from "@/lib/blog-types";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 import { WATCH_VIDEOS, type WatchVideo } from "@/lib/watch-videos";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
+import { SPECIALIST_PAGES } from "@/lib/specialist-services";
 
 /** Site origin for every <loc>. Single source of truth: SITE.url. */
 export const BASE_URL = SITE.url;
@@ -39,6 +40,9 @@ export const STATIC_LASTMOD: Record<string, string> = {
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
 export const SERVICE_PAGES_LASTMOD = "2026-11-10";
 
+/** Pricing, people, reviews, trust, learn and help pages added with the service families. */
+const NEW_PAGES_LASTMOD = "2026-11-10";
+
 type Post = PostMeta;
 
 /** A post's real last change: its `updated` date when set, else its publish date. */
@@ -71,6 +75,21 @@ export function pageEntries(): SitemapEntry[] {
         priority: "0.8",
         lastmod: SERVICE_PAGES_LASTMOD,
       })),
+      ...SPECIALIST_PAGES.map((page) => ({
+        path: `/services/${page.slug}`,
+        changefreq: "monthly" as const,
+        priority: "0.7",
+        lastmod: SERVICE_PAGES_LASTMOD,
+      })),
+      { path: "/pricing", lastmod: NEW_PAGES_LASTMOD, changefreq: "monthly", priority: "0.7" },
+      { path: "/our-people", lastmod: NEW_PAGES_LASTMOD, changefreq: "monthly", priority: "0.6" },
+      { path: "/reviews", lastmod: NEW_PAGES_LASTMOD, changefreq: "monthly", priority: "0.6" },
+      { path: "/trust-center", lastmod: NEW_PAGES_LASTMOD, changefreq: "yearly", priority: "0.5" },
+      { path: "/guides", lastmod: NEW_PAGES_LASTMOD, changefreq: "weekly", priority: "0.6" },
+      { path: "/playbooks", lastmod: NEW_PAGES_LASTMOD, changefreq: "weekly", priority: "0.6" },
+      { path: "/whats-new", lastmod: NEW_PAGES_LASTMOD, changefreq: "weekly", priority: "0.5" },
+      { path: "/help-center", lastmod: NEW_PAGES_LASTMOD, changefreq: "monthly", priority: "0.6" },
+      { path: "/llm-info", lastmod: NEW_PAGES_LASTMOD, changefreq: "monthly", priority: "0.4" },
       { path: "/asad-farooq", changefreq: "monthly", priority: "0.7" },
       { path: "/saad", changefreq: "monthly", priority: "0.5" },
       { path: "/usama-farooq", changefreq: "monthly", priority: "0.7" },

@@ -18,6 +18,7 @@
 
 import { getPostMeta } from "@/lib/blog-index";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
+import { SPECIALIST_PAGES } from "@/lib/specialist-services";
 
 export type LegacyVerdict = { type: "redirect"; target: string } | { type: "gone" };
 
@@ -155,9 +156,9 @@ const REDIRECT_MAP: Record<string, string> = {
   "team/asad": "/asad-farooq",
   "team/asad-farooq": "/asad-farooq",
 
-  team: "/about",
-  "our-team": "/about",
-  "meet-the-team": "/about",
+  team: "/our-people",
+  "our-team": "/our-people",
+  "meet-the-team": "/our-people",
   "team-details": "/about",
   "team-stye-4": "/about",
   "team-style-4": "/about",
@@ -169,7 +170,7 @@ const REDIRECT_MAP: Record<string, string> = {
   contactus: "/contact",
   appointment: "/contact",
   "price-plans": "/contact",
-  pricing: "/contact",
+  // /pricing is a live page again (see LIVE_EXACT).
   quote: "/contact",
   "get-a-quote": "/contact",
 
@@ -341,6 +342,15 @@ const LIVE_EXACT = new Set([
   "results",
   "press",
   "resources/shopify-store-checklist",
+  "pricing",
+  "our-people",
+  "reviews",
+  "trust-center",
+  "guides",
+  "playbooks",
+  "whats-new",
+  "help-center",
+  "llm-info",
 ]);
 
 /** Live sections with dynamic children: /blog/$slug, /portfolio/$slug. */
@@ -351,7 +361,10 @@ const LIVE_PREFIXES = ["blog", "portfolio"];
  * pass through: any other /services/* URL is a retired WordPress page and
  * still 301s to the /services hub via REDIRECT_PREFIXES.
  */
-const LIVE_SERVICE_PATHS = new Set(SERVICES.map((title) => `services/${serviceAnchor(title)}`));
+const LIVE_SERVICE_PATHS = new Set([
+  ...SERVICES.map((title) => `services/${serviceAnchor(title)}`),
+  ...SPECIALIST_PAGES.map((page) => `services/${page.slug}`),
+]);
 
 /** Lowercase, strip query/hash and surrounding slashes. */
 export function normalizePath(input: string): string {

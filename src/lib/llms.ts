@@ -2,6 +2,7 @@ import { POST_INDEX } from "@/lib/blog-index";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 import { PRICING_POINTS, SERVICE_PAGES, SERVICE_PROCESS } from "@/lib/service-pages";
 import { latestLastmod, pageEntries } from "@/lib/sitemap-data";
+import { SPECIALIST_PAGES } from "@/lib/specialist-services";
 import { SITE, STATS } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
 import { SOCIAL_LINKS } from "@/components/social-links";
@@ -12,7 +13,10 @@ import { SOCIAL_LINKS } from "@/components/social-links";
  * built from the data the pages use, so they cannot drift from the site.
  */
 
-const SERVICE_BY_PATH = new Map(SERVICE_PAGES.map((page) => [`/services/${page.slug}`, page]));
+/** Core and specialist service pages share the same copy fields. */
+const ALL_SERVICE_PAGES = [...SERVICE_PAGES, ...SPECIALIST_PAGES];
+
+const SERVICE_BY_PATH = new Map(ALL_SERVICE_PAGES.map((page) => [`/services/${page.slug}`, page]));
 
 function pageLabel(path: string): string {
   if (path === "/") return "Home";
@@ -39,7 +43,7 @@ function entityLines(): string[] {
     `- Team: ${TEAM.map((m) => `${m.name}, ${m.role}`).join("; ")}`,
     `- Projects delivered: ${STATS.projects}`,
     `- Clients: worldwide. Main markets: ${SITE.primaryMarkets.join(", ")}. Also serves: ${SITE.areaServed.slice(5).join(", ")}`,
-    `- Services: ${SERVICE_PAGES.map((page) => page.title).join(", ")}`,
+    `- Services: ${ALL_SERVICE_PAGES.map((page) => page.title).join(", ")}`,
     `- Contact: ${SITE.email}, ${SITE.phoneDisplay}`,
     `- Hours: ${SITE.hours.map((h) => `${h.days} ${h.time}`).join("; ")} (Pakistan time)`,
     `- Profiles: ${SOCIAL_LINKS.map((link) => link.href).join(", ")}`,
@@ -92,7 +96,7 @@ export function buildLlmsFullTxt(): string {
   lines.push("", "## How pricing works", "");
   for (const point of PRICING_POINTS) lines.push(`- ${point.title}: ${point.desc}`);
   lines.push("");
-  for (const page of SERVICE_PAGES) {
+  for (const page of ALL_SERVICE_PAGES) {
     lines.push(
       `## ${page.title}`,
       "",

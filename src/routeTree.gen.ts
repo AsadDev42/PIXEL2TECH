@@ -18,17 +18,24 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as ForAgenciesRouteImport } from './routes/for-agencies'
+import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as HelpCenterRouteImport } from './routes/help-center'
 import { Route as ImagesSitemapDotxmlRouteImport } from './routes/images-sitemap[.]xml'
+import { Route as LlmInfoRouteImport } from './routes/llm-info'
 import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as OurPeopleRouteImport } from './routes/our-people'
 import { Route as OutsourceVideoEditingRouteImport } from './routes/outsource-video-editing'
 import { Route as PageSitemapDotxmlRouteImport } from './routes/page-sitemap[.]xml'
 import { Route as PagesSitemapDotxmlRouteImport } from './routes/pages-sitemap[.]xml'
+import { Route as PlaybooksRouteImport } from './routes/playbooks'
 import { Route as PortfolioSitemapDotxmlRouteImport } from './routes/portfolio-sitemap[.]xml'
 import { Route as PostSitemapDotxmlRouteImport } from './routes/post-sitemap[.]xml'
 import { Route as PressRouteImport } from './routes/press'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ResultsRouteImport } from './routes/results'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SaadRouteImport } from './routes/saad'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesSitemapDotxmlRouteImport } from './routes/services-sitemap[.]xml'
@@ -39,9 +46,11 @@ import { Route as Sitemap_indexDotxmlRouteImport } from './routes/sitemap_index[
 import { Route as SupersideAlternativeRouteImport } from './routes/superside-alternative'
 import { Route as SupersideVsPixel2techRouteImport } from './routes/superside-vs-pixel2tech'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as TrustCenterRouteImport } from './routes/trust-center'
 import { Route as UsamaFarooqRouteImport } from './routes/usama-farooq'
 import { Route as WebsiteRedesignServicesRouteImport } from './routes/website-redesign-services'
 import { Route as WeddingVideoEditingServicesRouteImport } from './routes/wedding-video-editing-services'
+import { Route as WhatsNewRouteImport } from './routes/whats-new'
 import { Route as WhiteLabelWebDevelopmentRouteImport } from './routes/white-label-web-development'
 import { Route as WpSitemapDotxmlRouteImport } from './routes/wp-sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -98,9 +107,24 @@ const ForAgenciesRoute = ForAgenciesRouteImport.update({
   path: '/for-agencies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpCenterRoute = HelpCenterRouteImport.update({
+  id: '/help-center',
+  path: '/help-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImagesSitemapDotxmlRoute = ImagesSitemapDotxmlRouteImport.update({
   id: '/images-sitemap.xml',
   path: '/images-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmInfoRoute = LlmInfoRouteImport.update({
+  id: '/llm-info',
+  path: '/llm-info',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
@@ -111,6 +135,11 @@ const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   id: '/llms.txt',
   path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurPeopleRoute = OurPeopleRouteImport.update({
+  id: '/our-people',
+  path: '/our-people',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OutsourceVideoEditingRoute = OutsourceVideoEditingRouteImport.update({
@@ -128,6 +157,11 @@ const PagesSitemapDotxmlRoute = PagesSitemapDotxmlRouteImport.update({
   path: '/pages-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlaybooksRoute = PlaybooksRouteImport.update({
+  id: '/playbooks',
+  path: '/playbooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioSitemapDotxmlRoute = PortfolioSitemapDotxmlRouteImport.update({
   id: '/portfolio-sitemap.xml',
   path: '/portfolio-sitemap.xml',
@@ -143,6 +177,11 @@ const PressRoute = PressRouteImport.update({
   path: '/press',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -151,6 +190,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SaadRoute = SaadRouteImport.update({
@@ -204,6 +248,11 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrustCenterRoute = TrustCenterRouteImport.update({
+  id: '/trust-center',
+  path: '/trust-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UsamaFarooqRoute = UsamaFarooqRouteImport.update({
   id: '/usama-farooq',
   path: '/usama-farooq',
@@ -220,6 +269,11 @@ const WeddingVideoEditingServicesRoute =
     path: '/wedding-video-editing-services',
     getParentRoute: () => rootRouteImport,
   } as any)
+const WhatsNewRoute = WhatsNewRouteImport.update({
+  id: '/whats-new',
+  path: '/whats-new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhiteLabelWebDevelopmentRoute =
   WhiteLabelWebDevelopmentRouteImport.update({
     id: '/white-label-web-development',
@@ -283,17 +337,24 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
+  '/guides': typeof GuidesRoute
+  '/help-center': typeof HelpCenterRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llm-info': typeof LlmInfoRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/our-people': typeof OurPeopleRoute
   '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/playbooks': typeof PlaybooksRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/press': typeof PressRoute
+  '/pricing': typeof PricingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/results': typeof ResultsRoute
+  '/reviews': typeof ReviewsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -304,9 +365,11 @@ export interface FileRoutesByFullPath {
   '/superside-alternative': typeof SupersideAlternativeRoute
   '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/trust-center': typeof TrustCenterRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
+  '/whats-new': typeof WhatsNewRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -328,17 +391,24 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
+  '/guides': typeof GuidesRoute
+  '/help-center': typeof HelpCenterRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llm-info': typeof LlmInfoRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/our-people': typeof OurPeopleRoute
   '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/playbooks': typeof PlaybooksRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/press': typeof PressRoute
+  '/pricing': typeof PricingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/results': typeof ResultsRoute
+  '/reviews': typeof ReviewsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -349,9 +419,11 @@ export interface FileRoutesByTo {
   '/superside-alternative': typeof SupersideAlternativeRoute
   '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/trust-center': typeof TrustCenterRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
+  '/whats-new': typeof WhatsNewRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -374,17 +446,24 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/for-agencies': typeof ForAgenciesRoute
+  '/guides': typeof GuidesRoute
+  '/help-center': typeof HelpCenterRoute
   '/images-sitemap.xml': typeof ImagesSitemapDotxmlRoute
+  '/llm-info': typeof LlmInfoRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/our-people': typeof OurPeopleRoute
   '/outsource-video-editing': typeof OutsourceVideoEditingRoute
   '/page-sitemap.xml': typeof PageSitemapDotxmlRoute
   '/pages-sitemap.xml': typeof PagesSitemapDotxmlRoute
+  '/playbooks': typeof PlaybooksRoute
   '/portfolio-sitemap.xml': typeof PortfolioSitemapDotxmlRoute
   '/post-sitemap.xml': typeof PostSitemapDotxmlRoute
   '/press': typeof PressRoute
+  '/pricing': typeof PricingRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/results': typeof ResultsRoute
+  '/reviews': typeof ReviewsRoute
   '/saad': typeof SaadRoute
   '/services': typeof ServicesRoute
   '/services-sitemap.xml': typeof ServicesSitemapDotxmlRoute
@@ -395,9 +474,11 @@ export interface FileRoutesById {
   '/superside-alternative': typeof SupersideAlternativeRoute
   '/superside-vs-pixel2tech': typeof SupersideVsPixel2techRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/trust-center': typeof TrustCenterRoute
   '/usama-farooq': typeof UsamaFarooqRoute
   '/website-redesign-services': typeof WebsiteRedesignServicesRoute
   '/wedding-video-editing-services': typeof WeddingVideoEditingServicesRoute
+  '/whats-new': typeof WhatsNewRoute
   '/white-label-web-development': typeof WhiteLabelWebDevelopmentRoute
   '/wp-sitemap.xml': typeof WpSitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -421,17 +502,24 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/for-agencies'
+    | '/guides'
+    | '/help-center'
     | '/images-sitemap.xml'
+    | '/llm-info'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/our-people'
     | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
+    | '/playbooks'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/press'
+    | '/pricing'
     | '/privacy-policy'
     | '/results'
+    | '/reviews'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -442,9 +530,11 @@ export interface FileRouteTypes {
     | '/superside-alternative'
     | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
+    | '/trust-center'
     | '/usama-farooq'
     | '/website-redesign-services'
     | '/wedding-video-editing-services'
+    | '/whats-new'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -466,17 +556,24 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/for-agencies'
+    | '/guides'
+    | '/help-center'
     | '/images-sitemap.xml'
+    | '/llm-info'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/our-people'
     | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
+    | '/playbooks'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/press'
+    | '/pricing'
     | '/privacy-policy'
     | '/results'
+    | '/reviews'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -487,9 +584,11 @@ export interface FileRouteTypes {
     | '/superside-alternative'
     | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
+    | '/trust-center'
     | '/usama-farooq'
     | '/website-redesign-services'
     | '/wedding-video-editing-services'
+    | '/whats-new'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -511,17 +610,24 @@ export interface FileRouteTypes {
     | '/contact'
     | '/favicon.ico'
     | '/for-agencies'
+    | '/guides'
+    | '/help-center'
     | '/images-sitemap.xml'
+    | '/llm-info'
     | '/llms-full.txt'
     | '/llms.txt'
+    | '/our-people'
     | '/outsource-video-editing'
     | '/page-sitemap.xml'
     | '/pages-sitemap.xml'
+    | '/playbooks'
     | '/portfolio-sitemap.xml'
     | '/post-sitemap.xml'
     | '/press'
+    | '/pricing'
     | '/privacy-policy'
     | '/results'
+    | '/reviews'
     | '/saad'
     | '/services'
     | '/services-sitemap.xml'
@@ -532,9 +638,11 @@ export interface FileRouteTypes {
     | '/superside-alternative'
     | '/superside-vs-pixel2tech'
     | '/terms-and-conditions'
+    | '/trust-center'
     | '/usama-farooq'
     | '/website-redesign-services'
     | '/wedding-video-editing-services'
+    | '/whats-new'
     | '/white-label-web-development'
     | '/wp-sitemap.xml'
     | '/blog/$slug'
@@ -557,17 +665,24 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   ForAgenciesRoute: typeof ForAgenciesRoute
+  GuidesRoute: typeof GuidesRoute
+  HelpCenterRoute: typeof HelpCenterRoute
   ImagesSitemapDotxmlRoute: typeof ImagesSitemapDotxmlRoute
+  LlmInfoRoute: typeof LlmInfoRoute
   LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
+  OurPeopleRoute: typeof OurPeopleRoute
   OutsourceVideoEditingRoute: typeof OutsourceVideoEditingRoute
   PageSitemapDotxmlRoute: typeof PageSitemapDotxmlRoute
   PagesSitemapDotxmlRoute: typeof PagesSitemapDotxmlRoute
+  PlaybooksRoute: typeof PlaybooksRoute
   PortfolioSitemapDotxmlRoute: typeof PortfolioSitemapDotxmlRoute
   PostSitemapDotxmlRoute: typeof PostSitemapDotxmlRoute
   PressRoute: typeof PressRoute
+  PricingRoute: typeof PricingRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ResultsRoute: typeof ResultsRoute
+  ReviewsRoute: typeof ReviewsRoute
   SaadRoute: typeof SaadRoute
   ServicesRoute: typeof ServicesRoute
   ServicesSitemapDotxmlRoute: typeof ServicesSitemapDotxmlRoute
@@ -578,9 +693,11 @@ export interface RootRouteChildren {
   SupersideAlternativeRoute: typeof SupersideAlternativeRoute
   SupersideVsPixel2techRoute: typeof SupersideVsPixel2techRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  TrustCenterRoute: typeof TrustCenterRoute
   UsamaFarooqRoute: typeof UsamaFarooqRoute
   WebsiteRedesignServicesRoute: typeof WebsiteRedesignServicesRoute
   WeddingVideoEditingServicesRoute: typeof WeddingVideoEditingServicesRoute
+  WhatsNewRoute: typeof WhatsNewRoute
   WhiteLabelWebDevelopmentRoute: typeof WhiteLabelWebDevelopmentRoute
   WpSitemapDotxmlRoute: typeof WpSitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -658,11 +775,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForAgenciesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help-center': {
+      id: '/help-center'
+      path: '/help-center'
+      fullPath: '/help-center'
+      preLoaderRoute: typeof HelpCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/images-sitemap.xml': {
       id: '/images-sitemap.xml'
       path: '/images-sitemap.xml'
       fullPath: '/images-sitemap.xml'
       preLoaderRoute: typeof ImagesSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llm-info': {
+      id: '/llm-info'
+      path: '/llm-info'
+      fullPath: '/llm-info'
+      preLoaderRoute: typeof LlmInfoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms-full.txt': {
@@ -677,6 +815,13 @@ declare module '@tanstack/react-router' {
       path: '/llms.txt'
       fullPath: '/llms.txt'
       preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-people': {
+      id: '/our-people'
+      path: '/our-people'
+      fullPath: '/our-people'
+      preLoaderRoute: typeof OurPeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/outsource-video-editing': {
@@ -700,6 +845,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesSitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/playbooks': {
+      id: '/playbooks'
+      path: '/playbooks'
+      fullPath: '/playbooks'
+      preLoaderRoute: typeof PlaybooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio-sitemap.xml': {
       id: '/portfolio-sitemap.xml'
       path: '/portfolio-sitemap.xml'
@@ -721,6 +873,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
@@ -733,6 +892,13 @@ declare module '@tanstack/react-router' {
       path: '/results'
       fullPath: '/results'
       preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/saad': {
@@ -805,6 +971,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trust-center': {
+      id: '/trust-center'
+      path: '/trust-center'
+      fullPath: '/trust-center'
+      preLoaderRoute: typeof TrustCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/usama-farooq': {
       id: '/usama-farooq'
       path: '/usama-farooq'
@@ -824,6 +997,13 @@ declare module '@tanstack/react-router' {
       path: '/wedding-video-editing-services'
       fullPath: '/wedding-video-editing-services'
       preLoaderRoute: typeof WeddingVideoEditingServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/whats-new': {
+      id: '/whats-new'
+      path: '/whats-new'
+      fullPath: '/whats-new'
+      preLoaderRoute: typeof WhatsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/white-label-web-development': {
@@ -909,17 +1089,24 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
   ForAgenciesRoute: ForAgenciesRoute,
+  GuidesRoute: GuidesRoute,
+  HelpCenterRoute: HelpCenterRoute,
   ImagesSitemapDotxmlRoute: ImagesSitemapDotxmlRoute,
+  LlmInfoRoute: LlmInfoRoute,
   LlmsFullDottxtRoute: LlmsFullDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
+  OurPeopleRoute: OurPeopleRoute,
   OutsourceVideoEditingRoute: OutsourceVideoEditingRoute,
   PageSitemapDotxmlRoute: PageSitemapDotxmlRoute,
   PagesSitemapDotxmlRoute: PagesSitemapDotxmlRoute,
+  PlaybooksRoute: PlaybooksRoute,
   PortfolioSitemapDotxmlRoute: PortfolioSitemapDotxmlRoute,
   PostSitemapDotxmlRoute: PostSitemapDotxmlRoute,
   PressRoute: PressRoute,
+  PricingRoute: PricingRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ResultsRoute: ResultsRoute,
+  ReviewsRoute: ReviewsRoute,
   SaadRoute: SaadRoute,
   ServicesRoute: ServicesRoute,
   ServicesSitemapDotxmlRoute: ServicesSitemapDotxmlRoute,
@@ -930,9 +1117,11 @@ const rootRouteChildren: RootRouteChildren = {
   SupersideAlternativeRoute: SupersideAlternativeRoute,
   SupersideVsPixel2techRoute: SupersideVsPixel2techRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  TrustCenterRoute: TrustCenterRoute,
   UsamaFarooqRoute: UsamaFarooqRoute,
   WebsiteRedesignServicesRoute: WebsiteRedesignServicesRoute,
   WeddingVideoEditingServicesRoute: WeddingVideoEditingServicesRoute,
+  WhatsNewRoute: WhatsNewRoute,
   WhiteLabelWebDevelopmentRoute: WhiteLabelWebDevelopmentRoute,
   WpSitemapDotxmlRoute: WpSitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,

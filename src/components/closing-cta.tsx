@@ -31,7 +31,7 @@ export function ClosingCta({
         <div>
           <h2
             id={id}
-            className="text-3xl font-bold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-5xl"
+            className="text-3xl font-semibold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-5xl"
           >
             {title}
             {highlight ? ` ${highlight}` : null}
@@ -40,11 +40,11 @@ export function ClosingCta({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <BookCallButton
               source={source}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-sm font-semibold text-[#0A0D1F] transition hover:bg-[#e8f1ff]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-sm font-medium text-[#0A0D1F] transition hover:bg-[#e8f1ff]"
             />
             <Link
               to="/contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/25 px-6 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/10"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/25 px-6 text-sm font-medium text-white transition hover:border-white/50 hover:bg-white/10"
             >
               Send a project brief
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -69,19 +69,19 @@ export function ClosingCta({
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-lg font-semibold">One team, all in-house</p>
+          <p className="mt-5 text-lg font-medium">One team, all in-house</p>
           <p className="mt-1 text-sm text-white/65">
             Design, web development, video and automation.
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-white/5 p-4">
               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-              <p className="mt-2 text-xl font-bold">{STATS.rating}</p>
+              <p className="mt-2 text-xl font-semibold">{STATS.rating}</p>
               <p className="text-xs text-white/60">Client rating</p>
             </div>
             <div className="rounded-2xl bg-white/5 p-4">
               <TrendingUp className="h-5 w-5 text-[#4DA3FF]" aria-hidden="true" />
-              <p className="mt-2 text-xl font-bold">{STATS.projects}</p>
+              <p className="mt-2 text-xl font-semibold">{STATS.projects}</p>
               <p className="text-xs text-white/60">Projects shipped</p>
             </div>
           </div>

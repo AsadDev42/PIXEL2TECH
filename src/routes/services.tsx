@@ -25,6 +25,7 @@ import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 import { getItemBySlug } from "@/lib/portfolio-data";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
+import { SERVICE_GROUPS, getAnyServicePage, serviceLabel } from "@/lib/specialist-services";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const PAGE_URL = `${SITE.url}/services`;
@@ -196,9 +197,9 @@ export const Route = createFileRoute("/services")({
   }),
 });
 
-const EYEBROW = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
+const EYEBROW = "text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground";
 const H2 =
-  "text-3xl font-bold leading-tight tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl";
+  "text-3xl font-semibold leading-tight tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl";
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
@@ -351,7 +352,7 @@ function ServiceWall() {
                   ) : (
                     <ul
                       aria-hidden="true"
-                      className="absolute inset-x-0 top-0 p-6 text-3xl font-bold leading-tight tracking-tight sm:p-8 lg:text-4xl"
+                      className="absolute inset-x-0 top-0 p-6 text-3xl font-semibold leading-tight tracking-tight sm:p-8 lg:text-4xl"
                     >
                       {tile.covers?.map((item) => (
                         <li key={item}>{item}</li>
@@ -360,7 +361,7 @@ function ServiceWall() {
                   )}
                   <span className="absolute inset-x-3 bottom-3 rounded-2xl bg-background p-4 text-foreground shadow-lg">
                     <span className="flex items-center justify-between gap-3">
-                      <span className="min-w-0 text-lg font-bold leading-snug tracking-tight">
+                      <span className="min-w-0 text-lg font-semibold leading-snug tracking-tight">
                         {tile.title}
                       </span>
                       <span
@@ -392,6 +393,83 @@ function ServiceWall() {
   );
 }
 
+/** Every service page, grouped into the four families used by the menu and footer. */
+function ServiceFamilies() {
+  return (
+    <section aria-labelledby="service-families-title" className="bg-background py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <h2 id="service-families-title" className={H2}>
+          Every service, by family
+        </h2>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          Each page lists what you get, who it suits, what moves the quote and the questions buyers
+          ask first.
+        </p>
+        <div className="mt-12 divide-y divide-border border-y border-border">
+          {SERVICE_GROUPS.map((group) => (
+            <section
+              key={group.key}
+              id={group.anchor}
+              aria-labelledby={`${group.anchor}-title`}
+              className="grid scroll-mt-32 gap-6 py-10 lg:grid-cols-12 lg:gap-12"
+            >
+              <div className="lg:col-span-4">
+                <h3
+                  id={`${group.anchor}-title`}
+                  className="text-2xl font-semibold leading-snug tracking-tight"
+                >
+                  {group.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                  {group.description}
+                </p>
+              </div>
+              <ul className="grid gap-2 sm:grid-cols-2 lg:col-span-8">
+                {group.items.map((item) => {
+                  const found = getAnyServicePage(item.slug);
+                  if (!found) return null;
+                  const Icon =
+                    found.kind === "core"
+                      ? SERVICE_DETAILS[found.page.title].Icon
+                      : found.page.icon;
+                  const desc =
+                    found.kind === "core"
+                      ? SERVICE_DETAILS[found.page.title].desc
+                      : found.page.menuDescription;
+                  return (
+                    <li key={item.slug} className="min-w-0">
+                      <Link
+                        to="/services/$slug"
+                        params={{ slug: item.slug }}
+                        className={`group flex h-full items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-muted ${FOCUS_RING}`}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
+                        >
+                          <Icon className="h-5 w-5" strokeWidth={1.75} />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block font-medium text-foreground">
+                            {serviceLabel(item.slug, item.label)}
+                          </span>
+                          <span className="mt-1 block text-sm leading-snug text-muted-foreground">
+                            {desc}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ServicesPage() {
   return (
     <PageShell>
@@ -400,7 +478,7 @@ function ServicesPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <h1
             id="services-title"
-            className="max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
+            className="max-w-5xl text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
           >
             Branding, websites, apps, automation and video for businesses worldwide, from one studio
             in Lahore.
@@ -414,11 +492,11 @@ function ServicesPage() {
             <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
               <BookCallButton
                 source="services_hero"
-                className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
+                className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:opacity-90 ${FOCUS_RING}`}
               />
               <a
                 href="#services-list"
-                className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
+                className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-medium text-foreground transition hover:bg-muted ${FOCUS_RING}`}
               >
                 See what we do <ArrowRight size={16} aria-hidden="true" />
               </a>
@@ -443,6 +521,8 @@ function ServicesPage() {
 
       <ServiceWall />
 
+      <ServiceFamilies />
+
       {/* Start from a goal: each card shows which services combine to reach it */}
       <section
         aria-labelledby="services-start-title"
@@ -452,7 +532,7 @@ function ServicesPage() {
           <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
             <h2
               id="services-start-title"
-              className="max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
+              className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
             >
               Know the goal, but not the service?
             </h2>
@@ -481,7 +561,7 @@ function ServicesPage() {
                     aria-hidden="true"
                     className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent"
                   />
-                  <h3 className="absolute inset-x-0 bottom-0 p-5 text-2xl font-bold leading-tight tracking-tight sm:p-6 sm:text-3xl">
+                  <h3 className="absolute inset-x-0 bottom-0 p-5 text-2xl font-semibold leading-tight tracking-tight sm:p-6 sm:text-3xl">
                     {point.title}
                   </h3>
                 </div>
@@ -511,7 +591,7 @@ function ServicesPage() {
                                 aria-hidden="true"
                               />
                             </span>
-                            <span className="text-xs font-semibold leading-snug text-white group-hover/node:text-sky-300">
+                            <span className="text-xs font-medium leading-snug text-white group-hover/node:text-sky-300">
                               {title}
                             </span>
                           </Link>
@@ -520,7 +600,7 @@ function ServicesPage() {
                     })}
                   </ol>
                   <p className="mt-6 border-t border-white/10 pt-4 text-sm leading-relaxed text-slate-400">
-                    <span className="font-semibold text-slate-200">What to send: </span>
+                    <span className="font-medium text-slate-200">What to send: </span>
                     {point.send}
                   </p>
                 </div>
@@ -529,7 +609,7 @@ function ServicesPage() {
           </ul>
           <Link
             to="/for-agencies"
-            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded text-sm font-medium text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Bringing an agency brief? <ArrowRight size={16} aria-hidden="true" />
           </Link>
@@ -554,7 +634,7 @@ function ServicesPage() {
                 >
                   <step.Icon className="h-5 w-5" strokeWidth={1.75} />
                 </span>
-                <h3 className="text-lg font-bold leading-snug">
+                <h3 className="text-lg font-semibold leading-snug">
                   <span className="sr-only">Step {i + 1}: </span>
                   {step.title}
                 </h3>

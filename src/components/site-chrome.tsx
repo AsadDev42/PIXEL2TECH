@@ -7,32 +7,40 @@ import {
   ArrowUpRight,
   BookOpen,
   Brain,
-  Briefcase,
   Building2,
   ChevronDown,
   Clapperboard,
   ClipboardCheck,
   Cog,
+  Compass,
   Globe,
   Handshake,
-  House,
   Layers,
   LayoutGrid,
+  LifeBuoy,
+  ListChecks,
   Megaphone,
   Menu,
   Newspaper,
   Palette,
+  Receipt,
   Search,
+  ShieldCheck,
   ShoppingBag,
-  Sparkles,
-  Stethoscope,
+  Sparkle,
+  Star,
   TrendingUp,
   UserPlus,
+  UserRound,
   Users,
-  UtensilsCrossed,
   X,
   type LucideIcon,
 } from "lucide-react";
+import { SERVICE_GROUPS, getAnyServicePage, serviceLabel } from "@/lib/specialist-services";
+import { useOpenStagger } from "@/lib/use-anime";
+import { getLatestPostSummaries } from "@/lib/blog-index";
+import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
+import klingAsset from "@/assets/kling-o1-800.webp.asset.json";
 import { BookCallButton } from "@/components/book-call-button";
 import logoAsset from "@/assets/pixel2tech-logo.png.asset.json";
 import logoDarkAsset from "@/assets/pixel2tech-logo-dark.png.asset.json";
@@ -43,7 +51,6 @@ import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { trackEvent } from "@/lib/analytics";
 import { openCookieSettings } from "@/lib/consent";
-import { INDUSTRIES } from "@/lib/industry-pages";
 import { PRIMARY_CTA_LABEL, SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
 
 // Modal code (and its booking form) is only fetched when a user opens it.
@@ -54,8 +61,12 @@ const BookingModal = lazyWithRetry(() =>
 type StaticTo =
   | "/"
   | "/about"
+  | "/our-people"
+  | "/reviews"
+  | "/trust-center"
   | "/careers"
   | "/press"
+  | "/pricing"
   | "/services"
   | "/for-agencies"
   | "/shopify-development-agency"
@@ -64,10 +75,16 @@ type StaticTo =
   | "/wedding-video-editing-services"
   | "/website-redesign-services"
   | "/superside-alternative"
+  | "/superside-vs-pixel2tech"
   | "/industries"
   | "/portfolio"
   | "/results"
   | "/blog"
+  | "/guides"
+  | "/playbooks"
+  | "/whats-new"
+  | "/help-center"
+  | "/llm-info"
   | "/resources/shopify-store-checklist"
   | "/contact";
 
@@ -85,7 +102,37 @@ type NavItem = {
   children?: readonly NavChild[];
   /** Two columns of sub-pages, with the group's other pages in a side rail. */
   wide?: boolean;
+  /** Full-width panel with the service families as columns (Services only). */
+  mega?: boolean;
+  /** Picture cards beside the links, like the latest articles next to Resources. */
+  feature?: { title: string; cards: MenuCard[] | "latest-posts" };
 };
+
+type MenuCard = { label: string; desc: string; to: StaticTo | `/services/${string}`; img: string };
+
+const ABOUT_CARDS: MenuCard[] = [
+  {
+    label: "Our creative team",
+    desc: "Meet the designers, developers and editors",
+    to: "/our-people",
+    img: officeStudioAsset.url,
+  },
+  {
+    label: "AI-powered creative",
+    desc: "AI images and video ads, checked by people",
+    to: "/services/ai-creative",
+    img: klingAsset.url,
+  },
+];
+
+function latestPostCards(): MenuCard[] {
+  return getLatestPostSummaries(2).map((p) => ({
+    label: p.title,
+    desc: p.tag,
+    to: `/blog/${p.slug}` as StaticTo,
+    img: p.img,
+  }));
+}
 
 const SERVICE_MENU: Record<(typeof SERVICES)[number], { icon: LucideIcon; description: string }> = {
   "Branding & Design": { icon: Palette, description: "Logo, color palette and brand guidelines" },
@@ -102,23 +149,59 @@ const SERVICE_MENU: Record<(typeof SERVICES)[number], { icon: LucideIcon; descri
   },
 };
 
-const INDUSTRY_MENU: Record<string, { icon: LucideIcon; description: string }> = {
-  "beauty-and-ecommerce": { icon: Sparkles, description: "Shopify, product creative and content" },
-  "professional-services": { icon: Briefcase, description: "Service websites and enquiry forms" },
-  healthcare: { icon: Stethoscope, description: "Medical websites and accessible forms" },
-  "food-and-hospitality": {
-    icon: UtensilsCrossed,
-    description: "Menus, brand identity and launch creative",
-  },
-  "home-and-local-services": { icon: House, description: "Service websites and local pages" },
-};
+/** Menu entry for any /services/<slug> page: core services use SERVICE_MENU, specialist pages their own copy. */
+function serviceMenuEntry(slug: string, label?: string): NavChild {
+  const found = getAnyServicePage(slug);
+  if (found?.kind === "core") {
+    const menu = SERVICE_MENU[found.page.title];
+    return { kind: "service", slug, label: serviceLabel(slug, label), ...menu };
+  }
+  return {
+    kind: "service",
+    slug,
+    label: serviceLabel(slug, label),
+    icon: found?.page.icon ?? LayoutGrid,
+    description: found?.kind === "specialist" ? found.page.menuDescription : "",
+  };
+}
 
-// Every page from the footer sits under the section it belongs to; Industries is its own group.
+/** Service families with their menu entries, shared by the mega menu, drawer and footer. */
+const SERVICE_MENU_GROUPS = SERVICE_GROUPS.map((g) => ({
+  ...g,
+  entries: g.items.map((i) => serviceMenuEntry(i.slug, i.label)),
+}));
+
+const SERVICE_RAIL: readonly NavChild[] = [
+  {
+    kind: "page",
+    label: "All services",
+    to: "/services",
+    icon: LayoutGrid,
+    description: "Every service on one page",
+  },
+  {
+    kind: "page",
+    label: "For agencies",
+    to: "/for-agencies",
+    icon: Handshake,
+    description: "White-label design, web and video",
+  },
+  {
+    kind: "page",
+    label: "Pricing",
+    to: "/pricing",
+    icon: Receipt,
+    description: "How we scope and quote a project",
+  },
+];
+
+// Every page from the footer sits under the section it belongs to.
 const NAV: readonly NavItem[] = [
   { label: "Home", to: "/" },
   {
     label: "About",
     to: "/about",
+    feature: { title: "Inside the studio", cards: ABOUT_CARDS },
     children: [
       {
         kind: "page",
@@ -129,6 +212,27 @@ const NAV: readonly NavItem[] = [
       },
       {
         kind: "page",
+        label: "Our people",
+        to: "/our-people",
+        icon: UserRound,
+        description: "The designers, developers and editors",
+      },
+      {
+        kind: "page",
+        label: "Reviews",
+        to: "/reviews",
+        icon: Star,
+        description: "Clients on working with us, on video",
+      },
+      {
+        kind: "page",
+        label: "Trust center",
+        to: "/trust-center",
+        icon: ShieldCheck,
+        description: "Ownership, data and how we work",
+      },
+      {
+        kind: "page",
         label: "Careers",
         to: "/careers",
         icon: UserPlus,
@@ -136,7 +240,7 @@ const NAV: readonly NavItem[] = [
       },
       {
         kind: "page",
-        label: "Press",
+        label: "Press and media kit",
         to: "/press",
         icon: Newspaper,
         description: "Studio overview and media contact",
@@ -146,49 +250,8 @@ const NAV: readonly NavItem[] = [
   {
     label: "Services",
     to: "/services",
-    wide: true,
-    children: [
-      {
-        kind: "page",
-        label: "All services",
-        to: "/services",
-        icon: LayoutGrid,
-        description: "See every service we offer",
-      },
-      ...SERVICES.map((title) => ({
-        kind: "service" as const,
-        label: title,
-        slug: serviceAnchor(title),
-        ...SERVICE_MENU[title],
-      })),
-      {
-        kind: "page",
-        label: "For agencies",
-        to: "/for-agencies",
-        icon: Handshake,
-        description: "White-label design, web and video",
-      },
-    ],
-  },
-  {
-    label: "Industries",
-    to: "/industries",
-    children: [
-      {
-        kind: "page",
-        label: "All industries",
-        to: "/industries",
-        icon: Building2,
-        description: "The businesses we design and build for",
-      },
-      ...INDUSTRIES.map((industry) => ({
-        kind: "industry" as const,
-        label: industry.title,
-        slug: industry.slug,
-        icon: INDUSTRY_MENU[industry.slug]?.icon ?? Building2,
-        description: INDUSTRY_MENU[industry.slug]?.description ?? industry.heading,
-      })),
-    ],
+    mega: true,
+    children: [...SERVICE_MENU_GROUPS.flatMap((g) => g.entries), ...SERVICE_RAIL],
   },
   {
     label: "Portfolio",
@@ -203,7 +266,7 @@ const NAV: readonly NavItem[] = [
       },
       {
         kind: "page",
-        label: "Project outcomes",
+        label: "Customer stories",
         to: "/results",
         icon: TrendingUp,
         description: "What changed after past projects",
@@ -211,15 +274,44 @@ const NAV: readonly NavItem[] = [
     ],
   },
   {
-    label: "Blog",
+    label: "Resources",
     to: "/blog",
+    feature: { title: "Latest articles", cards: "latest-posts" },
     children: [
       {
         kind: "page",
-        label: "All articles",
+        label: "Blog",
         to: "/blog",
         icon: BookOpen,
-        description: "Guides on Shopify, web, SEO, AI and branding",
+        description: "Every article, newest first",
+      },
+      {
+        kind: "page",
+        label: "Guides",
+        to: "/guides",
+        icon: Compass,
+        description: "Buyer guides grouped by topic",
+      },
+      {
+        kind: "page",
+        label: "Playbooks",
+        to: "/playbooks",
+        icon: ListChecks,
+        description: "Checklists, briefs and routines",
+      },
+      {
+        kind: "page",
+        label: "Industries",
+        to: "/industries",
+        icon: Building2,
+        description: "The businesses we design and build for",
+      },
+      {
+        kind: "page",
+        label: "Pricing",
+        to: "/pricing",
+        icon: Receipt,
+        description: "How we scope and quote a project",
       },
       {
         kind: "page",
@@ -227,6 +319,20 @@ const NAV: readonly NavItem[] = [
         to: "/resources/shopify-store-checklist",
         icon: ClipboardCheck,
         description: "See your store through a shopper's eyes",
+      },
+      {
+        kind: "page",
+        label: "What's new",
+        to: "/whats-new",
+        icon: Sparkle,
+        description: "New services, pages and articles",
+      },
+      {
+        kind: "page",
+        label: "Help center",
+        to: "/help-center",
+        icon: LifeBuoy,
+        description: "Answers about working with us",
       },
     ],
   },
@@ -317,6 +423,8 @@ function NavDropdown({
 }) {
   const open = openMenu === item.label;
   const ref = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useOpenStagger(panelRef, open);
   const menuId = useId();
   const lastPointer = useRef("");
   const children = item.children ?? [];
@@ -367,7 +475,7 @@ function NavDropdown({
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
         <span className="min-w-0">
-          <span className="block text-sm font-semibold text-foreground">{child.label}</span>
+          <span className="block text-sm font-medium text-foreground">{child.label}</span>
           <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
             {child.description}
           </span>
@@ -375,6 +483,153 @@ function NavDropdown({
       </ChildLink>
     );
   };
+
+  const compactChild = (child: NavChild) => {
+    const current = isActive(pathname, childPath(child));
+    const ChildIcon = child.icon;
+    return (
+      <ChildLink
+        child={child}
+        current={current}
+        className={`group/item flex items-start gap-3 rounded-xl p-2 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${
+          current ? "bg-muted" : ""
+        }`}
+      >
+        <ChildIcon
+          className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover/item:text-primary"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
+        <span className="min-w-0">
+          <span className="block text-sm font-medium text-foreground">{child.label}</span>
+          <span className="mt-1 block text-xs font-normal leading-snug text-muted-foreground">
+            {child.description}
+          </span>
+        </span>
+      </ChildLink>
+    );
+  };
+
+  const groupHeading = (g: (typeof SERVICE_MENU_GROUPS)[number]) => (
+    <Link
+      to="/services"
+      hash={g.anchor}
+      className="inline-flex min-h-10 items-center gap-1 rounded-full bg-primary/10 px-4 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      {g.title}
+      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+    </Link>
+  );
+
+  if (item.mega) {
+    // AI and marketing share the third column, as both lists are short.
+    const [creative, production, ...rest] = SERVICE_MENU_GROUPS;
+    const columns = [[creative!], [production!], rest];
+    return (
+      <div
+        ref={ref}
+        // Static, so the panel below positions against the sticky header and spans its width.
+        className="static"
+        onPointerEnter={(e) => {
+          if (e.pointerType === "mouse") show();
+        }}
+        onPointerLeave={(e) => {
+          if (e.pointerType === "mouse") hide();
+        }}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) hide();
+        }}
+      >
+        <div className="flex items-center gap-1">
+          <Link
+            to={item.to}
+            aria-current={pathname === item.to ? "page" : undefined}
+            className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
+          >
+            <span className={active ? "font-medium" : ""}>{item.label}</span>
+            {active && (
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-1 left-0 h-[2px] w-full bg-foreground"
+              />
+            )}
+          </Link>
+          <button
+            type="button"
+            onPointerDown={(e) => {
+              lastPointer.current = e.pointerType;
+            }}
+            onClick={() => {
+              if (lastPointer.current === "mouse" || !open) show();
+              else hide();
+              lastPointer.current = "";
+            }}
+            aria-expanded={open}
+            aria-controls={menuId}
+            aria-label={`More ${item.label} pages`}
+            className="inline-flex h-8 w-5 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <ChevronDown
+              className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        <div
+          id={menuId}
+          // The transparent top padding bridges the gap to the header edge, so hover holds.
+          className={`absolute inset-x-0 top-[calc(100%-1.25rem)] z-50 pt-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
+            open
+              ? "visible translate-y-0 opacity-100"
+              : "pointer-events-none invisible -translate-y-1 opacity-0"
+          }`}
+        >
+          <div className="border-b border-border bg-background shadow-[0_24px_60px_-20px_rgba(10,13,31,0.3)]">
+            <div
+              ref={panelRef}
+              className="mx-auto grid max-h-[calc(100dvh-6rem)] max-w-7xl grid-cols-[1fr_1fr_1fr_14rem] gap-6 overflow-y-auto px-10 py-8"
+            >
+              {columns.map((groups, i) => (
+                <div key={i} className="min-w-0 space-y-6">
+                  {groups.map((g) => (
+                    <div key={g.key}>
+                      {groupHeading(g)}
+                      <ul className="mt-3 grid gap-1">
+                        {g.entries.map((child) => (
+                          <li key={childPath(child)} data-stagger>
+                            {compactChild(child)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ))}
+              <div className="flex min-w-0 flex-col rounded-2xl bg-muted/50 p-2">
+                <ul className="grid gap-1">
+                  {SERVICE_RAIL.map((child) => (
+                    <li key={childPath(child)} data-stagger>
+                      {renderChild(child)}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto p-2">
+                  <p className="text-sm font-medium text-foreground">Not sure where to start?</p>
+                  <Link
+                    to="/contact"
+                    className="mt-1 inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    Talk to us <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -397,7 +652,7 @@ function NavDropdown({
           aria-current={pathname === item.to ? "page" : undefined}
           className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
         >
-          <span className={active ? "font-semibold" : ""}>{item.label}</span>
+          <span className={active ? "font-medium" : ""}>{item.label}</span>
           {active && (
             <span
               aria-hidden="true"
@@ -431,7 +686,7 @@ function NavDropdown({
       <div
         id={menuId}
         className={`absolute left-1/2 top-full z-50 origin-top -translate-x-1/2 pt-4 transition duration-200 ease-out motion-reduce:transition-none ${
-          item.wide ? "w-[58rem]" : "w-[22rem]"
+          item.wide ? "w-[58rem]" : item.feature ? "w-[46rem]" : "w-[22rem]"
         } ${
           open
             ? "visible translate-y-0 scale-100 opacity-100"
@@ -439,27 +694,41 @@ function NavDropdown({
         }`}
       >
         <div
+          ref={panelRef}
           className={`rounded-3xl border border-border bg-background p-2 shadow-[0_24px_60px_-20px_rgba(10,13,31,0.3)] ${
-            item.wide ? "flex gap-2" : ""
+            item.wide || item.feature ? "flex gap-2" : ""
           }`}
         >
-          <ul className={item.wide ? "grid flex-1 grid-cols-2 gap-1" : "grid gap-1"}>
+          <ul
+            className={
+              item.wide
+                ? "grid flex-1 grid-cols-2 gap-1"
+                : item.feature
+                  ? "grid w-72 shrink-0 content-start gap-1"
+                  : "grid gap-1"
+            }
+          >
             {listLinks.map((child) => (
-              <li key={childPath(child)}>{renderChild(child)}</li>
+              <li key={childPath(child)} data-stagger>
+                {renderChild(child)}
+              </li>
             ))}
           </ul>
+          {item.feature && <MenuFeature feature={item.feature} />}
           {item.wide && (
             <div className="flex w-64 shrink-0 flex-col rounded-2xl bg-muted/50 p-2">
               <ul className="grid gap-1">
                 {railLinks.map((child) => (
-                  <li key={childPath(child)}>{renderChild(child)}</li>
+                  <li key={childPath(child)} data-stagger>
+                    {renderChild(child)}
+                  </li>
                 ))}
               </ul>
               <div className="mt-auto p-2">
-                <p className="text-sm font-semibold text-foreground">Not sure where to start?</p>
+                <p className="text-sm font-medium text-foreground">Not sure where to start?</p>
                 <Link
                   to="/contact"
-                  className="mt-1 inline-flex min-h-11 items-center gap-1 rounded text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="mt-1 inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Talk to us <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
@@ -468,6 +737,44 @@ function NavDropdown({
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Picture cards in a dropdown, beside its links. */
+function MenuFeature({ feature }: { feature: NonNullable<NavItem["feature"]> }) {
+  const cards = feature.cards === "latest-posts" ? latestPostCards() : feature.cards;
+  return (
+    <div className="min-w-0 flex-1 border-l border-border p-3">
+      <p className="px-1 text-xs font-medium text-muted-foreground">{feature.title}</p>
+      <ul className="mt-3 grid grid-cols-2 gap-3">
+        {cards.map((card) => (
+          <li key={card.to} data-stagger className="min-w-0">
+            <Link
+              to={card.to as StaticTo}
+              className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="block aspect-[16/10] overflow-hidden rounded-xl bg-muted">
+                <MediaImage
+                  src={card.img}
+                  alt=""
+                  width={400}
+                  height={250}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </span>
+              <span className="mt-3 block text-sm font-medium leading-snug text-foreground group-hover:text-primary">
+                {card.label}
+              </span>
+              <span className="mt-1 block text-xs leading-snug text-muted-foreground">
+                {card.desc}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -543,7 +850,7 @@ export function SiteNav() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-8 text-sm font-medium text-foreground xl:flex"
+            className="hidden items-center gap-6 text-sm font-medium text-foreground xl:flex 2xl:gap-8"
           >
             {NAV.map((n) => {
               if (n.children) {
@@ -566,7 +873,7 @@ export function SiteNav() {
                   aria-current={active ? "page" : undefined}
                   className="relative whitespace-nowrap py-2 transition-colors hover:text-primary"
                 >
-                  <span className={active ? "font-semibold" : ""}>{n.label}</span>
+                  <span className={active ? "font-medium" : ""}>{n.label}</span>
                   {active && (
                     <span
                       aria-hidden="true"
@@ -583,7 +890,7 @@ export function SiteNav() {
             <button
               type="button"
               onClick={() => openBooking("header")}
-              className="hidden min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90 sm:inline-flex"
+              className="hidden min-h-11 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-5 text-sm font-medium text-background transition hover:opacity-90 sm:inline-flex"
             >
               <span className="2xl:hidden">Book a call</span>
               <span className="hidden 2xl:inline">{PRIMARY_CTA_LABEL}</span>
@@ -635,7 +942,7 @@ export function SiteNav() {
         }`}
       >
         <div className="flex items-center justify-between px-6 pb-2 pt-5">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Menu
           </span>
           <button
@@ -675,7 +982,7 @@ export function SiteNav() {
                     <Link
                       to={n.to}
                       aria-current={active ? "page" : undefined}
-                      className={`flex min-h-14 flex-1 items-center text-lg font-semibold tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                      className={`flex min-h-14 flex-1 items-center text-lg font-medium tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                         groupActive ? "text-foreground" : "text-foreground/80"
                       }`}
                     >
@@ -705,10 +1012,23 @@ export function SiteNav() {
                     }`}
                   >
                     <ul className="ml-4 flex flex-col gap-1 overflow-hidden border-l border-border pl-3">
-                      {subLinks(n).map((c) => {
+                      {subLinks(n).map((c, ci) => {
                         const current = isActive(pathname, childPath(c));
+                        // In the services list, a family name heads the first entry of each family.
+                        const family = n.mega
+                          ? SERVICE_MENU_GROUPS.find(
+                              (g) => g.entries[0] && childPath(g.entries[0]) === childPath(c),
+                            )
+                          : undefined;
+                        const railStart =
+                          n.mega && c.kind === "page" && subLinks(n)[ci - 1]?.kind !== "page";
                         return (
                           <li key={childPath(c)}>
+                            {(family || railStart) && (
+                              <p className="px-3 pb-1 pt-4 text-xs font-medium text-muted-foreground">
+                                {family ? family.title : "More"}
+                              </p>
+                            )}
                             <ChildLink
                               child={c}
                               current={current}
@@ -746,7 +1066,7 @@ export function SiteNav() {
                 to={n.to}
                 aria-current={active ? "page" : undefined}
                 style={motion}
-                className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-lg font-semibold tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                className={`flex min-h-14 items-center justify-between rounded-2xl px-4 text-lg font-medium tracking-tight transition-[opacity,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                   open ? "opacity-100" : "opacity-0"
                 } ${active ? "bg-muted text-foreground" : "text-foreground/80 active:bg-muted/60"}`}
               >
@@ -764,7 +1084,7 @@ export function SiteNav() {
               setOpen(false);
               openBooking("mobile_menu");
             }}
-            className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-semibold text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-foreground px-6 text-base font-medium text-background transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {PRIMARY_CTA_LABEL}
           </button>
@@ -788,27 +1108,52 @@ export function SiteNav() {
   );
 }
 
-const COMPANY_LINKS = [
-  { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
-  { label: "Industries", to: "/industries" },
-  { label: "Careers", to: "/careers" },
-  { label: "Press", to: "/press" },
-  { label: "Contact", to: "/contact" },
-] as const;
-const WORK_LINKS = [
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Project outcomes", to: "/results" },
-  { label: "For agencies", to: "/for-agencies" },
-  { label: "Shopify development agency", to: "/shopify-development-agency" },
-  { label: "White label web development", to: "/white-label-web-development" },
-  { label: "Outsource video editing", to: "/outsource-video-editing" },
-  { label: "Wedding video editing", to: "/wedding-video-editing-services" },
-  { label: "Website redesign services", to: "/website-redesign-services" },
-  { label: "Superside alternative", to: "/superside-alternative" },
-  { label: "Blog", to: "/blog" },
-  { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
-] as const;
+type FooterLink = { label: string; to: StaticTo };
+
+/** The three navigation columns beside the services in the footer. */
+const FOOTER_NAV: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Main",
+    links: [
+      { label: "Our work", to: "/portfolio" },
+      { label: "Our people", to: "/our-people" },
+      { label: "About us", to: "/about" },
+      { label: "Pricing", to: "/pricing" },
+      { label: "Reviews", to: "/reviews" },
+      { label: "Trust center", to: "/trust-center" },
+      { label: "Industries", to: "/industries" },
+      { label: "Careers", to: "/careers" },
+      { label: "Superside vs. alternatives", to: "/superside-alternative" },
+      { label: "Superside vs. Pixel2Tech", to: "/superside-vs-pixel2tech" },
+      { label: "Media kit", to: "/press" },
+      { label: "LLM info", to: "/llm-info" },
+      { label: "Contact", to: "/contact" },
+    ],
+  },
+  {
+    title: "Learn",
+    links: [
+      { label: "Blog", to: "/blog" },
+      { label: "Guides", to: "/guides" },
+      { label: "Playbooks", to: "/playbooks" },
+      { label: "Customer stories", to: "/results" },
+      { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
+      { label: "What's new", to: "/whats-new" },
+      { label: "Help center", to: "/help-center" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { label: "For agencies", to: "/for-agencies" },
+      { label: "Shopify development agency", to: "/shopify-development-agency" },
+      { label: "White label web development", to: "/white-label-web-development" },
+      { label: "Outsource video editing", to: "/outsource-video-editing" },
+      { label: "Wedding video editing", to: "/wedding-video-editing-services" },
+      { label: "Website redesign services", to: "/website-redesign-services" },
+    ],
+  },
+];
 
 const FOOTER_SOCIALS = [
   "Facebook",
@@ -825,12 +1170,13 @@ const FOOTER_SOCIALS = [
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const linkCls =
-    "inline-flex min-h-11 items-center py-2 text-muted-foreground transition-colors hover:text-foreground";
+    "inline-flex min-h-10 items-center py-1 text-muted-foreground transition-colors hover:text-foreground";
   const hours = SITE.hours
     .filter((h) => h.time !== "Closed")
     .map(
       (h) =>
-        `${h.days.replace("Monday – Friday", "Mon–Fri").replace("Saturday", "Sat")}: ${h.time}`,
+        // Spelled out without dashes, the house style for site copy.
+        `${h.days.replace(" – ", " to ")}, ${h.time.replace(" – ", " to ")}`,
     );
   const contacts: {
     label: string;
@@ -855,96 +1201,90 @@ export function SiteFooter() {
     // The footer always uses the dark palette, whatever the site theme.
     <footer className="dark relative overflow-hidden bg-background text-foreground [color-scheme:dark]">
       <div className="mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-24">
-        {/* Call to action + contact, one card */}
+        {/* Call to action on the left, direct ways to reach us on the right */}
         <section
           aria-labelledby="footer-cta-title"
-          className="relative isolate overflow-hidden rounded-[2rem] border border-border bg-card"
+          className="grid gap-10 border-b border-border pb-12 lg:grid-cols-12 lg:gap-16 lg:pb-16"
         >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-24 -top-32 -z-10 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
-          />
-          <div className="grid lg:grid-cols-[1.35fr_1fr]">
-            <div className="p-8 sm:p-12 lg:p-14">
-              <p className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground">
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-                Replies within one business day
-              </p>
-              <h2
-                id="footer-cta-title"
-                className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+          <div className="min-w-0 lg:col-span-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
+              Replies within one business day
+            </p>
+            <h2
+              id="footer-cta-title"
+              className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            >
+              Have a project in mind? <span className="text-primary">Let&apos;s talk.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+              Tell us what you&apos;re building. We&apos;ll come back with questions, a plan and a
+              fixed quote.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <BookCallButton
+                source="footer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              />
+              <Link
+                to="/contact"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-8 text-sm font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-foreground/5"
               >
-                Have a project in mind? <span className="text-primary">Let&apos;s talk.</span>
-              </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
-                Tell us what you&apos;re building. We&apos;ll come back with questions, a plan and a
-                fixed quote.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <BookCallButton
-                  source="footer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-                />
-                <Link
-                  to="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-8 text-sm font-semibold text-foreground transition hover:border-foreground/40 hover:bg-foreground/5"
-                >
-                  Send a project brief
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="border-t border-border bg-background/40 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-14">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Get in touch
-              </p>
-              <ul className="mt-2 divide-y divide-border">
-                {contacts.map(({ label, value, href, track, external }) => {
-                  const body = (
-                    <>
-                      <span className="min-w-0">
-                        <span className="block text-xs text-muted-foreground">{label}</span>
-                        <span className="mt-1 block whitespace-pre-line break-words text-base font-semibold text-foreground sm:text-lg">
-                          {value}
-                        </span>
-                      </span>
-                      {href ? (
-                        <span
-                          aria-hidden="true"
-                          className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-foreground transition group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"
-                        >
-                          <ArrowUpRight className="h-4 w-4" />
-                        </span>
-                      ) : null}
-                    </>
-                  );
-                  return (
-                    <li key={label}>
-                      {href ? (
-                        <a
-                          href={href}
-                          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          onClick={() => track && trackEvent(track, { location: "footer" })}
-                          className="group flex items-center justify-between gap-4 py-5"
-                        >
-                          {body}
-                        </a>
-                      ) : (
-                        <div className="flex items-center justify-between gap-4 py-5">{body}</div>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+                Send a project brief
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
+
+          <ul
+            aria-label="Get in touch"
+            className="grid gap-px self-end overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:col-span-5"
+          >
+            {contacts.map(({ label, value, href, track, external }, i) => {
+              const body = (
+                <>
+                  <span className="block text-xs text-muted-foreground">{label}</span>
+                  <span className="mt-2 flex items-start justify-between gap-3">
+                    <span className="min-w-0 whitespace-pre-line text-base font-medium text-foreground">
+                      {value}
+                    </span>
+                    {href ? (
+                      <ArrowUpRight
+                        className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                  </span>
+                </>
+              );
+              return (
+                // Email and hours are the long values, so they take a full row.
+                <li
+                  key={label}
+                  className={`min-w-0 bg-card ${i === 0 || i === contacts.length - 1 ? "sm:col-span-2" : ""}`}
+                >
+                  {href ? (
+                    <a
+                      href={href}
+                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      onClick={() => track && trackEvent(track, { location: "footer" })}
+                      className="group block h-full p-6 transition-colors hover:bg-background/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <div className="h-full p-6">{body}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </section>
 
-        {/* Link columns */}
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:gap-x-8 lg:grid-cols-[1.1fr_0.65fr_0.9fr_1.5fr] lg:gap-8">
-          <div className="col-span-2 lg:col-span-1">
-            <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
+        {/* Brand line and social profiles */}
+        <div className="flex flex-col gap-6 border-b border-border py-10 md:flex-row md:items-center md:justify-between">
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <Link to="/" aria-label="Pixel2Tech home" className="inline-block shrink-0">
               <MediaImage
                 loading="lazy"
                 decoding="async"
@@ -955,86 +1295,88 @@ export function SiteFooter() {
                 className="h-10 w-auto"
               />
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
               {SITE.positioning}. Based in Lahore, Pakistan.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(
-                ({ name, href, Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Pixel2Tech on ${name}`}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    <Icon className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                ),
-              )}
-            </div>
           </div>
+          <div className="flex flex-wrap gap-2">
+            {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(
+              ({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Pixel2Tech on ${name}`}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                </a>
+              ),
+            )}
+          </div>
+        </div>
 
-          <nav aria-labelledby="footer-quick-links" className="min-w-0">
-            <p
-              id="footer-quick-links"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground"
-            >
-              Company
-            </p>
-            <ul className="mt-4 text-sm">
-              {COMPANY_LINKS.map((q) => (
-                <li key={q.to}>
-                  <Link to={q.to} className={linkCls}>
-                    {q.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-labelledby="footer-work-links" className="min-w-0">
-            <p
-              id="footer-work-links"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground"
-            >
-              Work &amp; resources
-            </p>
-            <ul className="mt-4 text-sm">
-              {WORK_LINKS.map((q) => (
-                <li key={q.to}>
-                  <Link to={q.to} className={linkCls}>
-                    {q.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <nav aria-labelledby="footer-services" className="col-span-2 min-w-0 lg:col-span-1">
-            <p
-              id="footer-services"
-              className="text-xs font-semibold uppercase tracking-widest text-foreground"
-            >
+        {/* Every service and page, grouped the way the menu groups them */}
+        {/* Services and navigation share one 3-column grid, so their columns line up */}
+        <div className="grid gap-12 py-12">
+          <nav aria-labelledby="footer-services" className="min-w-0">
+            <h2 id="footer-services" className="text-lg font-medium text-foreground">
               Services
-            </p>
-            <ul className="mt-4 grid grid-cols-2 gap-x-4 text-sm">
-              {SERVICES.map((title) => (
-                <li key={title}>
-                  <Link
-                    to="/services/$slug"
-                    params={{ slug: serviceAnchor(title) }}
-                    className={`${linkCls} group gap-1`}
-                  >
-                    {title}
-                    <ArrowUpRight
-                      className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
+            </h2>
+            <div className="mt-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {[
+                [SERVICE_MENU_GROUPS[0]!],
+                [SERVICE_MENU_GROUPS[1]!],
+                SERVICE_MENU_GROUPS.slice(2),
+              ].map((groups, i) => (
+                <div key={i} className="min-w-0 space-y-8">
+                  {groups.map((g) => (
+                    <div key={g.key}>
+                      <Link
+                        to="/services"
+                        hash={g.anchor}
+                        className="group inline-flex items-center gap-1 text-base font-medium text-foreground transition-colors hover:text-primary"
+                      >
+                        {g.title}
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                      <ul className="mt-3 text-sm">
+                        {g.entries.map((entry) => (
+                          <li key={childPath(entry)}>
+                            <ChildLink child={entry} current={false} className={linkCls}>
+                              {entry.label}
+                            </ChildLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               ))}
-            </ul>
+            </div>
+          </nav>
+
+          <nav aria-labelledby="footer-navigation" className="min-w-0 border-t border-border pt-12">
+            <h2 id="footer-navigation" className="text-lg font-medium text-foreground">
+              Navigation
+            </h2>
+            <div className="mt-6 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {FOOTER_NAV.map((col) => (
+                <div key={col.title} className="min-w-0">
+                  <h3 className="text-base font-medium text-foreground">{col.title}</h3>
+                  <ul className="mt-3 text-sm">
+                    {col.links.map((l) => (
+                      <li key={l.to}>
+                        <Link to={l.to} className={linkCls}>
+                          {l.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </nav>
         </div>
 
@@ -1114,7 +1456,7 @@ function WhatsAppButton() {
       // z-30 keeps it under the header, the mobile menu and modals.
       className="group fixed bottom-4 right-4 z-30 flex h-14 items-center gap-2 overflow-hidden rounded-full bg-[#25D366] pl-4 pr-4 text-white shadow-xl transition-all duration-300 hover:pr-5 sm:bottom-6 sm:right-6"
     >
-      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-300 group-hover:max-w-[160px] group-hover:pr-1 group-hover:opacity-100">
+      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-all duration-300 group-hover:max-w-[160px] group-hover:pr-1 group-hover:opacity-100">
         WhatsApp us
       </span>
       <svg viewBox="0 0 32 32" className="h-7 w-7 shrink-0" fill="currentColor" aria-hidden="true">
@@ -1156,11 +1498,11 @@ export function PageHeader({
       <div className="mx-auto max-w-7xl px-5 text-center sm:px-8">
         <FadeIn>
           {eyebrow && (
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               {eyebrow}
             </div>
           )}
-          <h1 className="mt-3 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
+          <h1 className="mt-3 text-3xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[52px]">
             {title} {highlight && <span className="text-primary">{highlight}</span>}
           </h1>
           {subtitle && (

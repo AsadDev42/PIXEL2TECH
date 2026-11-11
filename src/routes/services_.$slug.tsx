@@ -34,14 +34,22 @@ import {
   PRICING_POINTS,
   SERVICE_PAGES,
   SERVICE_PROCESS,
-  getServicePage,
   type AudienceKey,
-  type ServicePage,
+  type ServicePageCopy,
   type ServiceTitle,
 } from "@/lib/service-pages";
+import {
+  SPECIALIST_PAGES,
+  getAnyServicePage,
+  groupOf,
+  serviceLabel,
+  type SpecialistServiceCopy,
+} from "@/lib/specialist-services";
 import { SITE } from "@/lib/site-config";
 import { ServiceVisual } from "@/components/service-visual";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
+import { usePageEntrance } from "@/lib/use-anime";
+import { useRef } from "react";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
@@ -49,8 +57,58 @@ const SERVICES_URL = `${SITE.url}/services`;
 
 warnOnUnknownSlugs(
   "service-pages",
-  SERVICE_PAGES.flatMap((p) => p.work.map((w) => w.slug)),
+  [...SERVICE_PAGES, ...SPECIALIST_PAGES].flatMap((p) => p.work.map((w) => w.slug)),
 );
+
+/** What the template needs from a core or a specialist service page. */
+type ServiceView = ServicePageCopy & {
+  slug: string;
+  title: string;
+  icon: LucideIcon;
+  bestFor: string;
+  /** Core service whose visual and presentation this page uses. */
+  parent: ServiceTitle;
+  core: boolean;
+  firstPhase: SpecialistServiceCopy["firstPhase"];
+};
+
+const CORE_FIRST_PHASE: Record<"search" | "platform", ServiceView["firstPhase"]> = {
+  search: {
+    heading: "Start with the pages that matter.",
+    body: "Share your website, priority services and any existing Search Console or analytics findings. We can discuss a focused review, a prioritised action list and which fixes belong in the agreed scope.",
+    inputs: [
+      "Website URL and priority pages",
+      "Audience, services and target markets",
+      "Existing evidence and previous changes",
+    ],
+  },
+  platform: {
+    heading: "Start with one complete workflow.",
+    body: "Share who will use the platform, the task they need to complete and the tools or data involved. We can define the first user journey, permissions, prototype and acceptance checks before a broader build.",
+    inputs: [
+      "User roles and one important task",
+      "Current tools, data and handovers",
+      "Constraints and a clear approval owner",
+    ],
+  },
+};
+
+function getServiceView(slug: string): ServiceView | undefined {
+  const found = getAnyServicePage(slug);
+  if (!found) return undefined;
+  if (found.kind === "core") {
+    const page = found.page;
+    return {
+      ...page,
+      icon: SERVICE_ICONS[page.title],
+      bestFor: SERVICE_PRESENTATION[page.title].bestFor,
+      parent: page.title,
+      core: true,
+      firstPhase: CORE_FIRST_PHASE[page.title === "SEO & Search Growth" ? "search" : "platform"],
+    };
+  }
+  return { ...found.page, core: false };
+}
 
 /** Same icons as the service cards on /services. */
 const SERVICE_ICONS: Record<ServiceTitle, LucideIcon> = {
@@ -75,26 +133,33 @@ const AUDIENCE_ICONS: Record<AudienceKey, LucideIcon> = {
 const PROCESS_ICONS: LucideIcon[] = [MessagesSquare, FileText, Hammer, Rocket];
 const PRICING_ICONS: LucideIcon[] = [MessagesSquare, FileText, FilePen, Receipt];
 
-function pageUrl(page: ServicePage) {
+function pageUrl(page: ServiceView) {
   return `${SERVICES_URL}/${page.slug}`;
 }
 
 export const Route = createFileRoute("/services_/$slug")({
   loader: ({ params }) => {
-    const page = getServicePage(params.slug);
+    const page = getServiceView(params.slug);
     // An unknown slug is a real 404, not a redirect to /services (a soft 404).
     if (!page) throw notFound();
     // Only the slug crosses to the client; the copy is bundled with the route.
     return { slug: page.slug };
   },
   head: ({ loaderData }) => {
-    const page = loaderData ? getServicePage(loaderData.slug) : undefined;
+    const page = loaderData ? getServiceView(loaderData.slug) : undefined;
     if (!page) {
       return {
         meta: [{ title: "Service not found | Pixel2Tech" }, { name: "robots", content: "noindex" }],
       };
     }
     const url = pageUrl(page);
+    const group = groupOf(page.slug);
+    const crumbs = [
+      { name: "Home", item: `${SITE.url}/` },
+      { name: "Services", item: SERVICES_URL },
+      ...(group ? [{ name: group.title, item: `${SERVICES_URL}#${group.anchor}` }] : []),
+      { name: page.title, item: url },
+    ];
     return {
       meta: [
         { title: page.metaTitle },
@@ -135,11 +200,12 @@ export const Route = createFileRoute("/services_/$slug")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
-              { "@type": "ListItem", position: 2, name: "Services", item: SERVICES_URL },
-              { "@type": "ListItem", position: 3, name: page.title, item: url },
-            ],
+            itemListElement: crumbs.map((c, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: c.name,
+              item: c.item,
+            })),
           }),
         },
         faqJsonLd(page.faqs),
@@ -151,10 +217,10 @@ export const Route = createFileRoute("/services_/$slug")({
     <PageShell>
       <section className="bg-background py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 text-center md:px-10">
-          <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
             Error 404
           </p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             Service not found
           </h1>
           <p className="mt-4 text-[15px] text-muted-foreground">
@@ -163,7 +229,7 @@ export const Route = createFileRoute("/services_/$slug")({
           </p>
           <Link
             to="/services"
-            className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90"
+            className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:opacity-90"
           >
             See all services
           </Link>
@@ -175,9 +241,9 @@ export const Route = createFileRoute("/services_/$slug")({
 
 /* -------------------------------------------------------------------------- */
 
-const EYEBROW = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground";
+const EYEBROW = "text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground";
 const H2 =
-  "text-3xl font-bold leading-tight tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl";
+  "text-3xl font-semibold leading-tight tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl";
 const LEAD = "mt-4 text-base leading-relaxed text-muted-foreground";
 const BODY = "text-[15px] leading-relaxed text-muted-foreground";
 const FOCUS_RING =
@@ -187,15 +253,25 @@ const SECTION = "scroll-mt-32 py-16 md:py-24";
 
 function ServiceLandingPage() {
   const { slug } = Route.useLoaderData();
-  const page = getServicePage(slug);
+  const rootRef = useRef<HTMLDivElement>(null);
+  usePageEntrance(rootRef);
+  const page = getServiceView(slug);
   if (!page) return null;
 
-  const Icon = SERVICE_ICONS[page.title];
+  const Icon = page.icon;
   const work = page.work.flatMap((w) => {
     const item = getItemBySlug(w.slug);
     return item ? [{ ...w, item }] : [];
   });
-  const otherServices = SERVICE_PAGES.filter((p) => p.slug !== page.slug);
+  const group = groupOf(page.slug);
+  // Related services from the same family first, so the next click stays on topic.
+  const otherServices = (group?.items ?? [])
+    .filter((i) => i.slug !== page.slug)
+    .map((i) => {
+      const view = getServiceView(i.slug);
+      return view ? { slug: i.slug, title: serviceLabel(i.slug, i.label), icon: view.icon } : null;
+    })
+    .filter((s): s is { slug: string; title: string; icon: LucideIcon } => s !== null);
   const id = (name: string) => `svc-${name}`;
   const sections = [
     { id: id("deliverables"), label: "What you get" },
@@ -210,7 +286,7 @@ function ServiceLandingPage() {
     <PageShell>
       {/* Hero */}
       <section aria-labelledby={id("title")} className="bg-background pb-12 pt-8 md:pb-16 md:pt-12">
-        <div className={CONTAINER}>
+        <div ref={rootRef} className={CONTAINER}>
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
               <li>
@@ -235,6 +311,22 @@ function ServiceLandingPage() {
               <li aria-hidden="true">
                 <ChevronRight className="h-4 w-4" />
               </li>
+              {group && (
+                <>
+                  <li>
+                    <Link
+                      to="/services"
+                      hash={group.anchor}
+                      className={`inline-flex min-h-10 items-center rounded hover:text-foreground ${FOCUS_RING}`}
+                    >
+                      {group.title}
+                    </Link>
+                  </li>
+                  <li aria-hidden="true">
+                    <ChevronRight className="h-4 w-4" />
+                  </li>
+                </>
+              )}
               <li aria-current="page" className="font-medium text-foreground">
                 {page.title}
               </li>
@@ -242,8 +334,8 @@ function ServiceLandingPage() {
           </nav>
 
           <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-16">
-            <div className="min-w-0 lg:col-span-7">
-              <p className="inline-flex items-center gap-2 rounded-full bg-primary/10 py-1 pl-1 pr-4 text-sm font-semibold text-primary">
+            <div data-enter className="min-w-0 lg:col-span-7">
+              <p className="inline-flex items-center gap-2 rounded-full bg-primary/10 py-1 pl-1 pr-4 text-sm font-medium text-primary">
                 <span
                   aria-hidden="true"
                   className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground"
@@ -254,7 +346,7 @@ function ServiceLandingPage() {
               </p>
               <h1
                 id={id("title")}
-                className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
+                className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
                 {page.h1} <span className="text-primary">{page.h1Highlight}</span>
               </h1>
@@ -264,11 +356,11 @@ function ServiceLandingPage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <BookCallButton
                   source={`service_${page.slug}_hero`}
-                  className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`}
+                  className={`inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:opacity-90 ${FOCUS_RING}`}
                 />
                 <Link
                   to="/contact"
-                  className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`}
+                  className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm font-medium text-foreground transition hover:bg-muted ${FOCUS_RING}`}
                 >
                   Send a project brief
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -276,8 +368,8 @@ function ServiceLandingPage() {
               </div>
               <div className="mt-8 border-t border-border pt-6">
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-semibold text-foreground">A good fit for: </span>
-                  {SERVICE_PRESENTATION[page.title].bestFor}
+                  <span className="font-medium text-foreground">A good fit for: </span>
+                  {page.bestFor}
                 </p>
                 <ul aria-label="Typical tools and formats" className="mt-3 flex flex-wrap gap-2">
                   {page.tags.map((tag) => (
@@ -289,8 +381,42 @@ function ServiceLandingPage() {
               </div>
             </div>
 
-            <div className="min-w-0 lg:col-span-5">
-              <ServiceVisual title={page.title} priority />
+            <div data-enter className="min-w-0 lg:col-span-5">
+              {page.core || work.length === 0 ? (
+                <ServiceVisual title={page.parent} priority />
+              ) : (
+                <figure className="overflow-hidden rounded-2xl border border-border bg-background">
+                  <Link
+                    to="/portfolio/$slug"
+                    params={{ slug: work[0]!.item.slug }}
+                    aria-label={`See the ${work[0]!.item.title} project`}
+                    className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                      <MediaImage
+                        src={work[0]!.item.img}
+                        srcSet={imageSrcSet(work[0]!.item.img)}
+                        sizes="(min-width: 1024px) 480px, 100vw"
+                        alt={`${work[0]!.item.title} project preview`}
+                        width={960}
+                        height={600}
+                        loading="eager"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full border border-border bg-background/95 text-foreground shadow-sm"
+                      >
+                        <ArrowUpRight size={17} />
+                      </span>
+                    </div>
+                  </Link>
+                  <figcaption className="border-t border-border px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                    From our portfolio · {work[0]!.item.title}
+                  </figcaption>
+                </figure>
+              )}
             </div>
           </div>
         </div>
@@ -337,13 +463,12 @@ function ServiceLandingPage() {
           <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
             {page.deliverables.map((d, i) => (
               <li key={d.title} className="min-w-0 border-t border-border pb-8 pt-6">
-                <span
-                  aria-hidden="true"
-                  className="text-sm font-semibold tabular-nums text-primary"
-                >
+                <span aria-hidden="true" className="text-sm font-medium tabular-nums text-primary">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-3 text-xl font-bold leading-snug tracking-tight">{d.title}</h3>
+                <h3 className="mt-3 text-xl font-semibold leading-snug tracking-tight">
+                  {d.title}
+                </h3>
                 <p className={`mt-2 ${BODY}`}>{d.desc}</p>
               </li>
             ))}
@@ -367,7 +492,7 @@ function ServiceLandingPage() {
             </div>
             <Link
               to="/portfolio"
-              className={`inline-flex min-h-11 items-center gap-2 self-start rounded-full text-sm font-semibold text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary sm:self-auto ${FOCUS_RING}`}
+              className={`inline-flex min-h-11 items-center gap-2 self-start rounded-full text-sm font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary sm:self-auto ${FOCUS_RING}`}
             >
               See the full portfolio
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -420,12 +545,12 @@ function ServiceLandingPage() {
                           {item.whiteLabel ? " · Agency partner work" : ""}
                         </p>
                         <h3
-                          className={`mt-2 font-bold leading-snug tracking-tight ${feature ? "text-2xl" : "text-lg"}`}
+                          className={`mt-2 font-semibold leading-snug tracking-tight ${feature ? "text-2xl" : "text-lg"}`}
                         >
                           {item.title}
                         </h3>
                         <p className={`mt-2 flex-1 ${BODY}`}>{note}</p>
-                        <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                        <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground">
                           Read the case study
                           <ArrowRight
                             className="h-4 w-4 transition group-hover:translate-x-1"
@@ -442,32 +567,13 @@ function ServiceLandingPage() {
             <div className="mt-8 grid gap-6 rounded-3xl border border-border bg-background p-6 sm:p-8 md:grid-cols-[1.4fr_1fr]">
               <div>
                 <p className={EYEBROW}>Shape the first phase</p>
-                <h3 className="mt-3 text-2xl font-semibold">
-                  {page.title === "SEO & Search Growth"
-                    ? "Start with the pages that matter."
-                    : "Start with one complete workflow."}
-                </h3>
-                <p className={`mt-4 ${BODY}`}>
-                  {page.title === "SEO & Search Growth"
-                    ? "Share your website, priority services and any existing Search Console or analytics findings. We can discuss a focused review, a prioritised action list and which fixes belong in the agreed scope."
-                    : "Share who will use the platform, the task they need to complete and the tools or data involved. We can define the first user journey, permissions, prototype and acceptance checks before a broader build."}
-                </p>
+                <h3 className="mt-3 text-2xl font-medium">{page.firstPhase.heading}</h3>
+                <p className={`mt-4 ${BODY}`}>{page.firstPhase.body}</p>
               </div>
               <div className="rounded-2xl bg-muted/50 p-5">
-                <p className="text-sm font-semibold">Useful inputs for the brief</p>
+                <p className="text-sm font-medium">Useful inputs for the brief</p>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  {(page.title === "SEO & Search Growth"
-                    ? [
-                        "Website URL and priority pages",
-                        "Audience, services and target markets",
-                        "Existing evidence and previous changes",
-                      ]
-                    : [
-                        "User roles and one important task",
-                        "Current tools, data and handovers",
-                        "Constraints and a clear approval owner",
-                      ]
-                  ).map((item) => (
+                  {page.firstPhase.inputs.map((item) => (
                     <li key={item} className="flex gap-2">
                       <Check size={16} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
                       {item}
@@ -476,7 +582,7 @@ function ServiceLandingPage() {
                 </ul>
                 <Link
                   to="/contact"
-                  className={`mt-5 inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold text-primary ${FOCUS_RING}`}
+                  className={`mt-5 inline-flex min-h-11 items-center gap-2 rounded text-sm font-medium text-primary ${FOCUS_RING}`}
                 >
                   Send your project context <ArrowRight size={16} aria-hidden="true" />
                 </Link>
@@ -494,12 +600,12 @@ function ServiceLandingPage() {
       >
         <div className={CONTAINER}>
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">
               Who it&apos;s for
             </p>
             <h2
               id={id("audience-title")}
-              className="mt-4 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
+              className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
             >
               Situations this service fits
             </h2>
@@ -518,10 +624,8 @@ function ServiceLandingPage() {
                     strokeWidth={1.75}
                     aria-hidden="true"
                   />
-                  <h3 className="mt-6 text-sm font-semibold text-sky-300">
-                    {AUDIENCE_LABELS[key]}
-                  </h3>
-                  <p className="mt-3 text-lg font-medium leading-snug text-white">
+                  <h3 className="mt-6 text-sm font-medium text-sky-300">{AUDIENCE_LABELS[key]}</h3>
+                  <p className="mt-3 text-lg font-normal leading-snug text-white">
                     {page.audiences[key]}
                   </p>
                 </li>
@@ -552,7 +656,7 @@ function ServiceLandingPage() {
                   >
                     <StepIcon className="h-5 w-5" strokeWidth={1.75} />
                   </span>
-                  <h3 className="text-lg font-bold leading-snug">
+                  <h3 className="text-lg font-semibold leading-snug">
                     <span className="sr-only">Step {i + 1}: </span>
                     {step.title}
                   </h3>
@@ -592,7 +696,7 @@ function ServiceLandingPage() {
                       <PointIcon className="h-5 w-5" strokeWidth={1.75} />
                     </span>
                     <div className="min-w-0">
-                      <h3 className="font-bold leading-snug">{point.title}</h3>
+                      <h3 className="font-semibold leading-snug">{point.title}</h3>
                       <p className={`mt-1 ${BODY}`}>{point.desc}</p>
                     </div>
                   </li>
@@ -601,7 +705,7 @@ function ServiceLandingPage() {
             </ul>
           </div>
           <div className="min-w-0 rounded-3xl border border-border bg-background p-6 sm:p-8 lg:col-span-5 lg:self-start">
-            <h3 className="text-xl font-bold leading-snug tracking-tight">
+            <h3 className="text-xl font-semibold leading-snug tracking-tight">
               What affects your quote
             </h3>
             <ul className="mt-6 space-y-4">
@@ -620,7 +724,7 @@ function ServiceLandingPage() {
               Payment terms, revisions and ownership are covered in our{" "}
               <Link
                 to="/terms-and-conditions"
-                className="font-semibold text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary"
+                className="font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary"
               >
                 terms and conditions
               </Link>
@@ -643,7 +747,7 @@ function ServiceLandingPage() {
             aria-labelledby={id("articles")}
             className="min-w-0 lg:sticky lg:top-40 lg:col-span-4 lg:self-start"
           >
-            <h2 id={id("articles")} className="text-xl font-bold tracking-tight">
+            <h2 id={id("articles")} className="text-xl font-semibold tracking-tight">
               Further reading
             </h2>
             <ul className="mt-4 divide-y divide-border border-y border-border">
@@ -655,7 +759,7 @@ function ServiceLandingPage() {
                     className={`group flex items-start justify-between gap-4 py-4 ${FOCUS_RING}`}
                   >
                     <span className="min-w-0">
-                      <span className="block font-semibold leading-snug group-hover:text-primary">
+                      <span className="block font-medium leading-snug group-hover:text-primary">
                         {a.title}
                       </span>
                       <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
@@ -685,18 +789,30 @@ function ServiceLandingPage() {
           />
 
           <nav aria-labelledby={id("other")} className="mt-12 sm:mt-16">
-            <h2 id={id("other")} className="text-2xl font-bold tracking-tight text-foreground">
-              Other services
-            </h2>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <h2
+                id={id("other")}
+                className="text-2xl font-semibold tracking-tight text-foreground"
+              >
+                {group ? `More ${group.title.toLowerCase()}` : "Other services"}
+              </h2>
+              <Link
+                to="/services"
+                className={`inline-flex min-h-11 items-center gap-2 self-start rounded text-sm font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary sm:self-auto ${FOCUS_RING}`}
+              >
+                See all services
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {otherServices.map((s) => {
-                const OtherIcon = SERVICE_ICONS[s.title];
+                const OtherIcon = s.icon;
                 return (
                   <li key={s.slug} className="min-w-0">
                     <Link
                       to="/services/$slug"
                       params={{ slug: s.slug }}
-                      className={`group flex min-h-16 items-center gap-3 rounded-2xl border border-border bg-background p-3 text-sm font-semibold text-foreground transition hover:border-primary ${FOCUS_RING}`}
+                      className={`group flex min-h-16 items-center gap-3 rounded-2xl border border-border bg-background p-3 text-sm font-medium text-foreground transition hover:border-primary ${FOCUS_RING}`}
                     >
                       <span
                         aria-hidden="true"

@@ -12,7 +12,7 @@ export function Faq({ items, className = "" }: { items: readonly FaqItem[]; clas
     <div className={`divide-y divide-border border-y border-border ${className}`}>
       {items.map((item) => (
         <details key={item.q} className="group py-1">
-          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-base font-semibold text-foreground sm:text-lg [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-base font-medium text-foreground sm:text-lg [&::-webkit-details-marker]:hidden">
             {item.q}
             <ChevronDown
               aria-hidden="true"

@@ -111,7 +111,7 @@ export function ServiceDiagram({
         className="rounded-2xl border border-white/90 bg-white/90 p-4 shadow-sm"
       >
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-          <span className="text-xs font-bold tracking-wide">
+          <span className="text-xs font-semibold tracking-wide">
             {platform ? "CLIENT WORKSPACE" : "SEARCH REVIEW"}
           </span>
           <span
@@ -133,7 +133,7 @@ export function ServiceDiagram({
           ).map(({ Icon, label }) => (
             <div key={label} className="rounded-xl bg-slate-50 px-2 py-4 text-center">
               <Icon size={22} strokeWidth={1.5} className="mx-auto" />
-              <span className="mt-2 block text-[10px] font-semibold sm:text-xs">{label}</span>
+              <span className="mt-2 block text-[10px] font-medium sm:text-xs">{label}</span>
             </div>
           ))}
         </div>
