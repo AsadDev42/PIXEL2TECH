@@ -258,7 +258,6 @@ function ServiceLandingPage() {
   const page = getServiceView(slug);
   if (!page) return null;
 
-  const Icon = page.icon;
   const work = page.work.flatMap((w) => {
     const item = getItemBySlug(w.slug);
     return item ? [{ ...w, item }] : [];
@@ -335,18 +334,9 @@ function ServiceLandingPage() {
 
           <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-16">
             <div data-enter className="min-w-0 lg:col-span-7">
-              <p className="inline-flex items-center gap-2 rounded-full bg-primary/10 py-1 pl-1 pr-4 text-sm font-medium text-primary">
-                <span
-                  aria-hidden="true"
-                  className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground"
-                >
-                  <Icon className="h-4 w-4" strokeWidth={2} />
-                </span>
-                {page.title}
-              </p>
               <h1
                 id={id("title")}
-                className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
+                className="text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
                 {page.h1} <span className="text-primary">{page.h1Highlight}</span>
               </h1>

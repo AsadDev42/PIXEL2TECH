@@ -51,7 +51,7 @@ const missing = await fetch(`${base}/watch/not-a-collection/v-abc`, { redirect: 
 assert.equal(missing.status, 404, "Unknown watch videos remain real 404s");
 
 const legacy = [
-  ["/our-team/", 301, "/about"],
+  ["/our-team/", 301, "/our-people"],
   ["/career/", 301, "/careers"],
   ["/home/", 301, "/"],
   ["/portfolio/creative-social-media-product-launch-campaign", 301, "/portfolio"],

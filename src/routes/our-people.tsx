@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Briefcase,
+  Check,
   ChevronRight,
   Clock,
   FolderOpen,
@@ -11,7 +12,6 @@ import {
   Mail,
   MessageCircle,
   Star,
-  Users,
   Video,
   type LucideIcon,
 } from "lucide-react";
@@ -49,6 +49,43 @@ const ROLE_WORK: Record<string, string> = {
   "Website Developer": "Builds websites and stores from the approved designs.",
   "Video Editor": "Edits video for client content and ad campaigns.",
 };
+
+/**
+ * Disciplines for the roles section. Each group lists the role titles from
+ * team.ts it holds; a role in no group lands under "Studio" so no one drops off.
+ */
+const ROLE_GROUPS = [
+  {
+    title: "Leadership",
+    covers: "Company strategy, client partnerships and creative direction.",
+    roles: ["CEO & Founder", "Co-Founder & CPO"],
+  },
+  {
+    title: "Brand design",
+    covers: "Brand identities and the brand assets that apply them.",
+    roles: ["Creative Brand Designer"],
+  },
+  {
+    title: "Video",
+    covers: "Short-form, brand and ad video edits.",
+    roles: ["Creative Video Editor", "Video Editor"],
+  },
+  {
+    title: "Web",
+    covers: "Websites and stores built from the approved designs.",
+    roles: ["Website Developer"],
+  },
+];
+
+function roleGroups() {
+  const groups = ROLE_GROUPS.map((g) => ({
+    ...g,
+    members: TEAM.filter((m) => g.roles.includes(m.role)),
+  }));
+  const rest = TEAM.filter((m) => !ROLE_GROUPS.some((g) => g.roles.includes(m.role)));
+  if (rest.length) groups.push({ title: "Studio", covers: "", roles: [], members: rest });
+  return groups.filter((g) => g.members.length > 0);
+}
 
 /** How the team works together. Facts from /about and the service pages. */
 const WAYS_OF_WORKING = [
@@ -232,18 +269,9 @@ function OurPeoplePage() {
 
           <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-16">
             <div data-enter className="min-w-0 lg:col-span-7">
-              <p className="inline-flex items-center gap-2 rounded-full bg-primary/10 py-1 pl-1 pr-4 text-sm font-medium text-primary">
-                <span
-                  aria-hidden="true"
-                  className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground"
-                >
-                  <Users className="h-4 w-4" strokeWidth={2} />
-                </span>
-                Our people
-              </p>
               <h1
                 id="people-title"
-                className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
+                className="text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
                 Meet the creative team <span className="text-primary">behind Pixel2Tech</span>
               </h1>
@@ -332,42 +360,76 @@ function OurPeoplePage() {
               ask on the call who will handle each part.
             </p>
           </div>
-          <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
-            {TEAM.map((member) => (
-              <li key={member.name} className="min-w-0 border-t border-border pb-8 pt-6">
-                <p className="text-sm font-medium text-primary">{member.role}</p>
-                <h3 className="mt-2 text-xl font-semibold leading-snug tracking-tight">
-                  {member.name}
-                </h3>
-                {ROLE_WORK[member.role] && (
-                  <p className={`mt-2 ${BODY}`}>{ROLE_WORK[member.role]}</p>
-                )}
-                {(member.profile || member.linkedin) && (
-                  <div className="mt-3 flex flex-wrap gap-x-5">
-                    {member.profile && (
-                      <Link
-                        to={member.profile}
-                        className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-primary hover:underline ${FOCUS_RING}`}
-                      >
-                        Profile <ArrowRight size={14} aria-hidden="true" />
-                      </Link>
-                    )}
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${member.name} on LinkedIn (opens in a new tab)`}
-                        className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-foreground hover:underline ${FOCUS_RING}`}
-                      >
-                        LinkedIn <ArrowUpRight size={14} aria-hidden="true" />
-                      </a>
-                    )}
-                  </div>
-                )}
-              </li>
+          <div className="grid min-w-0 gap-4 lg:col-span-8">
+            {roleGroups().map((group) => (
+              <div
+                key={group.title}
+                className="min-w-0 rounded-3xl border border-border bg-background p-6 sm:p-8"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="text-xl font-semibold leading-snug tracking-tight">
+                    {group.title}
+                  </h3>
+                  <p className="text-sm tabular-nums text-muted-foreground">
+                    {group.members.length === 1 ? "1 person" : `${group.members.length} people`}
+                  </p>
+                </div>
+                {group.covers && <p className={`mt-1 ${BODY}`}>{group.covers}</p>}
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {group.members.map((member) => (
+                    <li
+                      key={member.name}
+                      className="flex min-w-0 gap-4 rounded-2xl bg-muted/50 p-4 sm:p-5"
+                    >
+                      <img
+                        src={member.img}
+                        alt=""
+                        width={56}
+                        height={56}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-14 w-14 shrink-0 rounded-full object-cover"
+                      />
+                      <div className="min-w-0">
+                        <h4 className="font-semibold leading-snug text-foreground">
+                          {member.name}
+                        </h4>
+                        <p className="text-sm font-medium text-primary">{member.role}</p>
+                        {ROLE_WORK[member.role] && (
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {ROLE_WORK[member.role]}
+                          </p>
+                        )}
+                        {(member.profile || member.linkedin) && (
+                          <div className="mt-1 flex flex-wrap gap-x-5">
+                            {member.profile && (
+                              <Link
+                                to={member.profile}
+                                className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-primary hover:underline ${FOCUS_RING}`}
+                              >
+                                Profile <ArrowRight size={14} aria-hidden="true" />
+                              </Link>
+                            )}
+                            {member.linkedin && (
+                              <a
+                                href={member.linkedin}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`${member.name} on LinkedIn (opens in a new tab)`}
+                                className={`inline-flex min-h-11 items-center gap-1 rounded text-sm font-medium text-foreground hover:underline ${FOCUS_RING}`}
+                              >
+                                LinkedIn <ArrowUpRight size={14} aria-hidden="true" />
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 
@@ -383,13 +445,19 @@ function OurPeoplePage() {
               The same four steps run on every project, and the team keeps a few habits throughout.
             </p>
           </div>
-          <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SERVICE_PROCESS.map((step, i) => (
-              <li key={step.title} className="min-w-0 border-t-2 border-border pt-6">
-                <span aria-hidden="true" className="text-sm font-medium tabular-nums text-primary">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold leading-snug">
+              <li
+                key={step.title}
+                className="flex min-w-0 flex-col rounded-3xl border border-border bg-background p-6 sm:p-8"
+              >
+                <div aria-hidden="true" className="flex items-center gap-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-sm font-semibold tabular-nums text-primary-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-px flex-1 bg-border" />
+                </div>
+                <h3 className="mt-6 text-lg font-semibold leading-snug">
                   <span className="sr-only">Step {i + 1}: </span>
                   {step.title}
                 </h3>
@@ -397,14 +465,17 @@ function OurPeoplePage() {
               </li>
             ))}
           </ol>
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+          <h3 className="mt-16 text-xl font-semibold leading-snug tracking-tight">
+            Habits on every project
+          </h3>
+          <ul className="mt-6 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2">
             {WAYS_OF_WORKING.map((item) => (
-              <li
-                key={item.title}
-                className="min-w-0 rounded-3xl border border-border bg-background p-6 sm:p-8"
-              >
-                <h3 className="text-xl font-semibold leading-snug tracking-tight">{item.title}</h3>
-                <p className={`mt-2 ${BODY}`}>{item.body}</p>
+              <li key={item.title} className="flex min-w-0 gap-4 bg-background p-6 sm:p-8">
+                <Check className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <div className="min-w-0">
+                  <h4 className="text-lg font-semibold leading-snug">{item.title}</h4>
+                  <p className={`mt-2 ${BODY}`}>{item.body}</p>
+                </div>
               </li>
             ))}
           </ul>
