@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+        slug: "internal-knowledge-base-stop-repeat-questions",
+        title: "An Internal Knowledge Base That Stops Repeat Questions: A Simple Build Guide",
+        excerpt:
+              "The same questions keep reaching your team because the answers live in people's heads. A simple internal knowledge base fixes that.",
+        tag: "Custom Platforms",
+        date: "November 12, 2026",
+        time: "2:57 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/internal-knowledge-base-stop-repeat-questions.jpg",
+        imgAlt: "Two colleagues looking at a shared screen in a bright office",
+  },
+  {
     slug: "choose-wordpress-theme-not-slow-site",
     title: "How to Choose a WordPress Theme That Will Not Slow Your Site Down",
     excerpt:
