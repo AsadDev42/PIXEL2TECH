@@ -33,16 +33,16 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-        slug: "choose-wordpress-theme-not-slow-site",
-        title: "How to Choose a WordPress Theme That Will Not Slow Your Site Down",
-        excerpt:
-              "A WordPress theme decides much of your site speed before you add a single plugin. Here is how to choose one that stays fast.",
-        tag: "WordPress",
-        date: "November 12, 2026",
-        time: "12:44 pm",
-        author: "Asad Farooq",
-        img: "/blog/covers/choose-wordpress-theme-not-slow-site.jpg",
-        imgAlt: "A laptop showing a clean website on a bright modern desk",
+    slug: "choose-wordpress-theme-not-slow-site",
+    title: "How to Choose a WordPress Theme That Will Not Slow Your Site Down",
+    excerpt:
+      "A WordPress theme decides much of your site speed before you add a single plugin. Here is how to choose one that stays fast.",
+    tag: "WordPress",
+    date: "November 12, 2026",
+    time: "12:44 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/choose-wordpress-theme-not-slow-site.jpg",
+    imgAlt: "A laptop showing a clean website on a bright modern desk",
   },
   {
     slug: "portfolio-pieces-win-clients-show-leave-out",
