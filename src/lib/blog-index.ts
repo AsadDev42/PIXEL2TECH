@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "portfolio-pieces-win-clients-show-leave-out",
+    title: "Portfolio Pieces That Win Clients: What to Show and What to Leave Out",
+    excerpt:
+      "A strong portfolio shows the work that matches the client in front of you. Here is how to choose the pieces to show, and which ones to leave out.",
+    tag: "Branding",
+    date: "November 12, 2026",
+    time: "10:52 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/portfolio-pieces-win-clients-show-leave-out.jpg",
+    imgAlt: "A designer reviewing printed portfolio pieces spread on a studio desk",
+  },
+  {
     slug: "selling-new-york-website",
     title: "Selling to Customers in New York: What Your Website Must Get Right",
     excerpt:
