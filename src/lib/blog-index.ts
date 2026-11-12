@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+        slug: "service-page-copy-that-sells",
+        title: "Service Page Copy That Sells: Write Pages Customers Actually Read",
+        excerpt:
+              "Most service pages describe the business, not the customer. Here is how to write service page copy that visitors actually read and act on.",
+        tag: "Web Development",
+        date: "November 12, 2026",
+        time: "7:36 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/service-page-copy-that-sells.jpg",
+        imgAlt: "A person reading a website on a laptop in a bright office",
+  },
+  {
     slug: "email-subject-lines-get-opened-service-businesses",
     title: "Email Subject Lines That Get Opened: A Practical Guide for Service Businesses",
     excerpt:
