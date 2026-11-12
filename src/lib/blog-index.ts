@@ -33,11 +33,11 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-      slug: "email-subject-lines-get-opened-service-businesses",
+    slug: "email-subject-lines-get-opened-service-businesses",
     title: "Email Subject Lines That Get Opened: A Practical Guide for Service Businesses",
     excerpt:
-        "The subject line decides whether your email gets opened or ignored. Here is how service businesses write subject lines people actually open.",
-tag: "Email Marketing",
+      "The subject line decides whether your email gets opened or ignored. Here is how service businesses write subject lines people actually open.",
+    tag: "Email Marketing",
     date: "November 12, 2026",
     time: "5:11 pm",
     author: "Asad Farooq",
