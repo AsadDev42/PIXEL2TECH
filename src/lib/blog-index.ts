@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+      slug: "email-subject-lines-get-opened-service-businesses",
+    title: "Email Subject Lines That Get Opened: A Practical Guide for Service Businesses",
+    excerpt:
+        "The subject line decides whether your email gets opened or ignored. Here is how service businesses write subject lines people actually open.",
+tag: "Email Marketing",
+    date: "November 12, 2026",
+    time: "5:11 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/email-subject-lines-get-opened-service-businesses.jpg",
+    imgAlt: "A person holding a smartphone showing an email inbox at a desk",
+  },
+  {
     slug: "internal-knowledge-base-stop-repeat-questions",
     title: "An Internal Knowledge Base That Stops Repeat Questions: A Simple Build Guide",
     excerpt:
