@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "ai-image-tools-service-business-marketing",
+    title: "AI Image Tools for Service Business Marketing: What Works and What Looks Fake",
+    excerpt:
+      "AI image tools can speed up service business marketing, but they can also look fake. Here is what works, what to avoid, and how to keep images honest.",
+    tag: "AI Solutions",
+    date: "November 13, 2026",
+    time: "12:47 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-image-tools-service-business-marketing.jpg",
+    imgAlt: "A designer reviewing AI generated images on a computer screen",
+  },
+  {
     slug: "shared-inbox-routine-customer-messages",
     title: "A Shared Inbox Routine That Stops Customer Messages Falling Through the Cracks",
     excerpt:
