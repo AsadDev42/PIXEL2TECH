@@ -138,7 +138,7 @@ function ResultsPage() {
       </div>
 
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-col gap-4 border-t border-border py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 border-t border-border py-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Want to see more of our work?</h2>
             <p className="mt-1 text-muted-foreground">
@@ -154,7 +154,7 @@ function ResultsPage() {
         </div>
         <ProjectNextStep
           title="What should change for your customers?"
-          body="Send your current website, the task customers struggle with and the business goal behind it. We can discuss the right scope, relevant examples and how to check the result after launch."
+          body="Share your website, customer challenge and goal. We'll help define the scope and how to measure the result."
           source="project-outcomes"
         />
       </div>

@@ -30,7 +30,7 @@ export function BookCallButton({
           trackEvent("strategy_call_modal_opened", { source });
           setOpen(true);
         }}
-        className={className}
+        className={`site-action ${className}`}
       >
         {children}
       </button>

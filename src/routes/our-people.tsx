@@ -115,26 +115,26 @@ const HOURS = SITE.hours.map((h) =>
 const CHANNELS: { title: string; body: string; detail: string; Icon: LucideIcon }[] = [
   {
     title: "Google Meet",
-    body: "Calls with the team, starting with the free 30-minute strategy call.",
-    detail: "Book a time from any page",
+    body: "Plan the project together.",
+    detail: "Start with a free 30-minute call",
     Icon: Video,
   },
   {
     title: "Email",
-    body: "Day-to-day updates and project questions.",
+    body: "Briefs, feedback and approvals.",
     detail: SITE.email,
     Icon: Mail,
   },
   {
     title: "WhatsApp",
-    body: "Quick questions and day-to-day updates.",
+    body: "Quick questions and updates.",
     detail: SITE.phoneDisplay,
     Icon: MessageCircle,
   },
   {
     title: "Reply time",
-    body: "We reply to new messages within one business day.",
-    detail: `${HOURS.join("; ")} (Pakistan time)`,
+    body: "Within one business day.",
+    detail: "Office hours in Pakistan time",
     Icon: Clock,
   },
 ];
@@ -486,31 +486,74 @@ function OurPeoplePage() {
       <section
         id="contact-the-team"
         aria-labelledby="channels-title"
-        className={`bg-slate-950 text-white ${SECTION}`}
+        className={`border-y border-border bg-muted/40 ${SECTION}`}
       >
         <div className={CONTAINER}>
           <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">
-              Talking to the team
-            </p>
+            <p className="text-sm font-medium text-primary">Talking to the team</p>
             <h2
               id="channels-title"
               className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
             >
-              How clients reach the people doing the work
+              Talk directly to your team
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-300">
-              Clients abroad work with us over email, WhatsApp and Google Meet. Agencies can name
-              one contact on their side, usually a project manager, and we work through that person.
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              Calls for planning. Email for feedback. WhatsApp for quick updates. Agencies can work
+              through one project manager.
             </p>
           </div>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {CHANNELS.map(({ title, body, detail, Icon }) => (
-              <li key={title} className="flex min-w-0 flex-col bg-slate-950 p-6 sm:p-8">
-                <Icon className="h-6 w-6 text-sky-300" strokeWidth={1.75} aria-hidden="true" />
-                <h3 className="mt-6 text-sm font-medium text-sky-300">{title}</h3>
-                <p className="mt-3 text-lg font-medium leading-snug text-white">{body}</p>
-                <p className="mt-3 break-words text-sm text-slate-300">{detail}</p>
+              <li
+                key={title}
+                className="flex min-w-0 items-start gap-4 rounded-xl border border-border bg-background p-6"
+              >
+                <Icon
+                  className="h-5 w-5 shrink-0 text-primary"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
+                <div className="min-w-0">
+                  <h3 className="text-base font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                  <div className="mt-3 break-words text-sm">
+                    {title === "Google Meet" ? (
+                      <BookCallButton
+                        source="people_channels"
+                        className="inline-flex min-h-11 items-center text-primary underline underline-offset-4"
+                      >
+                        Book a call
+                      </BookCallButton>
+                    ) : title === "Email" ? (
+                      <a
+                        href={`mailto:${SITE.email}`}
+                        className="inline-flex min-h-11 items-center underline underline-offset-4"
+                      >
+                        {detail}
+                      </a>
+                    ) : title === "WhatsApp" ? (
+                      <a
+                        href={SITE.whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center underline underline-offset-4"
+                      >
+                        {detail}
+                      </a>
+                    ) : (
+                      <details>
+                        <summary className="min-h-11 cursor-pointer py-3 text-muted-foreground">
+                          {detail}
+                        </summary>
+                        <ul className="space-y-2 text-muted-foreground">
+                          {HOURS.map((hours) => (
+                            <li key={hours}>{hours}</li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
+                  </div>
+                </div>
               </li>
             ))}
           </ul>

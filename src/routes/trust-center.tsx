@@ -575,7 +575,40 @@ function TrustCenterPage() {
               website, data and files before and during our work.
             </p>
           </div>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <figure className="mt-8 rounded-2xl border border-border bg-muted/40 p-6 sm:p-8">
+            <figcaption className="text-base font-semibold">
+              Your project, from access to handover
+            </figcaption>
+            <ol className="mt-6 grid gap-6 sm:grid-cols-3">
+              {[
+                {
+                  Icon: KeyRound,
+                  title: "Agree access",
+                  body: "Accounts stay in your name. We agree what the project needs.",
+                },
+                {
+                  Icon: FolderLock,
+                  title: "Do the agreed work",
+                  body: "Shared files and logins are used only for your project.",
+                },
+                {
+                  Icon: FileCheck,
+                  title: "Hand over the work",
+                  body: "Final deliverables transfer after full payment, as agreed.",
+                },
+              ].map(({ Icon, title, body }, index) => (
+                <li key={title} className="min-w-0 border-t border-border pt-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <Icon className="h-8 w-8 text-primary" strokeWidth={1.5} aria-hidden="true" />
+                    <span className="text-sm tabular-nums text-muted-foreground">0{index + 1}</span>
+                  </div>
+                  <h3 className="mt-4 font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                </li>
+              ))}
+            </ol>
+          </figure>
+          <ul className="mt-8 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {DATA_PRACTICES.map(({ title, desc, Icon }) => (
               <li key={title} className="flex min-w-0 flex-col bg-background p-6 sm:p-8">
                 <Icon className="h-6 w-6 text-primary" strokeWidth={1.75} aria-hidden="true" />

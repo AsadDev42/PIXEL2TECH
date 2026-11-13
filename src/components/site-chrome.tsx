@@ -1169,7 +1169,7 @@ function FooterNavColumn({ title, links }: { title: string; links: FooterLink[] 
     "inline-flex min-h-11 items-center py-2 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:underline sm:min-h-8 sm:py-1";
   return (
     <div className="min-w-0 border-b border-border sm:border-0">
-      <h2 className="text-sm font-semibold text-foreground">
+      <h2 className="text-sm font-semibold text-foreground sm:flex sm:min-h-10 sm:items-center">
         <button
           type="button"
           aria-expanded={expanded}
@@ -1276,9 +1276,9 @@ export function SiteFooter() {
           </div>
         </section>
 
-        <div className="grid gap-8 py-10 lg:grid-cols-[1fr_3fr] lg:gap-12 lg:py-12">
+        <div className="grid gap-8 py-10 lg:grid-cols-[1fr_3fr] lg:py-12">
           <div className="min-w-0">
-            <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
+            <Link to="/" aria-label="Pixel2Tech home" className="block w-fit">
               <MediaImage
                 loading="lazy"
                 decoding="async"
@@ -1309,7 +1309,7 @@ export function SiteFooter() {
               )}
             </div>
           </div>
-          <nav aria-label="Footer navigation" className="grid gap-0 sm:grid-cols-4 sm:gap-6">
+          <nav aria-label="Footer navigation" className="grid gap-0 sm:grid-cols-4 sm:gap-8">
             {FOOTER_NAV.map((column) => (
               <FooterNavColumn key={column.title} {...column} />
             ))}
