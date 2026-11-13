@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+        slug: "contact-pages-that-convert",
+    title: "Contact Pages That Convert: What to Put on the Page Customers Visit Last",
+    excerpt:
+      "Your contact page is often the last page a customer visits before deciding. Here is what to put on it so more visitors get in touch.",
+    tag: "Web Development",
+    date: "November 13, 2026",
+    time: "7:41 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/contact-pages-that-convert.jpg",
+    imgAlt: "A visitor filling in a short contact form on a laptop",
+  },
+    {
     slug: "b-roll-service-videos-look-professional",
     title: "B-Roll That Makes Service Videos Look Professional: What to Film on Every Job",
     excerpt:
