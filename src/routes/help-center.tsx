@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -15,7 +15,7 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { BookCallButton } from "@/components/book-call-button";
 import { ClosingCta } from "@/components/closing-cta";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
@@ -280,6 +280,15 @@ const RELATED = [
 function HelpCenterPage() {
   const rootRef = useRef<HTMLDivElement>(null);
   usePageEntrance(rootRef);
+  const [query, setQuery] = useState("");
+  const terms = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const visibleTopics = TOPICS.map((topic) => ({
+    ...topic,
+    answers: topic.answers.filter((answer) =>
+      terms.every((term) => `${topic.title} ${answer.q}`.toLocaleLowerCase().includes(term)),
+    ),
+  })).filter((topic) => topic.answers.length > 0);
+  const matchingQuestions = visibleTopics.reduce((count, topic) => count + topic.answers.length, 0);
 
   const id = (name: string) => `help-${name}`;
 
@@ -314,12 +323,43 @@ function HelpCenterPage() {
                 id={id("title")}
                 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
-                Help center <span className="text-primary">for clients and new projects</span>
+                Answers before, during and after your project
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                Pixel2Tech answers common client questions on this page, grouped by topic, with each
-                answer based on our terms, our privacy policy and our service pages.
+                Find answers on quotes, reviews, payments and handovers. For an active project, use
+                your agreed project channel.
               </p>
+              <div className="mt-6 max-w-xl">
+                <label htmlFor="help-search" className="text-sm font-medium">
+                  Search topics and questions
+                </label>
+                <input
+                  id="help-search"
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  aria-describedby="help-search-count"
+                  placeholder="Try payment, ownership or hosting"
+                  className={`mt-2 min-h-12 w-full rounded-lg border border-border bg-background px-4 text-base ${FOCUS_RING}`}
+                />
+                <p
+                  id="help-search-count"
+                  role="status"
+                  className="mt-2 text-sm text-muted-foreground"
+                >
+                  {matchingQuestions} {matchingQuestions === 1 ? "question" : "questions"}
+                  {terms.length > 0 ? " match your search" : " across the topics below"}
+                </p>
+                {terms.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setQuery("")}
+                    className={`mt-2 min-h-11 rounded text-sm font-medium underline underline-offset-4 ${FOCUS_RING}`}
+                  >
+                    Clear search
+                  </button>
+                )}
+              </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <BookCallButton
                   source="help_center_hero"
@@ -344,7 +384,7 @@ function HelpCenterPage() {
                 Browse by topic
               </h2>
               <ul className="mt-4 divide-y divide-border">
-                {TOPICS.map(({ id: topicId, title, Icon, answers }) => (
+                {visibleTopics.map(({ id: topicId, title, Icon, answers }) => (
                   <li key={topicId}>
                     <a
                       href={`#${topicId}`}
@@ -366,13 +406,18 @@ function HelpCenterPage() {
                   </li>
                 ))}
               </ul>
+              {visibleTopics.length === 0 && (
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  No matching question. Try fewer words, clear the search or contact the team.
+                </p>
+              )}
             </nav>
           </div>
         </div>
       </section>
 
       {/* One section per topic */}
-      {TOPICS.map((topic, index) => {
+      {visibleTopics.map((topic, index) => {
         const TopicIcon = topic.Icon;
         return (
           <section

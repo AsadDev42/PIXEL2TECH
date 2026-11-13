@@ -115,7 +115,7 @@ function useReviewedChecks() {
       return next;
     });
 
-  return { reviewed, toggle, reset: () => setReviewed(new Set()) };
+  return { reviewed, loaded, toggle, reset: () => setReviewed(new Set()) };
 }
 
 function ProgressBar({ value, dark = false }: { value: number; dark?: boolean }) {
@@ -125,17 +125,17 @@ function ProgressBar({ value, dark = false }: { value: number; dark?: boolean })
       className={`h-2 w-full overflow-hidden rounded-full ${dark ? "bg-white/15" : "bg-muted"}`}
     >
       <div
-        className={`h-full rounded-full transition-[width] duration-300 motion-reduce:transition-none ${
+        className={`h-full w-full origin-left rounded-full transition-transform duration-300 motion-reduce:transition-none ${
           dark ? "bg-sky-300" : "bg-primary"
         }`}
-        style={{ width: `${(value / TOTAL_CHECKS) * 100}%` }}
+        style={{ transform: `scaleX(${value / TOTAL_CHECKS})` }}
       />
     </div>
   );
 }
 
 export function ShopifyChecklist() {
-  const { reviewed, toggle, reset } = useReviewedChecks();
+  const { reviewed, loaded, toggle, reset } = useReviewedChecks();
   const count = reviewed.size;
   const areaCount = (area: (typeof AREAS)[number]) =>
     area.checks.filter((_, i) => reviewed.has(checkId(area.id, i))).length;
@@ -148,15 +148,14 @@ export function ShopifyChecklist() {
             Free resource
           </p>
           <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            See your store through a shopper's eyes.
+            Review your Shopify store, one step at a time
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Use this checklist to turn a store review into a prioritised list of fixes, with
-            evidence for each recommendation.
+            Review your catalogue, product pages and checkout. Record each issue, its URL and an
+            owner for the fix.
           </p>
           <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-            Open your store on a phone and desktop. Record the page, the issue, evidence and an
-            owner for each fix.
+            Try the journey on both a phone and desktop.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
@@ -183,6 +182,7 @@ export function ShopifyChecklist() {
 
         <section
           aria-labelledby="review-progress"
+          aria-busy={!loaded}
           className="self-start rounded-[2rem] border border-transparent bg-slate-950 p-6 text-white sm:p-8 dark:border-white/15"
         >
           <div className="flex items-baseline justify-between gap-4">
@@ -190,8 +190,8 @@ export function ShopifyChecklist() {
               Your review
             </h2>
             <p className="text-sm text-slate-300">
-              <span className="text-2xl font-bold text-white">{count}</span> of {TOTAL_CHECKS}{" "}
-              reviewed
+              <span className="text-2xl font-medium tabular-nums text-white">{count}</span> of{" "}
+              {TOTAL_CHECKS} reviewed
             </p>
           </div>
           <div className="mt-4">
@@ -229,14 +229,15 @@ export function ShopifyChecklist() {
             })}
           </ol>
           <p className="mt-4 text-xs leading-relaxed text-slate-400">
-            Your ticks stay in this browser. Nothing is sent to us.
+            Tick each item after reviewing it, even if it needs a fix. This tracks checks completed,
+            not a store score. Your ticks stay in this browser.
           </p>
         </section>
       </header>
 
       <section id="review-areas" className="mt-16 scroll-mt-24 md:mt-24">
         <h2 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
-          What to check, why it matters, how we help.
+          What to check, and why it matters
         </h2>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
           You can use these checks yourself. If the findings need design, development or integration
@@ -253,7 +254,7 @@ export function ShopifyChecklist() {
           <button
             type="button"
             onClick={reset}
-            disabled={count === 0}
+            disabled={!loaded || count === 0}
             className={`inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-2 rounded-full px-3 text-sm font-semibold text-foreground transition hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40 ${FOCUS_RING}`}
           >
             <RotateCcw size={14} aria-hidden="true" />
@@ -301,6 +302,7 @@ export function ShopifyChecklist() {
                         >
                           <input
                             type="checkbox"
+                            disabled={!loaded}
                             checked={isReviewed}
                             onChange={() => toggle(id)}
                             className="peer sr-only"
@@ -335,7 +337,7 @@ export function ShopifyChecklist() {
 
       <div className="mt-12 md:mt-16">
         <ContentGrid
-          heading="Turn observations into a useful brief."
+          heading="Turn observations into a useful brief"
           numbered
           items={[
             {
@@ -360,7 +362,7 @@ export function ShopifyChecklist() {
       >
         <div className="p-6 sm:p-10">
           <h2 id="hi-street" className="text-2xl font-bold tracking-tight sm:text-3xl">
-            See the work behind the advice.
+            See the work behind the advice
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
             Hi Street’s Shopify project uses style-based navigation, collection filters and size

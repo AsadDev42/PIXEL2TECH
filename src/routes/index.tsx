@@ -193,9 +193,8 @@ function Hero() {
             <span className="block text-primary">business grow.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            Make your brand clearer, your website easier to use and your content worth watching. We
-            bring branding, web design, video editing and SEO together for businesses in the US and
-            UK.
+            Branding, websites, video and SEO from one team. We help US and UK businesses turn a
+            clear plan into work that&apos;s ready to launch.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
@@ -479,10 +478,8 @@ function Approach() {
             Brand, website and video from <span className="text-[#4DA3FF]">one studio</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-white/80 dark:text-muted-foreground">
-            Most businesses hire a designer for the logo, a developer for the site and someone else
-            for reels, then spend weeks getting them to agree. We do all three in-house, so the
-            colors, type and tone carry through from the first sketch to launch day and the
-            campaigns after it.
+            One brief for your brand, website and video. Our designers, developers and editors work
+            together, so the identity carries through to launch.
           </p>
           {portraitPerson ? (
             <p className="mt-8 text-sm text-white/70 dark:text-muted-foreground">
@@ -587,9 +584,8 @@ function Studio() {
             One studio. One team. {STATS.projects} projects.
           </h2>
           <p className={LEAD}>
-            Designers, developers and editors work side by side in our Lahore office, sketching
-            brands, shipping code and reviewing campaigns together. Clients abroad work with us over
-            email, WhatsApp and Google Meet.
+            Our team works side by side in Lahore. Clients work with us through email, WhatsApp and
+            Google Meet.
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-3 sm:gap-4">
             {STUDIO_FACTS.map((f) => (

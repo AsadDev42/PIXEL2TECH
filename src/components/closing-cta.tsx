@@ -26,8 +26,8 @@ export function ClosingCta({
   source: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-[2rem] bg-[#0A0D1F] text-white">
-      <div className="grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:p-16">
+    <div className="closing-cta overflow-hidden rounded-[2rem] bg-[#0A0D1F] text-white">
+      <div className="closing-cta-layout grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:p-16">
         <div>
           <h2
             id={id}
@@ -52,7 +52,7 @@ export function ClosingCta({
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/10 p-6 sm:p-8">
+        <div className="closing-cta-proof rounded-3xl border border-white/10 p-6 sm:p-8">
           <ul className="flex -space-x-3" aria-label="The Pixel2Tech team">
             {TEAM.map((m) => (
               <li key={m.name}>
@@ -76,13 +76,13 @@ export function ClosingCta({
           <div className="mt-6 grid grid-cols-2 gap-3">
             <Link
               to="/reviews"
-              className="rounded-2xl bg-white/5 p-4 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              className="closing-cta-fact rounded-2xl bg-white/5 p-4 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
               <p className="mt-2 text-xl font-semibold">{STATS.rating}</p>
               <p className="text-xs text-white/60">Client rating</p>
             </Link>
-            <div className="rounded-2xl bg-white/5 p-4">
+            <div className="closing-cta-fact rounded-2xl bg-white/5 p-4">
               <TrendingUp className="h-5 w-5 text-[#4DA3FF]" aria-hidden="true" />
               <p className="mt-2 text-xl font-semibold">{STATS.projects}</p>
               <p className="text-xs text-white/60">Projects shipped</p>

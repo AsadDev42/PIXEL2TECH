@@ -8,17 +8,15 @@ import {
   ChevronRight,
   FilePen,
   FileText,
-  Hammer,
   Layers,
   Megaphone,
   MessagesSquare,
   Palette,
   Receipt,
   Repeat,
-  Rocket,
   type LucideIcon,
 } from "lucide-react";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { BookCallButton } from "@/components/book-call-button";
 import { ClosingCta } from "@/components/closing-cta";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
@@ -91,16 +89,15 @@ const SECTION = "scroll-mt-32 py-16 md:py-24";
 const TEXT_LINK =
   "font-medium text-foreground underline decoration-primary/50 underline-offset-4 transition hover:decoration-primary";
 
-const PROCESS_ICONS: LucideIcon[] = [MessagesSquare, FileText, Hammer, Rocket];
 const PRICING_ICONS: LucideIcon[] = [MessagesSquare, FileText, FilePen, Receipt];
 
 const AT_A_GLANCE = [
   { label: "Scoping call", value: "Free, before any quote" },
   { label: "Quote", value: "A fixed price in writing" },
-  { label: "Quote valid for", value: "30 days, unless the proposal says otherwise" },
-  { label: "Deposit", value: "Usually 50%, before work starts" },
-  { label: "Invoices", value: "Due within 7 days, unless stated otherwise" },
-  { label: "Currency", value: "As on the invoice, usually US dollars" },
+  { label: "Quote valid for", value: "30 days by default" },
+  { label: "Deposit", value: "50% by default" },
+  { label: "Invoices", value: "Within 7 days by default" },
+  { label: "Currency", value: "Usually US dollars" },
 ];
 
 const PROPOSAL_COVERS = [
@@ -262,13 +259,12 @@ function PricingPage() {
                 id={id("title")}
                 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
-                Agency pricing{" "}
-                <span className="text-primary">with a fixed quote before work starts</span>
+                Agency pricing with a clear scope
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                Pixel2Tech does not publish a price list, and instead sends a fixed price in writing
-                after a free scoping call, with the scope, milestones, revision rounds, currency and
-                timeline set out before any work starts.
+                Tell us what you need to make. After a free scoping call, you receive a fixed
+                written quote with deliverables, review rounds and payment milestones. You know what
+                is included before production starts.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <BookCallButton
@@ -304,6 +300,9 @@ function PricingPage() {
                   </div>
                 ))}
               </dl>
+              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                Your proposal and invoice confirm the exact payment terms.
+              </p>
             </section>
           </div>
         </div>
@@ -409,14 +408,13 @@ function PricingPage() {
           </div>
           <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {SERVICE_PROCESS.map((step, i) => {
-              const StepIcon = PROCESS_ICONS[i] ?? Check;
               return (
-                <li key={step.title} className="relative min-w-0 border-t-2 border-border pt-8">
+                <li key={step.title} className="min-w-0 border-t border-border pt-6">
                   <span
                     aria-hidden="true"
-                    className="absolute -top-5 left-0 grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground ring-4 ring-background"
+                    className="studio-step mb-4 block text-sm font-medium tabular-nums text-primary"
                   >
-                    <StepIcon className="h-5 w-5" strokeWidth={1.75} />
+                    0{i + 1}
                   </span>
                   <h3 className="text-lg font-semibold leading-snug">
                     <span className="sr-only">Step {i + 1}: </span>

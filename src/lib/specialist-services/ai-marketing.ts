@@ -401,12 +401,10 @@ export const AI_MARKETING_SERVICES: SpecialistServiceCopy[] = [
       },
     ],
     audiences: {
-      startups:
-        "You're launching a product and need one plan that tells the team what to say, where and when.",
-      smbs: "You post and advertise, but each piece goes out on its own, with no shared message or goal.",
-      dtc: "You have a sale or product launch coming and need ads, emails and posts planned together.",
-      agencies:
-        "You need campaign plans and creative briefs prepared for clients in your agency's format.",
+      startups: "Plan your launch message, channels and publishing schedule.",
+      smbs: "Bring separate posts and ads under one campaign goal.",
+      dtc: "Coordinate ads, emails and social content for your next launch.",
+      agencies: "Prepare client campaign plans and briefs in your agency's format.",
     },
     priceDrivers: [
       "Number of channels and markets in the plan",

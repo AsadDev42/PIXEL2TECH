@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { MediaImage } from "@/components/media-image";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { ProjectNextStep } from "@/components/content-blocks";
 import { businessHead } from "@/lib/page-seo";
 import { INDUSTRIES } from "@/lib/industry-pages";
@@ -42,20 +42,18 @@ function IndustriesPage() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">Industries</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Brand, website, content and automation work across {INDUSTRIES.length} industries.
+            Brand, website and content for your industry
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            From product discovery to a service enquiry, each industry has a different point where
-            customers need a clear answer. We connect brand design, websites, content and automation
-            around that point and the next step your customer needs to take.
+            Different customers need different answers. Explore relevant work and services for your
+            industry, then shape a scope around your brief.
           </p>
         </div>
         <aside className="rounded-3xl border border-border bg-muted/40 p-6 sm:p-8">
           <p className="text-sm font-semibold text-primary">Relevant work, clearly scoped</p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            Explore real project examples and the work behind them. These industries reflect
-            selected Pixel2Tech experience; your brief, not a preset package, determines the right
-            scope.
+            These examples show selected Pixel2Tech work. Your brief determines the scope; there is
+            no compulsory industry package.
           </p>
           <Link
             to="/contact"
@@ -72,7 +70,7 @@ function IndustriesPage() {
       >
         <div className="flex flex-col gap-3 border-t border-border pt-12 sm:flex-row sm:items-end sm:justify-between md:pt-16">
           <h2 id="industry-list-title" className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Find the work closest to yours.
+            Find the work closest to yours
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
             Open an industry to see relevant capabilities, project examples and a way to start.

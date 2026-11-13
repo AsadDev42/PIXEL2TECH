@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { businessHead } from "@/lib/page-seo";
 import { ShopifyChecklist } from "@/components/shopify-checklist";
 

@@ -1213,36 +1213,31 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 pt-10 md:px-10 md:pt-12">
         <section
           aria-labelledby="footer-cta-title"
-          className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-card p-6 sm:p-8 lg:p-10"
+          className="overflow-hidden rounded-2xl border border-white/10 bg-card p-6 sm:p-8 lg:p-10"
         >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-transparent"
-          />
-          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
             <div className="min-w-0">
               <p className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
                 Replies within one business day
               </p>
               <h2
                 id="footer-cta-title"
                 className="mt-4 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-foreground text-balance sm:text-4xl"
               >
-                Have a project in mind?
-                <span className="block text-primary">Let&apos;s make it happen.</span>
+                Bring us your next brief
               </h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Tell us what you&apos;re building. We&apos;ll help you plan the next step.
+                A brand, website, video or workflow. Tell us what needs to happen and who it needs
+                to reach.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <BookCallButton
                   source="footer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card"
                 />
                 <Link
                   to="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 px-6 text-sm font-medium text-white transition-colors hover:border-white/40 hover:bg-white/5"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium text-white underline decoration-white/25 underline-offset-4 transition-colors hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   Send a project brief
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -1250,9 +1245,7 @@ export function SiteFooter() {
               </div>
             </div>
             <div className="min-w-0 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                Start a conversation
-              </p>
+              <p className="text-xs font-medium text-muted-foreground">Start a conversation</p>
               <a
                 href={`mailto:${SITE.email}`}
                 onClick={() => trackEvent("email_click", { location: "footer" })}
@@ -1260,7 +1253,7 @@ export function SiteFooter() {
               >
                 <span className="break-all">{SITE.email}</span>
                 <ArrowUpRight
-                  className="h-6 w-6 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none"
+                  className="h-5 w-5 shrink-0 text-muted-foreground"
                   aria-hidden="true"
                 />
               </a>
@@ -1308,7 +1301,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Pixel2Tech on ${name}`}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary/10 hover:text-primary"
+                    className="grid h-11 w-11 place-items-center rounded-lg text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </a>

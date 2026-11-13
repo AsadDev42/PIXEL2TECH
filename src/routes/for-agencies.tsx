@@ -13,9 +13,10 @@ export const Route = createFileRoute("/for-agencies")({
     ),
   component: () => (
     <BusinessLanding
+      polished
       eyebrow="For agencies"
-      title="Keep the client relationship. Add the team to deliver."
-      intro="When an approved project needs more production capacity, Pixel2Tech can handle the agreed design, development or editing work. You stay responsible for your client relationship; we agree who manages the brief, feedback and delivery before the project starts."
+      title="White-label production for your agency"
+      intro="Your agency owns the client relationship. Our team handles the agreed design, website or video work, with clear review points and handover."
       capabilities={[
         {
           title: "Website and store production",
@@ -95,6 +96,51 @@ export const Route = createFileRoute("/for-agencies")({
                 <li>How you want us to communicate and appear to your client</li>
               </ul>
             </div>
+          </div>
+          <div
+            role="region"
+            aria-label="Agency responsibilities"
+            tabIndex={0}
+            className="mt-8 overflow-x-auto rounded-xl border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <table className="w-full min-w-[36rem] text-left text-sm">
+              <caption className="border-b border-border bg-muted/40 p-4 text-left font-medium">
+                Responsibilities to confirm before production
+              </caption>
+              <thead className="border-b border-border text-muted-foreground">
+                <tr>
+                  <th scope="col" className="p-4 font-medium">
+                    Your agency
+                  </th>
+                  <th scope="col" className="p-4 font-medium">
+                    Pixel2Tech
+                  </th>
+                  <th scope="col" className="p-4 font-medium">
+                    Agree together
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-4 align-top">Own the client relationship and approved brief</td>
+                  <td className="p-4 align-top">Deliver the production work listed in the scope</td>
+                  <td className="p-4 align-top">
+                    Client communication, confidentiality and presentation of our role
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4 align-top">
+                    Provide final inputs and consolidate client feedback
+                  </td>
+                  <td className="p-4 align-top">
+                    Flag missing dependencies and prepare scoped revisions
+                  </td>
+                  <td className="p-4 align-top">
+                    Review milestones, acceptance checks and final handover
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
         <LandingLinks

@@ -5,7 +5,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Brain,
-  Briefcase,
   Check,
   ChevronRight,
   Clapperboard,
@@ -13,19 +12,16 @@ import {
   FilePen,
   FileText,
   Globe,
-  Hammer,
   Layers,
   Megaphone,
   MessagesSquare,
   Palette,
   Receipt,
-  Rocket,
   Search,
   ShoppingBag,
-  Store,
   type LucideIcon,
 } from "lucide-react";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd } from "@/components/faq";
 import { getItemBySlug, imageSrcSet, warnOnUnknownSlugs } from "@/lib/portfolio-data";
@@ -46,10 +42,11 @@ import {
   type SpecialistServiceCopy,
 } from "@/lib/specialist-services";
 import { SITE } from "@/lib/site-config";
-import { ServiceVisual } from "@/components/service-visual";
+import { ServiceScopePreview, ServiceVisual } from "@/components/service-visual";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 import { SERVICE_EXAMPLES, VIDEO_EDITING_PROCESS } from "@/lib/service-examples";
 import { SERVICE_STORIES } from "@/lib/service-stories";
+import { SERVICE_HERO_COPY } from "@/lib/service-hero-copy";
 import { usePageEntrance } from "@/lib/use-anime";
 import { useRef } from "react";
 
@@ -125,14 +122,6 @@ const SERVICE_ICONS: Record<ServiceTitle, LucideIcon> = {
   "Video Editing & Ads": Clapperboard,
 };
 
-const AUDIENCE_ICONS: Record<AudienceKey, LucideIcon> = {
-  startups: Rocket,
-  smbs: Store,
-  dtc: ShoppingBag,
-  agencies: Briefcase,
-};
-
-const PROCESS_ICONS: LucideIcon[] = [MessagesSquare, FileText, Hammer, Rocket];
 const PRICING_ICONS: LucideIcon[] = [MessagesSquare, FileText, FilePen, Receipt];
 
 function pageUrl(page: ServiceView) {
@@ -267,6 +256,7 @@ function ServiceLandingPage() {
   const group = groupOf(page.slug);
   const example = SERVICE_EXAMPLES[page.slug];
   const story = SERVICE_STORIES[page.slug];
+  const hero = SERVICE_HERO_COPY[page.slug];
   const process =
     story?.process ??
     (page.slug === "video-editing-and-ads" ? VIDEO_EDITING_PROCESS : SERVICE_PROCESS);
@@ -340,16 +330,32 @@ function ServiceLandingPage() {
           </nav>
 
           <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-16">
-            <div data-enter className="min-w-0 lg:col-span-7">
+            <div data-enter className="min-w-0 lg:col-span-6">
               <h1
                 id={id("title")}
                 className="text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl xl:text-6xl"
               >
-                {page.h1} <span className="text-primary">{page.h1Highlight}</span>
+                {hero?.title ?? `${page.h1} ${page.h1Highlight}`}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                {page.answer}
+                {hero?.intro ?? page.answer}
               </p>
+              <div className="mt-6 border-t border-border pt-4">
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">A good fit for: </span>
+                  {page.bestFor}
+                </p>
+                <ul
+                  aria-label="Typical tools and formats"
+                  className="mt-3 flex flex-wrap gap-x-4 gap-y-2"
+                >
+                  {page.tags.map((tag) => (
+                    <li key={tag} className="text-xs text-muted-foreground">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <BookCallButton
                   source={`service_${page.slug}_hero`}
@@ -363,24 +369,13 @@ function ServiceLandingPage() {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-              <div className="mt-8 border-t border-border pt-6">
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-medium text-foreground">A good fit for: </span>
-                  {page.bestFor}
-                </p>
-                <ul aria-label="Typical tools and formats" className="mt-3 flex flex-wrap gap-2">
-                  {page.tags.map((tag) => (
-                    <li key={tag} className="rounded-full bg-muted px-3 py-1 text-xs font-medium">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            <div data-enter className="min-w-0 lg:col-span-5">
-              {page.core || work.length === 0 ? (
+            <div data-enter className="min-w-0 lg:col-span-6">
+              {page.core ? (
                 <ServiceVisual title={page.parent} priority />
+              ) : work.length === 0 ? (
+                <ServiceScopePreview title={page.title} outputs={page.deliverables} />
               ) : (
                 <figure className="overflow-hidden rounded-2xl border border-border bg-background">
                   <Link
@@ -453,9 +448,16 @@ function ServiceLandingPage() {
               What you get
             </h2>
             <p className={LEAD}>
-              {story?.problem ?? "Your proposal lists the deliverables included in your scope."}
+              {story?.approach ?? "Your proposal lists the deliverables included in your scope."}
             </p>
-            {story && <p className={`mt-4 ${BODY}`}>{story.approach}</p>}
+            {story && (
+              <details className="mt-4 border-t border-border pt-4">
+                <summary className="cursor-pointer text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  When this service helps
+                </summary>
+                <p className={`mt-3 ${BODY}`}>{story.problem}</p>
+              </details>
+            )}
           </div>
           <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
             {page.deliverables.map((d, i) => (
@@ -639,36 +641,35 @@ function ServiceLandingPage() {
       <section
         id={id("audience")}
         aria-labelledby={id("audience-title")}
-        className={`bg-slate-950 text-white ${SECTION}`}
+        className={`border-y border-border bg-muted/30 ${SECTION}`}
       >
-        <div className={CONTAINER}>
-          <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-300">
-              Who it&apos;s for
-            </p>
+        <div className={`${CONTAINER} grid gap-8 lg:grid-cols-12 lg:gap-12`}>
+          <div className="max-w-xl lg:col-span-4">
+            <p className={EYEBROW}>Who it&apos;s for</p>
             <h2
               id={id("audience-title")}
               className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl"
             >
-              Situations this service fits
+              A good fit for your next step
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-300">
-              If one of these sounds familiar, this service is likely a fit. If you&apos;re not
-              sure, ask on the call and we&apos;ll tell you.
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Start with your situation. We&apos;ll agree the scope around it.
             </p>
           </div>
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {(Object.keys(AUDIENCE_LABELS) as AudienceKey[]).map((key) => {
-              const AudienceIcon = AUDIENCE_ICONS[key];
+          <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
+            {(Object.keys(AUDIENCE_LABELS) as AudienceKey[]).map((key, index) => {
               return (
-                <li key={key} className="flex min-w-0 flex-col bg-slate-950 p-6 sm:p-8">
-                  <AudienceIcon
-                    className="h-6 w-6 text-sky-300"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                  <h3 className="mt-6 text-sm font-medium text-sky-300">{AUDIENCE_LABELS[key]}</h3>
-                  <p className="mt-3 text-lg font-normal leading-snug text-white">
+                <li key={key} className="min-w-0 rounded-xl border border-border bg-background p-6">
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="studio-step text-xs tabular-nums text-primary"
+                    >
+                      0{index + 1}
+                    </span>
+                    <h3 className="text-base text-foreground">{AUDIENCE_LABELS[key]}</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {page.audiences[key]}
                   </p>
                 </li>
@@ -692,14 +693,13 @@ function ServiceLandingPage() {
           </div>
           <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {process.map((step, i) => {
-              const StepIcon = PROCESS_ICONS[i] ?? Check;
               return (
-                <li key={step.title} className="relative min-w-0 border-t-2 border-border pt-8">
+                <li key={step.title} className="min-w-0 border-t border-border pt-6">
                   <span
                     aria-hidden="true"
-                    className="absolute -top-5 left-0 grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground ring-4 ring-background"
+                    className="studio-step mb-4 block text-sm font-medium tabular-nums text-primary"
                   >
-                    <StepIcon className="h-5 w-5" strokeWidth={1.75} />
+                    0{i + 1}
                   </span>
                   <h3 className="text-lg font-semibold leading-snug">
                     <span className="sr-only">Step {i + 1}: </span>
@@ -829,7 +829,7 @@ function ServiceLandingPage() {
           <ClosingCta
             id={id("cta")}
             title={page.ctaTitle}
-            body="Tell us what you need and we'll recommend where to start. We reply within one business day."
+            body="Share your brief. We'll agree the scope, delivery and a written quote."
             source={`service_${page.slug}_cta`}
           />
 

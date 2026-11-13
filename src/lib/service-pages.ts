@@ -18,9 +18,9 @@ export type ServiceTitle = (typeof SERVICES)[number];
 export type AudienceKey = "startups" | "smbs" | "dtc" | "agencies";
 
 export const AUDIENCE_LABELS: Record<AudienceKey, string> = {
-  startups: "US startups",
-  smbs: "Small and midsize businesses",
-  dtc: "DTC and e-commerce brands",
+  startups: "Startups",
+  smbs: "Small businesses",
+  dtc: "Online stores",
   agencies: "Agencies",
 };
 

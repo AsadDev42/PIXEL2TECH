@@ -19,7 +19,7 @@ import {
   ShoppingBag,
   type LucideIcon,
 } from "lucide-react";
-import { PageShell } from "@/components/site-chrome";
+import { StudioPage as PageShell } from "@/components/studio-page";
 import { BookCallButton } from "@/components/book-call-button";
 import { Faq, faqJsonLd, type FaqItem } from "@/components/faq";
 import { SERVICES, SITE, serviceAnchor } from "@/lib/site-config";
@@ -257,7 +257,6 @@ const TILES: {
   /** White-label work always says so on the card. */
   partner?: boolean;
   covers?: string[];
-  tone?: string;
 }[] = [
   {
     title: "Branding & Design",
@@ -283,7 +282,6 @@ const TILES: {
   {
     title: "Custom Platforms & Apps",
     covers: ["SaaS products", "Mobile apps", "Client portals", "Dashboards"],
-    tone: "bg-primary text-white",
   },
   {
     title: "AI Solutions",
@@ -298,7 +296,6 @@ const TILES: {
   {
     title: "SEO & Search Growth",
     covers: ["Technical audits", "On-page SEO", "Keyword strategy", "Local SEO"],
-    tone: "bg-sky-100 text-slate-950 dark:bg-slate-800 dark:text-white",
   },
   {
     title: "Video Editing & Ads",
@@ -316,15 +313,15 @@ function ServiceWall() {
       className="scroll-mt-20 pb-16 md:pb-24"
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <h2 id="services-list-title" className={H2}>
             What we do
           </h2>
           <p className="max-w-sm leading-relaxed text-muted-foreground">
-            Open a service to see its scope, our work and how pricing works.
+            Choose a discipline to see the scope, relevant work and how a project runs.
           </p>
         </div>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TILES.map((tile, index) => {
             const service = SERVICE_DETAILS[tile.title];
             const id = serviceAnchor(tile.title);
@@ -332,57 +329,53 @@ function ServiceWall() {
               <li
                 key={tile.title}
                 id={id}
-                className="min-w-0 scroll-mt-28 rounded-3xl target:ring-4 target:ring-primary"
+                className="min-w-0 scroll-mt-28 rounded-2xl target:ring-2 target:ring-primary"
               >
                 <Link
                   to="/services/$slug"
                   params={{ slug: id }}
-                  className={`group relative block aspect-[4/5] overflow-hidden rounded-3xl ${tile.tone ?? "bg-muted"} ${FOCUS_RING}`}
+                  className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-primary/50 ${FOCUS_RING}`}
                 >
-                  {tile.image ? (
-                    <MediaImage
-                      src={tile.image}
-                      alt={tile.alt ?? ""}
-                      width={800}
-                      height={1000}
-                      loading={index < 3 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
-                    />
-                  ) : (
-                    <ul
-                      aria-hidden="true"
-                      className="absolute inset-x-0 top-0 p-6 text-3xl font-semibold leading-tight tracking-tight sm:p-8 lg:text-4xl"
-                    >
-                      {tile.covers?.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
-                  <span className="absolute inset-x-3 bottom-3 rounded-2xl bg-background p-4 text-foreground shadow-lg">
-                    <span className="flex items-center justify-between gap-3">
-                      <span className="min-w-0 text-lg font-semibold leading-snug tracking-tight">
-                        {tile.title}
-                      </span>
-                      <span
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted">
+                    {tile.image ? (
+                      <MediaImage
+                        src={tile.image}
+                        alt={tile.alt ?? ""}
+                        width={800}
+                        height={500}
+                        loading={index < 3 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover object-top"
+                      />
+                    ) : (
+                      <div className="flex h-full flex-col justify-center p-6 sm:p-8">
+                        <p className="text-xs font-medium text-muted-foreground">Typical scope</p>
+                        <ul className="mt-4 space-y-2 text-xl font-medium leading-snug">
+                          {tile.covers?.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    {tile.partner && (
+                      <p className="mb-2 text-xs text-muted-foreground">Agency partner work</p>
+                    )}
+                    <h3 className="text-xl font-medium leading-snug">{tile.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {service.desc}
+                    </p>
+                    <span className="mt-auto flex items-center justify-between gap-4 pt-6 text-sm font-medium">
+                      Explore service{" "}
+                      <ArrowRight
+                        size={18}
+                        strokeWidth={1.5}
+                        className="text-primary"
                         aria-hidden="true"
-                        className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-foreground text-background transition group-hover:translate-x-1"
-                      >
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
+                      />
                     </span>
-                    {tile.partner ? (
-                      <span className="mt-1 block text-xs text-muted-foreground">
-                        Agency partner work
-                      </span>
-                    ) : null}
-                    {/* The description stays out of the way until someone hovers or tabs to the card. */}
-                    <span className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr] motion-reduce:transition-none">
-                      <span className="overflow-hidden text-sm leading-relaxed text-muted-foreground">
-                        <span className="block pt-2">{service.desc}</span>
-                      </span>
-                    </span>
-                  </span>
+                  </div>
                 </Link>
               </li>
             );
@@ -480,14 +473,12 @@ function ServicesPage() {
             id="services-title"
             className="max-w-5xl text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Branding, websites, apps, automation and video for businesses worldwide, from one studio
-            in Lahore.
+            Branding, websites and content from one studio
           </h1>
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center">
             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:col-span-7">
-              You can hire us for a single job, such as a logo, a Shopify store or a set of ad
-              edits, and add other services later if you need them. Our in-house team plans the
-              scope, does the work and hands it over.
+              Design, websites, video, SEO and automation from our Lahore team. Start with one
+              service or a connected project, with scope agreed in writing.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
               <BookCallButton

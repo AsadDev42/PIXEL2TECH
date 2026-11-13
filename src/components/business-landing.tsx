@@ -2,6 +2,7 @@ import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site-chrome";
+import { StudioPage } from "@/components/studio-page";
 import { BookCallButton } from "@/components/book-call-button";
 import { ALL_ITEMS } from "@/lib/portfolio-data";
 
@@ -48,6 +49,7 @@ export function BusinessLanding({
   capabilities,
   projects,
   children,
+  polished = false,
 }: {
   eyebrow: string;
   title: string;
@@ -55,18 +57,20 @@ export function BusinessLanding({
   capabilities: readonly (string | { title: string; body: string })[];
   projects?: readonly string[];
   children?: React.ReactNode;
+  polished?: boolean;
 }) {
   const work = (projects ?? []).flatMap((slug) => {
     const project = ALL_ITEMS.find((item) => item.slug === slug);
     return project ? [project] : [];
   });
   const [lead, ...rest] = work;
+  const Shell = polished ? StudioPage : PageShell;
 
   return (
-    <PageShell>
+    <Shell>
       <section className="bg-background pb-12 pt-12 md:pb-16 md:pt-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:px-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-          <div className="min-w-0 lg:col-span-7">
+          <div className={`min-w-0 ${polished ? "lg:col-span-6" : "lg:col-span-7"}`}>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
               {eyebrow}
             </p>
@@ -90,9 +94,11 @@ export function BusinessLanding({
             </div>
           </div>
           {lead ? (
-            <div className="grid min-w-0 grid-cols-2 gap-3 lg:col-span-5">
+            <div
+              className={`grid min-w-0 grid-cols-2 gap-3 ${polished ? "lg:col-span-6" : "lg:col-span-5"}`}
+            >
               <ProjectImage project={lead} priority className="col-span-2 aspect-[16/10]" />
-              {rest.slice(0, 2).map((project) => (
+              {(!polished ? rest.slice(0, 2) : []).map((project) => (
                 <ProjectImage
                   key={project.slug}
                   project={project}
@@ -188,6 +194,6 @@ export function BusinessLanding({
       ) : null}
 
       {children}
-    </PageShell>
+    </Shell>
   );
 }
