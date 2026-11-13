@@ -858,7 +858,7 @@ export function SiteNav() {
                   <NavDropdown
                     key={n.to}
                     item={n}
-                    active={isGroupActive(pathname, n)}
+                    active={activeGroup === n.label}
                     pathname={pathname}
                     openMenu={openMenu}
                     setOpenMenu={setOpenMenu}
@@ -963,7 +963,7 @@ export function SiteNav() {
               transform: open ? "translate3d(0,0,0)" : "translate3d(14px,0,0)",
             };
             if (n.children) {
-              const groupActive = isGroupActive(pathname, n);
+              const groupActive = activeGroup === n.label;
               const expanded = mobileGroup === n.label;
               const listId = `mobile-${n.label.toLowerCase()}-links`;
               return (
@@ -1162,6 +1162,48 @@ const FOOTER_NAV: { title: string; links: FooterLink[] }[] = [
 
 const FOOTER_SOCIALS = ["Instagram", "LinkedIn", "YouTube", "Facebook", "X / Twitter"];
 
+function FooterNavColumn({ title, links }: { title: string; links: FooterLink[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const listId = useId();
+  const linkClass =
+    "inline-flex min-h-11 items-center py-2 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:underline sm:min-h-8 sm:py-1";
+  return (
+    <div className="min-w-0 border-b border-border sm:border-0">
+      <h2 className="text-sm font-semibold text-foreground">
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls={listId}
+          onClick={() => setExpanded(!expanded)}
+          className="flex min-h-14 w-full items-center justify-between gap-4 text-left sm:hidden"
+        >
+          {title}
+          <ChevronDown
+            className={`h-4 w-4 text-muted-foreground transition-transform motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+            aria-hidden="true"
+          />
+        </button>
+        <span className="hidden sm:block">{title}</span>
+      </h2>
+      <ul id={listId} className={`${expanded ? "block" : "hidden"} pb-4 sm:mt-3 sm:block sm:pb-0`}>
+        {links.map((link) => (
+          <li key={"slug" in link ? link.slug : link.to}>
+            {"slug" in link ? (
+              <Link to="/services/$slug" params={{ slug: link.slug }} className={linkClass}>
+                {link.label}
+              </Link>
+            ) : (
+              <Link to={link.to} className={linkClass}>
+                {link.label}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const linkCls =
@@ -1171,27 +1213,26 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 pt-10 md:px-10 md:pt-12">
         <section
           aria-labelledby="footer-cta-title"
-          className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(115deg,#101c2c_0%,#101318_55%,#101010_100%)] p-6 sm:p-8 lg:p-10"
+          className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-card p-6 sm:p-8 lg:p-10"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-16 -top-24 -z-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
+            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-transparent"
           />
           <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
             <div className="min-w-0">
-              <p className="flex items-center gap-2 text-xs font-medium text-white/60">
+              <p className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
                 <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
                 Replies within one business day
               </p>
               <h2
                 id="footer-cta-title"
-                className="mt-4 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl"
+                className="mt-4 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-foreground text-balance sm:text-4xl"
               >
                 Have a project in mind?
-                <br />
-                <span className="text-primary">Let&apos;s make it happen.</span>
+                <span className="block text-primary">Let&apos;s make it happen.</span>
               </h2>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
                 Tell us what you&apos;re building. We&apos;ll help you plan the next step.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -1209,7 +1250,7 @@ export function SiteFooter() {
               </div>
             </div>
             <div className="min-w-0 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-              <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                 Start a conversation
               </p>
               <a
@@ -1228,12 +1269,12 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
-                className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm text-white/65 transition-colors hover:text-white"
+                className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-white"
               >
                 WhatsApp &middot; {SITE.phoneDisplay}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
-              <p className="mt-4 text-xs leading-relaxed text-white/45">
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 {SITE.location}
                 <br />
                 Working with businesses worldwide.
@@ -1275,29 +1316,9 @@ export function SiteFooter() {
               )}
             </div>
           </div>
-          <nav
-            aria-label="Footer navigation"
-            className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-6"
-          >
-            {FOOTER_NAV.map((col) => (
-              <div key={col.title} className="min-w-0">
-                <h2 className="text-sm font-semibold text-foreground">{col.title}</h2>
-                <ul className="mt-3 text-sm">
-                  {col.links.map((link) => (
-                    <li key={"slug" in link ? link.slug : link.to}>
-                      {"slug" in link ? (
-                        <Link to="/services/$slug" params={{ slug: link.slug }} className={linkCls}>
-                          {link.label}
-                        </Link>
-                      ) : (
-                        <Link to={link.to} className={linkCls}>
-                          {link.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <nav aria-label="Footer navigation" className="grid gap-0 sm:grid-cols-4 sm:gap-6">
+            {FOOTER_NAV.map((column) => (
+              <FooterNavColumn key={column.title} {...column} />
             ))}
           </nav>
         </div>

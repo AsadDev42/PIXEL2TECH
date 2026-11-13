@@ -56,7 +56,7 @@ export const Route = createFileRoute("/careers")({
   head: () =>
     businessHead(
       "/careers",
-      "Careers at Pixel2Tech",
+      "Careers and creative roles",
       "Explore careers at Pixel2Tech and send an application with your discipline, experience and portfolio. Applications go directly to our team.",
     ),
   component: CareersPage,
