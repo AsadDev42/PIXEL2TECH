@@ -33,13 +33,37 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "write-meta-descriptions-customers-click",
+    title: "How to Write Meta Descriptions Customers Actually Click",
+    excerpt:
+      "A good meta description earns the click before the page loads. Here is how to write one that matches search intent and brings in the right visitors.",
+    tag: "SEO",
+    date: "November 13, 2026",
+    time: "2:53 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/write-meta-descriptions-customers-click.jpg",
+    imgAlt: "A laptop showing Google search results with a meta description",
+  },
+  {
+    slug: "ai-image-tools-service-business-marketing",
+    title: "AI Image Tools for Service Business Marketing: What Works and What Looks Fake",
+    excerpt:
+      "AI image tools can speed up service business marketing, but they can also look fake. Here is what works, what to avoid, and how to keep images honest.",
+    tag: "AI Solutions",
+    date: "November 13, 2026",
+    time: "12:47 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-image-tools-service-business-marketing.jpg",
+    imgAlt: "A designer reviewing AI generated images on a computer screen",
+  },
+  {
     slug: "shared-inbox-routine-customer-messages",
     title: "A Shared Inbox Routine That Stops Customer Messages Falling Through the Cracks",
     excerpt:
-      "A practical shared inbox routine for assigning customer messages, replying on time and making sure no enquiry gets missed.",
-    tag: "Automation & CRM",
+      "A simple shared inbox routine keeps every customer message answered and nothing lost. Set it up in four steps and stop replies falling through the cracks.",
+    tag: "Automation",
     date: "November 13, 2026",
-    time: "11:01 am",
+    time: "10:58 am",
     author: "Asad Farooq",
     img: "/blog/covers/shared-inbox-routine-customer-messages.jpg?v=20261113-reference",
     imgAlt: "Branded cover with a team working on laptops at a shared office desk",
