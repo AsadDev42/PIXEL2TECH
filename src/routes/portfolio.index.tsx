@@ -18,7 +18,6 @@ import {
   type CategorySlug,
 } from "@/lib/portfolio-data";
 import { SITE, STATS } from "@/lib/site-config";
-import { TESTIMONIAL_VIDEOS } from "@/lib/testimonial-videos";
 
 const PAGE_URL = `${SITE.url}/portfolio`;
 const OG_IMAGE = `${SITE.url}/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg`;
@@ -165,7 +164,7 @@ function ProjectIndex() {
 const TRUST_STATS = [
   { value: STATS.projects, label: "Projects delivered" },
   { value: STATS.clients, label: "Clients" },
-  { value: String(TESTIMONIAL_VIDEOS.length), label: "Video testimonials" },
+  { value: STATS.rating, label: "Client rating" },
   { value: STATS.years, label: `Years in business, since ${STATS.foundingYear}` },
 ];
 

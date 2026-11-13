@@ -97,6 +97,56 @@ function BlogPage() {
         subtitle="Practical guides on branding, websites, Shopify, SEO and automation, written by the people who do the work."
       />
 
+      {featured ? (
+        <section aria-label="Latest article" className="bg-background">
+          <div className="mx-auto max-w-7xl px-5 pb-12 md:px-10 md:pb-16">
+            <article
+              className={`group relative grid gap-6 rounded-3xl bg-muted p-4 sm:p-6 md:grid-cols-2 md:gap-8 md:p-8 ${CARD_FOCUS}`}
+            >
+              <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
+                <ResponsiveImage
+                  src={featured.img}
+                  alt={featured.imgAlt || featured.title}
+                  width={1600}
+                  height={1000}
+                  sizes="(min-width: 1280px) 600px, (min-width: 768px) 45vw, 92vw"
+                  className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.03]"
+                  priority
+                />
+              </div>
+
+              <div className="flex min-w-0 flex-col justify-center">
+                <p className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                  <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-primary">
+                    {featured.tag}
+                  </span>
+                  <time dateTime={featured.dateISO}>{featured.date}</time>
+                </p>
+                <h2 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: featured.slug }}
+                    className={STRETCHED_LINK}
+                  >
+                    {featured.title}
+                  </Link>
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {featured.excerpt}
+                </p>
+                <span
+                  aria-hidden="true"
+                  className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background"
+                >
+                  Read article
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </div>
+            </article>
+          </div>
+        </section>
+      ) : null}
+
       <section aria-label="Find articles" className="mx-auto max-w-7xl px-5 pb-8 md:px-10">
         <form
           action="/blog"
@@ -169,56 +219,6 @@ function BlogPage() {
             ))}
         </nav>
       </section>
-
-      {featured ? (
-        <section aria-label="Latest article" className="bg-background">
-          <div className="mx-auto max-w-7xl px-5 pb-12 md:px-10 md:pb-16">
-            <article
-              className={`group relative grid gap-6 rounded-3xl bg-muted p-4 sm:p-6 md:grid-cols-2 md:gap-8 md:p-8 ${CARD_FOCUS}`}
-            >
-              <div className="aspect-[40/21] overflow-hidden rounded-2xl bg-background">
-                <ResponsiveImage
-                  src={featured.img}
-                  alt={featured.imgAlt || featured.title}
-                  width={1600}
-                  height={1000}
-                  sizes="(min-width: 1280px) 600px, (min-width: 768px) 45vw, 92vw"
-                  className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.03]"
-                  priority
-                />
-              </div>
-
-              <div className="flex min-w-0 flex-col justify-center">
-                <p className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                  <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-primary">
-                    {featured.tag}
-                  </span>
-                  <time dateTime={featured.dateISO}>{featured.date}</time>
-                </p>
-                <h2 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
-                  <Link
-                    to="/blog/$slug"
-                    params={{ slug: featured.slug }}
-                    className={STRETCHED_LINK}
-                  >
-                    {featured.title}
-                  </Link>
-                </h2>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                  {featured.excerpt}
-                </p>
-                <span
-                  aria-hidden="true"
-                  className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background"
-                >
-                  Read article
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </div>
-            </article>
-          </div>
-        </section>
-      ) : null}
 
       <section aria-labelledby="all-articles" className="bg-background">
         <div className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">

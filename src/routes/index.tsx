@@ -1,6 +1,6 @@
 import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, Phone, Play, TrendingUp } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Star, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { PageShell } from "@/components/site-chrome";
@@ -25,7 +25,6 @@ import {
 import { HomeSelectedWork } from "@/components/home-selected-work";
 import { SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
-import { TESTIMONIAL_VIDEOS } from "@/lib/testimonial-videos";
 
 import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
@@ -190,12 +189,12 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Great businesses
-            <span className="block text-primary">deserve great care.</span>
+            Your business deserves
+            <span className="block text-primary">a team that cares.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            You bring the vision. We bring the strategy, design and dedication to take it further.
-            Branding, websites and video, built around your business.
+            You bring the ambition. We bring the strategy, branding, websites and video to move it
+            forward. Work directly with one in-house team that cares about every detail.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
@@ -432,13 +431,13 @@ function FloatingBadge({
 function RatingBadgeContent() {
   return (
     <>
-      <Play className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+      <Star className="h-5 w-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
       <div className="text-left">
         <Link
           to="/reviews"
           className="text-sm font-bold text-card-foreground underline-offset-4 hover:underline focus-visible:underline"
         >
-          {TESTIMONIAL_VIDEOS.length} client video testimonials
+          {STATS.rating} client rating
         </Link>
         <div className="text-xs text-muted-foreground">{STATS.clients} happy clients</div>
       </div>

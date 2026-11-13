@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "shared-inbox-routine-customer-messages",
+    title: "A Shared Inbox Routine That Stops Customer Messages Falling Through the Cracks",
+    excerpt:
+      "A practical shared inbox routine for assigning customer messages, replying on time and making sure no enquiry gets missed.",
+    tag: "Automation & CRM",
+    date: "November 13, 2026",
+    time: "11:01 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/shared-inbox-routine-customer-messages.jpg",
+    imgAlt: "Shared inbox workflow for managing customer messages",
+  },
+  {
     slug: "service-page-copy-that-sells",
     title: "Service Page Copy That Sells: Write Pages Customers Actually Read",
     excerpt:

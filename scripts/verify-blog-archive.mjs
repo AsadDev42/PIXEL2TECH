@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFile, readdir } from "node:fs/promises";
 import { getBlogArchive, parseBlogSearch } from "../src/lib/blog-archive.ts";
 import { getDefaultPostLinks } from "../src/lib/blog-service-links.ts";
 
@@ -61,4 +62,12 @@ test("fallback article links lead to the relevant dedicated buyer page", () => {
     getDefaultPostLinks({ title: "White-label web development", tag: "Web" })[0].to,
     "/white-label-web-development",
   );
+});
+
+test("blog manifest includes every article body so development pages can render", async () => {
+  const manifest = await readFile(new URL("../src/lib/blog-index.ts", import.meta.url), "utf8");
+  const slugs = [...manifest.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
+  const files = await readdir(new URL("../src/lib/posts/", import.meta.url));
+  const bodies = files.filter((file) => file.endsWith(".ts")).map((file) => file.slice(0, -3));
+  assert.deepEqual([...slugs].sort(), bodies.sort());
 });
