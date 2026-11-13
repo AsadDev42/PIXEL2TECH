@@ -36,13 +36,13 @@ const POSTS = [
     slug: "shared-inbox-routine-customer-messages",
     title: "A Shared Inbox Routine That Stops Customer Messages Falling Through the Cracks",
     excerpt:
-      "A practical shared inbox routine for assigning customer messages, replying on time and making sure no enquiry gets missed.",
-    tag: "Automation & CRM",
+      "A simple shared inbox routine keeps every customer message answered and nothing lost. Set it up in four steps and stop replies falling through the cracks.",
+    tag: "Automation",
     date: "November 13, 2026",
-    time: "11:01 am",
+    time: "10:58 am",
     author: "Asad Farooq",
     img: "/blog/covers/shared-inbox-routine-customer-messages.jpg",
-    imgAlt: "Shared inbox workflow for managing customer messages",
+    imgAlt: "A team member answering customer messages at a shared inbox on a laptop",
   },
   {
     slug: "service-page-copy-that-sells",
