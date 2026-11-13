@@ -108,14 +108,14 @@ export const PRICING_POINTS: { title: string; desc: string }[] = [
 
 const COPY: Record<ServiceTitle, ServicePageCopy> = {
   "Branding & Design": {
-    metaTitle: "Brand identity design services and logo design | Pixel2Tech",
+    metaTitle: "Branding & Design Agency for US & UK Brands | Pixel2Tech",
     metaDescription:
-      "A branding agency for small business. Brand identity design, logo design and graphic design services, with brand guidelines. Fixed quote after a free call.",
+      "Branding and design agency for US and UK businesses. Logo design, brand identity and guidelines from one in-house team. Get a fixed written quote.",
     serviceType: "Brand identity design",
-    h1: "Branding agency and brand identity design",
-    h1Highlight: "for US startups and small businesses",
+    h1: "Branding and design agency",
+    h1Highlight: "for US and UK startups and small businesses",
     answer:
-      "Pixel2Tech is a branding agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. Its brand identity design services cover logos, color palettes, typography and brand guidelines, plus the templates that apply them, so a company's website, social posts, ads and packaging all look like one brand.",
+      "Pixel2Tech is a branding and design agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. Its brand identity design services cover logos, color palettes, typography and brand guidelines, plus the templates that apply them, so a company's website, social posts, ads and packaging all look like one brand.",
     tags: ["Logo", "Brand guide", "UI/UX"],
     deliverables: [
       {
@@ -215,14 +215,14 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Website Development": {
-    metaTitle: "Web Design Agency for US Small Businesses | Pixel2Tech",
+    metaTitle: "Website Design Agency for US & UK Businesses | Pixel2Tech",
     metaDescription:
-      "A web design agency for US small businesses and startups: mobile-ready sites in React, Next.js or custom code, built in-house. Fixed quote after a free call.",
+      "Website design agency for US and UK businesses. Responsive websites built in-house, from planning and design to development. Get a fixed written quote.",
     serviceType: "Website development",
-    h1: "Web design agency",
-    h1Highlight: "for US small businesses and startups",
+    h1: "Website design agency",
+    h1Highlight: "for US and UK small businesses and startups",
     answer:
-      "Pixel2Tech is a web design and development studio in Lahore, Pakistan that builds fast, mobile-ready websites in React, Next.js or custom code for businesses worldwide, from the US and UK to Canada and the EU, from a single landing page to a full business site, set up so visitors understand the offer and get in touch.",
+      "Pixel2Tech is a website design agency and development studio in Lahore, Pakistan that builds fast, mobile-ready websites in React, Next.js or custom code for businesses worldwide, from the US and UK to Canada and the EU, from a single landing page to a full business site, set up so visitors understand the offer and get in touch.",
     tags: ["React", "Next.js", "Custom code"],
     deliverables: [
       {
@@ -726,12 +726,12 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "SEO & Search Growth": {
-    metaTitle: "SEO agency and on-page SEO services | Pixel2Tech",
+    metaTitle: "SEO Agency for US & UK Small Businesses | Pixel2Tech",
     metaDescription:
-      "An SEO agency for US small businesses. On-page SEO services, technical SEO audits, keyword strategy, Shopify SEO and local SEO. Fixed quote after a call.",
+      "SEO agency for US and UK businesses. Technical audits, on-page SEO, keyword strategy and internal linking, with priorities and scope agreed in writing.",
     serviceType: "Search engine optimization",
     h1: "SEO agency",
-    h1Highlight: "for US small businesses and online stores",
+    h1Highlight: "for US and UK businesses and online stores",
     answer:
       "Pixel2Tech is an SEO agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. It audits sites for technical problems, provides on-page SEO services, plans keywords around what customers search for and sets up local SEO, so the right people find the business on Google.",
     tags: ["On-page SEO", "Technical SEO", "Local SEO"],
@@ -925,14 +925,14 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
   },
 
   "Video Editing & Ads": {
-    metaTitle: "Video Editing Services for US Brands & Agencies | Pixel2Tech",
+    metaTitle: "Video Editing Agency for US & UK Brands | Pixel2Tech",
     metaDescription:
-      "Video editing services for US brands and agencies: reels, YouTube videos, brand videos and ad creative, edited in-house. Fixed quote after a free call.",
+      "Video editing agency for US and UK brands and agencies. Reels, YouTube videos and ad creative, edited in-house with an agreed scope and written quote.",
     serviceType: "Video editing and video ad production",
-    h1: "Video editing services",
-    h1Highlight: "for US brands and agencies",
+    h1: "Video editing agency",
+    h1Highlight: "for US and UK brands and agencies",
     answer:
-      "Pixel2Tech, a Lahore-based video editing studio working with clients worldwide, from the US and UK to Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
+      "Pixel2Tech, a Lahore-based video editing agency working with clients worldwide, from the US and UK to Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
     tags: ["Reels", "YouTube", "Paid ads"],
     deliverables: [
       {

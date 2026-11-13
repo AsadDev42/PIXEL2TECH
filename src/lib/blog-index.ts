@@ -41,8 +41,8 @@ const POSTS = [
     date: "November 13, 2026",
     time: "2:53 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/write-meta-descriptions-customers-click.jpg",
-    imgAlt: "A laptop showing Google search results with a meta description",
+    img: "/blog/covers/write-meta-descriptions-customers-click.jpg?v=20261113-reference",
+    imgAlt: "Branded cover with hands typing on a laptop",
   },
   {
     slug: "ai-image-tools-service-business-marketing",
@@ -53,8 +53,8 @@ const POSTS = [
     date: "November 13, 2026",
     time: "12:47 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/ai-image-tools-service-business-marketing.jpg",
-    imgAlt: "A designer reviewing AI generated images on a computer screen",
+    img: "/blog/covers/ai-image-tools-service-business-marketing.jpg?v=20261113-reference",
+    imgAlt: "Branded cover with a person using a laptop touchpad",
   },
   {
     slug: "shared-inbox-routine-customer-messages",
