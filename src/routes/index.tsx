@@ -189,7 +189,7 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            The Right Support for
+            Right Support for{" "}
             <span className="block text-primary">Your Business Growth.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
