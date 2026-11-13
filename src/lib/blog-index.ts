@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+        slug: "b-roll-service-videos-look-professional",
+        title: "B-Roll That Makes Service Videos Look Professional: What to Film on Every Job",
+        excerpt:
+              "Good B-roll makes a service video look professional without extra filming days. Here is what to capture on every job, and how to use it in the edit.",
+        tag: "Video Editing",
+        date: "November 13, 2026",
+        time: "5:19 pm",
+        author: "Asad Farooq",
+        img: "/blog/covers/b-roll-service-videos-look-professional.jpg",
+        imgAlt: "A camera filming hands at work on a service job",
+  },
+  {
     slug: "write-meta-descriptions-customers-click",
     title: "How to Write Meta Descriptions Customers Actually Click",
     excerpt:
