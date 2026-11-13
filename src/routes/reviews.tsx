@@ -32,7 +32,7 @@ const VIDEO_COUNT = TESTIMONIAL_VIDEOS.length;
 
 /** Same labels the portfolio page uses for these figures. */
 const HERO_STATS = [
-  { value: STATS.rating, label: "Client rating" },
+  { value: "In-house", label: "Creative team" },
   { value: STATS.projects, label: "Projects delivered" },
   { value: STATS.clients, label: "Clients" },
   { value: String(VIDEO_COUNT), label: "Video testimonials" },

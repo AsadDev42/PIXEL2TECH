@@ -1,9 +1,10 @@
 import { MediaImage } from "@/components/media-image";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, Play, TrendingUp } from "lucide-react";
 import { BookCallButton } from "@/components/book-call-button";
 import { STATS } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
+import { TESTIMONIAL_VIDEOS } from "@/lib/testimonial-videos";
 
 /**
  * Closing call to action used at the end of About, Services and each service
@@ -74,11 +75,14 @@ export function ClosingCta({
             Design, web development, video and automation.
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-2xl bg-white/5 p-4">
-              <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-              <p className="mt-2 text-xl font-semibold">{STATS.rating}</p>
-              <p className="text-xs text-white/60">Client rating</p>
-            </div>
+            <Link
+              to="/reviews"
+              className="rounded-2xl bg-white/5 p-4 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              <Play className="h-5 w-5 text-[#4DA3FF]" aria-hidden="true" />
+              <p className="mt-2 text-xl font-semibold">{TESTIMONIAL_VIDEOS.length}</p>
+              <p className="text-xs text-white/60">Watch client testimonials</p>
+            </Link>
             <div className="rounded-2xl bg-white/5 p-4">
               <TrendingUp className="h-5 w-5 text-[#4DA3FF]" aria-hidden="true" />
               <p className="mt-2 text-xl font-semibold">{STATS.projects}</p>

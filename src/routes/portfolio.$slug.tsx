@@ -964,8 +964,8 @@ function PortfolioDetailPage() {
                   {detail.relatedServices.map((s) => (
                     <li key={s}>
                       <Link
-                        to="/services"
-                        hash={serviceAnchor(s)}
+                        to="/services/$slug"
+                        params={{ slug: serviceAnchor(s) }}
                         className="-mx-3 flex min-h-11 items-center justify-between gap-3 rounded-xl px-3 text-sm font-medium text-foreground transition hover:bg-muted"
                       >
                         {s}

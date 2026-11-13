@@ -16,7 +16,7 @@ import type { SERVICES } from "@/lib/site-config";
 
 export type ProcessStep = { title: string; body: string };
 export type RelatedLink = { slug: string; label: string };
-/** A canonical service name, so its /services#anchor link resolves. */
+/** A canonical service name, so its dedicated service-page link resolves. */
 export type ServiceName = (typeof SERVICES)[number];
 
 export type ProjectDetail = {

@@ -1,6 +1,6 @@
 import { MediaImage } from "@/components/media-image";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, Phone, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Play, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { PageShell } from "@/components/site-chrome";
@@ -25,6 +25,7 @@ import {
 import { HomeSelectedWork } from "@/components/home-selected-work";
 import { SITE, STATS, serviceAnchor } from "@/lib/site-config";
 import { TEAM } from "@/lib/team";
+import { TESTIMONIAL_VIDEOS } from "@/lib/testimonial-videos";
 
 import officeStudioAsset from "@/assets/opt-office-studio-2-800.webp.asset.json";
 import founderPortrait from "@/assets/opt-founder-portrait-540.webp.asset.json";
@@ -166,9 +167,10 @@ function HeroTile({ media, paused }: { media: HeroMedia; paused: boolean }) {
         srcSet={media.srcSet}
         sizes={HERO_TILE_SIZES}
         width={384}
-        height={683}
+        height={media.shape === "post" ? 480 : 683}
         alt={media.alt}
-        loading="lazy"
+        loading={media.src === heroLcpImage.src ? "eager" : "lazy"}
+        fetchPriority={media.src === heroLcpImage.src ? "high" : "auto"}
         decoding="async"
         draggable={false}
         className="pointer-events-none h-full w-full select-none object-cover"
@@ -188,13 +190,12 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Websites, branding and video{" "}
-            <span className="block text-primary">that bring in customers.</span>
+            Great businesses
+            <span className="block text-primary">deserve great care.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            For service businesses, online stores and agencies in the US, UK and Europe. You work
-            directly with the designers, developers and editors doing the job, and get a fixed
-            written quote before we start.
+            You bring the vision. We bring the strategy, design and dedication to take it further.
+            Branding, websites and video, built around your business.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
@@ -209,7 +210,7 @@ function Hero() {
           aria-hidden="true"
           className="mx-auto grid w-full max-w-md grid-cols-3 gap-2 md:hidden"
         >
-          {heroMobileTiles.map((tile) => (
+          {heroMobileTiles.map((tile, index) => (
             <div key={tile.src} className="aspect-[3/4] overflow-hidden rounded-xl bg-muted">
               <MediaImage
                 src={tile.src}
@@ -218,7 +219,8 @@ function Hero() {
                 width={384}
                 height={512}
                 alt={tile.alt}
-                loading="lazy"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
                 decoding="async"
                 draggable={false}
                 className="pointer-events-none h-full w-full select-none object-cover"
@@ -430,9 +432,14 @@ function FloatingBadge({
 function RatingBadgeContent() {
   return (
     <>
-      <Star className="h-5 w-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+      <Play className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
       <div className="text-left">
-        <div className="text-sm font-bold text-card-foreground">{STATS.rating} client rating</div>
+        <Link
+          to="/reviews"
+          className="text-sm font-bold text-card-foreground underline-offset-4 hover:underline focus-visible:underline"
+        >
+          {TESTIMONIAL_VIDEOS.length} client video testimonials
+        </Link>
         <div className="text-xs text-muted-foreground">{STATS.clients} happy clients</div>
       </div>
     </>

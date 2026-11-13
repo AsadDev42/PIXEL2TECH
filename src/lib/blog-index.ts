@@ -2882,12 +2882,12 @@ export function getAdjacentPostSummaries(slug: string) {
  * define its own `internalLinks`.
  */
 export const SITE_LINKS: { label: string; to: string }[] = [
-  { label: "Branding & design", to: "/services" },
-  { label: "Website development", to: "/services" },
-  { label: "Shopify development", to: "/services" },
-  { label: "Automation & CRM", to: "/services" },
-  { label: "SEO", to: "/services" },
-  { label: "Video editing", to: "/services" },
+  { label: "Branding & design", to: "/services/branding-and-design" },
+  { label: "Website development", to: "/services/website-development" },
+  { label: "Shopify development", to: "/shopify-development-agency" },
+  { label: "Automation & CRM", to: "/services/automation-and-crm" },
+  { label: "SEO", to: "/services/seo-and-search-growth" },
+  { label: "Video editing", to: "/outsource-video-editing" },
   { label: "See our work", to: "/portfolio" },
   { label: "About Pixel2Tech", to: "/about" },
   { label: "Contact", to: "/contact" },

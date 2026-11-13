@@ -64,7 +64,6 @@ export const SITE = {
 export const STATS = {
   clients: "15+",
   projects: "140+",
-  rating: "4.9",
   foundingYear: "2023",
   years: "3",
 } as const;

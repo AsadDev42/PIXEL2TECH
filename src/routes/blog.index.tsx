@@ -2,65 +2,79 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
-import { getPostSummaries, POST_INDEX } from "@/lib/blog-index";
+import { toPostSummary, POST_INDEX } from "@/lib/blog-index";
+import { getBlogArchive, parseBlogSearch } from "@/lib/blog-archive";
 import { toISODateTime } from "@/lib/blog-types";
 import { SITE } from "@/lib/site-config";
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const TITLE = "Pixel2Tech blog: branding, web design and automation guides";
+const TITLE = "Branding, web & automation guides | Pixel2Tech";
 const DESCRIPTION =
   "Practical guides on branding, websites, Shopify, SEO and automation, written by the Pixel2Tech team in Lahore.";
 const BLOG_URL = `${SITE.url}/blog`;
 
 export const Route = createFileRoute("/blog/")({
+  validateSearch: parseBlogSearch,
+  loaderDeps: ({ search }) => search,
+  loader: ({ deps }) => getBlogArchive(POST_INDEX, deps),
   component: BlogPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: BLOG_URL },
-      { property: "og:image", content: OG_IMAGE },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-    ],
-    links: [{ rel: "canonical", href: BLOG_URL }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Blog",
-          "@id": `${BLOG_URL}#blog`,
-          name: "Pixel2Tech blog",
-          url: BLOG_URL,
-          description: DESCRIPTION,
-          publisher: { "@id": `${SITE.url}/#organization` },
-          blogPost: POST_INDEX.map((p) => ({
-            "@type": "BlogPosting",
-            headline: p.title,
-            url: `${BLOG_URL}/${p.slug}`,
-            datePublished: toISODateTime(p.date, p.time),
-          })),
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
-            { "@type": "ListItem", position: 2, name: "Blog", item: BLOG_URL },
-          ],
-        }),
-      },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    const archive = loaderData ?? getBlogArchive(POST_INDEX, {});
+    const url = `${SITE.url}${archive.path}`;
+    const title = archive.search.q
+      ? `Search articles: ${archive.search.q} | Pixel2Tech`
+      : `${archive.search.topic ? `${archive.search.topic} guides | Pixel2Tech` : TITLE}${archive.page > 1 ? ` — Page ${archive.page}` : ""}`;
+    return {
+      meta: [
+        { title },
+        ...(archive.search.q || archive.search.topic
+          ? [{ name: "robots", content: "noindex, follow" }]
+          : []),
+        { name: "description", content: DESCRIPTION },
+        { property: "og:title", content: title },
+        { property: "og:description", content: DESCRIPTION },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: OG_IMAGE },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:image", content: OG_IMAGE },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: DESCRIPTION },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "@id": `${url}#blog`,
+            name: "Pixel2Tech blog",
+            url,
+            description: DESCRIPTION,
+            publisher: { "@id": `${SITE.url}/#organization` },
+            blogPost: archive.posts.map((p) => ({
+              "@type": "BlogPosting",
+              headline: p.title,
+              url: `${BLOG_URL}/${p.slug}`,
+              datePublished: toISODateTime(p.date, p.time),
+            })),
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
+              { "@type": "ListItem", position: 2, name: "Blog", item: BLOG_URL },
+            ],
+          }),
+        },
+      ],
+    };
+  },
 });
 
 /** Whole card is clickable through the title link; its ring shows on keyboard focus. */
@@ -68,7 +82,12 @@ const CARD_FOCUS = "has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-ring
 const STRETCHED_LINK = "after:absolute after:inset-0 after:content-[''] focus-visible:outline-none";
 
 function BlogPage() {
-  const [featured, ...rest] = getPostSummaries();
+  const archive = Route.useLoaderData();
+  const summaries = archive.posts.map(toPostSummary);
+  const showFeatured = archive.page === 1 && !archive.search.q && !archive.search.topic;
+  const featured = showFeatured ? summaries[0] : undefined;
+  const rest = featured ? summaries.slice(1) : summaries;
+  const topics = [...new Set(POST_INDEX.map((post) => post.tag))].sort();
 
   return (
     <PageShell>
@@ -77,6 +96,79 @@ function BlogPage() {
         title="Guides on branding, websites, SEO and automation"
         subtitle="Practical guides on branding, websites, Shopify, SEO and automation, written by the people who do the work."
       />
+
+      <section aria-label="Find articles" className="mx-auto max-w-7xl px-5 pb-8 md:px-10">
+        <form
+          action="/blog"
+          method="get"
+          className="grid items-end gap-4 sm:grid-cols-[1fr_1fr_auto]"
+        >
+          <label className="grid gap-2 text-sm font-medium">
+            Search articles
+            <input
+              name="q"
+              type="search"
+              defaultValue={archive.search.q ?? ""}
+              key={archive.search.q ?? ""}
+              maxLength={120}
+              placeholder="Try Shopify, branding or video"
+              className="min-h-12 min-w-0 rounded-xl border border-border bg-background px-4 text-base focus-visible:outline-2 focus-visible:outline-primary"
+            />
+          </label>
+          <label className="grid gap-2 text-sm font-medium">
+            Topic
+            <select
+              name="topic"
+              defaultValue={archive.search.topic ?? ""}
+              key={archive.search.topic ?? ""}
+              className="min-h-12 min-w-0 rounded-xl border border-border bg-background px-4 text-base focus-visible:outline-2 focus-visible:outline-primary"
+            >
+              <option value="">All topics</option>
+              {topics.map((topic) => (
+                <option key={topic} value={topic}>
+                  {topic}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            type="submit"
+            className="min-h-12 rounded-full bg-foreground px-6 text-sm font-semibold text-background focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Find articles
+          </button>
+        </form>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p role="status">
+            {archive.total
+              ? `Showing ${archive.offset + 1}–${archive.offset + summaries.length} of ${archive.total} articles`
+              : "No matching articles. Try another topic or a shorter search."}
+          </p>
+          {(archive.search.q || archive.search.topic) && (
+            <Link
+              to="/blog"
+              search={{}}
+              className="inline-flex min-h-11 items-center text-primary underline"
+            >
+              Clear filters
+            </Link>
+          )}
+        </div>
+        <nav aria-label="Browse article topics" className="mt-4 flex flex-wrap gap-2">
+          {["Shopify", "Web Development", "Branding", "Video Editing", "SEO"]
+            .filter((topic) => topics.includes(topic))
+            .map((topic) => (
+              <Link
+                key={topic}
+                to="/blog"
+                search={{ topic }}
+                className="inline-flex min-h-11 items-center rounded-full border border-border px-4 text-sm hover:bg-muted focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                {topic}
+              </Link>
+            ))}
+        </nav>
+      </section>
 
       {featured ? (
         <section aria-label="Latest article" className="bg-background">
@@ -131,7 +223,7 @@ function BlogPage() {
       <section aria-labelledby="all-articles" className="bg-background">
         <div className="mx-auto max-w-7xl px-5 pb-16 md:px-10 md:pb-24 lg:pb-32">
           <h2 id="all-articles" className="sr-only">
-            More articles
+            {featured ? "More articles" : "Articles"}
           </h2>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p) => (
@@ -165,6 +257,42 @@ function BlogPage() {
               </li>
             ))}
           </ul>
+          {archive.pages > 1 && (
+            <nav
+              aria-label="Article pages"
+              className="mt-10 flex flex-wrap items-center justify-center gap-2"
+            >
+              {archive.page > 1 && (
+                <Link
+                  to="/blog"
+                  search={{ ...archive.search, page: archive.page - 1 }}
+                  className="inline-flex min-h-11 items-center rounded-xl border border-border px-4 text-sm hover:bg-muted"
+                >
+                  Previous
+                </Link>
+              )}
+              {Array.from({ length: archive.pages }, (_, i) => i + 1).map((page) => (
+                <Link
+                  key={page}
+                  to="/blog"
+                  search={{ ...archive.search, page: page === 1 ? undefined : page }}
+                  aria-current={page === archive.page ? "page" : undefined}
+                  className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border px-3 text-sm focus-visible:outline-2 focus-visible:outline-primary ${page === archive.page ? "border-foreground bg-foreground text-background" : "border-border hover:bg-muted"}`}
+                >
+                  {page}
+                </Link>
+              ))}
+              {archive.page < archive.pages && (
+                <Link
+                  to="/blog"
+                  search={{ ...archive.search, page: archive.page + 1 }}
+                  className="inline-flex min-h-11 items-center rounded-xl border border-border px-4 text-sm hover:bg-muted"
+                >
+                  Next
+                </Link>
+              )}
+            </nav>
+          )}
         </div>
       </section>
     </PageShell>

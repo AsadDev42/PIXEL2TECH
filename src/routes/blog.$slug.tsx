@@ -19,13 +19,9 @@ import {
   SourceList,
   TableOfContents,
 } from "@/components/blog-reading";
-import {
-  getAdjacentPostSummaries,
-  getRelatedPostSummaries,
-  loadPost,
-  SITE_LINKS,
-} from "@/lib/blog-index";
+import { getAdjacentPostSummaries, getRelatedPostSummaries, loadPost } from "@/lib/blog-index";
 import { authorProfile, buildBlogSeo } from "@/lib/blog-seo";
+import { getDefaultPostLinks } from "@/lib/blog-service-links";
 import { getReadingMinutes, toISODate } from "@/lib/blog-types";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -117,7 +113,7 @@ function BlogPostPage() {
   const { previous, next } = getAdjacentPostSummaries(post.slug);
   const shareUrl = `https://pixel2tech.com/blog/${post.slug}`;
   const readingMinutes = getReadingMinutes(post);
-  const internalLinks = post.internalLinks?.length ? post.internalLinks : SITE_LINKS;
+  const internalLinks = post.internalLinks?.length ? post.internalLinks : getDefaultPostLinks(post);
   const profile = authorProfile(post.author);
   const hasFaqs = Boolean(post.faqs?.length);
   const wasUpdated = Boolean(post.updated && post.updated !== post.date);

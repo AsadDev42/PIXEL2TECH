@@ -48,6 +48,7 @@ import {
 import { SITE } from "@/lib/site-config";
 import { ServiceVisual } from "@/components/service-visual";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
+import { SERVICE_EXAMPLES, VIDEO_EDITING_PROCESS } from "@/lib/service-examples";
 import { usePageEntrance } from "@/lib/use-anime";
 import { useRef } from "react";
 
@@ -263,6 +264,8 @@ function ServiceLandingPage() {
     return item ? [{ ...w, item }] : [];
   });
   const group = groupOf(page.slug);
+  const example = SERVICE_EXAMPLES[page.slug];
+  const process = page.slug === "video-editing-and-ads" ? VIDEO_EDITING_PROCESS : SERVICE_PROCESS;
   // Related services from the same family first, so the next click stays on topic.
   const otherServices = (group?.items ?? [])
     .filter((i) => i.slug !== page.slug)
@@ -274,7 +277,7 @@ function ServiceLandingPage() {
   const id = (name: string) => `svc-${name}`;
   const sections = [
     { id: id("deliverables"), label: "What you get" },
-    { id: id("work"), label: work.length > 0 ? "Our work" : "First phase" },
+    { id: id("work"), label: work.length > 0 ? "Our work" : "Sample & brief" },
     { id: id("audience"), label: "Who it's for" },
     { id: id("process"), label: "Process" },
     { id: id("pricing"), label: "Pricing" },
@@ -475,9 +478,9 @@ function ServiceLandingPage() {
         <div className={CONTAINER}>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <p className={EYEBROW}>Our work</p>
+              <p className={EYEBROW}>{work.length > 0 ? "Our work" : "Sample & brief"}</p>
               <h2 id={id("work-title")} className={`mt-4 ${H2}`}>
-                {work.length > 0 ? "Relevant project work" : "Where to begin"}
+                {work.length > 0 ? "Relevant project work" : "See what the work includes"}
               </h2>
             </div>
             <Link
@@ -579,6 +582,52 @@ function ServiceLandingPage() {
               </div>
             </div>
           )}
+          {work.length === 0 && example && (
+            <article
+              aria-labelledby={id("example-title")}
+              className="mt-8 rounded-3xl border border-border bg-background p-6 sm:p-8"
+            >
+              <p className={EYEBROW}>Illustrative working sample</p>
+              <h3 id={id("example-title")} className="mt-3 text-2xl font-semibold">
+                {example.title}
+              </h3>
+              <p className={`mt-4 ${BODY}`}>{example.scenario}</p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Created to explain the deliverable. This is not a client case study or a measured
+                result.
+              </p>
+              {page.slug === "illustration-design" && (
+                <svg
+                  role="img"
+                  aria-label="Illustrative parcel line study, not client artwork"
+                  viewBox="0 0 240 160"
+                  width="240"
+                  height="160"
+                  className="mt-6 max-w-full rounded-2xl bg-muted text-primary"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                  >
+                    <path d="m65 58 55-25 55 25-55 26Z M65 58v62l55 26 55-26V58 M120 84v62 M91 46l56 25v26" />
+                    <path d="m83 108 12 6 M187 52l9 9 18-21" />
+                  </g>
+                </svg>
+              )}
+              <dl className="mt-6 divide-y divide-border border-y border-border">
+                {example.rows.map((row) => (
+                  <div key={row.label} className="grid gap-2 py-4 sm:grid-cols-[1fr_3fr] sm:gap-6">
+                    <dt className="text-sm font-semibold">{row.label}</dt>
+                    <dd className={BODY}>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className={`mt-5 ${BODY}`}>{example.acceptance}</p>
+            </article>
+          )}
         </div>
       </section>
 
@@ -625,7 +674,7 @@ function ServiceLandingPage() {
         </div>
       </section>
 
-      {/* Process: the same four steps as /services */}
+      {/* The editing service uses its own delivery and review workflow. */}
       <section id={id("process")} aria-labelledby={id("process-title")} className={SECTION}>
         <div className={CONTAINER}>
           <div className="max-w-2xl">
@@ -633,10 +682,10 @@ function ServiceLandingPage() {
             <h2 id={id("process-title")} className={`mt-4 ${H2}`}>
               How a project runs
             </h2>
-            <p className={LEAD}>The same four steps we follow on every project.</p>
+            <p className={LEAD}>From your first brief to the agreed handover.</p>
           </div>
           <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {SERVICE_PROCESS.map((step, i) => {
+            {process.map((step, i) => {
               const StepIcon = PROCESS_ICONS[i] ?? Check;
               return (
                 <li key={step.title} className="relative min-w-0 border-t-2 border-border pt-8">

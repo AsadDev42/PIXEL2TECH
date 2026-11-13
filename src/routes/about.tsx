@@ -21,26 +21,18 @@ const DESCRIPTION = `Meet the in-house team behind Pixel2Tech: designers, develo
 /** People with a profile page are the founders (same rule as the root Organization schema). */
 const FOUNDERS = TEAM.filter((m) => m.founder);
 
-const unsplash = (id: string, w: number) =>
-  `https://images.unsplash.com/${id}?w=${w}&auto=format&fit=crop&fm=webp&q=70`;
-
-type Photo = { id: string; alt: string; aspect: string };
+type Photo = { src: string; alt: string; aspect: string };
 
 /** Hero collage: two staggered columns of two photos each. */
-const HERO_COLUMNS: Photo[][] = [
-  [
-    {
-      id: "photo-1522071820081-009f0129c71c",
-      alt: "Creative team collaborating",
-      aspect: "aspect-[3/4]",
-    },
-    { id: "photo-1531403009284-440f080d1e12", alt: "Design workspace", aspect: "aspect-square" },
-  ],
-  [
-    { id: "photo-1552664730-d307ca884978", alt: "Strategy session", aspect: "aspect-square" },
-    { id: "photo-1517245386807-bb43f82c33c4", alt: "Developer at work", aspect: "aspect-[3/4]" },
-  ],
-];
+const HERO_COLUMNS: Photo[][] = [0, 1].map((column) =>
+  TEAM.slice(0, 4)
+    .filter((_, index) => index % 2 === column)
+    .map((member, index) => ({
+      src: member.img,
+      alt: `${member.name}, ${member.role} at Pixel2Tech`,
+      aspect: index === column ? "aspect-[3/4]" : "aspect-square",
+    })),
+);
 
 const HERO_STATS = [
   { value: STATS.projects, label: "Projects delivered" },
@@ -186,7 +178,7 @@ function AboutPage() {
               <div key={c} className={`space-y-3 sm:space-y-4 ${c === 1 ? "pt-8 sm:pt-12" : ""}`}>
                 {column.map((photo, p) => (
                   <div
-                    key={photo.id}
+                    key={photo.src}
                     className={`${photo.aspect} overflow-hidden rounded-2xl bg-muted sm:rounded-3xl`}
                   >
                     {/* Above the fold on desktop: load right away instead of lazily. */}
@@ -194,8 +186,9 @@ function AboutPage() {
                       loading="eager"
                       decoding="async"
                       fetchPriority={c === 0 && p === 0 ? "high" : "auto"}
-                      src={unsplash(photo.id, 800)}
-                      srcSet={`${unsplash(photo.id, 400)} 400w, ${unsplash(photo.id, 800)} 800w`}
+                      src={photo.src}
+                      width={600}
+                      height={photo.aspect === "aspect-square" ? 600 : 800}
                       sizes="(min-width: 1280px) 290px, (min-width: 768px) 25vw, 50vw"
                       alt={photo.alt}
                       className="h-full w-full object-cover"

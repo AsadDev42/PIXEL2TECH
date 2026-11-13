@@ -235,7 +235,7 @@ const post: PostBody = {
       heading: "Where Pixel2Tech fits",
       body: [
         "We're a studio in Lahore that designs and builds Shopify stores, custom sections and store-specific integrations, and we've produced social and ad creative for Shopify brands such as MADLUVV. We work to written briefs, on duplicate themes, with code in repositories our clients own.",
-        "If you're comparing quotes, the brief checklist above is useful with any provider. If you'd like us to look at yours, see our [WordPress and Shopify services](/services/wordpress-and-shopify).",
+        "If you're comparing quotes, the brief checklist above is useful with any provider. If you'd like us to look at yours, see our [Shopify development services](/shopify-development-agency).",
       ],
     },
   ],
@@ -298,7 +298,7 @@ const post: PostBody = {
       label: "Outsourcing web development to Pakistan",
       to: "/blog/outsource-web-development-to-pakistan",
     },
-    { label: "WordPress and Shopify services", to: "/services/wordpress-and-shopify" },
+    { label: "Shopify development services", to: "/shopify-development-agency" },
   ],
   cta: {
     title: "Want a second opinion on a Shopify quote?",
