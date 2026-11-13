@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "write-meta-descriptions-customers-click",
+    title: "How to Write Meta Descriptions Customers Actually Click",
+    excerpt:
+      "A good meta description earns the click before the page loads. Here is how to write one that matches search intent and brings in the right visitors.",
+    tag: "SEO",
+    date: "November 13, 2026",
+    time: "2:53 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/write-meta-descriptions-customers-click.jpg",
+    imgAlt: "A laptop showing Google search results with a meta description",
+  },
+  {
     slug: "ai-image-tools-service-business-marketing",
     title: "AI Image Tools for Service Business Marketing: What Works and What Looks Fake",
     excerpt:
