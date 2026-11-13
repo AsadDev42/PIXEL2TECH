@@ -189,8 +189,8 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Let&apos;s help your
-            <span className="block text-primary">business grow.</span>
+            The Right Support for
+            <span className="block text-primary">Your Business Growth.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
             Branding, websites, video and SEO from one team. We help US and UK businesses turn a
