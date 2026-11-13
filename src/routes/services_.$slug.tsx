@@ -49,6 +49,7 @@ import { SITE } from "@/lib/site-config";
 import { ServiceVisual } from "@/components/service-visual";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 import { SERVICE_EXAMPLES, VIDEO_EDITING_PROCESS } from "@/lib/service-examples";
+import { SERVICE_STORIES } from "@/lib/service-stories";
 import { usePageEntrance } from "@/lib/use-anime";
 import { useRef } from "react";
 
@@ -265,7 +266,10 @@ function ServiceLandingPage() {
   });
   const group = groupOf(page.slug);
   const example = SERVICE_EXAMPLES[page.slug];
-  const process = page.slug === "video-editing-and-ads" ? VIDEO_EDITING_PROCESS : SERVICE_PROCESS;
+  const story = SERVICE_STORIES[page.slug];
+  const process =
+    story?.process ??
+    (page.slug === "video-editing-and-ads" ? VIDEO_EDITING_PROCESS : SERVICE_PROCESS);
   // Related services from the same family first, so the next click stays on topic.
   const otherServices = (group?.items ?? [])
     .filter((i) => i.slug !== page.slug)
@@ -449,9 +453,9 @@ function ServiceLandingPage() {
               What you get
             </h2>
             <p className={LEAD}>
-              The typical scope for this service. Your proposal lists exactly what&apos;s included,
-              so you can pick only the parts you need.
+              {story?.problem ?? "Your proposal lists the deliverables included in your scope."}
             </p>
+            {story && <p className={`mt-4 ${BODY}`}>{story.approach}</p>}
           </div>
           <ol className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
             {page.deliverables.map((d, i) => (
@@ -682,7 +686,9 @@ function ServiceLandingPage() {
             <h2 id={id("process-title")} className={`mt-4 ${H2}`}>
               How a project runs
             </h2>
-            <p className={LEAD}>From your first brief to the agreed handover.</p>
+            <p className={LEAD}>
+              {story?.handover ?? "From your first brief to the agreed handover."}
+            </p>
           </div>
           <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {process.map((step, i) => {

@@ -61,9 +61,9 @@ const BTN_SECONDARY = `${BTN} border border-border bg-background text-foreground
 /* ------------------------------------------------------------------------ */
 
 const OG_IMAGE = "https://pixel2tech.com/media/3498a579-8ac4-4a89-a464-1e37e768b3d0/og-image.jpg";
-const TITLE = "Pixel2Tech | Web Design, Branding & Video for US Businesses";
+const TITLE = "Pixel2Tech | Web Design, Branding & Video for US & UK";
 const DESCRIPTION =
-  "A Lahore, Pakistan studio helping businesses worldwide, from the US to the EU, with branding, websites, Shopify, video and automation. Book a free call.";
+  "Branding, website design, video editing and SEO for US and UK businesses. Work directly with our Lahore studio, with a clear scope and fixed written quote.";
 
 const HERO_TILE_SIZES = "(max-width: 479px) 30vw, (max-width: 767px) 144px, 170px";
 
@@ -189,12 +189,13 @@ function Hero() {
             id="home-hero-title"
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Your business deserves
-            <span className="block text-primary">a team that cares.</span>
+            Let&apos;s help your
+            <span className="block text-primary">business grow.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-            You bring the ambition. We bring the strategy, branding, websites and video to move it
-            forward. Work directly with one in-house team that cares about every detail.
+            Make your brand clearer, your website easier to use and your content worth watching. We
+            bring branding, web design, video editing and SEO together for businesses in the US and
+            UK.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <BookCallButton source="home_hero" className={`${BTN_PRIMARY} w-full sm:w-auto`} />
