@@ -1108,183 +1108,143 @@ export function SiteNav() {
   );
 }
 
-type FooterLink = { label: string; to: StaticTo };
+type FooterLink = { label: string } & ({ to: StaticTo } | { slug: string });
 
-/** The three navigation columns beside the services in the footer. */
+/** A focused footer directory; the full service catalog remains in the main menu. */
 const FOOTER_NAV: { title: string; links: FooterLink[] }[] = [
   {
-    title: "Main",
+    title: "Services",
     links: [
+      { label: "Branding & design", slug: "branding-and-design" },
+      { label: "Website development", slug: "website-development" },
+      { label: "WordPress & Shopify", slug: "wordpress-and-shopify" },
+      { label: "Video editing & ads", slug: "video-editing-and-ads" },
+      { label: "Automation & CRM", slug: "automation-and-crm" },
+      { label: "SEO & search growth", slug: "seo-and-search-growth" },
+      { label: "Explore all services", to: "/services" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About us", to: "/about" },
       { label: "Our work", to: "/portfolio" },
       { label: "Our people", to: "/our-people" },
-      { label: "About us", to: "/about" },
-      { label: "Pricing", to: "/pricing" },
       { label: "Reviews", to: "/reviews" },
-      { label: "Trust center", to: "/trust-center" },
-      { label: "Industries", to: "/industries" },
+      { label: "Pricing", to: "/pricing" },
       { label: "Careers", to: "/careers" },
-      { label: "Superside vs. alternatives", to: "/superside-alternative" },
-      { label: "Superside vs. Pixel2Tech", to: "/superside-vs-pixel2tech" },
-      { label: "Media kit", to: "/press" },
-      { label: "LLM info", to: "/llm-info" },
       { label: "Contact", to: "/contact" },
     ],
   },
   {
-    title: "Learn",
+    title: "Resources",
     links: [
       { label: "Blog", to: "/blog" },
       { label: "Guides", to: "/guides" },
-      { label: "Playbooks", to: "/playbooks" },
       { label: "Customer stories", to: "/results" },
-      { label: "Free Shopify checklist", to: "/resources/shopify-store-checklist" },
-      { label: "What's new", to: "/whats-new" },
+      { label: "Shopify checklist", to: "/resources/shopify-store-checklist" },
       { label: "Help center", to: "/help-center" },
+      { label: "Trust center", to: "/trust-center" },
     ],
   },
   {
     title: "Solutions",
     links: [
       { label: "For agencies", to: "/for-agencies" },
-      { label: "Shopify development agency", to: "/shopify-development-agency" },
-      { label: "White label web development", to: "/white-label-web-development" },
+      { label: "Shopify development", to: "/shopify-development-agency" },
+      { label: "White label development", to: "/white-label-web-development" },
       { label: "Outsource video editing", to: "/outsource-video-editing" },
       { label: "Wedding video editing", to: "/wedding-video-editing-services" },
-      { label: "Website redesign services", to: "/website-redesign-services" },
+      { label: "Website redesign", to: "/website-redesign-services" },
     ],
   },
 ];
 
-const FOOTER_SOCIALS = [
-  "Facebook",
-  "Instagram",
-  "X / Twitter",
-  "LinkedIn",
-  "Pinterest",
-  "YouTube",
-  "Threads",
-  "Bluesky",
-  "Medium",
-];
+const FOOTER_SOCIALS = ["Instagram", "LinkedIn", "YouTube", "Facebook", "X / Twitter"];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const linkCls =
-    "inline-flex min-h-10 items-center py-1 text-muted-foreground transition-colors hover:text-foreground";
-  const hours = SITE.hours
-    .filter((h) => h.time !== "Closed")
-    .map(
-      (h) =>
-        // Spelled out without dashes, the house style for site copy.
-        `${h.days.replace(" – ", " to ")}, ${h.time.replace(" – ", " to ")}`,
-    );
-  const contacts: {
-    label: string;
-    value: string;
-    href?: string;
-    track?: string;
-    external?: boolean;
-  }[] = [
-    { label: "Email", value: SITE.email, href: `mailto:${SITE.email}`, track: "email_click" },
-    {
-      label: "WhatsApp or call",
-      value: SITE.phoneDisplay,
-      href: SITE.whatsappUrl,
-      track: "whatsapp_click",
-      external: true,
-    },
-    { label: "Studio", value: SITE.location },
-    { label: "Hours (Pakistan time)", value: hours.join("\n") },
-  ];
-
+    "inline-flex min-h-11 items-center py-2 leading-relaxed text-muted-foreground md:min-h-8 md:py-1 transition-colors hover:text-foreground";
   return (
-    // The footer always uses the dark palette, whatever the site theme.
     <footer className="dark relative overflow-hidden bg-background text-foreground [color-scheme:dark]">
-      <div className="mx-auto max-w-7xl px-5 pt-16 md:px-10 md:pt-24">
-        {/* Call to action on the left, direct ways to reach us on the right */}
+      <div className="mx-auto max-w-7xl px-5 pt-10 md:px-10 md:pt-12">
         <section
           aria-labelledby="footer-cta-title"
-          className="grid gap-10 border-b border-border pb-12 lg:grid-cols-12 lg:gap-16 lg:pb-16"
+          className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(115deg,#101c2c_0%,#101318_55%,#101010_100%)] p-6 sm:p-8 lg:p-10"
         >
-          <div className="min-w-0 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
-              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-              Replies within one business day
-            </p>
-            <h2
-              id="footer-cta-title"
-              className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-            >
-              Have a project in mind? <span className="text-primary">Let&apos;s talk.</span>
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
-              Tell us what you&apos;re building. We&apos;ll come back with questions, a plan and a
-              fixed quote.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <BookCallButton
-                source="footer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-              />
-              <Link
-                to="/contact"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-8 text-sm font-medium text-foreground transition-colors hover:border-foreground/40 hover:bg-foreground/5"
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-16 -top-24 -z-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl"
+          />
+          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+            <div className="min-w-0">
+              <p className="flex items-center gap-2 text-xs font-medium text-white/60">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
+                Replies within one business day
+              </p>
+              <h2
+                id="footer-cta-title"
+                className="mt-4 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl"
               >
-                Send a project brief
+                Have a project in mind?
+                <br />
+                <span className="text-primary">Let&apos;s make it happen.</span>
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
+                Tell us what you&apos;re building. We&apos;ll help you plan the next step.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <BookCallButton
+                  source="footer"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                />
+                <Link
+                  to="/contact"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 px-6 text-sm font-medium text-white transition-colors hover:border-white/40 hover:bg-white/5"
+                >
+                  Send a project brief
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+            <div className="min-w-0 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+              <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+                Start a conversation
+              </p>
+              <a
+                href={`mailto:${SITE.email}`}
+                onClick={() => trackEvent("email_click", { location: "footer" })}
+                className="group mt-3 flex min-h-12 items-center justify-between gap-3 text-xl font-medium tracking-tight text-white transition-colors hover:text-primary sm:text-2xl"
+              >
+                <span className="break-all">{SITE.email}</span>
+                <ArrowUpRight
+                  className="h-6 w-6 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none"
+                  aria-hidden="true"
+                />
+              </a>
+              <a
+                href={SITE.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
+                className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm text-white/65 transition-colors hover:text-white"
+              >
+                WhatsApp &middot; {SITE.phoneDisplay}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </a>
+              <p className="mt-4 text-xs leading-relaxed text-white/45">
+                {SITE.location}
+                <br />
+                Working with businesses worldwide.
+              </p>
             </div>
           </div>
-
-          <ul
-            aria-label="Get in touch"
-            className="grid gap-px self-end overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:col-span-5"
-          >
-            {contacts.map(({ label, value, href, track, external }, i) => {
-              const body = (
-                <>
-                  <span className="block text-xs text-muted-foreground">{label}</span>
-                  <span className="mt-2 flex items-start justify-between gap-3">
-                    <span className="min-w-0 whitespace-pre-line text-base font-medium text-foreground">
-                      {value}
-                    </span>
-                    {href ? (
-                      <ArrowUpRight
-                        className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
-                        aria-hidden="true"
-                      />
-                    ) : null}
-                  </span>
-                </>
-              );
-              return (
-                // Email and hours are the long values, so they take a full row.
-                <li
-                  key={label}
-                  className={`min-w-0 bg-card ${i === 0 || i === contacts.length - 1 ? "sm:col-span-2" : ""}`}
-                >
-                  {href ? (
-                    <a
-                      href={href}
-                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      onClick={() => track && trackEvent(track, { location: "footer" })}
-                      className="group block h-full p-6 transition-colors hover:bg-background/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
-                    >
-                      {body}
-                    </a>
-                  ) : (
-                    <div className="h-full p-6">{body}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
         </section>
 
-        {/* Brand line and social profiles */}
-        <div className="flex flex-col gap-6 border-b border-border py-10 md:flex-row md:items-center md:justify-between">
-          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <Link to="/" aria-label="Pixel2Tech home" className="inline-block shrink-0">
+        <div className="grid gap-8 py-10 lg:grid-cols-[1fr_3fr] lg:gap-12 lg:py-12">
+          <div className="min-w-0">
+            <Link to="/" aria-label="Pixel2Tech home" className="inline-block">
               <MediaImage
                 loading="lazy"
                 decoding="async"
@@ -1295,88 +1255,50 @@ export function SiteFooter() {
                 className="h-10 w-auto"
               />
             </Link>
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-              {SITE.positioning}. Based in Lahore, Pakistan.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Branding, websites, video and automation. One creative team, from idea to launch.
             </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {SOCIAL_LINKS.filter((s) => FOOTER_SOCIALS.includes(s.name)).map(
-              ({ name, href, Icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Pixel2Tech on ${name}`}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ),
-            )}
-          </div>
-        </div>
-
-        {/* Every service and page, grouped the way the menu groups them */}
-        {/* Services and navigation share one 3-column grid, so their columns line up */}
-        <div className="grid gap-12 py-12">
-          <nav aria-labelledby="footer-services" className="min-w-0">
-            <h2 id="footer-services" className="text-lg font-medium text-foreground">
-              Services
-            </h2>
-            <div className="mt-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {[
-                [SERVICE_MENU_GROUPS[0]!],
-                [SERVICE_MENU_GROUPS[1]!],
-                SERVICE_MENU_GROUPS.slice(2),
-              ].map((groups, i) => (
-                <div key={i} className="min-w-0 space-y-8">
-                  {groups.map((g) => (
-                    <div key={g.key}>
-                      <Link
-                        to="/services"
-                        hash={g.anchor}
-                        className="group inline-flex items-center gap-1 text-base font-medium text-foreground transition-colors hover:text-primary"
-                      >
-                        {g.title}
-                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                      </Link>
-                      <ul className="mt-3 text-sm">
-                        {g.entries.map((entry) => (
-                          <li key={childPath(entry)}>
-                            <ChildLink child={entry} current={false} className={linkCls}>
-                              {entry.label}
-                            </ChildLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              ))}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {SOCIAL_LINKS.filter((social) => FOOTER_SOCIALS.includes(social.name)).map(
+                ({ name, href, Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Pixel2Tech on ${name}`}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ),
+              )}
             </div>
-          </nav>
-
-          <nav aria-labelledby="footer-navigation" className="min-w-0 border-t border-border pt-12">
-            <h2 id="footer-navigation" className="text-lg font-medium text-foreground">
-              Navigation
-            </h2>
-            <div className="mt-6 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {FOOTER_NAV.map((col) => (
-                <div key={col.title} className="min-w-0">
-                  <h3 className="text-base font-medium text-foreground">{col.title}</h3>
-                  <ul className="mt-3 text-sm">
-                    {col.links.map((l) => (
-                      <li key={l.to}>
-                        <Link to={l.to} className={linkCls}>
-                          {l.label}
+          </div>
+          <nav
+            aria-label="Footer navigation"
+            className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-6"
+          >
+            {FOOTER_NAV.map((col) => (
+              <div key={col.title} className="min-w-0">
+                <h2 className="text-sm font-semibold text-foreground">{col.title}</h2>
+                <ul className="mt-3 text-sm">
+                  {col.links.map((link) => (
+                    <li key={"slug" in link ? link.slug : link.to}>
+                      {"slug" in link ? (
+                        <Link to="/services/$slug" params={{ slug: link.slug }} className={linkCls}>
+                          {link.label}
                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+                      ) : (
+                        <Link to={link.to} className={linkCls}>
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </nav>
         </div>
 
