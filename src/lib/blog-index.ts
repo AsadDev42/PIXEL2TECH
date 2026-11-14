@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "referral-email-happy-customers-forward",
+    title: "A Referral Email That Happy Customers Actually Forward",
+    excerpt:
+        "A referral email works when it is easy to forward and easy to act on. Write one short email with a clear reward and a simple next step.",
+tag: "Email Marketing",
+    date: "November 14, 2026",
+    time: "5:12 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/referral-email-happy-customers-forward.jpg",
+    imgAlt: "A happy customer forwarding an email on a phone",
+  },
+  {
     slug: "rebuild-custom-tool-vs-patch-again",
     title: "When to Rebuild a Custom Tool Instead of Patching It Again",
     excerpt:
