@@ -687,7 +687,7 @@ export function personProfileHead(person: PersonProfileData) {
               },
               alumniOf: [{ "@type": "CollegeOrUniversity", name: person.alumniOf }],
               knowsAbout: person.knowsAbout,
-              sameAs: [person.linkedin, SITE.url].filter(Boolean),
+              sameAs: [person.linkedin].filter(Boolean),
             },
             {
               "@type": "BreadcrumbList",

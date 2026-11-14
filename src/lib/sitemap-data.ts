@@ -25,20 +25,20 @@ export interface SitemapEntry {
  * use "now": a lastmod that changes on every request teaches Google to ignore it.
  */
 export const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-11-04",
-  "/about": "2026-11-04",
-  "/asad-farooq": "2026-08-08",
-  "/saad": "2026-09-27",
-  "/usama-farooq": "2026-08-08",
-  "/services": "2026-11-04",
+  "/": "2026-11-13",
+  "/about": "2026-11-12",
+  "/asad-farooq": "2026-11-15",
+  "/saad": "2026-10-27",
+  "/usama-farooq": "2026-11-15",
+  "/services": "2026-11-13",
   "/portfolio": "2026-11-09",
-  "/contact": "2026-10-06",
+  "/contact": "2026-11-09",
   "/privacy-policy": PRIVACY_UPDATED.iso,
   "/terms-and-conditions": TERMS_UPDATED.iso,
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
-export const SERVICE_PAGES_LASTMOD = "2026-11-10";
+export const SERVICE_PAGES_LASTMOD = "2026-11-15";
 
 /** Pricing, people, reviews, trust, learn and help pages added with the service families. */
 const NEW_PAGES_LASTMOD = "2026-11-10";

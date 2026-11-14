@@ -32,6 +32,15 @@ type RelatedWork = { slug: string; note: string };
 /** A planned or published article at /blog/<slug>. */
 type RelatedArticle = { slug: string; title: string; desc: string };
 
+/** Public implementation evidence, explicitly distinct from client results. */
+export type ServiceEvidence = {
+  label: string;
+  title: string;
+  summary: string;
+  checks: { title: string; detail: string; href: string; linkLabel: string }[];
+  limitation: string;
+};
+
 export type ServicePageCopy = {
   /** <title>, 60 characters or fewer. */
   metaTitle: string;
@@ -55,6 +64,7 @@ export type ServicePageCopy = {
   priceDrivers: string[];
   /** Only real client work. Leave empty when nothing published fits. */
   work: RelatedWork[];
+  evidence?: ServiceEvidence;
   articles: [RelatedArticle, RelatedArticle, RelatedArticle];
   /** 4 to 6 questions, answers of 40 to 80 words. */
   faqs: FaqItem[];
@@ -477,6 +487,37 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "Hosting and third-party API costs after launch",
     ],
     work: [],
+    evidence: {
+      label: "In-house implementation",
+      title: "The booking and project-brief workflow on this website",
+      summary:
+        "Pixel2Tech's own website includes a custom call-booking interface and project-brief form. They show how a focused business task becomes a user journey with validation, external services and clear confirmation or recovery states.",
+      checks: [
+        {
+          title: "Choose a call time",
+          detail:
+            "Open the booking interface from our contact page to explore the date, time-zone and slot-selection journey. Calendar availability is checked before a booking can be confirmed; unavailable or disconnected calendars do not produce a successful booking.",
+          href: "/contact",
+          linkLabel: "Explore the booking interface",
+        },
+        {
+          title: "Send a structured project brief",
+          detail:
+            "The project form collects the service, context and contact details, validates the request and shows its submission state. It demonstrates a focused intake workflow rather than a gallery of app screens.",
+          href: "/contact#contact-form-title",
+          linkLabel: "View the project-brief form",
+        },
+        {
+          title: "Plan the handover",
+          detail:
+            "Our trust center explains code ownership, account access and data handling, which should also be agreed for a commissioned app or portal.",
+          href: "/trust-center",
+          linkLabel: "Read the ownership and data terms",
+        },
+      ],
+      limitation:
+        "This is our own website implementation, not a client mobile-app or SaaS results case study. It demonstrates a booking and intake workflow; no customer growth, conversion lift or third-party uptime is claimed.",
+    },
     articles: [
       {
         slug: "custom-web-app-development-cost",
@@ -514,6 +555,10 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         q: "What happens after launch?",
         a: "We fix defects in the work we delivered when they're reported within the support period stated in your proposal. New features, changes made by others after handover, and issues caused by third-party platform changes are quoted as new work, so you can keep improving the product in planned phases.",
+      },
+      {
+        q: "Can I explore an example of your custom software?",
+        a: "You can explore the call-booking interface and project-brief form on this website. They demonstrate our own booking and intake workflow, not a client mobile-app launch or SaaS growth result. For your project, we agree the user roles, data, integrations and acceptance tests before building, then review the working journey with you.",
       },
     ],
     ctaTitle: "Talk through your app or platform idea",
@@ -733,7 +778,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "SEO agency",
     h1Highlight: "for US and UK businesses and online stores",
     answer:
-      "Pixel2Tech is an SEO agency in Lahore, Pakistan working with businesses in the US, UK, Canada and the EU. It audits sites for technical problems, provides on-page SEO services, plans keywords around what customers search for and sets up local SEO, so the right people find the business on Google.",
+      "Pixel2Tech is an SEO agency in Lahore, Pakistan serving US, UK and international businesses. We review crawlability, indexing, page content and internal links, then agree which fixes to implement. For answer engines and AI search, we make important answers clear, accessible and supported by evidence; inclusion and rankings are not guaranteed.",
     tags: ["On-page SEO", "Technical SEO", "Local SEO"],
     deliverables: [
       {
@@ -742,7 +787,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       },
       {
         title: "On-page optimization",
-        desc: "Titles, headings, internal links and page content improved for the searches each page targets.",
+        desc: "Titles, headings, internal links and page content improved for the searches each page targets, with direct answers to real buyer questions and evidence supporting factual claims.",
       },
       {
         title: "Keyword strategy",
@@ -776,6 +821,37 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       "Fixes we implement, or a list handed to your developer",
     ],
     work: [],
+    evidence: {
+      label: "In-house implementation",
+      title: "Technical SEO on the Pixel2Tech website",
+      summary:
+        "Our own website is a public implementation example. Inspect the sitemap, a dedicated service page and a named author profile to see how page discovery, focused content and identity information fit together.",
+      checks: [
+        {
+          title: "Page discovery",
+          detail:
+            "A sitemap index separates pages, articles and portfolio entries. It helps crawlers discover URLs; inclusion in a sitemap does not prove Google has indexed them.",
+          href: "/sitemap.xml",
+          linkLabel: "Inspect the public sitemap",
+        },
+        {
+          title: "Service intent and answers",
+          detail:
+            "The website development page brings the offer, deliverables, relevant projects and buyer questions into one page, with links to supporting guides.",
+          href: "/services/website-development",
+          linkLabel: "Read the service page",
+        },
+        {
+          title: "Accountable authorship",
+          detail:
+            "Named author profiles explain the person's role and link to their professional identity. Article bylines link readers to the relevant profile.",
+          href: "/asad-farooq",
+          linkLabel: "View an author profile",
+        },
+      ],
+      limitation:
+        "This is work on our own site, not a client SEO results case study. The examples demonstrate implementation; they do not establish ranking gains, traffic growth or AI citations. Outcomes require Search Console and analytics evidence over an agreed period.",
+    },
     articles: [
       {
         slug: "website-traffic-drop-after-redesign",
@@ -813,6 +889,10 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         q: "How do you report on SEO results?",
         a: "We set up Google Search Console and analytics if they're missing, then report on the numbers that matter: which pages get impressions and clicks, which queries they appear for, and what changed since the last report. Every report ties back to the goals agreed in your proposal, not to vanity metrics.",
+      },
+      {
+        q: "What is the difference between SEO, AEO and GEO?",
+        a: "SEO improves how search engines discover and understand a site. AEO, or answer engine optimization, makes answers to buyer questions clear and easy to find. GEO, or generative engine optimization, applies reliable content, evidence and crawl access to AI search. We address these together; no special markup or AI file guarantees inclusion, citations or rankings.",
       },
     ],
     ctaTitle: "Find out what's holding back your search traffic",

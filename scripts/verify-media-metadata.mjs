@@ -26,10 +26,13 @@ for (let offset = 0; offset < pathsList.length; offset += 6) {
         images++;
         const alt = attr(match[0], "alt");
         const title = attr(match[0], "title");
+        // Empty alt intentionally hides decorative/redundant artwork from assistive tech.
+        // Missing alt still fails, as do generic descriptions for informative images.
         if (
-          !alt ||
-          !title ||
-          /Pixel2Tech project artwork|\.(?:webp|jpg|png|mp4|avif)(?:$|\?)/i.test(alt)
+          alt === undefined ||
+          (alt === "" && title) ||
+          (alt !== "" &&
+            (!title || /Pixel2Tech project artwork|\.(?:webp|jpg|png|mp4|avif)(?:$|\?)/i.test(alt)))
         ) {
           issues.push(`${path}: incomplete image metadata: ${attr(match[0], "src")} (${alt})`);
         }

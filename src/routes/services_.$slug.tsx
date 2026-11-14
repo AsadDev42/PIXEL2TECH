@@ -181,7 +181,7 @@ export const Route = createFileRoute("/services_/$slug")({
             areaServed: SITE.areaServed.map((name) => ({ "@type": "Country", name })),
             audience: {
               "@type": "BusinessAudience",
-              audienceType: "US startups, small and midsize businesses, DTC brands and agencies",
+              audienceType: "Startups, small and midsize businesses, online stores and agencies",
             },
             termsOfService: `${SITE.url}/terms-and-conditions`,
           }),
@@ -257,6 +257,10 @@ function ServiceLandingPage() {
   const example = SERVICE_EXAMPLES[page.slug];
   const story = SERVICE_STORIES[page.slug];
   const hero = SERVICE_HERO_COPY[page.slug];
+  const intro =
+    page.slug === "seo-and-search-growth" || page.slug === "custom-platforms-and-apps"
+      ? page.answer
+      : (hero?.intro ?? page.answer);
   const process =
     story?.process ??
     (page.slug === "video-editing-and-ads" ? VIDEO_EDITING_PROCESS : SERVICE_PROCESS);
@@ -271,7 +275,11 @@ function ServiceLandingPage() {
   const id = (name: string) => `svc-${name}`;
   const sections = [
     { id: id("deliverables"), label: "What you get" },
-    { id: id("work"), label: work.length > 0 ? "Our work" : "Sample & brief" },
+    {
+      id: id("work"),
+      label:
+        work.length > 0 ? "Our work" : page.evidence ? "Implementation example" : "Sample & brief",
+    },
     { id: id("audience"), label: "Who it's for" },
     { id: id("process"), label: "Process" },
     { id: id("pricing"), label: "Pricing" },
@@ -338,7 +346,7 @@ function ServiceLandingPage() {
                 {hero?.title ?? `${page.h1} ${page.h1Highlight}`}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                {hero?.intro ?? page.answer}
+                {intro}
               </p>
               <div className="mt-6 border-t border-border pt-4">
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -484,9 +492,19 @@ function ServiceLandingPage() {
         <div className={CONTAINER}>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <p className={EYEBROW}>{work.length > 0 ? "Our work" : "Sample & brief"}</p>
+              <p className={EYEBROW}>
+                {work.length > 0
+                  ? "Our work"
+                  : page.evidence
+                    ? "Implementation example"
+                    : "Sample & brief"}
+              </p>
               <h2 id={id("work-title")} className={`mt-4 ${H2}`}>
-                {work.length > 0 ? "Relevant project work" : "See what the work includes"}
+                {work.length > 0
+                  ? "Relevant project work"
+                  : page.evidence
+                    ? "See the implementation for yourself"
+                    : "See what the work includes"}
               </h2>
             </div>
             <Link
@@ -497,6 +515,40 @@ function ServiceLandingPage() {
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+
+          {page.evidence && (
+            <article
+              aria-labelledby={id("evidence-title")}
+              className="mt-8 rounded-3xl border border-border bg-background p-6 sm:p-8"
+            >
+              <p className={EYEBROW}>{page.evidence.label}</p>
+              <h3 id={id("evidence-title")} className="mt-3 text-2xl font-semibold">
+                {page.evidence.title}
+              </h3>
+              <p className={`mt-4 ${BODY}`}>{page.evidence.summary}</p>
+              <dl className="mt-6 divide-y divide-border border-y border-border">
+                {page.evidence.checks.map((check) => (
+                  <div
+                    key={check.title}
+                    className="grid gap-2 py-4 sm:grid-cols-[1fr_3fr] sm:gap-6"
+                  >
+                    <dt className="text-sm font-semibold">{check.title}</dt>
+                    <dd className={BODY}>
+                      <p>{check.detail}</p>
+                      <a
+                        href={check.href}
+                        className={`mt-3 inline-flex min-h-11 items-center gap-2 rounded text-sm font-medium text-primary underline underline-offset-4 ${FOCUS_RING}`}
+                      >
+                        {check.linkLabel}
+                        <ArrowUpRight size={16} aria-hidden="true" />
+                      </a>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className={`mt-4 ${BODY}`}>{page.evidence.limitation}</p>
+            </article>
+          )}
 
           {work.length > 0 ? (
             <ul className="mt-8 grid gap-4 sm:mt-10 lg:grid-cols-2 lg:gap-6">

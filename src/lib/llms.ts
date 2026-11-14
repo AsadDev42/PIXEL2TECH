@@ -107,6 +107,19 @@ export function buildLlmsFullTxt(): string {
     );
     lines.push("What you get:", "");
     for (const d of page.deliverables) lines.push(`- ${d.title}: ${d.desc}`);
+    if (page.work.length > 0) {
+      lines.push("", "Related project evidence:", "");
+      for (const work of page.work) {
+        lines.push(`- ${SITE.url}/portfolio/${work.slug}: ${work.note}`);
+      }
+    }
+    if (page.evidence) {
+      lines.push("", `${page.evidence.label}: ${page.evidence.title}`, "", page.evidence.summary);
+      for (const check of page.evidence.checks) {
+        lines.push(`- ${check.title}: ${check.detail} ${SITE.url}${check.href}`);
+      }
+      lines.push("", page.evidence.limitation);
+    }
     lines.push("", "What changes the quote:", "");
     for (const driver of page.priceDrivers) lines.push(`- ${driver}`);
     lines.push("", "Questions:", "");
