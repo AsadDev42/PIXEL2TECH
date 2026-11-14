@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, Database, FileText, Search, Users, Mail, Send } from "lucide-react";
 import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 import type { ServiceTitle } from "@/lib/service-pages";
+import { PlatformPreview } from "@/components/platform-showcase";
 
 const WORKFLOWS = {
   automation: {
@@ -159,7 +160,9 @@ export function ServiceVisual({
     <div
       className={`relative overflow-hidden bg-muted ${visual.illustration ? "min-h-80" : "aspect-[16/10]"}`}
     >
-      {visual.illustration ? (
+      {title === "Custom Platforms & Apps" ? (
+        <PlatformPreview />
+      ) : visual.illustration ? (
         <ServiceDiagram kind={visual.illustration} />
       ) : (
         <MediaImage

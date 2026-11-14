@@ -47,6 +47,7 @@ import { SERVICE_PRESENTATION } from "@/lib/service-presentation";
 import { SERVICE_EXAMPLES, VIDEO_EDITING_PROCESS } from "@/lib/service-examples";
 import { SERVICE_STORIES } from "@/lib/service-stories";
 import { SERVICE_HERO_COPY } from "@/lib/service-hero-copy";
+import { PlatformShowcase } from "@/components/platform-showcase";
 import { usePageEntrance } from "@/lib/use-anime";
 import { useRef } from "react";
 
@@ -482,6 +483,8 @@ function ServiceLandingPage() {
           </ol>
         </div>
       </section>
+
+      {page.slug === "custom-platforms-and-apps" && <PlatformShowcase />}
 
       {/* Related work: real case studies only */}
       <section
