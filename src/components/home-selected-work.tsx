@@ -25,8 +25,8 @@ const HOME_WORK = [
     slug: "madluvv-social-media-meta-ads",
     label: "Social Media & Ads",
     description: "Explore our social content, campaign design and Meta ad creative.",
-    image: "/portfolio/madluvv-social-media-meta-ads/home-campaigns-cover.webp?v=20261114-green",
-    ratio: 1672 / 941,
+    image: "/portfolio/madluvv-social-media-meta-ads/home-campaigns-cover.webp?v=20261114-final",
+    ratio: 1671 / 941,
   },
   {
     slug: "sweet-temptation-logo-menu-design",
