@@ -1163,29 +1163,18 @@ const FOOTER_NAV: { title: string; links: FooterLink[] }[] = [
 const FOOTER_SOCIALS = ["Instagram", "LinkedIn", "YouTube", "Facebook", "X / Twitter"];
 
 function FooterNavColumn({ title, links }: { title: string; links: FooterLink[] }) {
-  const [expanded, setExpanded] = useState(false);
-  const listId = useId();
   const linkClass =
     "inline-flex min-h-11 items-center py-2 text-sm leading-relaxed text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:underline sm:min-h-8 sm:py-1";
   return (
-    <div className="min-w-0 border-b border-border sm:border-0">
-      <h2 className="text-sm font-semibold text-foreground sm:flex sm:min-h-10 sm:items-center">
-        <button
-          type="button"
-          aria-expanded={expanded}
-          aria-controls={listId}
-          onClick={() => setExpanded(!expanded)}
-          className="flex min-h-14 w-full items-center justify-between gap-4 text-left sm:hidden"
-        >
-          {title}
-          <ChevronDown
-            className={`h-4 w-4 text-muted-foreground transition-transform motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
-            aria-hidden="true"
-          />
-        </button>
-        <span className="hidden sm:block">{title}</span>
-      </h2>
-      <ul id={listId} className={`${expanded ? "block" : "hidden"} pb-4 sm:mt-3 sm:block sm:pb-0`}>
+    <details className="group min-w-0 self-start rounded-xl border border-white/10 bg-card px-5">
+      <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden">
+        {title}
+        <ChevronDown
+          className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180 motion-reduce:transition-none"
+          aria-hidden="true"
+        />
+      </summary>
+      <ul className="border-t border-border pb-4 pt-2">
         {links.map((link) => (
           <li key={"slug" in link ? link.slug : link.to}>
             {"slug" in link ? (
@@ -1200,7 +1189,7 @@ function FooterNavColumn({ title, links }: { title: string; links: FooterLink[] 
           </li>
         ))}
       </ul>
-    </div>
+    </details>
   );
 }
 
@@ -1276,40 +1265,64 @@ export function SiteFooter() {
           </div>
         </section>
 
-        <div className="grid gap-8 py-10 lg:grid-cols-[1fr_3fr] lg:py-12">
-          <div className="min-w-0">
-            <Link to="/" aria-label="Pixel2Tech home" className="block w-fit">
-              <MediaImage
-                loading="lazy"
-                decoding="async"
-                width={411}
-                height={98}
-                src={logoDarkAsset.url}
-                alt="Pixel2Tech"
-                className="h-10 w-auto"
-              />
-            </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Branding, websites, video and automation. One creative team, from idea to launch.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {SOCIAL_LINKS.filter((social) => FOOTER_SOCIALS.includes(social.name)).map(
-                ({ name, href, Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Pixel2Tech on ${name}`}
-                    className="grid h-11 w-11 place-items-center rounded-lg text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        <div className="py-10 lg:py-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0">
+              <Link to="/" aria-label="Pixel2Tech home" className="block w-fit">
+                <MediaImage
+                  loading="lazy"
+                  decoding="async"
+                  width={411}
+                  height={98}
+                  src={logoDarkAsset.url}
+                  alt="Pixel2Tech"
+                  className="h-10 w-auto"
+                />
+              </Link>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Branding, websites, video and automation.
+              </p>
+            </div>
+            <div>
+              <nav aria-label="Main footer links" className="flex flex-wrap gap-x-6 gap-y-2">
+                {[
+                  { to: "/services", label: "Services" },
+                  { to: "/portfolio", label: "Our work" },
+                  { to: "/about", label: "About" },
+                  { to: "/blog", label: "Blog" },
+                  { to: "/contact", label: "Contact" },
+                ].map(({ to, label }) => (
+                  <Link
+                    key={to}
+                    to={to}
+                    className="inline-flex min-h-11 items-center text-sm text-foreground transition-colors hover:text-primary"
                   >
-                    <Icon className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                ),
-              )}
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mt-2 flex flex-wrap gap-2 lg:justify-end">
+                {SOCIAL_LINKS.filter((social) => FOOTER_SOCIALS.includes(social.name)).map(
+                  ({ name, href, Icon }) => (
+                    <a
+                      key={name}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Pixel2Tech on ${name}`}
+                      className="grid h-11 w-11 place-items-center rounded-lg text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  ),
+                )}
+              </div>
             </div>
           </div>
-          <nav aria-label="Footer navigation" className="grid gap-0 sm:grid-cols-4 sm:gap-8">
+          <nav
+            aria-label="Footer navigation"
+            className="mt-8 grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {FOOTER_NAV.map((column) => (
               <FooterNavColumn key={column.title} {...column} />
             ))}

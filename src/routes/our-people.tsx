@@ -33,7 +33,7 @@ const ORG_REF = { "@id": `${SITE.url}/#organization` };
 
 const FOUNDERS = TEAM.filter((m) => m.founder);
 const CEO = TEAM.find((m) => m.profile === "/usama-farooq");
-const CPO = TEAM.find((m) => m.profile === "/asad-farooq");
+const COO = TEAM.find((m) => m.profile === "/asad-farooq");
 
 /**
  * What each role handles on a project. Wording follows the profile pages
@@ -42,7 +42,7 @@ const CPO = TEAM.find((m) => m.profile === "/asad-farooq");
  */
 const ROLE_WORK: Record<string, string> = {
   "CEO & Founder": "Sets company strategy and leads client partnerships and new business.",
-  "Co-Founder & CPO": "Leads creative direction and mentors the studio's designers and editors.",
+  "Co-Founder & COO": "Leads creative direction and mentors the studio's designers and editors.",
   "Creative Video Editor":
     "Edits vertical video for Instagram, TikTok and YouTube Shorts, plus longer brand and channel edits.",
   "Creative Brand Designer": "Designs brand identities and the brand assets that apply them.",
@@ -58,7 +58,7 @@ const ROLE_GROUPS = [
   {
     title: "Leadership",
     covers: "Company strategy, client partnerships and creative direction.",
-    roles: ["CEO & Founder", "Co-Founder & CPO"],
+    roles: ["CEO & Founder", "Co-Founder & COO"],
   },
   {
     title: "Brand design",
@@ -152,11 +152,11 @@ const FAQS: FaqItem[] = [
     q: "How do I talk to the team during a project?",
     a: "Calls run over Google Meet, and day-to-day updates go over email or WhatsApp. The first call is a free 30-minute strategy call about your goals, audience and deadline. We reply to new messages within one business day. Agencies can name one person on their side, usually a project manager, and we work through that contact.",
   },
-  ...(CEO && CPO
+  ...(CEO && COO
     ? [
         {
           q: "Can I work directly with the founders?",
-          a: `${CEO.name}, the ${CEO.role.replace("&", "and")}, leads client partnerships and new business. ${CPO.name}, the ${CPO.role.replace("&", "and")}, leads creative direction and mentors the studio's designers and editors. Both have profile pages with their background, and you can ask on the strategy call who will handle each part of your project.`,
+          a: `${CEO.name}, the ${CEO.role.replace("&", "and")}, leads client partnerships and new business. ${COO.name}, the ${COO.role.replace("&", "and")}, leads creative direction and mentors the studio's designers and editors. Both have profile pages with their background, and you can ask on the strategy call who will handle each part of your project.`,
         },
       ]
     : []),

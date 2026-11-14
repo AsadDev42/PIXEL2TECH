@@ -33,7 +33,7 @@ export const ALL_TEAM: TeamMember[] = [
   },
   {
     name: "Asad Farooq",
-    role: "Co-Founder & CPO",
+    role: "Co-Founder & COO",
     img: teamAsad.url,
     profile: "/asad-farooq",
     founder: true,

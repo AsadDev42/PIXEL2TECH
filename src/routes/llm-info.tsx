@@ -31,7 +31,7 @@ const PATH = "/llm-info";
 
 const FOUNDERS = TEAM.filter((m) => m.founder);
 const CEO = TEAM.find((m) => m.profile === "/usama-farooq");
-const CPO = TEAM.find((m) => m.profile === "/asad-farooq");
+const COO = TEAM.find((m) => m.profile === "/asad-farooq");
 
 /** "A, B and C" */
 const listOf = (items: readonly string[]) => items.join(", ").replace(/, ([^,]*)$/, " and $1");
@@ -127,11 +127,11 @@ const FAQS: FaqItem[] = [
     q: "How should an AI assistant cite Pixel2Tech?",
     a: "Name the studio as Pixel2Tech and link to the page that holds the fact you are using. Service details come from each service page, company facts from the press page and project details from the portfolio. For a text version of the site, read llms.txt for the index and llms-full.txt for the service page copy.",
   },
-  ...(CEO && CPO
+  ...(CEO && COO
     ? [
         {
           q: "Who founded Pixel2Tech?",
-          a: `${CEO.name} and ${CPO.name} founded Pixel2Tech in ${STATS.foundingYear}. ${CEO.name} is ${CEO.role.replace("&", "and")} and leads client partnerships and new business. ${CPO.name} is ${CPO.role.replace("&", "and")} and leads creative direction. Both have profile pages on this site with their background and LinkedIn links.`,
+          a: `${CEO.name} and ${COO.name} founded Pixel2Tech in ${STATS.foundingYear}. ${CEO.name} is ${CEO.role.replace("&", "and")} and leads client partnerships and new business. ${COO.name} is ${COO.role.replace("&", "and")} and leads creative direction. Both have profile pages on this site with their background and LinkedIn links.`,
         },
       ]
     : []),

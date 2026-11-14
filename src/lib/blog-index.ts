@@ -41,8 +41,8 @@ const POSTS = [
     date: "November 13, 2026",
     time: "7:41 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/contact-pages-that-convert.jpg",
-    imgAlt: "A visitor filling in a short contact form on a laptop",
+    img: "/blog/covers/contact-pages-that-convert.jpg?v=20261114-cover",
+    imgAlt: "Contact Pages That Convert: a person working on a laptop",
   },
   {
     slug: "b-roll-service-videos-look-professional",
@@ -53,8 +53,8 @@ const POSTS = [
     date: "November 13, 2026",
     time: "5:19 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/b-roll-service-videos-look-professional.jpg",
-    imgAlt: "A camera filming hands at work on a service job",
+    img: "/blog/covers/b-roll-service-videos-look-professional.jpg?v=20261114-cover",
+    imgAlt: "B-Roll for Better Service Videos: a camera on a service workbench",
   },
   {
     slug: "write-meta-descriptions-customers-click",
