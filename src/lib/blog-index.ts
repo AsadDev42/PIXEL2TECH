@@ -36,13 +36,13 @@ const POSTS = [
     slug: "present-logo-concepts-clients-approve-faster",
     title: "How to Present Logo Concepts to Clients So Approvals Come Faster",
     excerpt:
-      "Present two or three logo concepts with clear reasoning, real mockups and one decision step, so clients give useful feedback and approve faster.",
+      "Present logo concepts so clients approve faster. Show two or three strong options with clear reasoning, real mockups, and one simple decision step.",
     tag: "Branding",
     date: "November 14, 2026",
-    time: "10:52 am",
+    time: "10:47 am",
     author: "Asad Farooq",
     img: "/blog/covers/present-logo-concepts-clients-approve-faster.jpg?v=20261114-cover",
-    imgAlt: "Presenting logo concepts with brand design mockups",
+    imgAlt: "A designer presenting logo concepts to a client on a laptop",
   },
   {
     slug: "contact-pages-that-convert",
