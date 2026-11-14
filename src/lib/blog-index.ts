@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "present-logo-concepts-clients-approve-faster",
+    title: "How to Present Logo Concepts to Clients So Approvals Come Faster",
+    excerpt:
+      "Present two or three logo concepts with clear reasoning, real mockups and one decision step, so clients give useful feedback and approve faster.",
+    tag: "Branding",
+    date: "November 14, 2026",
+    time: "10:52 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/present-logo-concepts-clients-approve-faster.jpg?v=20261114-cover",
+    imgAlt: "Presenting logo concepts with brand design mockups",
+  },
+  {
     slug: "contact-pages-that-convert",
     title: "Contact Pages That Convert: What to Put on the Page Customers Visit Last",
     excerpt:

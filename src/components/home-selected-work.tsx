@@ -24,8 +24,8 @@ const HOME_WORK = [
   {
     slug: "madluvv-social-media-meta-ads",
     label: "Social Media & Ads",
-    description: "Social content and Meta ad creative for MADLUVV.",
-    image: "/portfolio/madluvv-social-media-meta-ads/home-campaigns-cover.webp",
+    description: "Explore our social content, campaign design and Meta ad creative.",
+    image: "/portfolio/madluvv-social-media-meta-ads/home-campaigns-cover.webp?v=20261114-green",
     ratio: 1672 / 941,
   },
   {
@@ -60,12 +60,21 @@ const HOME_WORK = [
   const project = ALL_ITEMS.find((item) => item.slug === work.slug)!;
   return {
     ...work,
-    name: project.client ?? project.title,
+    name:
+      work.slug === "madluvv-social-media-meta-ads"
+        ? "Social Media & Meta Ads"
+        : (project.client ?? project.title),
     whiteLabel: Boolean(project.whiteLabel),
   };
 });
 
 const COUNT = HOME_WORK.length;
+function workDestination(slug: string) {
+  return slug === "madluvv-social-media-meta-ads"
+    ? { to: "/portfolio" as const, search: { category: "social-media-and-ads" as const } }
+    : { to: "/portfolio/$slug" as const, params: { slug } };
+}
+
 const GAP = 20;
 /** Size of each card relative to the centre one, by distance from it. */
 const SCALE = [1, 0.6, 0.42];
@@ -180,8 +189,7 @@ export function HomeSelectedWork() {
               >
                 {offset === 0 ? (
                   <Link
-                    to="/portfolio/$slug"
-                    params={{ slug: work.slug }}
+                    {...workDestination(work.slug)}
                     draggable={false}
                     aria-label={`View project: ${work.name}`}
                     className={`${frame} shadow-2xl ring-1 ring-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
@@ -203,8 +211,7 @@ export function HomeSelectedWork() {
           </p>
           <h3 className="mt-2 text-2xl font-bold tracking-tight">
             <Link
-              to="/portfolio/$slug"
-              params={{ slug: active.slug }}
+              {...workDestination(active.slug)}
               className="rounded hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {active.name}
