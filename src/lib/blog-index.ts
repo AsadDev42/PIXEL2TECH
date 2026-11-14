@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "video-sales-letters-service-businesses-script",
+    title: "Video Sales Letters for Service Businesses: A Simple Script Structure That Converts",
+    excerpt:
+      "A video sales letter for a service business needs a simple script: problem, proof, offer, and one clear next step. Follow this structure to convert.",
+    tag: "Video Editing",
+    date: "November 14, 2026",
+    time: "7:29 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/video-sales-letters-service-businesses-script.jpg",
+    imgAlt: "A presenter recording a video sales letter in front of a camera",
+  },
+  {
     slug: "referral-email-happy-customers-forward",
     title: "A Referral Email That Happy Customers Actually Forward",
     excerpt:
