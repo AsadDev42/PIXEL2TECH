@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+  slug: "rebuild-custom-tool-vs-patch-again",
+    title: "When to Rebuild a Custom Tool Instead of Patching It Again",
+    excerpt:
+      "Patching a custom tool again is not always cheaper than rebuilding it. Learn the signs that a rebuild is the honest choice, and how to scope one.",
+    tag: "Custom Platforms",
+    date: "November 14, 2026",
+    time: "2:56 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/rebuild-custom-tool-vs-patch-again.jpg",
+    imgAlt: "A developer reviewing a custom tool dashboard",
+  },
+    {
     slug: "wordpress-staging-sites-test-changes-safely",
     title: "WordPress Staging Sites: Test Changes Safely Before They Go Live",
     excerpt:
