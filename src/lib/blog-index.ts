@@ -36,7 +36,7 @@ const POSTS = [
     slug: "present-logo-concepts-clients-approve-faster",
     title: "How to Present Logo Concepts to Clients So Approvals Come Faster",
     excerpt:
-        "Present logo concepts so clients approve faster. Show two or three strong options with clear reasoning, real mockups, and one simple decision step.",
+      "Present logo concepts so clients approve faster. Show two or three strong options with clear reasoning, real mockups, and one simple decision step.",
     tag: "Branding",
     date: "November 14, 2026",
     time: "10:47 am",
