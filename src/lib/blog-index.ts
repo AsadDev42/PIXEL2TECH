@@ -36,8 +36,8 @@ const POSTS = [
     slug: "referral-email-happy-customers-forward",
     title: "A Referral Email That Happy Customers Actually Forward",
     excerpt:
-        "A referral email works when it is easy to forward and easy to act on. Write one short email with a clear reward and a simple next step.",
-tag: "Email Marketing",
+      "A referral email works when it is easy to forward and easy to act on. Write one short email with a clear reward and a simple next step.",
+    tag: "Email Marketing",
     date: "November 14, 2026",
     time: "5:12 pm",
     author: "Asad Farooq",
