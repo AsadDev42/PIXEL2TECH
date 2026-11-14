@@ -136,7 +136,7 @@ function BlogPage() {
                 </p>
                 <span
                   aria-hidden="true"
-                  className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background"
+                  className="mt-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg bg-foreground px-5 py-3 text-sm font-semibold text-background"
                 >
                   Read article
                   <ArrowRight className="h-4 w-4" />
