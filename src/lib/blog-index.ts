@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "wordpress-staging-sites-test-changes-safely",
+    title: "WordPress Staging Sites: Test Changes Safely Before They Go Live",
+    excerpt:
+      "A WordPress staging site is a private copy where you test changes safely. Learn how staging works, what to test, and how to push changes live.",
+    tag: "WordPress",
+    date: "November 14, 2026",
+    time: "12:38 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/wordpress-staging-sites-test-changes-safely.jpg",
+    imgAlt: "A developer testing website changes on a staging copy",
+  },
+  {
     slug: "present-logo-concepts-clients-approve-faster",
     title: "How to Present Logo Concepts to Clients So Approvals Come Faster",
     excerpt:
