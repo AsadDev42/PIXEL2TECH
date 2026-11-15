@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+      slug: "automating-review-requests-happy-customers",
+    title: "Automating Review Requests: A Simple Workflow That Asks Every Happy Customer at the Right Time",
+    excerpt:
+        "Happy customers rarely leave reviews on their own. A simple automated workflow asks at the right moment and turns good work into visible proof.",
+tag: "Automation",
+    date: "November 15, 2026",
+    time: "12:41 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/automating-review-requests-happy-customers.jpg",
+    imgAlt: "A happy customer leaving a five star review on a phone",
+  },
+  {
     slug: "homepage-above-the-fold-service-website",
     title: "Your Homepage Has Five Seconds: What to Put Above the Fold on a Service Website",
     excerpt:
