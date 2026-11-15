@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+      slug: "wordpress-backup-routine-business-owners-weekly",
+      title: "A WordPress Backup Routine Every Business Owner Should Run Weekly",
+      excerpt:
+          "A weekly WordPress backup routine takes minutes and saves weeks of work. Here is what to save, where to keep it, and how to test that it works.",
+      tag: "WordPress",
+      date: "November 15, 2026",
+      time: "7:34 pm",
+      author: "Asad Farooq",
+      img: "/blog/covers/wordpress-backup-routine-business-owners-weekly.jpg",
+      imgAlt: "A WordPress dashboard on a laptop with a security shield",
+  },
+  {
     slug: "earn-backlinks-service-business-without-buying",
     title: "How to Earn Backlinks for a Service Business Without Buying Links",
     excerpt:
