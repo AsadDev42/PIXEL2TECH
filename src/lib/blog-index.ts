@@ -44,7 +44,7 @@ const POSTS = [
     img: "/blog/covers/homepage-above-the-fold-service-website.jpg",
     imgAlt: "A service website homepage on a laptop in a dark office",
   },
-  
+  {
     slug: "video-sales-letters-service-businesses-script",
     title: "Video Sales Letters for Service Businesses: A Simple Script Structure That Converts",
     excerpt:
