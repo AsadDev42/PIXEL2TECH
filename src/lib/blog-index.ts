@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "homepage-above-the-fold-service-website",
+    title: "Your Homepage Has Five Seconds: What to Put Above the Fold on a Service Website",
+    excerpt:
+        "Visitors decide in seconds whether to stay on your homepage. Here is what to put above the fold so a service website earns the enquiry.",
+    tag: "Web Development",
+    date: "November 15, 2026",
+    time: "10:53 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/homepage-above-the-fold-service-website.jpg",
+    imgAlt: "A service website homepage on a laptop in a dark office",
+  },
+  
     slug: "video-sales-letters-service-businesses-script",
     title: "Video Sales Letters for Service Businesses: A Simple Script Structure That Converts",
     excerpt:
