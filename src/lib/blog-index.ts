@@ -33,6 +33,19 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "train-ai-assistant-business-faqs",
+    title:
+      "How to Train an AI Assistant on Your Business FAQs: A Practical Setup for Service Businesses",
+    excerpt:
+      "An AI assistant trained on your real FAQs answers customers faster and stays accurate. Here is a practical setup that keeps a human in charge.",
+    tag: "AI Solutions",
+    date: "November 15, 2026",
+    time: "2:58 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/train-ai-assistant-business-faqs.jpg",
+    imgAlt: "An AI chatbot answering customer questions on a laptop",
+  },
+  {
     slug: "automating-review-requests-happy-customers",
     title:
       "Automating Review Requests: A Simple Workflow That Asks Every Happy Customer at the Right Time",
