@@ -33,16 +33,16 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-        slug: "earn-backlinks-service-business-without-buying",
-        title: "How to Earn Backlinks for a Service Business Without Buying Links",
-        excerpt:
-                "Backlinks still matter for service websites, but buying them is a risk. Here is how to earn real links from useful content, local pages and partnerships.",
-        tag: "SEO",
-        date: "November 15, 2026",
-        time: "5:09 pm",
-        author: "Asad Farooq",
-        img: "/blog/covers/earn-backlinks-service-business-without-buying.jpg",
-        imgAlt: "Two business partners shaking hands beside a laptop showing growth",
+    slug: "earn-backlinks-service-business-without-buying",
+    title: "How to Earn Backlinks for a Service Business Without Buying Links",
+    excerpt:
+      "Backlinks still matter for service websites, but buying them is a risk. Here is how to earn real links from useful content, local pages and partnerships.",
+    tag: "SEO",
+    date: "November 15, 2026",
+    time: "5:09 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/earn-backlinks-service-business-without-buying.jpg",
+    imgAlt: "Two business partners shaking hands beside a laptop showing growth",
   },
   {
     slug: "train-ai-assistant-business-faqs",
