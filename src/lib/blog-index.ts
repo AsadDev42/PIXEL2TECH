@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "choose-music-service-video-copyright",
+    title: "How to Choose Music for a Service Business Video Without a Copyright Headache",
+    excerpt:
+        "The wrong music can get your video muted or removed. Here is how to choose legal music that fits your service business video.",
+    tag: "Video Editing",
+    date: "November 16, 2026",
+    time: "5:12 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/choose-music-service-video-copyright.jpg",
+    imgAlt: "A video editing timeline with audio waveforms on a monitor in a dark studio",
+  },
+    {
     slug: "segment-email-list-right-message-right-customer",
     title: "How to Segment Your Email List So the Right Message Reaches the Right Customer",
     excerpt:
