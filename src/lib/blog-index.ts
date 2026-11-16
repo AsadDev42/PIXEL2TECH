@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+        slug: "brief-brand-designer-first-concepts",
+        title: "How to Brief a Brand Designer So the First Concepts Land Close",
+        excerpt:
+                "A clear brand brief saves rounds of revisions. Here is what to tell your designer so the first concepts land close to the brand you want.",
+        tag: "Branding",
+        date: "November 16, 2026",
+        time: "10:47 am",
+        author: "Asad Farooq",
+        img: "/blog/covers/brief-brand-designer-first-concepts.jpg",
+        imgAlt: "A brand designer presenting logo concepts on a mood board in a studio",
+  },
+  {
     slug: "wordpress-backup-routine-business-owners-weekly",
     title: "A WordPress Backup Routine Every Business Owner Should Run Weekly",
     excerpt:
