@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "segment-email-list-right-message-right-customer",
+    title: "How to Segment Your Email List So the Right Message Reaches the Right Customer",
+    excerpt:
+        "One email to everyone pleases no one. Here is how to segment your email list so each customer gets the message that fits them.",
+    tag: "Email Marketing",
+    date: "November 16, 2026",
+    time: "2:56 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/segment-email-list-right-message-right-customer.jpg",
+    imgAlt: "An email inbox with organised folders on a laptop on a dark desk",
+  },
+  {
     slug: "client-reporting-dashboard-prove-work-monthly",
     title: "A Client Reporting Dashboard That Proves Your Work Every Month",
     excerpt:
