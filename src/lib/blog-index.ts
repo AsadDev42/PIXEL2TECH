@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+      slug: "service-website-footer-trust-visitors",
+    title: "What to Put on a Service Website Footer So Visitors Trust You",
+    excerpt:
+      "Your website footer is where visitors check whether a business is real. Here is what to include so they trust you enough to enquire.",
+    tag: "Web Development",
+    date: "November 16, 2026",
+    time: "7:29 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/service-website-footer-trust-visitors.jpg",
+    imgAlt: "A service website footer with contact details on a laptop in a dark office",
+  },
+  {
     slug: "choose-music-service-video-copyright",
     title: "How to Choose Music for a Service Business Video Without a Copyright Headache",
     excerpt:
