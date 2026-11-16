@@ -43,8 +43,8 @@ const POSTS = [
     author: "Asad Farooq",
     img: "/blog/covers/client-reporting-dashboard-prove-work-monthly.jpg",
     imgAlt: "A client reporting dashboard with charts on a laptop in a dark office",
-  },    
-    {
+  },
+  {
     slug: "brief-brand-designer-first-concepts",
     title: "How to Brief a Brand Designer So the First Concepts Land Close",
     excerpt:
