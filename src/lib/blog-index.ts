@@ -33,7 +33,7 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-      slug: "service-website-footer-trust-visitors",
+    slug: "service-website-footer-trust-visitors",
     title: "What to Put on a Service Website Footer So Visitors Trust You",
     excerpt:
       "Your website footer is where visitors check whether a business is real. Here is what to include so they trust you enough to enquire.",
