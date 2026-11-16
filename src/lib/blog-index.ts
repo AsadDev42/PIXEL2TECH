@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "client-reporting-dashboard-prove-work-monthly",
+    title: "A Client Reporting Dashboard That Proves Your Work Every Month",
+    excerpt:
+      "A client reporting dashboard shows results, not activity. Here is what to include so clients see the value of your work every month.",
+    tag: "Custom Platforms",
+    date: "November 16, 2026",
+    time: "12:38 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/client-reporting-dashboard-prove-work-monthly.jpg",
+    imgAlt: "A client reporting dashboard with charts on a laptop in a dark office",
+  },    
+    {
     slug: "brief-brand-designer-first-concepts",
     title: "How to Brief a Brand Designer So the First Concepts Land Close",
     excerpt:
