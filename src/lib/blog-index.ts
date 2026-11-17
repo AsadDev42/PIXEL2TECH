@@ -33,16 +33,16 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-        slug: "automating-invoice-reminders-get-paid-faster",
-        title: "Automating Invoice Reminders: Get Paid Faster Without Chasing Clients",
-        excerpt:
-                "Late payments usually come from forgotten invoices, not unhappy clients. Automate your invoice reminders and get paid faster without chasing anyone.",
-        tag: "Automation",
-        date: "November 17, 2026",
-        time: "12:36 pm",
-        author: "Asad Farooq",
-        img: "/blog/covers/automating-invoice-reminders-get-paid-faster.jpg",
-        imgAlt: "Invoices and payment reminders on a laptop on a tidy desk in a dark office",
+    slug: "automating-invoice-reminders-get-paid-faster",
+    title: "Automating Invoice Reminders: Get Paid Faster Without Chasing Clients",
+    excerpt:
+      "Late payments usually come from forgotten invoices, not unhappy clients. Automate your invoice reminders and get paid faster without chasing anyone.",
+    tag: "Automation",
+    date: "November 17, 2026",
+    time: "12:36 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/automating-invoice-reminders-get-paid-faster.jpg",
+    imgAlt: "Invoices and payment reminders on a laptop on a tidy desk in a dark office",
   },
   {
     slug: "wordpress-image-optimisation-speed-pages",
