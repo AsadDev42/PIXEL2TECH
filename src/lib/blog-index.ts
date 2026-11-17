@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "seo-voice-search-answer-questions",
+    title: "SEO for Voice Search: Answer the Questions Customers Ask Out Loud",
+    excerpt:
+        "Customers now ask their phones and smart speakers for local services in full sentences. Learn how voice search SEO helps your business answer those questions.",
+    tag: "SEO",
+    date: "November 17, 2026",
+    time: "5:08 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/seo-voice-search-answer-questions.jpg",
+    imgAlt: "A person asking a voice assistant a question on a phone in a bright room",
+  },
+  {
     slug: "ai-email-summaries-client-threads-next-steps",
     title: "AI Email Summaries: Turn Long Client Threads Into Clear Next Steps",
     excerpt:
