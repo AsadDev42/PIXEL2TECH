@@ -36,8 +36,8 @@ const POSTS = [
     slug: "wordpress-image-optimisation-speed-pages",
     title: "WordPress Image Optimisation: A Practical Routine That Speeds Up Every Page",
     excerpt:
-        "Large images slow down WordPress pages more than anything else. Follow this practical image optimisation routine to speed up every page without losing quality.",
-tag: "WordPress",
+      "Large images slow down WordPress pages more than anything else. Follow this practical image optimisation routine to speed up every page without losing quality.",
+    tag: "WordPress",
     date: "November 17, 2026",
     time: "10:44 am",
     author: "Asad Farooq",
