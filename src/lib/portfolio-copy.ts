@@ -142,7 +142,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
   "naveed-can-metal-works-social-media-posts": {
-    metaTitle: "Naveed Can Metal Works social media post designs | Pixel2Tech",
+    metaTitle: "Naveed Can Metal Works social media posts | Pixel2Tech",
     metaDescription:
       "12 social media post designs for Naveed Can Metal Works, using product imagery, bold red headlines and branded panels to present its tin packaging range.",
     summary: "Social media post designs for tin packaging and metal works.",
@@ -190,7 +190,7 @@ const COPY_OVERRIDES: Record<string, ProjectCopy> = {
     ],
   },
   "sweet-temptation-logo-menu-design": {
-    metaTitle: "Sweet Temptation branding and drinks launch design | Pixel2Tech",
+    metaTitle: "Sweet Temptation branding and launch design | Pixel2Tech",
     metaDescription:
       "Logo, menu design, ads and social posts for UK client Sweet Temptation, including creative work for newly launched drinks.",
     summary: "Logo, menus and drinks launch creatives for UK client Sweet Temptation.",

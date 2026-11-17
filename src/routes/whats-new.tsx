@@ -38,7 +38,7 @@ export const Route = createFileRoute("/whats-new")({
   head: () =>
     businessHead(
       "/whats-new",
-      "What's new at Pixel2Tech",
+      "What's new: services, pages and articles",
       "New services, pages and articles from Pixel2Tech, the design, web, video and automation studio in Lahore, with the date each one went live on the site.",
     ),
   component: WhatsNewPage,

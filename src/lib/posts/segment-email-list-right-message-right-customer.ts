@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post = {
   h1: "How to Segment Your Email List So the Right Message Reaches the Right Customer",
-  metaTitle: "Segment Your Email List So the Right Message Reaches the Right Customer",
+  metaTitle: "Segment Your Email List So Each Message Fits",
   metaDescription:
     "One email to everyone pleases no one. Here is how to segment your email list so each customer gets the message that fits them.",
   ogTitle: "How to Segment Your Email List So the Right Message Reaches the Right Customer",

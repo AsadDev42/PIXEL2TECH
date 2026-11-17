@@ -37,7 +37,7 @@ export const Route = createFileRoute("/superside-vs-pixel2tech")({
   head: () => {
     const head = businessHead(
       PATH,
-      "Superside vs Pixel2Tech: Pricing, Terms, Services",
+      "Superside vs Pixel2Tech pricing and terms",
       "Superside vs Pixel2Tech compared from public facts: subscription vs fixed project quotes, minimums, commitment, services and website builds.",
     );
     return { ...head, scripts: [...head.scripts, faqJsonLd(FAQS)] };

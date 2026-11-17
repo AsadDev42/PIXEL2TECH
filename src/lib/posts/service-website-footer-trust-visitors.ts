@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post = {
   h1: "What to Put on a Service Website Footer So Visitors Trust You",
-  metaTitle: "What to Put on a Service Website Footer So Visitors Trust You",
+  metaTitle: "What to Put in a Service Website Footer for Trust",
   metaDescription:
     "Your website footer is where visitors check whether a business is real. Here is what to include so they trust you enough to enquire.",
   ogTitle: "What to Put on a Service Website Footer So Visitors Trust You",

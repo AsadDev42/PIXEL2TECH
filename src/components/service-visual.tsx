@@ -80,7 +80,7 @@ export function ServiceDiagram({ kind }: { kind: keyof typeof WORKFLOWS }) {
   return (
     <div className="studio-workflow flex h-full min-h-80 flex-col bg-muted p-6 sm:p-8">
       <p className="text-xs font-medium text-muted-foreground">Illustrative workflow</p>
-      <h3 className="mt-2 text-xl font-medium leading-snug">{workflow.title}</h3>
+      <p className="mt-2 text-xl font-medium leading-snug text-foreground">{workflow.title}</p>
       <ol className="mt-6 grid gap-2">
         {workflow.steps.map(({ Icon, label, detail }, index) => (
           <li

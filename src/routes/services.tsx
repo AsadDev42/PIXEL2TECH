@@ -32,7 +32,7 @@ const PAGE_URL = `${SITE.url}/services`;
 const ORG_REF = { "@id": `${SITE.url}/#organization` };
 const TITLE = "Pixel2Tech Services | Branding, Websites, Video & Automation";
 const DESCRIPTION =
-  "Branding, websites, Shopify, custom apps, automation, SEO, social and video editing for businesses worldwide, from the US to the EU, quoted up front.";
+  "Branding, websites, Shopify, custom apps, automation, SEO, social and video editing for businesses in the US, UK, Canada and the EU, quoted up front.";
 
 type ServiceTitle = (typeof SERVICES)[number];
 type ServiceDetail = { Icon: LucideIcon; desc: string; tags: string[] };

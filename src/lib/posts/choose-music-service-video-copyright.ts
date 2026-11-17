@@ -2,7 +2,7 @@ import type { PostBody } from "@/lib/blog-types";
 
 const post = {
   h1: "How to Choose Music for a Service Business Video Without a Copyright Headache",
-  metaTitle: "Choose Music for a Service Business Video Without a Copyright Headache",
+  metaTitle: "Copyright-Safe Music for Service Business Videos",
   metaDescription:
     "The wrong music can get your video muted or removed. Here is how to choose legal music that fits your service business video.",
   ogTitle: "How to Choose Music for a Service Business Video Without a Copyright Headache",

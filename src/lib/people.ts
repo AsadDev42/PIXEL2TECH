@@ -662,6 +662,12 @@ export function personProfileHead(person: PersonProfileData) {
           "@context": "https://schema.org",
           "@graph": [
             {
+              "@type": "ProfilePage",
+              "@id": `${canonical}#profile`,
+              url: canonical,
+              mainEntity: { "@id": `${canonical}#person` },
+            },
+            {
               "@type": "Person",
               "@id": `${canonical}#person`,
               name: person.name,
