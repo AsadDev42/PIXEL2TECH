@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "ai-email-summaries-client-threads-next-steps",
+    title: "AI Email Summaries: Turn Long Client Threads Into Clear Next Steps",
+    excerpt:
+      "Long client email threads hide decisions, owners and dates. Learn how to use AI email summaries to turn a messy thread into clear next steps you can act on.",
+    tag: "AI Solutions",
+    date: "November 17, 2026",
+    time: "2:52 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/ai-email-summaries-client-threads-next-steps.jpg",
+    imgAlt: "A long client email thread with summaries on a laptop in a dark office",
+  },
+  {
     slug: "automating-invoice-reminders-get-paid-faster",
     title: "Automating Invoice Reminders: Get Paid Faster Without Chasing Clients",
     excerpt:
