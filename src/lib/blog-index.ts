@@ -33,16 +33,16 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-      slug: "website-brief-accurate-developer-quotes",
-      title: "How to Write a Website Brief That Gets Accurate Quotes From Developers",
-      excerpt:
-          "Developers can only quote accurately on what you describe clearly. Write a website brief that lists every page, feature and decision, and compare like for like quotes.",
-      tag: "Web Development",
-      date: "November 17, 2026",
-      time: "7:24 pm",
-      author: "Asad Farooq",
-      img: "/blog/covers/website-brief-accurate-developer-quotes.jpg",
-      imgAlt: "A developer reading a website project brief on a laptop in a dark office",
+    slug: "website-brief-accurate-developer-quotes",
+    title: "How to Write a Website Brief That Gets Accurate Quotes From Developers",
+    excerpt:
+      "Developers can only quote accurately on what you describe clearly. Write a website brief that lists every page, feature and decision, and compare like for like quotes.",
+    tag: "Web Development",
+    date: "November 17, 2026",
+    time: "7:24 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/website-brief-accurate-developer-quotes.jpg",
+    imgAlt: "A developer reading a website project brief on a laptop in a dark office",
   },
   {
     slug: "seo-voice-search-answer-questions",
