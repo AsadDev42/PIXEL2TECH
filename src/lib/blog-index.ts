@@ -36,7 +36,7 @@ const POSTS = [
     slug: "seo-voice-search-answer-questions",
     title: "SEO for Voice Search: Answer the Questions Customers Ask Out Loud",
     excerpt:
-        "Customers now ask their phones and smart speakers for local services in full sentences. Learn how voice search SEO helps your business answer those questions.",
+      "Customers now ask their phones and smart speakers for local services in full sentences. Learn how voice search SEO helps your business answer those questions.",
     tag: "SEO",
     date: "November 17, 2026",
     time: "5:08 pm",
