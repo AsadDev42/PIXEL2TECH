@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Ban, ChartColumn, Cookie, ShieldCheck } from "lucide-react";
+import { Ban, ChartColumn, ShieldCheck } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { onOpenCookieSettings, readConsent, saveConsent } from "@/lib/consent";
 
@@ -9,6 +9,11 @@ const FOCUS_RING =
 /** Accept and reject share one style: refusing must be as easy as accepting. */
 const CHOICE_BUTTON = `inline-flex min-h-11 items-center justify-center rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90 ${FOCUS_RING}`;
 const TEXT_BUTTON = `inline-flex min-h-11 items-center justify-center rounded-full border border-border px-5 text-sm font-semibold text-foreground transition hover:bg-muted ${FOCUS_RING}`;
+const DARK_FOCUS =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+/** Banner choices on the dark bar. Reject and accept still share one style. */
+const BANNER_CHOICE = `inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full bg-white px-5 text-sm font-semibold text-slate-950 transition hover:bg-sky-100 ${DARK_FOCUS}`;
+const BANNER_LINK = `inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full px-4 text-sm font-medium text-slate-300 underline decoration-white/30 underline-offset-4 transition hover:text-white ${DARK_FOCUS}`;
 
 const POLICY_HASH = "cookies-and-similar-technologies";
 
@@ -52,46 +57,33 @@ export function CookieConsent() {
       {!decided && (
         <section
           aria-labelledby="cookie-banner-title"
-          className="fixed inset-x-4 bottom-4 z-40 max-h-[calc(100vh-2rem)] overflow-y-auto rounded-3xl border border-border bg-background p-5 text-foreground shadow-2xl sm:inset-x-auto sm:left-6 sm:max-w-lg sm:p-6"
+          className="fixed inset-x-3 bottom-3 z-40 max-h-[calc(100vh-1.5rem)] overflow-y-auto rounded-2xl bg-slate-950 p-5 text-white shadow-2xl ring-1 ring-white/10 sm:bottom-6 sm:left-6 sm:right-24 lg:right-auto lg:flex lg:w-[min(60rem,calc(100%-8rem))] lg:items-center lg:gap-8 lg:p-6"
         >
-          <div className="flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary"
-            >
-              <Cookie className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                Your privacy, your call
-              </p>
-              <h2 id="cookie-banner-title" className="text-lg font-bold tracking-tight">
-                Can we measure your visit?
-              </h2>
-            </div>
+          <div className="min-w-0 flex-1">
+            <h2 id="cookie-banner-title" className="text-base font-semibold tracking-tight">
+              Can we measure your visit?
+            </h2>
+            <p className="mt-1 text-sm leading-relaxed text-slate-300">
+              Essential cookies keep the site working. With your OK, Google Analytics and Microsoft
+              Clarity show us which pages help and where visitors get stuck. No ads, no retargeting.{" "}
+              <Link
+                to="/privacy-policy"
+                hash={POLICY_HASH}
+                className="rounded font-medium text-white underline decoration-sky-300/60 underline-offset-4 transition hover:decoration-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Privacy policy
+              </Link>
+            </p>
           </div>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            Essential cookies keep the site working. With your OK, Google Analytics and Microsoft
-            Clarity show us which pages help visitors and where they get stuck, so we can make the
-            site better. No ads, no retargeting. Details are in our{" "}
-            <Link
-              to="/privacy-policy"
-              hash={POLICY_HASH}
-              className="font-medium text-foreground underline underline-offset-4"
-            >
-              privacy policy
-            </Link>
-            .
-          </p>
-          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-            <button type="button" className={CHOICE_BUTTON} onClick={() => choose(false)}>
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center lg:mt-0 lg:shrink-0">
+            <button type="button" className={BANNER_LINK} onClick={openPreferences}>
+              Manage preferences
+            </button>
+            <button type="button" className={BANNER_CHOICE} onClick={() => choose(false)}>
               Reject non-essential
             </button>
-            <button type="button" className={CHOICE_BUTTON} onClick={() => choose(true)}>
+            <button type="button" className={BANNER_CHOICE} onClick={() => choose(true)}>
               Accept all
-            </button>
-            <button type="button" className={TEXT_BUTTON} onClick={openPreferences}>
-              Manage preferences
             </button>
           </div>
         </section>
@@ -198,11 +190,8 @@ function CookieRow({
   children: React.ReactNode;
 }) {
   return (
-    <li className="flex items-start gap-4 rounded-2xl border border-border p-4">
-      <span
-        aria-hidden="true"
-        className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary"
-      >
+    <li className="flex items-start gap-3 rounded-2xl border border-border p-4">
+      <span aria-hidden="true" className="mt-1 shrink-0 text-primary">
         {icon}
       </span>
       <div className="min-w-0 flex-1">
