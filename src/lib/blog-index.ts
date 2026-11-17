@@ -33,6 +33,18 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "wordpress-image-optimisation-speed-pages",
+    title: "WordPress Image Optimisation: A Practical Routine That Speeds Up Every Page",
+    excerpt:
+        "Large images slow down WordPress pages more than anything else. Follow this practical image optimisation routine to speed up every page without losing quality.",
+tag: "WordPress",
+    date: "November 17, 2026",
+    time: "10:44 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/wordpress-image-optimisation-speed-pages.jpg",
+    imgAlt: "A WordPress dashboard with an optimised image library on a laptop in a dark office",
+  },
+  {
     slug: "service-website-footer-trust-visitors",
     title: "What to Put on a Service Website Footer So Visitors Trust You",
     excerpt:
