@@ -146,7 +146,7 @@ function AboutPage() {
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               Designers, developers, video editors and an automation lead, working from Lahore with
-              clients worldwide, from the US and UK to Canada and Europe.
+              clients worldwide, including the US, UK, Canada and Europe.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <BookCallButton

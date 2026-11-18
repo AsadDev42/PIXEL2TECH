@@ -232,7 +232,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Website design agency",
     h1Highlight: "for US and UK small businesses and startups",
     answer:
-      "Pixel2Tech is a website design agency and development studio in Lahore, Pakistan that builds fast, mobile-ready websites in React, Next.js or custom code for businesses worldwide, from the US and UK to Canada and the EU, from a single landing page to a full business site, set up so visitors understand the offer and get in touch.",
+      "Pixel2Tech is a website design agency and development studio in Lahore, Pakistan that builds fast, mobile-ready websites in React, Next.js or custom code for businesses worldwide, including the US, UK, Canada and the EU. Each site, whether a single landing page or a full business site, is set up so visitors understand the offer and get in touch.",
     tags: ["React", "Next.js", "Custom code"],
     deliverables: [
       {
@@ -339,7 +339,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Shopify and WordPress development",
     h1Highlight: "for US brands",
     answer:
-      "Pixel2Tech builds and improves Shopify stores and WordPress sites for brands worldwide, from the US and UK to Canada and the EU, handling the theme, product pages, apps or plugins and payment setup, so the owner can run the store after launch.",
+      "Pixel2Tech builds and improves Shopify stores and WordPress sites for brands worldwide, including the US, UK, Canada and the EU, handling the theme, product pages, apps or plugins and payment setup, so the owner can run the store after launch.",
     tags: ["Shopify", "WordPress", "WooCommerce"],
     deliverables: [
       {
@@ -444,7 +444,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Custom apps, SaaS and client portals",
     h1Highlight: "for US startups and small businesses",
     answer:
-      "Pixel2Tech, a Lahore-based product studio working with businesses worldwide, from the US and UK to Canada and the EU, designs and builds mobile apps, SaaS products, client portals and internal dashboards around how a business works, starting with the smallest version that proves the idea.",
+      "Pixel2Tech, a Lahore-based product studio working with businesses worldwide, including the US, UK, Canada and the EU, designs and builds mobile apps, SaaS products, client portals and internal dashboards around how a business works, starting with the smallest version that proves the idea.",
     tags: ["SaaS", "Mobile app", "Portals"],
     deliverables: [
       {
@@ -572,7 +572,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Workflow automation and CRM setup",
     h1Highlight: "for US small businesses",
     answer:
-      "Pixel2Tech maps the repetitive work a team does by hand, such as copying leads between tools or chasing follow-ups, then automates it in n8n, Make or Zapier and sets up a CRM that keeps every lead in one place. The Lahore-based team works with businesses worldwide, from the US and UK to Canada and the EU.",
+      "Pixel2Tech maps the repetitive work a team does by hand, such as copying leads between tools or chasing follow-ups, then automates it in n8n, Make or Zapier and sets up a CRM that keeps every lead in one place. The Lahore-based team works with businesses worldwide, including the US, UK, Canada and the EU.",
     tags: ["n8n", "Make", "Zapier", "Custom CRM"],
     deliverables: [
       {
@@ -673,7 +673,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "AI chatbots and voice agents",
     h1Highlight: "for US businesses",
     answer:
-      "Pixel2Tech builds AI chatbots, voice agents and RAG systems that answer common customer questions from a business's own content, capture leads and hand complex conversations to its team. The studio is based in Lahore, Pakistan and works with companies worldwide, from the US and UK to Canada and the EU.",
+      "Pixel2Tech builds AI chatbots, voice agents and RAG systems that answer common customer questions from a business's own content, capture leads and hand complex conversations to its team. The studio is based in Lahore, Pakistan and works with companies worldwide, including the US, UK, Canada and the EU.",
     tags: ["Chatbots", "RAG", "Voice agents"],
     deliverables: [
       {
@@ -906,7 +906,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Social media marketing agency",
     h1Highlight: "for US brands",
     answer:
-      "Pixel2Tech plans and designs social content, produces creative for paid ads, and writes and builds email sequences and newsletters for brands worldwide, from the US and UK to Canada and the EU, so a brand looks and sounds the same everywhere customers see it.",
+      "Pixel2Tech plans and designs social content, produces creative for paid ads, and writes and builds email sequences and newsletters for brands worldwide, including the US, UK, Canada and the EU, so a brand looks and sounds the same everywhere customers see it.",
     tags: ["Instagram", "Facebook ads", "Email"],
     deliverables: [
       {
@@ -1012,7 +1012,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     h1: "Video editing agency",
     h1Highlight: "for US and UK brands and agencies",
     answer:
-      "Pixel2Tech, a Lahore-based video editing agency working with clients worldwide, from the US and UK to Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
+      "Pixel2Tech, a Lahore-based video editing agency working with clients worldwide, including the US, UK, Canada and the EU, edits reels, brand videos, YouTube content and paid ad creative from the client's footage, cut for the platform each one will run on, with captions, motion graphics and versions to test.",
     tags: ["Reels", "YouTube", "Paid ads"],
     deliverables: [
       {
