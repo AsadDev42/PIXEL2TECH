@@ -19,19 +19,19 @@ const CONCEPTS = [
   {
     name: "Client portal",
     icon: Layers,
-    heading: "One place for every review.",
+    heading: "Clients review every file in one place.",
     description:
       "Give clients a clear view of their projects, files and approvals, with access limited to the work they should see.",
     workspace: "Client workspace",
     project: "Brand launch",
     task: "Review the first direction",
     stages: ["Brief received", "Design in progress", "Ready for your review"],
-    phone: "Your feedback, connected.",
+    phone: "Leave feedback from your phone.",
   },
   {
     name: "Operations dashboard",
     icon: LayoutDashboard,
-    heading: "A clear next step for your team.",
+    heading: "Your team always sees the next step.",
     description:
       "Bring requests, ownership and progress into one workspace, so your team can see what needs attention and who handles it.",
     workspace: "Team workspace",
@@ -43,7 +43,7 @@ const CONCEPTS = [
   {
     name: "Mobile app",
     icon: Smartphone,
-    heading: "The important task, in your pocket.",
+    heading: "People handle the key task from a phone.",
     description:
       "Design the mobile journey around a useful action: review a file, check a request or confirm the next step without returning to a desk.",
     workspace: "Connected workspace",
@@ -165,16 +165,14 @@ export function PlatformShowcase() {
     <section aria-labelledby="platform-concepts-title" className="bg-muted/40 py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-          Picture your platform
+          Interface concepts
         </p>
         <div className="mt-4 grid gap-6 lg:grid-cols-2 lg:gap-16">
           <h2
             id="platform-concepts-title"
             className="text-3xl font-semibold tracking-tight sm:text-4xl"
           >
-            Different screens.
-            <br />
-            One connected experience.
+            Portals, dashboards and apps that share one workflow
           </h2>
           <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
             A portal for your clients, a dashboard for your team, or an app for people on the move.
@@ -218,7 +216,7 @@ export function PlatformShowcase() {
             <div className="mt-8 flex items-start gap-3 rounded-2xl bg-muted/60 p-4">
               <LockKeyhole size={18} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Roles, permissions and the next action are designed into the journey from the start.
+                We design roles, permissions and the next action into the journey from the start.
               </p>
             </div>
             <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
