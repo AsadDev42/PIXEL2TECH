@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "@tanstack/react-router";
 import {
   CalendarDays,
   Check,
@@ -487,20 +488,17 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
                               >
                                 Try again
                               </button>
+                              <CallRequestFallback onLeave={onClose} />
                             </div>
                           ) : !connected ? (
                             <div className="mt-4 rounded-xl bg-muted p-4">
                               <p className="text-sm font-semibold">Let's arrange your call.</p>
                               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                                Online scheduling is being connected. Email your preferred time and
-                                a little about your project.
+                                Online scheduling is not available right now. Send us your preferred
+                                time and a little about your project, and we will reply within one
+                                business day.
                               </p>
-                              <a
-                                href="mailto:sales@pixel2tech.com?subject=Strategy%20call%20request"
-                                className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary"
-                              >
-                                Request a call by email <ArrowUpRight size={16} />
-                              </a>
+                              <CallRequestFallback onLeave={onClose} />
                             </div>
                           ) : slots.length ? (
                             <div className="mt-3 grid max-h-64 grid-cols-2 gap-2 overflow-y-auto rounded-xl p-1 sm:max-h-72">
@@ -593,5 +591,30 @@ export function BookingModal({ open, onClose }: { open: boolean; onClose: () => 
       </div>
     </div>,
     document.body,
+  );
+}
+
+/**
+ * Shown when live slots are unavailable. The contact form saves the request and
+ * emails the team, so it works on devices with no mail app set up.
+ */
+function CallRequestFallback({ onLeave }: { onLeave: () => void }) {
+  return (
+    <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+      <Link
+        to="/contact"
+        hash="contact-form-title"
+        onClick={onLeave}
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        Send a call request <ArrowRight size={16} aria-hidden="true" />
+      </Link>
+      <a
+        href="mailto:sales@pixel2tech.com?subject=Strategy%20call%20request"
+        className="inline-flex min-h-11 items-center px-2 text-sm font-medium text-foreground underline underline-offset-4"
+      >
+        or email sales@pixel2tech.com
+      </a>
+    </div>
   );
 }
