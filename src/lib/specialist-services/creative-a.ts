@@ -434,8 +434,8 @@ export const CREATIVE_SERVICES_A: SpecialistServiceCopy[] = [
         desc: "Where illustration and icon rules belong in a brand guide.",
       },
       {
-        slug: "outsource-graphic-design-to-pakistan",
-        title: "Outsourcing graphic design to Pakistan",
+        slug: "how-to-outsource-graphic-design",
+        title: "How to outsource graphic design",
         desc: "A buyer's guide to working with a design team abroad.",
       },
     ],

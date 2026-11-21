@@ -199,7 +199,7 @@ const post: PostBody = {
           heading: "Where offshore quotes fit well",
           body: [
             "Offshore teams tend to work best when the brief is written, decisions are made on a schedule, and the project is split into milestones with something to review at each one. If your process depends on long in-person workshops and quick decisions made in the room, weight communication higher in your scoring.",
-            "For a longer look at working with a team in Pakistan, see our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan).",
+            "For a longer look at working with a team in Pakistan, see our guide to [outsourcing web development](/blog/how-to-outsource-web-development).",
           ],
         },
       ],
@@ -316,7 +316,7 @@ const post: PostBody = {
     },
     {
       label: "Outsourcing web development to Pakistan",
-      to: "/blog/outsource-web-development-to-pakistan",
+      to: "/blog/how-to-outsource-web-development",
     },
     { label: "Website development services", to: "/services/website-development" },
   ],

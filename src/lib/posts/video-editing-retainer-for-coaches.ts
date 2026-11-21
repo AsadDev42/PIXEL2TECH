@@ -163,7 +163,7 @@ const post: PostBody = {
       definition:
         "Write turnaround per deliverable type, starting when complete footage and notes arrive, and define exactly what counts as a revision. Vague terms here are where retainers go wrong.",
       body: [
-        "There is no industry-standard turnaround, so every term below is something to negotiate. If you're considering an offshore editor partly for the time-zone overlap, our guide to [outsourcing video editing to Pakistan](/blog/outsource-video-editing-to-pakistan) covers what to check first.",
+        "There is no industry-standard turnaround, so every term below is something to negotiate. If you're considering an offshore editor partly for the time-zone overlap, our guide to [outsourcing video editing](/blog/how-to-outsource-video-editing) covers what to check first.",
       ],
       bullets: [
         "Turnaround per type: long-form, shorts, course lessons and rush jobs each get their own clock",
@@ -278,7 +278,7 @@ const post: PostBody = {
   internalLinks: [
     {
       label: "Outsourcing video editing to Pakistan",
-      to: "/blog/outsource-video-editing-to-pakistan",
+      to: "/blog/how-to-outsource-video-editing",
     },
     {
       label: "Why most freelancers fail on Upwork",

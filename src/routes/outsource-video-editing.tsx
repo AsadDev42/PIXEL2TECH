@@ -49,8 +49,8 @@ export const Route = createFileRoute("/outsource-video-editing")({
   head: () => {
     const head = businessHead(
       PATH,
-      "Outsource Video Editing Services",
-      `Outsource video editing to a team that edits reels, YouTube, podcasts, wedding films and ads from your footage. White label editing for agencies. ${videoCount} edited videos in our portfolio.`,
+      "Outsource Video Editing for Agencies & Creators",
+      "Outsource video editing for YouTube, podcasts, reels and wedding films. Send your footage, agree the brief and get a fixed quote from Pixel2Tech.",
     );
     return { ...head, scripts: [...head.scripts, faqJsonLd(FAQS)] };
   },
@@ -61,7 +61,7 @@ function OutsourceVideoEditing() {
   return (
     <BusinessLanding
       eyebrow="Outsource video editing"
-      title="Outsource video editing to an in-house team"
+      title="Outsource video editing for your agency, channel or studio"
       intro={`Pixel2Tech is a video editing studio in Lahore, Pakistan that businesses worldwide, including the US, UK, Canada and the EU, outsource editing to. Send your footage and get finished edits back: reels, YouTube videos, podcasts, wedding films and ad creative, cut for the platform each one runs on. Our portfolio has ${videoCount} edited videos across ${VIDEO_COLLECTIONS.length} collections, and we also edit white label for agencies.`}
       capabilities={[
         {
@@ -91,6 +91,24 @@ function OutsourceVideoEditing() {
       ]}
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <ContentGrid
+          heading="What should an outsourced video editing brief include?"
+          intro="A useful handover defines the edit before production starts. Send these details with your footage so we can quote the work and check what is missing."
+          items={[
+            {
+              title: "Footage and references",
+              body: "Share organised camera and audio files, a sample edit and any brand assets. Flag missing shots, shaky footage or sound problems so their effect on the edit can be discussed first.",
+            },
+            {
+              title: "Deliverables and versions",
+              body: "List the long-form videos, short clips, captions and aspect ratios you need. Agree whether editable project files, music licensing or thumbnails are included in the quote.",
+            },
+            {
+              title: "Review and approval",
+              body: "Name the person approving the edit, the deadline and the revision rounds. Use one set of timestamped notes and confirm who may access footage or contact the end client.",
+            },
+          ]}
+        />
         <ContentGrid
           heading="Who uses our video editing outsourcing"
           items={[
@@ -136,7 +154,7 @@ function OutsourceVideoEditing() {
               desc: "Wedding films and reels for videographers and couples.",
             },
             {
-              href: "/blog/outsource-video-editing-to-pakistan",
+              href: "/blog/how-to-outsource-video-editing",
               title: "Outsourcing to an offshore team",
               desc: "Footage, approvals, time zones and handover with an offshore editor.",
             },

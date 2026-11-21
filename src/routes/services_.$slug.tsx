@@ -1,5 +1,6 @@
 import { MediaImage } from "@/components/media-image";
 import { ClosingCta } from "@/components/closing-cta";
+import { LandingLinks } from "@/components/landing-extras";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -833,6 +834,15 @@ function ServiceLandingPage() {
           </div>
         </div>
       </section>
+
+      {page.projectLinks && (
+        <div className={CONTAINER}>
+          <LandingLinks
+            heading="Find the right service for your project"
+            links={page.projectLinks}
+          />
+        </div>
+      )}
 
       {/* Questions, with the related guides beside them */}
       <section id={id("faq")} aria-labelledby={id("faq-title")} className={SECTION}>

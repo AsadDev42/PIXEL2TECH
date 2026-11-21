@@ -11,6 +11,10 @@ const { whiteLabel, whiteLabelShopify, whiteLabelWordPress, whiteLabelOther } = 
 
 const FAQS: FaqItem[] = [
   {
+    q: "Does white label web design include development?",
+    a: "Only when it is included in the scope. Design covers page structure, layouts and reusable visual rules; development turns the approved designs into a working website. We can scope both or build from your Figma files. Agree the platform, responsive states, content entry, forms, testing and handover before promising a complete website to your client.",
+  },
+  {
     q: "What is white label web development?",
     a: "White label web development means an outside team builds websites or online stores that your agency delivers to its clients under your own name. You keep the client relationship, the brief and the billing; the development partner does the agreed build work behind the scenes.",
   },
@@ -86,6 +90,24 @@ function WhiteLabelWebDevelopment() {
       ]}
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <ContentGrid
+          heading="White label web design or development: what do you need?"
+          intro="Keep one clear owner for the client relationship and a written production scope. The right handover depends on whether your agency needs design, implementation or both."
+          items={[
+            {
+              title: "Design support",
+              body: "Agree the sitemap, wireframes, desktop and mobile layouts, and review rounds. Identify who supplies copy and imagery before the client approves a visual direction.",
+            },
+            {
+              title: "Development from your designs",
+              body: "Send approved Figma files, platform requirements and functional notes. We flag missing states or integrations before quoting the build and checking the working pages against the design.",
+            },
+            {
+              title: "A complete client website",
+              body: "Scope design, build, content entry, forms, SEO basics and launch together. Write down approvals, confidentiality, ownership and the support period so your agency can plan its own client commitment.",
+            },
+          ]}
+        />
         <ContentGrid
           heading="Your agency stays in front"
           intro="White label only works when your client never has to think about who built the site. This is how we keep it that way."

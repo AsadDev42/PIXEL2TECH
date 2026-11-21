@@ -220,7 +220,7 @@ const post: PostBody = {
       body: [
         "We have produced explainer videos for Affinity Law, a US personal injury firm, and the process below is how we run legal video work in general. The order matters more than the software.",
         "Script first, in two columns: voiceover on the left, visuals and on-screen text on the right. The attorney approves the words before any design starts. Then style frames, then animation, then captions and every cutdown in one export pass. For the writing side, see our [personal injury video script templates](/blog/personal-injury-lawyer-video-scripts).",
-        "Our studio is in Pakistan (UTC+5), so US firms can review a draft in their morning while the next round happens during their night, and UK firms share most of their working morning with us. If you are weighing an offshore editor, our guide to [outsourcing video editing to Pakistan](/blog/outsource-video-editing-to-pakistan) covers the tradeoffs, including the ones that don't favor us.",
+        "Our studio is in Pakistan (UTC+5), so US firms can review a draft in their morning while the next round happens during their night, and UK firms share most of their working morning with us. If you are weighing an offshore editor, our guide to [outsourcing video editing](/blog/how-to-outsource-video-editing) covers the tradeoffs, including the ones that don't favor us.",
       ],
       callout: {
         title: "From the studio",
@@ -301,7 +301,7 @@ const post: PostBody = {
     },
     {
       label: "Outsourcing video editing to Pakistan",
-      to: "/blog/outsource-video-editing-to-pakistan",
+      to: "/blog/how-to-outsource-video-editing",
     },
     {
       label: "Google Ads landing pages for service businesses",

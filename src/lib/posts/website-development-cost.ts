@@ -173,7 +173,7 @@ const post: PostBody = {
         "Hourly rates vary a lot by country. [Clutch's web developer pricing data](https://clutch.co/web-developers/pricing), updated September 21, 2026, lists US and Canadian firms at $100 to $149 an hour, Poland at $50 to $99, the Philippines, Ukraine, Spain and Mexico at $25 to $49, and India under $25. [Clutch's web design data](https://clutch.co/web-designers/pricing) puts UK designers at $50 to $99.",
         "Pakistan is not in Clutch's country table. Firms listed in Clutch's Pakistan web developer directory show rates from under $25 an hour up to the $50 to $99 band, so the spread is wide there too.",
         "A lower rate does not guarantee a lower total. Offshore projects can take more hours if the brief is vague, time zones slow down feedback, or nobody owns project management. Ask the same questions you would ask a local agency: who is on the team, how often you will see progress, and who fixes the site after launch.",
-        "Buyers in the UK and EU should also cover data handling in the contract if the studio will touch customer data from forms or a store. Our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan) goes through contracts, communication and handover in detail.",
+        "Buyers in the UK and EU should also cover data handling in the contract if the studio will touch customer data from forms or a store. Our guide to [outsourcing web development](/blog/how-to-outsource-web-development) goes through contracts, communication and handover in detail.",
         "Pixel2Tech does not publish a price list. We give a fixed quote after a scoping call, based on a sitemap and a feature list, and set up every account in the client's name.",
       ],
       callout: {
@@ -283,7 +283,7 @@ const post: PostBody = {
     },
     {
       label: "Outsourcing web development to Pakistan",
-      to: "/blog/outsource-web-development-to-pakistan",
+      to: "/blog/how-to-outsource-web-development",
     },
     { label: "Website development service", to: "/services/website-development" },
   ],

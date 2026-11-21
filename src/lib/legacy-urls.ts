@@ -310,6 +310,21 @@ const REDIRECT_MAP: Record<string, string> = {
   "portfolio/custom-platforms-automation-webhook-pipelines": "/portfolio",
   "portfolio/custom-platforms-automation-data-sync-engine": "/portfolio",
 
+  // --- Pakistan-targeted posts replaced by US, UK and EU guides (2026-11-21) ---
+  "blog/seo-services-pakistan-monthly-package": "/blog/seo-services-small-business-monthly-package",
+  "blog/choose-seo-company-lahore": "/blog/how-to-choose-an-seo-agency",
+  "blog/digital-marketing-services-pakistan-compare":
+    "/blog/compare-digital-marketing-agency-proposals",
+  "blog/web-design-and-seo-company-pakistan": "/blog/web-design-and-seo-company",
+  "blog/outsource-web-development-to-pakistan": "/blog/how-to-outsource-web-development",
+  "blog/outsource-graphic-design-to-pakistan": "/blog/how-to-outsource-graphic-design",
+  "blog/outsource-video-editing-to-pakistan": "/blog/how-to-outsource-video-editing",
+  "blog/outsource-seo-to-pakistan": "/blog/how-to-outsource-seo",
+  "blog/top-seo-agencies-in-pakistan": "/blog/how-to-choose-an-seo-agency",
+  "blog/top-marketing-agencies-in-pakistan": "/blog/compare-digital-marketing-agency-proposals",
+  "blog/google-pakistan-office-30-billion-it-export-future":
+    "/blog/how-to-outsource-web-development",
+
   // --- Renamed portfolio slugs (the only place these are defined) ---
   "portfolio/creative-social-media-madluvv-social-and-meta-ads":
     "/portfolio/madluvv-social-media-meta-ads",

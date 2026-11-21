@@ -73,7 +73,7 @@ const post: PostBody = {
       body: [
         "Most of the gap between quotes comes from who you hire rather than how skilled they are. A solo freelancer and a five-person agency can have the same Liquid skills. The agency's price includes a project manager, a second pair of eyes on code, and someone to pick up the work if a developer leaves.",
         "Shopify's official [Partner Directory](https://www.shopify.com/partners/directory) lets you filter partners by service, location and price, and shows reviews, work samples and partner tier. It's a reasonable starting shortlist, though a directory listing tells you a firm exists, not that it fits your job.",
-        "Offshore teams are one more hiring model, not a category of their own. They can suit work with a clear brief and a written QA process. If you're weighing that route, our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan) covers contracts, overlap hours and payment terms.",
+        "Offshore teams are one more hiring model, not a category of their own. They can suit work with a clear brief and a written QA process. If you're weighing that route, our guide to [outsourcing web development](/blog/how-to-outsource-web-development) covers contracts, overlap hours and payment terms.",
       ],
       table: {
         caption: "Shopify hiring models compared",
@@ -296,7 +296,7 @@ const post: PostBody = {
     { label: "Custom Shopify app vs public app", to: "/blog/custom-shopify-app-vs-public-app" },
     {
       label: "Outsourcing web development to Pakistan",
-      to: "/blog/outsource-web-development-to-pakistan",
+      to: "/blog/how-to-outsource-web-development",
     },
     { label: "Shopify development services", to: "/shopify-development-agency" },
   ],

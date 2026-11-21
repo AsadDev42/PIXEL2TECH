@@ -226,7 +226,7 @@ const post: PostBody = {
           heading: "Where Pixel2Tech fits",
           body: [
             "We've worked this way with agency teams, including producing content plans, static graphics and short social videos for Swishtag, a Shopify Plus agency, working closely with their own team. The pattern that works is the same each time: tight briefs, one feedback channel, and a shared naming convention from day one.",
-            "If video is the main gap, our guide to [outsourcing video editing to Pakistan](/blog/outsource-video-editing-to-pakistan) covers what to expect, and agencies that also need store work can read about [white label Shopify development](/blog/white-label-shopify-development-for-agencies). Our [video editing and ad creative team](/services/video-editing-and-ads) takes white label briefs from agencies.",
+            "If video is the main gap, our guide to [outsourcing video editing](/blog/how-to-outsource-video-editing) covers what to expect, and agencies that also need store work can read about [white label Shopify development](/blog/white-label-shopify-development-for-agencies). Our [video editing and ad creative team](/services/video-editing-and-ads) takes white label briefs from agencies.",
           ],
         },
       ],
@@ -284,7 +284,7 @@ const post: PostBody = {
     { label: "UGC ads for Shopify brands", to: "/blog/ugc-ads-for-shopify-brands" },
     {
       label: "Outsource video editing to Pakistan",
-      to: "/blog/outsource-video-editing-to-pakistan",
+      to: "/blog/how-to-outsource-video-editing",
     },
     {
       label: "White label Shopify development for agencies",

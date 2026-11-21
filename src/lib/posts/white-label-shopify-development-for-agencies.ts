@@ -199,7 +199,7 @@ const post: PostBody = {
       heading: "Communication and time-zone rhythms",
       body: [
         "If your partner is offshore, time zones shape the working day. We're based in Pakistan, so here's how that looks from US, UK and European offices. Pakistan Standard Time is UTC+5 with no daylight saving, so the gap to your office changes when your clocks do. Pakistan is 9 hours ahead of New York during US daylight time and 10 hours ahead in winter, and 4 hours ahead of London during British Summer Time and 5 hours in winter.",
-        "That gap can work for you. A brief sent at the end of a New York day can come back as a preview theme the next morning, while London, Berlin and Paris teams share most of their morning or working day with ours for live reviews. It only works with written briefs and one short overlap window for calls. For more on contracts and payments with offshore teams, see our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan).",
+        "That gap can work for you. A brief sent at the end of a New York day can come back as a preview theme the next morning, while London, Berlin and Paris teams share most of their morning or working day with ours for live reviews. It only works with written briefs and one short overlap window for calls. For more on contracts and payments with offshore teams, see our guide to [outsourcing web development](/blog/how-to-outsource-web-development).",
       ],
       bullets: [
         "A written end-of-day update from the partner: done, in progress, blocked.",
@@ -300,12 +300,14 @@ const post: PostBody = {
     },
   ],
   internalLinks: [
+    { label: "White label Shopify development partner", to: "/white-label-web-development" },
+    { label: "Shopify development services and portfolio", to: "/shopify-development-agency" },
     { label: "Shopify developer rates", to: "/blog/shopify-developer-rates" },
     { label: "WooCommerce to Shopify migration", to: "/blog/woocommerce-to-shopify-migration" },
     { label: "White-label creative for agencies", to: "/blog/white-label-creative-for-agencies" },
     {
       label: "Outsourcing web development to Pakistan",
-      to: "/blog/outsource-web-development-to-pakistan",
+      to: "/blog/how-to-outsource-web-development",
     },
     { label: "WordPress and Shopify services", to: "/services/wordpress-and-shopify" },
   ],

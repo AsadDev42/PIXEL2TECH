@@ -82,8 +82,8 @@ export const CREATIVE_SERVICES_B: SpecialistServiceCopy[] = [
         desc: "Choose colors and typefaces that make a small brand look established.",
       },
       {
-        slug: "outsource-graphic-design-to-pakistan",
-        title: "Outsourcing graphic design to Pakistan",
+        slug: "how-to-outsource-graphic-design",
+        title: "How to outsource graphic design",
         desc: "A buyer's guide to working with a design team abroad.",
       },
     ],
@@ -322,8 +322,8 @@ export const CREATIVE_SERVICES_B: SpecialistServiceCopy[] = [
         desc: "Choose colors and typefaces that make a small brand look established.",
       },
       {
-        slug: "outsource-graphic-design-to-pakistan",
-        title: "Outsourcing graphic design to Pakistan",
+        slug: "how-to-outsource-graphic-design",
+        title: "How to outsource graphic design",
         desc: "A buyer's guide to working with a design team abroad.",
       },
     ],

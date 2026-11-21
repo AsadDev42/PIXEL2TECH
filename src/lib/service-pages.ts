@@ -66,6 +66,8 @@ export type ServicePageCopy = {
   work: RelatedWork[];
   evidence?: ServiceEvidence;
   articles: [RelatedArticle, RelatedArticle, RelatedArticle];
+  /** Focused buying journeys within a broad service family. */
+  projectLinks?: { href: string; title: string; desc: string }[];
   /** 4 to 6 questions, answers of 40 to 80 words. */
   faqs: FaqItem[];
   ctaTitle: string;
@@ -194,8 +196,8 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "What to put in a brand guide so your team can use it.",
       },
       {
-        slug: "outsource-graphic-design-to-pakistan",
-        title: "Outsourcing graphic design to Pakistan",
+        slug: "how-to-outsource-graphic-design",
+        title: "How to outsource graphic design",
         desc: "A buyer's guide to working with a design team abroad.",
       },
     ],
@@ -328,6 +330,23 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         a: "We plan redesigns to protect what already ranks: we map old URLs to new ones with 301 redirects, keep the titles and content that bring in traffic, and check indexing after launch. No one can guarantee rankings, but common causes of lost traffic after a redesign, such as missing redirects and deleted content, can be planned for.",
       },
     ],
+    projectLinks: [
+      {
+        href: "/website-redesign-services",
+        title: "Website redesign services",
+        desc: "Plan a redesign with content, redirects, mobile journeys and launch checks in scope.",
+      },
+      {
+        href: "/white-label-web-development",
+        title: "White label web design and development",
+        desc: "Design or build client websites under your agency's name, with a clear handover.",
+      },
+      {
+        href: "/shopify-development-agency",
+        title: "Shopify store design and development",
+        desc: "Scope product pages, custom sections, integrations or a complete online store.",
+      },
+    ],
     ctaTitle: "Get a fixed quote for your website",
   },
 
@@ -431,6 +450,23 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         q: "Who pays for Shopify apps, themes and plugins?",
         a: "Third-party costs such as Shopify plans, paid themes, apps and plugins are separate from our fee unless your proposal says they're included. We list the ones we expect in the proposal, and we recommend keeping those subscriptions in your own accounts so you stay in control of them.",
+      },
+    ],
+    projectLinks: [
+      {
+        href: "/shopify-development-agency",
+        title: "Shopify development for brands",
+        desc: "Compare theme work, custom builds and headless storefront requirements.",
+      },
+      {
+        href: "/white-label-web-development",
+        title: "White label Shopify development",
+        desc: "Agency projects with merchant access, approvals and ownership agreed before work starts.",
+      },
+      {
+        href: "/website-redesign-services",
+        title: "Redesign an existing store or website",
+        desc: "Review what to keep, rebuild and migrate before changing your live site.",
       },
     ],
     ctaTitle: "Get a fixed quote for your store or site",
@@ -864,8 +900,8 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "How to rank in the towns you serve without doorway pages.",
       },
       {
-        slug: "outsource-seo-to-pakistan",
-        title: "Outsourcing SEO to Pakistan",
+        slug: "how-to-outsource-seo",
+        title: "How to outsource SEO",
         desc: "How to vet and manage an offshore SEO partner.",
       },
     ],
@@ -1080,7 +1116,7 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "Connect audience questions, hooks, filming briefs and editing to a clear next action.",
       },
       {
-        slug: "outsource-video-editing-to-pakistan",
+        slug: "how-to-outsource-video-editing",
         title: "Work with an editing partner",
         desc: "Organise the source material, approval process and final handover.",
       },
@@ -1109,6 +1145,23 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
       {
         q: "How does ongoing video editing work?",
         a: "For regular content we agree a monthly volume, the formats, and how you send footage and feedback. You get a steady flow of edits without briefing a new editor every time. One-off projects, such as a brand video or a launch ad set, are quoted separately with their own scope and timeline.",
+      },
+    ],
+    projectLinks: [
+      {
+        href: "/outsource-video-editing",
+        title: "Outsource video editing",
+        desc: "Editing support for agencies, creators and studios, scoped around your footage and delivery formats.",
+      },
+      {
+        href: "/wedding-video-editing-services",
+        title: "Wedding film editing services",
+        desc: "Highlights, ceremony films and vertical reels with your studio's style and review process.",
+      },
+      {
+        href: "/portfolio/long-form-video-and-podcast-production",
+        title: "Long-form video editing examples",
+        desc: "Explore the published long-form video and podcast collection before briefing an edit.",
       },
     ],
     ctaTitle: "Get a fixed quote for your video work",

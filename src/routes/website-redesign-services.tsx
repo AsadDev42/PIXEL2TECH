@@ -71,7 +71,7 @@ function WebsiteRedesignServices() {
         },
         {
           title: "URL map and 301 redirects",
-          body: "Every old address pointed to its new page, so bookmarks, links and rankings carry over.",
+          body: "Relevant old URLs mapped to their closest replacement, with redirects checked at launch. This helps preserve useful links and access; it cannot guarantee unchanged rankings.",
         },
         {
           title: "SEO carried over",
@@ -92,6 +92,24 @@ function WebsiteRedesignServices() {
       ]}
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <ContentGrid
+          heading="What do website redesign services include?"
+          intro="A redesign brief should cover the customer journey and the launch, as well as the appearance. These acceptance checks make competing proposals easier to compare."
+          items={[
+            {
+              title: "Pages and mobile journeys",
+              body: "Agree the page list, navigation, copy responsibilities and key actions. Review a service enquiry or product purchase on mobile before approving the design.",
+            },
+            {
+              title: "Migration and search checks",
+              body: "Inventory important URLs and content, map redirects where addresses change, and check canonical tags, indexability and the sitemap. Keep a pre-launch traffic baseline for comparison.",
+            },
+            {
+              title: "Working forms and handover",
+              body: "Test enquiries, booking links and agreed tracking. Confirm who owns domain, hosting and admin accounts, what your team can edit, and which support or maintenance tasks are included.",
+            },
+          ]}
+        />
         <ContentGrid
           heading="Signs your website needs a redesign"
           items={[

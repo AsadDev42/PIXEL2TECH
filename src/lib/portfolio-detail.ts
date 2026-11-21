@@ -103,8 +103,8 @@ const POST = {
     label: "Brand Guidelines for Small Businesses: What to Include",
   },
   outsourceDesign: {
-    slug: "outsource-graphic-design-to-pakistan",
-    label: "Outsource Graphic Design to Pakistan: A US, UK and EU Guide",
+    slug: "how-to-outsource-graphic-design",
+    label: "How to Outsource Graphic Design Without Losing Quality or Control",
   },
   beautyCreative: {
     slug: "beauty-brand-ad-creative",
@@ -127,8 +127,8 @@ const POST = {
     label: "Video Editing Retainers for Coaches: Scope, Pricing, Turnaround",
   },
   outsourceVideo: {
-    slug: "outsource-video-editing-to-pakistan",
-    label: "Outsource Video Editing to Pakistan: A US, UK and EU Guide",
+    slug: "how-to-outsource-video-editing",
+    label: "How to Outsource Video Editing: Briefs, Workflow and What to Check",
   },
   ugcAds: {
     slug: "ugc-ads-for-shopify-brands",

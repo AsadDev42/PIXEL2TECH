@@ -323,8 +323,8 @@ const post: PostBody = {
       to: "/blog/brand-guidelines-for-small-business",
     },
     {
-      label: "Outsourcing graphic design to Pakistan",
-      to: "/blog/outsource-graphic-design-to-pakistan",
+      label: "How to outsource graphic design",
+      to: "/blog/how-to-outsource-graphic-design",
     },
     { label: "Branding and design service", to: "/services/branding-and-design" },
   ],

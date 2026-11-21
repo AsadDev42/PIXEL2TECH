@@ -12,6 +12,10 @@ const partnered = shopify - shopifyDirect;
 
 const FAQS: FaqItem[] = [
   {
+    q: "Can agencies outsource white label Shopify development?",
+    a: "Yes. Your agency can supply the approved designs, store brief and client requirements, while Pixel2Tech handles the agreed Shopify build behind the scenes. We confirm access, templates, integrations, review rounds and handover in the proposal. Your team keeps the client relationship; we contact the merchant only when you ask us to.",
+  },
+  {
     q: "What does a Shopify development agency do?",
     a: "A Shopify development agency plans, designs and builds your online store on Shopify: theme setup or a custom theme, product and collection pages, apps and integrations, payments and shipping settings, and the speed and SEO basics. We also take on fixes and new features for stores that are already live.",
   },
@@ -88,6 +92,24 @@ function ShopifyDevelopmentAgency() {
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <ContentGrid
+          heading="White label Shopify development for agency projects"
+          intro="Agencies can bring an approved design or a scoped store problem. We agree what your team owns and what our developers deliver before accessing the merchant's store."
+          items={[
+            {
+              title: "Theme and product-page work",
+              body: "Define the templates, custom sections, product variants and mobile states to build. Separate a targeted theme change from a full store redesign so the quote matches the job.",
+            },
+            {
+              title: "Headless scope and dependencies",
+              body: "For Hydrogen or Next.js work, document the storefront, content, search and checkout boundaries. Review running costs and maintenance responsibility before choosing a separate front end.",
+            },
+            {
+              title: "Merchant access and handover",
+              body: "Keep store ownership with the merchant and grant only the access needed for the task. Agree staging, approval, launch, theme-code handover and third-party subscriptions in writing.",
+            },
+          ]}
+        />
+        <ContentGrid
           heading="Theme, custom theme or headless?"
           intro="The right build depends on your catalog, your team and how often your pages change. We recommend one after the scoping call and explain why."
           items={[
@@ -149,6 +171,11 @@ function ShopifyDevelopmentAgency() {
         <LandingLinks
           heading="Plan your Shopify store"
           links={[
+            {
+              href: "/blog/white-label-shopify-development-for-agencies",
+              title: "White label Shopify development guide",
+              desc: "Plan agency briefs, merchant access, reviews and ownership before the build.",
+            },
             {
               href: "/blog/shopify-store-cost",
               title: "What a Shopify store costs",

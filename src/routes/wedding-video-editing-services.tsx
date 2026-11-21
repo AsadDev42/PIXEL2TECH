@@ -43,8 +43,8 @@ export const Route = createFileRoute("/wedding-video-editing-services")({
   head: () => {
     const head = businessHead(
       PATH,
-      "Wedding Video Editing Services",
-      `Wedding video editing services for couples and videographers: highlight films, full ceremony edits and 9:16 reels from your footage. ${weddingVideos.length} wedding films and reels in our portfolio.`,
+      "Wedding Video Editing Services for Videographers",
+      "Wedding film editing services for videographers and couples: highlights, ceremony edits and vertical reels from your footage. Request a fixed quote.",
     );
     return { ...head, scripts: [...head.scripts, faqJsonLd(FAQS)] };
   },
@@ -55,7 +55,7 @@ function WeddingVideoEditingServices() {
   return (
     <BusinessLanding
       eyebrow="Wedding video editing services"
-      title="Wedding video editing services"
+      title="Wedding video editing services for videographers and couples"
       intro={`Pixel2Tech, a Lahore-based video editing studio, edits wedding footage for couples and videographers worldwide. Send us the footage from the day and we edit it into a wedding film worth rewatching, plus vertical reels for social media. Our wedding collection has ${weddingVideos.length} finished edits: ${films} horizontal films and ${reels} vertical reels, from bridal portraits and couple shoots to nikah, church and baraat footage.`}
       capabilities={[
         {
@@ -82,6 +82,24 @@ function WeddingVideoEditingServices() {
       ]}
     >
       <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <ContentGrid
+          heading="Outsource wedding film editing without losing your style"
+          intro="A highlight film, a full ceremony edit and a social teaser serve different purposes. Agree each deliverable before the first cut so your studio and the couple know what to expect."
+          items={[
+            {
+              title: "Highlight film",
+              body: "A selected story built around the moments, dialogue and music in the brief. Share reference films and must-include people or traditions; confirm the intended running time before editing.",
+            },
+            {
+              title: "Ceremony and speeches",
+              body: "Longer edits preserve the agreed events and spoken moments. Supply every camera angle and separate audio file, and flag gaps in coverage rather than assuming missing footage can be recreated.",
+            },
+            {
+              title: "Vertical teaser and reels",
+              body: "Short 9:16 versions need their own framing, safe areas and music plan. Specify the platforms, text and delivery versions instead of treating every reel as a crop of the full film.",
+            },
+          ]}
+        />
         <ContentGrid
           heading="Who we edit wedding videos for"
           items={[

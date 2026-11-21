@@ -1,12 +1,9 @@
 import aiAutomationOperationsNewCover from "@/assets/ai-automation-operations-new-cover.jpg.asset.json";
 import aiDesignSystemsHero from "@/assets/ai-design-systems-hero.jpg.asset.json";
 import contextualAdvertisingCoverUploaded from "@/assets/contextual-advertising-cover-uploaded.jpg.asset.json";
-import googlePakistanOfficeInauguration from "@/assets/google-pakistan-office-inauguration.png.asset.json";
 import mobileAppDesignProcessCover from "@/assets/mobile-app-design-process-cover.jpg";
 import outtricksComparisonOpt from "@/assets/outtricks-comparison-opt.jpg.asset.json";
 import shopifyIssuesBlogHero from "@/assets/shopify-issues-blog-hero.jpg.asset.json";
-import topMarketingAgenciesPakistanV2 from "@/assets/top-marketing-agencies-pakistan-v2.jpg.asset.json";
-import top7SeoAgenciesPakistanV2 from "@/assets/top-7-seo-agencies-pakistan-v2.jpg.asset.json";
 import verifiedWholesaleSourcingCover from "@/assets/verified-wholesale-sourcing-cover.jpg";
 import whyAgenciesLoseClientsCover from "@/assets/why-agencies-lose-clients-cover.png.asset.json";
 import {
@@ -33,37 +30,139 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
-    slug: "seo-services-pakistan-monthly-package",
-    title: "SEO Services in Pakistan: What a Monthly SEO Package Should Include",
+    slug: "how-to-outsource-web-development",
+    title: "How to Outsource Web Development: A Guide for US, UK and EU Companies",
     excerpt:
-      "What a monthly SEO package in Pakistan should include, the red flags to avoid, how to compare packages and how to judge progress each month.",
-    tag: "SEO",
+      "How to outsource web development from the US, UK or EU. Compare rates, vet vendors, own your code, handle GDPR, pick a payment route and plan time zones.",
+    tag: "Outsourcing",
     date: "November 21, 2026",
-    time: "6:10 pm",
+    time: "11:05 am",
     author: "Asad Farooq",
-    img: "/blog/covers/seo-services-pakistan-monthly-package.jpg",
-    imgAlt: "Business owner reviewing a monthly SEO report on a laptop at an office desk",
+    img: "/blog/covers/how-to-outsource-web-development.jpg",
+    imgAlt: "Developer team reviewing a website build on two screens",
     related: [
-      "earn-backlinks-service-business-without-buying",
-      "monthly-seo-audit-service-websites",
-      "google-spam-update-recovery",
+      "compare-website-development-quotes",
+      "website-development-cost",
+      "white-label-shopify-development-for-agencies",
     ],
   },
   {
-    slug: "digital-marketing-services-pakistan-compare",
-    title: "Digital Marketing Services in Pakistan: What to Compare Before You Hire",
+    slug: "how-to-outsource-graphic-design",
+    title: "How to Outsource Graphic Design Without Losing Quality or Control",
     excerpt:
-      "What a marketing package in Pakistan should cover, how to compare proposals side by side, who should own your accounts and the red flags to avoid.",
-    tag: "Marketing",
+      "Outsource graphic design without losing quality. Compare US and UK rates, pick a model, write a tight brief, secure copyright and run a two-week paid trial.",
+    tag: "Outsourcing",
     date: "November 21, 2026",
-    time: "5:20 pm",
+    time: "10:50 am",
     author: "Asad Farooq",
-    img: "/blog/covers/digital-marketing-services-pakistan-compare.jpg",
-    imgAlt: "Business owner at a desk comparing printed marketing proposals next to a laptop",
+    img: "/blog/covers/how-to-outsource-graphic-design.jpg",
+    imgAlt: "Designer working on brand layouts at a desk",
     related: [
-      "top-marketing-agencies-in-pakistan",
+      "brand-guidelines-for-small-business",
+      "logo-design-cost",
+      "white-label-creative-for-agencies",
+    ],
+  },
+  {
+    slug: "how-to-outsource-video-editing",
+    title: "How to Outsource Video Editing: Briefs, Workflow and What to Check",
+    excerpt:
+      "Learn how to outsource video editing with a clear brief, a footage handoff you own, a paid test edit and written terms for turnaround, music and ownership.",
+    tag: "Video Editing",
+    date: "November 21, 2026",
+    time: "10:35 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/how-to-outsource-video-editing.jpg",
+    imgAlt: "Video editor working on a timeline on a large monitor",
+    related: [
+      "how-to-brief-a-video-editor-first-cut",
+      "video-editing-handover-checklist",
+      "video-editing-retainer-for-coaches",
+    ],
+  },
+  {
+    slug: "how-to-outsource-seo",
+    title: "How to Outsource SEO: What to Hand Over and What to Keep",
+    excerpt:
+      "Outsource SEO without losing control. Decide which work to hand over, prepare a handover pack, keep accounts in your name and run the agency week to week.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "10:20 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/how-to-outsource-seo.jpg",
+    imgAlt: "Marketer reviewing search performance charts on a laptop",
+    related: [
+      "how-to-choose-an-seo-agency",
+      "monthly-seo-audit-service-websites",
+      "seo-content-agency-monthly-deliverables",
+    ],
+  },
+  {
+    slug: "seo-services-small-business-monthly-package",
+    title: "SEO Services for Small Businesses: What a Monthly SEO Package Should Include",
+    excerpt:
+      "What a monthly SEO package for a small business should include, the red flags to avoid, how to compare packages and how to judge progress each month.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "10:05 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/seo-services-small-business-monthly-package.jpg",
+    imgAlt: "Business owner reviewing a monthly SEO report on a laptop at an office desk",
+    related: [
+      "local-seo-for-small-business",
+      "seo-content-agency-monthly-deliverables",
+      "monthly-seo-audit-service-websites",
+    ],
+  },
+  {
+    slug: "how-to-choose-an-seo-agency",
+    title: "How to Choose an SEO Agency: Questions to Ask Before You Sign",
+    excerpt:
+      "The questions to ask an SEO agency before you sign, what a proposal should contain, who should own your accounts and whether to hire local or remote.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "9:50 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/how-to-choose-an-seo-agency.jpg",
+    imgAlt: "Business owner meeting an SEO consultant across an office desk",
+    related: [
       "replace-digital-marketing-agency",
       "client-reporting-dashboard-prove-work-monthly",
+      "website-ownership-checklist",
+    ],
+  },
+  {
+    slug: "compare-digital-marketing-agency-proposals",
+    title: "How to Compare Digital Marketing Agency Proposals Before You Hire",
+    excerpt:
+      "Got several digital marketing agency proposals? Put scope, people, fees, ad spend, ownership and exit terms in one table before you choose.",
+    tag: "Marketing",
+    date: "November 21, 2026",
+    time: "9:35 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/compare-digital-marketing-agency-proposals.jpg",
+    imgAlt: "Business owner comparing printed marketing agency proposals side by side on a desk",
+    related: [
+      "replace-digital-marketing-agency",
+      "client-reporting-dashboard-prove-work-monthly",
+      "website-ownership-checklist",
+    ],
+  },
+  {
+    slug: "web-design-and-seo-company",
+    title: "Web Design and SEO Company: When One Team Helps and What to Check",
+    excerpt:
+      "Planning a new site or redesign? Learn when one web design and SEO company helps, when two firms fit better and what to check before you sign.",
+    tag: "Web Development",
+    date: "November 21, 2026",
+    time: "9:20 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/web-design-and-seo-company.jpg",
+    imgAlt: "Web designer sketching a website wireframe next to a keyboard",
+    related: [
+      "website-traffic-drop-after-redesign",
+      "search-intent-service-pages",
+      "compare-website-development-quotes",
     ],
   },
   {
@@ -81,23 +180,6 @@ const POSTS = [
       "whatsapp-business-api-setup-guide",
       "automate-lead-follow-up",
       "ai-chat-support-automate-vs-keep-human",
-    ],
-  },
-  {
-    slug: "choose-seo-company-lahore",
-    title: "How to Choose an SEO Company in Lahore: Questions to Ask Before You Sign",
-    excerpt:
-      "Questions to ask an SEO company in Lahore, what a proposal should contain, who should own your accounts and what monthly reports should show.",
-    tag: "SEO",
-    date: "November 21, 2026",
-    time: "3:50 pm",
-    author: "Asad Farooq",
-    img: "/blog/covers/choose-seo-company-lahore.jpg",
-    imgAlt: "Two people in a meeting going through an SEO proposal with a laptop open",
-    related: [
-      "replace-digital-marketing-agency",
-      "client-reporting-dashboard-prove-work-monthly",
-      "website-ownership-checklist",
     ],
   },
   {
@@ -182,23 +264,6 @@ const POSTS = [
     related: [
       "white-label-shopify-development-for-agencies",
       "white-label-creative-for-agencies",
-      "website-ownership-checklist",
-    ],
-  },
-  {
-    slug: "web-design-and-seo-company-pakistan",
-    title: "Web Design and SEO Company in Pakistan: When One Team Helps and What to Check",
-    excerpt:
-      "When one company for web design and SEO helps, when it does not, and what to check on redirects, launch tasks and quotes before you sign.",
-    tag: "Web Development",
-    date: "November 21, 2026",
-    time: "11:20 am",
-    author: "Asad Farooq",
-    img: "/blog/covers/web-design-and-seo-company-pakistan.jpg",
-    imgAlt: "Web designer working on a website layout on screen",
-    related: [
-      "website-traffic-drop-after-redesign",
-      "compare-website-development-quotes",
       "website-ownership-checklist",
     ],
   },
@@ -940,8 +1005,8 @@ const POSTS = [
     img: "/blog/covers/best-outsourcing-agencies-for-remote-work.jpg?v=3",
     imgAlt: "A laptop showing a remote team on a video call",
     related: [
-      "outsource-web-development-to-pakistan",
-      "outsource-graphic-design-to-pakistan",
+      "how-to-outsource-web-development",
+      "how-to-outsource-graphic-design",
       "white-label-creative-for-agencies",
     ],
   },
@@ -1556,7 +1621,7 @@ const POSTS = [
     imgAlt: "Analytics dashboard with charts on a laptop screen",
     related: [
       "podcast-to-short-form-video-workflow",
-      "outsource-video-editing-to-pakistan",
+      "how-to-outsource-video-editing",
       "brand-identity-process-for-startups",
     ],
   },
@@ -1573,7 +1638,7 @@ const POSTS = [
     imgAlt: "Studio microphone in a dark podcast studio",
     related: [
       "video-editing-retainer-for-coaches",
-      "outsource-video-editing-to-pakistan",
+      "how-to-outsource-video-editing",
       "saas-product-demo-video-brief",
     ],
   },
@@ -1656,18 +1721,6 @@ const POSTS = [
     img: shopifyIssuesBlogHero.url,
   },
   {
-    slug: "top-marketing-agencies-in-pakistan",
-    title: "7 Marketing Agencies in Pakistan for US, UK and EU Brands (2026)",
-    excerpt:
-      "Hiring a marketing agency in Pakistan from the US, UK or Europe? Seven options, USD rate bands, ad account access, time zones and contract terms.",
-    tag: "Marketing",
-    date: "August 23, 2026",
-    time: "10:00 am",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: topMarketingAgenciesPakistanV2.url,
-  },
-  {
     slug: "ai-design-systems-future",
     title: "AI Is Changing How Designers Build Products: Why Design Systems Matter More Than Ever",
     excerpt:
@@ -1711,37 +1764,6 @@ const POSTS = [
     author: "Pixel2Tech Team",
     img: aiAutomationOperationsNewCover.url,
     imgAlt: "AI and automation transforming modern business operations",
-  },
-  {
-    slug: "top-seo-agencies-in-pakistan",
-    title: "7 SEO Agencies in Pakistan for US, UK and EU Companies (2026)",
-    excerpt:
-      "Comparing SEO agencies in Pakistan from the US, UK or Europe? Seven options, USD rate bands, time-zone overlap, contracts and safe ways to pay.",
-    tag: "SEO",
-    date: "August 20, 2026",
-    time: "9:00 am",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: top7SeoAgenciesPakistanV2.url,
-  },
-  {
-    slug: "google-pakistan-office-30-billion-it-export-future",
-    title: "Google's Pakistan Office: What It Means for Outsourcing Buyers",
-    excerpt:
-      "Google opened its first Pakistan office in August 2026. What that and Pakistan's $4.6B IT export year mean for US, UK and EU companies that outsource.",
-    tag: "Business",
-    date: "August 19, 2026",
-    time: "11:00 am",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: googlePakistanOfficeInauguration.url,
-    imgAlt: "Google Pakistan office inauguration with Prime Minister Shehbaz Sharif",
-    related: [
-      "20-common-technology-mistakes-businesses-make-2026",
-      "why-businesses-need-better-systems",
-      "building-digital-product-start-with-business",
-      "future-of-digital-products-startup-systems",
-    ],
   },
   {
     slug: "future-of-digital-products-startup-systems",
@@ -1968,7 +1990,7 @@ const POSTS = [
     tag: "E-commerce",
     date: "August 2, 2026",
     time: "3:00 pm",
-    updated: "August 3, 2026",
+    updated: "November 21, 2026",
     author: "Asad Farooq",
     img: stock("1556742049-0cfed4f6a45d"),
     imgAlt:
@@ -2249,25 +2271,7 @@ const POSTS = [
     related: [
       "website-development-cost",
       "compare-website-development-quotes",
-      "outsource-web-development-to-pakistan",
-    ],
-  },
-  {
-    slug: "outsource-web-development-to-pakistan",
-    title: "Outsource Web Development to Pakistan: US, UK & EU Guide",
-    excerpt:
-      "What US, UK and EU buyers need to know: offshore rates vs local hires, time-zone overlap, IP and GDPR contracts, payments and how to vet a studio.",
-    tag: "Outsourcing",
-    date: "September 21, 2026",
-    time: "1:00 pm",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-web-development-to-pakistan.jpg?v=3",
-    imgAlt: "Developer at a desk reviewing website code on two monitors",
-    related: [
-      "website-redesign-cost-small-business",
-      "compare-website-development-quotes",
-      "website-ownership-checklist",
+      "how-to-outsource-web-development",
     ],
   },
   {
@@ -2405,7 +2409,7 @@ const POSTS = [
     tag: "Outsourcing",
     date: "September 16, 2026",
     time: "1:00 pm",
-    updated: "September 27, 2026",
+    updated: "November 21, 2026",
     author: "Pixel2Tech Team",
     img: "/blog/covers/white-label-shopify-development-for-agencies.jpg?v=2",
     imgAlt:
@@ -2503,24 +2507,6 @@ const POSTS = [
     ],
   },
   {
-    slug: "outsource-seo-to-pakistan",
-    title: "Outsource SEO to Pakistan: A Guide for US, UK & EU Firms",
-    excerpt:
-      "For US, UK and EU businesses and agencies: offshore SEO rates vs local ones, white-label models, vetting, GDPR, payments and how to run a paid pilot.",
-    tag: "Outsourcing",
-    date: "September 20, 2026",
-    time: "9:00 am",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-seo-to-pakistan.jpg?v=3",
-    imgAlt: "Search analytics dashboard with organic traffic charts on a laptop",
-    related: [
-      "website-traffic-drop-after-redesign",
-      "service-area-pages-for-contractors",
-      "shopify-duplicate-content-collection-urls",
-    ],
-  },
-  {
     slug: "logo-design-cost",
     title: "How Much Does a Logo Cost in 2026? US, UK and Europe Prices",
     excerpt:
@@ -2535,7 +2521,7 @@ const POSTS = [
     related: [
       "brand-identity-process-for-startups",
       "brand-guidelines-for-small-business",
-      "outsource-graphic-design-to-pakistan",
+      "how-to-outsource-graphic-design",
     ],
   },
   {
@@ -2554,24 +2540,6 @@ const POSTS = [
       "brand-identity-process-for-startups",
       "logo-design-cost",
       "rebrand-vs-refresh-a-founders-decision-framework",
-    ],
-  },
-  {
-    slug: "outsource-graphic-design-to-pakistan",
-    title: "Outsource Graphic Design to Pakistan: A US, UK and EU Guide",
-    excerpt:
-      "What US, UK and EU teams pay to outsource design to Pakistan vs local hires and agencies, plus time-zone overlap, IP, payments and a paid trial.",
-    tag: "Outsourcing",
-    date: "September 20, 2026",
-    time: "1:00 pm",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-graphic-design-to-pakistan.jpg?v=3",
-    imgAlt: "Graphic designer working on brand layouts on a large monitor",
-    related: [
-      "brand-identity-process-for-startups",
-      "white-label-creative-for-agencies",
-      "logo-design-cost",
     ],
   },
   {
@@ -2626,24 +2594,6 @@ const POSTS = [
     ],
   },
   {
-    slug: "outsource-video-editing-to-pakistan",
-    title: "Outsource Video Editing to Pakistan: A US, UK and EU Guide",
-    excerpt:
-      "Costs vs US and UK editors and agencies, overnight turnaround, same-day UK/EU revisions, music rights, payments and how to run a paid test edit.",
-    tag: "Outsourcing",
-    date: "September 20, 2026",
-    time: "6:00 pm",
-    updated: "September 27, 2026",
-    author: "Pixel2Tech Team",
-    img: "/blog/covers/outsource-video-editing-to-pakistan.jpg?v=3",
-    imgAlt: "Video editor cutting footage on a timeline in editing software",
-    related: [
-      "video-editing-retainer-for-coaches",
-      "law-firm-explainer-video-cost",
-      "white-label-creative-for-agencies",
-    ],
-  },
-  {
     slug: "white-label-creative-for-agencies",
     title: "White Label Ad Creative for Agencies: How to Outsource Safely",
     excerpt:
@@ -2658,7 +2608,7 @@ const POSTS = [
     related: [
       "meta-ads-creative-testing-small-budget",
       "ugc-ads-for-shopify-brands",
-      "outsource-video-editing-to-pakistan",
+      "how-to-outsource-video-editing",
     ],
   },
   {
@@ -2925,7 +2875,7 @@ const POSTS = [
       "Editing timeline on a studio monitor showing an animated legal explainer storyboard with an attorney end card",
     related: [
       "personal-injury-lawyer-video-scripts",
-      "outsource-video-editing-to-pakistan",
+      "how-to-outsource-video-editing",
       "google-ads-landing-page-service-business",
     ],
   },
@@ -2977,7 +2927,7 @@ const POSTS = [
     imgAlt:
       "Coach's talking-head video on an editing timeline with vertical short-form clips cut from it alongside",
     related: [
-      "outsource-video-editing-to-pakistan",
+      "how-to-outsource-video-editing",
       "why-most-freelancers-fail-on-upwork",
       "meta-ads-creative-testing-small-budget",
     ],

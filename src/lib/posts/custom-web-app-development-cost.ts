@@ -85,7 +85,7 @@ const post: PostBody = {
       body: [
         "Onshore means a team in your own country. Nearshore means a team a few time zones away: Mexico or Latin America for US buyers, Poland, Ukraine or Spain for UK and EU buyers. Offshore means a team further away, typically in South Asia or Southeast Asia.",
         "Clutch's published bands make the gap visible. US web development firms sit at $100 to $149 an hour. Poland sits at $50 to $99. Mexico, Ukraine, Spain and the Philippines sit at $25 to $49, and India appears under $25 for web development and $25 to $49 for software development. On Clutch's Pakistan directory, most firms on the first page list average rates under $50 an hour.",
-        "The lower rate is real, but it is not the whole cost. Offshore work needs a written scope, overlapping working hours, and someone on your side who reviews demos and answers questions quickly. Our guide to [outsourcing web development to Pakistan](/blog/outsource-web-development-to-pakistan) covers contracts, code ownership and communication in detail.",
+        "The lower rate is real, but it is not the whole cost. Offshore work needs a written scope, overlapping working hours, and someone on your side who reviews demos and answers questions quickly. Our guide to [outsourcing web development](/blog/how-to-outsource-web-development) covers contracts, code ownership and communication in detail.",
       ],
       bullets: [
         "Onshore: easiest communication and legal recourse, highest rate. Best when the product needs constant stakeholder access.",
@@ -329,7 +329,7 @@ const post: PostBody = {
     { label: "How to compare development quotes", to: "/blog/compare-website-development-quotes" },
     {
       label: "Outsourcing web development to Pakistan",
-      to: "/blog/outsource-web-development-to-pakistan",
+      to: "/blog/how-to-outsource-web-development",
     },
     { label: "Website ownership checklist", to: "/blog/website-ownership-checklist" },
     { label: "Custom platforms and apps service", to: "/services/custom-platforms-and-apps" },
