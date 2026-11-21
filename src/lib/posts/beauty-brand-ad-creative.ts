@@ -217,7 +217,7 @@ const post: PostBody = {
       a: "As of September 2026, Meta's Health and Wellness standards allow before-and-after transformations for general cosmetic products when the ad targets people 18 and older. The ad still can't include statements that attack someone's appearance, body parts or hygiene. If the results shown are better than typical, FTC guidance says the ad should make clear what people can generally expect.",
     },
     {
-      q: "Which ad format works best for cosmetics?",
+      q: "Which ad formats work best for beauty products?",
       a: "There's no single winner, which is why brands test a mix. Short vertical videos that show the product going on skin in close-up, tutorials, and creator videos tend to carry the most proof. Statics such as shade carousels and texture close-ups are cheaper and useful for testing angles. Let your own cost per result decide the split.",
     },
     {

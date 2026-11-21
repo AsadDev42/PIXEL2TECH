@@ -33,7 +33,7 @@ const post: PostBody = {
     { label: "Our Work", to: "/portfolio" },
     { label: "Contact", to: "/contact" },
   ],
-  metaTitle: "Headless Shopify: A Practical Guide for eCommerce Brands",
+  metaTitle: "Headless Shopify Development: Costs, SEO and Migration",
   metaDescription:
     "Understand headless Shopify commerce: how it works, real benefits and costs, when to switch, and how to migrate without losing SEO, speed, or revenue.",
   keywords: [
@@ -100,7 +100,7 @@ const post: PostBody = {
       ],
     },
     {
-      heading: "What headless Shopify actually means",
+      heading: "What is headless Shopify?",
       body: [
         "A standard Shopify store is coupled: the theme that renders your pages and the backend that stores your data ship together. You customise within the boundaries the theme system allows.",
         "In a headless setup, the front end becomes its own application. It requests products, collections, carts, and content through Shopify's Storefront API and renders them however you want. Shopify continues to own the commerce engine underneath.",
@@ -147,7 +147,7 @@ const post: PostBody = {
       ],
     },
     {
-      heading: "The costs nobody puts in the pitch deck",
+      heading: "Headless Shopify cost factors",
       body: [
         "Headless is a trade. You buy flexibility and pay for it in engineering ownership.",
         "Higher build cost: you are commissioning a custom application, not configuring a theme.",
@@ -186,7 +186,7 @@ const post: PostBody = {
       ],
     },
     {
-      heading: "A migration sequence that does not break revenue",
+      heading: "How to migrate from Shopify to headless without losing revenue",
       body: [
         "Define the business case. Name the metric you expect to move and the payback period.",
         "Audit the current store. Traffic, top URLs, revenue by template, app dependencies, and manual workflows.",

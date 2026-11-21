@@ -1,7 +1,7 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post = {
-  metaTitle: "AI Marketing Risks: A Brand Protection Checklist",
+  metaTitle: "AI Marketing Checklist: Risks and Brand Protection",
   metaDescription:
     "A practical checklist for safer AI-assisted marketing: protect customer data, review outputs, reduce bias and set clear approval controls.",
   disclosure:

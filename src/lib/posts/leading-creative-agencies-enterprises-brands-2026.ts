@@ -10,7 +10,7 @@ const post: PostBody = {
   h1: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
   metaTitle: "12 Leading Creative Agencies for Enterprises in 2026",
   metaDescription:
-    "A practical list of 12 leading creative agencies for enterprises and brands in 2026 — what each is best at, plus how to choose the right creative partner.",
+    "12 leading creative agencies for enterprises and tech brands in 2026. See what each enterprise creative agency does best and how to choose a partner.",
   ogTitle: "12 Leading Creative Agencies for Enterprises & Brands in 2026",
   ogDescription:
     "Branding, UI/UX, web, AI and digital transformation — twelve creative agencies worth shortlisting in 2026, and a framework for choosing between them.",
