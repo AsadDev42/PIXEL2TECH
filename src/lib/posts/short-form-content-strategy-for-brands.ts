@@ -1,15 +1,51 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post = {
-  metaTitle: "Short-Form Content Strategy for Brands: A Practical Plan",
+  metaTitle: "Short-Form Content Strategist: Role & Brand Strategy",
+  h1: "What Is a Short-Form Content Strategist? A Brand Planning Guide",
   metaDescription:
-    "Build a focused short-form content plan with customer questions, purposeful hooks, visible proof, useful calls to action and a repeatable review process.",
+    "What does a short-form content strategist do? Learn the role, briefs, hooks, filming priorities and review process behind a useful brand video strategy.",
   keyTakeaways: [
     "Choose one audience question and one useful outcome for each clip.",
     "Show evidence that supports the opening promise.",
     "Review audience response alongside the business action the content should support.",
   ],
   content: [
+    {
+      heading: "What is a short-form content strategist?",
+      definition:
+        "A short-form content strategist plans how brief videos help a brand reach a defined audience and support a useful next action. The role connects customer questions, video ideas, hooks, filming briefs and performance review so each clip has a clear purpose.",
+      body: [
+        "Strategy decides who a video is for, what it should explain and how the team will judge it. Editing turns the approved footage and brief into a finished clip. One person or studio can cover both, but the responsibilities should still be clear: polished transitions cannot replace an idea that matters to the viewer.",
+        "For a service business, a practical first series might answer a buying question, demonstrate part of the work and explain what happens after an enquiry. For a product brand, it might show use, address an objection and compare a relevant detail. These are planning examples, not claims of guaranteed views or sales.",
+      ],
+      table: {
+        caption: "Short-form strategy and production responsibilities",
+        headers: ["Responsibility", "Useful output", "Question to answer"],
+        rows: [
+          [
+            "Audience and topic planning",
+            "A prioritised list of customer questions",
+            "Who needs this information and why?",
+          ],
+          [
+            "Creative briefing",
+            "A hook, supporting proof, shot list and next step",
+            "Can the footage deliver the opening promise?",
+          ],
+          [
+            "Editing and delivery",
+            "Approved cuts, captions and platform versions",
+            "Is the idea understandable in the final format?",
+          ],
+          [
+            "Review and learning",
+            "A record of audience response and relevant business actions",
+            "What should change in the next production cycle?",
+          ],
+        ],
+      },
+    },
     {
       heading: "Start with the viewer's question",
       body: [
@@ -60,6 +96,10 @@ const post = {
   ],
   faqs: [
     {
+      q: "What does a short-form content strategist do?",
+      a: "A strategist turns audience questions and business goals into a video plan: topics, hooks, briefs, filming priorities and a review process. They decide what each clip should help someone understand or do, then use the available response data to improve the next set. Editors and creators produce the work against that plan; the roles may overlap within one team.",
+    },
+    {
       q: "How often should a brand post short-form videos?",
       a: "Choose a pace that supports useful ideas, reliable production and review. There is no single frequency that guarantees results for every audience.",
     },
@@ -87,6 +127,7 @@ const post = {
     },
   ],
   internalLinks: [
+    { label: "Video editing and ad creative services", to: "/services/video-editing-and-ads" },
     {
       label: "Reels versus long-form video",
       to: "/blog/reels-vs-long-form-video",

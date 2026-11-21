@@ -525,9 +525,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "US, UK and EU cost ranges, MVP scoping and running costs.",
       },
       {
-        slug: "custom-shopify-app-vs-public-app",
-        title: "Custom Shopify app vs. public app",
-        desc: "When it's worth building your own Shopify app.",
+        slug: "ai-built-app-launch-checklist",
+        title: "Check an AI-built app after launch",
+        desc: "Review access, backups, forms, search visibility and ownership before customers rely on it.",
       },
       {
         slug: "mobile-app-design-process",
@@ -625,9 +625,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
     ],
     articles: [
       {
-        slug: "n8n-automation-cost",
-        title: "n8n pricing and costs",
-        desc: "Cloud plans vs self-hosting, build effort and upkeep compared.",
+        slug: "contact-form-crm-integration-brief",
+        title: "Connect a contact form to your CRM",
+        desc: "Plan field mapping, enquiry routing, duplicate handling and recovery checks.",
       },
       {
         slug: "automate-lead-follow-up",
@@ -1075,9 +1075,9 @@ const COPY: Record<ServiceTitle, ServicePageCopy> = {
         desc: "Define the audience, product workflow, screen captures and delivery formats.",
       },
       {
-        slug: "podcast-to-short-form-video-workflow",
-        title: "Turn a podcast into useful short clips",
-        desc: "Plan clip selection, context, framing, captions and review.",
+        slug: "short-form-content-strategy-for-brands",
+        title: "Plan a useful short-form content strategy",
+        desc: "Connect audience questions, hooks, filming briefs and editing to a clear next action.",
       },
       {
         slug: "outsource-video-editing-to-pakistan",

@@ -1,15 +1,20 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "Contact Form to CRM Integration: A Reliable Project Brief",
+  metaTitle: "Contact Form With CRM Integration: Setup & Testing",
+  h1: "Contact Form With CRM Integration: A Practical Setup Brief",
   metaDescription:
-    "Plan a contact form to CRM integration with field mapping, duplicate handling, clear success states and failure alerts. Use these checks before launch.",
+    "Plan a contact form with CRM integration: map fields, route enquiries, handle duplicates and test success and failure states before your website goes live.",
   keyTakeaways: [
     "Define what received, saved and assigned mean before connecting tools.",
     "Handle duplicate submissions and failures without losing legitimate enquiries.",
     "Keep credentials on the server, minimise collected data and give a named person responsibility for alerts.",
   ],
   faqs: [
+    {
+      q: "What is a contact form with CRM integration?",
+      a: "It is a website form connected to your customer-management system so an accepted enquiry becomes a contact, lead, deal or activity with the context your team needs. A useful integration maps fields, assigns an owner, handles duplicates and records failures. The visitor's confirmation should describe what the system actually accepted, rather than promising that someone has already read the enquiry.",
+    },
     {
       q: "How does a contact form to CRM integration handle duplicate submissions?",
       a: "People double-click, refresh or retry, and systems may retry deliveries, so the integration needs a way to identify the same submission. A submission identifier can help, but the exact mechanism depends on the tools involved. It must also tell a duplicate delivery apart from a new enquiry by the same person, so using only the email address as a suppression rule is risky because it can discard a legitimate second request.",
@@ -32,6 +37,41 @@ const post: PostBody = {
     },
   ],
   content: [
+    {
+      heading: "How do you set up a contact form with CRM integration?",
+      definition:
+        "A contact form with CRM integration sends an accepted website enquiry to your CRM with its message, source and response owner. The setup must define field mapping, validation, duplicate handling and recovery before the connection goes live.",
+      body: [
+        "Start with the form and the CRM record you want it to create. Decide whether the connection belongs in a server-side handler, a supported native integration or an automation tool. Then test the whole enquiry journey, including what happens when the same request is retried or the CRM cannot be reached.",
+        "If you need help implementing that handover, our [automation and CRM service](/services/automation-and-crm) covers scoped integrations, routing and recovery checks. Agree the workflow first; choosing a connector alone does not define how your team should respond.",
+      ],
+      table: {
+        caption: "Contact form to CRM setup and acceptance checks",
+        headers: ["Step", "Define before building", "Check before launch"],
+        rows: [
+          [
+            "Map the fields",
+            "Where contact details, message and service category belong",
+            "A new enquiry is preserved without overwriting useful history",
+          ],
+          [
+            "Route the enquiry",
+            "The responsible team, owner and next action",
+            "Known and unknown service values reach the agreed destination",
+          ],
+          [
+            "Handle repeat delivery",
+            "How the same submission is identified",
+            "A retry does not create duplicate tasks or discard a new request",
+          ],
+          [
+            "Confirm and recover",
+            "What the visitor sees and who receives failure alerts",
+            "A CRM outage has an agreed receipt, retry and recovery path",
+          ],
+        ],
+      },
+    },
     {
       heading: "What should a contact form to CRM integration do?",
       body: [
@@ -106,7 +146,7 @@ const post: PostBody = {
     },
   ],
   internalLinks: [
-    { label: "Automation and CRM services", to: "/services" },
+    { label: "Automation and CRM services", to: "/services/automation-and-crm" },
     { label: "Automation portfolio", to: "/portfolio?category=ai-automation" },
     { label: "Discuss your enquiry workflow", to: "/contact" },
   ],

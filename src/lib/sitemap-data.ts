@@ -38,7 +38,7 @@ export const STATIC_LASTMOD: Record<string, string> = {
 };
 
 /** Last content change of the /services/<slug> pages (copy in src/lib/service-pages.ts). */
-export const SERVICE_PAGES_LASTMOD = "2026-11-15";
+export const SERVICE_PAGES_LASTMOD = "2026-11-21";
 
 /** Pricing, people, reviews, trust, learn and help pages added with the service families. */
 const NEW_PAGES_LASTMOD = "2026-11-10";

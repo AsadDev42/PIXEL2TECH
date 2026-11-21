@@ -1,9 +1,10 @@
 import type { PostBody } from "@/lib/blog-types";
 
 const post: PostBody = {
-  metaTitle: "Is My Lovable App Secure? 9 Checks Before You Launch",
+  metaTitle: "Lovable Post-Launch Checklist: Security, SEO & Ownership",
+  h1: "Lovable Post-Launch Checklist: 9 Checks for an AI-Built App",
   metaDescription:
-    "Built a site or portal with Lovable, Bolt, v0 or Replit? Nine checks before real customers arrive: database rules, secret keys, logins, backups, SEO, ownership.",
+    "Use this Lovable post-launch checklist to review database access, secret keys, logins, backups, forms, SEO and ownership before customers rely on your app.",
   keywords: [
     "is my lovable app secure",
     "vibe coded app security checklist",
@@ -21,6 +22,21 @@ const post: PostBody = {
     "Before customers arrive, make sure your company holds the domain, hosting, database and code accounts, and that Google can read your pages as real HTML.",
   ],
   content: [
+    {
+      heading: "What should a Lovable post-launch checklist include?",
+      definition:
+        "A Lovable post-launch checklist checks the published app's data access, secret handling, user permissions, backups, core journeys, search visibility and account ownership. Publishing a working screen is the start of that review, not proof that the complete application is ready for customers.",
+      body: [
+        "Use the checks below after a first publish and before real customers depend on the app. Repeat the relevant checks after changes to database policies, login flows, integrations or hosting. Use controlled test accounts and data, record the result of each check and assign an owner to unresolved issues.",
+        "If the app is already in use, plan testing so it does not expose customer records or interrupt live workflows. Keep access limited to people authorised to review the app. For sensitive data or complex integrations, scope a professional review; this checklist is not a security certification.",
+      ],
+      bullets: [
+        "Test that one ordinary account cannot access another account's records or admin actions.",
+        "Check that secret credentials stay on the server and that account ownership is documented.",
+        "Verify backups and recovery, then check forms, important links and confirmation states.",
+        "Inspect the published pages, canonical URLs and sitemap, and use Search Console to check Google's indexing decision.",
+      ],
+    },
     {
       heading: "Is my Lovable app secure?",
       definition:
@@ -224,6 +240,10 @@ const post: PostBody = {
     },
   ],
   faqs: [
+    {
+      q: "Do I need to check a Lovable app after publishing it?",
+      a: "Yes. Review the deployed app's database access, secret handling, user permissions, backups, forms, search visibility and ownership before customers rely on it. Repeat relevant checks after important changes. A successful publish confirms deployment, not that every workflow or permission is correct. Use authorised test accounts and get a professional review where sensitive data or complex integrations require one.",
+    },
     {
       q: "How do I check if my vibe-coded app is secure?",
       a: "Start with the data. Run your builder's security scan or Supabase's Security Advisor, confirm Row Level Security is on for every table with real policies, and test with two user accounts to see whether one can view the other's records. Then search your live site's code for secret keys and confirm admin pages reject normal users. For apps holding sensitive data, get a professional review.",
