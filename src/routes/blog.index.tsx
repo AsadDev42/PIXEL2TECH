@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { ResponsiveImage } from "@/components/responsive-image";
 import { PageShell, PageHeader } from "@/components/site-chrome";
 import { toPostSummary, POST_INDEX } from "@/lib/blog-index";
@@ -167,19 +167,26 @@ function BlogPage() {
           </label>
           <label className="grid gap-2 text-sm font-medium">
             Topic
-            <select
-              name="topic"
-              defaultValue={archive.search.topic ?? ""}
-              key={archive.search.topic ?? ""}
-              className="min-h-12 min-w-0 rounded-xl border border-border bg-background px-4 text-base focus-visible:outline-2 focus-visible:outline-primary"
-            >
-              <option value="">All topics</option>
-              {topics.map((topic) => (
-                <option key={topic} value={topic}>
-                  {topic}
-                </option>
-              ))}
-            </select>
+            {/* The native arrow hugs the edge, so it is hidden and drawn 16px in from the border. */}
+            <span className="relative grid">
+              <select
+                name="topic"
+                defaultValue={archive.search.topic ?? ""}
+                key={archive.search.topic ?? ""}
+                className="min-h-12 min-w-0 appearance-none rounded-xl border border-border bg-background pl-4 pr-12 text-base focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                <option value="">All topics</option>
+                {topics.map((topic) => (
+                  <option key={topic} value={topic}>
+                    {topic}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                aria-hidden="true"
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              />
+            </span>
           </label>
           <button
             type="submit"

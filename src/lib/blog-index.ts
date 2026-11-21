@@ -33,6 +33,176 @@ import { isHiddenProfile } from "@/lib/team";
  */
 const POSTS = [
   {
+    slug: "seo-services-pakistan-monthly-package",
+    title: "SEO Services in Pakistan: What a Monthly SEO Package Should Include",
+    excerpt:
+      "What a monthly SEO package in Pakistan should include, the red flags to avoid, how to compare packages and how to judge progress each month.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "6:10 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/seo-services-pakistan-monthly-package.jpg",
+    imgAlt: "Business owner reviewing a monthly SEO report on a laptop at an office desk",
+    related: [
+      "earn-backlinks-service-business-without-buying",
+      "monthly-seo-audit-service-websites",
+      "google-spam-update-recovery",
+    ],
+  },
+  {
+    slug: "digital-marketing-services-pakistan-compare",
+    title: "Digital Marketing Services in Pakistan: What to Compare Before You Hire",
+    excerpt:
+      "What a marketing package in Pakistan should cover, how to compare proposals side by side, who should own your accounts and the red flags to avoid.",
+    tag: "Marketing",
+    date: "November 21, 2026",
+    time: "5:20 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/digital-marketing-services-pakistan-compare.jpg",
+    imgAlt: "Business owner at a desk comparing printed marketing proposals next to a laptop",
+    related: [
+      "top-marketing-agencies-in-pakistan",
+      "replace-digital-marketing-agency",
+      "client-reporting-dashboard-prove-work-monthly",
+    ],
+  },
+  {
+    slug: "whatsapp-business-api-uk-setup",
+    title: "WhatsApp Business API UK Checklist: Setup, Consent and Pricing",
+    excerpt:
+      "Who needs the WhatsApp Business API in the UK, how to get access, number and display name rules, UK GDPR opt-in, and how Meta prices messages.",
+    tag: "Automation",
+    date: "November 21, 2026",
+    time: "4:35 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/whatsapp-business-api-uk-setup.jpg",
+    imgAlt: "A business owner replying to customer messages on a smartphone",
+    related: [
+      "whatsapp-business-api-setup-guide",
+      "automate-lead-follow-up",
+      "ai-chat-support-automate-vs-keep-human",
+    ],
+  },
+  {
+    slug: "choose-seo-company-lahore",
+    title: "How to Choose an SEO Company in Lahore: Questions to Ask Before You Sign",
+    excerpt:
+      "Questions to ask an SEO company in Lahore, what a proposal should contain, who should own your accounts and what monthly reports should show.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "3:50 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/choose-seo-company-lahore.jpg",
+    imgAlt: "Two people in a meeting going through an SEO proposal with a laptop open",
+    related: [
+      "replace-digital-marketing-agency",
+      "client-reporting-dashboard-prove-work-monthly",
+      "website-ownership-checklist",
+    ],
+  },
+  {
+    slug: "short-form-video-ads-best-practices",
+    title: "Best Practices for Short-Form Video Ads: Script, Edit, Captions and Export",
+    excerpt:
+      "Plan, script, caption, test and export short-form video ads that work on a phone, with safe zones, aspect ratios and a checklist for every file.",
+    tag: "Video & Ads",
+    date: "November 21, 2026",
+    time: "3:05 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/short-form-video-ads-best-practices.jpg",
+    imgAlt: "A smartphone on a tripod filming a vertical video ad",
+    related: [
+      "short-form-video-hooks-first-three-seconds",
+      "subtitles-captions-ads-watch-time",
+      "video-deliverables-aspect-ratio-brief",
+    ],
+  },
+  {
+    slug: "marketing-vs-advertising-agency",
+    title: "Marketing Agency vs Advertising Agency: Which One Your Business Needs",
+    excerpt:
+      "What a marketing agency does, what an advertising agency does, when a combined agency makes sense and the questions to ask before you hire either.",
+    tag: "Marketing",
+    date: "November 21, 2026",
+    time: "2:20 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/marketing-vs-advertising-agency.jpg",
+    imgAlt: "Agency team planning a campaign around a table covered with layouts and notes",
+    related: [
+      "ad-creative-testing-small-budgets",
+      "google-ads-landing-page-service-business",
+      "replace-digital-marketing-agency",
+    ],
+  },
+  {
+    slug: "seo-content-agency-monthly-deliverables",
+    title: "What an SEO Content Agency Should Deliver Every Month",
+    excerpt:
+      "The monthly work an SEO content agency should deliver: keyword mapping, briefs, editing, internal links, content refreshes and a clear report.",
+    tag: "SEO",
+    date: "November 21, 2026",
+    time: "1:35 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/seo-content-agency-monthly-deliverables.jpg",
+    imgAlt: "Content writer editing an article draft on a laptop next to a notebook of outlines",
+    related: [
+      "internal-linking-service-websites",
+      "search-intent-service-pages",
+      "ai-content-review-human-checklist",
+    ],
+  },
+  {
+    slug: "linkedin-prospecting-tools-data-accuracy",
+    title: "How to Test a LinkedIn Prospecting Tool's Data Accuracy Before You Buy",
+    excerpt:
+      "Test prospecting data on your own sample before you buy. Check job titles by hand, verify emails, track bounces and compare tools on equal terms.",
+    tag: "Marketing",
+    date: "November 21, 2026",
+    time: "12:50 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/linkedin-prospecting-tools-data-accuracy.jpg",
+    imgAlt: "LinkedIn app open on a smartphone screen",
+    related: [
+      "best-linkedin-outreach-platforms",
+      "outtricks-vs-instantly-vs-apollo",
+      "lead-scoring-without-big-crm",
+    ],
+  },
+  {
+    slug: "white-label-web-design-reseller",
+    title: "White Label Web Design for Resellers: How the Partnership Works",
+    excerpt:
+      "How agencies resell web design under their own brand, with scope handoff, client contact, revisions, ownership, pricing models and partner checks.",
+    tag: "Outsourcing",
+    date: "November 21, 2026",
+    time: "12:05 pm",
+    author: "Asad Farooq",
+    img: "/blog/covers/white-label-web-design-reseller.jpg",
+    imgAlt: "Agency team reviewing a website design on a laptop in a meeting",
+    related: [
+      "white-label-shopify-development-for-agencies",
+      "white-label-creative-for-agencies",
+      "website-ownership-checklist",
+    ],
+  },
+  {
+    slug: "web-design-and-seo-company-pakistan",
+    title: "Web Design and SEO Company in Pakistan: When One Team Helps and What to Check",
+    excerpt:
+      "When one company for web design and SEO helps, when it does not, and what to check on redirects, launch tasks and quotes before you sign.",
+    tag: "Web Development",
+    date: "November 21, 2026",
+    time: "11:20 am",
+    author: "Asad Farooq",
+    img: "/blog/covers/web-design-and-seo-company-pakistan.jpg",
+    imgAlt: "Web designer working on a website layout on screen",
+    related: [
+      "website-traffic-drop-after-redesign",
+      "compare-website-development-quotes",
+      "website-ownership-checklist",
+    ],
+  },
+  {
     slug: "website-brief-accurate-developer-quotes",
     title: "How to Write a Website Brief That Gets Accurate Quotes From Developers",
     excerpt:
@@ -41,7 +211,7 @@ const POSTS = [
     date: "November 17, 2026",
     time: "7:24 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/website-brief-accurate-developer-quotes.jpg",
+    img: "/blog/covers/website-brief-accurate-developer-quotes.jpg?v=20261121-cover",
     imgAlt: "A developer reading a website project brief on a laptop in a dark office",
   },
   {
@@ -53,7 +223,7 @@ const POSTS = [
     date: "November 17, 2026",
     time: "5:08 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/seo-voice-search-answer-questions.jpg",
+    img: "/blog/covers/seo-voice-search-answer-questions.jpg?v=20261121-cover",
     imgAlt: "A person asking a voice assistant a question on a phone in a bright room",
   },
   {
@@ -65,7 +235,7 @@ const POSTS = [
     date: "November 17, 2026",
     time: "2:52 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/ai-email-summaries-client-threads-next-steps.jpg",
+    img: "/blog/covers/ai-email-summaries-client-threads-next-steps.jpg?v=20261121-cover",
     imgAlt: "A long client email thread with summaries on a laptop in a dark office",
   },
   {
@@ -77,7 +247,7 @@ const POSTS = [
     date: "November 17, 2026",
     time: "12:36 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/automating-invoice-reminders-get-paid-faster.jpg",
+    img: "/blog/covers/automating-invoice-reminders-get-paid-faster.jpg?v=20261121-cover",
     imgAlt: "Invoices and payment reminders on a laptop on a tidy desk in a dark office",
   },
   {
@@ -89,7 +259,7 @@ const POSTS = [
     date: "November 17, 2026",
     time: "10:44 am",
     author: "Asad Farooq",
-    img: "/blog/covers/wordpress-image-optimisation-speed-pages.jpg",
+    img: "/blog/covers/wordpress-image-optimisation-speed-pages.jpg?v=20261121-cover",
     imgAlt: "A WordPress dashboard with an optimised image library on a laptop in a dark office",
   },
   {
@@ -101,7 +271,7 @@ const POSTS = [
     date: "November 16, 2026",
     time: "7:29 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/service-website-footer-trust-visitors.jpg",
+    img: "/blog/covers/service-website-footer-trust-visitors.jpg?v=20261121-cover",
     imgAlt: "A service website footer with contact details on a laptop in a dark office",
   },
   {
@@ -113,7 +283,7 @@ const POSTS = [
     date: "November 16, 2026",
     time: "5:12 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/choose-music-service-video-copyright.jpg",
+    img: "/blog/covers/choose-music-service-video-copyright.jpg?v=20261121-cover",
     imgAlt: "A video editing timeline with audio waveforms on a monitor in a dark studio",
   },
   {
@@ -125,7 +295,7 @@ const POSTS = [
     date: "November 16, 2026",
     time: "2:56 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/segment-email-list-right-message-right-customer.jpg",
+    img: "/blog/covers/segment-email-list-right-message-right-customer.jpg?v=20261121-cover",
     imgAlt: "An email inbox with organised folders on a laptop on a dark desk",
   },
   {
@@ -137,7 +307,7 @@ const POSTS = [
     date: "November 16, 2026",
     time: "12:38 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/client-reporting-dashboard-prove-work-monthly.jpg",
+    img: "/blog/covers/client-reporting-dashboard-prove-work-monthly.jpg?v=20261121-cover",
     imgAlt: "A client reporting dashboard with charts on a laptop in a dark office",
   },
   {
@@ -149,7 +319,7 @@ const POSTS = [
     date: "November 16, 2026",
     time: "10:47 am",
     author: "Asad Farooq",
-    img: "/blog/covers/brief-brand-designer-first-concepts.jpg",
+    img: "/blog/covers/brief-brand-designer-first-concepts.jpg?v=20261121-cover",
     imgAlt: "A brand designer presenting logo concepts on a mood board in a studio",
   },
   {
@@ -161,7 +331,7 @@ const POSTS = [
     date: "November 15, 2026",
     time: "7:34 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/wordpress-backup-routine-business-owners-weekly.jpg",
+    img: "/blog/covers/wordpress-backup-routine-business-owners-weekly.jpg?v=20261121-cover",
     imgAlt: "A WordPress dashboard on a laptop with a security shield",
   },
   {
@@ -173,7 +343,7 @@ const POSTS = [
     date: "November 15, 2026",
     time: "5:09 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/earn-backlinks-service-business-without-buying.jpg",
+    img: "/blog/covers/earn-backlinks-service-business-without-buying.jpg?v=20261121-cover",
     imgAlt: "Two business partners shaking hands beside a laptop showing growth",
   },
   {
@@ -186,7 +356,7 @@ const POSTS = [
     date: "November 15, 2026",
     time: "2:58 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/train-ai-assistant-business-faqs.jpg",
+    img: "/blog/covers/train-ai-assistant-business-faqs.jpg?v=20261121-cover",
     imgAlt: "An AI chatbot answering customer questions on a laptop",
   },
   {
@@ -199,7 +369,7 @@ const POSTS = [
     date: "November 15, 2026",
     time: "12:41 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/automating-review-requests-happy-customers.jpg",
+    img: "/blog/covers/automating-review-requests-happy-customers.jpg?v=20261121-cover",
     imgAlt: "A happy customer leaving a five star review on a phone",
   },
   {
@@ -211,7 +381,7 @@ const POSTS = [
     date: "November 15, 2026",
     time: "10:53 am",
     author: "Asad Farooq",
-    img: "/blog/covers/homepage-above-the-fold-service-website.jpg",
+    img: "/blog/covers/homepage-above-the-fold-service-website.jpg?v=20261121-cover",
     imgAlt: "A service website homepage on a laptop in a dark office",
   },
   {
@@ -223,7 +393,7 @@ const POSTS = [
     date: "November 14, 2026",
     time: "7:29 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/video-sales-letters-service-businesses-script.jpg",
+    img: "/blog/covers/video-sales-letters-service-businesses-script.jpg?v=20261121-cover",
     imgAlt: "A presenter recording a video sales letter in front of a camera",
   },
   {
@@ -235,7 +405,7 @@ const POSTS = [
     date: "November 14, 2026",
     time: "5:12 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/referral-email-happy-customers-forward.jpg",
+    img: "/blog/covers/referral-email-happy-customers-forward.jpg?v=20261121-cover",
     imgAlt: "A happy customer forwarding an email on a phone",
   },
   {
@@ -247,7 +417,7 @@ const POSTS = [
     date: "November 14, 2026",
     time: "2:56 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/rebuild-custom-tool-vs-patch-again.jpg",
+    img: "/blog/covers/rebuild-custom-tool-vs-patch-again.jpg?v=20261121-cover",
     imgAlt: "A developer reviewing a custom tool dashboard",
   },
   {
@@ -259,7 +429,7 @@ const POSTS = [
     date: "November 14, 2026",
     time: "12:38 pm",
     author: "Asad Farooq",
-    img: "/blog/covers/wordpress-staging-sites-test-changes-safely.jpg",
+    img: "/blog/covers/wordpress-staging-sites-test-changes-safely.jpg?v=20261121-cover",
     imgAlt: "A developer testing website changes on a staging copy",
   },
   {
